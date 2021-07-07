@@ -1,0 +1,22 @@
+﻿@model Clicks.Yoga.Portal.Models.Invitations.InvitationInviteFriendsByEmailModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h3 class="greenHeader">Invite someone...</h3>
+    <hr />
+    @Html.ValidationSummary()
+
+    <div class="clearRow">
+        @Html.LabelFor(m => m.EmailAddress, "Email address to invite")
+        @Html.TextBoxFor(m => m.EmailAddress, new { style = "width: 100%;" })
+    </div>
+    <hr />
+    <div>
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button type="submit" class="button pink large fr">Send Invitation</button>
+    </div>
+}

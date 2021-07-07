@@ -1,0 +1,23 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.StudyTherapyTypesUpdateModel
+
+<div class="block-section">
+    @using (Html.BeginForm("UpdateStudyTherapyTypes", "Medic", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-study-therapy-types-form" }))
+    {
+        @Html.HiddenFor(x => x.Id)
+
+        <div class="row">
+            @Html.Label("Therapy types")
+            <div>Yoga @Html.CheckBox("yoga", Model.TherapyTypes.Where(x => x.Name == "Yoga").Any())</div>
+            <div>Mindfulness @Html.CheckBox("mindfulness", Model.TherapyTypes.Where(x => x.Name == "Mindfulness").Any())</div>
+            <div>Meditation @Html.CheckBox("meditation", Model.TherapyTypes.Where(x => x.Name == "Meditation").Any())</div>
+        </div>
+
+    <div class="condition-save-btn-container">
+        <span class="study-therapy-type-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+    }
+</div>

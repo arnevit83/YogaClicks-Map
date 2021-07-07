@@ -1,0 +1,10 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ImageEditorModel
+
+@if (Model.CurrentImage.Exists)
+{
+    <div>@Html.Image(Model.CurrentImage, i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))</div>
+}
+
+<div>
+    @Html.EditorFor(m => m.NewImage)
+</div>

@@ -1,0 +1,214 @@
+﻿@using Clicks.Yoga.Portal.Models.Teachers
+@model TeacherUpdateModel
+
+@{
+    ViewBag.Title = "Edit teaching profile";
+    ViewBag.Description = "";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Teacher))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeachersNavigation", "Search", new { Action = "TeachersMap" })
+    }
+}
+
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Teacher.Id, Model.Teacher.EntityTypeName))
+
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col profile-strip @(SecurityContext.IsOwner(Model.Teacher) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h1 class="purpleHeader teacherHeader">
+                    <span>&nbsp;</span>Edit teaching profile
+                    <button class="button fr save back-to-profile" onclick="location.href = '@Url.Action("Display")'; return false;">Back To Profile</button>
+                </h1>
+
+                @Html.Partial("Tabs")
+
+                <div>
+                    <h3 class="fl">My teaching profile</h3>
+                </div>
+
+                @Html.Partial("UpdateBanner", new TeacherBannerUpdateModel
+                    {
+                        ProfileBanner = Model.ProfileBanner,
+                        TeacherId = Model.Teacher.Id
+                    })
+
+                <div id="cropfancybox" style="display: none">
+                    <div id="upload-cut">
+                        <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+                    </div>
+                </div>
+
+                <div class="block-section">
+                    <h3>Teaching contact details</h3>
+                    <div class="left-col fl">
+                        @Html.Partial("UpdateImage", new TeacherImageUpdateModel
+                    {
+                        Image = Model.Image,
+                        TeacherId = Model.Teacher.Id
+                    })
+                    </div>
+                    <div class="right-col fr">
+                        @Html.Partial("UpdateDetails", new TeacherDetailsUpdateModel
+                    {
+                        EmailAddress = Model.EmailAddress,
+                        TeacherId = Model.Teacher.Id,
+                        Name = Model.Name,
+                        Telephone = Model.Telephone,
+                        Websites = Model.Websites
+                    })
+                    </div>
+                </div>
+
+                <div class="block-section newsletter-section">
+                    @Html.Partial("UpdateNewsletterOpt", new TeacherNewsletterOptUpdateModel
+                    {
+                        NewsletterOptOut = Model.NewsletterOptOut,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section">
+                    @Html.Partial("UpdateLocation", new TeacherLocationUpdateModel
+                    {
+                        Location = Model.Location,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section my-services">
+                    @Html.Partial("UpdateServices", new TeacherServicesUpdateModel
+                    {
+                        Services = Model.Services,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section styles-taught-section">
+                    @Html.Partial("UpdateStyles", new TeacherStylesUpdateModel
+                    {
+                        Styles = Model.Styles,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section">
+                    @Html.Partial("UpdatePhilosophy", new TeacherPhilosophyUpdateModel
+                    {
+                        Philosophy = Model.Philosophy,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section my-accreditations">
+                    @Html.Partial("UpdateAccreditations", new TeacherAccreditationsUpdateModel
+                    {
+                        AccreditationBodies = Model.AccreditationBodies,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                <div class="block-section">
+                    @Html.Partial("UpdateQualifications", new TeacherQualificationsUpdateModel
+                    {
+                        Qualifications = Model.Qualifications,
+                        TeacherId = Model.Teacher.Id
+                    })
+                </div>
+
+                @Html.Action("UnclaimButton", "Profiles", new { EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName, Id = "", Slug = "" })
+                <span class="fl profileDelete button blockButton">
+                    <span>&nbsp;</span>
+                    @Html.Action("DeleteButton", "Profiles", new { entityId = Model.Teacher.Id, Model.Teacher.EntityTypeName, securable = Model.Teacher })
+                </span>
+            </article>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $('#update-details-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateDetails")', $form.serialize(), $('.profile-details-saved-text'));
+            return false;
+        });
+
+        $('#NewsletterOptOut').change(function () {
+            $form = $('#update-profile-newsletter-opt-form');
+            postForm('@Url.Action("UpdateNewsLetterOpt")', $form.serialize(), $('.profile-newsletter-opt-saved-text'));
+            return false;
+        });
+
+        $('#update-location-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateLocation")', $form.serialize(), $('.teacher-location-saved-text'));
+            return false;
+        });
+
+        $('#update-services-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateServices")', $form.serialize(), $('.venue-services-saved-text'));
+            return false;
+        });
+
+        $('#update-styles-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateStyles")', $form.serialize(), $('.venue-styles-saved-text'));
+            return false;
+        });
+
+        $('#update-philosophy-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdatePhilosophy")', $form.serialize(), $('.venue-about-saved-text'));
+            return false;
+        });
+
+        $('#update-accreditations-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateAccreditations")', $form.serialize(), $('.teacher-accreditation-saved-text'));
+            return false;
+        });
+
+        $('#update-qualifications-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateQualifications")', $form.serialize(), $('.profile-qualifications-saved-text'));
+            return false;
+        });
+
+        function postForm(url, data, saveText) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                async: true,
+                data: data,
+                success: function (html) {
+                    saveText.fadeIn(500);
+                    setTimeout(function () {
+                        saveText.fadeOut(500);
+                    }, 2000);
+                }
+            });
+        };
+
+    </script>
+}

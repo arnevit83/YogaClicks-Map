@@ -1,0 +1,208 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.VenueStep4ViewModel
+
+@{
+    ViewBag.Title = "Venue Step 4";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+    var progressModel = new SignUpProgressBar()
+    {
+        Step = 3,
+        NumberOfSteps = 3,
+        ColorCssClass = "purple-text"
+    };
+
+    if (Model.IsEdit)
+    {
+        progressModel.NumberOfSteps = 2;
+        progressModel.Step = 2;
+
+    }
+
+    if (Session["newVenue"] != "true")
+    {
+        progressModel.NumberOfSteps = 2;
+        progressModel.Step = 2;
+    }
+    
+}
+
+<img src="/images/svgicons/Icon_TeacherPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" alt="namaste students">
+@using (Html.BeginForm("VenueStep4", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-venue-4", step = 4 }))
+{
+    <div class="row purple-text">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-8 col-md-10 signup-row-title">
+            @if (Model.IsEdit || Session["newVenue"] != "true")
+            {
+                <p>2. Tell us more about your venue</p>
+                <p></p>
+            }
+            else
+            {
+                <p>3. Tell us more about your venue</p>
+                <p></p>
+            }
+        </div>
+        <div class="col-xs-2 col-md-1"></div>
+    </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2>Services</h2>
+        </div>
+    </div>
+    
+        <div class="row purple-text signup-row-tall">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Services)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2>Venue type</h2>
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-tall">
+        <div class="hidden-xs col-sm-4 col-md-5 col-lg-5"></div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 singup-input">
+            @Html.EditorFor(m => m.Type)
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
+        </div>
+    </div>
+
+    <div class="row purple-text">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div id="NonResidentialcheckboxes" class="residentialcheckboxes" style="display:none">
+        <div class="row purple-text signup-row-normal">
+            <div class="col-xs-12">
+                <h2>Amenities</h2>
+            </div>
+        </div>
+
+        <div class="row purple-text signup-row-tall">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Amenities)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+    </div>
+
+    <div id="Residentialcheckboxes" class="residentialcheckboxes" style="display: none">
+
+        <div class="row purple-text signup-row-normal">
+            <div class="col-xs-12">
+                <h2>Amenities</h2>
+            </div>
+        </div>
+
+        <div class="row purple-text signup-row-tall">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.ResidentialAmenities)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+    </div>
+
+    <div id="Residentialcheckboxeshr" class="row purple-text" style="display:none">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+        <div class="row purple-text signup-row-normal">
+            <div class="col-xs-12">
+                <h2>Styles taught</h2>
+            </div>
+        </div>
+    <div class="row purple-text signup-row-chosen">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.EditorFor(m => m.Styles)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr/>
+        </div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+    
+        <div class="row purple-text signup-row-normal">
+            <div class="col-xs-12">
+                <h2 style="margin: 100px 0 0 0">YogaMeds taught</h2>
+            </div>
+        </div>
+    <div class="row purple-text signup-row-chosen">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.EditorFor(m => m.Conditions)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+
+    <div class="clear-fix"></div>
+    @Html.Partial("_SignUpProgressBar", progressModel);
+    @Html.HiddenFor(m => m.Id)
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(function () {
+                    $('.location-search-box').click(function () {
+                        var target = $('#Location');
+                        $('html,body').animate({ scrollTop: target.offset().top }, 1000);
+                        return false;
+                    });
+                });
+            });
+        </script>

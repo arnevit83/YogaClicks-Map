@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.CountrySelectorModel
+
+@{
+    Layout = null;
+}
+
+<select name="@Html.NameFor(m => m.Selection)" id="@Html.IdFor(m => m.Selection)" class="selectFullWidth" data-role="Country">
+    <option></option>
+    @foreach (var opt in Model.Options)
+    {
+        <option value="@opt.Id" data-code="@opt.Code" @(opt.Id == Model.Selection ? "selected='true'" : "")>@opt.EnglishName</option>
+    }
+</select>

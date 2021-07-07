@@ -1,0 +1,269 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingCourses
+@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CreateCourseAllSteps
+
+@{
+    ViewBag.Title = "Create Course";
+    ViewBag.HideYogaMedsSelectionHeader = "True";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding   @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id=" scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader myProfileHeader">
+
+                    @*@if (Model.Profile != null)
+                    {
+                        <a href="@Url.Action("Display", "Profiles", new {Model.Profile.Id})">
+                            @(SecurityContext.IsOwner(Model.Profile) ? Html.Raw("<img src='/images/svgicons/Icon_ProfileTeal.svg' data-svgpng='/images/SvgIcons/Icon_ProfileTeal.png'/>") : Html.Raw("<img src='/images/svgicons/Icon_ProfileBlue.svg' data-svgpng='/images/SvgIcons/Icon_ProfileBlue.png'/>"))
+                        </a>
+
+                    }
+
+                    @if (Model.HasTeacher)
+                    {
+                        <a href="@Url.Action("Display", "Teachers", new {Model.Teacher.Id})"><img src="~/images/svgicons/Icon_TeacherGrey.svg" data-svgpng="/images/SvgIcons/Icon_TeacherGrey.png" /></a>
+                    }
+                    @if (Model.HasVenue)
+                    {
+                        <a href="@Url.Action("Display", "Venues", new { Model.VenueModel.Id })"><img src="~/images/svgicons/Icon_VenueGrey.svg" data-svgpng="/images/SvgIcons/Icon_VenueGrey.png" /></a>
+                    }
+                    @if (Model.HasTTO)
+                    {
+                        <a href="@Url.Action("Display", "TeacherTrainingOrganisations", new {Model.TTO.Id})"><img src="~/images/svgicons/Icon_OrgGrey.svg" data-svgpng="/images/SvgIcons/Icon_OrgGrey.png" /></a>
+                    }*@
+
+                    <name class="hidden-xs">
+
+                        @Html.DisplayFor(m => m.TTO.Name)
+
+                    </name>
+
+                </h2>
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+                @using (Html.BeginForm("CreateCourse", "TeacherTrainingCourses", FormMethod.Post, new { enctype = "multipart/form-data", id = "create-course-1", @class = "green-text" }))
+                {
+                    @Html.HiddenFor(m => m.OrganisationId)
+
+                    <div class="row green-text">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10 signup-row-title signup-large-text">
+                            <img src="/images/svgicons/Icon_OrgTeal.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_OrgTeal.png" alt="add course">
+                        
+
+                            @if (Model.Duplicate)
+                            {
+                                <h2 style="margin-bottom: 15px; margin-top: -30px">
+                                    Duplicate mode
+                                </h2>
+
+                            }
+
+                            <p>Create a training course</p>
+
+                        </div>
+                        <div class="col-xs-1"></div>
+                    </div>
+
+                    <div class="row green-text activity-row-normal">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Name, "Course title")
+                            @Html.TextBoxFor(m => m.Name, new { data_field_type = "general" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Website, "Website", new { data_field_type = "notrequired" })
+                            @Html.EditorFor(m => m.Website)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-5 singup-input">
+                            @Html.LabelFor(m => m.Duration, "Teaching hours")
+                            @Html.TextBoxFor(m => m.Duration, new { placeholder = "E.g. 200 hours, 500 hours", data_field_type = "general" })
+                        </div>
+                        <div class="col-xs-12 col-lg-5 singup-input">
+                            @Html.LabelFor(m => m.Price)
+                            @Html.TextBoxFor(m => m.Price, new { placeholder = "E.g. £100, $150", data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.StartDate, "Start date")
+                            @Html.EditorFor(m => m.StartDate)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+                    <div class="row green-text">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.FinishDate, "End date")
+                            @Html.EditorFor(m => m.FinishDate)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Description)
+                            @Html.TextAreaFor(m => m.Description, new { @class = "course-description-box", placeholder = "Describe your course.", data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            <label>Accrediting body(s)</label>
+                            @Html.EditorFor(m => m.AccreditationBodies)
+                            <p style="">
+                                <small>Can't find what you're looking for?<br><a href="mailto:style@yogaclicks.com">Suggest unlisted style</a></small>
+                            </p>
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Accreditation, "Qualification")
+                            @Html.TextBoxFor(m => m.Accreditation, new { data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Style, "Associated style")
+                            @Html.EditorFor(m => m.Style)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.EditorFor(m => m.Teachers)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                                @Html.EditorFor(m => m.Venues)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            <label for="">YogaMeds taught in this class</label>
+                            @Html.EditorFor(m => m.Conditions)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.PreRequisites, "Pre-requisites")
+                            @Html.TextAreaFor(m => m.PreRequisites, new { placeholder = "List any pre-requisites required before taking this course.", data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Notes, "Course notes")
+                            @Html.TextAreaFor(m => m.Notes, new { placeholder = "Detail any notes or extras for the course that you would like to notify students about.", data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="clear-fix"></div>
+                    <div class="row padding-top-100" style="text-align: center">
+                        <input id="createevent" type="submit" value="Save" class="btn btn-default btn-lg green-border green-text" />
+                    </div>
+
+
+                    <div style="height: 200px;"></div>
+                }
+
+            </article>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $('document').ready(function () {
+
+        $(".search-field input").attr("data-field-type", "notrequired");
+
+        if ($('form').length > 0) {
+            $('form:not(.search)').isValid({
+                general: {
+                    errorDetails: [
+                        {
+                            id: "-name-error",
+                            type: "invalid",
+                            show: true,
+                            message: "Name required"
+                        }
+                    ]
+                }
+            });
+        }
+
+
+        $("input[type=checkbox]").each(function () {
+            var parentContainer = $(this).parent();
+            parentContainer.find("input[type=hidden]").insertAfter(parentContainer);
+        });
+    });
+</script>

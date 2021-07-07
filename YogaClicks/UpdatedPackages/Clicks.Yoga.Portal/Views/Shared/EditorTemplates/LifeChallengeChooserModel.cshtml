@@ -1,0 +1,42 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.LifeChallengeChooserModel
+<fieldset>
+    <div>
+      
+        <select id="available-Challenge" data-placeholder="Depression, anxiety etc" name="ChallengeOptions" multiple data-field-type="notrequired">
+            @foreach (var s in Model.Options)
+            {
+                <option data-field-type="notrequired" @(Model.SelectedEntities.Any(x => x.Id == s.Id) ? "selected" : string.Empty) value="@s.Id">@s.Name</option>
+            }
+        </select>
+      
+    </div>
+    @foreach (var s in Model.Options)
+    {
+        <input type="hidden" class="hiddenChallengeSelection" id="@string.Format("ChallengeSelection{0}", s.Id)" name="@string.Format("Challenge.Selection[{0}]", s.Id)" value="false" data-field-type="notrequired" />
+    }
+</fieldset>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#available-Challenge").chosen({ no_results_text: "Oops, nothing found!", width: '100%', data_field_type: "notrequired" });
+
+        $("#available-Challenge").chosen().change(function () {
+            $(".hiddenChallengeSelection").val("false");
+            if ($(this).val() != null) {
+                $(this).val().map(function (index) {
+                    $("#ChallengeSelection" + index).val("true");
+                });
+            }
+     
+
+        });
+
+        //setup default hidden values for pre selected values.
+        if ($("#available-Challenge option:selected").val() > 0) {
+            $("#available-Challenge option:selected").map(function () {
+                $("#ChallengeSelection" + $(this).val()).val("true");
+            });
+        }
+    });
+</script>
+

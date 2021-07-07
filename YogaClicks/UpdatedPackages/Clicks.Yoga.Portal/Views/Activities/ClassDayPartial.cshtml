@@ -1,0 +1,53 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityClassDayPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+
+
+    
+   
+}
+
+<div id="@guid">
+    <div data-role="Parameters">
+        @Html.Partial("CriteriaHiddenPartial", Model.Criteria)
+    </div>
+</div>
+
+@Html.Partial("ClassScriptPartialnontable", guid)
+
+<script>
+    $(function() {
+        var $container = $('#@guid');
+
+        var load = function(date) {
+            var $inputs = $container.find('[data-role=Parameters] input, select');
+            var params = 'Date=' + encodeURIComponent(date) + '&' + $inputs.serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ClassDayContentPartial")',
+                data: params,
+                success: function(html) {
+                    $container.html(html);
+                }
+            });
+        };
+
+        $container.on('click', '[data-role=NavigateButton]', function() {
+            var date = $(this).attr('data-date');
+            load(date);
+        });
+
+        $container.on('change', '[data-role=SortOrder]', function() {
+            var date = $(this).attr('data-date');
+            load(date);
+        });
+
+        load('@Model.Date.ToString()');
+        setTimeout(resizeDiv(true), 10000);
+
+
+    });
+</script>
+

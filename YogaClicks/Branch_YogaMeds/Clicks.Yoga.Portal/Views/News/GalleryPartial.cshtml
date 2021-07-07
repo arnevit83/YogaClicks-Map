@@ -1,0 +1,74 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@model Clicks.Yoga.Portal.Models.News.NewsGalleryPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+    GalleryEntryModel entry = null;
+}
+
+@if (Model.Entries.Count > 0)
+{
+
+    <div>
+        <span class="actorImage">@Html.DisplayFor(m => m.Story.Actor)</span>
+        @if (Model.Story.Type.Id != 12)
+        {
+            @:added @(Model.Entries.Count > 1 ? Model.Entries.Count.ToString() + " new photos" : "a new photo")
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Story.Text))
+        {
+            <div class="text">
+                <div class="more-block readmore-js-section">
+                    <p>@Html.NewLinesAndUris(Model.Story.Text)</p>
+                </div>
+            </div>
+
+        }
+        <div id="@guid" class="text">
+            <div data-role="Entries" class="image">
+
+                @if (Model.Entries.Count == 1)
+                {
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = Model.Entries.First().Id })">@Html.Image(Model.Entries.First().Image, i => i.Resize(c => c.Width(596).Height(300).ScaleBoth().Crop()))</a>
+                }
+                else if (Model.Entries.Count == 2)
+                {
+                    entry = Model.Entries.First();
+                    <a class="news-gallery-pad-right" data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    entry = Model.Entries.Skip(1).First();
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                }
+                else if (Model.Entries.Count == 3)
+                {
+                    entry = Model.Entries.First();
+                    <a class="news-gallery-pad-right" data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    entry = Model.Entries.Skip(1).First();
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    <div class="pad-top-10">
+                        <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = Model.Entries.Last().Id })">@Html.Image(Model.Entries.Last().Image, i => i.Resize(c => c.Width(596).Height(300).ScaleBoth().Crop()))</a>
+                    </div>
+                }
+                else
+                {
+                    entry = Model.Entries.First();
+                    <a class="news-gallery-pad-right" data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    entry = Model.Entries.Skip(1).First();
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    <div class="pad-top-10">
+                        @{ entry = Model.Entries.Skip(2).First();}
+                        <a class="news-gallery-pad-right" data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                        @{ entry = Model.Entries.Skip(3).First();}
+                        <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = entry.Id })">@Html.Image(entry.Image, i => i.Resize(c => c.Width(292).Height(250).ScaleBoth().Crop()))</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#@guid').yogaGallery();
+        });
+    </script>
+}

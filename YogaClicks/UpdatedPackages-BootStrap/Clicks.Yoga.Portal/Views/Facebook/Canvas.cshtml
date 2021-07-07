@@ -1,0 +1,17 @@
+﻿@model Clicks.Yoga.Portal.Models.Facebook.FacebookModel
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            top.location.href = '@Request.Url.Scheme://@Request.Url.Authority/'
+        </script>
+    </body>
+</html>

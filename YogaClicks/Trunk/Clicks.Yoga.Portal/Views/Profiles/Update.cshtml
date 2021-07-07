@@ -1,0 +1,197 @@
+﻿@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileUpdateModel
+
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Title = "Edit personal profile";
+    ViewBag.MenuSection = "My Account";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h1 class="greenHeader myProfileHeader">
+                    <span>&nbsp;</span>Edit personal profile
+                    <button class="button fr save back-to-profile" onclick="location.href = '@Url.Action("Display")'; return false;">Back To Profile</button>
+                </h1>
+
+                @Html.Partial("Tabs", new { Model.Profile })
+
+                <div class="personalProfileHeader">
+                    <h3 class="fl">About me</h3>
+                    @*<button type="submit" class="button save fr" onclick="turnOn(true);">Save changes &nbsp;
+                        <img src="/images/icon-save.png"></button>*@
+                </div>
+                @Html.Action("FacebookConnector")
+                <div id="update-banner-container">
+                    @Html.Partial("UpdateBanner",
+                    new ProfileBannerUpdateModel
+                    {
+                        ProfileBanner = Model.ProfileBanner,
+                        ProfileId = Model.ProfileId
+                    })
+                </div>
+
+                <div class="replaceBannerImageText">
+                    <p>Want to prettify your page? Go to your <a href="@Url.Action("Galleries")">galleries</a>. Click on the picture and select 'display on profile page'.</p>
+                    <br />
+                </div>
+
+                <div class="block-section">
+                    <h3>Details</h3>
+
+                    @Html.Partial("UpdateProfileImage",
+                    new ProfileImageUpdateModel
+                    {
+                        Image = Model.Image,
+                        ProfileId = Model.ProfileId
+                    })
+
+                    <div class="right-col fr">
+                        <div class="profile-personal-details-container">
+                            @Html.Partial("UpdatePersonalDetails",
+                            new ProfilePersonalDetailsUpdateModel
+                            {
+                                BirthDate = Model.BirthDate,
+                                EmailAddress = Model.EmailAddress,
+                                Forename = Model.Forename,
+                                Gender = Model.Gender,
+                                ProfileId = Model.ProfileId,
+                                Surname = Model.Surname,
+                                Websites = Model.Websites
+                            })
+                        </div>
+                    </div>
+                </div>
+
+            <div class="block-section newsletter-section">
+                @Html.Partial("UpdateProfileNewsletterOpt",
+                    new ProfilePersonalNewsletterOptUpdateModel
+                    {
+                        NewsletterOptOut = Model.NewsletterOptOut,
+                        ProfileId = Model.ProfileId
+                    })
+            </div>
+
+                <!-- Removed as this wasn't in the visual
+                    <div class="block-section">
+                        @Html.EditorFor(m => m.ThirdPartyOptOut) Please don't pass my details on to third-parties
+                    </div>
+                    -->
+                <div class="block-section my-location-section">
+                    @Html.Partial("UpdateProfileLocation",
+                    new ProfileLocationUpdateModel
+                    {
+                        Location = Model.Location,
+                        ProfileId = Model.ProfileId
+                    })
+                </div>
+                
+                <div class="block-section input-three-third myTrueSelf">
+                    @Html.Partial("UpdateProfileQuestionsAnswers",
+               new ProfileQuestionsUpdateModel
+               {
+                   ProfileId = Model.ProfileId,
+                   ProfileQuestions = Model.ProfileQuestions
+               })
+                </div>
+
+            </article>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $('#update-profile-personal-details-form').submit(function (e) {
+
+            e.preventDefault();
+            var $form = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdatePersonalDetails")',
+                async: true,
+                data: $form.serialize(),
+                success: function (html) {
+                    $('.profile-details-saved-text').fadeIn(500);
+                    setTimeout(function () {
+                        $('.profile-details-saved-text').fadeOut(500);
+                    }, 2000);
+                }
+            });
+
+            return false;
+        });
+
+        $('#NewsletterOptOut').change(function () {
+
+            $form = $('#update-profile-newsletter-opt-form');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateProfileNewsletterOpt")',
+                async: true,
+                data: $form.serialize(),
+                success: function (html) {
+                    $('.profile-newsletter-opt-saved-text').fadeIn(500);
+                    setTimeout(function () {
+                        $('.profile-newsletter-opt-saved-text').fadeOut(500);
+                    }, 2000);
+                }
+            });
+
+        });
+
+        $('#update-profile-location-form').submit(function (e) {
+
+            e.preventDefault();
+            var $form = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateProfileLocation")',
+                async: true,
+                data: $form.serialize(),
+                success: function (html) {
+                    $('.profile-location-saved-text').fadeIn(500);
+                    setTimeout(function () {
+                        $('.profile-location-saved-text').fadeOut(500);
+                    }, 2000);
+                }
+            });
+
+            return false;
+        });
+
+        $('#update-profile-questions-form').submit(function (e) {
+
+            e.preventDefault();
+            var $form = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateProfileQuestionsAnswers")',
+                async: true,
+                data: $form.serialize(),
+                success: function (html) {
+                    $('.profile-questions-saved-text').fadeIn(500);
+                    setTimeout(function () {
+                        $('.profile-questions-saved-text').fadeOut(500);
+                    }, 2000);
+                }
+            });
+
+            return false;
+        });
+
+    </script>
+}

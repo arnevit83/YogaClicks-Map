@@ -1,0 +1,192 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.ActivityTeacherChooserModel
+
+<div id="@Html.IdFor(m => m)">
+    <div class="">
+        <div class="">
+            <label for="teacherName">Teacher name</label> <input type="text" id="teacherName" data-role="Name" placeholder="e.g. Lucy Edge" data-field-type="notrequired">
+            <div data-role="SuggestionsPopup" class="suggestions teacherSuggestions" style="display: none;">
+                <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+                <div data-role="Suggestions"></div>
+            </div>
+        </div>
+    </div>
+    <div data-role="CreateForm" id="createForm" style="display:none">
+        @*invite-row-teacher*@
+        <div class="">
+            <label>Location</label>
+
+    
+
+         
+            <input type="text" name="location" data-role="Location" autocomplete="off" value="" data-field-type="notrequired">
+       
+            <div data-role="LocationSuggestions" class="suggestions teacherSuggestions"></div>
+            <input type="hidden" data-role="Latitude" data-field-type="notrequired">
+            <input type="hidden" data-role="Longitude" data-field-type="notrequired">
+            <div style="margin-top: 20px"><label>Want to invite this teacher to join YogaClicks</label><span style="float: right; padding-top: 8px;">optional</span></div>
+            <input type="text" data-role="Email" data-field-type="notrequired"/>
+            <p data-role="CreateError" style="display: none; " class="form-error">Please ensure you have entered a name and chosen a location.</p>
+            <div><a data-role="cancelButton" class="btn btn-default pull-left"><i class="fa fa-times"></i> Cancel add teacher</a><a data-role="CreateButton" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add/Invite teacher</a><br style="clear:both;"/><div id="TeacherStubbed" style="display:none" class="form-error">Please click the Add/Invite teacher button</div>
+            </div>
+        </div>
+    </div>
+    <div data-role="Selections" class="selections selectedTeachers"></div>
+</div>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+<script>
+    $(function() {
+    
+
+        var $container = $('#@Html.IdFor(m => m)');
+
+        $container.yogaLocationPicker({ autocode: true });
+
+        var $name = $container.find('[data-role=Name]');
+        var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        var $selections = $container.find('[data-role=Selections]');
+        var $cancelButton = $container.find('[data-role=cancelButton]');
+        
+        var $createForm = $container.find('[data-role=CreateForm]');
+        var $createButton = $createForm.find('[data-role=CreateButton]');
+        var $createError = $createForm.find('[data-role=CreateError]');
+        var $location = $createForm.find('[data-role=Location]');
+        var $latitude = $createForm.find('[data-role=Latitude]');
+        var $longitude = $createForm.find('[data-role=Longitude]');
+        var $email = $createForm.find('[data-role=Email]');
+
+        var add = function (id, name) {
+            var $item = $('<div></div>');
+
+            $item.append('<input type="hidden" name="@(Html.NameFor(m => m.Selection))[' + id + ']" value="true">');
+            $item.append(name + ' ');
+            $item.append('<a href="javascript:void(0)" data-role="RemoveButton">x</a>');
+
+            $item.appendTo($selections);
+
+            $selections.show();
+        };
+
+        @foreach (var option in Model.SelectedEntities)
+        {
+            @:add(@option.Id, '@HttpUtility.JavaScriptStringEncode(option.Name)');
+                        }
+
+        $name.on('keyup', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+            stubbedcheck = true;
+   
+            var value = $name.val();
+
+            if (!value || value.length < 3) return;
+
+            $.getJSON(
+                '/Search/AutocompleteTeachers',
+                { Name: $name.val() },
+                function (entities) {
+                    if (entities.length > 0) {
+                        $suggestions.empty();
+
+                        for (var i in entities) {
+                            var entity = entities[i];
+                            var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                            $link.data('entity', entity);
+                            $suggestions.append($('<div/>').html($link));
+                        }
+
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+
+                        stubbedcheck = false;
+                       
+                    }
+                }
+            );
+        });
+
+     
+
+        $cancelButton.on('click', function(e) {
+            $suggestionsPopup.hide();
+           
+            $('#teacherName').val("");
+            $createForm.hide();
+            stubbedcheck = false;
+        });
+        $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+ 
+            stubbedcheck = true;
+        });
+
+        $suggestions.on('click', 'a', function () {
+            var entity = $(this).data('entity');
+            add(entity.Id, entity.Name);
+            $suggestionsPopup.hide();
+          
+            stubbedcheck = false;
+            $name.val('');
+        });
+
+
+        
+  
+
+        $selections.on('click', 'a[data-role=RemoveButton]', function() {
+            $(this).parent().remove();
+        });
+
+        $createButton.on('click', function (e) {
+            e.preventDefault();
+           
+            var name = $name.val();
+            var location = $location.val();
+            var latitude = $latitude.val();
+            var longitude = $longitude.val();
+            var email = $email.val();
+        
+            if (!name || !location || !latitude || !longitude) {
+                $createError.show();
+               
+                return;
+            }
+            else {
+                $createError.hide();
+                $('#TeacherStubbed').attr("style", "display:none;");
+                stubbedcheck = false;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/Teachers/CreateStubbed',
+                data: { Name: name, Location: location, Latitude: latitude, Longitude: longitude, Email: email },
+                success: function(id) {
+                    if (!id) return;
+                    add(id, name);
+
+                    $name.val('');
+                    $location.val('');
+                    $email.val('');
+                    $createForm.hide();
+                }
+            });
+        });
+    })
+</script>

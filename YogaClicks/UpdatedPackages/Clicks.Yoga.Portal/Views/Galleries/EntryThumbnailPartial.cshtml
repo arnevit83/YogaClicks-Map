@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryEntryThumbnailPartialModel
+<div class="col-sm-4 ">
+    @{var owner = (SecurityContext.IsOwner(Model.Entry) || SecurityContext.IsOwner(Model.Entry.Image) || SecurityContext.IsSuperUser()) ? true : false;}
+
+    <div data-role="Entry" class=" thumbnail " data-imageid="@Model.Entry.Id">
+        @if (owner)
+        {
+            <a title="Delete " data-toggle="tooltip" href="javascript:void(0)" data-role="DeleteEntryButton" class="deleteButton" data-url="@Url.Action("DeleteEntry")" data-id="@Model.Entry.Id"><i class="fa fa-trash"></i></a>
+
+        }
+        @if (owner)
+        {
+
+        }
+        <a @if (owner) { <text> title='Edit ' data-toggle='tooltip' </text>  }
+           href="javascript:void(0)" id="showGame" data-bsmodel-url="@Url.Action("EntryPopup", new {EntryId = Model.Entry.Id})" data-owner="@owner" class="">
+            @Html.Image(Model.Entry.Image, i => i.Resize(c => c.Width(500).Height(500).ScaleBoth().Crop()), "", new { @class = "img-responsive" })
+
+        </a>
+
+
+
+        <div class="caption thumbnailmax" style="min-height: 120px;">
+            <p class="thumnailcenterab">
+                @Model.Entry.Name
+            </p>
+        </div>
+
+    </div>
+</div>

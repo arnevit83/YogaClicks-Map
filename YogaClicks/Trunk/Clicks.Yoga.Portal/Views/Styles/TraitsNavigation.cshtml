@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleTraitsNavigationModel
+
+@{ var order = new List<string> { "Mind", "Body", "Spirit", "Focus", "Environment", "Who" };}
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <div class="levelWrap">
+                    <h1 class="pageTitle">Style finder</h1>
+                    <span class="questionMark small">?</span>
+                    <div class="levelBox styleFinderBox">
+                        <p><strong>We've grouped 30+ yoga style attributes under the 6 headers below.</strong></p>
+                        <p>Tick the boxes to select the attributes you’re looking for.</p>
+                        <p>Only styles with those attributes will display.</p>
+                        <p>To deselect an attribute untick the box.</p>
+                        <p><em>Your search doesn't return any searches? Congratulations. You’ve 
+                        invented a new style!</em></p>
+                        <a href="#" class="close">x</a>
+                    </div>
+                </div>    
+                <!--<p>Use the options below to find the yoga style that's right for you</p>-->
+                @foreach (var group in Model.Traits.OrderBy(e => e.DisplayOrder))
+                {
+                    if (group.Traits.Count > 0)
+                    {
+                        var display = group.Traits.Any(t => t.Selected) ? string.Empty : "none";
+                        
+                    <nav class="filter">
+                        <h3 style="margin:0; padding:0 0 0 20px;"><a href="#" class="toggle-traits" data-visible="@string.IsNullOrEmpty(display).ToString().ToLower()">@group.Name <span class="down-arrow">&nbsp;</span></a></h3>
+                        <div class="trait-box" style="display: @display">
+                           
+                         @foreach (var trait in group.Traits)
+                         {
+                             var action = trait.Selected ? "UnselectTrait" : "SelectTrait";
+                             var selected = trait.Selected ? "selected" : "";
+                             
+                             @Html.ActionLink(trait.Name + " (" + trait.Count + ")", action, "Styles", new { traitIdString = Model.TraitIdString, traitNameString = Model.TraitNameString, traitId = trait.Id }, new { @class = selected })
+                         }
+                        </div>
+                    </nav>
+                    }
+                }
+                @if (Model.Traits.Any(g => g.Traits.Any(t => t.Selected)))
+                {
+                    <div class="the-sub-footer">
+                        <button><a href="/styles/index">Clear All Selections</a></button>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+       /* $('h3').click(function () {
+            $(this).toggleClass('open');
+        });
+        $('.the-sub-menu .filter:first-of-type').children('.trait-box').show();
+        */
+
+    })
+</script>

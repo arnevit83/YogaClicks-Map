@@ -1,0 +1,102 @@
+﻿@model Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel
+
+@Html.HiddenFor(m => m.Professional)
+
+@Html.ValidationSummary()
+
+<div class="sign-up-buttons-container">
+    <div class="sign-up-button facebook-signup-button fbButton">
+        Sign up with Facebook
+        <div><img src="~/Images/social-icons/fb-logo.jpg" /></div>
+    </div>
+    <div class="sign-up-button email-signup-button">
+        Sign up with your email
+        <div><img src="~/Images/social-icons/email-icon.png" /></div>
+    </div>
+
+</div>
+
+<div class="email-reg-form">
+    @if (!Model.Professional)
+    {
+        @Html.TextBoxFor(m => m.Forename, new { placeholder = "First name", style = "width:47%" })
+
+        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Last name", style = "width:47%; float: right" })
+    }
+
+    @Html.TextBoxFor(m => m.Username, new { placeholder = "Email address", style = "width:100%;" })
+
+    @Html.PasswordFor(m => m.Password, new { placeholder = "Create password", style = "width:100%;" })
+
+    @Html.PasswordFor(m => m.PasswordConfirmation, new { placeholder = "Confirm password", style = "width:100%;" })
+
+    <div class="buttons">
+        <div class="buttonsLeft">
+            <button class="large button pink sign-up-back" type="button">Back</button>
+        </div>
+
+        <div class="reg-signup-button">
+            <button class="large button pink activeSignup" type="submit">Sign up</button>
+            <button class="button pink greybg disabledSignUp" style="font-size:16px;" type="button">Sign up</button>
+
+        </div>
+    </div>
+</div>
+
+<div class="reg-login-option-container">
+    OR
+    <div class="loginButton reg-login-button-container">
+        <a href="#" class="button large pink loginRevealBtnRegisterPopUp reg-login-button">Log in</a>
+    </div>
+</div>
+
+
+<div class="not-now-container">
+    <a class="not-now" href="javascript:parent.$.fancybox.close();">Not now</a>
+</div>
+
+
+<div class="term-of-use-form-section">
+    Signing up, or signing in with Facebook, indicates you agree to our <a href="/static/terms-of-use">terms of use</a>.
+</div>
+
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <script type="text/javascript">
+        $('.sign-up-buttons-container').hide();
+        $('.reg-login-option-container').hide();
+        $('.not-now-container').hide();
+        $('.email-reg-form').show();
+    </script>
+}
+
+<script>
+    $('.email-signup-button').click(function () {
+        $('.sign-up-buttons-container').hide();
+        $('.reg-login-option-container').hide();
+        $('.not-now-container').hide();
+        $('.email-reg-form').show();
+        $('.validation-summary-errors').show();
+    });
+
+    $('.sign-up-back').click(function (e) {
+        e.preventDefault();
+
+        $('.sign-up-buttons-container').show();
+        $('.reg-login-option-container').show();
+        $('.not-now-container').show();
+        $('.email-reg-form').hide();
+        $('.validation-summary-errors').hide();
+    });
+
+    $('.loginRevealBtnRegisterPopUp').click(function () {
+        //close popup
+        closeModal();
+        $('.loginReveal').slideToggle();
+    });
+
+    $('.fbButton').on('click', function (e) {
+        e.preventDefault();
+        facebookConnect(function () { window.location.href = "/static/profile-professional-guide?registered=true"; });
+    });
+</script>

@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5F55549-9D78-4D59-909A-EBD36DA7904F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clicks.Yoga.Data</RootNamespace>
+    <AssemblyName>Clicks.Yoga.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nest">
+      <HintPath>..\packages\NEST.0.12.0.0\lib\NET4\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ObjectStateExtensions.cs" />
+    <Compile Include="Context\YogaEntityContext.cs" />
+    <Compile Include="Mappings\AbilityLevelMapping.cs" />
+    <Compile Include="Mappings\AccreditationBodyMapping.cs" />
+    <Compile Include="Mappings\ActivityAttendeeMapping.cs" />
+    <Compile Include="Mappings\GdrpMapping.cs" />
+    <Compile Include="Mappings\PoseUserImagesMapping.cs" />
+    <Compile Include="Mappings\YmStoryLifeChallengesBucketMapping.cs" />
+    <Compile Include="Mappings\YmStoryLifeChallengesMapping.cs" />
+    <Compile Include="Mappings\YmStoryMapping.cs" />
+    <Compile Include="Mappings\ActivityMapping.cs" />
+    <Compile Include="Mappings\ActivityRepeatFrequencyMapping.cs" />
+    <Compile Include="Mappings\ActivityVenueMapping.cs" />
+    <Compile Include="Mappings\ActivityTeacherMapping.cs" />
+    <Compile Include="Mappings\ActivityTypeMapping.cs" />
+    <Compile Include="Mappings\ActivityWallMapping.cs" />
+    <Compile Include="Mappings\AddressMapping.cs" />
+    <Compile Include="Mappings\Base\EntityMapping.cs" />
+    <Compile Include="Mappings\Base\PrincipalEntityMapping.cs" />
+    <Compile Include="Mappings\CommentMapping.cs" />
+    <Compile Include="Mappings\EntityHandleInviteMapping.cs" />
+    <Compile Include="Mappings\GalleryAssociationMapping.cs" />
+    <Compile Include="Mappings\GalleryEntryMapping.cs" />
+    <Compile Include="Mappings\GalleryMapping.cs" />
+    <Compile Include="Mappings\GroupWallMapping.cs" />
+    <Compile Include="Mappings\CountryMapping.cs" />
+    <Compile Include="Mappings\EntityHandleMapping.cs" />
+    <Compile Include="Mappings\EntityTypeMapping.cs" />
+    <Compile Include="Mappings\FanMapping.cs" />
+    <Compile Include="Mappings\FederatedLoginMapping.cs" />
+    <Compile Include="Mappings\FederatedLoginProviderMapping.cs" />
+    <Compile Include="Mappings\FriendshipMapping.cs" />
+    <Compile Include="Mappings\GenderMapping.cs" />
+    <Compile Include="Mappings\GlossaryEntryMapping.cs" />
+    <Compile Include="Mappings\GroupMapping.cs" />
+    <Compile Include="Mappings\GroupMemberMapping.cs" />
+    <Compile Include="Mappings\ImageMapping.cs" />
+    <Compile Include="Mappings\ImageTypeMapping.cs" />
+    <Compile Include="Mappings\InvitationMapping.cs" />
+    <Compile Include="Mappings\LocationMapping.cs" />
+    <Compile Include="Mappings\MediaResourceMapping.cs" />
+    <Compile Include="Mappings\MediaResourceTypeMapping.cs" />
+    <Compile Include="Mappings\NewsStoryMapping.cs" />
+    <Compile Include="Mappings\NewsStoryTypeMapping.cs" />
+    <Compile Include="Mappings\NewsSubscriptionMapping.cs" />
+    <Compile Include="Mappings\NotificationCategoryMapping.cs" />
+    <Compile Include="Mappings\NotificationDeliveryMapping.cs" />
+    <Compile Include="Mappings\NotificationMapping.cs" />
+    <Compile Include="Mappings\NotificationPreferencesMapping.cs" />
+    <Compile Include="Mappings\NotificationTypeMapping.cs" />
+    <Compile Include="Mappings\NotificationCategoryPreferencesMapping.cs" />
+    <Compile Include="Mappings\PasswordLoginMapping.cs" />
+    <Compile Include="Mappings\PasswordResetActionMapping.cs" />
+    <Compile Include="Mappings\PasswordResetRequestMapping.cs" />
+    <Compile Include="Mappings\PersonMapping.cs" />
+    <Compile Include="Mappings\PoseCategoryMapping.cs" />
+    <Compile Include="Mappings\PoseMapping.cs" />
+    <Compile Include="Mappings\PrivacyPreferencesMapping.cs" />
+    <Compile Include="Mappings\PrivateConversationMapping.cs" />
+    <Compile Include="Mappings\PrivateMessageDeliveryMapping.cs" />
+    <Compile Include="Mappings\PrivateMessageMapping.cs" />
+    <Compile Include="Mappings\ProfileAnswerMapping.cs" />
+    <Compile Include="Mappings\ProfileQuestionMapping.cs" />
+    <Compile Include="Mappings\ProfileWallMapping.cs" />
+    <Compile Include="Mappings\QuoteMapping.cs" />
+    <Compile Include="Mappings\RequestMapping.cs" />
+    <Compile Include="Mappings\RequestTypeMapping.cs" />
+    <Compile Include="Mappings\ReviewExperienceMapping.cs" />
+    <Compile Include="Mappings\ReviewFeedbackResponseMapping.cs" />
+    <Compile Include="Mappings\ReviewMapping.cs" />
+    <Compile Include="Mappings\ReviewRatingMapping.cs" />
+    <Compile Include="Mappings\ReviewRatingSubjectMapping.cs" />
+    <Compile Include="Mappings\RoleMapping.cs" />
+    <Compile Include="Mappings\SearchRecordMapping.cs" />
+    <Compile Include="Mappings\StyleMapping.cs" />
+    <Compile Include="Mappings\StyleOrganisationMapping.cs" />
+    <Compile Include="Mappings\StyleTraitGroupMapping.cs" />
+    <Compile Include="Mappings\StyleTraitMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingOrganisationAccreditationMapping.cs" />
+    <Compile Include="Mappings\TeacherAccreditationMapping.cs" />
+    <Compile Include="Mappings\TeacherMapping.cs" />
+    <Compile Include="Mappings\TeacherPlacementMapping.cs" />
+    <Compile Include="Mappings\TeacherServiceMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseTeacherMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseVenueMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingOrganisationFacultyMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingOrganisationMapping.cs" />
+    <Compile Include="Mappings\TimescaleMapping.cs" />
+    <Compile Include="Mappings\UserActivationRequestMapping.cs" />
+    <Compile Include="Mappings\UserEmailAddressChangeActionMapping.cs" />
+    <Compile Include="Mappings\UserEmailAddressChangeRequestMapping.cs" />
+    <Compile Include="Mappings\UserMapping.cs" />
+    <Compile Include="Mappings\UserRoleMapping.cs" />
+    <Compile Include="Mappings\VenueMapping.cs" />
+    <Compile Include="Mappings\VenueServiceMapping.cs" />
+    <Compile Include="Mappings\VenueTypeMapping.cs" />
+    <Compile Include="Mappings\VideoAssociationMapping.cs" />
+    <Compile Include="Mappings\VideoMapping.cs" />
+    <Compile Include="Mappings\VideoTypeMapping.cs" />
+    <Compile Include="Mappings\WallMapping.cs" />
+    <Compile Include="Mappings\WallPostMapping.cs" />
+    <Compile Include="Mappings\WebsiteMapping.cs" />
+    <Compile Include="Migrations\201309091556488_InitialCreate.cs" />
+    <Compile Include="Migrations\201309091556488_InitialCreate.Designer.cs">
+      <DependentUpon>201309091556488_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309231200120_EntityHandleLocations.cs" />
+    <Compile Include="Migrations\201309231200120_EntityHandleLocations.Designer.cs">
+      <DependentUpon>201309231200120_EntityHandleLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309301038262_ReviewsController.cs" />
+    <Compile Include="Migrations\201309301038262_ReviewsController.Designer.cs">
+      <DependentUpon>201309301038262_ReviewsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310040806138_ActivitiesController.cs" />
+    <Compile Include="Migrations\201310040806138_ActivitiesController.Designer.cs">
+      <DependentUpon>201310040806138_ActivitiesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310040818060_ProfileEmailAddress.cs" />
+    <Compile Include="Migrations\201310040818060_ProfileEmailAddress.Designer.cs">
+      <DependentUpon>201310040818060_ProfileEmailAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310221004353_TeacherTrainingCourseDurationLength.cs" />
+    <Compile Include="Migrations\201310221004353_TeacherTrainingCourseDurationLength.Designer.cs">
+      <DependentUpon>201310221004353_TeacherTrainingCourseDurationLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311181307424_SearchRecordAccreditation.cs" />
+    <Compile Include="Migrations\201311181307424_SearchRecordAccreditation.Designer.cs">
+      <DependentUpon>201311181307424_SearchRecordAccreditation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311181513534_GlossaryEntityTypeName.cs" />
+    <Compile Include="Migrations\201311181513534_GlossaryEntityTypeName.Designer.cs">
+      <DependentUpon>201311181513534_GlossaryEntityTypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311181633528_FannableQuotesAndLingo.cs" />
+    <Compile Include="Migrations\201311181633528_FannableQuotesAndLingo.Designer.cs">
+      <DependentUpon>201311181633528_FannableQuotesAndLingo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311181636358_EntityHandleNameLength.cs" />
+    <Compile Include="Migrations\201311181636358_EntityHandleNameLength.Designer.cs">
+      <DependentUpon>201311181636358_EntityHandleNameLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311190928579_StyleOrganisationSearch.cs" />
+    <Compile Include="Migrations\201311190928579_StyleOrganisationSearch.Designer.cs">
+      <DependentUpon>201311190928579_StyleOrganisationSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311190952086_RemoveActivityReviewable.cs" />
+    <Compile Include="Migrations\201311190952086_RemoveActivityReviewable.Designer.cs">
+      <DependentUpon>201311190952086_RemoveActivityReviewable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311191205595_TypeOfPersonTraitGroupText.cs" />
+    <Compile Include="Migrations\201311191205595_TypeOfPersonTraitGroupText.Designer.cs">
+      <DependentUpon>201311191205595_TypeOfPersonTraitGroupText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311191649159_ExtraAbilityLevels.cs" />
+    <Compile Include="Migrations\201311191649159_ExtraAbilityLevels.Designer.cs">
+      <DependentUpon>201311191649159_ExtraAbilityLevels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311232013094_ActivityAttendenceNullable.cs" />
+    <Compile Include="Migrations\201311232013094_ActivityAttendenceNullable.Designer.cs">
+      <DependentUpon>201311232013094_ActivityAttendenceNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311282329199_ActivityClassType.cs" />
+    <Compile Include="Migrations\201311282329199_ActivityClassType.Designer.cs">
+      <DependentUpon>201311282329199_ActivityClassType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041015276_VenueAmenityIsResidential.cs" />
+    <Compile Include="Migrations\201312041015276_VenueAmenityIsResidential.Designer.cs">
+      <DependentUpon>201312041015276_VenueAmenityIsResidential.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041130484_WallPostCommentKeyNameCorrection.cs" />
+    <Compile Include="Migrations\201312041130484_WallPostCommentKeyNameCorrection.Designer.cs">
+      <DependentUpon>201312041130484_WallPostCommentKeyNameCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312092052560_LastDigestEmailSentDate.cs" />
+    <Compile Include="Migrations\201312092052560_LastDigestEmailSentDate.Designer.cs">
+      <DependentUpon>201312092052560_LastDigestEmailSentDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312152250193_VenueAmenities.cs" />
+    <Compile Include="Migrations\201312152250193_VenueAmenities.Designer.cs">
+      <DependentUpon>201312152250193_VenueAmenities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312152304347_NotificationTypesCopyAmends.cs" />
+    <Compile Include="Migrations\201312152304347_NotificationTypesCopyAmends.Designer.cs">
+      <DependentUpon>201312152304347_NotificationTypesCopyAmends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312181317222_RenameAccreditingBodies.cs" />
+    <Compile Include="Migrations\201312181317222_RenameAccreditingBodies.Designer.cs">
+      <DependentUpon>201312181317222_RenameAccreditingBodies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401221202528_AdditionalVenueTypes.cs" />
+    <Compile Include="Migrations\201401221202528_AdditionalVenueTypes.Designer.cs">
+      <DependentUpon>201401221202528_AdditionalVenueTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401291814173_TeacherTrainingOrganisationEmailAddress.cs" />
+    <Compile Include="Migrations\201401291814173_TeacherTrainingOrganisationEmailAddress.Designer.cs">
+      <DependentUpon>201401291814173_TeacherTrainingOrganisationEmailAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402131604026_ActorEntityTypes.cs" />
+    <Compile Include="Migrations\201402131604026_ActorEntityTypes.Designer.cs">
+      <DependentUpon>201402131604026_ActorEntityTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402171529002_PrivateMessageActors.cs" />
+    <Compile Include="Migrations\201402171529002_PrivateMessageActors.Designer.cs">
+      <DependentUpon>201402171529002_PrivateMessageActors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402201243505_TeacherAddressRemoval.cs" />
+    <Compile Include="Migrations\201402201243505_TeacherAddressRemoval.Designer.cs">
+      <DependentUpon>201402201243505_TeacherAddressRemoval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402201247573_SearchRecordLocations.cs" />
+    <Compile Include="Migrations\201402201247573_SearchRecordLocations.Designer.cs">
+      <DependentUpon>201402201247573_SearchRecordLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402241646512_GroupPromoters.cs" />
+    <Compile Include="Migrations\201402241646512_GroupPromoters.Designer.cs">
+      <DependentUpon>201402241646512_GroupPromoters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251245242_ActivityAttendeeHandles.cs" />
+    <Compile Include="Migrations\201402251245242_ActivityAttendeeHandles.Designer.cs">
+      <DependentUpon>201402251245242_ActivityAttendeeHandles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251443265_OrganisationActors.cs" />
+    <Compile Include="Migrations\201402251443265_OrganisationActors.Designer.cs">
+      <DependentUpon>201402251443265_OrganisationActors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402261447241_EntityHandleInvites.cs" />
+    <Compile Include="Migrations\201402261447241_EntityHandleInvites.Designer.cs">
+      <DependentUpon>201402261447241_EntityHandleInvites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402271024070_EntityHandlesActive.cs" />
+    <Compile Include="Migrations\201402271024070_EntityHandlesActive.Designer.cs">
+      <DependentUpon>201402271024070_EntityHandlesActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403111006419_ReviewRatingBedrooms.cs" />
+    <Compile Include="Migrations\201403111006419_ReviewRatingBedrooms.Designer.cs">
+      <DependentUpon>201403111006419_ReviewRatingBedrooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403120921399_EntityTypeActorOrdinals.cs" />
+    <Compile Include="Migrations\201403120921399_EntityTypeActorOrdinals.Designer.cs">
+      <DependentUpon>201403120921399_EntityTypeActorOrdinals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403121147023_ActivitiesPluralWithClasses.cs" />
+    <Compile Include="Migrations\201403121147023_ActivitiesPluralWithClasses.Designer.cs">
+      <DependentUpon>201403121147023_ActivitiesPluralWithClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403131320280_UserEmailAddressChangeRequests.cs" />
+    <Compile Include="Migrations\201403131320280_UserEmailAddressChangeRequests.Designer.cs">
+      <DependentUpon>201403131320280_UserEmailAddressChangeRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404031548111_InvitationNullableLoginProvider.cs" />
+    <Compile Include="Migrations\201404031548111_InvitationNullableLoginProvider.Designer.cs">
+      <DependentUpon>201404031548111_InvitationNullableLoginProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220839301_AutoGroups.cs" />
+    <Compile Include="Migrations\201404220839301_AutoGroups.Designer.cs">
+      <DependentUpon>201404220839301_AutoGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405042258180_GroupFAQs.cs" />
+    <Compile Include="Migrations\201405042258180_GroupFAQs.Designer.cs">
+      <DependentUpon>201405042258180_GroupFAQs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407041144104_HiddenProfessionalProfiles.cs" />
+    <Compile Include="Migrations\201407041144104_HiddenProfessionalProfiles.Designer.cs">
+      <DependentUpon>201407041144104_HiddenProfessionalProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407071126077_NotificationCategories.cs" />
+    <Compile Include="Migrations\201407071126077_NotificationCategories.Designer.cs">
+      <DependentUpon>201407071126077_NotificationCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407071501101_FriendshipRequestsCategoryBooleans.cs" />
+    <Compile Include="Migrations\201407071501101_FriendshipRequestsCategoryBooleans.Designer.cs">
+      <DependentUpon>201407071501101_FriendshipRequestsCategoryBooleans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407081319453_EmailDigestTimes.cs" />
+    <Compile Include="Migrations\201407081319453_EmailDigestTimes.Designer.cs">
+      <DependentUpon>201407081319453_EmailDigestTimes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407171339332_WallPostVideosImages1.cs" />
+    <Compile Include="Migrations\201407171339332_WallPostVideosImages1.Designer.cs">
+      <DependentUpon>201407171339332_WallPostVideosImages1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407171552193_WallPostVideoImages2.cs" />
+    <Compile Include="Migrations\201407171552193_WallPostVideoImages2.Designer.cs">
+      <DependentUpon>201407171552193_WallPostVideoImages2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407241434126_NewsStoryComments1.cs" />
+    <Compile Include="Migrations\201407241434126_NewsStoryComments1.Designer.cs">
+      <DependentUpon>201407241434126_NewsStoryComments1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407291255520_MediaResources.cs" />
+    <Compile Include="Migrations\201407291255520_MediaResources.Designer.cs">
+      <DependentUpon>201407291255520_MediaResources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408011144058_MediaResourceEntities.cs" />
+    <Compile Include="Migrations\201408011144058_MediaResourceEntities.Designer.cs">
+      <DependentUpon>201408011144058_MediaResourceEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408011219267_MediaResourceRequiredUri.cs" />
+    <Compile Include="Migrations\201408011219267_MediaResourceRequiredUri.Designer.cs">
+      <DependentUpon>201408011219267_MediaResourceRequiredUri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408040849208_RemoveUnnecessaryMediaProperties.cs" />
+    <Compile Include="Migrations\201408040849208_RemoveUnnecessaryMediaProperties.Designer.cs">
+      <DependentUpon>201408040849208_RemoveUnnecessaryMediaProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408051143498_AddNewsStorySharing.cs" />
+    <Compile Include="Migrations\201408051143498_AddNewsStorySharing.Designer.cs">
+      <DependentUpon>201408051143498_AddNewsStorySharing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408051519578_AddSharingPrivacyPreferences.cs" />
+    <Compile Include="Migrations\201408051519578_AddSharingPrivacyPreferences.Designer.cs">
+      <DependentUpon>201408051519578_AddSharingPrivacyPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408060846496_AddShareNotification.cs" />
+    <Compile Include="Migrations\201408060846496_AddShareNotification.Designer.cs">
+      <DependentUpon>201408060846496_AddShareNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409251016192_NewDescriptionfieldforTTO.cs" />
+    <Compile Include="Migrations\201409251016192_NewDescriptionfieldforTTO.Designer.cs">
+      <DependentUpon>201409251016192_NewDescriptionfieldforTTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411181642571_AddNewsletterToTeacherAndVenue.cs" />
+    <Compile Include="Migrations\201411181642571_AddNewsletterToTeacherAndVenue.Designer.cs">
+      <DependentUpon>201411181642571_AddNewsletterToTeacherAndVenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411281630122_SearchRecordDescriptionMaxLength.cs" />
+    <Compile Include="Migrations\201411281630122_SearchRecordDescriptionMaxLength.Designer.cs">
+      <DependentUpon>201411281630122_SearchRecordDescriptionMaxLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412091059210_AddDescriptionPriceToTTOCourse.cs" />
+    <Compile Include="Migrations\201412091059210_AddDescriptionPriceToTTOCourse.Designer.cs">
+      <DependentUpon>201412091059210_AddDescriptionPriceToTTOCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412291057590_MakeNewsStoryFanable.cs" />
+    <Compile Include="Migrations\201412291057590_MakeNewsStoryFanable.Designer.cs">
+      <DependentUpon>201412291057590_MakeNewsStoryFanable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504171322491_AddYogaMedsEntities.cs" />
+    <Compile Include="Migrations\201504171322491_AddYogaMedsEntities.Designer.cs">
+      <DependentUpon>201504171322491_AddYogaMedsEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231021107_AddMetaDescToCondition.cs" />
+    <Compile Include="Migrations\201504231021107_AddMetaDescToCondition.Designer.cs">
+      <DependentUpon>201504231021107_AddMetaDescToCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241018517_AddWTSSAsCollection.cs" />
+    <Compile Include="Migrations\201504241018517_AddWTSSAsCollection.Designer.cs">
+      <DependentUpon>201504241018517_AddWTSSAsCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241318481_AdduserStoriesAsCollection.cs" />
+    <Compile Include="Migrations\201504241318481_AdduserStoriesAsCollection.Designer.cs">
+      <DependentUpon>201504241318481_AdduserStoriesAsCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.cs" />
+    <Compile Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.Designer.cs">
+      <DependentUpon>201504241352002_AddTeachersVenuesToUserStory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504300927266_AddDirectoryImageToCondition.cs" />
+    <Compile Include="Migrations\201504300927266_AddDirectoryImageToCondition.Designer.cs">
+      <DependentUpon>201504300927266_AddDirectoryImageToCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505060848518_MakeConditionINamed.cs" />
+    <Compile Include="Migrations\201505060848518_MakeConditionINamed.Designer.cs">
+      <DependentUpon>201505060848518_MakeConditionINamed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505061422587_AddConditionToSearchRecord.cs" />
+    <Compile Include="Migrations\201505061422587_AddConditionToSearchRecord.Designer.cs">
+      <DependentUpon>201505061422587_AddConditionToSearchRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505110810342_AddmetaTitleToCondition.cs" />
+    <Compile Include="Migrations\201505110810342_AddmetaTitleToCondition.Designer.cs">
+      <DependentUpon>201505110810342_AddmetaTitleToCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.cs" />
+    <Compile Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.Designer.cs">
+      <DependentUpon>201505120914316_AddFollowerEntityAndConditonLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505141404299_ChangeStudyDateTimeToString.cs" />
+    <Compile Include="Migrations\201505141404299_ChangeStudyDateTimeToString.Designer.cs">
+      <DependentUpon>201505141404299_ChangeStudyDateTimeToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505190909004_AddConditionsToGroup.cs" />
+    <Compile Include="Migrations\201505190909004_AddConditionsToGroup.Designer.cs">
+      <DependentUpon>201505190909004_AddConditionsToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505211127140_AddQualificationAndTeacherLink.cs" />
+    <Compile Include="Migrations\201505211127140_AddQualificationAndTeacherLink.Designer.cs">
+      <DependentUpon>201505211127140_AddQualificationAndTeacherLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506271100202_RepairedMigrationHistory.cs" />
+    <Compile Include="Migrations\201506271100202_RepairedMigrationHistory.Designer.cs">
+      <DependentUpon>201506271100202_RepairedMigrationHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506271314313_TeacherPlacement.cs" />
+    <Compile Include="Migrations\201506271314313_TeacherPlacement.Designer.cs">
+      <DependentUpon>201506271314313_TeacherPlacement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510051828405_livesync2.cs" />
+    <Compile Include="Migrations\201510051828405_livesync2.Designer.cs">
+      <DependentUpon>201510051828405_livesync2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510081356256_updateYmStoryforoneCondition.cs" />
+    <Compile Include="Migrations\201510081356256_updateYmStoryforoneCondition.Designer.cs">
+      <DependentUpon>201510081356256_updateYmStoryforoneCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510161426505_conditionsmany.cs" />
+    <Compile Include="Migrations\201510161426505_conditionsmany.Designer.cs">
+      <DependentUpon>201510161426505_conditionsmany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510122149001_info.cs" />
+    <Compile Include="Migrations\201510122149001_info.Designer.cs">
+      <DependentUpon>201510122149001_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510271349206_VideoUpload.cs" />
+    <Compile Include="Migrations\201510271349206_VideoUpload.Designer.cs">
+      <DependentUpon>201510271349206_VideoUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511251130422_ActivityBuy.cs" />
+    <Compile Include="Migrations\201511251130422_ActivityBuy.Designer.cs">
+      <DependentUpon>201511251130422_ActivityBuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512081157325_UserPoseImages.cs" />
+    <Compile Include="Migrations\201512081157325_UserPoseImages.Designer.cs">
+      <DependentUpon>201512081157325_UserPoseImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512091650051_StylesposesRevamp.cs" />
+    <Compile Include="Migrations\201512091650051_StylesposesRevamp.Designer.cs">
+      <DependentUpon>201512091650051_StylesposesRevamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601041510156_YogaTherapistssearch.cs" />
+    <Compile Include="Migrations\201601041510156_YogaTherapistssearch.Designer.cs">
+      <DependentUpon>201601041510156_YogaTherapistssearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602181058366_TToCYogaMeds.cs" />
+    <Compile Include="Migrations\201602181058366_TToCYogaMeds.Designer.cs">
+      <DependentUpon>201602181058366_TToCYogaMeds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602241000175_websitelengthincrease.cs" />
+    <Compile Include="Migrations\201602241000175_websitelengthincrease.Designer.cs">
+      <DependentUpon>201602241000175_websitelengthincrease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604151240119_YogaMapStores.cs" />
+    <Compile Include="Migrations\201604151240119_YogaMapStores.Designer.cs">
+      <DependentUpon>201604151240119_YogaMapStores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606270918269_YogaMapAddress.cs" />
+    <Compile Include="Migrations\201606270918269_YogaMapAddress.Designer.cs">
+      <DependentUpon>201606270918269_YogaMapAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261016060_YMStoryTeacherandVenues.cs" />
+    <Compile Include="Migrations\201607261016060_YMStoryTeacherandVenues.Designer.cs">
+      <DependentUpon>201607261016060_YMStoryTeacherandVenues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608181416344_SegmentIO.cs" />
+    <Compile Include="Migrations\201608181416344_SegmentIO.Designer.cs">
+      <DependentUpon>201608181416344_SegmentIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609211555245_Lifechallanges.cs" />
+    <Compile Include="Migrations\201609211555245_Lifechallanges.Designer.cs">
+      <DependentUpon>201609211555245_Lifechallanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805100921299_GDPR.cs" />
+    <Compile Include="Migrations\201805100921299_GDPR.Designer.cs">
+      <DependentUpon>201805100921299_GDPR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\PrincipalRepository.cs" />
+    <Compile Include="Repositories\Base\RepositoryQuery.cs" />
+    <Compile Include="Repositories\EntityTypeRepository.cs" />
+    <Compile Include="Repositories\Base\Repository.cs" />
+    <Compile Include="Context\YogaDataContext.cs" />
+    <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\StyleRepository.cs" />
+    <Compile Include="Repositories\StyleTraitRepository.cs" />
+    <Compile Include="Search\ElasticSearchEngine.cs" />
+    <Compile Include="Search\SearchEngine.cs" />
+    <Compile Include="Search\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201309091556488_InitialCreate.resx">
+      <DependentUpon>201309091556488_InitialCreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309231200120_EntityHandleLocations.resx">
+      <DependentUpon>201309231200120_EntityHandleLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309301038262_ReviewsController.resx">
+      <DependentUpon>201309301038262_ReviewsController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310040806138_ActivitiesController.resx">
+      <DependentUpon>201310040806138_ActivitiesController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310040818060_ProfileEmailAddress.resx">
+      <DependentUpon>201310040818060_ProfileEmailAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310221004353_TeacherTrainingCourseDurationLength.resx">
+      <DependentUpon>201310221004353_TeacherTrainingCourseDurationLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311181307424_SearchRecordAccreditation.resx">
+      <DependentUpon>201311181307424_SearchRecordAccreditation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311181513534_GlossaryEntityTypeName.resx">
+      <DependentUpon>201311181513534_GlossaryEntityTypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311181633528_FannableQuotesAndLingo.resx">
+      <DependentUpon>201311181633528_FannableQuotesAndLingo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311181636358_EntityHandleNameLength.resx">
+      <DependentUpon>201311181636358_EntityHandleNameLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311190928579_StyleOrganisationSearch.resx">
+      <DependentUpon>201311190928579_StyleOrganisationSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311190952086_RemoveActivityReviewable.resx">
+      <DependentUpon>201311190952086_RemoveActivityReviewable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311191205595_TypeOfPersonTraitGroupText.resx">
+      <DependentUpon>201311191205595_TypeOfPersonTraitGroupText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311191649159_ExtraAbilityLevels.resx">
+      <DependentUpon>201311191649159_ExtraAbilityLevels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311232013094_ActivityAttendenceNullable.resx">
+      <DependentUpon>201311232013094_ActivityAttendenceNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311282329199_ActivityClassType.resx">
+      <DependentUpon>201311282329199_ActivityClassType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041015276_VenueAmenityIsResidential.resx">
+      <DependentUpon>201312041015276_VenueAmenityIsResidential.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041130484_WallPostCommentKeyNameCorrection.resx">
+      <DependentUpon>201312041130484_WallPostCommentKeyNameCorrection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312092052560_LastDigestEmailSentDate.resx">
+      <DependentUpon>201312092052560_LastDigestEmailSentDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312152250193_VenueAmenities.resx">
+      <DependentUpon>201312152250193_VenueAmenities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312152304347_NotificationTypesCopyAmends.resx">
+      <DependentUpon>201312152304347_NotificationTypesCopyAmends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312181317222_RenameAccreditingBodies.resx">
+      <DependentUpon>201312181317222_RenameAccreditingBodies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401221202528_AdditionalVenueTypes.resx">
+      <DependentUpon>201401221202528_AdditionalVenueTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401291814173_TeacherTrainingOrganisationEmailAddress.resx">
+      <DependentUpon>201401291814173_TeacherTrainingOrganisationEmailAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402131604026_ActorEntityTypes.resx">
+      <DependentUpon>201402131604026_ActorEntityTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402171529002_PrivateMessageActors.resx">
+      <DependentUpon>201402171529002_PrivateMessageActors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402201243505_TeacherAddressRemoval.resx">
+      <DependentUpon>201402201243505_TeacherAddressRemoval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402201247573_SearchRecordLocations.resx">
+      <DependentUpon>201402201247573_SearchRecordLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402241646512_GroupPromoters.resx">
+      <DependentUpon>201402241646512_GroupPromoters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251245242_ActivityAttendeeHandles.resx">
+      <DependentUpon>201402251245242_ActivityAttendeeHandles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251443265_OrganisationActors.resx">
+      <DependentUpon>201402251443265_OrganisationActors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402261447241_EntityHandleInvites.resx">
+      <DependentUpon>201402261447241_EntityHandleInvites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402271024070_EntityHandlesActive.resx">
+      <DependentUpon>201402271024070_EntityHandlesActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403111006419_ReviewRatingBedrooms.resx">
+      <DependentUpon>201403111006419_ReviewRatingBedrooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403120921399_EntityTypeActorOrdinals.resx">
+      <DependentUpon>201403120921399_EntityTypeActorOrdinals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403121147023_ActivitiesPluralWithClasses.resx">
+      <DependentUpon>201403121147023_ActivitiesPluralWithClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403131320280_UserEmailAddressChangeRequests.resx">
+      <DependentUpon>201403131320280_UserEmailAddressChangeRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404031548111_InvitationNullableLoginProvider.resx">
+      <DependentUpon>201404031548111_InvitationNullableLoginProvider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220839301_AutoGroups.resx">
+      <DependentUpon>201404220839301_AutoGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405042258180_GroupFAQs.resx">
+      <DependentUpon>201405042258180_GroupFAQs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407041144104_HiddenProfessionalProfiles.resx">
+      <DependentUpon>201407041144104_HiddenProfessionalProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407071126077_NotificationCategories.resx">
+      <DependentUpon>201407071126077_NotificationCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407071501101_FriendshipRequestsCategoryBooleans.resx">
+      <DependentUpon>201407071501101_FriendshipRequestsCategoryBooleans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407081319453_EmailDigestTimes.resx">
+      <DependentUpon>201407081319453_EmailDigestTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407171339332_WallPostVideosImages1.resx">
+      <DependentUpon>201407171339332_WallPostVideosImages1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407171552193_WallPostVideoImages2.resx">
+      <DependentUpon>201407171552193_WallPostVideoImages2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407241434126_NewsStoryComments1.resx">
+      <DependentUpon>201407241434126_NewsStoryComments1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407291255520_MediaResources.resx">
+      <DependentUpon>201407291255520_MediaResources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408011144058_MediaResourceEntities.resx">
+      <DependentUpon>201408011144058_MediaResourceEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408011219267_MediaResourceRequiredUri.resx">
+      <DependentUpon>201408011219267_MediaResourceRequiredUri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408040849208_RemoveUnnecessaryMediaProperties.resx">
+      <DependentUpon>201408040849208_RemoveUnnecessaryMediaProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408051143498_AddNewsStorySharing.resx">
+      <DependentUpon>201408051143498_AddNewsStorySharing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408051519578_AddSharingPrivacyPreferences.resx">
+      <DependentUpon>201408051519578_AddSharingPrivacyPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408060846496_AddShareNotification.resx">
+      <DependentUpon>201408060846496_AddShareNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409251016192_NewDescriptionfieldforTTO.resx">
+      <DependentUpon>201409251016192_NewDescriptionfieldforTTO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411181642571_AddNewsletterToTeacherAndVenue.resx">
+      <DependentUpon>201411181642571_AddNewsletterToTeacherAndVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411281630122_SearchRecordDescriptionMaxLength.resx">
+      <DependentUpon>201411281630122_SearchRecordDescriptionMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412091059210_AddDescriptionPriceToTTOCourse.resx">
+      <DependentUpon>201412091059210_AddDescriptionPriceToTTOCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412291057590_MakeNewsStoryFanable.resx">
+      <DependentUpon>201412291057590_MakeNewsStoryFanable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504171322491_AddYogaMedsEntities.resx">
+      <DependentUpon>201504171322491_AddYogaMedsEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231021107_AddMetaDescToCondition.resx">
+      <DependentUpon>201504231021107_AddMetaDescToCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241018517_AddWTSSAsCollection.resx">
+      <DependentUpon>201504241018517_AddWTSSAsCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241318481_AdduserStoriesAsCollection.resx">
+      <DependentUpon>201504241318481_AdduserStoriesAsCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.resx">
+      <DependentUpon>201504241352002_AddTeachersVenuesToUserStory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504300927266_AddDirectoryImageToCondition.resx">
+      <DependentUpon>201504300927266_AddDirectoryImageToCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505060848518_MakeConditionINamed.resx">
+      <DependentUpon>201505060848518_MakeConditionINamed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505061422587_AddConditionToSearchRecord.resx">
+      <DependentUpon>201505061422587_AddConditionToSearchRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505110810342_AddmetaTitleToCondition.resx">
+      <DependentUpon>201505110810342_AddmetaTitleToCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.resx">
+      <DependentUpon>201505120914316_AddFollowerEntityAndConditonLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505141404299_ChangeStudyDateTimeToString.resx">
+      <DependentUpon>201505141404299_ChangeStudyDateTimeToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505190909004_AddConditionsToGroup.resx">
+      <DependentUpon>201505190909004_AddConditionsToGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505211127140_AddQualificationAndTeacherLink.resx">
+      <DependentUpon>201505211127140_AddQualificationAndTeacherLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506271100202_RepairedMigrationHistory.resx">
+      <DependentUpon>201506271100202_RepairedMigrationHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506271314313_TeacherPlacement.resx">
+      <DependentUpon>201506271314313_TeacherPlacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510051828405_livesync2.resx">
+      <DependentUpon>201510051828405_livesync2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510081356256_updateYmStoryforoneCondition.resx">
+      <DependentUpon>201510081356256_updateYmStoryforoneCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510161426505_conditionsmany.resx">
+      <DependentUpon>201510161426505_conditionsmany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510122149001_info.resx">
+      <DependentUpon>201510122149001_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510271349206_VideoUpload.resx">
+      <DependentUpon>201510271349206_VideoUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511251130422_ActivityBuy.resx">
+      <DependentUpon>201511251130422_ActivityBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081157325_UserPoseImages.resx">
+      <DependentUpon>201512081157325_UserPoseImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512091650051_StylesposesRevamp.resx">
+      <DependentUpon>201512091650051_StylesposesRevamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601041510156_YogaTherapistssearch.resx">
+      <DependentUpon>201601041510156_YogaTherapistssearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602181058366_TToCYogaMeds.resx">
+      <DependentUpon>201602181058366_TToCYogaMeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602241000175_websitelengthincrease.resx">
+      <DependentUpon>201602241000175_websitelengthincrease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604151240119_YogaMapStores.resx">
+      <DependentUpon>201604151240119_YogaMapStores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606270918269_YogaMapAddress.resx">
+      <DependentUpon>201606270918269_YogaMapAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261016060_YMStoryTeacherandVenues.resx">
+      <DependentUpon>201607261016060_YMStoryTeacherandVenues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608181416344_SegmentIO.resx">
+      <DependentUpon>201608181416344_SegmentIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609211555245_Lifechallanges.resx">
+      <DependentUpon>201609211555245_Lifechallanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100921299_GDPR.resx">
+      <DependentUpon>201805100921299_GDPR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clicks.Yoga\Clicks.Yoga.csproj">
+      <Project>{f6a75331-8dd9-498b-9b40-de48fa815de3}</Project>
+      <Name>Clicks.Yoga</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{B46292BA-1B57-496E-84CE-1FF4500785B0}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Deployment Scripts\Script1.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

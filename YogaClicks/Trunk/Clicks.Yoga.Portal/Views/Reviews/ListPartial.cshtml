@@ -1,0 +1,91 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewListPartialModel
+
+@{
+    Layout = null;
+    var guid = Guid.NewGuid().ToString();
+    var currentProfileId = 0;
+    if (SecurityContext.Authenticated)
+    {
+        currentProfileId = SecurityContext.CurrentProfile.Id;
+    }
+}
+
+<article id="reviews" class="clearfix" role="reviews">
+
+    <!-- Removed functionality as it wasn't in the visual
+    @if (Model.Reviews.Any())
+    {
+        <text>Average:</text>
+        <span class="rating @Html.StarRatingClass(Model.AverageRating)"></span>
+    }
+        -->
+    
+    @if (!Model.Reviews.Any())
+    {
+        <p>There are no current reviews.</p>
+    }
+
+    <ul class="listings reviewListings" id="@guid">
+        @foreach (var review in Model.Reviews)
+        {
+            <li>
+                @Html.Partial("ReviewPartial", review, new ViewDataDictionary { { "ShowSubject", Model.ShowSubject }, { "ShowChild", Model.ShowChild } })
+            </li>
+        }
+        @* As this partial is loaded late bound needed the inline script to ensure correct date display *@
+        <script>$("span.localDateTime").each(function () {toLocalDateTime($(this));});</script>
+    </ul>
+</article>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.find('[data-role=DeleteReviewButton]').on('click', function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            var id = $this.attr('data-review-id');
+            var type = "Review";
+
+            if (!confirm('Are you sure you want to delete this review?')) return;
+
+            $.ajax({
+                url: '@Url.Action("DeleteOwned", "Profiles", new { currentProfileId })',
+                type: 'POST',
+                data: { EntityId: id, EntityType: type },
+                success: function () {
+                    top.location.reload();
+                }
+            });
+        });
+
+        $container.find('a').each(function () {
+            var $this = $(this);
+            var matches = /^\/\w+\/\w+\/\w+/.exec($this.attr('href').toLowerCase());
+            var prefix = matches ? matches[0] : null;
+
+            if (!prefix) return;
+
+            if (window.location.href.toLowerCase().indexOf(prefix) >= 0) {
+                $this.attr('class', $this.attr('class') + " active");
+                return false;
+            }
+        });
+
+        if ($container.find('a.active').length == 0) {
+            $container.find('a').each(function () {
+                var $this = $(this);
+                var matches = /^\/\w+\/\w+/.exec($this.attr('href').toLowerCase());
+                var prefix = matches ? matches[0] : null;
+
+                if (!prefix) return;
+
+                if (window.location.href.toLowerCase().indexOf(prefix) >= 0) {
+                    $this.attr('class', $this.attr('class') + " active");
+                    return false;
+                }
+            });
+        }
+    });
+</script>

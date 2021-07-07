@@ -1,0 +1,29 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.AddressModel
+
+@if (Model != null)
+{
+    if (!string.IsNullOrEmpty(Model.Line1))
+    {
+        @Model.Line1<br>
+    }
+    
+    if (!string.IsNullOrEmpty(Model.Line2))
+    {
+        @Model.Line2<br>
+    }
+    
+    if (!string.IsNullOrEmpty(Model.City))
+    {
+        @Model.City<br>
+    }
+    
+    if (!string.IsNullOrEmpty(Model.Area))
+    {
+        @Model.Area<br>
+    }
+    
+    if (Model.Country != null)
+    {
+        @Model.Country.EnglishName<br>
+    }
+}

@@ -1,0 +1,10 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ImageModel
+
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.Exists)
+{
+    @Html.Image(Model, i => i.Resize(c => c.Width(600).Height(200).ScaleBoth().Crop()))
+}

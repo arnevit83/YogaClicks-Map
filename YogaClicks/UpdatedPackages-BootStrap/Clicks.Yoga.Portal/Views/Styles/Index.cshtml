@@ -1,0 +1,142 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleTraitsIndexModel
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    //ViewBag.BodyClass = "practice";
+    ViewBag.Title = "80+ Yoga Styles, from Ashtanga to Bikram to Vinyasa";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section Head {
+    <meta property="og:title" content="Not sure of the yoga style for you? Try our interactive yoga style finder - a world first" />
+    <meta property="og:description" content="Cardio fitness or relaxation? Affirmations or alignment? Meditation or energy flow? Search by attribute and find the style that's right for you" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Style.Image/dcd458f3-9c1c-433f-84b2-31e9fbf02934.jpg?width=715&scale=both" />
+}
+
+@section LeftNav{
+    @Html.Action("TraitsNavigation", "Styles")
+}
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><i class="practiceIcon pull-left"></i><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - Style finder</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+
+        <div id="content-slider" class="content-slider">
+            <div class=" content-col" id="scroll">
+                <div class="padTop20">
+
+                    
+                    <div class="styles-wrapper">
+
+
+
+                        @Html.Action("StylesPartial", "Styles")
+                    </div>
+
+
+
+
+                    <div class="no-more-styles" style="display:none;"></div>
+                    <div class="loading-bar"><img src="@Url.Content("~/Images/loading_bar.gif")" /></div>
+                    <div class="meta">
+                        <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks. </p>
+                        <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>
+                    </div>
+                    <div class="cb"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        @section Scripts{
+            <script>
+        $('div#scroll').scroll(function () {
+            if ($('.no-more-styles:hidden').length > 0) {
+                if (element_in_scroll(".slide:last")) {
+                    if ($('.loading-bar:hidden').length > 0) {
+                        $('.loading-bar').show();
+                        var linkToParse = '/styles/StylesPartial?skip=555';
+                        var link = linkToParse.replace("555", $('.slide').length);
+                        var data = {
+                            traitIdString: '@Model.TraitIdString',
+                            traitNameString: '@Model.TraitNameString'
+                        };
+                        $.ajax({
+                            url: link,
+                            data: data,
+                            async: true,
+                            success: function (html) {
+                                if (html.length > 290) {
+                                    $(".styles-wrapper").append(html);
+                                } else {
+                                    $('.no-more-styles').show();
+                                }
+                                $('.loading-bar').hide();
+                            }
+                        });
+                    };
+                };
+            };
+        });
+
+        function element_in_scroll(elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+
+            return ((elemTop <= docViewBottom));
+        }
+
+            </script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    $("#Innercontent").css('min-width', '99%');
+           
+
+                    $(".toggle-traits").click(function (e) {
+
+                        $(this).parent('h3').toggleClass('open');
+
+                        e.preventDefault();
+
+                        var div = $(this).parent().next(".trait-box");
+
+                        if ($(this).data("visible"))
+                            $(div).slideUp();
+                        else
+                            $(div).slideDown();
+
+                        $(this).data("visible", !$(this).data("visible"));
+
+                    });
+                });
+            </script>
+        }

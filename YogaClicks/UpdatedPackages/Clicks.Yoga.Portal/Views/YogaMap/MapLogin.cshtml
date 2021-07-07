@@ -1,0 +1,167 @@
+﻿
+
+@model Clicks.Yoga.Portal.Models.YogaMap.MapLogin
+@if (!SecurityContext.Authenticated)
+{
+
+    <div class="btnWrap Maplogincontant center-block  row">
+        <div id="Loginstage1">
+            <div class="col-sm-6">
+                <button id="fbLoginButtonmap" style="display: block; float: left" class="btn btn-social btn-facebook ">
+                    <i class="fa fa-facebook"></i>Continue with Facebook
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" id="COtuni" style="display: block; float: right" class="btn btn-yellow ">Continue with email</button>
+            </div>
+
+            <div class="col-sx-12">
+                <small><br style="clear:both"><br style="clear:both"><a id="LoginPanned" href="#">Already have an account? Login in</a></small><br /><br />
+            </div>
+
+        </div>
+        <div style="display:none" id="Loginstage2">
+            @using (Html.BeginForm("Authenticatemap", "YogaMap", FormMethod.Post, new { @class = "login ", id = "login-formmap" }))
+        {
+
+
+           @Html.Hidden("Destination", Request.QueryString["Destination"])
+
+                
+                
+                
+                
+            if (!string.IsNullOrEmpty(Model.ValidationMap))
+            {
+          
+                <div class="validation-summary-errors alert alert-danger ">
+                    @Model.ValidationMap
+                </div>
+            }
+
+
+      
+
+
+            @Html.TextBoxFor(m => m.Username, new {placeholder = "Email address", style = ""})
+
+                <br />
+
+            @Html.PasswordFor(m => m.Password, new {placeholder = "Password", style = ""})
+
+
+
+            <input type="hidden" name="@Html.NameFor(m => m.Destination)" id="@Html.IdFor(m => m.Destination)" value="@ViewContext.Controller.ControllerContext.HttpContext.Request.Url.PathAndQuery" />
+
+            <div class="checkbox Maspchexck">
+                <label>
+                    @Html.CheckBoxFor(m => m.Persist) <span style="vertical-align: sub;">Keep me logged in</span>
+                </label>
+            </div>
+
+
+            <div class="btnWrap">
+
+
+                         
+
+                            <a href="#" id="login-buttonmap" style="display: block; width: 100%; float: left;margin-bottom:15px;" class="btn btn-yellow ">Log in</a>
+
+
+
+                            <small><a style="font-size: 12px; text-decoration: underline" href="@Url.Action("passwordresetrequest", "account")">Forgotten your password? </a></small><br><br>
+                        </div>
+                    }
+
+
+                    @if (!string.IsNullOrEmpty(Model.Destination))
+                    {
+                        @Html.HiddenFor(m => m.Destination)
+                    }
+                    </div>
+                </div>
+   
+
+
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#LoginPanned').on('click', function (e) {
+            $("#Loginstage1").hide();
+            $(".Maplogincontant").addClass("MaplogincontantLogin");
+            $("#Loginstage2").slideDown();
+            $("#login-formmap #Username").focus();
+        });
+
+
+
+        $('#fbLoginButtonmap').on('click', function (e) {
+            e.preventDefault();  
+            facebookConnectYogaMap(function () {
+           
+                if ($("#FbLocation").val() !== "") {
+                    $(".location-search-box").val($("#FbLocation").val());
+
+
+
+
+                    $(".location-search-box").trigger(jQuery.Event("keyup"), function () {
+
+                    });
+
+
+
+
+                }
+            }, { scope: 'email,user_location', auth_type: 'rerequest' });
+        });
+
+
+        $("#login-buttonmap").click(function (e) {
+
+            e.preventDefault();
+
+            var form = $("#login-formmap");
+            if (!jQuery.active > 0) {
+            $.ajax({
+                type: "POST",
+                url: form.attr("action"),
+                data: form.serialize(),
+                success: function (data) {
+               
+
+                    if (data != null) {
+                        $("#maplogincontainer").html(data);
+
+                    }
+                  
+                    if ($("#maplogincontainer").find('.validation-summary-errors').length == 0) {
+
+                        var url = "/YogaMap/AddStoryPopUp/";
+                        $.get(url, function (data) {
+                            $("#modellg").html(data);
+                            $("#popupmain").modal({ backdrop: 'static' });
+                            $("#popupmain").css("padding-right", "0");
+                            $("#StoryBannerPopup").hide();
+                            $("#AddStoryPopUp").slideDown();
+                        });
+
+
+
+                    }
+                    else {
+                        $("#Loginstage1").hide();
+                        $(".Maplogincontant").addClass("MaplogincontantLoginAuto");
+                        $("#Loginstage2").show();
+                        $("#login-formmap #Username").focus();
+                    }
+                    
+                }
+            });
+}
+
+        });
+    });
+</script>

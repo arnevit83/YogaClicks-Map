@@ -1,0 +1,84 @@
+﻿@using Clicks.Yoga.Portal.Enums.Profiles;
+@model Clicks.Yoga.Portal.Models.Profiles.PrettifyProfileModel
+
+@{
+    ViewBag.Title = "PrettifyProfile";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@switch (Model.ProfileType)
+{
+    case ProfileTypeEnum.Personal:
+        <h2 class="greenHeader">Now prettify your personal profile.</h2>
+        <hr class="modalHrSteps" />
+
+        <div class="wizard-prettify-text-container">
+            <p>Clicking ‘next’ will take you to your own profile page where you can add your avatar image and more. </p>
+            <br />
+            <p>
+                Upload your banner image as well as photo galleries and videos.
+            </p>
+            <br />
+            <p>Want to see how good you can look?</p>
+            <p><a href="/profiles/profileexample?profileType=@Model.ProfileType">Click here</a> to see an example.</p>
+        </div>
+        <div class="wizard-footer-image"><img src="@Url.Content("~/images/wizard/wizard-prettify-image-student.jpg")" /></div>
+        break;
+    case ProfileTypeEnum.Venue:
+    <h2 class="greenHeader">And don't forget to prettify your venue page.</h2>
+    <hr class="modalHrSteps" />
+    <div class="wizard-prettify-text-container">
+        <p>Want to see how good you can look?</p>
+        <p><a href="/profiles/profileexample?profileType=@Model.ProfileType">Click here</a> to see an example.</p>
+    </div>
+    <div class="wizard-footer-image"><img src="@Url.Content("~/images/wizard/wizard-prettify-image-venue.jpg")" /></div>
+        break;
+    case ProfileTypeEnum.Teacher:
+    <h2 class="greenHeader">And don't forget to prettify your teacher page.</h2>
+    <hr class="modalHrSteps" />
+    <div class="wizard-prettify-text-container">
+        <p>Want to see how good you can look?</p>
+        <p><a href="/profiles/profileexample?profileType=@Model.ProfileType">Click here</a> to see an example.</p>
+    </div>
+    <div class="wizard-footer-image"><img src="@Url.Content("~/images/wizard/wizard-prettify-image-teacher.jpg")" /></div>
+        break;
+    case ProfileTypeEnum.TTO:
+    <h2 class="greenHeader">And don't forget to prettify your Teacher Training page</h2>
+    <hr class="modalHrSteps" />
+    <div class="wizard-prettify-text-container">
+        <p>Want to see how good you can look?</p>
+        <p><a href="/profiles/profileexample?profileType=@Model.ProfileType">Click here</a> to see an example.</p>
+    </div>
+    <div class="wizard-footer-image"><img src="@Url.Content("~/images/wizard/wizard-prettify-image-TTO.jpg")" /></div>
+        break;
+    case ProfileTypeEnum.SO:
+    <h2 class="greenHeader">Now prettify your Style Organisation page</h2>
+    <hr class="modalHrSteps" />
+
+    <div class="wizard-prettify-text-container">
+        <p>Clicking ‘next’ will take you to your new Style Organisation page.</p>
+        <br />
+        <p>
+            Click the edit button to add more info.
+            <br />
+            Don’t forget to upload an avatar or banner image.
+        </p>
+        <br />
+        <p>Want to see how good you can look?</p>
+        <p><a href="/profiles/profileexample?profileType=@Model.ProfileType">Click here</a> to see an example.</p>
+    </div>
+    <div class="wizard-footer-image"><img src="@Url.Content("~/images/wizard/wizard-prettify-image-SO.jpg")" /></div>
+        break;
+    default:
+        break;
+}
+
+
+
+<div class="wizard-footer-buttons-container">
+    <div class="wizard-footer-nav-container">
+        <a href="@Model.ProfileLink" class="button pink large">Next</a>
+    </div>
+</div>
+
+<div class="cb"></div>

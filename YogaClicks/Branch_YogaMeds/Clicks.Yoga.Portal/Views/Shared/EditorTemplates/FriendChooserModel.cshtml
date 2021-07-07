@@ -1,0 +1,21 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.FriendChooserModel
+
+@foreach (var friend in Model.Options)
+{
+    <div data-role="friend" class="attendee member">
+        <div class="fl">
+            <a href="@Url.Action("Display", "Profiles", new { friend.Id })">
+                @Html.DisplayFor(m => friend.Image, "ProfileImage", new { Width = 100, Height = 100 })
+            </a>
+        </div>
+        <div class="fl info">
+            
+                        
+            <div class="name"><a href="@Url.Action("Display", "Profiles", new { friend.Id })" target="_blank"> @friend.Name</a></div>
+                        
+            <div class="location">@Html.MultiLine(friend.Location.Name)</div>
+
+            <input type="checkbox" name="@Html.NameFor(m => m.Selection[friend.Id])" value="true" data-id="@friend.Id" style="position: static;">
+        </div>
+    </div>
+}

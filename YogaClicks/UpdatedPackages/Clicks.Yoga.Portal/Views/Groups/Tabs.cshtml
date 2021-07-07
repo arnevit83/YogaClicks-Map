@@ -1,0 +1,60 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupTabsModel
+
+
+
+
+    <ul id="nav-tabs" class="nav nav-tabs nav-justified">
+
+    
+
+
+            @if (Model.Permissions.Access)
+            {
+                <li>
+                    <a id="WallNav" href="@Url.Action("Wall")">
+                        <i class="fa fa-newspaper-o navmenuIcon"></i> Wall
+                    </a>
+                </li>
+            }
+
+              <li>
+            <a id="profileNav" href="@Url.Action("Profile")">
+                <i class="fa fa-user navmenuIcon"></i> Promoter
+            </a>
+        </li>
+
+        @if (Model.Permissions.Access)
+        {
+
+            <li>
+                <a id="membersNav" href="@Url.Action("Members")">
+                    <i class="fa fa-users navmenuIcon"></i> Members
+                </a>
+            </li>
+
+    <li>
+        <a id="GalleriesNav" href="@Url.Action("Galleries")">
+            <i class="fa fa-picture-o navmenuIcon"></i> Galleries
+        </a>
+    </li>
+
+        }
+
+            @if (Model.Permissions.Manage)
+            {
+                <li>
+                    <a id="SettingsNav" href="@Url.Action("Settings")">
+                        
+                        <i class="fa fa-cog navmenuIcon"></i> Settings
+                    </a>
+                </li>
+            }
+        </ul>                    </div>
+  <br />
+  <div class="pull-left" style="margin-left:16px;">
+    @Html.Action("Button", "Recommendations", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+</div>
+  <div class="pull-right" style="margin-right:18px;">
+    @Html.Action("MembershipButton")
+</div>
+<br style="clear:both" />

@@ -1,0 +1,130 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewEditorModel
+
+@{
+    Layout = null;
+}
+
+<div class="clearfix rating-modal">
+    <!--<h3 class="greenHeader">Overall Rating</h3>-->
+    <hr />
+    
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    <p>
+        You are reviewing as <span class="current-actor-name">@SecurityContext.CurrentActor.Name</span>
+    </p>
+    <fieldset>
+        @Html.LabelFor(m => m.Headline, "Review title")
+        @Html.EditorFor(m => m.Headline)
+    </fieldset>
+    <fieldset class="overall">
+        @Html.LabelFor(m => m.Body, "Your overall rating")
+        @Html.EditorFor(m => m.Rating)
+    </fieldset>
+    <fieldset>
+        @Html.LabelFor(m => m.Body, "Your review")
+        @Html.TextAreaFor(m => m.Body)
+    </fieldset>
+</div>
+
+@if (Model.Subject.EntityType.Name == "Teacher")
+{
+    <div class="clearfix rating-modal">
+        <div>
+            <strong class="ratingGroupHeader">What is your review based on?</strong>
+        </div>
+        <fieldset class="rating-group">
+            <label for="general">General review</label>
+            <input type="checkbox" id="general" />
+        </fieldset>
+        @foreach (var experience in Model.ReviewableExperiences)
+        {
+        <fieldset class="rating-group">
+            @Html.LabelFor(m => m.Experiences[experience.Id], experience.Name)
+            @Html.CheckBoxFor(m => m.Experiences[experience.Id], new { @class = "experienceType" })
+        </fieldset>
+        }
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#general').click(function () {
+                if ($('#general').is(':checked')) {
+                    $('.experienceType').each(function () {
+                        $(this).attr('disabled', true);
+                    });
+                    $('.experienceType').each(function () {
+                        $(this).removeAttr('checked');
+                    });
+                }
+                else {
+                    $('.experienceType').each(function () {
+                        $(this).removeAttr('disabled');
+                    });
+                }
+            });
+        });
+    </script>
+}
+@if (Model.Subject.EntityType.Name == "Venue")
+{
+    <div class="clearfix rating-modal">
+        <label>Detailed ratings</label>
+        @foreach (var subject in Model.DetailedRatingSubjects)
+        {
+        <fieldset class="rating-group">
+            <label>@subject.Name</label>
+            @Html.EditorFor(m => m.DetailedRatings[subject.Id], "Rating")
+        </fieldset>
+        }
+    </div>
+}
+
+@if (Model.Subject.EntityType.Name == "TeacherTrainingOrganisation")
+{
+    <div class="clearfix rating-modal">
+        <div>
+            <strong class="ratingGroupHeader">What is your review based on?</strong>
+        </div>
+       
+        @foreach (var experience in Model.ReviewableExperiences)
+        {
+            <fieldset class="rating-group">
+                @Html.LabelFor(m => m.Experiences[experience.Id], experience.Name)
+                @Html.CheckBoxFor(m => m.Experiences[experience.Id], new { @class = "experienceType" })
+            </fieldset>
+        }
+        <fieldset class="rating-group">
+            <label for="general">General review</label>
+            <input type="checkbox" id="general" />
+        </fieldset>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#general').click(function () {
+                if ($('#general').is(':checked')) {
+                    $('.experienceType').each(function () {
+                        $(this).attr('disabled', true);
+                    });
+                    $('.experienceType').each(function () {
+                        $(this).removeAttr('checked');
+                    });
+                }
+                else {
+                    $('.experienceType').each(function () {
+                        $(this).removeAttr('disabled');
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+<hr />
+
+<div class="clearfix">
+    <fieldset class="metaSmallPopUp">
+        @Html.EditorFor(model => model.TermsAccepted)
+        <small>I accept YogaClicks' @Html.ActionLink("terms and conditions", "terms-of-use", "static", null, new { target = "_blank" })</small>
+    </fieldset>
+</div>

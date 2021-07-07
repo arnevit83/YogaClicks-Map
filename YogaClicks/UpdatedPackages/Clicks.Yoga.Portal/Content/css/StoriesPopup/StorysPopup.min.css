@@ -1,0 +1,111 @@
+﻿/*#YogaMapPopUp {
+    display:none;
+}
+#YogaMapPopUp .chevron-left{
+    position: absolute;
+    left:-30px;
+    top:50%;
+
+}
+#YogaMapPopUp .chevron-right{
+  position: absolute;
+    right:-30px;
+    top:50%;
+}
+.fancybox-skin {
+    padding: 0px !important;
+
+}
+ .carousel-control{
+     color: white !important;
+
+    }  
+
+#YogaMapLogin {
+        display: block;
+        position:relative       
+}
+ #YogaMapLogin span {
+
+     position: absolute;
+     display:block;
+     margin-top:20px;
+    }
+     .carousel-control.right {
+    background-image: none !important;
+}
+    
+.carousel-control.left {
+     background-image: none !important;
+}
+@media (min-width: 992px) {
+    
+
+.carousel-control {
+    left: -10%;
+ }
+.carousel-control.right {
+    right:-10% !important;
+}
+
+}
+@media (max-width: 993px) {
+
+.item img {
+
+display: block !important;
+    margin-left: -22%;
+    max-width: none !important;
+    width: 150% !important;
+}
+  
+
+}
+
+
+
+.btn-teal { 
+  color: #FFFFFF; 
+  background-color: #46B6AA; 
+  border-color: #A2D3CD; 
+} 
+ 
+.btn-teal:hover, 
+.btn-teal:focus, 
+.btn-teal:active, 
+.btn-teal.active, 
+.open .dropdown-toggle.btn-teal { 
+  color: #FFFFFF; 
+  background-color: #27B29F; 
+  border-color: #A2D3CD; 
+} 
+ 
+.btn-teal:active, 
+.btn-teal.active, 
+.open .dropdown-toggle.btn-teal { 
+  background-image: none; 
+} 
+ 
+.btn-teal.disabled, 
+.btn-teal[disabled], 
+fieldset[disabled] .btn-teal, 
+.btn-teal.disabled:hover, 
+.btn-teal[disabled]:hover, 
+fieldset[disabled] .btn-teal:hover, 
+.btn-teal.disabled:focus, 
+.btn-teal[disabled]:focus, 
+fieldset[disabled] .btn-teal:focus, 
+.btn-teal.disabled:active, 
+.btn-teal[disabled]:active, 
+fieldset[disabled] .btn-teal:active, 
+.btn-teal.disabled.active, 
+.btn-teal[disabled].active, 
+fieldset[disabled] .btn-teal.active { 
+  background-color: #46B6AA; 
+  border-color: #A2D3CD; 
+} 
+ 
+.btn-teal .badge { 
+  color: #46B6AA; 
+  background-color: #FFFFFF; 
+}*/

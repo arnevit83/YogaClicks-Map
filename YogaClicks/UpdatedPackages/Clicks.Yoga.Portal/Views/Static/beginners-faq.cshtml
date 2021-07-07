@@ -1,0 +1,513 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "All Your Yoga Questions Answered";
+    ViewBag.Description = "Am I too old for yoga? What should I wear? Can I eat before a class? Do I need to be flexible to do yoga? Yoga Beginners - we answer all your questions.";
+    Layout = "~/Views/Layout/layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+    ViewBag.SiteSection = "'Beginners-visited' : 'true'";
+}
+
+@section Head {
+<meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+<meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+<style>.btn-warning {max-width: 265px;
+margin-top: -2px;}</style>
+
+<div class="nopadding wisdomBar">
+    <div class="the-sub-menu clearfix">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/icon_beginner.svg" data-svgpng="/images/SvgIcons/icon_beginner.png" /><span style="color: #ff7e00; font-weight:normal">Beginners</span><span> - FAQ</span></h2>
+        </header>
+    </div>
+</div>
+
+
+
+
+<div  class="row nopadding">
+    <div class="col-xs-12 nopadding">
+
+        <div id="content-slider" style="margin-top: 55px;" class="content-slider">
+
+            <div class="content-col" id="scroll">
+
+                <section class="page-content atimg">
+
+                    <article id="static">
+                        <br />
+
+                        @*<img src="/images/faqs/cover.jpg" alt="Image: Courtesy of Julee Yew Crijns" class="Scales">&autoplay=1*@
+
+
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLPr8omsvxyNJer6inelY0ZTLZ5QtkSNGx&rel=0&autohide=1&vq=hd1080"></iframe>
+                        </div>
+                  
+                        <h3 style="padding-top: 15px;" class="question">
+                            <i class="down-arrow"></i>Do I have to be flexible to do yoga?
+                        </h3>
+                        <div class="answer">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>To say you have to be flexible before you start yoga is like saying you have to graduate before you start school. </p>
+                                    <p>In other words, doing it is what gets you there.</p>
+                                    <p>In fact starting out stiff is a good thing; forcing you to slow down, understand the pose, and use the breath.</p>
+                                    <p>As yoga master Richard Freeman puts it, &quot;Blessed be the stiff, for they shall breathe into it.&quot;</p>
+                                    <p>So, embrace your stiffness – show it off – you're a yoga master in training.</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/flexible.jpg" class="center-block" style="max-height:270px" alt="Image: Courtesy of Julee Yew Crijns">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/ddlzADu_Gtc" class="btn btn-warning  center-block video">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h3 class="question">
+                            <i class="down-arrow"></i>Isn't yoga just for people who want to take it slow?
+                        </h3>
+                        <div class="answer">
+
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Sure there's yoga that's slow and gentle, but there's also plenty for those who want to sweat, and for those who want something in between the two. </p>
+                                    <p>
+                                        Use our <a href="@Url.Action("quiz", "static")"> StyleMatch</a> to find the style that's right for you.
+                                    </p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/what.jpg" class="center-block" style="max-height:270px" alt="Image: Khristine Jones by Faern">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/eDPjaNLAk1I" class="btn btn-warning center-block video ">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What should I wear to class?
+                        </h3>
+                        <div class="answer">
+
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Crushing this season's LuluLemon is not what yoga’s about.</p>
+                                    <p>Yoga is a ‘matocracy,’ a Peoples’ Republic of Yoga in which we’re all equal.</p>
+                                    <p>We leave our attachment to designers outside the studio door.</p>
+                                    <p>We walk with bare feet, we have mats of the same size, and we breathe. </p>
+                                    <p>It's that simple. </p>
+                                    <p>So, wear whatever makes you feel comfortable, enables you to move easily and doesn't reveal more than you intend. E.g. A vest top and leggings or a t-shirt and shorts.</p>
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/feet.jpg" class="center-block" style="max-height:270px" alt="Image: Courtesy of Julee Yew-Crijns">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/mWRc22ZZ7qg" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>Can I eat before a class?
+                        </h3>
+                        <div class="answer">
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Twisting and eating? </p>
+                                    <p>My friend, it gets ugly. </p>
+                                    <p>Step away from the pastries a full two hours before mat-down.</p>
+                                    <p>Step up your blood sugar with fruit, seeds, or juice.</p>
+                                    <p>Chow-down après yoga.</p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/food.jpg" class="center-block" style="max-height:270px" alt="Image: Courtesy of Mark Ruthven">
+
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/72_13O7lB10" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>Do you have to be a veggie to practice yoga?
+                        </h3>
+                        <div class="answer">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Yoga's roots are as veggie as tofu. </p>
+                                    <p>Patanjali, author of The Yoga Sutras, was a Brahmin, the highest caste of Hindu. He advocated (amongst other things) the practice of ahimsa (compassion for all living things) and saucha (purity). </p>
+                                    <p>Plus, some yogis say veggie-ness makes their practice lighter – making it easier to zip-lock bandhas, jump back, open chakras... </p>
+                                    <p>But hey, fair newbie, one step at a time. </p>
+                                    <p>
+                                        If your practice develops and you want to make some lifestyle changes there's lots of <a href="@Url.Action("index", "styles", new {traitIdNameString = "whole-life-approach", traitIdString = "18"})">whole-life yoga styles</a> to choose from.
+                                    </p>
+                                    <p>For now, don't sweat it. The tofu can wait. </p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/muzur.jpg" class="center-block" style="max-height:270px" alt="Image: Huzur Vadisi by KarenYeomans.com">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/ArZT1OC2Gg0" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>I can't help but compete with the person on the next mat. Is this normal?
+                        </h3>
+                        <div class="answer">
+
+
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>A green third eye? Congratulations, you're human.</p>
+                                    <p>If, after many years of practice, you still want to win gold, we recommend you to the New York Regional and National Yoga Asana Championship.</p>
+                                    <p>
+                                        Meanwhile smile (it carries an extra ten championship points) and practice contentment with where you're at, knowing that this state of 'santosha' is one of Patanjali's <a href="@Url.Action("Index", "Glossary", new {Term = "niyamas"})">niyamas</a>, and the name of a <a href="http://blog.yogaclicks.com/2012/12/29/a-little-guide-to-mysore/" target="_blank">great café</a> where all the Ashtanga students in Mysore hang out.
+                                    </p>
+                                    <p>See, you're an old hand already.</p>
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/melissa.jpg" class="center-block" style="max-height:270px" alt="Image: Melissa Capezuto by Faern">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/LQufns0LC2U" class="btn btn-warning video center-block ">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What's all the fuss about yoga teachers? Can't I teach myself?
+                        </h3>
+                        <div class="answer">
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>You could, but even the greatest masters of all time had a guru – someone to lead them from 'gu' – darkness into 'ru' – light.</p>
+                                    <p>Don't get lost in 'gu.' </p>
+                                    <p>
+                                        Use us to <a href="/search/teachers">find the teacher</a> that's right for you.
+                                    </p>
+
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+
+                                    <img src="/images/faqs/the-fuss.jpg" class="center-block" style="max-height:270px" alt="Image: Deanna Brolly by Faern">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/gzNcgeOnIWY" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>Yoga's a girl thing, right?
+                        </h3>
+                        <div class="answer">
+
+
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Traditionally, when yoga was the preserve of Brahmins, it was taught man to boy, or man to man. </p>
+                                    <p>It all changed when Sri Tirumalai Krishnamacharya (born 1888), a great reformer and the granddaddy of modern day yoga, agreed to teach Indra Devi. 'The first lady of yoga' taught in China and the Soviet Union before opening her Hollywood studio in 1947. Greta Garbo, Elizabeth Arden and Marilyn Monroe went to her classes and the rest, as they say, is a ratio. A 70:30 ratio to be exact.</p>
+                                    <p>Yep, the girls are back in town. But hey guys – come on in – the water's lovely.</p>
+
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/men.jpg" class="center-block" style="max-height:270px" alt="Image: Courtesy of Robert Sturman"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/rknpL0wNlY4" class="btn btn-warning  video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>Am I too old to start yoga?
+                        </h3>
+                        <div class="answer">
+
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+
+                                    <p>It might feel like a long way to the floor but that's the point – to help you get there. </p>
+                                    <p>Besides stretching and strengthening muscles, yoga will also help you fight flab, improve joint flexibility and circulation, reduce blood pressure, even help you detox. </p>
+                                    <p>
+                                        Search for Seniors yoga in our <a href="@Url.Action("selecttrait", "styles", new {traitId = 27})">Style Finder</a>
+                                    </p>
+
+
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/old.jpg" class="center-block" style="max-height:270px" alt="Image: Marina Luna by Faern ">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/3d4qL3BRyao" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>I'm told to empty my mind, to focus on the breath, but my mind keeps on whirring
+                        </h3>
+                        <div class="answer">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Welcome to the human race; we're all a heaving mass of mental machinations, known in yoga circles as chitta vritti. </p>
+                                    <p>Is the person on the next mat single? Is there milk in the fridge? Do I ask the boss for a raise? Did I leave the iron on? </p>
+                                    <p>These are the thoughts that stand in the way of cosmic bliss. </p>
+                                    <p>The secret? Don't try to empty the mind of all thought. Simply observe each thought, let it go and return to the breath. </p>
+                                    <p>Let's try it:</p>
+                                    <p>Did I leave the iron on?</p>
+                                    <p>Observe the thought. Let it go. Return to the breath.</p>
+                                    <p>Do I ask the boss for a raise?</p>
+                                    <p>Observe the thought. Let it go. Return to the breath.</p>
+                                    <p>Repeat as necessary.</p>
+
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/machinations.jpg" class="center-block" style="max-height:270px" alt="Image: Melissa Capezuto by Faern"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/V536g_9fQt8" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>My teacher says 'namaste' at the end of class. What the heck does it mean?
+                        </h3>
+                        <div class="answer">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>The Sanskrit origins of the word are 'Namah' meaning a 'bow', and 'te' meaning 'you.' Put them together and this is a salutation literally meaning 'I bow to you.'</p>
+                                    <p>In yoga world the word is often more romantically explained as 'the spirit in me honours the spirit in you', or 'the light in me honours the light in you.' </p>
+                                    <p>Hands in prayer position at the heart and a small bow will do the rest. </p>
+                                    <p>Try it now – makes you feel rather yogic, doesn't it?</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/namasta.jpg" class="center-block" style="max-height:270px" alt="Image: Emma Henry by KarenYeomans.com">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/lfA-Y1qryLY" class="btn btn-warning  video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What is 'Om' and why do we chant it?
+                        </h3>
+                        <div class="answer">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>
+                                        'Om' is described in the <a href="@Url.Action("history-of-yoga", "static")">Upanishads</a> (an ancient Hindu text) as the essence of Brahman – the state of the highest reality, in which we exist only as awareness, at peace with ourselves, with all beings, and with the universe, in eternal bliss.
+                                    </p>
+                                    <p>Say what? Eternal bliss? We're in.</p>
+                                    <p>If eternal bliss is a stretch for you, think of it like this: chanting 'Om' at the beginning and end of class defines it as a time of reflection and peace, a time to recalibrate, to check in with yourself, away from the madness.</p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+
+
+                                    <img src="/images/faqs/what-is-om.jpg" class="center-block" style="max-height:270px" alt="Image courtesy of Julee Yew Crijns">
+                                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/LmusgC9eOQc" class="btn btn-warning video center-block ">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <h3 class="question">
+                            <i class="down-arrow"></i>How do I find the style that's right for me?
+                        </h3>
+                        <div class="answer ">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>That one's easy. </p>
+                                    <p>
+                                        Use our <a href="@Url.Action("quiz", "static")"> StyleMatch</a> to find the style that's right for you.
+                                    </p>
+
+
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="/images/faqs/sky-finder.jpg" class="center-block" style="max-height:270px" alt="Image: Courtesy of Julee Yew Crijns"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/EwqG_ph82mk" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <h3 class="question">
+                            <i class="down-arrow"></i>How does yoga work?
+                        </h3>
+                        <div class="answer ">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>By taking some time out on the mat we are doing more than just stretching- the magic combination of physical postures (asana), breathing techniques (pranayama), and relaxation is clinically proven to change our default position from flight/fight (panic) to rest/digest (calm) by strengthening the parasympathetic nervous system. </p>
+                                    <p>Because stress is basically the cause of all our problems, and has even been shown to be a root cause of disease, yoga’s role in stress reduction makes it an irreplaceable tool for modern life.</p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="~/images/faqs/How.jpg" class="center-block" style="max-height:270px" alt="Sally Salmon teaching at Latitude Festival"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/6wxYSgdXCRw" class="btn btn-warning video  center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What if I’m injured or have an ailment?
+                        </h3>
+                        <div class="answer ">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Fear not, yoga isn’t like other sports where you have to ‘sit it out’. </p>
+                                    <p>Yoga teachers are trained to adapt postures for injuries/ailments, under the principle that yoga is for everyone.</p>
+                                    <p>
+                                        However, if you have a particular illness or ailment such as fibromyalgia , high blood pressure or even insomnia, see <a href="@Url.Action("index", "Medic")">YogaMeds</a> for details on how yoga can help you, whatever is troubling you.
+                                    </p>
+
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="~/images/faqs/Injured.jpg" class="center-block" style="max-height:270px" alt="Santillan Yoga Retreat, Malaga, Spain"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/xIpaSBeQaN0" class="btn btn-warning video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What if I’m pregnant?
+                        </h3>
+                        <div class="answer ">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Congratulations! </p>
+                                    <p>There is no better time to use yoga as you prepare your mind and body for one of the largest challenges you are likely to face!</p>
+                                    <p>
+                                        A teacher with specific pregnancy training will combine physical exercises to prepare the body for labour with plenty of relaxation to reduce some of the inevitable anxiety of giving birth!
+                                    </p>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="~/images/faqs/Mama.jpg" class="center-block" style="max-height:270px" alt="Image courtesy of YogaMama Pregnancy Yoga Training"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/Kupzyhpv4v4" class="btn btn-warning  video  center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="question">
+                            <i class="down-arrow"></i>What if I don’t have a yoga body?
+                        </h3>
+                        <div class="answer ">
+                            <div class="row nopadding">
+                                <div class="col-sm-8 col-xs-12 ">
+                                    <p>Don’t let Instagram fool you into thinking that you have to look like you just walked off the set of a health food commercial to do yoga. </p>
+                                    <p> One of the key principles of yoga is the art of non-judgment, both of yourself and others. </p>
+                                    <p>Yoga is not about how you look, it’s about doing what feels good, in the body you have now.</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <img src="~/images/faqs/Curvy.jpg" class="center-block" style="max-height:270px" alt="Image courtesy of Curvy Yoga"><div data-toggle="modal" data-target="#videoModal" data-thevideo="https://www.youtube.com/embed/ovOHezYV8oA" class="btn btn-warning  video center-block">Watch an explanation&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="modal fade bs-modal-lg" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+
+    <div class="modal-dialog modal-lg">
+        <a class="ClosePopup" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+
+
+
+        <div class="row nopadding">
+            <div class=" col-xs-12 nopadding">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        <script>
+            $(document).ready(function () {
+                autoPlayYouTubeModal();
+
+                $('.question').click(function () {
+                    if ($(this).next('.answer').is(':visible')) {
+                        // do nothing
+                        $(this).next('.answer').slideUp();
+                        $('.question').removeClass('open');
+                    } else {
+                        $('.question').removeClass('open');
+                        $(this).addClass('open');
+                        $('.answer').slideUp();
+                        $(this).next('.answer').slideDown();
+                    }
+                });
+         
+                $(document).ready(function () {
+
+                    $("atimg article img").each(function () {
+                        $(this).wrap("<div class='imgtxtcenter img-responsive' />");
+                        $('.imgtxtcenter').attr('style', $(this).attr('style'));
+                        $(this).after($("<span />").text($(this).attr("alt")));
+                    });
+
+                });
+
+            });
+        </script>
+

@@ -1,0 +1,152 @@
+﻿@model Clicks.Yoga.Portal.Models.SignUp.SignUpStartViewModel
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.HeaderClass = "green-border";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+@if (!Model.HasProflile)
+{
+    <h1 class="signup-title green-text">Welcome to the powered by yoga community!</h1>
+}
+else
+{
+    <h1 class="signup-title green-text">Which professional page would you like to start with?</h1>
+}
+
+<div class="row">
+    <div class="hidden-xs col col-sm-1 col-lg-3"></div>
+    <div class="col-xs-12 col-sm-10 col-lg-6">
+        @if (Model.HasProflile)
+        {
+            <div class="col-xs-6">
+                <div>
+                    <div class=" signup-panel">
+                        <div class="signup-front">
+                            <div class="signup-box2">
+                                <img src="/Images/signup/cross.png" alt="im_a_student" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="col-xs-6">
+                <div>
+                    <div class="signup-hover signup-panel">
+                        <div class="signup-front">
+                            <a href="/Signup/profile/1" class="link-no-decoration">
+                                <div class="signup-box1">
+                                    <p>I'm a student.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="signup-back">
+                            <a href="/Signup/profile/1">
+                                <div class="signup-box2">
+                                    <img src="/Images/signup/cross.png" alt="im_a_student" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+        @if (Model.HasTeacher)
+        {
+
+            <div class="col-xs-6">
+                <div>
+                    <div class=" signup-panel">
+                        <div class="signup-front">
+                            <div class="signup-box2">
+                                <img src="/Images/signup/cross.png" alt="im_a_student" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="col-xs-6">
+                <div class="signup-hover signup-panel">
+                    <div class="signup-front">
+                        <a href="/Signup/teacher/1" class="link-no-decoration">
+                            <div class="signup-box1">
+                                <p>I'm a teacher.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="signup-back">
+                        <a href="/Signup/Teacher/1">
+                            <div class="signup-box2">
+                                <img src="/Images/signup/cross.png" alt="im_a_teacher" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="col-xs-6">
+            <div class="signup-hover signup-panel">
+                <div class="signup-front">
+                    <a href="/Signup/venue/1" class="link-no-decoration">
+                        <div class="signup-box1">
+                            <p>I'm a venue.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="signup-back">
+                    <a href="/Signup/Venue/1">
+                        <div class="signup-box2">
+                            <img src="/Images/signup/cross.png" alt="im_a_venue" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="signup-hover signup-panel">
+                <div class="signup-front">
+                    <a href="/Signup/teachertrainingorganisation/1" class="link-no-decoration">
+                        <div class="signup-box1">
+                            <p>I'm a teacher training organisation.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="signup-back">
+                    <a href="/Signup/TeacherTrainingOrganisation/1">
+                        <div class="signup-box2">
+                            <img src="/Images/signup/cross.png" alt="im_a_teacher_training_organisation" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-xs col-sm-1 col-lg-3"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // set up hover panels
+        // although this can be done without JavaScript, we've attached these events
+        // because it causes the hover to be triggered when the element is tapped on a touch device
+        $('.signup-hover').hover(function () {
+            $(this).addClass('signup-flip');
+        }, function () {
+            $(this).removeClass('signup-flip');
+        });
+    });
+</script>

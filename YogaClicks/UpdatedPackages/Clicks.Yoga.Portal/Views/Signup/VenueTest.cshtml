@@ -1,0 +1,58 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.SignUp.VenueTest
+
+@{
+    ViewBag.Title = "Teacher Step 3";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<img src="/images/svgicons/Icon_TeacherPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" alt="namaste students">
+@using (Html.BeginForm("VenueTest", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "venue-test"}))
+{
+    
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-10 singup-input signup-large-text">
+            <label>Venue</label>
+            @Html.EditorFor(m => m.Venue)
+            <div class="cb"></div>
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+    
+
+    <div class="clear-fix"></div>
+        <div class="row padding-top-100">
+            <input type="submit" value="Next" class="btn btn-default btn-lg purple-border purple-text purple-inverse-text-hover" />
+        </div>
+        <div style="height: 100px;"></div>
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+
+            });
+        </script>

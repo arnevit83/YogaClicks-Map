@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h2 class="greenHeader">Search Results</h2>
+<hr class="modalHr"/>
+<h3 class="cb blackSubHeader">
+    We are sorry that your search returned no results.
+    <br /><br /><br />
+    Please use different search criteria or use the map to scroll, zoom in or zoom out.
+    <br /><br /><br />
+    @if (SecurityContext.Authenticated)
+    {
+        <text> The
+            default
+            location is the
+            one on
+            your profile </text>
+    }
+
+
+</h3>
+<hr />
+<a href="javascript:parent.$.fancybox.close();" class="button pink large fr">Close</a>
+

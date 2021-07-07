@@ -1,0 +1,127 @@
+﻿@model Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationIndexModel
+
+@{
+    ViewBag.Title = "Find Yoga Accrediting / registering Bodies";
+    ViewBag.Description = "Planning yoga teacher training? Search our guide to yoga certification and accreditation. Find out who does it, where they are, and get in touch.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+
+
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-accreditingbodies", Model)
+}
+
+@section Head {
+    <meta property="og:title" content="Meet yoga's standard bearers at YogaClicks" />
+    <meta property="og:description" content="The wisest of the wise - the trainers, educators and promoters of all things yoga are at YogaClicks" />
+}
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Find</span><span> - Accrediting/ registering Bodies</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="discover-strip "></div><br />
+
+
+<div class="col-xs-12 nopadding" id="scroll">
+    <div id="page-content">
+
+            <section id="bodies" class="pose-group">
+
+
+                @{
+                    int counter = 0;
+                    foreach (var body in Model.AccreditationBodies)
+                    {
+                        if (counter == 0)
+                        {
+                            @Html.Raw("<div class=\"row nopadding\">")
+                        }
+                        else if (counter > 0 && counter % 3 == 0)
+                        {
+                            @Html.Raw("</div><div class=\"row nopadding\">")
+                        }
+                        counter++;
+                        var country = "";
+                        if (body.Country != null)
+                        {
+                            country = body.Country.Code;
+                        }
+
+                        <div data-role="Gallery" class="col-sm-4 ">
+                            <div class="thumbnail ">
+
+
+                               
+                                <article data-country="@country">
+                                    <a href="@Url.Action("display", new {id = body.Id, slug = body.UrlSlug})" >@Html.Image(body.Image, "ProfileBanner.jpg", i => i.Resize(c => c.Height(200).ScaleBoth()), body.Name, new { @class = "img-responsive" })</a>
+
+                                </article>
+
+                                <div class="caption thumbnailmaxac">
+
+                                    <p class="thumnailcenterac"><b>@body.Name</b><br />
+                                    @body.Abbreviation</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    }
+
+}
+
+
+                @Html.Partial("Disclaimer", "Shared")
+
+
+            </section>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(".accreditation-country").click(function () {
+
+            $(".accreditation-country").each(function () {
+                if ($(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                }
+            });
+
+            $("#bodies article").hide();
+
+            $("#bodies article[data-country='" + $(this).data("country") + "']").show();
+            $(this).addClass("selected");
+        });
+        $("#Innercontent").css('min-width', '99%');
+        resizeDiv(true);
+    </script>
+}
+

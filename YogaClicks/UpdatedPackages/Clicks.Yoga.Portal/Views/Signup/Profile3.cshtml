@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Profile Step 2";
+    ViewBag.HeaderClass = "blue-border";
+    ViewBag.BodyClass = "profileaddtional";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<div class="row blue-text">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 signup-row-title signup-large-text">
+        <p>Thanks for writing your profile.</p>
+        <p>
+
+          Got a health issue? Yoga can help.
+             <br />Would you like to be blown away by 300+ clinical yoga studies for 30+ health conditions?
+
+          
+        </p>
+    </div>
+    <div id="signupquestion1" class="row">
+        <div class="hidden-xs col-lg-2"></div>
+        <div class="col-xs-12 col-lg-4">@Html.ActionLink("Yes", "Index", "YogaMeds", null, new { @class = "btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" })</div>
+        <div class="col-xs-12 col-lg-4">
+            <a data-question="2" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover signupchangequestion">No</a>
+        </div>
+        <div class="hidden-xs col-sm-2"></div>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+<div class="row blue-text" style="display:none">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 signup-row-title signup-large-text">
+        <p>Are you a yoga newbie?</p>
+        <p>
+
+            Would you like to take our quiz to find the style of yoga for you?
+
+        </p>
+    </div>
+    <div id="signupquestion2" class="row">
+        <div class="hidden-xs col-lg-2"></div>
+        @*TODO -- Change the Yes link to the correct place for the quiz *@
+        <div class="col-xs-12 col-lg-4">@Html.ActionLink("Yes", "Quiz", "Static", null, new { @class = "btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" })</div>
+        <div class="col-xs-12 col-lg-4">@Html.ActionLink("No", "Profile", "SignUp", new { step = 4, }, new { @class = "btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" })</div>
+
+        <div class="hidden-xs col-sm-2"></div>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    $(".signupchangequestion").click(function() {
+
+        $(this).parent().parent().parent().slideUp("slow");
+        $("#signupquestion" + $(this).data("question")).parent().slideDown("slow");
+    });
+
+</script>

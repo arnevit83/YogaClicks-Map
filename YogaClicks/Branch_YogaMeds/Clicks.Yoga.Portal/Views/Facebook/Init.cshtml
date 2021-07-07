@@ -1,0 +1,76 @@
+﻿@model Clicks.Yoga.Portal.Models.Facebook.FacebookModel
+
+<div id="fb-root"></div>
+
+<script type="text/javascript">
+    function facebookConnect(callback) {
+        FB.login(
+            function (response) {
+                if (response.status === 'connected') {
+                    $.post(
+                        "/Account/AuthenticateWithFacebook",
+                        { accessToken: response.authResponse.accessToken },
+                        function (response) {
+                            if (response.Succeeded) {
+                                callback();
+                            }
+                            else {
+                                alert(response.Error);
+                            }
+                        }
+                    );
+                }
+            },
+            { scope: 'email' }
+        );
+    }
+    
+    function facebookInvite() {
+        FB.ui(
+            {
+                method: 'apprequests',
+                message: 'Come and be my friend on YogaClicks!'
+            },
+            function (result) {
+                var params = {
+                    request: result.request.toString(),
+                    users: []
+                };
+                
+                for (var i in result.to) {
+                    var id = result.to[i];
+                    params.users.push(id.toString());
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/Facebook/Invite",
+                    data: JSON.stringify(params),
+                    contentType: 'application/json'
+                });
+            }
+        );
+    }
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '@Model.AppId',
+            channelUrl: '@Request.Url.Scheme://@Request.Url.Authority/facebook/channel',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
+
+        FB.Event.subscribe('auth.logout', function() {
+            $.post("/Account/Logout");
+        });
+    };
+    
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+</script>

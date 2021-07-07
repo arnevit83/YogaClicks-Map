@@ -1,0 +1,8 @@
+﻿@model Clicks.Yoga.Portal.Models.Media.MediaPostTypePartialModel
+
+@foreach (var resource in Model.Resources)
+{
+    <div>
+        @Html.Raw(string.Format(resource.Content, 403, 251))
+    </div>
+}

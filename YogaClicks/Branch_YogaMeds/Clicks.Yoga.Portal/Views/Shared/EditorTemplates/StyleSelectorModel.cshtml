@@ -1,0 +1,7 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.StyleSelectorModel
+
+@{
+    Layout = null;
+}
+
+@Html.DropDownListFor(m => m.Selection, new SelectList(Model.Options.Select(s => new { Value = s.Id, Text = s.Name }), "Value", "Text"), "", new { @class = "wizard-style-dd" })

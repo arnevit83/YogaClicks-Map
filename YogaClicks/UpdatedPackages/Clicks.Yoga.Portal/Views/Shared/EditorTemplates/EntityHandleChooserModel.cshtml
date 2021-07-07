@@ -1,0 +1,9 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.EntityHandleChooserModel
+
+@foreach (var option in Model.Options)
+{
+    <span>
+        @Html.CheckBoxFor(m => m.Selection[option.Id])
+        @Html.LabelFor(m => m.Selection[option.Id], option.Name)
+    </span> 
+}

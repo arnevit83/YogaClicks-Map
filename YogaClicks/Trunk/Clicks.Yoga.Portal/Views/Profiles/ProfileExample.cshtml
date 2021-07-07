@@ -1,0 +1,36 @@
+﻿@using Clicks.Yoga.Portal.Enums.Profiles;
+@model ProfileTypeEnum
+@{
+    ViewBag.Title = "ProfileExample";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+<div class="scrollableiFrameWizardExample">
+
+    @switch (Model)
+    {
+        case ProfileTypeEnum.Personal:
+            <img src="@Url.Content("~/images/wizard/examples/wizard-personal-example.jpg")" />
+            break;
+        case ProfileTypeEnum.Venue:
+            <img src="@Url.Content("~/images/wizard/examples/wizard-venue-example.jpg")" />
+            break;
+        case ProfileTypeEnum.Teacher:
+        <img src="@Url.Content("~/images/wizard/examples/wizard-teacher-example.jpg")" />
+            break;
+        case ProfileTypeEnum.TTO:
+        <img src="@Url.Content("~/images/wizard/examples/wizard-teacher-training-example.jpg")" />
+            break;
+        case ProfileTypeEnum.SO:
+        <img src="@Url.Content("~/images/wizard/examples/wizard-style-organisation-example.jpg")" />
+            break;
+        default:
+            break;
+    }
+    </div>
+    <div class="wizard-footer-buttons-container">
+        <div class="wizard-footer-nav-container">
+            <a href="javascript: history.go(-1)" class="button pink large">Back</a>
+        </div>
+    </div>
+
+    <div class="cb"></div>

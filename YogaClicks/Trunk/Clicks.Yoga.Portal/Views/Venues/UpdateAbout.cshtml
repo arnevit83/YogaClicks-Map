@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueAboutUpdateModel
+
+@using (Html.BeginForm("UpdateAbout", "Venues", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-about-form" }))
+{
+    @Html.HiddenFor(m => m.VenueId)
+
+    <h3>About Your Venue</h3>
+    <p>Students will use this description to get an idea of what your venue is all about.</p>
+    @Html.TextAreaFor(model => model.Description, new { @class = "philosophy" })
+
+    <div class="venue-about-save-section">
+        <span class="venue-about-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

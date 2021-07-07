@@ -1,0 +1,677 @@
+﻿@using System.Configuration
+@using Clicks.Yoga.Portal.Models.Poses
+@model Clicks.Yoga.Portal.Models.Poses.PoseDisplayModel
+@{
+    ViewBag.Title = Model.Pose.EnglishName;
+    ViewBag.Description = "We explain " + Model.Pose.EnglishName + " and how to do it. We give you the health benefits and the reasons to love it.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section LeftNav{
+    @Html.Action("Navigation", new { PoseId = Model.Pose.Id })
+}
+
+<style>
+    .owl-theme .owl-controls .owl-buttons div {
+        background: #ec2b83 none repeat scroll 0 0 !important;
+    }
+</style>
+
+
+@section Head {
+    <meta property="og:title" content="We love @Model.Pose.EnglishName at YogaClicks" />
+    <meta property="og:description" content="We break it down - why we love it, how to do it and more" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Pose.Image)" />
+}
+@{
+    var location = Session["Poses.Last"] == null ? Url.Action("Directory", "Styles") : Session["Poses.Last"].ToString();
+}
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/icon_practice.svg" data-svgpng="/images/SvgIcons/icon_practice.png" /><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - @Model.Pose.EnglishName</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="row nopadding">
+        <div class="col-lg-6 nopadding">
+
+
+
+            <div class="hidden-xs">
+
+                <a href="@location" class="Glink pull-right" alt="back">
+                    <span class="glyphicon-stack">
+                        <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                        <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                    </span><span style="vertical-align:text-bottom">Back</span>
+                </a>
+
+                <h1 class="pinkHeader"><span>&nbsp;</span>@Model.Pose.EnglishName</h1>
+
+
+
+            </div>
+
+            <div class="shareFindSection hidden-xs">
+                <br />
+                <div class="fr">
+                    <span>Share: </span>
+                    @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })
+
+                </div>
+
+            </div>
+
+
+            <div class="img-thumbnail" style="width:707px;">
+                <img src="@Model.Pose.Image.Url" class="img-responsive  center-block" />
+                @*<span class="pull-left" style="color: #a3a3a3;font: 20px source sans pro,sans-serif; margin-top:8px;">
+                        &copy; yogaclicks @DateTime.Today.Year
+                    </span>*@
+            </div>
+            @*<span class="captionhover">
+                <span>&copy; yogaclicks @DateTime.Today.Year</span>
+            </span>*@
+
+            <br style="clear:both" />
+            <div class="pull-left">
+                <div class="leftCol">
+
+                    @if (Model.MainVideo != null)
+                {
+
+                    if (Model.MainVideo != "")
+                    {
+                    <div data-toggle="modal" data-target="#videoModal" data-thevideo="@Model.MainVideo" title="Watch a clip of this pose" class="btn btn-custom btn-sm video">Watch a clip&nbsp;&nbsp;<i class="fa fa-play-circle"></i></div>
+
+
+
+                    }
+
+                }
+
+                </div>
+            </div>
+            <div class="pull-right hidden-xs">
+                <div class="leftCol">
+                    @Html.Action("Button", "Fans", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6 nopadding">
+
+            <div id="@guid" class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h1 class="pinkHeader centerAlign">#YogaHood Gallery</h1>   <div class="gallery-section">
+
+
+                        <div class="addpadding">
+                            <div class="header row">
+
+
+
+
+                                @if (Model.ImagesOfPoses.Any())
+                                {
+                                    <div class="customNavigation">
+                                        <a class="btn prev btn-custom">
+                                            <i class="fa fa-arrow-circle-left"></i>
+                                            Previous
+                                        </a>
+                                        <a class="btn next pull-right  btn-custom">
+                                            Next <i class="fa fa-arrow-circle-right"></i>
+                                        </a>
+                                    </div>
+
+                                    <div id="owl">
+                                        @for (int x = 0; x < Model.ImagesOfPoses.Count(); x++)
+                                        {
+
+                                            <div class="item">
+                                                <div class="galleryItem PoserOverwrite">
+
+                                                    <div class="row PosePadding">
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+
+
+
+                                                            <div data-toggle="modalPic" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x].Image.Uri">
+
+                                                                @Html.Image(Model.ImagesOfPoses[x].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+
+
+                                                            </div>
+                                                            @if (SecurityContext != null)
+                                                            {
+                                                                if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                {
+                                                                    using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                    {
+                                                                        @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+                                                                         <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+                                                                    }
+                                                                }
+                                                            }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id"  data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+
+                                                                    @{x++;}
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                                                                    @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+                                                            <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+                                                                }
+                                                            }
+                                                        }
+                                                                                                                }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id"  data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                                                                                            @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+                                                                                    <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+                                                                                        }
+                                                                                    }
+                                                                                }
+
+
+
+
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="row PosePadding">
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+                <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+        <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+        <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="row PosePadding">
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+        <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+        <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                        <div class="col-xs-4 nopadding PosecolPadding">
+                                                            @if (Model.ImagesOfPoses.Count() > x + 1)
+                                                            {
+                                                                <div data-toggle="modalPic" data-theowner="/Profiles/@Model.ImagesOfPoses[x].Image.Owner.Id" data-theownername="@Model.ImagesOfPoses[x].Image.Owner.Profile.Forename" data-theimage="@ConfigurationManager.AppSettings["clicks.yoga.imagestore.url"]/images/yogaimages/@Model.ImagesOfPoses[x + 1].Image.Uri">
+
+
+                                                                    @Html.Image(Model.ImagesOfPoses[x + 1].Image, "Profile.jpg", i => i.Resize(c => c.Width(200).Height(200).ScaleBoth().Crop()))
+                                                                    @{x++;}
+
+                                                                </div>
+                                                                if (SecurityContext != null)
+                                                                {
+                                                                    if (SecurityContext.Authenticated && SecurityContext.CurrentProfile.Id == Model.ImagesOfPoses[x].Image.Owner.Profile.Id)
+                                                                    {
+                                                                        using (Html.BeginForm("DeleteImage", "Poses", FormMethod.Post))
+                                                                        {
+                @Html.Hidden("Idss", Model.ImagesOfPoses[x].Id);
+        <button  data-toggle="tooltip" title="Delete your pose image" class="btn btn-danger center-block PoseDelete"><i class="fa fa-trash"></i> Delete</button>
+            }
+        }
+    }
+                                                            }
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+
+
+                                            </div>
+                                        }
+                                    </div>
+                                }
+
+
+
+
+                                @if (SecurityContext != null)
+                                {
+                                    if (SecurityContext.Authenticated)
+                                    {
+                                        @Html.Partial("UpdateUserPoseImages",
+            new UpdateUserPoseImagesUpdateModel(Model.Pose.Id))
+                                    }
+                                    else
+                                    {
+                                        <br />
+                                        <a class="btn btn-custom  center-block registerRevealBtn reg-form-header"  href="/">Log in or sign up to add a pose!</a>
+                                  
+                                    }
+
+                                }
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div><br /><br />
+    <div class="row nopadding">
+        <div class="col-lg-6 nopadding">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        <br />
+                        <div class="row nopadding">
+                            <div class=" col-xs-3 nopadding">
+                                <p>
+                                    <strong>Sanskrit name:</strong><br />
+                                </p>
+                                <p>
+                                    <strong>Ability level:</strong> <br />
+                                </p>
+                                @if (Model.Pose.Roots.Count > 0)
+                                {
+
+                                    <p>
+                                        <strong>Roots:</strong>
+                                    </p>
+                                }
+                            </div>
+                            <div class=" col-sm-offset-1  col-xs-8 ">
+                                <p>
+                                    @Model.Pose.SanskritName
+                                    &nbsp;
+                                </p>
+                                <p>
+                                    @Model.Pose.AbilityLevel.Name
+                                    &nbsp;
+                                </p>
+                                @if (Model.Pose.Roots.Count > 0)
+                                {
+
+                                    <p>
+
+                                        @string.Join(", ", Model.Pose.Roots)
+                                        &nbsp;
+                                    </p>
+                                }
+                            </div>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <br />
+                        <div class="row nopadding">
+                            <div class=" col-sm-3 nopadding">
+                                <h4>Why we love this pose</h4>
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-8 ">
+                                @foreach (var effect in Model.Pose.Tips)
+                                {
+                                    <p>@effect</p>
+                                }
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <div class="row nopadding">
+                            <div class=" col-sm-3 nopadding">
+                                <h4>How to do @Model.Pose.EnglishName</h4>
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-8 ">
+                                @foreach (var instruction in Model.Pose.Instructions)
+                                {
+                                    <p>@instruction</p>
+                                }
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <div class="row nopadding">
+                            <div class=" col-sm-3 nopadding">
+                                <h4>Good for</h4>
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-8 ">
+                                <ul class="Halflist">
+                                    @foreach (var indication in Model.Pose.Indications)
+                                    {
+
+                                        <li>@Html.Raw(indication)</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <br />
+                        <div class="row nopadding">
+                            <div class=" col-sm-offset-1  col-sm-3 nopadding">
+                                <h4>Bad for</h4>
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-8 ">
+                                <ul class="Halflist">
+                                    @foreach (var contraindication in Model.Pose.Contraindications)
+                                    {
+
+
+                                        <li>@contraindication</li>
+                                    }
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+
+                        <div class="row nopadding">
+
+                            <div class=" col-xs-12 nopadding">
+                                @Html.Partial("Disclaimer", "Shared")
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-lg-6 nopadding"></div>
+    </div>
+
+
+
+    <section id="pose-info" class="pose-info">
+        <article id="description" class=""></article>
+    </section>
+
+    <div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <a class="ClosePopup" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+
+            <div class="row nopadding">
+            <div class=" col-xs-12 nopadding">
+
+                <img id="CurrentImagePop" class="img-responsive" style="width: 100%;"/><div style="margin-top:-38px" class=" col-xs-12 nopadding ">
+  
+            <button id="View1" class="btn center-block">
+                <i class="fa fa-user"></i>
+                View <span id="ViewName1"></span> profile
+            </button>
+        
+ 
+
+</div>
+            </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade bs-modal-lg" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <a class="ClosePopup" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+
+            <div class="row nopadding">
+                <div class=" col-xs-12 nopadding">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    @{
+        var prImage = Model.Pose.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Pose.Image.Uri) : "http://www.yogaclicks.com/images/global/pinterestshare.png";
+    }
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            autoPlayYouTubeModal();
+            autoImageModal();
+        });
+
+        $(".PoseDelete").each(function () {
+
+            $(this).click(function () {
+                var isGood = confirm('Are you sure you would like to delete this image?');
+                if (!isGood) {
+                    return false;
+                } else {
+                    $(this).submit();
+                }
+            });
+        });
+
+
+
+        $("#Innercontent").css('min-width', '99%');
+        $('.facebook-link-div').html('&title=' + '@Model.Pose.EnglishName');
+        $('.twitter-link-div').html('&text=Find ' + '@Model.Pose.EnglishName' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find ' + '@Model.Pose.EnglishName' + ' on YogaClicks&media=' + '@prImage');
+
+        $(document).ready(function () {
+
+            var owl = $("#owl");
+
+
+
+            owl.owlCarousel({
+
+
+                singleItem: true,
+                transitionStyle: "fadeUp",
+                pagination: false,
+
+                autoplay: 3000
+            });
+
+            $(".next").click(function () {
+                $("#owl").trigger('owl.next');
+            });
+            $(".prev").click(function () {
+                $("#owl").trigger('owl.prev');
+            });
+
+        });
+
+    </script>
+}

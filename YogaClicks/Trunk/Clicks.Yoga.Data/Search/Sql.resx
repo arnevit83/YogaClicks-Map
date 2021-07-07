@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccreditationBodyFilter" xml:space="preserve">
+    <value>{0} IN (SELECT AccreditationBodyId FROM SearchRecordAccreditationBodyLink WHERE SearchRecordAccreditationBodyLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="AndOperator" xml:space="preserve">
+    <value>AND</value>
+  </data>
+  <data name="BoundsFilter" xml:space="preserve">
+    <value>SearchRecord.Location.STWithin(geography::STPolyFromText({0}, {1})) = 1</value>
+  </data>
+  <data name="ContainsFilter" xml:space="preserve">
+    <value>CONTAINS(SearchRecord.*, {0})</value>
+  </data>
+  <data name="DateFilter" xml:space="preserve">
+    <value>SearchRecord.Date = {0}</value>
+  </data>
+  <data name="DefaultOrder" xml:space="preserve">
+    <value> SearchRecord.Id DESC</value>
+  </data>
+  <data name="DistanceExpression" xml:space="preserve">
+    <value>SearchRecord.Location.STDistance(geography::STPointFromText('POINT ({0} {1})', {2}))</value>
+  </data>
+  <data name="EntityTypeFilter" xml:space="preserve">
+    <value>SearchRecord.EntityTypeId IN ({0})</value>
+  </data>
+  <data name="FriendshipBlockedFilter" xml:space="preserve">
+    <value>COALESCE(Friendship.BlockedByFriend, 0) = 0</value>
+  </data>
+  <data name="FromClause" xml:space="preserve">
+    <value>FROM
+    SearchRecord
+    INNER JOIN EntityType ON SearchRecord.EntityTypeId = EntityType.Id
+    LEFT JOIN Image ON SearchRecord.ImageId = Image.Id
+    LEFT JOIN ImageType ON Image.TypeId = ImageType.Id
+    LEFT JOIN SearchRecord AS ParentSearchRecord ON SearchRecord.ParentId = ParentSearchRecord.Id
+    LEFT JOIN EntityType AS ParentEntityType ON ParentSearchRecord.EntityTypeId = ParentEntityType.Id
+    LEFT JOIN Image AS ParentImage ON ParentSearchRecord.ImageId = ParentImage.Id
+    LEFT JOIN ImageType AS ParentImageType ON ParentImage.TypeId = ParentImageType.Id
+    LEFT JOIN Friendship ON EntityType.Name = 'Profile' AND Friendship.FriendId = SearchRecord.EntityId AND Friendship.ProfileId = {11}</value>
+  </data>
+  <data name="NameColumn" xml:space="preserve">
+    <value>SearchRecord.Name</value>
+  </data>
+  <data name="OffsetFetchClause" xml:space="preserve">
+    <value>OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY</value>
+  </data>
+  <data name="OrderByClause" xml:space="preserve">
+    <value>ORDER BY {0}</value>
+  </data>
+  <data name="RadiusFilter" xml:space="preserve">
+    <value>{0} &lt;= {1}</value>
+  </data>
+  <data name="SelectClause" xml:space="preserve">
+    <value>SELECT
+    COUNT(*) OVER () AS TotalCount,
+    SearchRecord.EntityId AS EntityId,
+    EntityType.Name AS EntityTypeName,
+    EntityType.DisplayName as EntityTypeDisplayName,
+    EntityType.DisplayPlural as EntityTypeDisplayPlural,
+    EntityType.Controller as Controller,
+    SearchRecord.Name AS Name,
+    SearchRecord.Description AS Description,
+    SearchRecord.City AS City,
+    SearchRecord.Area AS Area,
+    SearchRecord.Country AS Country,
+    SearchRecord.Postcode AS Postcode,
+    SearchRecord.Location AS LocationGeography,
+    Image.Guid AS ImageGuid,
+    Image.Path AS ImagePath,
+    ImageType.Extension AS ImageExtension,
+    SearchRecord.Rating AS Rating,
+    SearchRecord.Stubbed AS Stubbed,
+    COALESCE(Friendship.Pending, CAST(0 AS BIT)) AS FriendshipPending,
+    COALESCE(Friendship.Confirmed, CAST(0 AS BIT)) AS FriendshipConfirmed,
+    COALESCE(Friendship.BlockedByProfile, CAST(0 AS BIT)) AS FriendshipBlockedByProfile,
+    COALESCE(Friendship.BlockedByFriend, CAST(0 AS BIT)) AS FriendshipBlockedByFriend,
+    ParentSearchRecord.EntityId AS ParentEntityId,
+    ParentEntityType.Name AS ParentEntityTypeName,
+    ParentSearchRecord.Name AS ParentName,
+    ParentSearchRecord.Description AS ParentDescription,
+    ParentSearchRecord.City AS ParentCity,
+    ParentSearchRecord.Area AS ParentArea,
+    ParentSearchRecord.Country AS ParentCountry,
+    ParentSearchRecord.Postcode AS ParentPostcode,
+    ParentSearchRecord.Location AS ParentLocationGeography,
+    ParentImage.Guid AS ParentImageGuid,
+    ParentImage.Path AS ParentImagePath,
+    ParentImageType.Extension AS ParentImageExtension,
+    ParentSearchRecord.Rating AS ParentRating</value>
+  </data>
+  <data name="StyleFilter" xml:space="preserve">
+    <value>{0} IN (SELECT StyleId FROM SearchRecordStyleLink WHERE SearchRecordStyleLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="TeacherFilter" xml:space="preserve">
+    <value>{0} IN (SELECT TeacherId FROM SearchRecordTeacherLink WHERE SearchRecordTeacherLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="TeacherServiceFilter" xml:space="preserve">
+    <value>{0} IN (SELECT TeacherServiceId FROM SearchRecordTeacherServiceLink WHERE SearchRecordTeacherServiceLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="VenueFilter" xml:space="preserve">
+    <value>{0} IN (SELECT VenueId FROM SearchRecordVenueLink WHERE SearchRecordVenueLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="VenueServiceFilter" xml:space="preserve">
+    <value>{0} IN (SELECT VenueServiceId FROM SearchRecordVenueServiceLink WHERE SearchRecordVenueServiceLink.RecordId = SearchRecord.Id)</value>
+  </data>
+  <data name="VenueTypeFilter" xml:space="preserve">
+    <value>SearchRecord.VenueTypeId = {0}</value>
+  </data>
+  <data name="WhereClause" xml:space="preserve">
+    <value>WHERE {0}</value>
+  </data>
+</root>

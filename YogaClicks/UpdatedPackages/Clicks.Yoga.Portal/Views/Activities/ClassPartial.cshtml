@@ -1,0 +1,112 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassPartialModel
+
+<div class="well well-sm WellColour">
+    <div class="row nopadding contentRow">
+        <div class="col-xs-2 nopadding centerAlign ">
+
+            <div class="caption thumbnailplus">
+                <p class="thumnailcenterab">
+
+
+
+                    <b>@Model.Repeat.StartTime.ToString("HH:mm")</b><br />to<br /><b>@Model.Repeat.FinishTime.ToString("HH:mm")</b>
+
+                </p>
+            </div>
+
+
+
+        </div>
+        <div class="col-xs-10 nopadding">
+            <div class="row nopadding">
+                <div class="col-xs-12">
+                    <div data-role="ActivitySummary" class="activitySummaryHeader">
+                        <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="classtextLink">
+                            <i class="fa fa-calendar"></i>
+                            @Model.Repeat.Activity.Name<i class="fa fa-plus pull-right plus"></i>
+                        </a>
+                        <div class="info">
+                            <output></output>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 classesRevealContent">
+                        <div class="activitySummary"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    @if (Model.Repeat.Activity.Venue.Exists)
+                    {
+                        <div data-role="VenueSummary" class="venueSummaryHeader">
+                            <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassVenueSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="classtextLink">
+                                <i class="fa fa-home"></i>
+                                @Model.Repeat.Activity.Venue.Name<i class="fa fa-plus pull-right plus"></i>
+                            </a>
+                            <output></output>
+                        </div>
+                        <div class="col-xs-12 classesRevealContent">
+                            <div class="activitySummary"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <text>Pending</text>
+                    }
+                </div>
+                <div class="col-xs-12">
+                    @if (Model.Editable)
+                    {
+                        <a href="@Url.Action("UpdateClass", "Activities", new { Model.Repeat.Activity.Id })" class="silver button editButton">Edit this class <span>&nbsp;</span></a>
+                        <a data-role="DeleteButton" data-id="@Model.Repeat.Activity.Id" href="javascript:void(0);" class="silver button deleteButton"><span>&nbsp;</span></a>
+                    }
+                    else if (Model.Repeat.Activity.Teachers.Count > 0)
+                    {
+                        <div data-role="TeacherSummary" class="teacherSummary">
+                            @if (!Model.Repeat.Activity.Teachers[0].Stubbed)
+                            {
+                                <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassTeacherSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="classtextLink">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    @Model.Repeat.Activity.Teachers[0].Name<i class="fa fa-plus pull-right plus"></i>
+                                </a>
+                            }
+
+                            else
+                            {
+                                <span class="classtext">@Model.Repeat.Activity.Teachers[0].Name</span>
+                            }
+
+                            <output></output>
+                        </div>                <div class="col-xs-12 classesRevealContent">
+                            <div class="activitySummary"></div>
+                        </div>
+                    }
+                </div>
+                <div class="col-xs-12">
+                    @if (SecurityContext.Authenticated && !Model.Editable)
+                    {
+                        <div class="pull-right followen">
+
+                            @if (Model.Repeat.Activity.Teachers.Count > 0)
+                            {
+                            if (!Model.Repeat.Activity.Teachers[0].Stubbed)
+                            {
+                            @Html.EnquireOrFriendRequest(Model, SecurityContext.CurrentProfile)
+
+                            }
+                            }
+
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+

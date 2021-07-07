@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Emails.InviteFriendEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = string.Format("Join {0} at YogaClicks!", Model.Invitation.Sender.Name);
+
+    var action = Url.EmailAction(
+        "Redirect",
+        "Invitations",
+        new {
+            identifier = Model.Invitation.RequestIdentifier,
+            destination = Url.Action(
+                "CreateAccount",
+                "Registration", new {
+                    emailaddress = Model.Invitation.RecipientIdentifier
+                })
+        });
+}
+
+<p>Hello</p>
+<p>We just wanted to let you know that @Model.Invitation.Sender.Name wanted to invite you to join them at YogaClicks.</p>
+<a href="@action" style="color: #5CA29A; text-decoration: underline;">Click here to register</a>.
+<br />
+<br />
+<p>We look forward to seeing you soon on YogaClicks!</p>
+<p>Namaste</p>
+<p>Lucy and the YogaClicks team</p>
+
+<br /><br />
+<p style="font-size: 10px">YogaClicks &copy; @DateTime.Now.Year</p>

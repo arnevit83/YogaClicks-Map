@@ -1,0 +1,182 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.TeacherStep4ViewModel
+
+@{
+    ViewBag.Title = "Teacher Profile";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+
+    var progressModel = new SignUpProgressBar()
+    {
+        Step = 3,
+        NumberOfSteps = 4,
+        ColorCssClass = "purple-text"
+    };
+
+    if (Model.IsEdit)
+    {
+        progressModel.Step = 2;
+        progressModel.NumberOfSteps = 3;
+    }
+
+    if (Session["newTeacher"] != "true")
+    {
+        progressModel.Step = 2;
+        progressModel.NumberOfSteps = 3;
+    }
+}
+
+<img src="/images/svgicons/Icon_TeacherPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" alt="namaste students">
+@using (Html.BeginForm("TeacherStep4", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-teacher-4", step = 4 }))
+{
+    if (Model.IsEdit || Session["newTeacher"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>2. Your training & experience</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>3. Your training & experience</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr/>
+        </div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10">
+            @Html.CheckBoxFor(m => m.IsAccredited, new { @class = "css-checkbox" })
+            @Html.LabelFor(m => m.IsAccredited, "I am an accredited yoga therapist*", new { @class = "css-label purple-text" })
+            <span class="signup-underinput-text" style="text-align: center;">*if you are not, just leave the box unchecked</span>
+        </div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <h2>Your accreditations</h2>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+    
+        <div class="row purple-text signup-row-normal">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.AccreditationBodies)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2>Which teacher training school(s)?</h2>
+        </div>
+    </div>
+    
+        <div class="row purple-text signup-row-normal">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-11 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Schools)
+            </div>
+            <div class="col-xs-1 under390nopadding">
+                <a data-role="AddButton" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <h2>What are you qualifications / registrations / designations?</h2>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-11 col-sm-10 singup-input">
+            @Html.EditorFor(m => m.Qualifications)
+        </div>
+        <div class="col-xs-1 under390nopadding">
+            <a data-role="AddButton" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-teachinghours margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-7">
+            <p>Total number of hours training</p>
+        </div>
+        <div class="col-xs-12 col-sm-3 singup-input">
+            <input id="signup-hourstraining" name="HoursTraining" type="text" data-field-type="general" value="@Model.HoursTraining" />
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-teachinghours">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-7">
+            <p>Total number of years teaching</p>
+        </div>
+        <div class="col-xs-12 col-sm-3 singup-input">
+            <input id="signup-yearsteaching" name="YearsTeaching" type="text" data-field-type="general" value="@Model.YearsTeaching" />
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+
+    <div class="clear-fix"></div>
+
+    @Html.Partial("_SignUpProgressBar", progressModel);
+}

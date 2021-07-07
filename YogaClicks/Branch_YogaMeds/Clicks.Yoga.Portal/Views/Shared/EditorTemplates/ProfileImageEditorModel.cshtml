@@ -1,0 +1,10 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ImageEditorModel
+
+<div class="profile-pic">
+    @Html.DisplayFor(m => m.CurrentImage, "ProfileImage")
+</div>
+<!--button class="button save">Choose new image</button-->
+@Html.EditorFor(m => m.NewImage)
+<br />
+<p>200 x 200px PNG or JPEG <br/> 1MB max</p>
+<div id="profileImageSave" class="saverequired">Click Save Changes button to view image</div>

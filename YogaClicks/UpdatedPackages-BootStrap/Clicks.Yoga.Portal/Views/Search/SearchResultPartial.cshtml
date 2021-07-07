@@ -1,0 +1,51 @@
+﻿@using Clicks.Yoga.Domain
+@model Clicks.Yoga.Portal.Models.Search.SearchResultModel
+
+    <article class="clearfix col-xs-12 col-sm-12 col-md-6 col-lg-4  @(Model.FriendshipStatus == FriendshipStatus.BlockedBySelf ? "blocked" : "")">
+        <a href="@Model.Uri" class="thumbnail">
+
+            <div class="clearfix" style="height:155px;width:100%">
+
+                <div style="width: 40%; vertical-align:central" class="pull-left">
+                    @Html.Image(Model.Image, "Profile.jpg", i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+                </div>
+
+                <div style="width:55%" class="caption pull-left">
+                    <strong class="Teachername">@Html.Trim(Model.Name, 35)</strong>
+                    <p>
+
+                    @if (Model.Rating.HasValue)
+                    {
+                        <span style="text-align: center;" class="rating @Html.StarRatingClass(Model.Rating.Value)"></span>
+                    }
+
+                    @if (Model.City == null)
+                    {
+                        if (Model.Description != null && Model.Description.Length > 20)
+                        {
+                            @Model.Description.Substring(0, 20)
+                            <text>...</text>
+                        }
+                        else
+                        {
+                            @Model.Description
+                        }
+                    }
+                    else
+                    {
+                            @Model.City<br />
+                            @Model.Country
+                    }
+
+                    @if (Model.Type == "Profile")
+                    {
+                            <div class="search-res-profile-container">
+                                @Html.Action("Button", "Friends", new { ProfileId = Model.Id, ProfileName = Model.Name, Status = Model.FriendshipStatus })
+                            </div>
+                    }
+                    </p>
+                </div>
+            </div>
+    
+        </a>
+</article>

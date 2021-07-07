@@ -1,0 +1,51 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingCourses
+@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateTeachersModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateTeachers", "TeacherTrainingCourses"))
+{
+    @Html.Serialize("CreateModel", ViewBag.CreateModel as CourseCreateModel)
+
+    <h2 class="greenHeader">Create a course</h2>
+    <hr class="modalHr" />    
+        <ul class="steps steps5">
+            <li><span>Step 1</span></li>
+            <li><span>Step 2</span></li>
+            <li class="active"><span>Step 3</span></li>
+            <li><span>Step 4</span></li>
+            <li><span>Step 5</span></li>
+        </ul>
+    <div class="scrollableiFrame">
+        <h3>Find/add course teachers</h3>
+        <div class="teacher-select-example">
+            <img src="/images/global/select-teacher.jpg">
+            <p>
+                Please select a teacher from the drop-down list or select 'None of these'.
+            </p>
+        </div>
+        @Html.EditorFor(m => m.Teachers, "TeacherChooserModel")
+    </div>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.Back)
+}
+
+@section Scripts{
+    <script>
+        $("#BackButton").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+            $(this).closest("form").submit();
+        });
+    </script>
+}
+
+

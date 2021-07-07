@@ -1,0 +1,37 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfilePersonalDetailsUpdateModel
+
+@using (Html.BeginForm("UpdatePersonalDetails", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-profile-personal-details-form" }))
+{
+    @Html.HiddenFor(m => m.ProfileId)
+    <div class="name">
+        <div class="halfWidth">
+            @Html.LabelFor(m => m.Forename, "First name")
+            @Html.EditorFor(m => m.Forename)
+        </div>
+        <div class="halfWidth lastName">
+            @Html.LabelFor(m => m.Surname, "Last name")
+            @Html.EditorFor(m => m.Surname)
+        </div>
+    </div>
+    <!-- <div class="genderWrap">
+             @Html.LabelFor(m => m.Gender)
+             @Html.EditorFor(m => m.Gender)
+         </div>-->
+    @Html.LabelFor(m => m.EmailAddress, "Email address")
+    @Html.EditorFor(m => m.EmailAddress)
+
+    @Html.LabelFor(m => m.Websites, "Web/Social media: Copy and paste full URL")
+    @Html.EditorFor(m => m.Websites)
+    <div class="birthdayWrap">
+        @Html.LabelFor(m => m.BirthDate, "Birthday")
+        @Html.EditorFor(m => m.BirthDate)
+    </div>
+    <div>
+        <span class="profile-details-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+    
+}

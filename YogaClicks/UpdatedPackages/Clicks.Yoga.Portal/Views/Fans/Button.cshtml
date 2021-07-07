@@ -1,0 +1,128 @@
+﻿@model Clicks.Yoga.Portal.Models.Fans.FanButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@if (Model.CanFan)
+{
+    <div id="@guid">
+        @if (Model.NewsFeed && Model.FanCount > 0)
+        {
+            <div class="news-fan-likes">
+                @Model.FanCount.ToString() <i class="fa fa-heart"></i>
+            </div>
+        }
+
+        @if (Model.IsFanned)
+        {
+            if (Model.NewsFeed)
+            {
+                <button data-action="Unfan" data-news="true" class="btn btn-default btn-clear btn-sm ">Unheart</button>
+            }
+            else
+            {
+                <a data-action="Unfan" data-toggle="tooltip" class="btn btn-default btn-clear btn-sm ">Stop being a fan&nbsp;&nbsp;<i class="fa fa-heart-o"></i></a>
+            }
+
+        }
+        else
+        {
+
+     
+
+
+
+            if (Model.NewsFeed)
+            {
+                <button data-action="Fan" data-news="true" class="btn btn-default btn-clear btn-sm   news-fan-button">Heart</button>
+            }
+            else
+            {
+
+
+                string CurrentURL = Request.Url.AbsoluteUri;
+                if (CurrentURL.Contains("Poses") || CurrentURL.Contains("Quotes") || CurrentURL.Contains("lingo") || CurrentURL.Contains("accreditationbodys") || CurrentURL.Contains("styles"))
+                {
+                    <a data-action="Fan" data-toggle="tooltip" class="btn btn-default btn-clear btn-sm " title="Displays under the Fan tab on your profile page">Become a fan&nbsp;&nbsp;<i class="fa fa-heart"></i></a>
+
+
+
+                }
+                else
+                {
+
+                    <a data-action="Fan" data-toggle="tooltip" class="btn btn-default btn-clear btn-sm " title="">Become a fan&nbsp;&nbsp;<i class="fa fa-heart"></i></a>
+            
+                }
+            }
+            
+            
+        }
+    </div>
+
+    <script>
+        $(function () {
+            var $container = $('#@guid'),
+            entityId = @Model.EntityId,
+            entityTypeName = '@HttpUtility.JavaScriptStringEncode(Model.EntityTypeName)',
+            news = $container.find('.btn').data('news');
+
+            var toggle = function (action) {
+                $.ajax({
+                    type: 'POST',
+                    async:false,
+                    url: '/Fans/' + action,
+                    data: { EntityId: entityId, EntityTypeName: entityTypeName, newsfeed: '@Model.NewsFeed' },
+                    success: function (html) {
+                        $container.html(html);
+
+                        if (news != true)
+                        {
+                            if (action == 'Fan') {
+                                //openModal('/Fans/Confirmation?EntityId=' + escape(entityId) + '&EntityTypeName=' + escape(entityTypeName), false);
+                            }
+                        }
+
+                        else {
+                            if (action == 'Fan') {
+
+                            }
+                        }
+                    }
+                });
+            };
+
+            $container.on('click', '[data-action=Fan]', function () {
+                toggle('Fan');
+            });
+
+            $container.on('click', '[data-action=Unfan]', function () {
+                toggle('Unfan');
+            });
+        })
+    </script>
+
+}
+
+@if (!SecurityContext.Authenticated)
+{
+    string CurrentURL = Request.Url.AbsoluteUri;
+    if (CurrentURL.Contains("Poses") || CurrentURL.Contains("Quotes") || CurrentURL.Contains("lingo") || CurrentURL.Contains("styles") || CurrentURL.Contains("accreditationbodys"))
+    {
+        <a class="btn btn-default btn-clear btn-sm   reg-form-popup " data-toggle="tooltip" href="/" title="Displays under the Fan tab on your profile page">Become a fan&nbsp;&nbsp;<i class="fa fa-heart"></i></a>
+
+
+
+    }
+
+    else
+    {
+        <a class="btn btn-default btn-clear btn-sm  reg-form-popup " data-toggle="tooltip" href="/" title="See their posts in your newsfeed">Become a fan&nbsp;&nbsp;<i class="fa fa-heart"></i></a>
+
+
+    }
+
+
+
+}

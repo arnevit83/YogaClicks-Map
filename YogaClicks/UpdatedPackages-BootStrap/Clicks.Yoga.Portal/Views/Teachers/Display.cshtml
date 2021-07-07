@@ -1,0 +1,426 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Shared
+@model Clicks.Yoga.Portal.Models.Teachers.TeacherDisplayModel
+
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Community";
+
+    var ogDescription = string.Format("{0}{1}{2}",
+        Model.Teacher.Name,
+        Model.Teacher.Location != null ? " | " + Model.Teacher.Location.Name : "",
+        Model.Teacher.Philosophy != null ? " | " + Model.Teacher.Philosophy : "");
+
+    var metaDescription = Model.Teacher.Philosophy != null ? string.Format("Find yoga teacher {0} on YogaClicks. {1}", Model.Teacher.Name, Model.Teacher.Philosophy)
+        : string.Format("{0} is a yoga teacher on YogaClicks. Join us at YogaClicks and connect with {1} and other yogis all over the world.", Model.Teacher.Name, Model.Teacher.Name);
+}
+
+@section LeftNav
+{
+    @if (SecurityContext.IsOwner(Model.Teacher))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeachersNavigation", "Search", new { Action = "Teachers" })
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Teacher.Name" />
+    <meta property="og:description" content="@ogDescription" />
+    <meta name="description" content="@metaDescription">
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new ActivateProfileLinkPartialModel(Model.Teacher.Id, Model.Teacher.EntityTypeName))
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><i class="DiscoverIcon pull-left"></i><span style="color: #786EA1; font-weight: normal">Find</span><span> - Teachers</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Teacher) ? "" : "purple-strip")"></div>
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Teacher) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @if (!Model.Teacher.Stubbed && Model.Profile.OwnerId != null)
+                {
+                    @Html.Action("SuperUserAccessButton", "Account", new { userId = Model.Profile.OwnerId })
+                }
+
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Teacher.Id, SubjectTypeName = Model.Teacher.EntityTypeName })
+
+                @if (SecurityContext.CanUpdate(Model.Teacher))
+                {
+                    <button class="btn btn-default btn-clear btn-sm" style="margin-bottom:5px"  onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                }
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Teacher.Id, SubjectType = Model.Teacher.EntityTypeName })
+
+            <h2 class="purpleHeader teacherHeader " >
+            
+                    @if (Model.Profile != null)
+                    {
+                        <a href="@Url.Action("Display", "Profiles", new {Model.Profile.Id})" class="profileLink "><span>&nbsp;</span></a>
+                    }
+                    <span>&nbsp;</span>
+                <name  class="hidden-xs">
+                    @Html.DisplayFor(m => m.Teacher.Name)
+
+                </name>
+                </h2>
+
+
+            <hr style="margin-top: 7px; margin-bottom:7px;"  />
+
+
+
+
+
+                <div class="profileBanner teacherBanner hidden-xs ">
+
+                
+
+
+                    @if (SecurityContext.CanUpdate(Model.Teacher))
+                    {
+                        if (Model.Teacher.ProfileBanner == null)
+                        {
+                                <a href="@Url.Action("Update")"><img class="img-responsive" src="~/Images/default/profile-no-banner.jpg" /></a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.Teacher.ProfileBanner, "ProfileBanner")
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(m => m.Teacher.ProfileBanner, "ProfileBanner")
+                    }
+                    
+              
+
+                </div>
+
+
+                    <div class="panel with-nav-tabs panel-default">
+                        <div class="panel-heading hidden-xs">
+
+                @Html.Partial("Tabs")
+
+                    </div>
+                        <div class="panel-body">
+
+                            <div class="row nopadding">
+
+
+                                <div class="col-sm-5  profilebuttons">
+                                    <div style="padding-bottom:5px;" class="purpleHeader hidden-lg hidden-md hidden-sm text-center">
+                                        @Html.DisplayFor(m => m.Teacher.Name)
+                                    </div>
+
+
+
+                                    @Html.DisplayFor(m => m.Teacher.Image, "ProfileImage")
+
+
+
+
+
+                                    @Html.Action("Button", "Fans", new {EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName})
+
+
+
+
+                                    @Html.Action("Button", "Recommendations", new {EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName})
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                                        @Html.Action("SendButton", "Messaging", new {SecurityContext.CurrentProfile.Id, EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName})
+                    }
+                                    <br/><br/>
+
+
+                </div>
+                                <div class="col-sm-7 nopadding">
+
+                    @Html.Action("ClaimButton", "Profiles", new { EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName, Id = "", Slug = "" })
+
+
+
+                                    <div class="well buisnesscard" style="vertical-align: middle;">
+
+
+                                        <div class="infocard">
+                                            <span style="font-size: 14px;"> Share : </span>
+                                            @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName })
+                                        </div>
+
+                                        <hr />
+                                        <br />
+                    @if (Model.Teacher.Location != null)
+                    {
+
+                            <h3>
+                                                <i class="fa fa-map-marker @(SecurityContext.IsOwner(Model.Teacher) ? "" : "purple-icon")">&nbsp;</i>
+
+
+                                                <span style="font-size: 18px;">    @Model.Teacher.Location.Name </span>
+                                            </h3>
+                                            <br />
+                                        }
+                            @if (Model.Teacher.Telephone != null)
+                            {
+                                            <h3>
+
+                                                <i class="fa fa-phone @(SecurityContext.IsOwner(Model.Teacher) ? "" : "purple-icon")">&nbsp</i>
+                                                <span style="font-size: 18px;">      @Model.Teacher.Telephone </span>
+                                            </h3>
+                                            <br />
+
+                            }
+                            @if (Model.Teacher.Websites.Count > 0)
+                            {
+                                            <h3>
+                                        @foreach (var website in Model.Teacher.Websites)
+                                        {
+
+
+                                                    <i class="fa fa-globe @(SecurityContext.IsOwner(Model.Teacher) ? "" : "purple-icon")">&nbsp;</i>
+                                                    <span style="font-size: 18px;">
+                                                        <a href="@website.Url" target="_blank">@website.Url</a>
+                                                    </span>
+                                                    <br />
+
+
+
+                                                }
+                                            </h3>
+
+
+                                        }
+
+
+
+                                </div>
+
+
+                        </div>
+
+
+
+
+
+
+                        </div>
+                            <div class="row nopadding">
+                                
+                                    <div class="hidden-md hidden-lg hidden-sm">
+                                        @Html.Partial("Tabsmini")
+                    </div>
+
+                                        @Html.Action("AssociatedPartialProfile", "Galleries", new { EntityId = Model.Teacher.Id, Model.Teacher.EntityTypeName })
+
+
+
+
+
+                                <table class="table table-striped">
+                                    @if (Model.Teacher.Philosophy != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <br />
+                                                <div class="row nopadding">
+                                                    <div class=" col-sm-3 nopadding">
+                                                        <h4>Teaching philosophy</h4>
+                                                    </div>
+                                                    <div class=" col-sm-offset-1  col-sm-8">
+                                                        <p style="margin: 10px 0 10px; font-style: italic;">@Html.NewLines(Model.Teacher.Philosophy)</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                    @if (Model.Teacher.Services.Count > 0)
+                    {
+                                        <tr>
+                                            <td>
+                                                <br />
+                                                <div class="row nopadding">
+                                                    <div class=" col-sm-3 nopadding">
+
+
+                                                        <h4>Services</h4>
+
+
+
+                        </div>
+                                                    <div class=" col-sm-offset-1  col-sm-8">
+
+                                                        <ul class="Halflist">
+                                @foreach (var service in Model.Teacher.Services)
+                                {
+                                    <li>@service.Name</li>
+                                }
+                            </ul>
+
+
+                                                    </div>
+                        </div>
+                                            </td>
+                                        </tr>
+
+                    }
+                    @if (Model.Teacher.Styles.Count > 0)
+                    {
+                                        <tr>
+                                            <td>
+                                                <br />
+                                                <div class="row nopadding">
+                                                    <div class=" col-sm-3 nopadding">
+                                                        <h4>Styles taught</h4>
+
+                                                    </div>
+                                                    <div class=" col-sm-offset-1  col-sm-8">
+                                                        <ul class="Halflist">
+                                                            @foreach (var style in Model.Teacher.Styles)
+                                                            {
+                                                                <li><a href="@Url.Action("Display", "Styles", new {id = @style.Id, slug = @style.UrlSlug})">@style.Name</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                             </td>
+                                        </tr>
+                    }
+
+                    @if (Model.Teacher.Accreditations.Count > 0)
+                    {
+                                        <tr>
+                                            <td>
+                                                <br />
+                                                <div class="row nopadding">
+                                                    <div class=" col-sm-3 nopadding">
+                                                        <h4>Accrediting / registering bodies</h4>
+                        </div>
+                                                    <div class=" col-sm-offset-1  col-sm-8">
+                                                        <ul class="Halflist">
+                                @foreach (var acc in Model.Teacher.Accreditations)
+                                {
+                                                                <li><a href="@Url.Action("Display", "AccreditationBodys", new {id = acc.AccreditationBody.Id, slug = acc.AccreditationBody.UrlSlug})">@acc.AccreditationBody.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                    }
+                                    <tr>
+                                        <td>
+                                            <div class="row nopadding">
+                                                <div class=" col-xs-12 nopadding">
+
+                    @if (Model.Teacher.Qualifications.Count > 0)
+                    {
+                        <hr />
+                        <div class="left">
+                            <h3>My qualifications/ registrations/ designations</h3>
+                        </div>
+                        <div class="right">
+                            <ul>
+                                @foreach (var qualification in Model.Teacher.Qualifications)
+                                {
+                                    <li>@qualification.Name</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    @if (SecurityContext.CanUpdate(Model.Teacher))
+                    {
+                        <div style="clear:both;">
+                            <button class="button save fr" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                        </div>
+                    }
+
+                                                    <div class="meta ">
+                        @if (Model.Teacher.Accreditations.Count > 0)
+                        {
+                            <p>
+                                YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.
+                            </p>
+                        }
+                        @if (Model.Teacher.Accreditations.Count > 0 ||
+                             Model.Teacher.Philosophy != null ||
+                            Model.Teacher.Styles.Count > 0 ||
+                            Model.Teacher.Services.Count > 0 ||
+                            Model.Teacher.Websites.Count > 0 ||
+                            Model.Teacher.Location != null)
+                        {
+                            <p>
+                                These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement,
+                                recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.
+                            </p>
+                        }
+
+                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
+
+
+
+                        </div>
+
+                </div>
+
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        var prImage = Model.Teacher.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Teacher.Image.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+    }
+        <script>
+            $('.facebook-link-div').html('&title=' + '@Model.Teacher.Name');
+            $('.twitter-link-div').html('&text=Find yoga teacher ' + '@Model.Teacher.Name' + ' on YogaClicks');
+            $('.pintrest-link-div').html('&description=Find yoga teacher ' + '@Model.Teacher.Name' + ' on YogaClicks&media=' + '@prImage');
+        </script>
+    }

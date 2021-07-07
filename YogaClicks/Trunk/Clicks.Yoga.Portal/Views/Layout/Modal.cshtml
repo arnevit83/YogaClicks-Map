@@ -1,0 +1,53 @@
+﻿@using System.Web.Optimization
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi?sensor=false"></script>
+        <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+    
+        @Scripts.Render("~/bundles/js/head")
+
+        @Styles.Render("~/bundles/css")
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $('input').attr('autocomplete', 'off');
+            });
+        </script>
+
+        <style type="text/css">
+           .gm-style img {
+                max-width:none !important;
+            }
+        </style>
+
+        @RenderSection("Head", false)
+    </head>
+    <body>
+        @RenderBody()
+        
+        @Scripts.Render("~/bundles/js/body")
+
+        @RenderSection("Scripts", false)
+
+        <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+        <!-- SessionCam Client Integration v6.0 -->
+        <script type="text/javascript">
+            //<![CDATA[
+            var scRec = document.createElement('SCRIPT');
+            scRec.type = 'text/javascript';
+            scRec.src = "//d2oh4tlt9mrke9.cloudfront.net/Record/js/sessioncam.recorder.js";
+            document.getElementsByTagName('head')[0].appendChild(scRec);
+            //]]>
+        </script>
+        <!-- End SessionCam -->
+    </body>
+</html>

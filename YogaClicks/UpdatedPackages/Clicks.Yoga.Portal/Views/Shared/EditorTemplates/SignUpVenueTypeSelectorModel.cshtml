@@ -1,0 +1,78 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpVenueTypeSelectorModel
+
+<div id="@Html.IdFor(m => m)" class="venuetypeselector">
+    <div>
+        <p>
+            <input id="signupradiononresidential" class="signupvenutetype css-checkbox" type="radio" @(Model.SelectedEntity != null && Model.SelectedEntity.Residential ? "checked" : "") name="@(Html.IdFor(m => m))_Radio" data-role="Residential">
+            <label for="signupradiononresidential" class="css-label radGroup2">Residential</label>
+        </p>
+
+        <p>
+            <input id="signupradioresidential" class="signupvenutetype css-checkbox" type="radio" @(Model.SelectedEntity != null && !Model.SelectedEntity.Residential ? "checked" : "") name="@(Html.IdFor(m => m))_Radio" data-role="NonResidential">
+            <label for="signupradioresidential" class="css-label radGroup2">Non-Residential</label>
+        </p>
+    </div>
+
+    @Html.HiddenFor(m => m.Selection)
+
+    <select data-role="NonResidential" style="display: none">
+        <option value="">Ashram, B&amp;B, Beach hut, etc</option>
+
+        @foreach (var type in Model.Options.Where(e => !e.Residential))
+        {
+            <option @(Model.SelectedEntity != null && Model.SelectedEntity.Id == type.Id ? "selected" : "") value="@type.Id">@type.Name</option>
+        }
+    </select>
+
+
+    <select data-role="Residential" style="display: none">
+        <option value="">Ashram, B&amp;B, Beach hut, etc</option>
+
+        @foreach (var type in Model.Options.Where(e => e.Residential))
+        {
+            <option @(Model.SelectedEntity != null && Model.SelectedEntity.Id == type.Id ? "selected" : "") value="@type.Id">@type.Name</option>
+        }
+    </select>
+
+</div>
+
+
+<script>
+    $(function () {
+        var $container = $('#@Html.IdFor(m => m)');
+        var $radios = $container.find('input[type=radio]');
+        var $selects = $container.find('select');
+        var $hidden = $container.find('input[type=hidden]');
+
+        $radios.on('change', function () {
+            var $this = $(this);
+            var role = $this.attr('data-role');
+            var selector = '[data-role=' + role + ']';
+            var checked = $this.is(':checked');
+
+            $(".residentialcheckboxes").slideUp();
+            $("#" + role + "checkboxes").slideDown();
+            $selects.filter(selector).toggle(checked);
+            $selects.not(selector).toggle(!checked);
+            $("#Residentialcheckboxeshr").show();
+
+
+        });
+
+        $selects.on('change', function () {
+            var $this = $(this);
+            $hidden.val($this.val());
+        });
+    });
+
+    $(document).ready(function () {
+
+        //check for previous selection
+        $(".signupvenutetype").each(function () {
+            if ($(this).prop('checked')) {
+                $(this).trigger("change");
+            }
+
+        });
+    });
+</script>

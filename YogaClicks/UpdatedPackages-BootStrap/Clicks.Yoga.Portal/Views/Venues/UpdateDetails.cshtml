@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueDetailsUpdateModel
+
+@using (Html.BeginForm("UpdateDetails", "Venues", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-venue-details-form" }))
+{
+    @Html.HiddenFor(m => m.VenueId)
+
+    @Html.LabelFor(model => model.Name, "Venue name")
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(m => m.EmailAddress, "Email address")
+    @Html.EditorFor(m => m.EmailAddress)
+
+    @Html.LabelFor(m => m.Telephone)
+    @Html.EditorFor(m => m.Telephone)
+
+    @Html.LabelFor(m => m.Websites, "Websites/blog")
+    @Html.EditorFor(m => m.Websites)
+
+    <div class="venueTypeWrap">
+        <strong class="venueType">Venue Type <small>(Changing this will clear selected amenties below)</small></strong>
+        @Html.EditorFor(model => model.Type)
+    </div>
+    <div>
+        <span class="profile-details-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

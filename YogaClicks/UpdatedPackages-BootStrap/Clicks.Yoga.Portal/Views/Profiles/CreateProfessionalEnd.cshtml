@@ -1,0 +1,23 @@
+﻿@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Shared.CloseModalModel
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@{
+    var destination = Model != null ? Model.Destination : null;
+}
+
+<h2 class="greenHeader">Congratulations</h2>
+<hr class="modalHr" />
+
+<h3 class="blackSubHeader">
+    That's the basics done. You can add images or info by clicking on the edit button. <br /><br /><br/>
+    Your professional page(s) will always be visible in searches <br /><br /><br/>
+    Remember you can choose whether to make your personal profile visible or not in your Account Settings <br /><br/><br /><br/><br/>
+</h3>
+<hr />
+
+
+@*<input class="button pink fr large" type="button" value="Close" onclick="top.closeModal(@(Html.Raw(JsonConvert.SerializeObject(destination)))); return false;" />*@
+<a class="button pink fr large" type="button" href="@Url.Action("Update", new { id = SecurityContext.CurrentProfile.Id })">Next</a>

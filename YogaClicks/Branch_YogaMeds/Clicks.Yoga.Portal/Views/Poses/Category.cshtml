@@ -1,0 +1,59 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseCategoryDisplayModel
+
+@{
+    ViewBag.Title = Model.Category.Name;
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {    
+    <meta property="og:title" content="Need to kneel? You've found the right place" />    
+    <meta property="og:description" content="Explore kneeling poses at YogaClicks - why we love them, how to do them, and more" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Pose.Image/4d70bbb8-a42c-44c9-8575-772a824aa554.png" />
+}
+
+@section Title {
+    @Model.Category.Name poses
+    }
+<div id="catContainer" style="position: relative;">
+    <div id="showCats" class="floatRight backgroundColourPractice">
+        <a href="~/poses/categories" class="textColourWhite">Categories</a>
+    </div>
+
+    <div id="catList" class="boxHalfWidth">
+        <ul>
+            <li><a href="~/poses/categories/3">Kneeling</a></li>
+            <li><a href="~/poses/categories/5">Lying face down</a></li>
+            <li><a href="~/poses/categories/6">Lying face up</a></li>
+            <li><a href="~/poses/categories/4">Seated and twists</a></li>
+            <li><a href="~/poses/categories/1">Standing</a></li>
+            <li><a href="~/poses/categories/2">Weight on hands</a></li>
+        </ul>
+    </div>
+</div>
+<div id="goBack" class="floatRight backgroundColourPractice">
+    <a href="~/poses" class="textColourWhite">INDEX</a>
+</div>
+<h1 class="textColourPractice">@Model.Category.Name poses</h1>
+<p class="noMarginLeft">
+    <span style="font-weight: bold">Need a pose? You’re in the right place</span><br />
+    If you know the name of the pose use the search bar<br />
+    Or browse by category – standing, kneeling, lying, etc<br />
+    Or use the <a href="~/poses">Index</a> to browse the poses alphabetically, in English or Sanskrit 
+</p>
+<div id="poseCategories" class="boxFullWidth">
+    <h2 class="textColourPractice"></h2>
+    <ul>
+        @foreach (var pose in Model.Poses)
+        {                
+            <li class="poseThumbContainer">
+                <a href="@Url.Action("Display", new { id = pose.Id })">
+                    <div class="poseThumbImage">@Html.Image(pose.Image, i => i.Resize(c => c.Width(90)), pose.EnglishName + " - " + pose.SanskritName)</div>
+                    <p class="poseThumbTextEnglish textColourPractice">@pose.EnglishName</p>
+                    <p class="poseThumbTextSanskrit textColourPractice">@pose.SanskritName</p>
+                </a>
+            </li>
+        }
+    </ul>
+    <div class="clearBoth"></div>
+    <script src="~/Scripts/categories.js"></script>
+</div>

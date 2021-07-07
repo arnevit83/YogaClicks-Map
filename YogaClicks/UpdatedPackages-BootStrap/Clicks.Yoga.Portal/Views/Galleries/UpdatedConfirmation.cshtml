@@ -1,0 +1,21 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            if (parent.$.fancybox == null || parent.$.fancybox.current == null)
+                return;
+            parent.$.fancybox.current.height = 150;
+            parent.$.fancybox.update();
+        }, 0);
+    })
+</script>
+<div class="successLightbox">
+    <h2 class="greenHeader">All done.</h2>
+
+    <p>Your gallery has been updated.</p>
+</div>
+<input class="button pink fr large" type="button" value="Close" onclick="top.closeModal(); return false;"/>

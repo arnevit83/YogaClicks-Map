@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleDirectoryNavigationModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters styleDirectory" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h2>Style directory</h2>
+                <p>There are many paths to Oneness. From Acro to Yin.</p>
+                <nav class="filter">
+                @foreach (var style in Model.Styles.OrderBy(e => e.Name))
+                {
+                    @Html.ActionLink(style.Name, "Display", "Styles", new { id = style.Id, slug = style.UrlSlug }, new { })
+                }
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>

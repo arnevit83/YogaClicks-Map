@@ -1,0 +1,37 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionDescriptionModel
+
+<div class="block-section">
+    @using (Html.BeginForm("UpdateDescription", "Medic", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-condition-description-form" }))
+    {
+        @Html.HiddenFor(x => x.Id)
+
+    <div class="row">
+        @Html.LabelFor(m => m.ImageCourtesyOf, "Image credit")
+        @Html.EditorFor(m => m.ImageCourtesyOf)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.Description, "About")
+        @Html.TextAreaFor(m => m.Description)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.MetaTitle, "Meta title")
+        @Html.EditorFor(m => m.MetaTitle)
+    </div>
+        
+    <div class="row">
+        @Html.LabelFor(m => m.MetaDescription, "Meta description")
+        @Html.EditorFor(m => m.MetaDescription)
+    </div>
+
+
+        <div class="condition-save-btn-container">
+            <span class="profile-details-saved-text">Changes Saved</span>
+            <button type="submit" class="button save fr">
+                Save changes &nbsp;
+                <img src="/images/icon-save.png">
+            </button>
+        </div>
+    }
+</div>

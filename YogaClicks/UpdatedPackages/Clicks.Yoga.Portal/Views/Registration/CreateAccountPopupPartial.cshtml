@@ -1,0 +1,137 @@
+﻿@model Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel
+
+
+
+@Html.HiddenFor(m => m.Professional)
+
+@if (!Html.ValidationSummary().ToString().Contains("validation-summary-valid"))
+{
+    <div class="validation-summary-errors alert alert-warning  ">
+        <b>Oh snap!</b>
+        @Html.ValidationSummary()
+    </div>
+}
+
+
+
+
+
+<div class="sign-up-buttons-container">
+    <div class="row nopadding">
+        <div class="col-sm-6 Smallpadding">
+            <a class="btn btn-block btn-social btn-facebook centerAlign  fbButton"><i class="fa fa-facebook btn-sociallogin"></i>&nbsp;Sign up with <span class="hidden-xs"><br></span>Facebook</a>
+
+
+
+
+        </div>
+        <div class="col-sm-6  Smallpadding">
+            <span class="hidden-md hidden-lg hidden-sm" style="margin:4px;">&nbsp;</span>
+            <a class="btn btn-block btn-social btn-reddit centerAlign  email-signup-button"><i class="fa fa-envelope btn-sociallogin"></i>&nbsp;Sign up with <span class="hidden-xs"><br></span>your email</a>
+
+        </div>
+    </div>
+</div>
+
+<div class="email-reg-form">
+    @if (!Model.Professional)
+    {
+        @Html.TextBoxFor(m => m.Forename, new { placeholder = "First name", style = "height:auto!important;width:47%;display: inline!important", @class = "form-control" })
+
+        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Last name", style = "height:auto!important;width:47%; float: right;display: inline!important", @class = "form-control" })
+    }
+
+    @Html.TextBoxFor(m => m.Username, new { placeholder = "Email address", style = "height:auto!important;width:100%;", @class = "form-control" })
+
+    @Html.PasswordFor(m => m.Password, new { placeholder = "Create password", style = "height:auto!important;width:100%;", @class = "form-control" })
+
+    @Html.PasswordFor(m => m.PasswordConfirmation, new { placeholder = "Confirm password", style = "height:auto!important;width:100%;", @class = "form-control" })
+
+    <div class="buttons btn-group btn-group-justified">
+        <div class="buttonsLeft">
+            <button class="btn btn-default btn-clear sign-up-back" type="button">Back</button>
+        </div>
+
+        <div class="reg-signup-button">
+            <button class="btn btn-custom activeSignup" type="submit">Sign up</button>
+            <button class="btn btn-custom btnDisabled disabledSignUp" style="font-size: 16px;" type="button">Sign up</button>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row nopadding">
+    <div class="col-sm-12 ">
+
+        <div class="reg-login-option-container">
+            <div class="orline">
+                <span class="orlineOr">OR</span>
+            </div>
+            <div class="loginButton reg-login-button-container">
+                <a href="#" class="btn btn-custom center-block loginRevealBtnRegisterPopUp reg-login-button">Log in</a>
+            </div>
+        </div>
+        <br />
+        <div class="not-now-container">
+            <a class="not-now" href="javascript:myClose;parent.$.fancybox.close();"><sub>Not now</sub></a>
+        </div>
+
+
+        <div class="term-of-use-form-section">
+            Signing up, or signing in with Facebook, indicates you agree to our <a href="/static/terms-of-use">terms of use</a>.
+        </div>
+    </div>
+</div>
+@if (!Html.ViewData.ModelState.IsValid)
+{
+    <script type="text/javascript">
+        $('.sign-up-buttons-container').hide();
+        $('.reg-login-option-container').hide();
+        $('.not-now-container').hide();
+        $('.email-reg-form').show();
+
+    </script>
+}
+
+<script>
+    $('.email-signup-button').click(function () {
+        $('.sign-up-buttons-container').hide();
+        $('.reg-login-option-container').hide();
+        $('.not-now-container').hide();
+        $('.email-reg-form').show();
+        $('.validation-summary-errors').show();
+        $('#Forename').focus();
+    });
+
+    $('.sign-up-back').click(function (e) {
+        e.preventDefault();
+
+        $('.sign-up-buttons-container').show();
+        $('.reg-login-option-container').show();
+        $('.not-now-container').show();
+        $('.email-reg-form').hide();
+        $('.validation-summary-errors').hide();
+    });
+
+    $('.loginRevealBtnRegisterPopUp').click(function () {
+        //close popup
+        myClose();
+        closeModal();
+        $('.loginReveal').slideDown();
+        $('#Username').focus();
+
+    });
+    $('.LoginlogoClose').click(function () {
+        //close popup
+        myClose();
+        closeModal();
+    });
+
+
+    $('.fbButton').on('click', function (e) {
+        e.preventDefault();
+        facebookConnect(function () { window.location.href = "/static/Trending"; });
+    });
+</script>

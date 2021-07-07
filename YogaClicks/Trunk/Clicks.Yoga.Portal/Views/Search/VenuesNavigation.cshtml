@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchVenuesNavigationModel
+
+@{
+    ViewBag.VenueTypeSelectorModelField = "VenueType";
+}
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h1>Venues</h1>
+                <h4>Refine your search</h4>
+
+                @using (Html.BeginForm(Model.Action, "Search", FormMethod.Get))
+                {
+                    <label>Venue name</label>
+
+                    @Html.TextBox("Keywords", Model.Criteria.Keywords)
+
+                    <label>Location</label>
+
+                    @Html.TextBox("Location", Model.Criteria.Location, new { data_role = "Location", autocomplete = "off", placeholder = "You must enter a location - town, country etc." })
+
+                    <div id="LocationSuggestions" data-role="LocationSuggestions"></div>
+
+                    @Html.Hidden("Latitude", Model.Criteria.Latitude, new { data_role = "Latitude" })
+                    @Html.Hidden("Longitude", Model.Criteria.Longitude, new { data_role = "Longitude" })
+                    @Html.Hidden("Radius", Model.Criteria.Radius, new { data_role = "Radius" })
+
+                    <label>Style</label>
+
+                    @Html.DropDownList("Style", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.Style), "Please select")
+
+                    if (SecurityContext.IsYogaMeds())
+                    {
+                        // DEPLOYMENT OF YODAMEDS - remove this
+                        <label>YogaMeds</label>
+
+                        @Html.DropDownList("Condition", new SelectList(Model.Conditions, "Id", "Name", Model.Criteria.Condition), "Please select")
+                    }
+
+                    <label>Service</label>
+
+                    @Html.DropDownList("VenueService", new SelectList(Model.Services, "Id", "Name", Model.Criteria.VenueService), "Please select")
+
+                    <label>Type</label>
+
+                    @Html.EditorFor(m => m.VenueTypes)
+
+                    <button type="submit" class="silver button" data-role="SearchSubmit">Search</button>
+                    <input type="reset" class="silver button" value="Clear Form" />
+                    <a href="@Url.Action("Venues")" class="silver button showAllButton">Show All</a>
+                    <input type="submit" value="Search" class="hidden" />
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(function () {
+        $('#navwrap').yogaLocationPicker({ autocode: true });
+    });
+</script>

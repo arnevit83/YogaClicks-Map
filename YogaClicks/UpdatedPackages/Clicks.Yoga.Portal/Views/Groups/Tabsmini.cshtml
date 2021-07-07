@@ -1,0 +1,104 @@
+﻿
+
+<div class="well">
+    <h4>Explore</h4>
+
+    <div class="infocard">
+
+
+    </div><hr /><br />
+
+    
+
+
+
+            @if (Model.Permissions.Access)
+            {
+                <div class="row nopadding mininav">
+                    <div class="col-xs-4 nopadding">
+                        <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourfeed" href="@Url.Action("Wall")">
+                            <div class="center-block text-center navmenuIconmini">
+
+                                <i class="fa fa-newspaper-o "></i><br /> Wall
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-4 nopadding">
+                        <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourfeed" href="@Url.Action("Members")">
+                            <div class="center-block text-center navmenuIconmini">
+
+                                <i class="fa fa-users "></i><br /> Members
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-4 nopadding">
+                        <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourfeed" href="@Url.Action("Galleries")">
+                            <div class="center-block text-center navmenuIconmini">
+
+                                <i class="fa fa-picture-o "></i><br /> Galleries
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            }
+
+
+                    <div class="row nopadding mininav">
+
+
+
+                        <div class="col-xs-4 nopadding">
+                            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourfeed" href="@Url.Action("Profile")">
+                                <div class="center-block text-center navmenuIconmini">
+
+                                    <i class="fa fa-user "></i><br /> Promoter
+
+                                </div>
+                            </a>
+                        </div>
+
+
+
+
+
+
+                        @if (Model.Permissions.Manage)
+                        {
+
+                            <div class="col-xs-4 nopadding">
+                                <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourfeed" href="@Url.Action("Settings")">
+                                    <div class="center-block text-center navmenuIconmini">
+
+                                        <i class="fa fa-cog "></i><br /> Settings
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div style="width: 100%; margin: 2px" class="col-xs-4">&nbsp;</div>
+                        }
+
+
+                        <div style="width: 100%; margin: 2px" class="col-xs-4">&nbsp;</div>
+                    </div>
+
+
+
+
+
+</div>
+
+
+
+            
+  

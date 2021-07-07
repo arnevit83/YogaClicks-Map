@@ -1,0 +1,73 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassStep3Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateClassStep3", "Activities"))
+{
+    //  @Html.Serialize("CreateModel", ViewBag.CreateModel as ActivityCreateClassModel)
+    @Html.Hidden("CreateModel02", new MvcSerializer().Serialize((ActivityCreateClassModel)ViewBag.CreateModel02, SerializationMode.Signed))
+
+    @Html.ValidationSummary()
+        <h2 class="greenHeader">Create a new event: Class</h2>
+    <hr class="modalHrSteps" />
+        <ul class="steps steps5">
+            <li><span>Step 1</span></li>
+            <li><span>Step 2</span></li>
+            <li class="active"><span>Step 3</span></li>
+            <li><span>Step 4</span></li>
+            <li><span>Step 5</span></li>
+        </ul>
+    <div class="activity-meta scrollableiFrame create-class-activitys-container">
+        <div class="row inlineInputRow">
+            @Html.LabelFor(m => m.BookingRequired, "Booking required")
+            @Html.EditorFor(m => m.BookingRequired, new { TrueText = "Required", FalseText = "Not required" })
+        </div>
+    
+        <div class="row">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.Price)
+                @Html.TextBoxFor(m => m.Price, new { placeholder = "e.g. £5 per person, £4 concessions"})
+
+            </div>
+        </div>
+    
+        <div class="row">
+                @Html.LabelFor(m => m.Description)
+                @Html.TextAreaFor(m => m.Description, new { placeholder = "This is what will be seen when shared to social media sites", style = "width: 99%" })
+        </div>
+    
+        <div class="row block-section styles-taught-section">
+            <!--@Html.LabelFor(m => m.Styles)-->
+            @Html.EditorFor(m => m.Styles)
+        </div>
+
+            <div class="row block-section conditions-taught-section">
+                @Html.EditorFor(m => m.Conditions)
+            </div>
+
+    </div>
+    
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+
+    @Html.HiddenFor(m => m.Back)
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#BackButton").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+            $(this).closest("form").submit();
+        });
+    });
+</script>

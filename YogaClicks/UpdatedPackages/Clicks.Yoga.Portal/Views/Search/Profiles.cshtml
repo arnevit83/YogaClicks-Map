@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchProfilesModel
+
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col discover-strip" id="scroll">
+        <div>
+            <header class="search-results">
+                <h1>Search results</h1>
+                <p>Showing @Model.Response.Results.Count results based on your search for '@Model.Criteria.Keywords'</p>
+            </header>
+            <div id="resultContainer">
+                @foreach (var result in Model.Response.Results)
+                {
+                    @Html.Partial("SearchResultPartial", result)
+                }
+            </div>
+            @Html.Partial("Disclaimer", "Shared")
+
+
+        </div>
+    </div>
+</div>

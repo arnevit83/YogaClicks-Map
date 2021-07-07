@@ -1,0 +1,54 @@
+﻿.sidr {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .sidr ul li:hover > a,
+    .sidr ul li:hover > span,
+    .sidr ul li.active > a,
+    .sidr ul li.active > span,
+    .sidr ul li.sidr-class-active > a,
+    .sidr ul li.sidr-class-active > span {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .sidr ul li:hover,
+    .sidr ul li.active,
+    .sidr ul li.sidr-class-active {
+        border-top: 1px solid #dfdfdf;
+        line-height: 48px;
+    }
+
+.panel-body {
+    padding: 0;
+}
+
+.panel-group {
+    margin-bottom: 0;
+}
+
+.sidr input[type="text"],
+.sidr input[type="password"],
+.sidr input[type="date"],
+.sidr input[type="datetime"],
+.sidr input[type="email"],
+.sidr input[type="number"],
+.sidr input[type="search"],
+.sidr input[type="tel"],
+.sidr input[type="time"],
+.sidr input[type="url"],
+.sidr textarea,
+.sidr select {
+    background-color: white;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    color: #333;
+}
+
+.sidr.right {
+    background-color: #f2f2f2;
+}

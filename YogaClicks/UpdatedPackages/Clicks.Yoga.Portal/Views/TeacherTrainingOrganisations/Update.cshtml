@@ -1,0 +1,250 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations
+@model OrganisationUpdateModel
+
+@{
+    ViewBag.Title = "Edit teacher training profile";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search")
+    }
+}
+
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                @(!SecurityContext.IsOwner(Model) ? Html.Raw("<img src='/images/svgicons/Icon_OrgPurple.svg' data-svgpng='/images/SvgIcons/Icon_OrgPurple.png'/><span style='color: #786EA1; font-weight: normal'>Teacher training</span><span></span>") : Html.Raw("<img src='/images/svgicons/Icon_OrgTeal.svg' data-svgpng='/images/SvgIcons/Icon_OrgTeal.png' /><span style='color: #459088; font-weight: normal'>Teacher training</span><span></span>"))
+            </h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+    </div>
+</section>
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model) ? "" : "purple-strip")"></div><br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+
+            <article id="">
+
+                <h2 class="purpleHeader teacherHeader">
+                    @(!SecurityContext.IsOwner(Model) ? Html.Raw("<img src='/images/svgicons/Icon_OrgPurple.svg' data-svgpng='/images/SvgIcons/Icon_OrgPurple.png'/><name style='color: #786EA1; font-weight: normal'> Edit teacher training profile</name>") : Html.Raw("<img src='/images/svgicons/Icon_OrgTeal.svg' data-svgpng='/images/SvgIcons/Icon_OrgTeal.png' /><name style='color: #459088; font-weight: normal'> Edit teacher training profile</name>"))
+
+
+
+                    <button class="btn btn-clear btn-default pull-right " onclick="location.href = '@Url.Action("Display")'; return false;"><i class="fa fa-chevron-left"></i> Back To Profile</button>
+
+                </h2>
+                <hr style="margin-top: 7px; margin-bottom:7px;">
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        @Html.Partial("Tabs")
+
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+
+
+                                <div>
+                                    <h3 class="fl">Organisation profile</h3>
+                                </div>
+
+                                @Html.Partial("UpdateBanner", new OrganisationBannerUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  ProfileBanner = Model.ProfileBanner
+              })
+
+                                <div id="cropfancybox" style="display: none">
+                                    <div id="upload-cut">
+                                        <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+                                    </div>
+                                </div>
+
+                                <div class="block-section">
+                                    <h3>Contact details</h3>
+                                    <div class="left-col fl profile-pic-wrap">
+                                        @Html.Partial("UpdateImage", new OrganisationImageUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Image = Model.Image
+              })
+                                    </div>
+
+                                    <div class="right-col fr">
+                                        @Html.Partial("UpdateDetails", new OrganisationDetailsUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  EmailAddress = Model.EmailAddress,
+                  Founder = Model.Founder,
+                  Name = Model.Name,
+                  Website = Model.Website
+              })
+
+                                    </div>
+                                </div>
+                                <div class="block-section organisationHq">
+                                    @Html.Partial("UpdateLocation", new OrganisationLocationUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Address = Model.Address
+              })
+                                </div>
+
+                                <div class="block-section full-width-textarea-wrap">
+                                    @Html.Partial("UpdateAbout", new OrganisationAboutUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Description = Model.Description
+              })
+                                </div>
+
+                                <div class="block-section styles-taught-section">
+                                    @Html.Partial("UpdateStyles", new OrganisationStylesUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Styles = Model.Styles
+              })
+                                </div>
+
+                              
+
+                                    <div class="block-section conditions-taught-section">
+                                        @Html.Partial("UpdateConditions", new OrganisationConditionsUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Conditions = Model.Conditions
+              })
+                                    </div>
+                                
+
+
+
+                                <div>
+                                    @*<span class="fl profileDelete button blockButton">
+                                        <span>&nbsp;</span>
+                                        @Html.Action("DeleteButton", "Profiles", new { Model.EntityId, Model.EntityTypeName, Securable = Model })
+                                    </span>*@
+                                    @Html.Action("UnclaimButton", "Profiles", new { Model.EntityId, Model.EntityTypeName, Id = "", Slug = "" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#update-details-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateDetails")', $form.serialize(), $('.profile-details-saved-text'));
+            return false;
+        });
+
+        $('#update-location-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateLocation")', $form.serialize(), $('.venue-location-saved-text'));
+            return false;
+        });
+
+        $('#update-about-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateAbout")', $form.serialize(), $('.venue-about-saved-text'));
+            return false;
+        });
+
+        $('#update-styles-image-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateStyles")', $form.serialize(), $('.venue-styles-saved-text'));
+            return false;
+        });
+
+        $('#update-styles-condtions-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateConditions")', $form.serialize(), $('.venue-conditions-saved-text'));
+            return false;
+        });
+
+        function postForm(url, data, saveText) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                async: true,
+                data: data,
+                success: function (html) {
+                    saveText.fadeIn(500);
+                    setTimeout(function () {
+                        saveText.fadeOut(500);
+                    }, 2000);
+                }
+            });
+        };
+
+    </script>
+}

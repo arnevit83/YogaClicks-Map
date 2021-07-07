@@ -1,0 +1,11 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpTeacherServiceChooserModel
+
+@foreach (var body in Model.Options)
+{
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="purple-signup-checkbox">
+            @Html.CheckBoxFor(m => m.Selection[body.Id], new { @class = "css-checkbox" })
+            @Html.LabelFor(m => m.Selection[body.Id], body.Name, new { @class = "css-label purple-text" })
+        </div>
+    </div>
+}

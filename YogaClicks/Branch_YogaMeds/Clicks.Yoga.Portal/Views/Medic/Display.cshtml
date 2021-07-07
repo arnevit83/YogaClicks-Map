@@ -1,0 +1,200 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionDisplayModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+    var metaDescription = Model.Condition.MetaDescription ?? "";
+    var metaTitle = Model.Condition.MetaTitle ?? "";
+    ViewBag.Title = metaTitle;
+    var prImage = Model.Condition.ProfileBanner != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Condition.ProfileBanner.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+}
+
+@section Head {
+    <meta property="og:title" content="@metaTitle" />
+    <meta property="og:description" content="@metaDescription" />
+    <meta property="og:image" content="prImage" />
+
+    <meta property="title" content="@metaTitle" />
+    <meta property="description" content="@metaDescription" />
+    <meta property="image" content="prImage" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="medic-strip content-col" id="scroll">
+        <section id="style-info" role="style-info">
+            <article id="description" class="clearfix rating-description">
+
+                <h1 class="medicHeader"><span>&nbsp;</span>@Model.Condition.Name</h1>
+
+                <div class="shareRecommendSection medic">
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Condition.Id, Model.Condition.EntityTypeName, condition = true })
+                    </div>
+                </div>
+
+                <div class="imgtxt imgScale" style="margin-left:0;">
+                    @Html.Image(Model.Condition.ProfileBanner, i => i.Resize(c => c.Width(715).ScaleBoth()), Model.Condition.Name)
+                    @if (!string.IsNullOrEmpty(Model.Condition.ImageCourtesyOf))
+                    {
+                        <span>@Model.Condition.ImageCourtesyOf</span>
+                    }
+                </div>
+                <div class="medic-button-container">
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <a class="silver button reg-form-popup" href="mailto:study@yogaclicks.com?subject=I've got a study for YogaMeds&body=Link to the study:%0D%0A%0D%0AStudy title:%0D%0A%0D%0Aand/or DOI (Digital Object Identifier):">Tell us about a study</a>
+                    }
+
+                    else
+                    {
+                        <a class="silver button reg-form-popup" href="/">Tell us about a study</a>
+                    }
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <button onclick="openModal('@Url.Action("TellUs", new { conditionId = Model.Condition.Id })')" class="button silver">Tell us your story</button>
+                    }
+
+                    else
+                    {
+                        <a class="silver button reg-form-popup" href="/">Tell us your story</a>
+                    }
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <span class="follow-button-container">
+                            @Html.Action("FollowButton", new { Id = Model.Condition.Id })
+                        </span>
+                    }
+
+                    else
+                    {
+                        <a class="silver button reg-form-popup" href="/">Subscribe</a>
+                    }
+
+                    @if (SecurityContext.IsSuperUser())
+                    {
+                        <a href="@Url.Action("Update")" class="silver button">Super User - Edit</a>
+                    }
+                </div>
+                <div>
+                    <div class="meds-about">
+                        <div class="leftCol">
+                            <h4>About</h4>
+                        </div>
+                        <div class="rightCol">
+                            <p>@Html.Raw(Model.Condition.Description)</p>
+                        </div>
+                        <hr />
+                    </div>
+                    @Html.Action("WhatTheScienceSays", new { conditionId = Model.Condition.Id })
+                    @Html.Action("Studies", new { conditionId = Model.Condition.Id })
+                    @Html.Action("UserStories", new { conditionId = Model.Condition.Id })
+                    <div class="left discoverLeft medic">
+                        <h4>Find</h4>
+                        <p>Use these buttons to find teachers, venues and teacher training for this condition</p>
+                    </div>
+                    <div class="right discoverButtons medic">
+                        <button class="button discoverPanel teachersButton" onclick="location.href = '/search/teachers?condition=@Model.Condition.Id'; return false">Teachers<span>&nbsp;</span></button>
+                        <button class="button discoverPanel venuesButton" onclick="location.href = '/search/venues?Condition=@Model.Condition.Id'; return false">Venues<span>&nbsp;</span></button>
+                        <button class="button discoverPanel teacherTrainingButton" onclick="location.href = '/search/teachertrainingorganisations?Condition=@Model.Condition.Id'; return false">Teacher training<span>&nbsp;</span></button>
+                    </div>
+                    <div class="meta">
+                        <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                        <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('.study-title-row').click(function (e) {
+            var $this = $(this),
+            $thisInfo = $this.next($('.study-info')),
+            $thisArrow = $this.find('.arrow'),
+            $container = $this.parent('.single-study-container');
+
+            $('.study-info').not($thisInfo).hide();
+            $('.study-title-row .arrow').not($thisArrow).removeClass('up');
+            $('.single-study-container').not($container).removeClass('open-study');
+            $thisInfo.toggle();
+            $thisArrow.toggleClass('up');
+            $container.toggleClass('open-study');
+        });
+
+
+
+
+
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        };
+
+        $(document).ready(function () {
+          
+            var study = $("#" + getUrlParameter("StudyID")),
+            $thisInfo = study.next($('.study-info')),
+            $thisArrow = study.find('.arrow'),
+            $container = study.parent('.single-study-container');
+
+            $('.study-info').not($thisInfo).hide();
+            $('.study-title-row .arrow').not($thisArrow).removeClass('up');
+            $('.single-study-container').not($container).removeClass('open-study');
+            $thisInfo.toggle();
+            $thisArrow.toggleClass('up');
+            $container.toggleClass('open-study');
+            var Study = document.getElementById(getUrlParameter("StudyID"));
+            Study.focus();
+            Study.scrollIntoView();
+
+
+        });
+
+
+        $('.therapy-type-title-row').click(function (e) {
+            var $this = $(this),
+            $thisAttr = $this.next($('.therapy-attribute-container'));
+            $thisArrow = $this.find('.arrow');
+
+            $('.therapy-attribute-container').not($thisAttr).hide();
+            $('.therapy-type-title-row .arrow').not($thisArrow).removeClass('up');
+            $thisAttr.toggle();
+            $thisArrow.toggleClass('up');
+        });
+
+        $('.user-story-title-row').click(function (e) {
+            var $this = $(this),
+            $thisInfo = $this.next($('.user-story-info')),
+            $thisArrow = $this.find('.arrow');
+            $container = $this.parent('.single-story-container');
+
+            $('.user-story-info').not($thisInfo).hide();
+            $('.user-story-title-row .arrow').not($thisArrow).removeClass('up');
+            $('.single-story-container').not($container).removeClass('open-story');
+            $thisInfo.toggle();
+            $thisArrow.toggleClass('up');
+            $container.toggleClass('open-story');
+        });
+
+        $('.facebook-link-div').html('&title=' + '@Model.Condition.Name');
+        $('.twitter-link-div').html('&text=' + '@Model.Condition.MetaTitle' + ' - find out more @@YogaClicks&hashtags='+ '@Model.Condition.Name.Replace(" ", "")');
+        $('.pintrest-link-div').html('&description=' + '@Model.Condition.MetaTitle' + ' on YogaClicks&media=' + '@prImage');
+
+    </script>
+}

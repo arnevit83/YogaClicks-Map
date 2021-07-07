@@ -1,0 +1,176 @@
+﻿@model Clicks.Yoga.Portal.Models.Account.AccountLoginModel
+<div id="login-container ">
+
+    <div class="login-links ">
+
+      
+            
+        @*<nav class="navbar navbar-custom ">
+            <div class="container-fluid nopadding">
+                <!-- Brand and toggle get grouped for better mobile display navbar-default -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div style="height: 1px;" class="collapse navbar-collapse nopadding " id="bs-example-navbar-collapse-1">
+
+
+                    <ul class="nav navbar-nav navbar-right nopadding mainlinkcolour">
+                        <li><a href="/YogaMap?lg=true">Stories</a></li>
+                        <li><a href="/YogaMeds?lg=true">Studies</a></li>
+                        <li><a href="#" onclick="javascript: ShopClick();">Shop</a></li>
+
+                      
+                        <li><a class="green-text" href="#" data-toggle="modal" data-target="#Manifesto">Manifesto</a></li>
+                        <li><a href="http://blog.yogaclicks.store">Blog</a></li>
+                       @if (SecurityContext == null || !SecurityContext.Authenticated)
+                       {
+
+                            <li>
+                                <a class="registerRevealBtn" href="#">Join</a>
+                            </li>
+    <li>
+        <a class="loginRevealBtn" href="#">Login</a>
+    </li>
+                       }
+                       else
+                       {
+                        <li>
+                            <a href="/account/logout">Logout</a>
+                        </li>
+                          
+                       }
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>*@
+
+</div>
+
+</div>
+@if (!SecurityContext.Authenticated)
+{
+  
+
+
+    <div class="loginReveal">
+
+        @using (Html.BeginForm("Authenticateblank", "Account", FormMethod.Post, new {@class = "login ", id = "login-form"}))
+        {
+
+
+            @Html.Hidden("Destination", Request.QueryString["Destination"])
+            <span aria-label="Close" class="pull-right loginRevealBtn Login-Close close" title="Close"><span aria-hidden="true">×</span></span>
+
+            if (!string.IsNullOrEmpty(Model.Validation))
+            {
+                <br/>
+                <div class="validation-summary-errors alert alert-danger ">
+                    @Model.Validation
+                </div>
+            }
+
+
+            <p class="pull-left"><strong>Please enter your login details</strong>
+            </p>
+
+
+
+            @Html.TextBoxFor(m => m.Username, new {placeholder = "Email address", style = "margin-right: 3px; margin-bottom: 5px; margin-top: 10px"})
+
+
+
+            @Html.PasswordFor(m => m.Password, new {placeholder = "Password", style = "margin-bottom: 5px;"})
+
+
+
+            <input type="hidden" name="@Html.NameFor(m => m.Destination)" id="@Html.IdFor(m => m.Destination)" value="@ViewContext.Controller.ControllerContext.HttpContext.Request.Url.PathAndQuery"/>
+
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.Persist) <span style="vertical-align: sub;">Keep me logged in</span>
+                </label>
+            </div>
+
+
+
+
+
+            <div class="btnWrap">
+
+
+                <a href="#" id="fbLoginButton" style="display: block; width: 48%; float: left" class="btn btn-social btn-facebook ">
+                    <i class="fa fa-facebook"></i>
+                    Sign in
+                </a>
+
+
+                <button type="button" id="login-button" style="display: block; width: 48%; float: left" class="btn btn-custom ">Log in</button>
+
+
+
+                <small><a href="@Url.Action("passwordresetrequest", "account")">Forgotten password? </a></small>
+            </div>
+        }
+
+
+        @if (!string.IsNullOrEmpty(Model.Destination))
+        {
+            @Html.HiddenFor(m => m.Destination)
+        }
+    </div>
+}
+
+        
+        
+        
+        
+        
+        @*
+            <form class="clearfix">
+                <legend>Previewers, <span>nice to meet you</span></legend>
+                <button class="button yellow" onclick="location.href = '@Url.Action("createaccount", "registration")'; return false;">Sign up</button>
+                <a href="#" id="fbButton" class="facebook"><img src="/images/buttons/sign-up-with-facebook.gif" alt="Sign up with facebook" width="154" height="25"></a>
+            </form>
+        *@
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#fbLoginButton').on('click', function (e) {
+                    e.preventDefault();
+                    facebookConnect(function() {
+                        var newUrl = window.location.href;
+                        if (newUrl.indexOf("register") > 0) {
+                            newUrl = "/";
+                        } else {
+                            newUrl = window.location.href.replace("#", "");
+                        }
+                        window.location.replace(newUrl);
+                    });
+                });
+
+            });
+            function ShopClick() {
+                analytics.identify({
+
+                    type: 'identify',
+
+                    traits: {
+                        'Shop-visited': 'true'
+                    }
+
+                }, function () {
+                    $(location).attr('href', 'https://www.yogaclicks.store/');
+
+                });
+            }
+        </script>
+

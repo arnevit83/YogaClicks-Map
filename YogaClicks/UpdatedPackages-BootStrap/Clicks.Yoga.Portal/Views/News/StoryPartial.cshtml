@@ -1,0 +1,9 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.NewsStoryModel
+
+<div data-role="Story" data-id="@Model.Id" class="story">
+    @Html.Partial(Model.ViewPath, Model)
+
+    <div style="border-left:1px solid #e5e5e5; padding: 10px 0 0 10px; margin-left: 56px">
+        @Html.Action("CommentsPartial", "Comments", new { entityId = Model.Id, entityTypeName = Model.EntityTypeName })
+    </div>
+</div>

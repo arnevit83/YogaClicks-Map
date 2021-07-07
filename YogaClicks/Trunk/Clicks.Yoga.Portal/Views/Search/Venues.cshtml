@@ -1,0 +1,97 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchVenuesModel
+
+@{
+    ViewBag.Title = "Venues";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav{
+    @Html.Action("VenuesNavigation", new { Action = "Venues" })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="style-finder content-col search-content-col discover-strip" id="scroll">
+        <div>
+            <header class="search-results">
+                <div class="fr">
+                    @using (Html.BeginForm("Venues", null, FormMethod.Get, new { style = "display: inline;" }))
+                    {
+                        @Html.Partial("CriteriaHidden", Model.Criteria)
+                        <button type="submit" class="list-view active">List View</button>
+                    }
+
+                    @using (Html.BeginForm("VenuesMap", null, FormMethod.Get, new { style = "display: inline;" }))
+                    {
+                        @Html.Partial("CriteriaHidden", Model.Criteria)
+                        <button type="submit" class="map-view">Map View</button>
+                    }
+
+                </div>
+
+                <p class="fl">@Model.PageDescription</p>
+
+                @Html.Partial("Sort", Model.Criteria)
+
+            </header>
+            <div id="resultContainer" class="padTop20">
+                <section class="search-group venueSearchResults">
+                    @if (!SecurityContext.Authenticated)
+                    {
+                        <article class="result advertResult noAuth-tile">
+                            <strong class="headerText">Do you own/manage a venue?</strong>
+                            <div class="noAuth-tile-image"><img src="~/Images/tile-icons/noAuth-venue-tile.jpg" /></div>
+                            <strong class="inviteText">Create your venue page</strong>
+                            <a class="silver button nonAuth-join-tile-btn reg-form-popup" href="/">Join Us</a>
+                        </article>
+                    }
+                    <article class="result advertResult">
+                        <strong class="headerText">Can't find your<br /> favourite venue?</strong>
+                        <span class="image venueImage">
+                            &nbsp;
+                        </span>
+                        <strong class="inviteText">Invite them now...</strong>
+                        <ul>
+                            <li class="facebook"><a href="http://www.facebook.com/share.php?u=http://www.yogaclicks.com&title=Join me on YogaClicks" target="_blank" class="silver button"><span>&nbsp;</span>Facebook</a></li>
+                            <li class="twitter"><a href="http://twitter.com/home?status=Join me on YogaClicks+http://www.yogaclicks.com" target="_blank" class="silver button"><span>&nbsp;</span>Twitter</a></li>
+                            <li class="googleplus"><a href="https://plus.google.com/share?url=http://www.yogaclicks.com" target="_blank" class="silver button"><span>&nbsp;</span>Google +</a></li>
+                            <li class="email"><a data-role="InviteByEmailButton" data-action="@Url.Action("InviteFriendsByEmail", "Invitations")" href="javascript:void(0)" class="silver button"><span>&nbsp;</span>Email</a></li>
+                        </ul>
+                    </article>
+                    <script>
+                        $('article.advertResult').yogaInvitationButtons();
+                    </script>
+
+                    @foreach (var result in Model.Results)
+                    {
+                        @Html.Partial("SearchResultPartial", result)
+                    }
+
+                    @if (Model.Response.TotalCount == 0)
+                    {
+                        <div id="search-no-results">
+                            <h2 class="greenHeader">Search Results</h2>
+                            <h3 class="cb blackSubHeader">
+                                <br />
+                                We are sorry that your search returned no results.
+                                <br /><br /><br />
+                                Please use different search criteria to find more results.
+                                <br /><br />
+                            </h3>
+                        </div>
+                    }
+                </section>
+
+                @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+
+                <div class="meta">
+                    <p>YogaClicks does not warrant that any of the teachers, venues or teacher training organisations found on our site will meet your health or medical requirements.<p>
+                    <p>YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.</p>
+                    <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

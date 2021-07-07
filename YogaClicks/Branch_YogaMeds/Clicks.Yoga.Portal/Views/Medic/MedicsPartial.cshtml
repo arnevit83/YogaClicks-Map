@@ -1,0 +1,34 @@
+﻿@model  Clicks.Yoga.Portal.Models.Medic.ConditionsModel
+
+@if (Model.Conditions.Count > 0)
+{
+    foreach (var condition in Model.Conditions)
+    {
+        <a href="@Url.Action("Display", "Medic", new { id = condition.Id, slug = condition.UrlSlug })">
+            <article class="slide medic">
+                <header>@condition.Name</header>
+                <div class="image">@Html.Image(condition.DirectoryImage, i => i.Resize(c => c.Width(266).Height(118)), condition.Name)</div>
+                <p class="style-tile-text">
+                    @if (condition.Description.Length > 130)
+                    {
+                        @(condition.Description.Substring(0, 130) + "...")
+                    }
+                    else
+                    {
+                        @condition.Description
+                    }
+                </p>
+            </article>
+        </a>
+    }
+}
+else
+{
+    <section class="page-content">
+        <article id="static">
+            <div class="noStylesMatchYourCriteria">
+                <h2>No conditions found</h2>
+            </div>
+        </article>
+    </section>
+}

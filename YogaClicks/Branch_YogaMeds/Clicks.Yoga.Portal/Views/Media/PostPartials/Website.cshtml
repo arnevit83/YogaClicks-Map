@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Media.MediaPostTypePartialModel
+
+@foreach (var resource in Model.Resources)
+{
+    <div style="width: 500px; border: 1px solid #e5e5e5; padding: 12px;">
+        <div>
+            <a href="@resource.Uri" style="float: left;">
+                @Html.Image(resource.Image, i => i.Resize(c => c.Width(160).Height(160).Crop().ScaleBoth()))
+            </a>
+
+            <div style="margin: 0 0 0 180px;">
+                <a href="@resource.Uri" target="_blank">@resource.Title</a><br />
+                <p class="article">@resource.Content</p>
+            </div>
+            
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+}

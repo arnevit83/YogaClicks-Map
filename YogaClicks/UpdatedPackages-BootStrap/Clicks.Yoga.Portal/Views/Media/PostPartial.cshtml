@@ -1,0 +1,7 @@
+﻿@using Clicks.Yoga.Portal.Models.Media
+@model Clicks.Yoga.Portal.Models.Media.MediaPostPartialModel
+
+@foreach (var type in Model.Types)
+{
+    @Html.Partial(Model.GetPartial(type), new MediaPostTypePartialModel(Model.GetResources(type), Model.Width))
+}

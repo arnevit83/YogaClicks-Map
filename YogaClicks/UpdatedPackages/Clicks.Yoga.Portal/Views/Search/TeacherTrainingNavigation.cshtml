@@ -1,0 +1,199 @@
+﻿@using System.Globalization
+@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingNavigationModel
+
+
+@{
+    var yearOptions = new List<int>();
+    var monthOptions = new List<int>();
+
+    for (var i = DateTime.Now.Year; i < DateTime.Now.Year + 10; i++)
+    {
+        yearOptions.Add(i);
+    }
+
+    for (var i = 1; i < 13; i++)
+    {
+        monthOptions.Add(i);
+    }
+}
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle"><span style="float: left">Teacher training</span></h1>
+                <br /><br />
+                Refine your search
+                           <br /><br />
+                     
+            
+            
+                <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" class="collapsed btn-clear" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Find an organisation <span class="glyphicon-stack pull-right hidden-sm hidden-md"  style="font-size:13px; margin-top:-3px; margin-right:-5px;margin-left: -15px;">
+    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+    <i class="glyphicon glyphicon-menu-down glyphicon-stack glyphicon-stack-1x Garrow"></i>
+</span>
+
+                                </a>
+
+           
+                                   
+                                     
+
+                              
+
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body"><br />
+                                @using (Html.BeginForm("TeacherTrainingOrganisations", "Search", FormMethod.Get))
+                                {
+                                    <div>
+                                        <label>Organisation name</label>
+
+                                        @Html.TextBox("Keywords", Model.Criteria.Keywords, new {@class="form-control"})
+
+                                        <label>Style</label>
+
+                                        @Html.DropDownList("Style", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.Style), "Please select")
+
+                                     
+                                            <label>YogaMeds</label>
+
+                                            @Html.DropDownList("Condition", new SelectList(Model.Conditions, "Id", "Name", Model.Criteria.Condition), "Please select")
+                                        
+                                        <br /><br />
+
+
+                                
+
+                                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+                                            <div class="btn-group" role="group">
+                                                <a href="@Url.Action("TeacherTrainingOrganisations")" class="btn btn-default btn-clear">Clear</a>
+                                            </div>
+                                        </div>
+
+
+                                        <div aria-label="..." role="group" class="btn-group btn-group-justified FindButtons">
+                                            <div role="group" class="btn-group">
+                                                <button  class="btn btn-custom " type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title ">
+                                <a class="collapsed btn-clear" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Find a course <span class="glyphicon-stack pull-right  hidden-sm hidden-md" style="font-size:13px; margin-top:-3px; margin-right:-5px;margin-left: -10px;">
+    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+    <i class="glyphicon glyphicon-menu-down glyphicon-stack glyphicon-stack-1x Garrow"></i>
+</span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body"><br />
+                                @using (Html.BeginForm("TeacherTrainingCourses", "Search", FormMethod.Get))
+                                {
+                                    <label>Course name</label>
+
+                                    @Html.TextBox("Keywords", Model.Criteria.Keywords, new { @class = "form-control" })
+
+                                    <label>Location</label>
+
+                                    @Html.TextBox("Location", Model.Criteria.Location, new { data_role = "Location", autocomplete = "off", placeholder = "You must enter a location - town, country etc.", @class = "form-control" })
+
+                                    <div id="LocationSuggestions" data-role="LocationSuggestions"></div>
+
+                                    @Html.Hidden("Latitude", Model.Criteria.Latitude, new { data_role = "Latitude" })
+                                    @Html.Hidden("Longitude", Model.Criteria.Longitude, new { data_role = "Longitude" })
+                                    @Html.Hidden("Radius", Model.Criteria.Radius, new { data_role = "Radius" })
+
+                                    <label>Style</label>
+
+                                    @Html.DropDownList("Style", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.Style), "Please select")
+    <label>YogaMeds</label>
+
+    @Html.DropDownList("Condition", new SelectList(Model.Conditions, "Id", "Name", Model.Criteria.Condition), "Please select")
+
+                                    <label>Accreditation</label>
+
+                                    @Html.DropDownList("AccreditationBody", new SelectList(Model.Accreditations, "Id", "Name", Model.Criteria.AccreditationBody), "Please select")
+
+                                    <label>Start Date</label>
+
+                                    @Html.DropDownList("Date.Month", new SelectList(monthOptions.Select(v => new { Value = v, Text = CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(v) }), "Value", "Text", Model.Criteria.Date.Month), "Please select")
+                                    @Html.DropDownList("Date.Year", new SelectList(yearOptions.Select(v => new { Value = v, Text = v }), "Value", "Text", Model.Criteria.Date.Year), "Please select")
+
+
+
+    <br /><br />
+
+
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+        <div class="btn-group" role="group">
+            <a href="@Url.Action("TeacherTrainingCourses")" class="btn btn-default btn-clear">Clear</a>
+        </div>
+    </div>
+
+
+    <div aria-label="..." role="group" class="btn-group btn-group-justified FindButtons">
+        <div role="group" class="btn-group">
+            <button class="btn btn-custom " type="submit">Search</button>
+        </div>
+    </div>
+    <br /><br />
+
+                                } 
+                              </div>
+                        </div>
+                    </div>
+             
+                </div>
+            
+            
+                   </div>
+                        </div>
+                    </section>
+                </div>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+                <script>
+                    $(function () {
+                        $('#navwrap').yogaLocationPicker({ autocode: true });
+                    });
+                    $("#right-menu-close").click(function () {
+
+                        $("#right-nav").fadeToggle("fast");
+                        $(".dark-overlay").fadeToggle("slow");
+
+                    });
+                </script>

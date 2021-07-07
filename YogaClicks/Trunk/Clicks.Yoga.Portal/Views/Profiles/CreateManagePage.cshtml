@@ -1,0 +1,58 @@
+﻿@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileCreateManagePageModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+
+@using (Html.BeginForm("CreateProfileManagePage", "Profiles", FormMethod.Post))
+{
+    @Html.Hidden("IsNewUser", false)
+
+    <h2 class="greenHeader">How would you like to manage this professional page?</h2>
+    <hr class="modalHr" />
+    <br />
+    
+    <table>
+        <tr>
+            <td style="width: 30px; vertical-align: middle">
+                @Html.RadioButtonFor(m => m.ManageBy, ProfileCreateManagePageModel.ManagePage.Personal)
+            </td>
+            <td>
+                <h3 class="blackSubHeader" style="margin:0 0 5px 0">
+                    I want to manage this professional page from this personal profile.
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br /><br />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30px; vertical-align: middle">
+                @Html.RadioButtonFor(m => m.ManageBy, ProfileCreateManagePageModel.ManagePage.New)
+            </td>
+            <td><h3 class="blackSubHeader" style="margin:0 0 5px 0">I want to create a new profile to manage this page.</h3></td>
+        </tr>
+        <tr>
+            <td style="width: 30px; vertical-align: middle"></td>
+            <td>
+                <h3 class="blackSubHeader" style="font-size: 14px; font-style: italic;">
+                    (Only choose this option if you want to create 
+                    an admin profile with a new email address to manage this page. Clicking 
+                    'next' will log you out and allow you to set up a new account)
+                </h3></td>
+        </tr>
+    </table>
+
+    <br/><br/><br/>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+}

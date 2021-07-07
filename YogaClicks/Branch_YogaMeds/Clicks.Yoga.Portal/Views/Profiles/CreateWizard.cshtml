@@ -1,0 +1,21 @@
+﻿@using Clicks.Yoga.Portal.Models.Profiles
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateProfileManagePage", "Profiles", FormMethod.Get))
+{
+    @Html.Hidden("isNewUser", true)
+    @Html.Hidden("Id", SecurityContext.CurrentProfile.Id)
+    <h2 class="greenHeader">Create a profile</h2>
+    <hr class="modalHr" />
+    <h3 class="cb blackSubHeader">
+        Our setup wizard guides you through profile creation.<br/><br />
+        First you’ll create a professional profile – this will help you build your yoga community.<br /><br />
+        Then you can do a personal profile – fill in as little or as much as you like – depending on how much of your true Self you want to reveal! <br /></h3>
+    <input class="button pink large fr" type="submit" value="Next"/>
+    <div class="cb"></div>
+}
+
+

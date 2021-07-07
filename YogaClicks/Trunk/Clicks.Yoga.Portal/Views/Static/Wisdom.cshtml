@@ -1,0 +1,77 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Inspirational Quotes and Yoga FAQs | YogaClicks";
+    ViewBag.Description = "What is yoga? Is yoga a religion? We answer beginners' questions, decode tricky yoga terms and have hundreds of inspirational quotes, from Oprah to Osho.";
+    ViewBag.MenuClass = "how-to-navigation";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {    
+    <meta property="og:title" content="Lost in yoga? Seek and ye shall find at YogaClicks" />    
+    <meta property="og:description" content="Quotes, Beginners' FAQs, yoga lingo, the history of yoga, what is yoga - it's all at YogaClicks" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/wisdom-landing.jpg" />
+}
+
+@section LeftNav{
+   @Html.Partial("left-nav-menu")
+}
+<div id="content-slider" class="content-slider">
+
+	<div class="wisdom-strip content-col single-content landingPage wisdomPage" id="scroll">
+
+		<section class="page-content">
+        
+        	<article id="static">
+                <header>
+                    <h2 class="pageTitle"><span class="logo">&nbsp;</span><span class="colorTitle">Wise Up</span><span> - From darkness into light</span></h2>
+                </header>
+                <div class="imageWrap">
+                    <div class="image">
+                        <img src="/images/wisdom-landing.jpg" alt="" />
+                    </div>    
+                    <div class="caption">
+                        Image courtesy of Julee Yew Crijinns
+                    </div>
+                </div>
+                <div class="navWrap">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("beginners-faq", "Static")">
+                                <strong>Beginner FAQs</strong> - From what to wear to what to eat - we've got it covered <span class="arrow">&gt;</span>
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="@Url.Action("what-is-yoga", "Static")">
+                                <strong>What is yoga?</strong> - We break it down<span class="arrow">&gt;</span>
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="@Url.Action("history-of-yoga", "Static")">
+                                <strong>The history of yoga</strong> - 3000 years in 800 words <span class="arrow">&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("is-yoga-a-religion", "Static")">
+                                <strong>Is yoga a religion?</strong> - We shine a light<span class="arrow">&gt;</span>
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="@Url.Action("Index", "Glossary")">
+                                <strong>Yoga lingo</strong> - Tell your kleshas from your kriyas<span class="arrow">&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Quotes")">
+                                <strong>Quotes</strong> - From Joan Rivers to Mother Teresa<span class="arrow">&gt;</span>
+                            </a>
+                        </li>        
+                    </ul>
+                </div>
+            </article>
+                        
+        </section>
+
+	</div>
+
+</div>

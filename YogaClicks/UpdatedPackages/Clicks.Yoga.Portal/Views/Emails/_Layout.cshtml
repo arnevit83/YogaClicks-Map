@@ -1,0 +1,290 @@
+﻿@model Clicks.Yoga.Emails.EmailBase
+@{
+    Layout = null;
+}
+From: @Html.Raw(Model.From)
+To: @Html.Raw(Model.To)
+Subject: @Html.Raw(Model.Subject)
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>YogaClicks - Here's what's been happening on YogaClicks this week...</title>
+    <style type="text/css">
+        .eoa_c95 {
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .ExternalClass {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .norepeat {
+            background-repeat: no-repeat;
+            height: 410px;
+            background-position: center !important;
+        }
+
+        .deviceWidthblue {
+            border-color: #14b5e9;
+            border-style: solid;
+            border-width: 3px;
+        }
+
+        body {
+            width: 100%;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Source Sans Pro', serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        @@media only screen and (max-width: 640px) {
+            body[yahoo] .deviceWidth {
+                width: 440px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .deviceWidthblue {
+                width: 440px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .center {
+                text-align: center !important;
+            }
+        }
+
+        @@media only screen and (max-width: 479px) {
+            body[yahoo] .deviceWidth {
+                width: 280px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .deviceWidthblue {
+                width: 280px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .center {
+                text-align: center !important;
+            }
+        }
+
+        span.yshortcuts {
+            color: #000;
+            background-color: none;
+            border: none;
+        }
+
+            span.yshortcuts:hover,
+            span.yshortcuts:active,
+            span.yshortcuts:focus {
+                color: #000;
+                background-color: none;
+                border: none;
+            }
+    </style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="-webkit-font-smoothing:antialiased;padding:0;margin:0;background-color:#ffffff;width:100%;font-family:'Source Sans Pro', serif;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="">
+        <tr>
+            <td>
+
+                <table width="650" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth" bgcolor="#ea478a" style="border-collapse:collapse;margin:0 auto;">
+                    <tr>
+                        <td width="100%" valign="top" bgcolor="#ffffff" style="padding-top:20px;">
+                            <table width="650" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth" style="border-collapse:collapse;margin:0 auto;">
+                                <tr>
+                                    <td width="100%" bgcolor="#ffffff">
+                                        <table border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth" style="border-collapse:collapse;">
+                                            <tr>
+                                                <td style="text-align:center !important;padding:10px 20px;" class="center eoa_c95">
+                                                    <a href="http://www.yogaclicks.com">
+                                                        <img width="200" src="http://www.yogaclicks.com/images/email/verification/logo.png" alt="" border="0" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+
+                @RenderBody()
+
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse;">
+                    <tr>
+                        <td bgcolor="#ffffff" style="padding:30px 0;">
+                            <table width="650" border="0" cellpadding="10" cellspacing="0" align="center" class="deviceWidth" style="border-collapse:collapse;margin:0 auto;">
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse;">
+                                            <tr>
+                                                <td bgcolor="#ffffff" style="padding:0 0;">
+                                                    <table border="0" cellpadding="10" cellspacing="0" align="center" style="border-collapse:collapse;margin:0 auto;">
+                                                        <tr>
+                                                            <td>
+                                                                <table width="45%" cellpadding="0" cellspacing="0" border="0" align="left" class="deviceWidth" style="border-collapse:collapse;">
+                                                                    <tr>
+                                                                        <td valign="top" style="text-align:center !important;padding-bottom:20px;font-family:'Source Sans Pro', serif;color:#999;font-size:12px;" class="center eoa_c95">
+                                                                            Copyright &copy; @DateTime.Now.Year YogaClicks, 12 Upper King Street, Norwich, Norfolk, NR3 1HA, UK. All rights reserved.
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table width="40%" cellpadding="0" cellspacing="0" border="0" align="right" class="deviceWidth" style="border-collapse:collapse;">
+                                                                    <tr>
+                                                                        <td width="24">
+                                                                            <a href="mailto:admin@yogaclicks.com?Subject=Newsletter Enquiries" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/email.png" alt="Email" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                        <td width="24">
+                                                                            <a href="http://www.facebook.com/yogaclicks" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/facebook.png" alt="Facebook" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                        <td width="24">
+                                                                            <a href="http://twitter.com/yogaclicks" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/twitter.png" alt="Twitter" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                        <td width="24">
+                                                                            <a href="http://twitter.com/yogaclicks" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/instagram.png" alt="Instagram" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                        <td width="24">
+                                                                            <a href="http://www.pinterest.com/yogaclicks/" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/pin.png" alt="Pinterest" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                        <td width="24">
+                                                                            <a href="http://blog.yogaclicks.store/" target="_blank">
+                                                                                <img src="http://www.yogaclicks.com/images/email/verification/blog.png" alt="Blog" width="24" height="24" style="display:block;" border="0" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div style="color:#ffffff;font:15px courier;white-space:nowrap;display:none;">
+                    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <style type="text/css">
+        .eoa_c95 {
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .ExternalClass {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .norepeat {
+            background-repeat: no-repeat;
+            height: 410px;
+            background-position: center !important;
+        }
+
+        .deviceWidthblue {
+            border-color: #14b5e9;
+            border-style: solid;
+            border-width: 3px;
+        }
+
+        body {
+            width: 100%;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Source Sans Pro', serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        @@media only screen and (max-width: 640px) {
+            body[yahoo] .deviceWidth {
+                width: 440px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .deviceWidthblue {
+                width: 440px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .center {
+                text-align: center !important;
+            }
+        }
+
+        @@media only screen and (max-width: 479px) {
+            body[yahoo] .deviceWidth {
+                width: 280px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .deviceWidthblue {
+                width: 280px !important;
+                padding: 0;
+            }
+
+            body[yahoo] .center {
+                text-align: center !important;
+            }
+        }
+
+        span.yshortcuts {
+            color: #000;
+            background-color: none;
+            border: none;
+        }
+
+            span.yshortcuts:hover,
+            span.yshortcuts:active,
+            span.yshortcuts:focus {
+                color: #000;
+                background-color: none;
+                border: none;
+            }
+    </style>
+</body>
+</html>

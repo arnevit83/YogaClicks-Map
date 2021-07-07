@@ -1,0 +1,316 @@
+﻿@using Clicks.Yoga.Data.Search
+@model Clicks.Yoga.Portal.Models.Styles.StyleDisplayModel
+
+@{
+    ViewBag.Title = Model.Style.Name + "";
+    if (Model.Style.Name.ToLower().Contains("yoga"))
+    {
+        ViewBag.Description = "We define " + Model.Style.Name + " and help you find " + Model.Style.Name + " classes, teachers, studios, retreats and teacher training.";
+    }
+    else
+    {
+        ViewBag.Description = "We define " + Model.Style.Name + " yoga and help you find " + Model.Style.Name + " yoga classes, teachers, studios, retreats and teacher training.";
+    }
+
+
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section LeftNav{
+    @Html.Action("Navigation", "Styles")
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Style.Name" />
+    <meta property="og:description" content="@Model.Style.Description" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Style.Image)" />
+}
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><i class="practiceIcon pull-left"></i><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - @Model.Style.Name</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+
+    <div class=" col-xs-12 nopadding" id="scroll">
+
+
+
+        @{
+            var location = Session["Styles.Last"] == null ? Url.Action("Directory", "Styles") : Session["Styles.Last"].ToString();
+        }
+
+        <div class="hidden-xs">
+
+            <a href="@location" class="Glink pull-right" alt="back">
+                <span class="glyphicon-stack">
+                    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                    <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                </span><span style="vertical-align:text-bottom">Back</span>
+            </a>
+
+            <h1 class="pinkHeader"><span>&nbsp;</span>@Model.Style.Name</h1>
+
+
+
+        </div>
+        <div class="shareFindSection hidden-xs">
+            <br />
+            <div class="fr">
+                <span>Share: </span>
+                @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Style.Id, Model.Style.EntityTypeName })
+
+            </div>
+        
+            <a class="practiveVenues" data-toggle="tooltip" title="Find @Model.Style.Name Teachers" href="/search/teachers?style=@Model.Style.Id"><span>&nbsp;</span></a>
+
+            <a class="teachersVenues" data-toggle="tooltip" title="Find @Model.Style.Name Venues" href="/search/venues?style=@Model.Style.Id"><span>&nbsp;</span></a>
+
+            <a class="teachertrainingVenues" data-toggle="tooltip"  title="Find @Model.Style.Name Teacher Training" href="/search/teachertrainingorganisations?style=@Model.Style.Id"><span>&nbsp;</span></a>
+            <span style="float:left">&nbsp;:Find</span>
+        </div>
+
+
+
+
+
+    <img src="@Model.Style.Image.Url" class="img-responsive " style="width:715px" />
+     
+
+        @if (!string.IsNullOrEmpty(Model.Style.ImageCourtesyOf))
+        {
+            <span class="captionhover">
+                <span>@Model.Style.ImageCourtesyOf</span>
+            </span>
+        }
+
+
+
+                <div class="pull-right">
+                    <div class="leftCol">
+                        @Html.Action("Button", "Fans", new { EntityId = Model.Style.Id, Model.Style.EntityTypeName })<br />
+                    </div>
+                </div>
+        
+
+    <table class="table table-striped">
+
+        @if (Model.Style.FoundingTime != "" || Model.Style.Founder != "")
+                    {
+
+        <tr>
+                <td>
+
+                <br />
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-3 nopadding">
+
+                                @if (Model.Style.Founder != "")
+                                {
+                                    <h4>Founded by</h4>
+
+                                }
+
+                            </div>
+                            <div class=" col-xs-9 nopadding">
+
+
+                                @if (Model.Style.Founder != "")
+                                {
+
+                                    <p style="margin-left: 10px;">@Model.Style.Founder</p>
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="row nopadding">
+                            <div class=" col-xs-3 nopadding">
+
+
+                                @if (Model.Style.FoundingTime != "")
+                                {
+                                    <h4>Founded in</h4>
+
+                                }
+
+                            </div>
+                            <div class=" col-xs-9 nopadding">
+
+
+                                @if (Model.Style.FoundingTime != "")
+                                {
+
+                                    <p style="margin-left: 10px;">@Model.Style.FoundingTime</p>
+                                }
+
+
+                            </div>
+                        </div>
+
+
+                 
+                 
+
+
+
+                </td>
+            </tr>   }
+            <tr>
+                <td>
+
+
+                    <div class="row nopadding"><br />
+                        <div class=" col-sm-3 nopadding">
+                            <h4>About</h4>
+                        </div>
+                        <div class=" col-sm-9 nopadding">
+                            <p>@Html.Raw(Model.Style.Description)</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+
+                    <div class="row nopadding">
+                        <br />
+                        <div class=" col-xs-3 nopadding">
+                            <h4>Traits</h4>
+                        </div>
+                        <div data-toggle="collapse" href="#collapse" aria-expanded="true" aria-controls="collapse" class=" col-xs-9 nopadding">
+                            <a data-toggle="collapse" href="#collapse" aria-expanded="true" aria-controls="collapse" class="Glink pull-right" alt="More">
+                                <span class="glyphicon-stack">
+                                    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                                    <i class="glyphicon glyphicon-menu-down glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row nopadding">
+           
+                        <div class="col-sm-push-3 col-sm-9 nopadding">
+                            <div class="collapse" data-toggle="false" id="collapse">
+                                <div class="list-group traitsStyles">
+                                    @foreach (var trait in Model.Style.Traits)
+                                    {
+
+                                    <a class="list-group-item" href="/styles/selecttrait?traitId=@trait.Id">
+                                        @trait.Name
+                                    </a>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+            
+                    <div class="row nopadding">
+                        <br />
+                        <div class=" col-sm-3 nopadding">
+                            <h4>Find</h4>
+                        </div>
+                        <div class=" col-sm-9 nopadding">
+                            <div class="right discoverButtons">
+                               
+                                 Use these buttons to find teachers, venues and teacher training in this style<br />
+                                 
+
+                                <button style="display:block; margin:0 0 5px 0" class="button discoverPanelThin teachersButton" onclick="location.href = '/search/teachers?style=@Model.Style.Id'; return false">Teachers<span>&nbsp;</span></button>
+                                <button style="display:block; margin:0 0 5px 0" class="button discoverPanelThin venuesButton" onclick="location.href = '/search/venues?style=@Model.Style.Id'; return false">Venues<span>&nbsp;</span></button>
+                                <button style="display:block; margin:0 0 5px 0" class="button discoverPanelThin teacherTrainingButton" onclick="location.href = '/search/teachertrainingorganisations?style=@Model.Style.Id'; return false">Teacher training<span>&nbsp;</span></button>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="row nopadding">
+                        <div class=" col-xs-12 nopadding">
+                            <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                            <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".toggle-traits").click(function (e) {
+
+            e.preventDefault();
+
+            var div = $(this).parent().next(".trait-box");
+
+            if ($(this).data("visible"))
+                $(div).slideUp();
+            else
+                $(div).slideDown();
+
+            $(this).data("visible", !$(this).data("visible"));
+        });
+    });
+</script>
+
+@section Scripts{
+    @{
+        var prImage = Model.Style.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Style.Image.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + '@Model.Style.Name');
+        $('.twitter-link-div').html('&text=Find yoga style ' + '@Model.Style.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find yoga style ' + '@Model.Style.Name' + ' on YogaClicks&media=' + '@prImage');
+    </script>
+}

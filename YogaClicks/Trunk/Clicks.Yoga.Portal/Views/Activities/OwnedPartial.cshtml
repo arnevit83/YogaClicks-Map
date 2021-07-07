@@ -1,0 +1,4 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityOwnedPartialModel
+
+@Html.Partial("EditableListPartial", new ActivityEditableListPartialModel("OwnedContentPartial", new { ProfileId = Model.Profile.Id, Future = true }))

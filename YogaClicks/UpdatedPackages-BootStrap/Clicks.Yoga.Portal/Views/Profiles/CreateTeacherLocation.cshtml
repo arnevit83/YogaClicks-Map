@@ -1,0 +1,50 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileCreateTeacherLocationModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateTeacherLocation", "Profiles"))
+{
+    <h2 class="greenHeader">Your teacher page</h2>
+    <hr class="modalHrSteps" />
+    <ul class="steps steps2">
+        <li><span>Step 1</span></li>
+        <li class="active"><span>Step 2</span></li>
+    </ul>
+    <h3 class="cb">Where do you teach?</h3>
+    <div class="scrollableiFrame">
+        @Html.ValidationSummary()
+        <div class="iframeLocation">
+            @Html.Label("Enter the address and select from the suggested results")
+            <p class="wizard-location-select-info-text">
+                <span class="red-text">
+                    Please enter your town or zip/postcode and select from the dropdown list.
+                </span>
+            </p>
+            <div class="location-select-example">
+                <img src="@Url.Content("~/images/global/select-location.png")" />
+            </div>
+            @Html.EditorFor(m => m.Location)
+        </div>
+        <small class="cb">You will be able to add specific venues later</small>
+        <hr />
+        <div>
+            <p class="wizard-location-select-info-text">
+                Adding a location will help users find you and make your own searches more accurate.
+                <br />
+                Your location can just be your post code or town, you do not need to give us your complete address.
+            </p>
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="@Url.Action("CreateTeacher", new { id = SecurityContext.CurrentProfile.Id })" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+
+    <div class="cb"></div>
+}

@@ -1,0 +1,41 @@
+﻿@using System.Globalization
+@model Clicks.Yoga.Portal.Models.Editors.CreateCourseDateEditorModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+    var reverse = Model.Minimum <= new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, 0) && Model.Maximum <= DateTime.Now;
+}
+
+<div id="@guid">
+    <div class="col-xs-3" style="padding-left: 0;">
+        <select data-role="Day" id="@Html.IdFor(m => m.Day)" name="@Html.NameFor(m => m.Day)" data-field-type="notrequired">
+            @for (int i = 1; i <= 31; i++)
+            {
+                <option value="@i" selected="@(i == Model.Day)">@i</option>
+            }
+        </select>
+    </div>
+    <div class="col-xs-5">
+        <select data-role="Month" id="@Html.IdFor(m => m.Month)" name="@Html.NameFor(m => m.Month)" data-field-type="notrequired">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i" selected="@(i == Model.Month)">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+            }
+        </select>
+    </div>
+    <div class="col-xs-4" style="padding-right: 0;">
+        <select data-role="Year" id="@Html.IdFor(m => m.Year)" name="@Html.NameFor(m => m.Year)" data-field-type="notrequired">
+            @for (int i = reverse ? Model.Maximum.Year : Model.Minimum.Year; i <= Model.Maximum.Year && i >= Model.Minimum.Year; i += (reverse ? -1 : 1))
+            {
+                <option value="@i" selected="@(i == Model.Year)">@i</option>
+            }
+        </select>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaDatePicker();
+    });
+</script>

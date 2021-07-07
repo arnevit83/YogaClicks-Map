@@ -1,0 +1,27 @@
+﻿@model Clicks.Yoga.Portal.Models.Notifications.NotificationsPopupPartialModel
+
+@foreach (var request in Model.Requests)
+{
+    <div data-role="Request" class="request">
+        <div class="image">
+            <img src="@request.Type.IconUri" class="notification-icon">
+        </div>
+        <div class="text">
+            <p>@Html.Raw(request.Message)</p>
+            <button data-role="AcceptButton" data-id="@request.Id" class="button save highlight">Accept</button>
+            <button data-role="RejectButton" data-id="@request.Id" class="button save heighlight">Reject</button>
+        </div>
+    </div>
+}
+
+@foreach (var delivery in Model.Deliveries)
+{
+    <div data-role="Request" class="request">
+        <div class="image">
+            <img src="@delivery.Notification.Type.IconUri" class="notification-icon">
+        </div>
+        <div class="text">
+            <p>@Html.Raw(delivery.Notification.Message)</p>
+        </div>
+    </div>
+}

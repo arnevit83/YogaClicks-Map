@@ -1,0 +1,429 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Domain.Services
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js" lang="en"> <![endif]-->
+<html>
+<head>
+    <title>@ViewBag.Title | YogaClicks</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="@ViewBag.Description" />
+
+    @if (ViewBag.NoIndex != null && ViewBag.NoIndex == true)
+    {
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    }
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/global/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/global/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/global/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/global/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/global/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/global/apple-touch-icon-76x76.png">
+    <link rel="icon" type="image/png" href="/images/global/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/global/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/global/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+
+    <link rel="publisher" href="https://plus.google.com/101409381209229779027" />
+
+    @Scripts.Render("~/bundles/js/head")
+
+    @Styles.Render("~/bundles/css")
+
+    @RenderSection("Head", false)
+    <script>
+    var _prum = [['id', '54cb610eabe53d416f7ddbee'],
+                 ['mark', 'firstbyte', (new Date()).getTime()]];
+    (function () {
+        var s = document.getElementsByTagName('script')[0]
+          , p = document.createElement('script');
+        p.async = 'async';
+        p.src = '//rum-static.pingdom.net/prum.min.js';
+        s.parentNode.insertBefore(p, s);
+    })();
+    </script>
+</head>
+<body class="@ViewBag.BodyClass">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <div id="container">
+        <div id="registerBanner">
+            <a href="#registerPopup" class="button large pink" id="createPopUp">Sign up to see more. Live dangerously! It's free!</a>
+        </div>
+
+        <header class="main">
+            @Html.Action("SuperUserWarning", "Account")
+
+            <a href="@Url.Action("index", "home")" id="logo"><img src="/images/global/logo.png" alt="YogaClicks. Find it. Love it. Live it." /></a>
+
+            <div id="login-container">
+                @Html.Action("LoginPartial", "Account")
+            </div>
+
+            @using (Html.BeginForm("Results", "Search", FormMethod.Get, new { @class = "search" }))
+            {
+                @Html.TextBox("keywords", "", new { placeholder = "Type what you're looking for - a name, a style - and hit return", type = "search" })
+            }
+
+            @if (SecurityContext != null && SecurityContext.Authenticated)
+            {
+                <!--
+                    <div class="help">
+                        <a href="@Url.Action("how-to-use-this-site", "static")">Help</a>
+                    </div>
+                    -->
+                <div class="notifications">
+                    @if (!SecurityContext.CurrentProfile.Professional)
+                    {
+                        <a href="#" class="FriendRequestsIndicator icons friend" data-format="{0}" title="Friend requests"></a>
+                        <a href="#" class="MessagesIndicator icons messages" data-format="{0}" title="Messages"></a>
+                        <a href="#" class="NotificationsIndicator icons news" data-format="{0}" title="Notifications"></a>
+                    }
+
+                    @if (!SecurityContext.CurrentProfile.Professional)
+                    {
+                        <div id="FriendRequestsPopup" class="FriendRequests fly-down friend">
+                            <h3>Friend requests</h3>
+                            <hr />
+                            <div class="popupContent">
+                                <output></output>
+                            </div>
+                            <hr />
+                            <p class="center"><b><a href="@Url.Action("FriendRequests", "Profiles", new { SecurityContext.CurrentProfile.Id })">View all requests</a></b></p>
+                        </div>
+
+                        <div id="MessagesPopup" class="fly-down messages">
+                            <h3>Messages</h3>
+                            <hr />
+                            <div class="popupContent">
+                                <output></output>
+                            </div>
+                            <hr />
+                            <p class="center"><b><a href="@Url.Action("Deliveries", "Messaging", new { SecurityContext.CurrentProfile.Id })">View all messages</a></b></p>
+                            <div class="newMessageBtn">
+                                <button onclick="javascript:top.location.href = '@Url.Action("Send", "Messaging", new { SecurityContext.CurrentProfile.Id })'" class="button fr">New message +</button>
+                            </div>
+                        </div>
+
+                        <div id="NotificationsPopup" class="Notifications fly-down news" style="display: none;">
+                            <h3>Notifications</h3>
+                            <hr />
+                            <div class="popupContent">
+                                <output></output>
+                            </div>
+                            <hr />
+                            <p class="center"><b><a href="@Url.Action("Notifications", "Profiles", new { SecurityContext.CurrentProfile.Id })">View all notifications</a></b></p>
+                        </div>
+                    }
+                </div>
+                <div class="profile">
+                    @if (SecurityContext.HasActor)
+                    {
+                        <div class="profile-icon"><a href="@Url.Action("Display", SecurityContext.CurrentActor.EntityType.Controller, new { SecurityContext.CurrentActor.Id })" class="current-actor-link">@Html.Image(SecurityContext.CurrentActor.Image, "Profile.jpg", i => i.Resize(c => c.Width(34).Height(39).ScaleBoth().Crop()), SecurityContext.CurrentActor.Name, new { @class = "current-actor-image" })</a></div>
+                        <strong><a href="@Url.Action("Display", SecurityContext.CurrentActor.EntityType.Controller, new { SecurityContext.CurrentActor.Id })" class="current-actor-link current-actor-name">@Html.Trim(SecurityContext.CurrentActor.Name, 10)</a></strong>
+                    }
+
+                    <div class="profileDropDown">
+                        @if (SecurityContext.AvailableActors.Count > 1)
+                        {
+                            <div id="global-actor-picker">
+                                <div id="global-actor-picker-heading">
+                                    Post as...
+                                </div>
+
+                                <div>
+                                    @foreach (var actor in SecurityContext.AvailableActors)
+                                    {
+                                        <label class="@(actor.Current ? "selected" : "")">
+                                            @Html.RadioButton(
+                                                "Actor",
+                                                string.Format("{0}-{1}", actor.EntityType.Name, actor.Id),
+                                                actor.Current,
+                                                new
+                                                {
+                                                    data_action = Url.Action("ChangeActor", "Account"),
+                                                    data_actor_id = actor.Id,
+                                                    data_actor_type_name = actor.EntityType.Name,
+                                                })
+
+                                            @actor.Name
+
+                                            @if (actor.EntityType.Name == typeof(Teacher).Name)
+                                            {
+                                                @:(teacher)
+                                            }
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#global-actor-picker').yogaGlobalActorPicker();
+                                });
+                            </script>
+                        }
+                        <ul>
+                            @if (!SecurityContext.CurrentProfile.Professional)
+                            {
+                                <li class="editTab"><a href="@Url.Action("Update", "Profiles", new { SecurityContext.CurrentProfile.Id })"><span class="icon">&nbsp;</span>Edit profile</a></li>
+                            }
+
+                            <li class="accountTab"><a href="@Url.Action("Settings", "Account", new { SecurityContext.CurrentProfile.Id })"><span class="icon">&nbsp;</span>Account settings</a></li>
+                            <li class="helpTab">
+                                <span class="nonLink"><span class="icon">&nbsp;</span>Help</span>
+                                <ul>
+                                    <li><a href="@Url.Action("profile-professional-guide", "static")">- Profile and professional pages guide</a></li>
+                                    <li><a href="@Url.Action("faqs", "Groups")">- FAQs</a></li>
+                                    <!--<li><a href="@Url.Action("site-introduction", "static")">- YogaClicks intro</a></li>-->
+                                    <li><a href="@Url.Action("site-map", "static")">- Site map</a></li>
+                                </ul>
+                            </li>
+                            <li class="logOutTab"><a href="/account/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <span class="toggle">&nbsp;</span>
+                </div>
+            }
+
+        </header>
+        @RenderSection("LeftNav", false)
+        @RenderBody()
+
+        @if (SecurityContext == null || !SecurityContext.Authenticated)
+        {
+            <div id="registerPopup" style="display:none;" class="largerForm">
+                <div>
+                    <h2 class="reg-title">Join YogaClicks!<br /> It's free and it's easy.</h2>
+
+                    @using (Html.BeginForm("CreateAccount", "Registration", FormMethod.Post, new { @class = "full", data_role = "Registration", data_partial_action = Url.Action("CreateAccountPopupPartial", "Registration") }))
+                    {
+                        @Html.Action("CreateAccountPopupPartial", "Registration")
+                    }
+
+                </div>
+            </div>
+        }
+
+        <div class="share-title">
+            <a href="#" id="share-link">Share this page</a>
+        </div>
+    </div>
+    <footer id="footer-navigation" role="contentinfo" class="pagefooter clearfix">
+        <div class="title">Share this page</div>
+        <div class="left">
+            <nav class="footer-navigation">
+                <ul>
+                    <li><a href="javascript:openModal('/feedback')" class="button purple">Feedback</a></li>
+                    <li><a href="@Url.Action("our-story", "static")">Our story</a></li>
+                    <li><a href="@Url.Action("privacy-policy", "static")">Privacy</a></li>
+                    <li><a href="@Url.Action("terms-of-use", "static")">Terms of use</a></li>
+                    <li><a href="@Url.Action("advertise-with-us", "static")">Advertise</a></li>
+                    <li><p>&copy; YogaClicks @DateTime.Today.Year</p></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="http://blog.yogaclicks.com/" target="_blank">
+                <img alt="Blog" src="/Images/SmallBlogIcon.jpg" style="height: 15px; padding-bottom: 8px; padding-right: 10px;" />
+            </a>
+            <a class="facebook-share-link" href="" target="_blank">
+                <img alt="Share To Facebook" src="~/Images/social-icons/facebook-icon.jpg" style="height: 15px; padding-bottom: 8px; padding-right: 10px;" />
+            </a>
+            <a class="twitter-share-link" href="" target="_blank">
+                <img alt="Share To Twitter" src="~/Images/social-icons/twitter-icon.jpg" style="height: 15px; padding-bottom: 8px; padding-right: 10px;" />
+            </a>
+            <a class="pintrest-share-link" href="" target="_blank">
+                <img alt="Share To Pintrest" src="~/Images/social-icons/pintrest-icon.jpg" style="height: 15px; padding-bottom: 8px; padding-right: 10px;" />
+            </a>
+        </div>
+        <div class="facebook-link-div" style="display:none">&title=@ViewBag.Title</div>
+        <div class="twitter-link-div" style="display:none">&text=Find it. Love it. Live it on YogaClicks</div>
+        <div class="pintrest-link-div" style="display:none">&description=Find it. Love it. Live it on YogaClicks&media=http://www.yogaclicks.com/images/global/logo.png</div>
+    </footer>
+
+    <script>
+        $(function () {
+            var $forms = $('form[data-role=Registration]');
+
+            $forms.on('click', 'button[type=submit]', function (e) {
+                e.preventDefault();
+
+                var $button = $(this);
+                var $form = $button.closest('form');
+                var $inputs = $form.find('input, select');
+
+                $('.disabledSignUp').show();
+                $('.activeSignup').hide();
+
+                $.ajax({
+                    type: 'POST',
+                    url: $form.attr('data-partial-action'),
+                    data: $inputs.serialize(),
+                    success: function (response) {
+                        if (response) {
+                            $form.html(response);
+                            $('.disabledSignUp').hide();
+                            $('.activeSignup').show();
+                        }
+                        else {
+                            location.href = '@Url.Action("CreateAccountComplete", "Registration")';
+                        }
+                    }
+                });
+            });
+
+            $("#createPopUp").fancybox();
+
+            $("body").delegate(".reg-form-popup", "click", function (e) {
+                if ($(this).attr("href").indexOf("/") == 0) {
+                    e.preventDefault();
+                    $('.reg-title').html('You need to be a member for this. It\'s free and it\'s easy.');
+                    $("#createPopUp").click();
+                }
+            });
+
+            $("body").delegate(".reg-form-header", "click", function (e) {
+                if ($(this).attr("href").indexOf("/") == 0) {
+                    e.preventDefault();
+                    $('.reg-title').html('Join YogaClicks!<br /> It\'s free and it\'s easy.');
+                    $("#createPopUp").click();
+                }
+            });
+        });
+
+        $('.close-login').click(function (e) {
+            e.preventDefault();
+        });
+       
+    </script>
+
+    @Html.Action("Init", "Facebook")
+
+    @Scripts.Render("~/bundles/js/body")
+
+    <script src="/scripts/script.js"></script>
+
+    <script>
+        if (Modernizr.touch) {
+            $('body').addClass('touch');
+        }
+    </script>
+
+    <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                if (parent.$.fancybox == null || parent.$.fancybox.current == null)
+                    return;
+                top.location.href = "@ViewContext.HttpContext.Request.Url";
+            }, 0);
+        })
+    </script>
+
+    <script type="text/javascript">stLight.options({ publisher: "baec43a7-3517-4d20-9ae5-53c3322c76ae", doNotHash: false, doNotCopy: false, hashAddressBar: false });</script>
+    <script type="text/javascript" src="//www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+    <!-- Read More JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.more-block').readmore();
+        });
+    </script>
+    <!-- Cookies -->
+    <script>
+        $(document).ready(function () {
+            if ($.cookie('noInviteFBFriends')) $('.facebookLogin').hide();
+            else {
+                $(".facebookPopupClose").click(function (e) {
+                    e.preventDefault();
+                    $(".facebookLogin").fadeOut(1000);
+                    var expires = new Date();
+                    expires.setFullYear(expires.getFullYear() + 1);
+                    $.cookie('noInviteFBFriends', true, { expires: expires });
+                });
+
+                $(".facebookButtonPopupClose").click(function () {
+                    $(".facebookLogin").fadeOut(1000);
+                    var expires = new Date();
+                    expires.setFullYear(expires.getFullYear() + 1);
+                    $.cookie('noInviteFBFriends', true, { expires: expires });
+                });
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('article .scale').parent('div').addClass('banner');
+        });
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-46903593-1', 'auto');
+        ga('require', 'displayfeatures');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('.registerRevealBtn').click(function (e) {
+
+                if ($('#registrationPage').val() == 'true') {
+                    e.preventDefault();
+                    $("#createPopUp").click();
+                };
+            });
+
+        });
+    </script>
+    @RenderSection("Scripts", false)
+    <script>
+        $(document).ready(function () {
+            var fbLink = 'http://www.facebook.com/share.php?u=http://www.yogaclicks.com' + window.location.pathname + $('.facebook-link-div').html();
+            var twitterLink = 'http://www.twitter.com/share?url=http://www.yogaclicks.com' + window.location.pathname + $('.twitter-link-div').html();
+            var pintrestLink = 'http://pinterest.com/pin/create/button/?url=http://www.yogaclicks.com' + window.location.pathname + $('.pintrest-link-div').html();
+            $('.facebook-share-link').attr('href', fbLink);
+            $('.twitter-share-link').attr('href', twitterLink);
+            $('.pintrest-share-link').attr('href', pintrestLink);
+        });
+    </script>
+    @*<script src="/Scripts/timeFormat/js.js"></script>*@
+    <!-- SessionCam Client Integration v6.0 -->
+    <script type="text/javascript">
+        //<![CDATA[
+        var scRec = document.createElement('SCRIPT');
+        scRec.type = 'text/javascript';
+        scRec.src = "//d2oh4tlt9mrke9.cloudfront.net/Record/js/sessioncam.recorder.js";
+        document.getElementsByTagName('head')[0].appendChild(scRec);
+        //]]>
+    </script>
+    <!-- End SessionCam -->
+</body>
+</html>

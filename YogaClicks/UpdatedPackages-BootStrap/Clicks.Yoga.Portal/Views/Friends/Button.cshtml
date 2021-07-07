@@ -1,0 +1,54 @@
+﻿@using Clicks.Yoga.Domain
+@model Clicks.Yoga.Portal.Models.Friends.FriendButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@if (SecurityContext.CurrentProfile != null && SecurityContext.CurrentProfile.Id != Model.ProfileId && !SecurityContext.CurrentProfile.Professional && Model.FriendshipStatus != FriendshipStatus.Unknown)
+{
+    <div id="@guid">
+        @switch (Model.FriendshipStatus)
+        {
+            case FriendshipStatus.Strangers:
+                //friend-button
+                <button data-profile-id="@Model.ProfileId" class="btn btn-default btn-clear ">Send a friend request</button>
+                break;
+            case FriendshipStatus.Pending:
+                <p class="greyText">Friend request pending</p>
+                break;
+            case FriendshipStatus.Friends:
+                <p class="greyText">You are friends with @Model.ProfileName</p>
+                break;
+            case FriendshipStatus.BlockedBySelf:
+                <p class="greyText"><span>&nbsp;</span>Blocked</p>
+                break;
+        }
+
+        
+    </div>
+    
+    <script>
+        $(function () {
+            var $container = $('#@guid');
+
+            $container.on('click', 'button', function () {
+                var profileId = $(this).attr('data-profile-id');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Friends/Befriend',
+                    data: { ProfileId: profileId, ProfileName: '@HttpUtility.JavaScriptStringEncode(Model.ProfileName)' },
+                    success: function (html) {
+                        $container.html(html);
+                    }
+                });
+            });
+        })
+    </script>
+}
+
+@if (!SecurityContext.Authenticated)
+{
+    <a class="silver button unauth-friend-button button reg-form-popup" href="/">Send a friend request</a>
+}

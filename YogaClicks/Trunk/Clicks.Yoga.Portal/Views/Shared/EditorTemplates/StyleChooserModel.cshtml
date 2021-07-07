@@ -1,0 +1,58 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.StyleChooserModel
+
+<fieldset>
+    <div>
+        <p>Add a style from the list</p>
+        <select id="available-styles" name="StyleOptions">
+            @foreach (var s in Model.Options)
+            {
+                <option value="@s.Id">@s.Name</option>
+            }
+        </select>
+        <a id="add-style" class="button silver" href="javascript:void(0)">Add style</a>
+        <p><small>Can't find what you're looking for?<br /><a href="mailto:style@yogaclicks.com">Suggest unlisted style</a></small></p>
+    </div>
+</fieldset> 
+<div id="selected-styles">
+       <h3>@(ViewData["Label"] ?? "Styles taught")</h3>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#add-style').on('click', function (event) {
+            var id = $('#available-styles').val();
+            event.preventDefault();
+
+            if (!id) {
+                return false;
+            }
+
+            appendStyle(id);
+        });
+        
+    @foreach (var style in Model.SelectedEntities)
+    {
+        <text>appendStyle(@style.Id);</text>
+    }
+    });
+    
+    function appendStyle(id) {
+
+        var $option = $('#available-styles option[value=' + id + ']');
+
+        var $style = $(
+            '<div class="button silver"><span class="removeOption">' +
+                $option.text() + '</span>' +
+                '<a href="javascript:void(0)" class="remove">X</a>' +
+                '<input type="hidden" name="Styles.Selection[' + id + ']" value="true" />' +
+                '</div>'
+        );
+
+        $style.appendTo('#selected-styles');
+        $option.remove();
+
+        $style.find('a').on('click', function () {
+            $option.appendTo('#available-styles');
+            $style.remove();
+        });
+    }
+</script>

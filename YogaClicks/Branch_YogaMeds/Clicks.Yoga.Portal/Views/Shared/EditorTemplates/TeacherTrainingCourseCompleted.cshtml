@@ -1,0 +1,12 @@
+﻿@model bool
+
+@{
+    var items = new SelectListItem[]
+    {
+        new SelectListItem { Value = "", Text = "All Courses" },
+        new SelectListItem { Value = "false", Text = "Upcoming Courses" },
+        new SelectListItem { Value = "true", Text = "Completed Courses" }
+    };
+}
+
+@Html.DropDownListFor(m => m, items)

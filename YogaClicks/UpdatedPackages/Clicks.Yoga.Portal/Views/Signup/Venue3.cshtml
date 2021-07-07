@@ -1,0 +1,207 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.VenueStep3ViewModel
+
+@{
+    ViewBag.Title = "Venue Step 3";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+    var progressModel = new SignUpProgressBar()
+        {
+            Step = 2,
+            NumberOfSteps = 3,
+            ColorCssClass = "purple-text"
+        };
+
+    if (Model.IsEdit)
+    {
+        progressModel.NumberOfSteps = 2;
+        progressModel.Step = 1;
+        
+    }
+
+    if (Session["newVenue"] != "true")
+    {
+        progressModel.NumberOfSteps = 2;
+        progressModel.Step = 1;
+    }
+
+    var imageModel = new SignUpImages()
+    {
+        Image = Model.Image,
+        ProfileBanner = Model.ProfileBanner,
+        ColorCssClass = "purple-text"
+    };
+
+    ViewBag.SignupProfileImageText = "upload a photo of your venue or logo";
+    ViewBag.SignupProfileBannerImageText = "add a banner image of your venue, the view, or perhaps the shala.";
+}
+    @if (Model.IsEdit)
+    {
+        <div class="btn btn-default purple-border purple-text signup-deletebutton">
+            @Html.Action("DeleteButton", "Profiles", new { EntityId = Model.Id, EntityTypeName = "Venue", Securable = Model.UserProfile })
+        </div>
+    }
+
+<img src="/images/svgicons/Icon_VenuePurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_VenuePurple.png" alt="namaste students">
+@using (Html.BeginForm("VenueStep3", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-venue-3", step = 3 }))
+{
+    if (Model.IsEdit)
+    {
+
+        <div class="row purple-text" style="height: 200px">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Edit your venue page.</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else if (Session["newVenue"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Create your venue page.</p>
+                <p>Tell us about your venue to begin connecting with students and teachers.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>2. Create your venue page.</p>
+                <p>Tell us about your venue to begin connecting with students and teachers.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-lg-1"></div>
+        <div class="col-xs-12 col-lg-2  signup-large-text">
+            <p>Venue name:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <input id="signup-name" name="name" type="text" data-field-type="general" value="@Model.Name" />
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="hidden-xs col-lg-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Phone:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <input id="signup-telephone" name="telephone" type="text" data-field-type="general" value="@Model.Telephone" />
+            @Html.ValidationMessageFor(model => model.Telephone)
+        </div>
+        <div class="hidden-xs col-lg-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Web / social:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            @Html.EditorFor(m => m.Websites)
+        </div>
+        <div class="hidden-xs col-lg-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-lg-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Venue location</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <div class="venueWrap">
+                @Html.EditorFor(m => m.Address)
+            </div>
+            <div class="cb"></div>
+        </div>
+        <div class="hidden-xs col-lg-1">
+        </div>
+    </div>
+
+
+    @Html.Partial("_SignUpImagesSection", imageModel);
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <h2>Tell us what makes your venue unique</h2>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.TextAreaFor(m => m.Description, new { placeholder = "300 word maximum", data_field_type="notrequired" })
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    @Html.Partial("_SignUpProgressBar", progressModel);
+    @Html.HiddenFor(m => m.Id)
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+<script type="text/javascript">
+    $field1 = $("input[name='Address.Line1']");
+    $field1.attr('data-field-type', 'general');;
+    $field1.attr('data-required-error-message', 'House number / name is required');
+
+    $(document).ready(function () {
+        $(function () {
+            $('.location-search-box').click(function () {
+                var target = $('.venueWrap');
+                $('html,body').animate({ scrollTop: target.offset().top }, 1000);
+                return false;
+            });
+
+
+            if ($('form').length > 0) {
+                $('form').isValid();
+            }
+        });
+    });
+</script>

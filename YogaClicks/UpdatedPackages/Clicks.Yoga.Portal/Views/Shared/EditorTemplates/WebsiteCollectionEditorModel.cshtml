@@ -1,0 +1,44 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.WebsiteCollectionEditorModel
+
+@{
+    Layout = null;
+}
+
+<div id="@Html.IdFor(m => m)">
+    @for (var i = 0; i < Model.Entities.Count; i++)
+    {
+        if (!Model.Entities[i].Id.HasValue || !string.IsNullOrEmpty(Model.Entities[i].Url))
+        {
+            <div>
+                @Html.HiddenFor(m => m.Entities[i].Id)
+                @Html.EditorFor(m => m.Entities[i].Url)
+            </div>
+        }
+    }
+
+    <a data-role="AddButton" href="javascript:void(0)">+ Add another website / social media</a>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var $container = $('#@Html.IdFor(m => m)');
+
+        $container.find('[data-role=AddButton]').on('click', function () {
+            var $this = $(this);
+            var $parent = $this.parent();
+            var $div = $parent.find('> div:first').clone();
+            var $inputs = $div.find('input');
+
+            var index = $parent.find('> div').length;
+            
+            $inputs.each(function () {
+                var $input = $(this);
+                $input.val('');
+                $input.attr('id', $input.attr('id').replace('0', index));
+                $input.attr('name', $input.attr('name').replace('0', index));
+            });
+
+            $this.before($div);
+        });
+    });
+</script>

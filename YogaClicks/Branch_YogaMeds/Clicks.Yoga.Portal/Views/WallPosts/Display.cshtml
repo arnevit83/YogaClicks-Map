@@ -1,0 +1,34 @@
+﻿@model Clicks.Yoga.Portal.Models.WallPosts.WallPostDisplayModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Community")
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <div id="@guid" data-role="PostsContainer">
+                    <div data-role="Posts" class="posts">
+                        @Html.Action("PostPartial", "Walls", new { Model.PostId })
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaWall();
+    })
+</script>

@@ -1,0 +1,75 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.VenueTypeSelectorModel
+
+<div id="@Html.IdFor(m => m)">
+    <div>
+        <input type="radio" name="@(Html.IdFor(m => m))_Radio" data-role="NonResidential"> Non-Residential
+        <input type="radio" name="@(Html.IdFor(m => m))_Radio" data-role="Residential"> Residential
+    </div>
+    
+    @if (ViewBag.VenueTypeSelectorModelField != null)
+    {
+        <input type="hidden" name="@ViewBag.VenueTypeSelectorModelField" value="@Model.Selection" />
+    }
+    else
+    {
+        @Html.HiddenFor(m => m.Selection)
+    }
+
+    <select data-role="NonResidential">
+        <option value="">Non-Residential Options...</option>
+
+        @foreach (var type in Model.Options.Where(e => !e.Residential))
+        {
+            <option value="@type.Id">@type.Name</option>
+        }
+    </select>
+
+    <select data-role="Residential">
+        <option value="">Residential Options...</option>
+
+        @foreach (var type in Model.Options.Where(e => e.Residential))
+        {
+            <option value="@type.Id">@type.Name</option>
+        }
+    </select>
+
+    <script>
+        $(function () {
+            var $container = $('#@Html.IdFor(m => m)');
+            var $radios = $container.find('input[type=radio]');
+            var $selects = $container.find('select');
+            var $hidden = $container.find('input[type=hidden]');
+
+            (function () {
+                var $option = $selects.find('option[value=' + $hidden.val() + ']').first();
+                var role = $option.closest('select').attr('data-role');
+                var selector = '[data-role=' + role + ']';
+
+                $option.prop('selected', true);
+                $radios.filter(selector).prop('checked', true);
+                $selects.hide().filter(selector).show();
+
+                $(".VenueTypeDependent").hide();
+                $(".VenueTypeDependent." + role).show();
+            })();
+
+            $radios.on('change', function () {
+                var $this = $(this);
+                var role = $this.attr('data-role');
+                var selector = '[data-role=' + role + ']';
+                var checked = $this.is(':checked');
+                
+                $selects.filter(selector).toggle(checked);
+                $selects.not(selector).toggle(!checked);
+
+                $(".VenueTypeDependent").hide();
+                $(".VenueTypeDependent." + role).show();
+            });
+
+            $selects.on('change', function () {
+                var $this = $(this);
+                $hidden.val($this.val());
+            });
+        });
+    </script>
+</div>

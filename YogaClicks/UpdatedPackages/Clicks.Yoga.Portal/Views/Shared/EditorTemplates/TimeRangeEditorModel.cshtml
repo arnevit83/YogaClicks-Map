@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.TimeRangeEditorModel
+
+<div class="halfWidth">
+    @Html.LabelFor(m => m.StartHour, "Start Time")
+    @Html.DropDownListFor(m => m.StartHour, new SelectList(Model.HourOptions, "Value", "Text", Model.StartHour))
+    @Html.DropDownListFor(m => m.StartMinute, new SelectList(Model.MinuteOptions, "Value", "Text", Model.StartMinute))
+</div>
+<div class="halfWidth">
+    @Html.LabelFor(m => m.FinishHour, "End Time")
+
+    @Html.DropDownListFor(m => m.FinishHour, new SelectList(Model.HourOptions, "Value", "Text", Model.FinishHour))
+    @Html.DropDownListFor(m => m.FinishMinute, new SelectList(Model.MinuteOptions, "Value", "Text", Model.FinishMinute))
+</div>

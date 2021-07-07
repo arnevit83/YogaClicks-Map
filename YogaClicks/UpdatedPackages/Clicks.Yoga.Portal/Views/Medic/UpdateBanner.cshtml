@@ -1,0 +1,24 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionBannerUpdateModel
+
+<div>
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm("UpdateBanner", "Medic", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-condition-banner-form" }))
+{
+    @Html.HiddenFor(m => m.ConditionId)
+
+    <div id="ConditionBanner">
+        @Html.HiddenFor(m => m.ConditionBanner.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.ConditionBanner.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.ConditionBanner.ImageCrop.Width)
+        @Html.HiddenFor(m => m.ConditionBanner.ImageCrop.Height)
+        @Html.EditorFor(m => m.ConditionBanner)
+    </div>
+
+    <div id="cropfancybox" style="display: none">
+        <div id="upload-cut">
+            <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+        </div>
+    </div>
+}

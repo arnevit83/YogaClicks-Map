@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Fans.FanListPartialModel
+
+@if (Model.Fans.Count > 0)
+{
+    foreach (var fan in Model.Fans)
+    {
+        <div data-role="Fan" class="attendee member fan">
+            <div class="fl image test">
+                <a href="@Url.Action("Display", "Profiles", new { id = fan.OwnerId })">
+                    @Html.DisplayFor(m => fan.Image, "ProfileImage", new { Width = 75, Height = 75 })
+                </a>
+            </div>
+            <div class="fl info">
+                <div class="name fan-name">
+                    <a href="@Url.Action("Display", "Profiles", new { id = fan.OwnerId })">@fan.Name</a>
+                </div>
+                <div class="location">
+                    @if (fan.Location.Exists)
+                    {
+                        <text>@fan.Location.Name</text>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>@Model.Handle.Name does not have any fans yet.</p>
+}

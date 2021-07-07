@@ -1,0 +1,49 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueObtainStep1Model
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+
+<div id="@guid">
+    <div class="scrollableiFrame">
+        @Html.ValidationSummary()
+        <p class="largeP">Enter the name of the venue</p>
+        <div>
+            @Html.LabelFor(m => m.Venue)
+            @Html.EditorFor(m => m.Venue)
+        </div>
+    </div>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            @if (Model.ShowBackButton)
+            {
+                <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+                @Html.HiddenFor(m => m.ShowBackButton)
+            }
+            <button class="button pink large" type="submit">Next</button>
+        </div>
+    </div>
+    <div class="cb"></div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $inputs = $container.find('input');
+
+        $container.find('button').on('click', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ObtainStep1")',
+                data: $inputs.serialize(),
+                success: function (response) {
+                    $container.replaceWith(response);
+                }
+            });
+        });
+    });
+</script>

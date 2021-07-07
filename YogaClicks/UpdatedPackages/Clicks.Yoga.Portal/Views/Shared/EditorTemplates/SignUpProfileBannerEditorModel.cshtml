@@ -1,0 +1,49 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpProfileBannerEditorModel
+
+@{
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div id="ProfileBanner_signupcanvas" style="display: none;">
+            <div>
+                <canvas id="ProfileBanner_signupcanvascanvas" class="img-responsive signupbannerimagechange"></canvas>
+                <i class="fa fa-pencil"></i>
+            </div>
+        </div>
+
+
+        <div class="signupbannerimagechange">
+            @Html.DisplayFor(m => m.CurrentImage, "ProfileBanner")
+            @if (Model != null)
+            {
+                <i class="fa fa-pencil"></i>
+            }
+        </div>
+        <div id="ProfileBanner_signupcontainer" class="block-section">
+
+
+            <span class="hidden">@Html.EditorFor(m => m.NewImage)</span>
+            <div id="cropfancybox" style="display: none">
+                <div id="upload-cut">
+                    <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <p class="signup-large-text" style="margin-top: 30px; max-width: 710px">
+            @ViewBag.SignupProfileBannerImageText
+        </p>
+        <div style="line-height: 15px; max-width: 710px">
+            <span>optimal image dimensions are 710px x 240px, recommended file format is PNG or JPEG and 40MB max</span>
+        </div>
+    </div>
+    <div class="col-xs-4 col-lg-2"></div>
+</div>
+

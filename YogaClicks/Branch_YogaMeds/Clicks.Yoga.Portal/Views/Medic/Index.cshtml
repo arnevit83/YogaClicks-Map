@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Clinical studies prove health benefits of yoga";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {
+    <meta property="og:title" content="Clinical studies prove health benefits of yoga" />
+    <meta property="og:description" content="Over 200 clinical studies on the benefits of yoga, mindfulness and meditation, listed by condition. Find a yoga teacher or venue by health condition" />
+    <meta property="og:image" content="" />
+
+    <meta property="title" content="Clinical studies prove health benefits of yoga" />
+    <meta property="description" content="Over 200 clinical studies on the benefits of yoga, mindfulness and meditation, listed by condition. Find a yoga teacher or venue by health condition" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="medic-strip content-col" id="scroll">
+        <div class="padTop20">
+            <div class="styles-wrapper">
+                @Html.Action("MedicsPartial", "Medic")
+            </div>
+            <div class="no-more-styles" style="display:none;"></div>
+            <div class="loading-bar"><img src="@Url.Content("~/Images/loading_bar.gif")" /></div>
+            <div class="meta">
+                <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks. </p>
+            </div>
+            <div class="cb"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('div#scroll').scroll(function () {
+            if ($('.no-more-styles:hidden').length > 0) {
+                if (element_in_scroll(".slide:last")) {
+                    if ($('.loading-bar:hidden').length > 0) {
+                        $('.loading-bar').show();
+                        var linkToParse = '/medic/MedicsPartial?skip=555';
+                        var link = linkToParse.replace("555", $('.slide').length);
+                        $.ajax({
+                            url: link,
+                            async: true,
+                            success: function (html) {
+                                if (html.length > 290) {
+                                    $(".styles-wrapper").append(html);
+                                } else {
+                                    $('.no-more-styles').show();
+                                }
+                                $('.loading-bar').hide();
+                            }
+                        });
+                    };
+                };
+            };
+        });
+
+        function element_in_scroll(elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+
+            return ((elemTop <= docViewBottom));
+        }
+
+    </script>
+}

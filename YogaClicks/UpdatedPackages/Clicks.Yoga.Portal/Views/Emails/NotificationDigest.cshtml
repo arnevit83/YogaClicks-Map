@@ -1,0 +1,58 @@
+﻿@using Humanizer
+@model Clicks.Yoga.Emails.NotificationDigestEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Your YogaClicks notification digest";
+}
+
+
+
+<table width="650" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#14b5e9" style="border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 30px 30px; vertical-align: top; line-height: 42px; font-family: 'Source Sans Pro'; text-align: center; font-weight: 600; color: #ffffff; font-size: 40px;" bgcolor="#14b5e9">
+
+            <!-- Header -->
+            We missed you!
+
+
+
+        </td>
+    </tr>
+</table>
+<table width="650" class="deviceWidthblue eoa_c95" border="3" bordercolor="#14b5e9" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="padding:0;border-width:3px;border-style:solid;border-color:#14b5e9;border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 15px 15px; line-height: 27px; font-family: 'Source Sans Pro'; text-align: left; font-weight: lighter; color: #14b5e9; font-size: 25px;" bgcolor="#ffffff">
+
+
+            <!-- Content -->
+            Hi @Model.Profile.Forename,<br /><br />
+
+            Here's what you've missed on YogaClicks.
+            <br /><br />
+
+            @foreach (var pair in Model.Notifications)
+            {
+                @pair.Value@: @pair.Key.Name<br />
+                }
+
+            @foreach (var pair in Model.Requests)
+            {
+                @pair.Value@: @pair.Key.Name<br />
+                }
+
+            @if (Model.MessageCount > 0)
+            {
+                @Model.MessageCount@: unread messages<br />
+                }
+
+            <br />
+
+            See you soon! <br /><br />
+
+            Namaste! <br /><br /><br /><i>To change how often you get these notifications visit Account Settings on your Profile page</i>
+        </td>
+    </tr>
+</table>
+
+

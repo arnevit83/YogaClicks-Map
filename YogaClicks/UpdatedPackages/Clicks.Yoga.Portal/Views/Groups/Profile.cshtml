@@ -1,0 +1,258 @@
+﻿@using Clicks.Yoga.Portal.Models.Groups
+@model Clicks.Yoga.Portal.Models.Groups.GroupDisplayModel
+
+@{
+    ViewBag.Title = "Promoter";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Group))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Group.Name" />
+    @if (!string.IsNullOrEmpty(Model.Group.Description))
+    {
+        <meta property="og:description" content="@Model.Group.Description" />
+    }
+    @if (Model.Group.ProfileBanner != null)
+    {
+        <meta property="og:image" content="@Model.Group.ProfileBanner.Url" />
+    }
+}
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Group.Id, Model.Group.EntityTypeName))
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" /><span style="color: #13b4ea; font-weight: normal">@Model.Group.Name</span><span></span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+    <br />
+</section>
+<div class="community-strip-line"></div><br />
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class="community-strip content-col" id="scroll">
+        <div id="page-content">
+
+
+            <div class="hidden-xs">
+
+                @if (Request.UrlReferrer != null)
+                {
+                    <a onclick="history.go(-1); return false;" class="ARlink pull-right" alt="back" href="#">
+
+                        <span class="glyphicon-stack">
+                            <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                            <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                        </span><span style="vertical-align: text-bottom; color: #1AB5E9;">Back</span>
+                    </a>
+                }
+                <h1 class="greenHeader communityHeader"><img src="~/images/svgicons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" />@Model.Group.Name</h1>
+
+                <br />
+            </div>
+
+            <div class="shareRecommendSection groupshare">
+                <div class="fr">
+                    <span>Share: </span>
+                    @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+                </div>
+            </div>
+
+            <div class="profileBanner groupBanner hidden-xs">
+                @Html.DisplayFor(m => m.Group.ProfileBanner, "ProfileBanner")
+            </div>
+
+
+     
+
+            <article>
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+                        @Html.Partial("Tabs", new GroupTabsModel(Model.Permissions, Model.Group))
+
+                        <div class="panel-body">
+                            <br /><br />
+                            <div class="row nopadding">
+
+                                <div class="col-sm-5" id="@guid">
+                                    @Html.DisplayFor(m => m.Group.Image, "ProfileImage")<br /><br />
+                                </div>
+                                <div class="col-sm-7 nopadding">
+
+                                    <div class="well " style="vertical-align: middle;">
+                                        <div class="row nopadding">
+                                            <div class="col-sm-4 nopadding">
+                                                <h4>Promoter</h4>
+                                            </div>
+                                            <div class="col-sm-offset-1  col-sm-7">
+                                                <a href="@Url.Action("Display", Model.Group.PromoterHandle.Controller, new { Id = Model.Group.PromoterHandle.EntityId })">@Model.Group.PromoterHandle.Name</a>
+                                                <br /><br />
+                                            </div>    
+                                        </div>
+                                        <div class="row nopadding">
+                                            <div class="col-sm-4 nopadding">
+                                                <h4>Type</h4>
+                                            </div>
+                                            <div class="col-sm-offset-1  col-sm-7">
+                                                @if (Model.Group.Professional)
+                                                {
+                                                    if (Model.Group.ProfessionsRestricted)
+                                                    {
+                                                        <span>@string.Join(", ", Model.Professions.Select(e => e.Name + "s")) only</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>All professionals</span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <span>Open to all users</span>
+                                                }
+                                                <br /><br />
+                                            </div>
+                                        </div>
+                                        <div class="row nopadding">
+                                            <div class="col-sm-4 nopadding">
+                                                <h4>Visibility</h4>
+                                            </div>
+                                            <div class="col-sm-offset-1  col-sm-7">
+                                                @if (Model.Group.Public)
+                                                {
+                                                    <p>Public Group</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Private Group</p>
+                                                }    
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    </div>
+                            </div>
+
+                                <div class="row nopadding">
+                                    <div class="col-xs-12 nopadding">
+                                        <table class="table table-striped">
+                                            @if (!string.IsNullOrEmpty(Model.Group.Description))
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <br />
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <h4>Description</h4>
+                                                            </div>
+                                                            <div class=" col-sm-offset-1  col-sm-8">
+                                                                <p style="margin: 10px 0 10px; font-style: italic;">@Html.NewLines(Model.Group.Description)</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                            @if (Model.Styles.Count > 0)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <br />
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <h4>Associated styles</h4>
+                                                            </div>
+                                                            <div class=" col-sm-offset-1  col-sm-8">
+                                                                <ul class="Halflist">
+                                                                    @foreach (var style in Model.Styles)
+                                                                    {
+                                                                        <li><a href="@Url.Action("Display", "Styles", new { style.Id })">@style.Name</a></li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                     
+                                                @if (Model.Conditions.Count > 0)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <br />
+                                                            <div class="row nopadding">
+                                                                <div class=" col-sm-3 nopadding">
+                                                                    <h4>YogaMeds taught</h4>
+                                                                </div>
+                                                                <div class=" col-sm-offset-1  col-sm-8">
+                                                                    <ul class="Halflist">
+                                                                        @foreach (var condition in Model.Conditions)
+                                                                        {
+                                                                            <li><a href="@Url.Action("Display", "Medic", new { condition.Id })">@condition.Name</a></li>
+                                                                        }
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            
+                                            @if (SecurityContext.CanUpdate(Model.Group) || Model.Permissions.Manage)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <br />
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+
+                                                            </div>
+                                                            <div class=" col-sm-offset-1  col-sm-8">
+                                                                <button class="btn btn-clear btn-default  pull-right" style="clear:both;" onclick="location.href = '@Url.Action("Update")'; return false; ">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+
+                                        <div class="hidden-md hidden-lg hidden-sm">
+                                            <br /><br />
+                                            @Html.Partial("Tabsmini")
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+            </article>
+        </div>
+    </div>
+</div>

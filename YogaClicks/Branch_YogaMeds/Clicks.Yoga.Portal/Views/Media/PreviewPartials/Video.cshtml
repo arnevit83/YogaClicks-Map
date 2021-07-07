@@ -1,0 +1,8 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.MediaResourceModel
+
+<div data-role="PostMediaResource" data-resource-uri="@Model.Uri" data-resource-type="@Model.Type.Tag">
+    <a href="javascript:void(0)" data-role="RemoveButton" class="deleteButton">Remove</a>
+    <div>
+        @Html.Raw(string.Format(Model.Content, 220, 160))
+    </div>
+</div>

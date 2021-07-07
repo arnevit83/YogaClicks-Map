@@ -1,0 +1,150 @@
+﻿
+<div class="well buisnesscard" style="vertical-align: middle;">
+
+    <h4><a class="ARlink" href="@Url.Action("Galleries", Model.EntityType.Controller, new { Id = Model.EntityId })">Albums</a></h4>
+
+    <hr />
+    @model Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedPartialModel
+
+    @{
+        var guid = Guid.NewGuid().ToString();
+    }
+
+ 
+
+
+    @if (Model.Galleries.Count > 0)
+    {
+        if (Model.Permissions.Associate)
+        {
+
+            <button class="btn btn-default btn-clear pull-right" href="javascript:void(0)" data-bsmodel-url="@Url.Action("Create", new {Model.EntityId, EntityTypeName = Model.EntityType.Name})">Add another album +</button>
+
+           
+        }
+    }
+
+    @if (Model.Galleries.Count == 0)
+    {
+        if (Model.Permissions.Associate)
+        {   <button class="btn btn-default btn-clear pull-right" href="javascript:void(0)" data-bsmodel-url="@Url.Action("Create", new {Model.EntityId, EntityTypeName = Model.EntityType.Name})">Create a new album +</button>
+
+
+
+
+
+        }
+    }
+    <br /><br />
+    <div id="@guid" class="galleryList">
+        @if (!Model.Galleries.Any())
+        {
+            <div class="caption thumbnailmax">
+                <p class="thumnailcenter">
+                    <div><br /><br />Sorry, there doesn't seem to be any pictures here at the moment.</div>
+                    </p> 
+                </div>
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    @{
+            int counter = 0;
+            foreach (var gallery in Model.Galleries)
+            {
+                if (counter == 0)
+                {
+                    @Html.Raw("<div class=\"row\">")
+                }
+                else if (counter > 0 && counter % 3 == 0)
+                {
+                    @Html.Raw("</div><div class=\"row\">")
+                }
+                counter++;
+
+
+
+                <div data-role="Gallery" class="col-sm-4">
+                    <div class="thumbnail ">
+
+
+                        @if (Model.Permissions.Disassociate || SecurityContext.CanDelete(gallery))
+                        {
+                            <a title="Delete " data-toggle="tooltip" href="javascript:void(0)" data-role="DeleteButton" class="deleteButton" data-url="@Url.Action("Disassociate")" data-id="@gallery.Id" data-entity-id="@Model.EntityId" data-entity-type-name="@Model.EntityType.Name"><i class="fa fa-trash"></i></a>
+                        }
+
+                        <a @if (Model.Permissions.Associate){ <text> title='Edit ' data-toggle='tooltip' </text> }  href="@Url.Action("Gallery", Model.EntityType.Controller, new { Id = Model.EntityId, GalleryId = gallery.Id })" class="galleryItem">
+                            @Html.Image(gallery.Cover, "Profile.jpg", i => i.Resize(c => c.Width(500).Height(500).ScaleBoth().Crop()))
+                        </a>
+
+
+
+                        <div class="caption thumbnailmax">
+                            <p class="thumnailcenterab">
+                                @gallery.Name
+                            </p>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+            }
+
+}
+
+
+  
+                
+         
+
+
+        
+
+
+
+
+  
+    
+    
+     </div>
+</div>
+    <script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.find('[data-role=DeleteButton]').on('click', function () {
+            var $this = $(this);
+
+            if (!window.confirm("Are you sure you wish to delete this gallery?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: $this.attr('data-url'),
+                data: {
+                    Id: $this.attr('data-id'),
+                    EntityId: $this.attr('data-entity-id'),
+                    EntityTypeName: $this.attr('data-entity-type-name')
+                },
+                success: function () {
+                    $this.closest('[data-role=Gallery]').remove();
+                }
+            });
+        });
+    });
+    </script>

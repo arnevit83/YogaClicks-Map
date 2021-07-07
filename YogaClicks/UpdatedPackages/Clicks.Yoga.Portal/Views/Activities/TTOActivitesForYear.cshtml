@@ -1,0 +1,78 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.TTOActivityYearViewModel
+<div>
+
+    <div>
+        <a href="#" class="btn btn-clear pull-right btn-default  calendar-view-button schedule-type-btn">View Classes</a>
+    </div>
+
+</div><br /><br />
+@if (Model.ScheduleItems.Any())
+{
+    <div class="classesTable year-schedule-table table-responsive">
+
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Venue</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ScheduleItems)
+                {
+                    <tr>
+                        <td class="cal-day-td">
+                            <div class="cal-day-container">
+                                <div class="cal-day-day">@item.StartDate.ToString("dd") @item.StartDate.ToString("MMM")</div>
+                                <div class="cal-day-year">@item.StartDate.ToString("yyyy")</div>
+                                <div class="cal-day-time">@item.StartDate.ToString("hh:mm tt")</div>
+                            </div>
+                            <div class="cal-to">to</div>
+                            <div class="cal-day-container">
+                                <div class="cal-day-day">@item.EndDate.ToString("dd") @item.EndDate.ToString("MMM")</div>
+                                <div class="cal-day-year">@item.EndDate.ToString("yyyy")</div>
+                                <div class="cal-day-time">@item.EndDate.ToString("hh:mm tt")</div>
+                            </div>
+                        </td>
+                        <td class="cal-event-td">
+                            @if (item.TTOCourse)
+                            {
+                                @Html.ActionLink(item.Name, "display", "teachertrainingcourses", new { id = item.Id }, null);
+                            }
+                            else
+                            {
+                                @Html.ActionLink(item.Name, "display", "activities", new { id = item.Id }, null);
+                            }
+
+                            <div class="cal-event-desc">
+                                <span>
+                                    @item.Description
+                                </span>
+                            </div>
+                        </td>
+                        <td class="cal-venue-td">
+                            @if (item.VenueId != null)
+                            {
+                                @Html.ActionLink(item.VenueName, "display", "venues", new { id = item.VenueId }, null)
+                                <div>
+                                    @item.VenueCity <br />
+                                    @item.VenueCountry
+                                </div>
+                            }
+                            else
+                            {
+                               <div>Venue TBC</div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+else
+{
+    <div class="no-events">No courses or events found</div>
+}

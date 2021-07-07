@@ -1,0 +1,78 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Galleries.GalleryCreateModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h2 class="greenHeader">Create an album</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div id="gallery" class="createGallery">
+        <div class="create-album-body">
+            <div class="header">
+
+                <div class="fl">
+                    @Html.EditorFor(m => m.Name, new { maxlength = 100, placeholder = "100 characters maximum" })
+                </div>
+                <a id="@Guid.NewGuid()" href="javascript:void(0)" class="button silver fr" data-role="UploadButton" data-url="@Url.Action("UploadImage", new { Id = "" })">Add photos +</a>
+            </div>
+
+            @if (Model.AssociateHandles.Options.Count > 0)
+            {
+                <div class="shareGallery">
+                    <strong>Share this gallery to...</strong>
+                    @Html.EditorFor(m => m.AssociateHandles)
+                    <br/>
+                    All galleries are automatically shared to your personal profile.
+                </div>
+            }
+
+            <div data-role="Errors" class="validation-summary-errors" style="display: none;">
+                <ul>
+                    <li>
+                        There was a problem uploading one or more images. The file may be corrupted
+                        or may not have finished transferring.
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="Entries" class="entries gallery-section">
+                @Html.Partial("UploadProgressPartial")
+            </div>
+        </div>
+        <div class="footer create-album-footer">
+            <div class="fl">
+                @Html.RadioButton("Public", true, true, new {@id = "createRadio"})<label for="Public">Public</label>
+                @Html.RadioButton("Public", false,  false, new {@id = "createRadio"})<label for="Public" class="privateClass">Private</label>
+                <span class="questionMark privacyQuestionMark">?</span>
+                             <div class="levelBox privacyBox">
+                                <strong>Make public</strong>: anyone on YogaClicks can see your photo gallery.<br /><br />
+                                <strong>Make Private</strong>: only your YogaClicks friends can see your gallery.
+                                <a href="#" class="close">x</a>
+                            </div>
+            </div>
+
+            <div class="fr">
+                <a href="javascript:closeModal()" class="textLink">Cancel</a>
+                <button type="submit" data-role="SaveGallery" class="button large pink">Save gallery</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        $('#gallery').yogaGallery();
+        $('.privacyQuestionMark').click(function (event) {
+            event.preventDefault();
+            $('.privacyBox').toggle();
+        });
+        $('.privacyBox .close').click(function (event) {
+            event.preventDefault();
+            $('.privacyBox').hide();
+        });
+    });
+</script>

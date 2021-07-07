@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfilePersonalNewsletterOptUpdateModel
+
+@using (Html.BeginForm("UpdateProfileNewsletterOpt", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-profile-newsletter-opt-form" }))
+{
+    @Html.HiddenFor(m => m.ProfileId)
+    <div class="left-col fl">
+        <img src="/images/news-letter.png" class="newsLetter" alt="">
+    </div>
+    <div class="right-col fr">
+
+        <h3>YogaClicks newsletter – <span>all the latest news and exclusive offers in your inbox</span></h3>
+        <p class="opt-out-newsletter">@Html.EditorFor(m => m.NewsletterOptOut)<small>I would like to <span>opt out</span> from receiving the newsletter</small></p>
+        <span class="profile-newsletter-opt-saved-text fr">Changes Saved</span>
+    </div>
+}

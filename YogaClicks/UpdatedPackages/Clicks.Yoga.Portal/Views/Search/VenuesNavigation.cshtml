@@ -1,0 +1,119 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Search.SearchVenuesNavigationModel
+
+@{
+    ViewBag.VenueTypeSelectorModelField = "VenueType";
+}
+
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+               
+                <h1 class="pageTitle"><span style="float: left">Venues</span></h1><br />
+                Refine your search<br /><br />
+                
+     
+
+                @using (Html.BeginForm(Model.Action, "Search", FormMethod.Get))
+                {
+                    <label>Venue name</label>
+
+                    @Html.TextBox("Keywords", Model.Criteria.Keywords,new { @class = " form-control" })
+
+                    <label>Location</label>
+
+                    @Html.TextBox("Location", Model.Criteria.Location, new { data_role = "Location", autocomplete = "off", placeholder = "You must enter a location - town, country etc.", @class = " form-control" })
+
+                    <div id="LocationSuggestions" data-role="LocationSuggestions"></div>
+
+                    @Html.Hidden("Latitude", Model.Criteria.Latitude, new { data_role = "Latitude" })
+                    @Html.Hidden("Longitude", Model.Criteria.Longitude, new { data_role = "Longitude" })
+                    @Html.Hidden("Radius", Model.Criteria.Radius, new { data_role = "Radius" })
+
+                    <label>Style</label>
+
+                    @Html.DropDownList("Style", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.Style), "Please select")
+
+                 
+                        <label>YogaMeds</label>
+
+                        @Html.DropDownList("Condition", new SelectList(Model.Conditions, "Id", "Name", Model.Criteria.Condition), "Please select")
+                  
+                    <label>Service</label>
+
+                    @Html.DropDownList("VenueService", new SelectList(Model.Services, "Id", "Name", Model.Criteria.VenueService), "Please select")
+
+                    <label>Type</label>
+
+                    @Html.EditorFor(m => m.VenueTypes)
+
+
+    <br />
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+        <div class="btn-group" role="group">
+            <a href="@Url.Action("Venues")" class="btn btn-default btn-clear">Clear</a>
+        </div>
+    </div>
+    <div class="btn-group btn-group-justified FindButtons" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-custom " id="btn-Search" data-role="SearchSubmit">Search</button>
+        </div>
+    </div>
+
+    <input type="submit" value="Search" class="hidden" />
+
+
+
+
+
+
+                
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+<script>
+    $(function () {
+        $('#navwrap').yogaLocationPicker({ autocode: true });
+    });
+    $(function () {
+        $('#navwrap').yogaLocationPicker({ autocode: true });
+        $("#right-menu-close").click(function () {
+
+            $("#right-nav").fadeToggle("fast");
+            $(".dark-overlay").fadeToggle("slow");
+
+        });
+
+    });
+
+
+    function ResetForm() {
+        document.getElementById("Keywords").value = "";
+        document.getElementById("Location").value = "";
+        document.getElementById("Style").selectedIndex = 0;
+        document.getElementById("VenueService").selectedIndex = 0;
+        document.getElementById("VenueTypes").clear();
+    }
+</script>

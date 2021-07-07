@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherCreatePlacementAddressModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h2 class="greenHeader">Find/add a venue</h2>
+<hr />
+<ul class="steps steps3">
+    <li><span>Step 1</span></li>
+    <li><span>Step 2</span></li>
+    <li class="active"><span>Step 3</span></li>
+</ul>
+<div class="scrollableiFrame">
+    @Html.ValidationSummary()
+    @using (Html.BeginForm("CreatePlacementAddress", "Teachers"))
+    {
+        @Html.HiddenFor(m => m.VenueName)
+        @Html.HiddenFor(m => m.Owned)
+        @Html.HiddenFor(m => m.EmailAddress)
+        
+        @Html.EditorFor(m => m.Address)
+
+        <hr />
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button class="pink large button fr" type="submit">Next</button>
+
+        <div class="cb"></div>
+    }
+</div>

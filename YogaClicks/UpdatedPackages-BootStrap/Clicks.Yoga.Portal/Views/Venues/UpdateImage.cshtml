@@ -1,0 +1,14 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueImageUpdateModel
+
+@using (Html.BeginForm("UpdateImage", "Venues", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-profile-image-form" }))
+{
+    @Html.HiddenFor(m => m.VenueId)
+
+    <div id="profileImage" class="left-col fl profile-pic-wrap">
+        @Html.HiddenFor(m => m.Image.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.Image.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.Image.ImageCrop.Width)
+        @Html.HiddenFor(m => m.Image.ImageCrop.Height)
+        @Html.EditorFor(m => m.Image)
+    </div>
+}

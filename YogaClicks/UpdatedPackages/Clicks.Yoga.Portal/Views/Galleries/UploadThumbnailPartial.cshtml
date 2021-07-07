@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryUploadThumbnailPartialModel
+
+<div data-role="Entry" class="galleryItemWrap galleryPopUpThumbnail" style="float: left; width: 172px; margin: 5px;">
+    @Html.Hidden("ImageIds", Model.Image.Id)
+
+    <a href="javascript:void(0)" data-role="DeleteEntryButton" title="Delete " data-toggle="tooltip" class="deleteButton" data-url="@Url.Action("DeleteImage")" data-id="@Model.Image.Id"><i class="fa fa-trash"></i></a>
+    <div class="imageWrap">
+        @Html.Image(Model.Image, i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+    </div>
+    <div class="inputWrap">    
+        @Html.TextBox("ImageNames", "", new { placeholder = "Name this image" })
+    </div>    
+</div>

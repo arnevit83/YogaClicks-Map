@@ -1,0 +1,73 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleIndexModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.BodyClass = "practice";
+    ViewBag.Title = "80+ Yoga Styles, from Ashtanga to Bikram to Vinyasa";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section Head {
+    <meta property="og:title" content="Find the style of yoga that's right for you at YogaClicks" />
+    <meta property="og:description" content="Ananda thru Yin Yang - you'll find sixty plus styles at YogaClicks" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Style.Image/25811371-8b77-400e-88ca-e9edbe781dbb.jpg?width=715&scale=both" />
+}
+
+@section LeftNav{
+    @Html.Action("DirectoryNavigation", "Styles")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="practice-strip content-col" id="scroll">
+        <p class="padTop20"></p>
+        <div class="styles-wrapper">
+            @Html.Action("DirectoryPartial", "Styles")
+        </div>
+        <div class="no-more-styles" style="display:none;"></div>
+        <div class="loading-bar"><img src="@Url.Content("~/Images/loading_bar.gif")" /></div>
+
+        <div class="meta">
+            <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks. </p>
+        </div>
+        <div class="cb"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('div#scroll').scroll(function () {
+            if ($('.no-more-styles:hidden').length > 0) {
+                if (element_in_scroll(".slide:last")) {
+                    if ($('.loading-bar:hidden').length > 0) {
+                        $('.loading-bar').show();
+                        var linkToParse = '/styles/StylesPartial?skip=555';
+                        var link = linkToParse.replace("555", $('.slide').length);
+                        $.ajax({
+                            url: link,
+                            async: true,
+                            success: function (html) {
+                                if (html.length > 290) {
+                                    $(".styles-wrapper").append(html);
+                                } else {
+                                    $('.no-more-styles').show();
+                                }
+                                $('.loading-bar').hide();
+                            }
+                        });
+                    };
+                };
+            };
+        });
+
+        function element_in_scroll(elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+
+            return ((elemTop <= docViewBottom));
+        }
+
+    </script>
+}

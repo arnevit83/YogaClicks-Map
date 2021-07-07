@@ -1,0 +1,211 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationDisplayModel
+
+@{
+    ViewBag.Title = "About teacher training organisation";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+    var ogDescription = string.Format("{0}{1}{2}",
+        Model.Organisation.Name,
+        Model.Organisation.Address != null ? " | " + Model.Organisation.Address.City + ", " + Model.Organisation.Address.Country.EnglishName : "",
+        Model.Organisation.Description != null ? " | " + Model.Organisation.Description : "");
+
+    var metaDescription = Model.Organisation.Description != null ? string.Format("{0}. {1}", Model.Organisation.Name, Model.Organisation.Description)
+: string.Format("{0} is a yoga teacher training school on YogaClicks. To find out more about {1} and other yoga teacher training schools all over the world join us at YogaClicks.", Model.Organisation.Name, Model.Organisation.Name);
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Organisation))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Organisation.Name" />
+    <meta property="og:description" content="@ogDescription" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Organisation.Image)" />
+    <meta name="description" content="@metaDescription">
+}
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Organisation.Id, Model.Organisation.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Organisation) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Organisation.Id, SubjectTypeName = Model.Organisation.EntityTypeName })
+
+                @if (SecurityContext.CanUpdate(Model.Organisation))
+                {
+                    <div>
+                        <div style="clear:both;">
+                            <button class="button save fr" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                        </div>
+                    </div>
+                }
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Organisation.Id, SubjectType = Model.Organisation.EntityTypeName })
+
+                <h1 class="teacherOrganisationHeader pageTitle">
+                    
+                   
+                    @if (Model.Organisation.OwnerId != null)
+                    {
+                        <a href="@Url.Action("Display", "Profiles", new { Id = Model.Organisation.OwnerId })" class="profileLink"><span>&nbsp;</span></a>
+                    }
+                    
+                    @if (Model.HasTeacher)
+                    {
+                        <a href="@Url.Action("Display", "Teachers", new {Model.Teacher.Id})" class="teacherLink"><span>&nbsp;</span></a>
+                    }
+                    @if (Model.HasVenue)
+                    {
+                        <a href="@Url.Action("Display", "Venues", new {Model.Venue.Id})" class="venueLink"><span>&nbsp;</span></a>
+                    }
+                    
+                    <span>&nbsp;</span>
+
+                    @Model.Organisation.Name
+                </h1>
+                <div class="profileBanner teacherOrganisationBanner">
+                    @if (SecurityContext.CanUpdate(Model.Organisation))
+                    {
+                        if (Model.Organisation.ProfileBanner.Name == null)
+                        {
+                            <a href="@Url.Action("Update")"><img src="~/Images/default/profile-no-banner.jpg" /></a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.Organisation.ProfileBanner, "ProfileBanner")
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(m => m.Organisation.ProfileBanner, "ProfileBanner")
+                    }
+                </div>
+
+                @Html.Partial("Tabs")
+
+                <div class="leftCol">
+                    <div class="profile-pic" style="margin:0 0 10px 0; border:1px solid #ccc;">
+                        @Html.DisplayFor(m => m.Organisation.Image, "ProfileImage")
+                    </div>
+                    @Html.Action("Button", "Fans", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                    @Html.Action("Button", "Recommendations", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                </div>
+                <div class="rightCol">
+                    @Html.Action("ClaimButton", "Profiles", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName, Id = "", Slug = "" })
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <div class="block-section teacherTrainingAddressSection">
+                            @if (Model.Organisation.Address.Exists)
+                            {
+                                <div class="half-col fl">
+                                    @Html.DisplayFor(m => m.Organisation.Address, "AddressMap")
+                                </div>
+                                <div class="fr">
+                                    <strong>Organisation HQ</strong><br>
+                                    @Html.DisplayFor(m => m.Organisation.Address, "Address")
+                                </div>
+                            }
+                            <div class="row">
+                                <strong>Founder</strong>
+                                @Model.Organisation.Founder
+                            </div>
+                            @*Epic 736:Protect our email addresses -- Remove Email Addresses*@
+                            @*<div class="row">
+                                <strong>Email</strong>
+                                @Model.Organisation.EmailAddress
+                            </div>*@
+                            <div class="row">
+                                <strong>Web/social media</strong>
+                                @Model.Organisation.Website.Url
+                            </div>
+                        </div>
+                        <hr />
+                    }
+                    <div class="left">
+                        <h4>About</h4>
+                    </div>
+                    <div class="right">
+                        <div>
+                            <p>@Html.NewLines(Model.Organisation.Description)</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="left">
+                        <h4>Accrediting / registering bodies</h4>
+                    </div>
+                    <div class="right">
+                        <ul>
+                            @foreach (var body in Model.Organisation.AccreditationBodies)
+                            {
+                                <li style="float: none; width: 100%;"><a href="@Url.Action("Display", "AccreditationBodys", new { body.Id })">@body.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <hr />
+                    <div class="left">
+                        <h4>Styles taught</h4>
+                    </div>
+                    <div class="right">
+                        <ul>
+                            @foreach (var style in Model.Organisation.Styles)
+                            {
+                                <li><a href="@Url.Action("Display", "Styles", new { style.Id })">@style.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                    <hr />
+                    @if (SecurityContext.IsYogaMeds())
+                    {
+                        // DEPLOYMENT OF YODAMEDS - remove this
+                        <div class="left">
+                            <h4>YogaMeds taught</h4>
+                        </div>
+                        <div class="right">
+                            <ul>
+                                @foreach (var condition in Model.Organisation.Conditions)
+                                {
+                                    <li><a href="@Url.Action("Display", "Medic", new { condition.Id })">@condition.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    @if (SecurityContext.CanUpdate(Model.Organisation))
+                    {
+                        <div>
+                            <div style="clear:both;">
+                                <button class="button save fr" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                            </div>
+                        </div>
+                    }
+                    <div class="meta">
+                        <p>YogaClicks does not warrant that any of the teachers, venues or teacher training organisations found on our site will meet your health or medical requirements.<p>
+                        <p>YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.</p>
+                        <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                        <br />
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        var prImage = Model.Organisation.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Organisation.Image.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + '@Model.Organisation.Name');
+        $('.twitter-link-div').html('&text=Find ' + '@Model.Organisation.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find ' + '@Model.Organisation.Name' + ' on YogaClicks&media=' + '@prImage');
+    </script>
+}

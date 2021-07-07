@@ -1,0 +1,150 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations
+@model OrganisationUpdateModel
+
+@{
+    ViewBag.Title = "Edit teacher training profile";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search")
+    }
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h2 class="teacherOrganisationHeader"><span>&nbsp;</span>Edit teacher training profile
+                    <button class="button fr save back-to-profile" onclick="location.href = '@Url.Action("Display")'; return false;">Back To Profile</button>
+                </h2>
+                @Html.Partial("Tabs")
+
+                <div>
+                    <h3 class="fl">Organisation profile</h3>
+                </div>
+
+                @Html.Partial("UpdateBanner", new OrganisationBannerUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  ProfileBanner = Model.ProfileBanner
+              })
+
+                <div id="cropfancybox" style="display: none">
+                    <div id="upload-cut">
+                        <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+                    </div>
+                </div>
+
+                <div class="block-section">
+                    <h3>Contact details</h3>
+                    <div class="left-col fl profile-pic-wrap">
+                        @Html.Partial("UpdateImage", new OrganisationImageUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Image = Model.Image
+              })
+                    </div>
+
+                    <div class="right-col fr">
+                        @Html.Partial("UpdateDetails", new OrganisationDetailsUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  EmailAddress = Model.EmailAddress,
+                  Founder = Model.Founder,
+                  Name = Model.Name,
+                  Website = Model.Website
+              })
+
+                    </div>
+                </div>
+                <div class="block-section organisationHq">
+                    @Html.Partial("UpdateLocation", new OrganisationLocationUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Address = Model.Address
+              })
+                </div>
+
+                <div class="block-section full-width-textarea-wrap">
+                    @Html.Partial("UpdateAbout", new OrganisationAboutUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Description = Model.Description
+              })
+                </div>
+
+                <div class="block-section styles-taught-section">
+                    @Html.Partial("UpdateStyles", new OrganisationStylesUpdateModel
+              {
+                  EntityId = Model.EntityId,
+                  Styles = Model.Styles
+              })
+                </div>
+
+                <div>
+                    <span class="fl profileDelete button blockButton">
+                        <span>&nbsp;</span>
+                        @Html.Action("DeleteButton", "Profiles", new { Model.EntityId, Model.EntityTypeName, Securable = Model })
+                    </span>
+                    @Html.Action("UnclaimButton", "Profiles", new { Model.EntityId, Model.EntityTypeName, Id = "", Slug = "" })
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#update-details-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateDetails")', $form.serialize(), $('.profile-details-saved-text'));
+            return false;
+        });
+
+        $('#update-location-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateLocation")', $form.serialize(), $('.venue-location-saved-text'));
+            return false;
+        });
+
+        $('#update-about-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateAbout")', $form.serialize(), $('.venue-about-saved-text'));
+            return false;
+        });
+
+        $('#update-styles-image-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            postForm('@Url.Action("UpdateStyles")', $form.serialize(), $('.venue-styles-saved-text'));
+            return false;
+        });
+
+        function postForm(url, data, saveText) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                async: true,
+                data: data,
+                success: function (html) {
+                    saveText.fadeIn(500);
+                    setTimeout(function () {
+                        saveText.fadeOut(500);
+                    }, 2000);
+                }
+            });
+        };
+
+    </script>
+}

@@ -1,0 +1,131 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityUpdateModel
+@using Clicks.Yoga.Portal.Models.Activities
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+<div id="content-slider" role="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader workshopHeader"><span>&nbsp;</span>Edit @Model.Activity.Name</h2>
+
+                @Html.Action("Tabs")
+
+                @Html.Partial("UpdateBanner", new ActivitiesBannerUpdateModel
+                    {
+                        ProfileBanner = Model.ProfileBanner,
+                        ActivityId = Model.Activity.Id
+                    })
+
+
+                <div id="cropfancybox" style="display: none">
+                    <div id="upload-cut">
+                        <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+                    </div>
+                </div>
+
+                @using (Html.BeginForm("Update", "Activities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    <div>
+                        @Html.ValidationSummary()
+                    </div>
+                    <div class="personalProfileHeader" style="height:  40px;">
+                        <h3 class="fl">@Model.Activity.Name profile</h3>
+                        <button type="submit" class="button save fr">Save changes &nbsp; <img src="/images/icon-save.png"></button>
+                    </div>
+                    <div class="block-section">
+                        <h3>Event details</h3>
+                        <div>
+                            <div>
+                                @Html.LabelFor(m => m.Name)
+                                @Html.TextBoxFor(m => m.Name, new { maxlength = 50 })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.AbilityLevel, "Level")
+                                @Html.EditorFor(m => m.AbilityLevel)
+                            </div>
+
+                            <div class="typeCheckBoxes">
+                                @Html.LabelFor(m => m.Type)
+                                @Html.EditorFor(m => m.Type)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.PromoterHandle, "Promoter")
+                                @Html.EditorFor(m => m.PromoterHandle)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.BookingRequired, "Booking required")
+                                @Html.EditorFor(m => m.BookingRequired)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.Price)
+                                @Html.EditorFor(m => m.Price)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-section timeAndPlace">
+                        <h3>Time and place</h3>
+                        <div class="fl">
+                            <div>
+                                @Html.LabelFor(m => m.StartTime, "Start date & time")
+                                @Html.EditorFor(m => m.StartTime)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FinishTime, "End date & time")
+                                @Html.EditorFor(m => m.FinishTime)
+                            </div>
+                        </div>
+                        <div class="fr">
+                            <div>
+                                <strong>Venue</strong>
+                                <span>@Model.Activity.Venue.Name</span>
+                                <button onclick="openModal('@Url.Action("ChangeVenue")'); return false;" class="silver button">Change</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-section">
+                        <h3>Event description</h3>
+                        <div>
+                            @Html.TextAreaFor(m => m.Description, new { placeholder = "300 word maximum" })
+                        </div>
+                    </div>
+                    <div class="block-section styles-taught-section">
+                        <div>
+                            @Html.EditorFor(m => m.Styles)
+                        </div>
+                    </div>
+                    <div class="block-section conditions-taught-section">
+                        <div>
+                            @Html.EditorFor(m => m.Conditions)
+                        </div>
+                    </div>
+                    <span class="fl profileDelete button blockButton">
+                        <span>&nbsp;</span>
+                        @Html.Action("DeleteButton", "Profiles", new { EntityId = Model.Activity.Id, EntityTypeName = Model.Activity.EntityTypeName, Securable = Model.Activity })
+                    </span>
+                    <button class="silver button save fr" type="submit">Save Changes <img src="/images/icon-save.png"></button>
+                }
+            </article>
+        </div>
+    </div>
+</div>

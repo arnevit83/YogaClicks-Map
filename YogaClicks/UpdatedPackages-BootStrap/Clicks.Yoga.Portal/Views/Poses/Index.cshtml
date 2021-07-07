@@ -1,0 +1,102 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseIndexModel
+
+@{
+    ViewBag.Title = "90 + Yoga Poses or Asana, Beginners to Advanced";
+    ViewBag.Description = "Looking for yoga poses? Let us be your guide. Basic or advanced, seated, standing or kneeling, for back pain or weight loss, we’ll help you work it out.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section Head {
+    <meta property="og:title" content="Uttanasana or Utkatasana? Never strike out again at YogaClicks" />
+    <meta property="og:description" content="We've detailed 100+ poses - why we love them, how to do them and more at YogaClicks. Search by name, level or category" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Pose.Image/e3ad2161-fdb5-41cd-b4cf-58563db4c498.png" />
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).on("keypress", "#posesearch .search-term", function (e) {
+            if (e.keyCode == 13) {
+                $('#posesearch').submit();
+            }
+        });
+        $(document).ready(function() {
+
+            $("#Innercontent").css('min-width', '99%');
+            resizeDiv(true);
+        });
+    </script>
+}
+
+@section LeftNav{
+    @Html.Partial("IndexNavigation")
+}
+
+
+
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><i class="practiceIcon pull-left"></i><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - Pose finder</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+
+
+
+            <div id="content-slider" class="content-slider">
+                <div class="content-col " id="scroll">
+                  
+                        @foreach (var category in Model.Categories)
+                        {
+                            if (category.Count == 0 || (Model.CategoryId.HasValue && Model.CategoryId.Value != category.Id) || Model.Poses.All(p => p.CategoryId != category.Id))
+                            {
+                                continue;
+                            }
+
+                            <section class="pose-group">
+                                <header class="discipline">
+                                    <h2>@category.Name</h2>
+                                </header>
+                                @foreach (var pose in Model.Poses.Where(p => p.CategoryId == category.Id))
+                                {
+                                    <article class="pose">
+                                        <div>
+                                            &copy; YogaClicks @DateTime.Today.Year
+                                             </div>
+                                        <a href="@Url.Action("display", new { id = pose.Id })" class=" thumbnail">@Html.Image(pose.Image, null, pose.EnglishName + " - " + pose.SanskritName)</a>
+                                        <h3>@pose.EnglishName</h3>
+                                        <p>@pose.SanskritName</p>
+                                    </article>
+                                }
+                            </section>
+                        }<br/><br/>
+                        <div class="meta">
+                            <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>
+                        </div>
+                  
+                </div>
+            </div>

@@ -1,0 +1,45 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileFriendRequestsModel
+
+@{
+    ViewBag.Title = "Friend Requests";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "My Account";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col profile-strip" id="scroll">
+            <div id="page-content">
+                        <article id="static">  
+            <div class="FriendRequests">
+                <h1 class="greenHeader requestHeader"><span>&nbsp;</span>Friend Requests</h1>
+
+                @if (Model.Requests.Count > 0)
+                {
+                    foreach (var request in Model.Requests)
+                    {
+                        <div data-role="Request" class="block-section">
+                            <div class="notificationRow">
+                                <div class="icon">
+                                    @Html.Image(request.ActorHandle.Image, "Profile.jpg", i => i.Resize(c => c.Width(42).Height(42).ScaleBoth().Crop()) , request.ActorHandle.Name, new { @class = "friend-small" })
+                                </div>
+                                <div class="text">
+                                    <p>@Html.Raw(request.Message)</p>
+                                    <button data-role="AcceptButton" data-id="@request.Id" class="button save highlight">Confirm</button>
+                                    <button data-role="RejectButton" data-id="@request.Id" class="button save tap">Ignore</button>
+                                    <button data-role="BlockButton" data-id="@request.Id" class="button save tap"><img src="/images/icon-block.png"> Block user</button>
+                                </div>                
+                            </div> 
+                       </div>
+                    }
+                }
+
+                <p data-role="EmptyMessage" style="display: @(Model.Requests.Count == 0 ? "block" : "none")">You don't have any outstanding friend requests.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

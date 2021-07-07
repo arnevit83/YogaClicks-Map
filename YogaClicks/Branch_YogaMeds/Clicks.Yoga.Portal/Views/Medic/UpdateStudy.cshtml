@@ -1,0 +1,125 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.UpdateStudyModel
+@using Clicks.Yoga.Portal.Models.Medic
+
+@{
+    ViewBag.Title = "Update Study";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+@section Head {
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="medic-strip content-col" id="scroll">
+        <section id="style-info" role="style-info">
+            <article id="description" class="clearfix rating-description">
+
+                <h1 class="medicHeader"><span>&nbsp;</span>Edit @Model.Study.Title study</h1>
+                <button class="button fr save back-to-profile" onclick="location.href = '@Url.Action("Update", new { Id = Model.ConditionId })'; return false;">Back to update condition page</button>
+                <div>
+                    @Html.Partial("UpdateStudyDetails",
+                             new StudyDetailsUpdateModel(Model.Study) { })
+                </div>
+                <div>
+                    @Html.Partial("UpdateStudyTherapyTypes",
+                             new StudyTherapyTypesUpdateModel(Model.Study) { })
+                </div>
+                <div>
+                    @Html.Partial("UpdateStudyAuthors",
+                             new StudyAuthorsUpdateModel
+                             {
+                                 Id = Model.Study.Id,
+                                 Authors = Model.Study.Authors
+                             })
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+    $('#update-study-details-form').submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UpdateStudyDetails")',
+            async: true,
+            data: $form.serialize(),
+            success: function (html) {
+                $('.profile-details-saved-text').fadeIn(500);
+                setTimeout(function () {
+                    $('.profile-details-saved-text').fadeOut(500);
+                }, 2000);
+            }
+        });
+
+        return false;
+    });
+
+    $('#update-study-therapy-types-form').submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UpdateStudyTherapyTypes")',
+            async: true,
+            data: $form.serialize(),
+            success: function (html) {
+                $('.study-therapy-type-saved-text').fadeIn(500);
+                setTimeout(function () {
+                    $('.study-therapy-type-saved-text').fadeOut(500);
+                }, 2000);
+            }
+        });
+
+        return false;
+    });
+
+    $('.existing-author span').click(function () {
+        var $this = $(this),
+        $li = $this.parent('.existing-author');
+        $id = $li.data('author-id');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("RemoveAuthorFromCondition")',
+            async: true,
+            data: { studyId: @Model.Study.Id, authorId: $id},
+            success: function (html) {
+                $li.hide();
+            }
+        });
+    });
+
+    $('.add-author-btn').click(function(e){
+        e.preventDefault();
+
+        var $this = $(this),
+            $txtBox = $this.prev('.new-author'),
+            $authorText = $txtBox.val(),
+            $li = $txtBox.parent('li');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddAuthorToCondition")',
+            async: true,
+            data: {  studyId: @Model.Study.Id, authorText: $authorText},
+            success: function (html) {
+                $("<li>" + $authorText + "</li>").insertBefore($li);
+                $txtBox.val("");
+            }
+        });
+    });
+
+    </script>
+}

@@ -1,0 +1,205 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.ProfileStep2ViewModel
+
+@{
+    ViewBag.Title = "Profile Step 1";
+    ViewBag.HeaderClass = "blue-border";
+    ViewBag.BodyClass = "blue-controls";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+    var progressModel = new SignUpProgressBar();
+    bool showProrgessBar = false;
+    
+    
+    switch (Model.TypeOfSignUpValue)
+    {
+        case ProfileStep2ViewModel.TypeOfSignUp.Teacher:
+            progressModel.Step = 1;
+            progressModel.NumberOfSteps = 4;
+            progressModel.ColorCssClass = "blue-text";
+            showProrgessBar = true;
+            break;
+        case ProfileStep2ViewModel.TypeOfSignUp.Tto:
+            progressModel.Step = 1;
+            progressModel.NumberOfSteps = 4;
+            progressModel.ColorCssClass = "blue-text";
+            showProrgessBar = true;
+            break;
+        case ProfileStep2ViewModel.TypeOfSignUp.Venue:
+            progressModel.Step = 1;
+            progressModel.NumberOfSteps = 3;
+            progressModel.ColorCssClass = "blue-text";
+            showProrgessBar = true;
+            break;
+    }
+
+    var imageModel = new SignUpImages()
+    {
+        Image = Model.Image,
+        ProfileBanner = Model.ProfileBanner,
+        ColorCssClass = "blue-text"
+    };
+    
+    ViewBag.SignupProfileImageText = "Upload your profile picture";
+    ViewBag.SignupProfileBannerImageText = "Add a banner image";
+    
+}
+
+<img src="/images/svgicons/Icon_ProfileBlue.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_ProfileBlue.png" alt="namaste students">
+@using (Html.BeginForm("Profile", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-profile-1", step = 2 }))
+{
+    if (Model.IsEdit)
+    {
+        <div class="row blue-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Edit your profile</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+
+    }
+    else
+    {
+        <div class="row blue-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Let’s create your personal profile</p>
+                <p>Creating your personal profile takes just a couple of minutes. <br />If you’re a pro you’ll then complete your professional page.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+
+    <div class="row blue-text signup-row-normal">
+        <div class="hidden-xs col-lg-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Name:</p>
+        </div>
+        <div class="col-xs-12 col-lg-4 singup-input">
+            <section>
+                <input id="signup-firstname" name="Forename" type="text" placeholder="First name" data-field-type="general" value="@Model.Forename"/>
+                @Html.ValidationMessageFor(model => model.Forename)
+            </section>
+        </div>
+        <div class="col-xs-12 col-lg-4 singup-input">
+            <section>
+                <input id="signup-lastname" name="Surname" type="text" placeholder="Last name" data-field-type="general" value="@Model.Surname"/>
+                @Html.ValidationMessageFor(model => model.Surname)
+            </section>
+        </div>
+        <div class="hidden-xs col-lg-1">
+        </div>
+    </div>
+    
+    <div class="row blue-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2  signup-large-text">
+            <p>Email:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <input id="signup-email" name="emailaddress" type="text" placeholder="email&#64;yogaclicks.com" data-field-type="email" value="@Model.EmailAddress"/>
+            <span class="signup-underinput-text">This info will not be public</span>
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    if (Model.Password == null)
+    {
+
+        <div class="row blue-text signup-row-normal margintop100">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-lg-2  signup-large-text">
+                <p>Password:</p>
+            </div>
+            <div class="col-xs-12 col-lg-8 singup-input">
+                <input id="signup-password" name="Password" type="password" data-field-type="password" value="@Model.Password" />
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+    }
+    else
+    {
+        <input id="signup-password" type="hidden" name="Password" value="FakePassword1" />
+    }
+
+    <div class="row blue-text signup-row-normal signup-birthday margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Birthday:</p>
+        </div>
+        @Html.EditorFor(m => m.BirthDate)
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+    <div class="row blue-text signup-row-normal signup-address margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2  signup-large-text">
+            <p>Where do you live?</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            @Html.EditorFor(m => m.Location)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    @Html.Partial("_SignUpImagesSection", imageModel);
+    
+
+    if (showProrgessBar)
+    {
+        <input hidden value="@Model.TypeOfSignUpValue" name="TypeOfSignUpValue" />
+        @Html.Partial("_SignUpProgressBar", progressModel);
+    }
+    else
+    {
+        if (Model.IsEdit)
+        {
+            <div class="row margintop100" style="margin-bottom: 100px;">
+                <input type="submit" value="Save" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" />
+            </div>
+        }
+        else
+        {
+
+            <div class="row margintop100" style="margin-bottom: 100px;">
+                <input type="submit" value="Next" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" />
+            </div>
+        }
+    }
+
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('form').length > 0) {
+            $('form').isValid();
+        }
+    });
+</script>

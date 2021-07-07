@@ -1,0 +1,71 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileFriendRequestsModel
+
+@{
+    ViewBag.Title = "Friend Requests";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "My Account";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                <img src='/images/svgicons/icon_findTeal.svg' data-svgpng='/images/SvgIcons/icon_findTeal.png' /><span style='color: #459088; font-weight: normal'>Profile</span>
+            </h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+    </div>
+</section>
+<div class="profile-strip-line"></div>
+
+
+<div id="content-slider" class="content-slider">
+                    <div class="content-col profile-strip" id="scroll">
+                        <div id="page-content">
+                            <article id="static">
+                                <div class="FriendRequests">
+                                    <h1 class="greenHeader requestHeader"><img src='/images/svgicons/Icon_FriendTealFade.svg' data-svgpng='/images/SvgIcons/Icon_FriendTealFade.png' /> Friend Requests</h1>
+                                    <br /><hr style="margin-top: 7px; margin-bottom:7px;" />
+                                    @if (Model.Requests.Count > 0)
+                                    {
+                                        foreach (var request in Model.Requests)
+                                        {
+                                            <div data-role="Request" class="block-section"><br />
+                                                <div class="notificationRow row nopadding">
+                                                    <div class="col-sm-2 nopadding hidden-xs">
+                                                        <div class="img-thumbnail">
+                                                            @Html.Image(request.ActorHandle.Image, "Profile.jpg", i => i.Resize(c => c.Width(70).Height(70).ScaleBoth().Crop()), request.ActorHandle.Name, new { @class = "friend-small" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-10 nopadding">
+
+                                                        <div class="well well-sm WellColour">@Html.Raw(request.Message)</div>
+
+                                                        <div class="btn-group pull-right" role="group" aria-label="...">
+                                                           
+                                                           
+                                                            <button data-role="BlockButton" data-id="@request.Id" class="btn btn-default btn-clear"><i class="fa fa-ban"></i> Block user</button>
+                                                            <button data-role="RejectButton" data-id="@request.Id" class="btn btn-default btn-clear">Ignore user</button>
+                                                            <button data-role="AcceptButton" data-id="@request.Id" class="btn btn-success"><i class="fa fa-check"></i> Confirm friend</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                    <p data-role="EmptyMessage" style="display: @(Model.Requests.Count == 0 ? "block" : "none")">You don't have any outstanding friend requests.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+<br /><br /><br /><br /><br />

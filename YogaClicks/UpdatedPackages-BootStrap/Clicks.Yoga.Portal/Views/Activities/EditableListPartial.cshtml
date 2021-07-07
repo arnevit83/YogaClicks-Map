@@ -1,0 +1,61 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Activities.ActivityEditableListPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    <label for="activityselect" class="activitySelect">View</label>
+
+    <select data-role="FutureSelect" id="activityselect" data-action="@Url.Action(Model.Action)" data-params="@JsonConvert.SerializeObject(Model.RouteValues)">
+        <option value="true" data-value="true">Upcoming activities</option>
+        <option value="false" data-value="false">Past activities</option>
+    </select>
+    
+    <output>
+        @Html.Action(Model.Action, Model.RouteValues)
+    </output>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $output = $container.find('output');
+
+        $container.find('[data-role=DeleteButton]').on('click', function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            var id = $this.attr('data-id');
+
+            if (!confirm('Are you sure you want to delete this eventactivity?')) return;
+
+            $.ajax({
+                url: $this.data('action'),
+                type: 'POST',
+                data: { EntityId: id, EntityType: "Activity" },
+                success: function () {
+                    top.location.reload();
+                }
+            });
+        });
+
+        $container.find('[data-role=FutureSelect]').on('change', function (e) {
+            var $this = $(this);
+            var params = $this.data('params');
+
+            params.Future = $this.find('option:selected').data('value');
+
+            $.ajax({
+                url: $this.data('action'),
+                type: 'POST',
+                data: params,
+                success: function (html) {
+                    $output.html(html);
+                }
+            });
+        });
+    });
+</script>

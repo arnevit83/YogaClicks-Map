@@ -1,0 +1,103 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "OUR POWERED BY YOGA MISSION";
+    Layout = "~/Views/Layout/layout.cshtml";
+}
+@section LeftNav{
+    @Html.Partial("left-nav-static-footer")
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<div style="margin-left: -15px;margin-right:-15px" class="nopadding hidden-sm hidden-md hidden-lg">
+    <section class="filters greyScale" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu addpadding">
+                <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon"></span></a>
+                <h1>OUR POWERED BY YOGA MISSION</h1>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<div class="row nopadding">
+    <div class="col-xs-12 ">
+
+        <section class="page-content QLinks " style="min-height: 1100px;">
+            <article id="static">
+                <h1 class="hidden-xs">OUR POWERED BY YOGA MISSION</h1><br /><br />
+                <div class="row no-padding">
+                    <div class="col-xs-12 nopadding">
+
+                        <img class="img-responsive center-block" src="~/Images/static/pbyheader.png" />
+
+
+                        <br /><br />
+                        <b>WE HAVE ONE SIMPLE MISSION</b> – to inspire the world onto a yoga mat.<br /><br />
+
+                        Why? Because we know, from personal experience, that yoga helps us transform life’s challenges, inspiring us to create new ways of thinking and being, and lives we love.
+
+                        <br /><br />
+                        It’s very simple: you can transform your life through yoga
+                        <br /><br />
+                        Here’s three ways we can help you:
+                        <br /><br /><br />
+
+                        <img src="~/Images/static/shop.png" />
+                        <br /><br />
+                        Our designers have transformed their own lives through yoga, and they’d love to inspire you as you transform yours. They’re so in flow with their yoga and so in tune with the yoga community, they’re creating exactly what we need – whether it's the perfect pair of yoga leggings (that just happen to be made from recycled plastic), a manifesting mala, or an inspiring book.
+                        <br /><br /> <a target="_blank" href="http://www.yogaclicks.store">
+                            Shop our unique, curated range of collections from yoga loving, independent designers around the globe »
+                        </a>
+
+                        <br /><br /><br />
+                        <img src="~/Images/static/meds.png" /><br /><br />
+                        Yoga will help you with all of life’s big challenges – whether you want to banish the blues, deal with anxiety and stress, or cope with a serious illness like cancer. Don’t believe us?
+                        <a href="@Url.Action("Index", "Medic")">
+                            Get stuck into over 300 clinical studies from renowned institutions proving the power of yoga for over 30 health conditions »
+                        </a>
+                        <br /><br /><br />
+
+                        <img src="~/Images/static/map.png" /><br /><br />
+                        <a href="@Url.Action("Index", "Yogamap")">
+                            The Yoga Map Project</a> will blow you away with the personal stories of people transforming their lives through yoga.
+
+                            <br /><br /> <a href="@Url.Action("Index", "Yogamap")">
+                                Add your story to get celebrated for your journey, to inspire other yogis on the same path, and to get the whole world on its mat »
+                            </a>
+                            <br /><br />
+
+                            <img src="~/Images/static/whatisit.png" /><br /><br /><br />
+                            Meet <b>INGRID</b>, the Swiss German yoga teacher who built a Greek island yoga retreat out of bare rock. <b>HEATHER</b>, the American yoga therapist on a mission to get yoga on the very British NHS. Arctic Flamingo creator <b>INKERI</b>, who uses environmentally friendly ink to capture the arctic wilderness of Scandinavia on her yoga leggings. Yoga teacher <b>JEFF</b>, who discovered yoga while camping in the Andaman Islands, and now shares his playful style with students all over the world. SoloSol sisters <b>TRINA & CHARLENE</b>, who give a dollar from every sale to BARC, a dog rehab centre in Bali. Woof woof.
+
+                            <br /><br /><br />
+                            <img src="~/Images/static/pbypics.png" />
+
+
+
+</div>
+
+
+                </div>
+
+            </article>
+
+
+
+
+        </section>
+</div>
+</div>
+
+<script>
+  
+    $("#Innercontent").css('min-height', '2500px');
+</script>

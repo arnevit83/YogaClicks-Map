@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupInvitePartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@if (Model.Friends.Options.Count > 0)
+{
+    <div id="@guid" class="block-section inviteFriendsSection">
+        <h3 class="noMargins fl">Invite friends</h3>
+        <div class="fr">
+            <button data-role="CheckButton" class="silver button">Check All</button>
+            <button data-role="UncheckButton" class="silver button">Uncheck All</button>
+            <button data-role="InviteButton" class="silver button">Send Invites</button>
+        </div>
+        <div class="attendingWrap">
+            @Html.EditorFor(m => m.Friends)
+        </div>
+        <script>
+            $(function () {
+                var $container = $('#@guid');
+                var $checkboxes = $container.find('input[type=checkbox]');
+                var $checkButton = $container.find('button[data-role=CheckButton]');
+                var $uncheckButton = $container.find('button[data-role=UncheckButton]');
+                var $inviteButton = $container.find('button[data-role=InviteButton]');
+
+                $checkButton.on('click', function (e) {
+                    e.preventDefault();
+                    $checkboxes.prop('checked', true);
+                });
+
+                $uncheckButton.on('click', function (e) {
+                    e.preventDefault();
+                    $checkboxes.prop('checked', false);
+                });
+
+                $inviteButton.on('click', function (e) {
+                    e.preventDefault();
+
+                    var ids = [];
+
+                    $checkboxes.filter(':checked').each(function () {
+                        ids.push($(this).attr('data-id'));
+                    });
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("InviteFriends")',
+                        data: JSON.stringify({ FriendIds: ids }),
+                        contentType: 'application/json',
+                        success: function () {
+                            $container.remove();
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+}
+else
+{
+    <script>
+        alert("You don't have any friends that can be invited to this group.");
+    </script>
+}

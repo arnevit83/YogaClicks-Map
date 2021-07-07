@@ -1,0 +1,122 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchGroupsModel
+
+@{
+    ViewBag.Title = "Create or Join a Yoga Group and Connect";
+    ViewBag.Description = "Create or join a yoga group and build your yoga community. Connect with other yoga teachers, or with the people you met on that yoga holiday.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+    @Html.Action("GroupsNavigation", "Search", new { Keywords = Model.Criteria.Keywords })
+}
+
+@section Head {
+  <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+<meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+   <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Find</span><span> - Groups</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="discover-strip "></div><br />
+
+
+<div id="content-slider" class="row nopadding">
+    <div class="style-finder content-col search-content-col" id="scroll">
+        <div>
+         
+                            <header class="search-results">
+                                <p>@Model.PageDescription</p>
+                            </header>
+                            <div id="resultContainer styleOrganisationResults">
+                                <br />
+                             
+                                    @{
+                                        int counter = 0;
+                                        foreach (var result in Model.Results)
+                                        {
+                                            if (counter == 0)
+                                            {
+                                                @Html.Raw("<div class=\"row nopadding\">")
+                                            }
+                                            else if (counter > 0 && counter % 4 == 0)
+                                            {
+                                                @Html.Raw("</div><div class=\"row nopadding\">")
+                                            }
+                                            counter++;
+
+                                            @Html.Partial("SearchResultPartial", result)
+                                        }}
+
+                                    @if (Model.Response.TotalCount == 0)
+                                    {
+                                        <div id="search-no-results">
+                                            <h2 class="greenHeader"><i class="fa fa-search "></i> Search Results</h2><br /><br />
+                                            <h3 class="cb blackSubHeader well WellColour well-lg">
+                                                <br />
+                                                We are sorry that your search returned no results.
+                                                <br /><br /><br />
+                                                Please use different search criteria to find more results.
+                                                <br /><br /><br />
+                                                @if (SecurityContext.Authenticated)
+                                                {
+                                                    <text> The
+                                                        default
+                                                        location is the
+                                                        one on
+                                                        your profile </text>
+                                                }
+
+
+                                            </h3>
+                                        </div>
+                                    }
+
+                            </div>
+                            @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+            @Html.Partial("Disclaimer", "Shared")
+
+
+                        </div>
+
+                    </div>
+                </div>
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Innercontent").css('min-width', '99%');
+
+          
+            resizeDiv(true);
+        });
+    </script>
+}

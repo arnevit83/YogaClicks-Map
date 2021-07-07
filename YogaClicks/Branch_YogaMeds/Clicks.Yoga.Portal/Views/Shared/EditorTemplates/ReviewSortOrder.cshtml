@@ -1,0 +1,13 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Domain.Entities.ReviewSortOrder
+
+@{
+    var items = new SelectListItem[]
+    {
+        new SelectListItem { Value = "MostRecent", Text = "Most Recent" },
+        new SelectListItem { Value = "MostHelpful", Text = "Most Helpful" },
+        new SelectListItem { Value = "HighestRated", Text = "Highest Rated" }
+    };
+}
+
+@Html.DropDownListFor(m => m, items)

@@ -1,0 +1,230 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchVenuesModel
+
+@{
+    ViewBag.Title = "Venues";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav{
+    @Html.Action("VenuesNavigation", new { Action = "Venues" })
+}
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Find</span><span> - Venues</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+<div class="discover-strip "></div><br />
+
+
+<div id="content-slider" class="row nopadding">
+    <div class="style-finder content-col search-content-col" id="scroll">
+        <div>
+            <header class="search-results">@*<p style="margin-top:5px;" class="fl">@Model.PageDescription</p>*@
+                <div class="fr">
+                    @using (Html.BeginForm("Venues", null, FormMethod.Get, new { style = "display: inline;" }))
+                    {
+                        @Html.Partial("CriteriaHidden", Model.Criteria)
+    <button type="submit" class="btn btn-default btn-sm disabled" style="margin-left: 4px;"><i class="glyphicon glyphicon-th-list"></i>&nbsp;List view</button>
+                    }
+
+                    @using (Html.BeginForm("VenuesMap", null, FormMethod.Get, new { style = "display: inline;" }))
+                    {
+                        @Html.Partial("CriteriaHidden", Model.Criteria)
+    <button type="submit" class="btn btn-default  btn-sm " style="margin-left:4px;"><i class="fa fa-map-marker"></i>&nbsp;Map view</button>
+                    }
+
+                </div>
+
+               
+
+                @Html.Partial("Sort", Model.Criteria)
+
+            </header>
+            <div id="resultContainer" class="">
+                <section class="search-group venueSearchResults">
+                    @if (!SecurityContext.Authenticated)
+                    {
+
+
+
+                        <article style="display:none" class=" advertResult noAuth-tile">
+                            <strong class="headerText">Do you own/manage<br /> a venue??</strong>
+                            <div class="noAuth-tile-image">
+                                <img src="~/Images/tile-icons/noAuth-venue-tile.jpg" />
+                            </div>
+                            <strong class="inviteText">Create your venue page</strong>
+                            <a class="silver button nonAuth-join-tile-btn reg-form-popup" href="/">Join Us</a>
+                        </article>
+
+
+                    }
+                    
+
+
+
+                    <article class="advertResult Popoutleft hidden-sm hidden-xs">
+
+
+                        <span id="mini-close" title="Close" class="close pull-right" style="display:none;" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                        <strong class="headerText">Can't find your<br /> favourite venue?</strong>
+                        <div id="ShareHidden" class="PopoutleftHidden ">
+
+                            <img src="~/Images/tile-icons/noAuth-venue-tile.jpg" style="margin-top: 10px; width:150px; height:125px;" class="centerAlign center-block img-thumbnail" />
+
+                            <hr />
+                            <strong class="inviteText">Invite them now...</strong>
+
+
+
+
+
+
+                            <a href="http://www.facebook.com/share.php?u=http://www.yogaclicks.com&title=Join&nbsp;me&nbsp;on&nbsp;YogaClicks&nbsp;-&nbsp;the&nbsp;place&nbsp;to&nbsp;find&nbsp;and&nbsp;share&nbsp;great&nbsp;yoga" target="_blank" class="btn btn-social btn-facebook btn-sm">
+                                <i class=" fa fa-facebook">
+                                </i>
+                                Facebook
+                            </a>
+
+
+                            <a href="http://twitter.com/home?status=Join me on YogaClicks+http:www.//yogaclicks.com" target="_blank" class="btn btn-social btn-twitter  btn-sm"><i class=" fa fa-twitter"></i>Twitter</a>
+
+
+                            <a href="https://plus.google.com/share?url=http://www.yogaclicks.com" target="_blank" class="btn btn-social btn-google btn-sm"><i class="fa fa-google-plus"></i>Google +</a>
+
+
+                            <a data-role="InviteByEmailButton" data-action="@Url.Action("InviteFriendsByEmail", "Invitations")" href="javascript:void(0)" class="btn btn-social btn-reddit   btn-sm "><i class="fa fa-envelope"></i>Email</a>
+
+
+
+                        </div>
+
+                    </article>
+
+
+
+
+                    <script>
+                        $('article.advertResult').yogaInvitationButtons();
+                    </script>
+
+
+
+
+
+              
+
+
+                    @{
+                        int counter = 0;
+                        foreach (var result in Model.Results)
+                        {
+                            if (counter == 0)
+                            {
+                                @Html.Raw("<div class=\"row nopadding\">")
+                            }
+                            else if (counter > 0 && counter % 4 == 0)
+                            {
+                                @Html.Raw("</div><div class=\"row nopadding\">")
+                            }
+                            counter++;
+                            @Html.Partial("SearchResultPartial", result)
+
+                        }
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+                    @if (Model.Response.TotalCount == 0)
+                    {
+                        <div id="search-no-results">
+                            <h2 class="greenHeader"><i class="fa fa-search "></i> Search Results</h2><br /><br />
+                            <h3 class="cb blackSubHeader well WellColour well-lg">
+                                <br />
+                                We are sorry that your search returned no results.
+                                <br /><br /><br />
+                                Please use different search criteria to find more results.
+                                <br /><br /><br />
+@if (SecurityContext.Authenticated)
+{
+   <text> The
+    default
+    location is the
+    one on 
+    your profile </text>
+    }
+
+</h3>
+                        </div>
+                    }
+                </section>
+
+
+                <p class="center-block">
+
+
+
+                    @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+                </p>
+                @Html.Partial("Disclaimer", "Shared")
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Innercontent").css('min-width', '99%');
+
+            $(".Popoutleft").on("mouseover", function () {
+                $("#mini-close").show();
+                $("#ShareHidden").css('height', '315px');
+                $(".dark-overlay").css('z-index', '999');
+                $(".dark-overlay").show();
+            });
+            $("#mini-close").click(function () {
+                $(".Popoutleft").hide();
+
+            });
+            $(".Popoutleft").on("mouseout", function () {
+                $("#mini-close").hide();
+                $("#ShareHidden").css('height', '0');
+                $(".dark-overlay").css('z-index', '900');
+                $(".dark-overlay").hide();
+            });
+
+        });
+    </script>
+}

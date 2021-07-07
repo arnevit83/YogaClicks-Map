@@ -1,0 +1,67 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityAttendanceActorPickerModel
+@using Clicks.Yoga.Domain.Entities
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ActorId)
+    @Html.HiddenFor(m => m.ActorTypeName)
+
+    <h3 class="greenHeader">Attend as...</h3>
+    <hr />
+    @Html.ValidationSummary()
+
+    <div class="clearRow">
+        @foreach (var actor in SecurityContext.AvailableActors.Where(a => a.EntityType.IsHuman))
+        {
+            <div>
+                <input type="radio" name="Actor" data-id="@actor.Id" data-type-name="@actor.EntityType.Name" />
+                @actor.Name
+                
+                @if (actor.EntityType.Name == typeof(Teacher).Name)
+                {
+                    @:(teacher)
+                }
+            </div>
+        }
+    </div>
+    <hr />
+    <div>
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button type="submit" class="btn btn-custom btn-block pull-right">Continue</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        var $radios = $('input[type=radio]');
+        var $actorId = $('#ActorId');
+        var $actorTypeName = $('#ActorTypeName');
+
+        $radios.each(function () {
+            var $radio = $(this);
+            var id = $radio.data('id');
+            var typeName = $radio.data('typeName');
+
+            if (id == $actorId.val() && typeName == $actorTypeName.val()) {
+                $radio.prop('checked', true);
+            }
+        });
+
+        if ($radios.find(':checked').length == 0) {
+            var $radio = $radios.first();
+            $radio.prop('checked', true);
+            $actorId.val($radio.data('id'));
+            $actorTypeName.val($radio.data('type-name'));
+        }
+
+        $radios.on('change', function () {
+            var $radio = $(this);
+            $actorId.val($radio.data('id'));
+            $actorTypeName.val($radio.data('type-name'));
+        });
+    });
+</script>

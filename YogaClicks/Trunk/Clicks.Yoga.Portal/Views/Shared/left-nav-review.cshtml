@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewCreateModel
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+				<h2>@Model.Subject.Name</h2>
+			    <div class="profile-pic">
+			        @Html.Image(Model.Subject.Image, i => i.Resize(c => c.Width(173).Height(194)))
+			    </div>
+			    <div style="clear: both"></div>
+			</div>
+		</div>
+	</section>
+</div>

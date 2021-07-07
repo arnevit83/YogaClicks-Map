@@ -1,0 +1,44 @@
+﻿@model int
+
+
+
+<ul id="nav-tabs" class="nav nav-tabs nav-justified">
+
+    <li>
+        <a id="profileNav" href="@Url.Action("Display", "TeacherTrainingOrganisations", new {id = Model})">
+            <i class='fa fa-user navmenuIcon'></i> Profile
+        </a>
+    </li>
+
+
+
+
+    <li class="active">
+        <a id="CoursesNav" href="@Url.Action("Courses", "TeacherTrainingOrganisations", new {id = Model})">
+            <i class="fa fa-calendar navmenuIcon"></i> Courses
+        </a>
+
+    </li>
+    <li id="galleriesNav">
+        <a href="@Url.Action("Reviews", "TeacherTrainingOrganisations", new { id = Model })">
+            <i class="fa fa-comments"></i> Reviews
+        </a>
+    </li>
+    <li id="ActivitiesNav">
+        <a href="@Url.Action("Activities", "TeacherTrainingOrganisations", new { id = Model })">
+            <i class="fa fa-history"></i> Activities
+        </a>
+    </li>
+    <li id="GroupsNav">
+        <a href="@Url.Action("Groups", "TeacherTrainingOrganisations", new { id = Model })">
+            <i class="fa fa-users "></i> Groups
+        </a>
+    </li>
+    <li id="fanNav">
+        <a href="@Url.Action("Fans", "TeacherTrainingOrganisations", new { id = Model })">
+            <i class="fa fa-heart "></i> Fans
+        </a>
+    </li>
+</ul>
+
+

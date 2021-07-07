@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Actors.PickerPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" data-role="ActorPicker" style="position: relative; margin: 5px;">
+    @Html.Hidden(Model.PrefixedName("EntityId"), Model.EntityId, new { data_role = "EntityId" })
+    @Html.Hidden(Model.PrefixedName("EntityTypeName"), Model.EntityTypeName, new { data_role = "EntityTypeName" })
+    @Html.Hidden(Model.PrefixedName("ImageUrl"), "", new { data_role = "ImageUrl" })
+    
+    <div data-role="Selection">
+        @Html.Image(Model.SelectedOption.Image, "Profile.jpg", i => i.Resize(c => c.Width(20).Height(20).ScaleBoth().Crop()))
+        <span>@Model.SelectedOption.Name</span>
+    </div>
+
+    <div data-role="OptionsContainer" style="position: absolute; left: -5px; top: 25px; z-index: 1000; display: none; border: 1px solid #ccc; padding: 5px; background-color: white;">
+        @foreach (var option in Model.Options)
+        {
+            <div data-entity-id="@option.Id" data-entity-type-name="@option.EntityType.Name" data-name="@option.Name">
+                @Html.Image(option.Image, "Profile.jpg", i => i.Resize(c => c.Width(20).Height(20).ScaleBoth().Crop()))
+                @option.Name
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaActorSelector();
+    });
+</script>

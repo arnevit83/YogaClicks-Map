@@ -1,0 +1,31 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.StoryImageEditorModel
+
+@{
+
+}
+
+<div class="col-xs-12  profile-image-conatiner">
+
+    <div id="Image_signupcanvas" style="display: none;">
+        <canvas id="Image_signupcanvascanvas" class="img-responsive signupprofileimagechange"></canvas>
+        <i class="fa fa-pencil"></i>
+    </div>
+
+    <div class="profile-pic img-responsive signupprofileimagechange">
+        @Html.DisplayFor(m => m.CurrentImage, "ProfileImage")
+        @if (Model != null)
+        {
+            <i class="fa fa-pencil"></i>
+        }
+    </div>
+    <div id="Image_signupcontainer" class="block-section ">
+        <span class="hidden">@Html.EditorFor(m => m.NewImage)</span>
+     
+        <div id="cropfancybox" style="display: none">
+            <div id="upload-cut">
+                <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+            </div>
+        </div>
+    </div>
+
+</div>

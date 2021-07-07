@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.StudyAuthorsUpdateModel
+
+<div class="block-section">
+
+    @Html.Label("Authors")
+
+    <ul>
+        @foreach (var author in Model.Authors)
+        {
+            <li class="existing-author" data-author-id="@author.Id">@author.Name<span>X</span></li>
+        }
+
+        <li>@Html.TextBox("author-new-entry", null, new { @class = "new-author"}) <a class="silver button add-author-btn" href="#">Add</a></li>
+    </ul>
+</div>

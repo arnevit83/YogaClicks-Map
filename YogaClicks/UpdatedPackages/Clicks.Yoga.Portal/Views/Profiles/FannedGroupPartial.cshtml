@@ -1,0 +1,92 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileFannedGroupPartialModel
+
+
+   
+
+ @if (Model.EntityHandles.Count > 0)
+    {
+        <div data-role="Group" class="group block-section">
+        
+            @Html.Hidden("EntityTypeName", Model.EntityType.Name)
+        
+            @if (Model.EntityHandles.Count > 0 || Model.Editable)
+            {
+                <strong>@Model.EntityType.DisplayPlural</strong>
+            }
+
+
+        @if (Model.Editable)
+        {
+            <div class="fr">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button data-role="CheckButton" class="btn btn-sm btn-default btn-clear">Select all</button>
+                    <button data-role="UncheckButton" class="btn btn-default btn-clear btn-sm">Clear all</button>
+                    <button data-role="UnfanCheckedButton" class="btn btn-default btn-clear btn-sm">Remove selected</button>
+                    </div>
+                </div> 
+        }
+        <hr />
+        <div class="attendingWrap">
+
+        @foreach (var handle in Model.EntityHandles)
+        {
+
+            var className = "";
+           
+            if (handle.EntityType.Name == "Quote")
+                    {
+                       
+                        className = "quoteMember";
+                    } 
+                 
+            
+                <div data-role="Fan" class="attendee member @className">
+                
+                @if (handle.EntityType.Name != "GlossaryEntry" && handle.EntityType.Name != "Quote")
+                {
+                  
+                    
+                    <div class="fl image">
+                        <a href="@Url.Entity(handle)" target="_blank">
+                            @Html.DisplayFor(m => handle.Image, "ProfileImage", new {Width = 100, Height = 100})
+                        </a>
+                    </div>
+                }
+                <div class="fl info">
+                    <div class="name">
+                        <a href="@Url.Entity(handle)" target="_blank">
+                            @if (handle.EntityType.Name != "GlossaryEntry" && handle.EntityType.Name != "Quote")
+                            {
+                                @Html.Trim(handle.Name, 50)
+                            }
+                            else {
+                               @Html.Trim(handle.Name, 100) 
+                            }     
+                        </a>
+                    </div>
+                    <div class="location">
+                        @if (!string.IsNullOrEmpty(handle.Location) && Model.EntityType.Name != "Teacher")
+                        {
+                            <text><br/>@handle.Location</text>
+                        }
+                    </div>
+                    <div class="review">
+                        @if (Model.EntityType.IsReviewable)
+                        {
+                            @Html.Action("RatingPartial", "Reviews", new { SubjectId = handle.EntityId, SubjectType = handle.EntityType.Name })
+                        }
+                    </div>
+                    @if (Model.Editable)
+                    {
+                        <input type="checkbox" name="EntityIds" value="@handle.Id"/>
+                    }
+                </div>
+            </div>
+        }
+            </div>
+        </div>
+    }
+    else if (Model.Editable)
+    {
+
+    }

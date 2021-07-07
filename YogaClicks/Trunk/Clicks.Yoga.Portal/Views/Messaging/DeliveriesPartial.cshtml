@@ -1,0 +1,43 @@
+﻿@model Clicks.Yoga.Portal.Models.Messaging.MessagingDeliveriesPartialModel
+
+@foreach (var delivery in Model.Deliveries)
+{
+    <div data-role="Message" class="block-section message">
+        <div class="checkBox">
+            <input type="checkbox" name="DeliveryIds" value="@delivery.Id">
+            <input type="hidden" data-role="Content" value="@delivery.Message.Sender.Name @delivery.Message.Content">
+        </div>
+        <div class="thumbnail">
+            <a href="@Url.Entity(delivery.Message.Sender)">
+                @Html.DisplayFor(m => delivery.Message.Sender.Image, "ProfileThumbnail")
+            </a>
+
+            @if (!delivery.Read)
+            {
+                <strong>NEW</strong>
+            }
+        </div>
+        <div class="text">
+            <a href="@Url.Entity(delivery.Message.Sender)"><strong>@delivery.Message.Sender.Name</strong></a>  &rarr;
+            <a href="@Url.Entity(delivery.Recipient)">@delivery.Recipient.Name</a>
+            @* DWTIMEHERE *@
+            @Html.LocalDateTime(delivery.Message.CreationTime.ToUniversalTime().ToString("u"))
+
+            <p data-role="Preview">
+                @delivery.Message.ContentPreview(200)
+
+                @if (delivery.Message.Content.Length > 200)
+                {
+                    <a href="javascript:void(0)" data-role="ExpandButton">Read more</a>
+                }
+            </p>
+
+            <p data-role="Content" style="display: none;">
+                @delivery.Message.Content
+            </p>
+
+            <a href="@Url.Action("Conversation", new { ConversationId = delivery.Message.Conversation.Id, MessageId = delivery.Message.Id })#reply" class="button reply"><span>&nbsp;</span>Reply</a>
+            <a href="@Url.Action("Conversation", new { ConversationId = delivery.Message.Conversation.Id })#message-@delivery.Message.Id" class="button viewConverstaion"><span>&nbsp;</span>View conversation</a>
+        </div>
+    </div>
+}

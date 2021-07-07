@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileClaimButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@if (!SecurityContext.Authenticated)
+{
+    @*<a class="silver button fan reg-form-popup unauth-fan-btn" href="/"><span>&nbsp;</span>Claim it<span>&nbsp;</span></a>*@
+
+    <div id="@guid" class="block-section unclaimedProfile">
+        <h3>This profile is unclaimed.</h3>
+        <p>
+            Is this your @Model.EntityType.DisplayName.ToLower()?
+            <a class="button reg-form-popup unauth-claim-btn claimButton" href="/"><span>&nbsp;</span>Claim it</a>
+        </p>
+    </div>
+}
+else
+{
+    <div id="@guid" class="block-section unclaimedProfile">
+        <h3>This profile is unclaimed.</h3>
+        <p>
+            Is this your @Model.EntityType.DisplayName.ToLower()?
+            <button data-role="ClaimButton" data-url="@Url.Action("Claim")" data-entity-id="@Model.EntityId" data-entity-type-name="@Model.EntityType.Name" class="button claimButton"><span>&nbsp;</span>Claim it</button>
+        </p>
+    </div>
+}
+
+<script>
+    $('#@guid').yogaClaimPanel();
+</script>

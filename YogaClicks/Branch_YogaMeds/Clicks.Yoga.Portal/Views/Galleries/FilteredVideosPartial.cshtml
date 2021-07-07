@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedVideosPartialModel
+
+    @if (!Model.VideoIds.Any())
+    {
+        <div>Sorry, there doesn't seem to be any videos here at the moment.</div>
+    }
+    else
+    {
+        <div>Showing @Model.FirstResult to @Model.LastResult of @Model.TotalResults @(Model.TotalResults == 1 ? "video" : "videos")</div>
+
+        foreach (var videoId in Model.VideoIds)
+        {
+            @Html.Action("VideoPartial", new { Model.EntityId, EntityTypeName = Model.EntityType.Name, VideoId = videoId })
+        }
+
+        <div class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a data-role="SelectPage" data-page="1" href="javascript:void(0);" class="button silver">Previous</a>
+            }
+    
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <a data-role="SelectPage" data-page="@i" class="@(i == Model.CurrentPage ? "active" : "silver") button" href="javascript:void(0);">@i</a>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a data-role="SelectPage" data-page="@(Model.CurrentPage + 1)" href="javascript:void(0);" class="button silver">Next</a>
+            }
+        </div>
+    }

@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Facebook.FeedbackModel
+@{
+    ViewBag.Title = "Send Feedback";
+    Layout = "~/Views/Layout/Modal.cshtml";
+    ViewBag.BodyClass = "manual-register-page";
+}
+
+<section role="manual-register" class="clearfix">
+	<div id="manual-register" class="clearfix feedbackForm">
+	    <h2 class="greenHeaderDivider">Please get in touch</h2>
+	    <p class="largeP">We'd love to hear from you<br />
+            Please use this form to share any ideas or thoughts.</p>
+        @using (Html.BeginForm("index", "feedback", FormMethod.Post, new { @class = "full" }))
+        {
+            <fieldset class="fancylabels halfSizedInput">
+                @Html.LabelFor(m => m.FromName, "Name")
+                @Html.TextBoxFor(m => m.FromName)
+            </fieldset>
+            <fieldset class="fancylabels halfSizedInput">
+                @Html.LabelFor(m => m.FromEmail, "Email")
+                @Html.EditorFor(m => m.FromEmail)
+            </fieldset>
+            <fieldset class="fancylabels">
+                @Html.LabelFor(m => m.Message, "Message")
+                @Html.TextAreaFor(m => m.Message)
+            </fieldset>
+            <fieldset class="fancylabels">
+                <button class="button large pink fr" type="submit">Submit</button>
+            </fieldset>
+        }
+	</div>
+</section>

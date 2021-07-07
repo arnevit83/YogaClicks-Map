@@ -1,0 +1,2125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Clicks.Yoga.Context.SuperUserSecurityContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="219.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAgIAgAIgAEAAACAIAEAAAAIAgCAAAAAABAAAAAAA=</HashCode>
+      <FileName>Context\SuperUserSecurityContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.AbilityLevel" Collapsed="true">
+    <Position X="62.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\AbilityLevel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Accreditation" Collapsed="true">
+    <Position X="102.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Accreditation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.AccreditationBody" Collapsed="true">
+    <Position X="82.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACBQACIggAAAAAAAAEQAAAAQABASIIAAAkAAAAI=</HashCode>
+      <FileName>Domain\Entities\AccreditationBody.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Activity" Collapsed="true">
+    <Position X="84.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgCAAAKAaIgAAAQACBIBAQAJAAAABQAFQAAAkAAQAI=</HashCode>
+      <FileName>Domain\Entities\Activity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityAttendee" Collapsed="true">
+    <Position X="138.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBAAAAAAgAACAAAAEAAAAAAAAAAAAIAAAggAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityAttendee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityPermissions" Collapsed="true">
+    <Position X="221.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEABAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityRepeatFrequency" Collapsed="true">
+    <Position X="161.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAADAAAAAAIAAAAQAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityRepeatFrequency.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityRepeatInstance" Collapsed="true">
+    <Position X="223" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityRepeatInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivitySearchCriteria" Collapsed="true">
+    <Position X="224.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIRAAIAAQCgAIgECAAHEAAIAgAAAAgAAAEEAAAgAA=</HashCode>
+      <FileName>Domain\Entities\ActivitySearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivitySearchResponse" Collapsed="true">
+    <Position X="226.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivitySearchResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityTeacher" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityTeacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityType" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAACAA=</HashCode>
+      <FileName>Domain\Entities\ActivityType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ActivityWall" Collapsed="true">
+    <Position X="183.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAgAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityWall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Address" Collapsed="true">
+    <Position X="44.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAMAAIAgIAAAQIAAAAgAAAASQAAAAA=</HashCode>
+      <FileName>Domain\Entities\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Entity" Collapsed="true">
+    <Position X="112.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAQAAAAAAEAAMAAAAAAAAAAAAAACgAAIAAA=</HashCode>
+      <FileName>Domain\Entities\Base\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PrincipalEntity" Collapsed="true">
+    <Position X="78" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Base\PrincipalEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Comment" Collapsed="true">
+    <Position X="105" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Comment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.CommentPermissions" Collapsed="true">
+    <Position X="224.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\CommentPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Country" Collapsed="true">
+    <Position X="120.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.EntityHandle" Collapsed="true">
+    <Position X="141" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACEAAIAAAAEAAIAQBQAwAAAABAgAAIAAQAAAAA=</HashCode>
+      <FileName>Domain\Entities\EntityHandle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.EntityHandleInvite" Collapsed="true">
+    <Position X="150" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Domain\Entities\EntityHandleInvite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.EntityType" Collapsed="true">
+    <Position X="172.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAACQIAAAIAAAAACAQAAAAFCAAAAiAAICAQAAA=</HashCode>
+      <FileName>Domain\Entities\EntityType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Fan" Collapsed="true">
+    <Position X="190.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAAAAAACAAAAAAAAAAAAAACAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Fan.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.FederatedLogin" Collapsed="true">
+    <Position X="197.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Domain\Entities\FederatedLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.FederatedLoginProvider" Collapsed="true">
+    <Position X="208.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\FederatedLoginProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Friendship" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAEAAQACAAAAAIAAAAAAAAAAAAACBggIACAAAA=</HashCode>
+      <FileName>Domain\Entities\Friendship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Gallery" Collapsed="true">
+    <Position X="69" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACICAAAAAAAAQAAAAAEAAAAIAAACAAQQA=</HashCode>
+      <FileName>Domain\Entities\Gallery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GalleryAssociation" Collapsed="true">
+    <Position X="26.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GalleryAssociation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GalleryEntry" Collapsed="true">
+    <Position X="35.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAgAAAAwAAAAAAABQAAAAAABAAAAACAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GalleryEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GalleryPermissions" Collapsed="true">
+    <Position X="221.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GalleryPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Gender" Collapsed="true">
+    <Position X="53.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GlossaryEntry" Collapsed="true">
+    <Position X="93.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACCgABAAAAAAAAAAAAEAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GlossaryEntry.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Group" Collapsed="true">
+    <Position X="73.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAgAAAAAAAIkAAAQEAAIIAQAQAAAEBUABAAEAEEAQAI=</HashCode>
+      <FileName>Domain\Entities\Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GroupMember" Collapsed="true">
+    <Position X="109.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAEAAAAAACAAAAAAAAAAAAAEAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GroupMember.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GroupPermissions" Collapsed="true">
+    <Position X="217.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEABAAAAIAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GroupPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.GroupWall" Collapsed="true">
+    <Position X="188.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAIAAAAAAAAAAAAAgAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GroupWall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Image" Collapsed="true">
+    <Position X="91.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAIAAAAAAAQAAAAABAIACQAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ImageCrop" Collapsed="true">
+    <Position X="221.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABgAAAAAAAAAAAEAAQAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ImageCrop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ImageType" Collapsed="true">
+    <Position X="174.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAQAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ImageType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Invitation" Collapsed="true">
+    <Position X="152.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Domain\Entities\Invitation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Location" Collapsed="true">
+    <Position X="163.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.MediaResource" Collapsed="true">
+    <Position X="177" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgIAAEAAAAAAAAAAAAAAABAACQAAQAAAAAA=</HashCode>
+      <FileName>Domain\Entities\MediaResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.MediaResourceReference" Collapsed="true">
+    <Position X="230" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Domain\Entities\MediaResourceReference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.MediaResourceType" Collapsed="true">
+    <Position X="199.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAQgAAAEAgAAAAAAQAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\MediaResourceType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NewsPermissions" Collapsed="true">
+    <Position X="217.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAEAAAAAEAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\NewsPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NewsStory" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACIIAIAgABAAIIAgCAAQAAAAAAAAQAACAAAIAA=</HashCode>
+      <FileName>Domain\Entities\NewsStory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NewsStoryType" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAKgAAAgAAAAAgAAAAQAAgQwAEAASAAAAAADABA=</HashCode>
+      <FileName>Domain\Entities\NewsStoryType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NewsSubscription" Collapsed="true">
+    <Position X="28.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\NewsSubscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Notification" Collapsed="true">
+    <Position X="37.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AyAAAAAAAAKAAAAAEAAAAAAAQAAAAAAAAQAAMAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NotificationCategory" Collapsed="true">
+    <Position X="46.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAECAAgABAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\NotificationCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NotificationCategoryPreferences" Collapsed="true">
+    <Position X="55.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACAA=</HashCode>
+      <FileName>Domain\Entities\NotificationCategoryPreferences.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NotificationDelivery" Collapsed="true">
+    <Position X="96" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\NotificationDelivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NotificationPreferences" Collapsed="true">
+    <Position X="107.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABEAAAAAAAAAEAAAAAAAAAAAAAgAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Domain\Entities\NotificationPreferences.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.NotificationType" Collapsed="true">
+    <Position X="111.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAEACAA=</HashCode>
+      <FileName>Domain\Entities\NotificationType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PasswordLogin" Collapsed="true">
+    <Position X="123" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASBAAAAAAAEAAAAAQAAAAIAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\PasswordLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PasswordResetAction" Collapsed="true">
+    <Position X="132" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\PasswordResetAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PasswordResetRequest" Collapsed="true">
+    <Position X="143.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEAAAAAAYAAAAAAAAAAgAAAAIBAAAQAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\PasswordResetRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Pose" Collapsed="true">
+    <Position X="154.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAgAAIiAgABAARAAAAABACJAFAAIAAAQEAACAg=</HashCode>
+      <FileName>Domain\Entities\Pose.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PoseCategory" Collapsed="true">
+    <Position X="165.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAQAAAAAAAAACAAAAAEAAAA=</HashCode>
+      <FileName>Domain\Entities\PoseCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PrivacyPreferences" Collapsed="true">
+    <Position X="179.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\PrivacyPreferences.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PrivateConversation" Collapsed="true">
+    <Position X="192.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAA=</HashCode>
+      <FileName>Domain\Entities\PrivateConversation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PrivateMessage" Collapsed="true">
+    <Position X="201.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAEAAAAAAAAAAAAAIAAAAAAAAIAAA=</HashCode>
+      <FileName>Domain\Entities\PrivateMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.PrivateMessageDelivery" Collapsed="true">
+    <Position X="210.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAIAAEAAA=</HashCode>
+      <FileName>Domain\Entities\PrivateMessageDelivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Profile" Collapsed="true">
+    <Position X="64.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAAgIAAACQQAIJAAQABEAAABUAAADAAkAAQAA=</HashCode>
+      <FileName>Domain\Entities\Profile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ProfileAnswer" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEABAACAQAgAA=</HashCode>
+      <FileName>Domain\Entities\ProfileAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ProfileQuestion" Collapsed="true">
+    <Position X="30.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ProfileQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ProfileWall" Collapsed="true">
+    <Position X="186" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAgAAAAAAAIAAABAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ProfileWall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Quote" Collapsed="true">
+    <Position X="48.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAgCBgAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Quote.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Request" Collapsed="true">
+    <Position X="57.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AyABAAAAAAIAAAIAAAIAAAAAAAAAAAAAAQAAEAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Request.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.RequestType" Collapsed="true">
+    <Position X="98.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAgAAAAAAAAAAACAAAACAAAAAAAIAEACAA=</HashCode>
+      <FileName>Domain\Entities\RequestType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Review" Collapsed="true">
+    <Position X="75.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAAAAAAAAAAAQABgAAAQAAAAAEAADAACAAAIAA=</HashCode>
+      <FileName>Domain\Entities\Review.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewExperience" Collapsed="true">
+    <Position X="114" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAQAAAAAAAAQAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewExperience.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewFeedbackResponse" Collapsed="true">
+    <Position X="125.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewFeedbackResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewRating" Collapsed="true">
+    <Position X="134.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAgAAIAAAAQAAAAAAAAAEACAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewRating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewRatingSubject" Collapsed="true">
+    <Position X="145.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAQAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewRatingSubject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewSearchCriteria" Collapsed="true">
+    <Position X="219.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAAAAgIAAQAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Domain\Entities\ReviewSearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.ReviewStatistics" Collapsed="true">
+    <Position X="221.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAEAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Role" Collapsed="true">
+    <Position X="195" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchBounds" Collapsed="true">
+    <Position X="223" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchBounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchCoordinates" Collapsed="true">
+    <Position X="224.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchCoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchCriteria" Collapsed="true">
+    <Position X="226.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgARAAAAAAABAAAAAIAGAAAIAgAIAABAAAAEAwAggA=</HashCode>
+      <FileName>Domain\Entities\SearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchLink" Collapsed="true">
+    <Position X="228.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchRecord" Collapsed="true">
+    <Position X="39.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAICAAIIgAAAIQAIAwawAQAIAQBEBBQAgCwAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchResponse" Collapsed="true">
+    <Position X="230" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAUCAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.SearchResult" Collapsed="true">
+    <Position X="217.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgIAASAgQIgBAAKYAIg0IZAAAIARAmAAABACwAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Style" Collapsed="true">
+    <Position X="71.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAACAAACIggAAAgAIAAAQABAAAABAAAEAAAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\Style.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.StyleOrganisation" Collapsed="true">
+    <Position X="78" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACAQAAIggAAQAAIAAAQABAAAABCABIAAAkAAAAA=</HashCode>
+      <FileName>Domain\Entities\StyleOrganisation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.StyleTrait" Collapsed="true">
+    <Position X="116.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\StyleTrait.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.StyleTraitGroup" Collapsed="true">
+    <Position X="127.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\StyleTraitGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Teacher" Collapsed="true">
+    <Position X="87" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAIAACAAAIAAAAQSAIIAEQADAAAABAgBIAAAkAEgAA=</HashCode>
+      <FileName>Domain\Entities\Teacher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherAccreditation" Collapsed="true">
+    <Position X="147.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherAccreditation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherPlacement" Collapsed="true">
+    <Position X="156.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAIAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherPlacement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherService" Collapsed="true">
+    <Position X="168" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherTrainingCourse" Collapsed="true">
+    <Position X="181.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAACIAKICoAAAAAQAECQADAAAABAgBAAAGkAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherTrainingCourse.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherTrainingCourseSearchCriteria" Collapsed="true">
+    <Position X="223" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherTrainingCourseSearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherTrainingCourseTeacher" Collapsed="true">
+    <Position X="204" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherTrainingCourseTeacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherTrainingCourseVenue" Collapsed="true">
+    <Position X="213" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherTrainingCourseVenue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.TeacherTrainingOrganisation" Collapsed="true">
+    <Position X="66.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACCAAAIAgAAQCAAAAAQABEAAABACBAAAAlAAAAA=</HashCode>
+      <FileName>Domain\Entities\TeacherTrainingOrganisation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Timescale" Collapsed="true">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIQAAAAAgAAABAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Timescale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.User" Collapsed="true">
+    <Position X="33" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAgAAkAAQAAAAAIgAEAAAAAgAAACAgABABIhAAAAA=</HashCode>
+      <FileName>Domain\Entities\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.UserActivationRequest" Collapsed="true">
+    <Position X="42" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAYAAAIAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Domain\Entities\UserActivationRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.UserEmailAddressChangeAction" Collapsed="true">
+    <Position X="51" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\UserEmailAddressChangeAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.UserEmailAddressChangeRequest" Collapsed="true">
+    <Position X="60" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAEAAAAAAYAAAAAAAAAAAAAAAIBAAAAAgAAAAQ=</HashCode>
+      <FileName>Domain\Entities\UserEmailAddressChangeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.UserRole" Collapsed="true">
+    <Position X="100.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Venue" Collapsed="true">
+    <Position X="80.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAIAACCAAIgAAAQSAAIAAQADAAAABAiBYAAAsQAAAA=</HashCode>
+      <FileName>Domain\Entities\Venue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.VenueAmenity" Collapsed="true">
+    <Position X="118.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Domain\Entities\VenueAmenity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.VenueService" Collapsed="true">
+    <Position X="129.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\VenueService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.VenueType" Collapsed="true">
+    <Position X="136.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Domain\Entities\VenueType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Video" Collapsed="true">
+    <Position X="89.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAgAAAAAABAAABAAAAAAAAAAQAAQEAAQQA=</HashCode>
+      <FileName>Domain\Entities\Video.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.VideoAssociation" Collapsed="true">
+    <Position X="159" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAg=</HashCode>
+      <FileName>Domain\Entities\VideoAssociation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.VideoType" Collapsed="true">
+    <Position X="170.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Domain\Entities\VideoType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Wall" Collapsed="true">
+    <Position X="186" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAABAAAAgAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.WallPermissions" Collapsed="true">
+    <Position X="226.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAAEAAAAAEAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\WallPermissions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.WallPost" Collapsed="true">
+    <Position X="206.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACIIgAAAAAAAAAAgAAAQAAAAAQAAAAAAAAAIEA=</HashCode>
+      <FileName>Domain\Entities\WallPost.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Entities.Website" Collapsed="true">
+    <Position X="215.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Website.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.AuthenticationException" Collapsed="true">
+    <Position X="221.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.AuthenticatedException" Collapsed="true">
+    <Position X="219.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.NotAuthenticatedException" Collapsed="true">
+    <Position X="221.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.PermissionDeniedException" Collapsed="true">
+    <Position X="224.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.UnacceptablePasswordException" Collapsed="true">
+    <Position X="228.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.AuthenticationProviderException" Collapsed="true">
+    <Position X="223" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.DuplicateUsernameException" Collapsed="true">
+    <Position X="230" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.UnknownEntityException" Collapsed="true">
+    <Position X="230" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.UnknownEntityTypeException" Collapsed="true">
+    <Position X="217.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.UnknownIdentifierException" Collapsed="true">
+    <Position X="219.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.RepeatedActionException" Collapsed="true">
+    <Position X="228.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.OpportunityExpiredException" Collapsed="true">
+    <Position X="223" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.FriendshipStatusException" Collapsed="true">
+    <Position X="219.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.RequestStatusException" Collapsed="true">
+    <Position X="230" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.AccountService" Collapsed="true">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACDAiBAgIIAAAAQJEABAABAAgAgkAAAgEAACAE=</HashCode>
+      <FileName>Domain\Services\AccountService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.AccreditationBodyService" Collapsed="true">
+    <Position X="17.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\AccreditationBodyService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.ActivityService" Collapsed="true">
+    <Position X="21.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>B4BAAAIAAiVEkBAMAAAAAIkBAEAAAUgQAACBYEAoAAA=</HashCode>
+      <FileName>Domain\Services\ActivityService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.AddressService" Collapsed="true">
+    <Position X="26.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Domain\Services\AddressService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.AuthenticationService" Collapsed="true">
+    <Position X="30.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAFAQAAAABA=</HashCode>
+      <FileName>Domain\Services\AuthenticationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.ServiceBase" Collapsed="true">
+    <Position X="41" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAABAAAA=</HashCode>
+      <FileName>Domain\Services\Base\ServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.CommentService" Collapsed="true">
+    <Position X="37.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAgAAAEAAAAABAAAAAAAEQAihAAAAQAA=</HashCode>
+      <FileName>Domain\Services\CommentService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.EntityService" Collapsed="true">
+    <Position X="42" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAIEAhgAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\EntityService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.FanService" Collapsed="true">
+    <Position X="46.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgEAAABAAAEAAAgAFAAAAAAAAAASAABAAAAA=</HashCode>
+      <FileName>Domain\Services\FanService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.FriendService" Collapsed="true">
+    <Position X="51" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAACAAAEAAABIQEAAABEAQEAAgCAAAACABAAACIA=</HashCode>
+      <FileName>Domain\Services\FriendService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.GalleryService" Collapsed="true">
+    <Position X="55.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAICAAAoAQAQCCEAAAARhgAgABBAQAGBAAgAAgQ=</HashCode>
+      <FileName>Domain\Services\GalleryService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.GlossaryService" Collapsed="true">
+    <Position X="60" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\GlossaryService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.GroupService" Collapsed="true">
+    <Position X="66.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BMIAAAAAAABQAIgAAAQAACEJCBAkQAAUAAChDIAAQAQ=</HashCode>
+      <FileName>Domain\Services\GroupService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.ImageService" Collapsed="true">
+    <Position X="73.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAIEAQAAAAAABABAAAAAQAAAADAAAAAAAAAACCAA=</HashCode>
+      <FileName>Domain\Services\ImageService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.InvitationService" Collapsed="true">
+    <Position X="62.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAEAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\InvitationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.MediaService" Collapsed="true">
+    <Position X="69" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAIAAAAAAEggAAAAAAiAAAAgA=</HashCode>
+      <FileName>Domain\Services\MediaService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.MessagingService" Collapsed="true">
+    <Position X="75.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAQABAQAAgEQACBgBAAACCACAAACAACAAAAA=</HashCode>
+      <FileName>Domain\Services\MessagingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.NewsService" Collapsed="true">
+    <Position X="3.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAQAAACQAAAQAAAAAAABAAACAAAAQCAAIACAAAg=</HashCode>
+      <FileName>Domain\Services\NewsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.NotificationService" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAIAQGAAAAAAAAAAAIBAAAAAABAAAAQIAAgAgA=</HashCode>
+      <FileName>Domain\Services\NotificationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.PoseService" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAAAAAAAAKAAAAAAgAAAAAAQAAAA=</HashCode>
+      <FileName>Domain\Services\PoseService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.ProfileService" Collapsed="true">
+    <Position X="10.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAIAAEAIIAAAApGAAAEAABAQIAAQCEIAAEADKAgAA=</HashCode>
+      <FileName>Domain\Services\ProfileService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.QuoteService" Collapsed="true">
+    <Position X="15" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\QuoteService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.RegistrationService" Collapsed="true">
+    <Position X="19.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICAACAAQAAAAAAAAAAAgAAAAAAAAAAAAAAACAI=</HashCode>
+      <FileName>Domain\Services\RegistrationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.RequestService" Collapsed="true">
+    <Position X="24" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAAICAAAAAABBAAAAgAAAAAAAAEAAQIA=</HashCode>
+      <FileName>Domain\Services\RequestService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.ReviewService" Collapsed="true">
+    <Position X="28.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIEAAACAQAAAAIAkAgAAABAAAAFAACAASIABCBBAA=</HashCode>
+      <FileName>Domain\Services\ReviewService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.SearchService" Collapsed="true">
+    <Position X="33" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAABAAAAIAAAAAAAABAAAAAAAAggAAAEAQAAhAAA=</HashCode>
+      <FileName>Domain\Services\SearchService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.SharingService" Collapsed="true">
+    <Position X="35.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\SharingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.StyleOrganisationService" Collapsed="true">
+    <Position X="39.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAIAAACAAAABAAAAAAEA=</HashCode>
+      <FileName>Domain\Services\StyleOrganisationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.StyleService" Collapsed="true">
+    <Position X="44.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\StyleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.TeacherService" Collapsed="true">
+    <Position X="48.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAAgAMAAAhACAAAAERABgAAAABIAIBAACAAAA=</HashCode>
+      <FileName>Domain\Services\TeacherService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.TeacherTrainingService" Collapsed="true">
+    <Position X="53.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAGAAAAAEAAABAEBAIACgCAEAYDAIACAAYA=</HashCode>
+      <FileName>Domain\Services\TeacherTrainingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.VenueService" Collapsed="true">
+    <Position X="57.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAqUAAEAAAAAACEoAAEBAABAABBAoAAJAACAAAA=</HashCode>
+      <FileName>Domain\Services\VenueService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.VideoService" Collapsed="true">
+    <Position X="64.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIBCIAAACgAQAAAAAAAAAAABAAAAAAAAQAABIAAAAAA=</HashCode>
+      <FileName>Domain\Services\VideoService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.WallService" Collapsed="true">
+    <Position X="71.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAQgAQAAAAAAgAAAEAAAAABAIAIAAQAQECDAkCAAAA=</HashCode>
+      <FileName>Domain\Services\WallService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Domain.Services.WebsiteService" Collapsed="true">
+    <Position X="78" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\WebsiteService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.AdminFeedbackEmail" Collapsed="true">
+    <Position X="1" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIAQgAAA=</HashCode>
+      <FileName>Emails\AdminFeedbackEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.AdminReviewReportEmail" Collapsed="true">
+    <Position X="3.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAIAAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Emails\AdminReviewReportEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.EmailBase" Collapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\Base\EmailBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.InviteEntityEmail" Collapsed="true">
+    <Position X="5.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\InviteEntityEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.InviteFriendEmail" Collapsed="true">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\InviteFriendEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.NotificationDigestEmail" Collapsed="true">
+    <Position X="10" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAQAAgAAAAAAAAAAAAAAAIAAAAABAAABAAAAA=</HashCode>
+      <FileName>Emails\NotificationDigestEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.ShareEntityEmail" Collapsed="true">
+    <Position X="12.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAAAAAIgAIAAA=</HashCode>
+      <FileName>Emails\ShareEntityEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.UserActivationRequestEmail" Collapsed="true">
+    <Position X="14.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\UserActivationRequestEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.UserEmailAddressChangeRequestEmail" Collapsed="true">
+    <Position X="16.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\UserEmailAddressChangeRequestEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Emails.UserPasswordResetEmail" Collapsed="true">
+    <Position X="19" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Emails\UserPasswordResetEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Geography.DbGeographyFunctions" Collapsed="true">
+    <Position X="226.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geography\DbGeographyFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Geography.GeographicBounds" Collapsed="true">
+    <Position X="223" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Geography\GeographicBounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Geography.GeographicPoint" Collapsed="true">
+    <Position X="224.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAEAAAAAAAIAIAAAAAAAAAAAAAAABAAAAEAA=</HashCode>
+      <FileName>Geography\GeographicPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.MailingLists.MailingListProviderException" Collapsed="true">
+    <Position X="228.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MailingLists\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.MailingLists.MailingListAddressUnknownException" Collapsed="true">
+    <Position X="226.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MailingLists\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.MailingLists.MailChimp.MailChimpMailingListProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAABAQAQIAAAAAAAAAAAAAAQAAABAAAgAA=</HashCode>
+      <FileName>MailingLists\MailChimp\MailChimpMailingListProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Media.UnsupportedMediaException" Collapsed="true">
+    <Position X="221.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Media\UnsupportedMediaException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Media.Scanners.ImageMediaScanner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="223" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAIAAAAAAAACAAAAAAAAAAIAAAAAAAAABAAAA=</HashCode>
+      <FileName>Media\Scanners\ImageMediaScanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Media.Scanners.ImageWebMediaScanner" Collapsed="true">
+    <Position X="10.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IECAAAAAAEAAAAQEACCAAAAAAAACAAAAAAAAAAhAAAA=</HashCode>
+      <FileName>Media\Scanners\ImageWebMediaScanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Media.Scanners.TextWebMediaScanner" Collapsed="true">
+    <Position X="12.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Media\Scanners\TextWebMediaScanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Media.Scanners.VideoMediaScanner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Media\Scanners\VideoMediaScanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Media.Scanners.WebMediaScanner" Collapsed="true">
+    <Position X="11.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAEAAICAQAAAAAAAAEAABAAAAAAACAAgAAAAAAAE=</HashCode>
+      <FileName>Media\Scanners\WebMediaScanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.ActivityGalleryPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\ActivityGalleryPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.ActivityWallPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\ActivityWallPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.DefaultGalleryPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="228.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\DefaultGalleryPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.GroupGalleryPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="226.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\GroupGalleryPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.GroupWallPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="219.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\GroupWallPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.NewsStoryCommentPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="219.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\NewsStoryCommentPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.ProfileWallPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="226.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\ProfileWallPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.ReviewCommentPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>Permissions\Providers\ReviewCommentPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Permissions.Providers.WallPostCommentPermissionProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="228.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Permissions\Providers\WallPostCommentPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.ActivityInvitationHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="219.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAABAEAAIAAAAACAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\ActivityInvitationHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.ActivityTeacherAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="228.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAQAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\ActivityTeacherAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.ActivityVenueAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="230" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAQAAAAAAEAAAAAAAAAAIAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\ActivityVenueAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.FriendshipRequestedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\FriendshipRequestedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.GroupInvitationHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="228.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAACCAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\GroupInvitationHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.GroupMembershipRequestHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="230" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAACCAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\GroupMembershipRequestHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.TeacherPlacementAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="221.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIgAAAAAAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\TeacherPlacementAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.TeacherTrainingCourseTeacherAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAQAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\TeacherTrainingCourseTeacherAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.TeacherTrainingCourseVenueAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="226.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAQAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\TeacherTrainingCourseVenueAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Requests.Handlers.VenuePlacementAddedHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="223" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAEAAAAAAAAAAIgAAAAAAAAAAAIA=</HashCode>
+      <FileName>Requests\Handlers\VenuePlacementAddedHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="Clicks.Yoga.Domain.Entities.EntityReference" Collapsed="true">
+    <Position X="217.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAgAAAAAAAAAAAAAAABAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Domain\Entities\EntityReference.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Clicks.Yoga.Context.IEntityContext" Collapsed="true">
+    <Position X="219.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JIkKZOAQBpUgIogEQgDDRThBgCgwAVYgpmElkpSAKEg=</HashCode>
+      <FileName>Context\IEntityContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Context.IImageStore" Collapsed="true">
+    <Position X="224.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Context\IImageStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Context.ISearchEngine" Collapsed="true">
+    <Position X="224.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>Context\ISearchEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Context.ISecurityContext" Collapsed="true">
+    <Position X="228.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAgIAgAIgAEAAACAIAEAAAAIAgCAAAAAABAAAAAAA=</HashCode>
+      <FileName>Context\ISecurityContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Context.IWorkUnit" Collapsed="true">
+    <Position X="221.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Context\IWorkUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IActor" Collapsed="true">
+    <Position X="3" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IActor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IClaimable" Collapsed="true">
+    <Position X="226.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IClaimable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.ICommentable" Collapsed="true">
+    <Position X="10.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\ICommentable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IEntity" Collapsed="true">
+    <Position X="6.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAQAAAAAAAAAMAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IEntityHandle" Collapsed="true">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAIAAAQAAAAAABAgAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IEntityHandle.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IFanable" Collapsed="true">
+    <Position X="1.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IFanable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IGalleryAssociate" Collapsed="true">
+    <Position X="226.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IGalleryAssociate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.INamed" Collapsed="true">
+    <Position X="6.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\INamed.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.INewsLink" Collapsed="true">
+    <Position X="223" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\INewsLink.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IProfileBanner" Collapsed="true">
+    <Position X="219.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IProfileBanner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IRelationship" Collapsed="true">
+    <Position X="226.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IRelationship.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IReviewable" Collapsed="true">
+    <Position X="4" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IReviewable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.IReviewDetailType" Collapsed="true">
+    <Position X="221.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\IReviewDetailType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.ISearchable" Collapsed="true">
+    <Position X="8.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Domain\Entities\Interfaces\ISearchable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Entities.ISecurable" Collapsed="true">
+    <Position X="7" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\Interfaces\ISecurable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IRepository" Collapsed="true">
+    <Position X="228.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\Base\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\Base\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IRepositoryQuery&lt;TEntity&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\Base\IRepositoryQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IEntityTypeRepository" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\IEntityTypeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IProfileRepository" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\IProfileRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IStyleRepository" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\IStyleRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Repositories.IStyleTraitRepository" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Repositories\IStyleTraitRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IAccountService" Collapsed="true">
+    <Position X="217.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAACAgBAgAAAAAAQJEAAAABAAgAgkAAAgEAACAE=</HashCode>
+      <FileName>Domain\Services\Interfaces\IAccountService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IAccreditationBodyService" Collapsed="true">
+    <Position X="219.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IAccreditationBodyService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IActivityService" Collapsed="true">
+    <Position X="221.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BwBAAAIAAgVEkBAMAAAAAIgAAEAAAQgQAAABYEAgAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IActivityService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IAddressService" Collapsed="true">
+    <Position X="223" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IAddressService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IAuthenticationService" Collapsed="true">
+    <Position X="224.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAFAQAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IAuthenticationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.ICommentService" Collapsed="true">
+    <Position X="217.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghAAAAQAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\ICommentService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IEntityService" Collapsed="true">
+    <Position X="221.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIEAhgAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IEntityService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IFanService" Collapsed="true">
+    <Position X="223" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgEAAABAAAAAAAgAEAAAAAAAAAAQAABAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IFanService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IFriendService" Collapsed="true">
+    <Position X="224.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAACAAAAAAABIAAAAABAAQEAAgCAAAAAAAAAACIA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IFriendService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IGalleryService" Collapsed="true">
+    <Position X="217.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAICAAAoAQAQCAEAAAAQhgAgABBAAAEBAAAAAgQ=</HashCode>
+      <FileName>Domain\Services\Interfaces\IGalleryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IGlossaryService" Collapsed="true">
+    <Position X="219.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IGlossaryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IGroupService" Collapsed="true">
+    <Position X="221.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEIAAAAAAABQAIgAAAQAACAICBAkQAAUAAAhDIAAQAQ=</HashCode>
+      <FileName>Domain\Services\Interfaces\IGroupService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IImageService" Collapsed="true">
+    <Position X="223" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAQAAAAAAAABAAAAAQAAAADAAAAAAAAAACCAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IImageService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IInvitationService" Collapsed="true">
+    <Position X="226.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IInvitationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IMediaService" Collapsed="true">
+    <Position X="219.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IMediaService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IMessagingService" Collapsed="true">
+    <Position X="221.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQABAQAAgEQACBgAAAACAAAAAACAACAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IMessagingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.INewsService" Collapsed="true">
+    <Position X="228.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACQAAAAAAAAAAAAAAACAAAAQAAAIACAAAg=</HashCode>
+      <FileName>Domain\Services\Interfaces\INewsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.INotificationService" Collapsed="true">
+    <Position X="230" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAIAAGAAAAAAAAAAAIAAAAAAABAAAAQIAAgAgA=</HashCode>
+      <FileName>Domain\Services\Interfaces\INotificationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IPoseService" Collapsed="true">
+    <Position X="217.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAAAAAAAAKAAAAAAgAAAAAAQAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IPoseService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IProfileService" Collapsed="true">
+    <Position X="221.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAIAAEAIIAAAAhGAAAEAAAAQAAAQCEIAAEADIAgAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IProfileService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IQuoteService" Collapsed="true">
+    <Position X="223" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IQuoteService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IRegistrationService" Collapsed="true">
+    <Position X="224.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Domain\Services\Interfaces\IRegistrationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IRequestService" Collapsed="true">
+    <Position X="219.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAEAAQIA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IRequestService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IReviewService" Collapsed="true">
+    <Position X="223" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIEAAACAQAAAAIAgAgAAAAAAAAEAACAAQIABABBAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IReviewService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.ISearchService" Collapsed="true">
+    <Position X="226.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAEAAAAhAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\ISearchService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IStyleOrganisationService" Collapsed="true">
+    <Position X="217.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAIAAACAAAABAAAAAAEA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IStyleOrganisationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IStyleService" Collapsed="true">
+    <Position X="219.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IStyleService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.ITeacherService" Collapsed="true">
+    <Position X="221.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAgAMAAAhAAAAAAAQABgAAAABIAIBAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\ITeacherService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.ITeacherTrainingService" Collapsed="true">
+    <Position X="223" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAGAAAAAEAAABAAAAIACgCAEAYBAIAAAAYA=</HashCode>
+      <FileName>Domain\Services\Interfaces\ITeacherTrainingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IVenueService" Collapsed="true">
+    <Position X="224.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAoUAAEAAAAAAAEoAAAAAABAABBAoAAJAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IVenueService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IVideoService" Collapsed="true">
+    <Position X="226.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBCIAAACgAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IVideoService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IWallService" Collapsed="true">
+    <Position X="217.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQgAAAAAAAAAAAAAAAAAAAAIAAAAQAAEADAgAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IWallService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.IWebsiteService" Collapsed="true">
+    <Position X="219.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\IWebsiteService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Domain.Services.Interfaces.ISharingService" Collapsed="true">
+    <Position X="230" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Services\Interfaces\ISharingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.MailingLists.IMailingListProvider" Collapsed="true">
+    <Position X="228.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAQAAAAAAAgAA=</HashCode>
+      <FileName>MailingLists\IMailingListProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Media.IMediaResourceScanner" Collapsed="true">
+    <Position X="230" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Media\IMediaResourceScanner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Media.IMediaResourceScannerFactory" Collapsed="true">
+    <Position X="217.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Media\IMediaResourceScannerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.ICommentPermissionProvider" Collapsed="true">
+    <Position X="228.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Permissions\ICommentPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.ICommentPermissionProviderFactory" Collapsed="true">
+    <Position X="230" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Permissions\ICommentPermissionProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.IGalleryPermissionProvider" Collapsed="true">
+    <Position X="228.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Permissions\IGalleryPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.IGalleryPermissionProviderFactory" Collapsed="true">
+    <Position X="230" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Permissions\IGalleryPermissionProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.INewsPermissionProvider" Collapsed="true">
+    <Position X="224.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Permissions\INewsPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.INewsPermissionProviderFactory" Collapsed="true">
+    <Position X="226.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Permissions\INewsPermissionProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.IWallPermissionProvider" Collapsed="true">
+    <Position X="228.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Permissions\IWallPermissionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Permissions.IWallPermissionProviderFactory" Collapsed="true">
+    <Position X="230" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Permissions\IWallPermissionProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Requests.IRequestCompletionHandler" Collapsed="true">
+    <Position X="230" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Requests\IRequestCompletionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Clicks.Yoga.Requests.IRequestCompletionHandlerFactory" Collapsed="true">
+    <Position X="217.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Requests\IRequestCompletionHandlerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Clicks.Yoga.Domain.Entities.ActivityAttendanceStatus" Collapsed="true">
+    <Position X="217.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAQAIAAAAAAAAAAAAAAAAAAAAAAgAACAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityAttendanceStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.ActivitySortOrder" Collapsed="true">
+    <Position X="219.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Entities\ActivitySearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.ActivityTimeOfDay" Collapsed="true">
+    <Position X="221.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\ActivityTimeOfDay.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.DeactivationStrategy" Collapsed="true">
+    <Position X="223" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\DeactivationStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.GroupMembershipStatus" Collapsed="true">
+    <Position X="226.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACABAAAAAiAAAAAAAAAAAAAAAAAAAAiAAAAABA=</HashCode>
+      <FileName>Domain\Entities\GroupMembershipStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.ReviewSortOrder" Collapsed="true">
+    <Position X="230" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAEAAAACAAAAA=</HashCode>
+      <FileName>Domain\Entities\ReviewSearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.Entities.SearchSortOrder" Collapsed="true">
+    <Position X="217.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAQAAAAAAABAACAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\SearchCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Domain.FriendshipStatus" Collapsed="true">
+    <Position X="224.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAIACAABA=</HashCode>
+      <FileName>Domain\Entities\FriendshipStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.MailingLists.MailingList" Collapsed="true">
+    <Position X="228.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAIAAAAAAAAAAAAAEAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>MailingLists\MailingList.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

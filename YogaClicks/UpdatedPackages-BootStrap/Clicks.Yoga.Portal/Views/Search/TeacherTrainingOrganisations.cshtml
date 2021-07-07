@@ -1,0 +1,86 @@
+﻿@using System.Web.UI.WebControls
+@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingOrganisationsModel
+
+@{
+    ViewBag.Title = "Find Yoga Teacher Training";
+    ViewBag.Description = "Want a yoga teaching certification? Let our location, date and style filters help you find the organisation or teacher training course for you.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section Head {
+    <meta property="og:title" content="Teacher training - ready to preach what you practice?" />
+    <meta property="og:description" content="Find your teacher training at YogaClicks" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Style.Image/9e7411ed-85f9-482b-8474-7f73431f7291.jpg?width=715&scale=both" />
+}
+
+@section LeftNav {
+    @Html.Action("TeacherTrainingNavigation", new { organisations = true })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="style-finder content-col search-content-col discover-strip purple-strip" id="scroll">
+        <div>
+            <header class="search-results">
+                <h1 class="teacherOrganisationHeader purpleHeader"><span>&nbsp;</span>Teacher training organisations</h1>
+                <p class="fr"><!--<a href="#" class="list-view active">List view</a><a href="#" class="map-view">Map view</a>--></p>
+                <p class="fl">Showing @Model.PageDescription.</p>
+
+                @Html.Partial("Sort", Model.Criteria)
+            </header>
+            <div id="resultContainer" class="padTop20">
+                <section class="search-group">
+                    @if (!SecurityContext.Authenticated)
+                    {
+                        <article class="result advertResult noAuth-tile">
+                            <strong class="headerText">Do you offer teacher training?</strong>
+                            <div class="noAuth-tile-image"><img src="~/Images/tile-icons/noAuth-tto-tile.jpg" /></div>
+                            <strong class="inviteText">Create your teacher training page</strong>
+                            <a class="silver button nonAuth-join-tile-btn reg-form-popup" href="/">Join Us</a>
+                        </article>
+                    }
+                    <article class="result advertResult">
+                        <strong class="headerText">Got a favourite teacher training body?</strong>
+                        <span class="image teacherImage">
+                            &nbsp;
+                        </span>
+                        <strong class="inviteText">Invite them now...</strong>
+                        <ul>
+                            <li class="facebook"><a href="http://www.facebook.com/share.php?u=http://www.yogaclicks.com&title=Join&nbsp;me&nbsp;on&nbsp;YogaClicks&nbsp;-&nbsp;the&nbsp;place&nbsp;to&nbsp;find&nbsp;and&nbsp;share&nbsp;great&nbsp;yoga" target="_blank" class="silver button"><span>&nbsp;</span>Facebook</a></li>
+                            <li class="twitter"><a href="http://twitter.com/home?status=Join me on YogaClicks+http://www.yogaclicks.com" target="_blank" class="silver button"><span>&nbsp;</span>Twitter</a></li>
+                            <li class="googleplus"><a href="https://plus.google.com/share?url=http://www.yogaclicks.com" target="_blank" class="silver button"><span>&nbsp;</span>Google +</a></li>
+                            <li class="email"><a data-role="InviteByEmailButton" data-action="@Url.Action("InviteFriendsByEmail", "Invitations")" href="javascript:void(0)" class="silver button"><span>&nbsp;</span>Email</a></li>
+                        </ul>
+                    </article>
+                    <script>
+                        $('article.advertResult').yogaInvitationButtons();
+                    </script>
+
+                    @foreach (var result in Model.Results)
+                    {
+                        @Html.Partial("SearchResultPartial", result)
+                    }
+
+                    @if (Model.Response.TotalCount == 0)
+                    {
+                        <div id="search-no-results">
+                            <h2 class="greenHeader">Search Results</h2>
+                            <h3 class="cb blackSubHeader">
+                                <br />
+                                We are sorry that your search returned no results.
+                                <br /><br /><br />
+                                Please use different search criteria to find more results.
+                                <br /><br />
+                            </h3>
+                        </div>
+                    }
+                </section>
+                @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+                <div class="meta">
+                    <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

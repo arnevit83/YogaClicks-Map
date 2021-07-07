@@ -1,0 +1,265 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivitySearchModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+@section Head {
+    <meta property="og:title" content="Need your yoga fix?" />
+    <meta property="og:description" content="Suck up some serious sukha - find a class, workshop, weekend, holiday/retreat or event at YogaClicks " />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+
+
+
+}
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" /><span style="color: #786EA1; font-weight: normal">@if (Model.Type == null)
+            {
+                @:All
+                    }
+            else
+            {
+                @Model.Type.Name
+            }</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line purple-strip"></div>
+
+
+
+<div id="content-slider" class="row nopadding ">
+
+    <div class="col-xs-12 nopadding " id="scroll">
+        <div id="page-content" class="content-col search-content-col purple-strip">
+            <article id="static">
+                <br />
+                <h2 class="purpleHeader  activitesHeader hidden-xs">
+                    <img src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" />
+                    @if (Model.Type == null)
+                    {
+                        @:All
+                    }
+                    else
+                    {
+                        @Model.Type.Name
+                    }
+                </h2>
+
+                @if (Model.Response.Activities.Count > 0)
+                {
+                    <div class="searchSortForm">
+                        @Html.Partial("SearchSort", Model.Criteria)
+                    </div>
+                    foreach (var activity in Model.Response.Activities)
+                    {
+                        <div class="activityWrap ">
+                            <a class="activitylinks" href="@Url.Action("Display", new {activity.Id})">
+                                <div class="profileBanner activityBanner">
+                                    @Html.DisplayFor(m => activity.ProfileBanner, "ProfileBanner")
+                                </div>
+
+                                <span class="captionhoverActivitys hidden-xs">
+        <span>
+            @activity.Name
+
+        </span>
+    </span>
+                                <span class="hidden-sm hidden-md hidden-lg activitsMobileheader">
+
+                                    @activity.Name
+
+                                    <br />
+                                </span>
+                                
+                                
+
+
+                            </a>
+
+
+
+
+
+                            <div class="row nopadding ">
+
+
+                                <div class="col-sm-6 nopadding">
+
+                                    @if (activity.Teachers.Any())
+                                    {
+                                        var i = 1;
+                                        var teacherCount = activity.Teachers.Count();
+                                        var teacherOrTeachers = "Teacher:";
+                                        if (teacherCount > 1)
+                                        {
+                                            teacherOrTeachers = "Teachers:";
+                                        }
+
+
+                                        <div class="row nopadding">
+                                            <div class="col-xs-2 ">
+                                                <strong><i class="fa fa-graduation-cap activityIcons"></i></strong>
+
+                                            </div>
+                                            <div class="col-xs-10 ">
+
+
+                                                <div style="vertical-align: middle">
+
+
+                                                    @foreach (var teacher in activity.Teachers)
+                                                    {
+                                                        if (teacher.Stubbed)
+                                                        {
+                                                            @teacher.Name
+                                                        }
+                                                        else
+                                                        {
+                                                            <a style="vertical-align: sub;" href="@Url.Action("Display", "Teachers", new {Id = teacher.Id})">@teacher.Name</a>
+                                                        }
+                                                        if (i < teacherCount)
+                                                        {
+                                                            <span> | </span>
+                                                        }
+                                                        i++;
+                                                    }
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                    }
+                                    <div class="row nopadding">
+                                        <div class="col-xs-2 ">
+
+                                            <strong><i class="fa fa-home activityIcons"></i></strong>
+
+                                        </div>
+                                        <div class="col-xs-10 ">
+
+
+                                            <div>
+                                                <a style="vertical-align: sub;" href="@Url.Action("Display", "Venues", new {activity.Venue.Id})">@activity.Venue.Name</a>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row nopadding">
+                                        <div class="col-xs-2 ">
+
+                                            <strong><i class="fa fa-calendar activityIcons"></i></strong><br /><br />
+                                        </div>
+                                        <div class="col-xs-10 ">
+
+
+                                            <div style="display: block">
+                                                @activity.StartTime.Date.ToString("D")<br />
+                                                @activity.FinishTime.Date.ToString("D")
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="activity-text">
+                                        <strong>About:</strong>
+                                        @activity.Description
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div id="search-no-results-pos" style="margin-top: 40px;">
+                        <h2 class="greenHeader" style="padding: 0;">Search Results</h2>
+                        <h3 class="cb blackSubHeader">
+                            <br />
+                            There are no events matching your search criteria.
+                            <br /><br /><br />
+                            Please use different search criteria to find more results.
+                            <br /><br />
+                        </h3>
+                    </div>
+
+                }
+                <div class="pagination">
+                    @if (Model.Response.HasPreviousPage)
+                    {
+                        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+                        {
+                            @Html.Partial("SearchCriteriaHidden", Model.Criteria)
+                            @Html.HiddenOptional("SortOrder", Model.Criteria.SortOrder)
+
+                            <input type="hidden" name="PageIndex" value="@Model.PreviousPageIndex" />
+
+                            <button type="submit" class="silver button">Previous Page</button>
+                        }
+                    }
+
+                    @if (Model.Response.HasNextPage)
+                    {
+                        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+                        {
+                            @Html.Partial("SearchCriteriaHidden", Model.Criteria)
+                            @Html.HiddenOptional("SortOrder", Model.Criteria.SortOrder)
+
+                            <input type="hidden" name="PageIndex" value="@Model.NextPageIndex"/>
+
+                            <button type="submit" class="silver button">Next Page</button>
+                        }
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/libs/readmore.min.js"></script>
+    <script>
+        $('.activity-text').readmore({
+            collapsedHeight: 93
+        });
+
+    </script>
+}

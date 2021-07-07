@@ -1,0 +1,27 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.LocationEditorModel
+
+@{
+    Layout = null;
+}
+
+<div id="@Html.IdFor(m => m)">
+    <span data-role="StaticMap" id="staticMap" data-src="http://maps.googleapis.com/maps/api/staticmap?center={latitude},{longitude}&zoom=12&size=120x120&maptype=roadmap&sensor=false&markers=color:green%7C{latitude},{longitude}"></span>
+    <div class="locationWrap">
+        <span class="locationIcon">&nbsp;</span>
+        @Html.TextBoxFor(m => m.Name, new { data_role = "Location", autocomplete = "off", placeholder = "Please type your post code, town or address", @class="location-search-box" })
+    </div> 
+    <div class="suggestionWrap">
+        <div class="suggestions" data-role="LocationSuggestions"></div>
+    </div>
+
+    @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude" })
+    @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude" })
+</div>
+@Scripts.Render("~/bundles/mapsapi")
+@Scripts.Render("~/bundles/maps")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#@Html.IdFor(m => m)').yogaLocationPicker({ cityonly: @(Model == null ? bool.FalseString.ToLower() : Model.ShowCityOnly.ToString().ToLower()), autocode: true });
+    })
+</script>

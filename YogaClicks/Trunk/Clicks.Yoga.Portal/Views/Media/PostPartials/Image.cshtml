@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Media.MediaPostTypePartialModel
+
+@{
+    var guid = Guid.NewGuid();
+    var fullWidth = Model.Width ?? 596;
+    var halfWidth = fullWidth / 2 - 6; 
+}
+
+<div id="guid-@guid">
+    <div data-role="Entries">
+        @for (var i = 0; i < Model.Resources.Count; i += 2)
+        {
+            <div class="@(i > 1 ? "pad-top-10" : "")">
+                @if (i + 1 < Model.Resources.Count)
+                {
+                    <a class="news-gallery-pad-right" data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = Model.Resources[i].EntityId })">@Html.Image(Model.Resources[i].Image, m => m.Resize(c => c.Width(halfWidth).Height(250).ScaleBoth().Crop()))</a>
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = Model.Resources[i + 1].EntityId })">@Html.Image(Model.Resources[i + 1].Image, m => m.Resize(c => c.Width(halfWidth).Height(250).ScaleBoth().Crop()))</a>
+                }
+                else
+                {
+                    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", "Galleries", new { EntryId = Model.Resources[i].EntityId })">@Html.Image(Model.Resources[i].Image, m => m.Resize(c => c.Width(fullWidth).Height(300).ScaleBoth().Crop()))</a>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#guid-@guid').yogaGallery();
+    });
+</script>

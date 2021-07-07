@@ -1,0 +1,174 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseModel
+<div class="well buisnesscard" style="vertical-align: middle;">
+    <div class="well buisnesscard" style="vertical-align: middle;">
+
+        <h4>Course: @Model.Name</h4>
+
+        <hr />
+
+
+        <div class="main">
+            <div class="ttcourse-details-half">
+                <div class="">
+                    <strong>Provider:</strong>
+                    @Html.ActionLink(Model.Organisation.Name, "Display", "TeacherTrainingOrganisations", new { Model.Organisation.Id }, null)
+                </div>
+                <div class="">
+                    @if (Model.Teachers.Count > 0)
+                    {
+                    <div>
+                        <strong>Teachers:</strong>
+                        @{
+                        var claimedTeachers = Model.Teachers.Where(x => x.Teacher.OwnerId != null);
+                        var stubbTeachers = Model.Teachers.Where(x => x.Teacher.OwnerId == null);
+                        int noOfClaimedteachers = 0;
+                        }
+
+                        @foreach (var association in claimedTeachers)
+                            {
+                            @Html.ActionLink(association.Teacher.Name, "Display", "Teachers", new { association.Teacher.Id }, null)
+
+                                noOfClaimedteachers++;
+
+                                if (noOfClaimedteachers != claimedTeachers.Count())
+                                {
+                            <text> | </text>
+                                }
+                            }
+
+                        @if (stubbTeachers.Count() > 0 && claimedTeachers.Count() > 0)
+                            {
+                            <text> | </text>
+                            }
+
+                        @if (stubbTeachers.Any())
+                            {
+                            @Html.Raw(string.Join(" | ", stubbTeachers.Select(x => x.Teacher.Name).ToList()));
+                            }
+                    </div>
+                    }
+                    @if (Model.Venues.Count > 0)
+                    {
+                    <strong>Venues:</strong>
+                        foreach (var association in Model.Venues)
+                        {
+                            if (association.Confirmed || SecurityContext.IsOwner(Model) || SecurityContext.IsOwner(association.Venue))
+                            {
+                    @Html.ActionLink(association.Venue.Name, "Display", "Venues", new { association.Venue.Id }, null)
+                            }
+                        }
+                    }
+                </div>
+
+
+            </div>
+            <div class="ttcourse-details-half">
+                <div class="">
+                    <strong>Teaching hours:</strong>
+                    <span>@Model.Duration</span><br />
+
+                    @if (Model.StartDate.HasValue)
+                    {
+                    <strong>Start:</strong> @Model.StartDate.Value.ToString("d MMMM yyyy")
+                    }
+                    &nbsp;
+                    @if (Model.FinishDate.HasValue)
+                    {
+                    <strong>End:</strong> @Model.FinishDate.Value.ToString("d MMMM yyyy")
+                    }
+                    <br />
+                    @if (!string.IsNullOrEmpty(Model.Price))
+                    {
+                    <strong>Price</strong> @Model.Price
+                    }
+                </div>
+            </div>
+            <hr />
+            <div>
+                <div class="">
+                    @if (Model.AccreditationBodies.Count > 0)
+                    {
+                    <div>
+                        <strong>Accrediting / registering bodies:</strong>
+                        @foreach (var body in Model.AccreditationBodies)
+                            {
+                            @Html.ActionLink(body.Name, "Display", "AccreditationBodys", new { body.Id }, null)<span>,</span>
+                            }
+                    </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Accreditation))
+                    {
+                    <div><strong>Qualification:</strong> @Model.Accreditation</div>
+                    }
+
+                    @if (Model.Style != null)
+                    {
+                    <div>
+                     
+                            <strong>Style:  </strong>
+                            <a href="@Url.Action("display", "styles", new { id = Model.Style.Id })">@Model.Style.Name</a>
+                     
+                    </div>
+                    }
+
+
+
+                    @if (Model.Conditions.Count > 0)
+                    {
+                        <div>
+                            <strong>YogaMeds taught:</strong>
+                                                      @foreach (var condition in Model.Conditions)
+                                                      {
+                                                            <a href="@Url.Action("Display", "Medic", new { id = @condition.Id, slug = @condition.UrlSlug })">@condition.Name</a><span>,</span>
+                            }
+                        </div>
+
+
+
+                    }
+
+
+
+                </div>
+                <div class="">
+                    @if (Model.Website != null)
+                    {
+                    <div>
+                     
+                            <strong>Website: </strong>
+                            <a href="@Model.Website.Url" target="_blank">@Model.Website.Url</a>
+                       
+                    </div>
+                    }
+                <br /></div>
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <div class="sectionToggleHeader"><strong>Description:</strong><span class="arrow">&nbsp;</span></div>
+            <div class="sectionToggle"><p>@Model.Description</p></div>
+        }
+        @if (!string.IsNullOrEmpty(Model.PreRequisites))
+        {
+            <div class="sectionToggleHeader"><strong>Pre-requisites:</strong><span class="arrow">&nbsp;</span></div>
+            <div class="sectionToggle"><p>@Model.PreRequisites</p></div>
+        }
+        @if (!string.IsNullOrEmpty(Model.Notes))
+        {
+            <div class="sectionToggleHeader"><strong>Notes:</strong><span class="arrow">&nbsp;</span></div>
+            <div class="sectionToggle">@Html.NewLines(Model.Notes)</div>
+        }
+    </div>
+</div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.sectionToggleHeader').click(function () {
+                    $(this).toggleClass('open');
+                    $(this).next('.sectionToggle').slideToggle();
+                    resizeDiv(true);
+                });
+                $('.courseNav').addClass('active');
+             
+            });
+        </script>

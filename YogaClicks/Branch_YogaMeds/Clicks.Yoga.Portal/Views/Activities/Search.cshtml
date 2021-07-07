@@ -1,0 +1,144 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivitySearchModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+@section Head {
+    <meta property="og:title" content="Need your yoga fix?" />
+    <meta property="og:description" content="Suck up some serious sukha - find a class, workshop, weekend, holiday/retreat or event at YogaClicks " />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Style.Image/932aeee6-f579-4274-a87c-786760c53db9.jpg?width=715&scale=both" />
+}
+
+<div id="content-slider" role="content-slider">
+    <div class="discover-strip content-col search-content-col purple-strip " id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader">
+                    <span>&nbsp;</span>
+                    @if (Model.Type == null)
+                    {
+                        @:All
+                    }
+                    else
+                    {
+                        @Model.Type.Name
+                    }
+                </h2>
+
+                @if (Model.Response.Activities.Count > 0)
+                {
+                    <div class="searchSortForm">
+                        @Html.Partial("SearchSort", Model.Criteria)
+                    </div>
+                    foreach (var activity in Model.Response.Activities)
+                    {
+                        <div class="activityWrap">
+                            <div class="header">
+                                <h3 class="fl"><a href="@Url.Action("Display", new { activity.Id })">@activity.Type.Name: @activity.Name</a></h3>
+                            </div>
+                            <div class="left">
+                                @if (activity.Teachers.Any())
+                                {
+                                    var i = 1;
+                                    var teacherCount = activity.Teachers.Count();
+                                    var teacherOrTeachers = "Teacher:";
+                                    if (teacherCount > 1)
+                                    {
+                                        teacherOrTeachers = "Teachers:";
+                                    }
+                                    <div>
+                                        <strong>@teacherOrTeachers</strong>
+
+                                        @foreach (var teacher in activity.Teachers)
+                                        {
+                                            if (teacher.Stubbed)
+                                            {
+                                                @teacher.Name
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Display", "Teachers", new { Id = teacher.Id })">@teacher.Name</a>
+                                            }
+                                            if (i < teacherCount)
+                                            {
+                                                <span> | </span>
+                                            }
+                                            i++;
+                                        }
+                                    </div>
+                                }
+
+                                <div><strong>Venue:</strong> <a href="@Url.Action("Display", "Venues", new { activity.Venue.Id })">@activity.Venue.Name</a></div>
+
+                                <div><strong>Start date:</strong> @activity.StartTime.Date.ToString("D")</div>
+                                <div><strong>End date:</strong> @activity.FinishTime.Date.ToString("D")</div>
+                            </div>
+                            <div class="right">
+                                <div class="activity-text">
+                                    <strong>About:</strong>
+                                    @activity.Description
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div id="search-no-results-pos" style="margin-top: 40px;">
+                        <h2 class="greenHeader" style="padding: 0;">Search Results</h2>
+                        <h3 class="cb blackSubHeader">
+                            <br />
+                            There are no events matching your search criteria.
+                            <br /><br /><br />
+                            Please use different search criteria to find more results.
+                            <br /><br />
+                        </h3>
+                    </div>
+
+                }
+                <div class="pagination">
+                    @if (Model.Response.HasPreviousPage)
+                    {
+                        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+                        {
+                            @Html.Partial("SearchCriteriaHidden", Model.Criteria)
+                            @Html.HiddenOptional("SortOrder", Model.Criteria.SortOrder)
+
+                            <input type="hidden" name="PageIndex" value="@Model.PreviousPageIndex" />
+
+                            <button type="submit" class="silver button">Previous Page</button>
+                        }
+                    }
+
+                    @if (Model.Response.HasNextPage)
+                    {
+                        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+                        {
+                            @Html.Partial("SearchCriteriaHidden", Model.Criteria)
+                            @Html.HiddenOptional("SortOrder", Model.Criteria.SortOrder)
+
+                            <input type="hidden" name="PageIndex" value="@Model.NextPageIndex" />
+
+                            <button type="submit" class="silver button">Next Page</button>
+                        }
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/libs/readmore.min.js"></script>
+    <script>
+        $('.activity-text').readmore({
+            collapsedHeight: 74
+        });
+    </script>
+}

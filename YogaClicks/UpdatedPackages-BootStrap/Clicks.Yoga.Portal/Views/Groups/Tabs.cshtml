@@ -1,0 +1,28 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupTabsModel
+
+<div id="tabsNavWrap">
+    <ul id="tabsNav">
+        @if (Model.Permissions.Access)
+        {
+            <li id="wallTab">@Html.ActionLink("Wall", "Wall")</li>
+        }
+    
+        <li id="profileTab">@Html.ActionLink("Profile", "Profile")</li>
+    
+        @if (Model.Permissions.Access)
+        {
+            <li id="membersTab">@Html.ActionLink("Members", "Members")</li>
+            <li id="galleriesTab">@Html.ActionLink("Galleries", "Galleries")</li>
+        }
+    
+        @if (Model.Permissions.Manage)
+        {
+            <li id="settingsTab">@Html.ActionLink("Settings", "Settings")</li>
+        }
+    </ul>
+    <div class="group-recommend-btn">
+        @Html.Action("Button", "Recommendations", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+    </div>
+
+        @Html.Action("MembershipButton")
+</div>

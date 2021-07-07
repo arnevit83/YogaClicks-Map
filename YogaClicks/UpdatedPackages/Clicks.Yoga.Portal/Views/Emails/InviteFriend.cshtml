@@ -1,0 +1,58 @@
+﻿@model Clicks.Yoga.Emails.InviteFriendEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = string.Format("Join {0} at YogaClicks!", Model.Invitation.Sender.Name);
+
+    var action = Url.EmailAction(
+        "Redirect",
+        "Invitations",
+        new {
+            identifier = Model.Invitation.RequestIdentifier,
+            destination = Url.Action(
+                "CreateAccount",
+                "Registration", new {
+                    emailaddress = Model.Invitation.RecipientIdentifier
+                })
+        });
+}
+
+
+
+
+
+
+<table width="650" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#14b5e9" style="border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 30px 30px; vertical-align: top; line-height: 42px; font-family: 'Source Sans Pro'; text-align: center; font-weight: 600; color: #ffffff; font-size: 40px;" bgcolor="#14b5e9">
+            <!-- Header -->
+            @Model.Subject
+
+
+
+
+
+
+        </td>
+    </tr>
+</table>
+<table width="650" class="deviceWidthblue eoa_c95" border="3" bordercolor="#14b5e9" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="padding:0;border-width:3px;border-style:solid;border-color:#14b5e9;border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 15px 15px; line-height: 27px; font-family: 'Source Sans Pro'; text-align: left; font-weight: lighter; color: #14b5e9; font-size: 25px;" bgcolor="#ffffff">
+            <!-- Content -->
+            <p>Hello</p>
+            <p>We just wanted to let you know that @Model.Invitation.Sender.Name wanted to invite you to join them at YogaClicks.</p>
+            <a href="@action" style="color: #5CA29A; text-decoration: underline;">Click here to register</a>.
+            <br />
+            <br />
+            <p>We look forward to seeing you soon on YogaClicks!</p>
+            <p>Namaste</p>
+            <p>Lucy and the YogaClicks team</p>
+
+            <br /><br />
+
+
+
+        </td>
+    </tr>
+</table>

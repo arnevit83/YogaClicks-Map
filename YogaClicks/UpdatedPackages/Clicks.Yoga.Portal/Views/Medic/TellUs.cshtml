@@ -1,0 +1,69 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.TellUsModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<div class="">
+    <h2 class="greenHeader">Tell us your story</h2>
+    <hr class="modalHrSteps" />
+
+    @using (Html.BeginForm("TellUs", "Medic", FormMethod.Post, new { id = "tell-us-form" }))
+    {
+        @Html.HiddenFor(m => m.ConditionId)
+        <div class="scrollableiFrame">
+            <div class="tell-us-container">
+                @Html.ValidationSummary()
+
+                <div class=" remain-anonymous-container">
+                    <span>You are writing as @SecurityContext.CurrentActor.Name</span>
+                    @Html.EditorFor(m => m.OwnerHidden)
+                    @Html.LabelFor(m => m.OwnerHidden, "We understand if you'd like to remain anonymous")
+                </div>
+
+                <div class="">
+                    @Html.LabelFor(m => m.Title, "Story title")
+                    @Html.EditorFor(m => m.Title)
+                </div>
+                <div class="">
+                    @Html.LabelFor(m => m.Content, "Your story")
+                    @Html.TextAreaFor(m => m.Content, new { @class = "story-content-textarea" })
+                </div>
+                @{var t = Model.Teachers;}
+                <p>Did a teacher help you? Tell us their name and help others find them</p>
+                @Html.EditorFor(m => m.Teachers, "TeacherChooserModel")
+
+                <p>Did a venue help you? Tell us it's name and help others find them</p>
+                @Html.EditorFor(m => m.Venues, "VenueChooserModel")
+
+                <br /><br /><br />
+            </div>
+        </div>
+
+        <div class="wizard-footer-buttons-container">
+            <div class="tell-us-tc">
+                <input type="checkbox" class="tellus-accept"/> I accept YogaClick's <a href="@Url.Action("terms-of-use", "static")" target="_blank">terms and conditions</a>
+            </div>
+            <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+            <div class="wizard-footer-nav-container">
+                <input class="tell-us-submit button pink large" data-disable="false" type="submit" value="Submit story" />
+            </div>
+        </div>
+        <div class="cb"></div>
+    }
+
+</div>
+
+<script>
+    $('.tell-us-submit').click(function (e) {
+        e.preventDefault();
+
+        if ($('.tellus-accept').is(':checked')) {
+            $('#tell-us-form').submit();
+        }
+        else {
+            alert("You must accept the terms and conditions before submitting your story");
+        }
+
+    });
+</script>

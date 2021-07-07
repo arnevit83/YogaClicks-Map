@@ -1,0 +1,85 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionsModel
+
+@{ var order = new List<string> { "Mind", "Body", "Spirit", "Focus", "Environment", "Who" };}
+
+
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle"><span style="float: left">YogaMeds</span></h1><br />
+
+
+
+                                <p><b>Using yoga, meditation and mindfulness for health conditions.</b></p>
+                                <div class="medic-nav-sub-text">
+
+
+                                    View 300+ clinical studies.<br />
+
+
+                                    Share your story.<br />
+
+
+                                    Find teachers, venues, and teacher training.
+                                </div>
+                                <nav class="filter">
+                                    @foreach (var condition in Model.Conditions.OrderBy(x => x.Name))
+                                    {
+
+
+
+
+
+
+                                                <a href="@Url.Action("Display", "Medic", new { id = condition.Id, slug = condition.UrlSlug })">@condition.Name</a>
+                                        
+
+
+
+
+
+
+
+                                    }
+                                    @if (SecurityContext.IsSuperUser())
+                                    {
+                                        <h2>Super user menu</h2>
+                                        @Html.Action("DeactivatedConditions")
+                                        <a href="@Url.Action("AddCondition")" class="silver button add-condition-nav-btn">Super User - Add new condition</a>
+                                    }
+                                </nav>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <script>
+    $('.reactivate-condition').click(function () {
+        var $this = $(this),
+        $li = $this.parent('li');
+        $id = $li.data('condition-id');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ReactivateCondition")',
+            async: true,
+            data: { conditionId: $id },
+            success: function (html) {
+                location.reload();
+            }
+        });
+    });
+
+    $("#right-menu-close").click(function () {
+
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+
+    });
+                </script>

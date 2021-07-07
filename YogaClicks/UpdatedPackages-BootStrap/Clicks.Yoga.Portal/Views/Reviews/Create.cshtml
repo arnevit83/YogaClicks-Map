@@ -1,0 +1,48 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewCreateModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@section Head {
+    <script src='/scripts/libs/rating/jquery.MetaData.js' type="text/javascript"></script>
+    <script src='/scripts/libs/rating/jquery.rating.js' type="text/javascript"></script>
+    <link href='/scripts/libs/rating/jquery.rating.css' type="text/css" rel="stylesheet" />
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Subject.Id)
+    @Html.HiddenFor(m => m.Subject.EntityType.Name)
+    <h2 class="greenHeader">Write a review of @Model.Subject.Name</h2>
+
+    if (Model.HelperDetails.Count > 0)
+    {
+        <div>
+            @foreach (var detail in Model.HelperDetails)
+            {
+                <div>
+                    <strong>@detail.Item1</strong>: @detail.Item2
+                </div>
+            }
+        </div>
+    }
+    <div class="review-popup-content-container">
+        @Html.Partial("EditorPartial")
+    </div>
+    <hr />
+    <button class="button pink large fr">Submit review</button>
+    <div class="cb"></div>
+}
+<script>
+$(document).ready(function () {
+    $('.pink').click(function () {
+
+        var $this = $(this),
+            $input = $this.closest('button');
+
+        $input.after('<button class="button pink large greybg fr" disabled="disabled">' + $input.text() + '</button>');
+        $input.hide();
+    });
+});
+</script>

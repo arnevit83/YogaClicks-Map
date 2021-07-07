@@ -1,0 +1,127 @@
+﻿@using Clicks.Yoga.Portal.Models.SignUp
+@{
+    ViewBag.Title = "Congrats";
+    ViewBag.HeaderClass = "blue-border";
+    ViewBag.BodyClass = "congratspage blue-text blue-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<div class="row blue-text">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-title signup-large-text">
+        <p>
+            Congrat’s you’re done!<br/>Now you can:
+        </p>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row blue-border four-pixel-border borderedRow">
+            <p>
+                @Html.ActionLink("Share your yoga story with the world", "Index", "YogaMap")
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row blue-border four-pixel-border borderedRow">
+            <p>
+                <a target="_blank" href="https://www.yogaclicks.store/">Shop the community’s creations</a>
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+@{
+    var model1 = new SignUpInvite()
+    {
+        Type = "Friends",
+        Title = "Invite your friends",
+        Message = "Friends email",
+        ColorCssBorderClass = "blue-border",
+        ColorCssClass = "blue",
+        ColorImageClass = "blue"
+    };
+}
+
+@Html.Partial("_SignUpInvite", model1)
+
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row blue-border four-pixel-border borderedRow">
+            <p>
+                @Html.ActionLink("Read the clinical studies", "Index", "Medic")
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+@*<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row blue-border four-pixel-border borderedRow clickablelink">
+            <p>
+                @Html.ActionLink("Add your true Self", "ProfileTrueSelf", "SignUp", null, null, "update-profile-questions-form", null, null)
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>*@
+
+@*@{
+    var model2 = new SignUpInvite()
+    {
+        Type = "Teachers",
+        Title = "Invite your teachers",
+        Message = "Teacher's email",
+        ColorCssBorderClass = "blue-border",
+        ColorCssClass = "blue",
+        ColorImageClass = "blue"
+    };
+}*@
+
+@*@Html.Partial("_SignUpInvite", model2)*@
+
+@*<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row blue-border four-pixel-border borderedRow clickablelink">
+            <p>
+                @Html.ActionLink("Post to your newsfeed", "ProfileNewsFeed", "SignUp", null, null, "NewPost", null, null)
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>*@
+
+<div class="row">
+    <div class="col-xs-12">
+        <p>
+            @Html.ActionLink("Done", "ProfileDone", "SignUp")
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".clickablelink").click(function () {
+            window.location = $(this).find("a").attr("href");
+            return false;
+        });
+    }
+        );
+
+</script>

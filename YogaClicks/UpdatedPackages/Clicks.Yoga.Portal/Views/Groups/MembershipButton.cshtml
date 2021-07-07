@@ -1,0 +1,65 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Groups.GroupMembershipButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    @switch (Model.Status)
+    {
+        case GroupMembershipStatus.Unconfirmed:
+            <p>Membership pending</p>
+            break;
+        case GroupMembershipStatus.Confirmed:
+        <button data-role="UnjoinButton" class="btn btn-default btn-clear btn-sm ">Leave the group</button>
+            break;
+        case GroupMembershipStatus.Requestable:
+        <button data-role="RequestButton" class="btn btn-default btn-clear btn-sm ">Request invite</button>
+            break;
+        case GroupMembershipStatus.Joinable:
+        <button data-role="JoinButton" class="btn btn-default btn-clear btn-sm ">Join</button>
+            break;
+    }
+
+    @if (!SecurityContext.Authenticated)
+    {
+        <a class="btn btn-default btn-clear btn-sm  reg-form-popup" href="/">Join</a>
+    }
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.on('click', 'button[data-role=JoinButton]', function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Join")',
+                success: function (html) {
+                    $container.html(html);
+                }
+            })
+        });
+
+        $container.on('click', 'button[data-role=UnjoinButton]', function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Unjoin")',
+                success: function (html) {
+                    $container.html(html);
+                }
+            })
+        });
+
+        $container.on('click', 'button[data-role=RequestButton]', function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RequestInvitation")',
+                success: function (html) {
+                    $container.html(html);
+                }
+            })
+        });
+    });
+</script>

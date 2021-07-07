@@ -1,0 +1,52 @@
+﻿@model Clicks.Yoga.Portal.Models.Static.HowToUseModel
+
+@{
+    ViewBag.Title = "Profile & professional pages guide";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuClass = "how-to-navigation";
+}
+@section LeftNav{
+    
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+@*@if (Model.Registered && !Model.HasTeacher)
+{
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            openModal('/profiles/WizardIntro', false, undefined, undefined, replace);
+        });
+
+        function replace() {
+            window.location.href = window.location.href.toLowerCase().replace("?registered=true", "");
+        }
+    </script>
+}*@
+
+<div>
+    
+        <img class="hidden-sm hidden-md hidden-lg " src="@Url.Content("~/images/minGuide.jpg")" />
+        <img class="hidden-xs" src="@Url.Content("~/images/static/profile-guide/profile-guide-full-image.jpg")" />
+    
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#Innercontent").css('min-width', '99%');
+    
+        resizeDiv(true);
+
+    });
+
+   
+</script>

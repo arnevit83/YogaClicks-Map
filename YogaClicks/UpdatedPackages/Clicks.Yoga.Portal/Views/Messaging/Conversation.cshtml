@@ -1,0 +1,63 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@model Clicks.Yoga.Portal.Models.Messaging.MessagingConversationModel
+
+@{
+    ViewBag.Title = "Messages"; 
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="">
+                @Html.Partial("HeaderPartial")
+                <div class="returnToInbox">
+                    @Html.ActionLink("Return to inbox", "Deliveries")
+                </div>
+  <br />
+                <div id="@guid" class="conversation">
+                    <div>
+                        <output>
+                            @Html.Action("ConversationPartial", new {ConversationId = Model.Conversation.Id, Model.MessageId})
+                        </output>
+                    </div>
+
+
+                    @if (SecurityContext.HasActor)
+                    {
+                        <div id="reply" data-role="Reply" class="block-section messageReply"><br />
+                            <div class="fl">
+                                @Html.TextArea(
+                                "Message",
+                                new
+                                {
+                                    data_placeholder_template = "You are posting as {0}",
+                                    placeholder = string.Format("You are posting as {0}", SecurityContext.CurrentActor.Name),
+                                    @class = "current-actor-placeholder form-control"
+                                })
+                            </div>
+                            <div class="fr">
+                                @Html.Image(SecurityContext.CurrentActor.Image, "Profile.jpg", i => i.Resize(c => c.Width(70).Height(70).ScaleBoth().Crop()), "", new { @class = "current-actor-image img-thumbnail hidden-xs" })<br /><br />
+                                <button data-conversation-id="@Model.Conversation.Id" data-url="@Url.Action("Reply")" class="btn btn-block btn-primary" >Reply</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaMessageConversation();
+    });
+</script>

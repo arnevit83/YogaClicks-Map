@@ -1,0 +1,17 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.MediaResourceModel
+
+<div data-role="PostMediaResource" data-resource-uri="@Model.Uri" data-resource-type="@Model.Type.Tag" style="width: 450px;">
+    <a href="javascript:void(0)" data-role="RemoveButton" class="deleteButton">Remove</a>
+    <div style="border: 1px solid #e5e5e5; padding: 6px;">
+        <div data-role="PostMediaImage" data-scan-url="@Url.Action("ScanImages")" style="float: left;">
+            <div class="uploadingTemplate"></div>   
+        </div>
+
+        <div style="margin: 0 0 0 180px;">
+            <a href="@Model.Uri" target="_blank">@Model.Title</a><br />
+            <p>@Model.Content</p>
+        </div>
+
+        <div style="clear: both;"></div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model Clicks.Yoga.Portal.Models.Sharing.SharingEntityButtonsModel
+
+
+
+<a href="" target="_blank" data-toggle="tooltip" class="btn btn-social-icon btn-facebook btn-xs facebook-share-link" title="Share On Facebook"><i class="fa fa-facebook"></i></a>
+
+<a href="" target="_blank" data-toggle="tooltip" class="btn btn-social-icon btn-twitter btn-xs twitter-share-link" title="Share On Twitter"><i class="fa fa-twitter"></i></a>
+
+<a href="" target="_blank" data-toggle="tooltip" class="btn btn-social-icon btn-pinterest btn-xs pintrest-share-link" title="Share On Pintrest"><i class="fa fa-pinterest"></i></a>
+
+
+
+
+@Html.Action("EntityByEmailButton", "Sharing", new { Model.Reference })

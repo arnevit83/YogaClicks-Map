@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ActivitySearchCriteriaModel
+
+@using (Html.BeginForm(null, null, FormMethod.Get))
+{
+    @Html.Partial("SearchCriteriaHidden", Model)
+    
+    @Html.LabelFor(m => m.SortOrder, "Sort by")
+
+    @Html.EditorFor(m => m.SortOrder)
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("change", "#SortOrder", function() {
+            $(this).closest('form').submit();
+        });
+    });
+</script>

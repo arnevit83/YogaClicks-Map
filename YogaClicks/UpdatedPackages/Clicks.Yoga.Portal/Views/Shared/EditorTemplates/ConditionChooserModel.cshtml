@@ -1,0 +1,57 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ConditionChooserModel
+<fieldset>
+    <div>
+        <p>Add a condition from the list</p>
+        <select id="available-conditions" name="StyleOptions">
+            @foreach (var s in Model.Options)
+            {
+                <option value="@s.Id">@s.Name</option>
+            }
+        </select>
+        <a id="add-condition" class="button silver" href="javascript:void(0)">Add condition</a>
+        <p><small>Can't find what you're looking for?<br /><a href="mailto:conditions@yogaclicks.com">Suggest unlisted condition</a></small></p>
+    </div>
+</fieldset>
+<div id="selected-conditions">
+    <h3>@(ViewData["Label"] ?? "YogaMeds taught")</h3>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#add-condition').on('click', function (event) {
+            var id = $('#available-conditions').val();
+            event.preventDefault();
+
+            if (!id) {
+                return false;
+            }
+
+            appendCondition(id);
+        });
+
+    @foreach (var condition in Model.SelectedEntities)
+    {
+        <text>appendCondition(@condition.Id);</text>
+    }
+    });
+
+    function appendCondition(id) {
+
+        var $option = $('#available-conditions option[value=' + id + ']');
+
+        var $condition = $(
+            '<div class="button silver"><span class="removeOption">' +
+                $option.text() + '</span>' +
+                '<a href="javascript:void(0)" class="remove">X</a>' +
+                '<input type="hidden" name="Conditions.Selection[' + id + ']" value="true" />' +
+                '</div>'
+        );
+
+        $condition.appendTo('#selected-conditions');
+        $option.remove();
+
+        $condition.find('a').on('click', function () {
+            $option.appendTo('#available-conditions');
+            $condition.remove();
+        });
+    }
+</script>

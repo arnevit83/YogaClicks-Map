@@ -1,0 +1,84 @@
+﻿@model Clicks.Yoga.Portal.Models.SignUp.SignUpProgressBar
+@if (Model.NumberOfSteps == 2)
+{
+    <div class="row @Model.ColorCssClass signup-progress-bar">
+        <div class="col-lg-1"></div>
+        <div class="col-xs-12 col-lg-10">
+            <div class="row">
+                <div class="col-xs-6 active"><span>Step 1</span></div>
+                <div class="col-xs-6 @(Model.Step > 1 ? "active" : string.Empty)"><span>Step 2</span></div>
+            </div>
+
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+}
+@if (Model.NumberOfSteps == 3)
+{
+    <div class="row @Model.ColorCssClass signup-progress-bar">
+        <div class="col-lg-1"></div>
+        <div class="col-xs-12 col-lg-10">
+            <div class="row">
+                <div class="col-xs-4 active"><span>Step 1</span></div>
+                <div class="col-xs-4 @(Model.Step > 1 ? "active" : string.Empty)"><span>Step 2</span></div>
+                <div class="col-xs-4 @(Model.Step > 2 ? "active" : string.Empty)"><span>Step 3</span></div>
+            </div>
+
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+}
+
+@if (Model.NumberOfSteps == 4)
+{
+    <div class="row @Model.ColorCssClass signup-progress-bar">
+        <div class="col-lg-1"></div>
+        <div class=" col-xs-12 col-lg-10">
+            <div class="row">
+                <div class="col-xs-3 active"><span>Step 1</span></div>
+                <div class="col-xs-3 @(Model.Step > 1 ? "active" : string.Empty)"><span>Step 2</span></div>
+                <div class="col-xs-3 @(Model.Step > 2 ? "active" : string.Empty)"><span>Step 3</span></div>
+                <div class="col-xs-3 @(Model.Step > 3 ? "active" : string.Empty)"><span>Step 4</span></div>
+            </div>
+
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+}
+
+@if (Model.ColorCssClass == "blue-text")
+{
+    if (Model.IsEdit && Model.NumberOfSteps == Model.Step)
+    {
+        <div class="row margintop100" style="margin-bottom: 100px;">
+            <input type="submit" value="Save" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" />
+        </div>
+    }
+    else
+    {
+  
+    <div class="row margintop100" style="margin-bottom: 100px;">
+        <input type="submit" value="Next" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" />
+    </div>
+    }
+}
+@if (Model.ColorCssClass == "purple-text")
+{
+
+    if (Model.IsEdit && Model.NumberOfSteps == Model.Step)
+    {
+        <div class="row margintop100" style="margin-bottom: 100px;">
+            <input type="submit" value="Save" class="btn btn-default btn-lg purple-border purple-text purple-inverse-text-hover" />
+        </div>
+    }
+    else
+    {
+
+        <div class="row margintop100" style="margin-bottom: 100px;">
+            <input type="submit" value="Next" class="btn btn-default btn-lg purple-border purple-text purple-inverse-text-hover" />
+        </div>
+    }
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="40px"
+   height="40px"
+   viewBox="0 0 40 40"
+   enable-background="new 0 0 40 40"
+   xml:space="preserve"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Icon_Map.svg"><metadata
+   id="metadata43"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs41" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="857"
+   inkscape:window-height="480"
+   id="namedview39"
+   showgrid="false"
+   inkscape:zoom="5.9"
+   inkscape:cx="20"
+   inkscape:cy="19.830508"
+   inkscape:window-x="409"
+   inkscape:window-y="70"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<g
+   id="g3">
+	<g
+   id="g5">
+		<g
+   id="g7">
+			<defs
+   id="defs9">
+				<circle
+   id="SVGID_1_"
+   cx="20"
+   cy="20"
+   r="18.678" />
+			</defs>
+			<clipPath
+   id="SVGID_2_">
+				<use
+   xlink:href="#SVGID_1_"
+   overflow="visible"
+   id="use13" />
+			</clipPath>
+			<g
+   clip-path="url(#SVGID_2_)"
+   id="g15">
+				
+					<rect
+   x="-53.875"
+   y="16.721"
+   transform="matrix(-3.422936e-004 -1 1 -3.422936e-004 -17.1119 22.0565)"
+   fill="#E8468A"
+   width="112.687"
+   height="5.72"
+   id="rect17" />
+				
+					<rect
+   x="-48.767"
+   y="17.28"
+   transform="matrix(-3.422936e-004 -1 1 -3.422936e-004 -12.0196 27.1818)"
+   fill="#72679B"
+   width="112.688"
+   height="4.637"
+   id="rect19" />
+				
+					<rect
+   x="-44.189"
+   y="16.913"
+   transform="matrix(-3.465851e-004 -1 1 -3.465851e-004 -7.3635 31.684)"
+   fill="#17B3E8"
+   width="112.688"
+   height="5.22"
+   id="rect21" />
+				
+					<rect
+   x="-39.141"
+   y="16.917"
+   transform="matrix(-3.380020e-004 -1 1 -3.380020e-004 -2.3186 36.7368)"
+   fill="#7DC143"
+   width="112.688"
+   height="5.22"
+   id="rect23" />
+				
+					<rect
+   x="-34.075"
+   y="17.228"
+   transform="matrix(-3.465851e-004 -1 1 -3.465851e-004 2.4377 42.1141)"
+   fill="#FCB912"
+   width="112.688"
+   height="5.221"
+   id="rect25" />
+				
+					<rect
+   x="-29.163"
+   y="17.535"
+   transform="matrix(-3.465851e-004 -1 1 -3.465851e-004 7.046 47.3327)"
+   fill="#EE7F22"
+   width="112.688"
+   height="5.22"
+   id="rect27" />
+				
+					<rect
+   x="-24.114"
+   y="17.839"
+   transform="matrix(-3.380020e-004 -1 1 -3.380020e-004 11.7912 52.6856)"
+   fill="#A21C44"
+   width="112.688"
+   height="5.22"
+   id="rect29" />
+				
+					<rect
+   x="-19.09"
+   y="17.807"
+   transform="matrix(-3.380020e-004 -1 1 -3.380020e-004 16.8495 57.6778)"
+   fill="#589F97"
+   width="112.688"
+   height="5.22"
+   id="rect31" />
+				<g
+   id="g33">
+					<path
+   fill="#FFFFFF"
+   d="M20.093,8.834c-4.664,0-8.457,3.774-8.457,8.411c0,1.869,1.199,4.915,3.666,9.312       c1.746,3.108,3.461,5.703,3.534,5.813l1.258,1.896l1.256-1.896c0.07-0.106,1.791-2.703,3.532-5.813       c2.468-4.396,3.667-7.441,3.667-9.309C28.548,12.608,24.754,8.834,20.093,8.834L20.093,8.834z M20.093,21.551       c-2.422,0-4.383-1.954-4.383-4.362c0-2.41,1.961-4.36,4.383-4.36c2.421,0,4.382,1.951,4.382,4.36       C24.477,19.597,22.516,21.551,20.093,21.551L20.093,21.551z"
+   id="path35" />
+				</g>
+			</g>
+		</g>
+		<path
+   fill="#FFFFFF"
+   d="M20,40C8.972,40,0,31.027,0,20C0,8.972,8.972,0,20,0c11.027,0,20,8.972,20,20C40,31.027,31.027,40,20,40z     M20,2.645C10.43,2.645,2.644,10.43,2.644,20c0,9.568,7.786,17.355,17.355,17.355c9.569,0,17.356-7.787,17.356-17.355    C37.355,10.43,29.568,2.645,20,2.645z"
+   id="path37" />
+	</g>
+</g>
+</svg>

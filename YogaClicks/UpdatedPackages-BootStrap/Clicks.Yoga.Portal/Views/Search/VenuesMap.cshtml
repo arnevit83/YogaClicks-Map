@@ -1,0 +1,70 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Search.SearchVenuesModel
+
+@{
+    ViewBag.Title = "Find a Yoga Studio, Retreat, Ashram, Spa …";
+    ViewBag.Description = "Find a yoga studio, ashram, spa or retreat anywhere in the world. Our location, teacher and style filters ensure you find the place that’s right for you.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {
+    <meta property="og:title" content="Hall or hut? Gym or spa? What's your shala?" />
+    <meta property="og:description" content="Find a studio or retreat centre at YogaClicks" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/faqs/what-is-om.jpg" />
+}
+
+@section LeftNav {
+    @Html.Action("VenuesNavigation", new { Action = "VenuesMap" })
+}
+
+<div id="content-slider" class="content-slider content-col search-content-col discover-strip" id="scroll">
+    <div class="map-wrapper">
+        <header class="search-results">
+            <div class="fr">
+                <input type="hidden" value="@Model.Criteria.Location" id="hiddenLocation" />
+                @using (Html.BeginForm("Venues", null, FormMethod.Get, new { style = "display: inline;" }))
+                {
+                    @Html.Partial("CriteriaHidden", Model.Criteria)
+                    <button type="submit" class="list-view">List View</button>
+                }
+
+                @using (Html.BeginForm("VenuesMap", null, FormMethod.Get, new { style = "display: inline;" }))
+                {
+                    @Html.Partial("CriteriaHidden", Model.Criteria)
+                    <button type="submit" class="map-view active">Map View</button>
+                }
+
+            </div>
+            <p class="fl">Showing <span data-role="ResultCount">0</span> <span data-role="ResultMultiple">results</span></p>
+        </header>
+        <div id="map" data-role="Map" class="map results-map" data-search-url="@Url.Action("VenuesJson")" data-information-url="@Url.Action("VenueInformation")"></div>
+        <div class="secondary-results">
+            <p><strong>Venues</strong></p>
+
+            <div data-role="Results" class="results">
+                <div data-role="ResultTemplate" style="display: none;" class="result">
+                    <a href="{{Uri}}"><strong>{{Name}}</strong></a><br />
+
+                    {{#City}}
+                    <div>{{City}}</div>
+                    {{/City}}
+
+                    {{#Country}}
+                    <div>{{Country}}</div>
+                    {{/Country}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#content-slider').yogaSearchMap(@Html.Raw(Model.Criteria.Json));
+        });
+    </script>
+}
+

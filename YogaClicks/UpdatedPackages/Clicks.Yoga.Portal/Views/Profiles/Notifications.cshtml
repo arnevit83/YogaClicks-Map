@@ -1,0 +1,180 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileNotificationsModel
+
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "My Account";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                <img src='/images/svgicons/icon_findTeal.svg' data-svgpng='/images/SvgIcons/icon_findTeal.png' /><span style='color: #459088; font-weight: normal'>Profile</span>
+            </h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+    </div>
+</section>
+<div class="profile-strip-line"></div>
+
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col profile-strip" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <div class="FriendRequests">
+                    <h1 class="greenHeader requestHeader"><img src='/images/svgicons/Icon_NotificationsTealFade.svg' data-svgpng='/images/SvgIcons/Icon_NotificationsTealFade.png' /> Notifications</h1>
+                       <br /><hr style="margin-top: 7px; margin-bottom:7px;" />  
+
+                                        @if (Model.Requests.Count > 0)
+                                        {
+                                            <h3>Requests</h3>
+
+                                            <div data-role="Request" class="block-section">
+                                                @foreach (var request in Model.Requests)
+                                                {
+                                                    <div data-role="Request" class="notificationRow">
+                                                        <div class="icon">
+                                                            <img src="@request.Type.IconUri" class="notification-icon" />
+                                                        </div>
+                                                        <div class="text">
+                                                            <p>@Html.Raw(request.Message)</p>
+
+                                                            <button data-role="RejectButton" data-id="@request.Id" class="btn btn-default btn-clear">Reject</button><button data-role="AcceptButton" data-id="@request.Id" class=" btn btn-default btn-clear">Accept</button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (Model.Periods.Count > 0)
+                                        {
+                                            <br />
+                                            <h3>Information</h3>
+
+                                            foreach (var period in Model.Periods)
+                                            {
+                                                <div class="block-section">
+                                                    <div class="notificationDate">@period.Name</div>
+
+                                                    @foreach (var delivery in period.Deliveries)
+                                                    {
+                                                        <div class="notificationRow">
+                                                            <div class="icon">
+                                                                <img src="@delivery.Notification.Type.IconUri" class="notification-icon" />
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>@Html.Raw(delivery.Notification.Message)</p>
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                </div>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <p>You don't have any outstanding notifications.</p>
+                                        }
+
+                                        <!-- Added by Gary to show how the icons work -->
+                                        <!--
+                                        <h3>Requests</h3>
+
+
+
+                                                  <div data-role="Request" class="block-section">
+                                                      <div class="notificationRow">
+                                                          <div class="icon">
+                                                              <span>&nbsp;</span>
+                                                          </div>
+                                                          <div class="text">
+                                                              <p>Message lives here</p>
+                                                              <button data-role="AcceptButton" data-id="" class="button save highlight">Accept</button>
+                                                              <button data-role="RejectButton" data-id="" class="button save tap">Reject</button>
+                                                          </div>
+                                                      </div>
+                                                      <div class="notificationRow emailNotification">
+                                                          <div class="icon">
+                                                              <span>&nbsp;</span>
+                                                          </div>
+                                                          <div class="text">
+                                                              <p>Message lives here</p>
+                                                              <button data-role="AcceptButton" data-id="" class="button save highlight">Accept</button>
+                                                              <button data-role="RejectButton" data-id="" class="button save tap">Reject</button>
+                                                          </div>
+                                                      </div>
+                                                      <div class="notificationRow awardNotification">
+                                                          <div class="icon">
+                                                              <span>&nbsp;</span>
+                                                          </div>
+                                                          <div class="text">
+                                                              <p>Message lives here</p>
+                                                              <button data-role="AcceptButton" data-id="" class="button save highlight">Accept</button>
+                                                              <button data-role="RejectButton" data-id="" class="button save tap">Reject</button>
+                                                          </div>
+                                                      </div>
+                                                      <div class="notificationRow eventNotification">
+                                                          <div class="icon">
+                                                              <span>&nbsp;</span>
+                                                          </div>
+                                                          <div class="text">
+                                                              <p>Message lives here</p>
+                                                              <button data-role="AcceptButton" data-id="" class="button save highlight">Accept</button>
+                                                              <button data-role="RejectButton" data-id="" class="button save tap">Reject</button>
+                                                          </div>
+                                                      </div>
+                                                       <div class="notificationRow studioNotification">
+                                                          <div class="icon">
+                                                              <span>&nbsp;</span>
+                                                          </div>
+                                                          <div class="text">
+                                                              <p><a href="#" class="nameLink">Name goes here</a> Message lives here <a href="#">A non name hyperlink</a></p>
+                                                              <button data-role="AcceptButton" data-id="" class="button save highlight">Accept</button>
+                                                              <button data-role="RejectButton" data-id="" class="button save tap">Reject</button>
+                                                          </div>
+                                                      </div>
+                                                      <div class="viewAllRow">
+                                                          <a href="#">View all requests (88)</a>
+                                                      </div>
+                                                  </div>
+                                          <br />
+                                          <h4>Information</h4>
+                                          <div class="block-section">
+                                              <div class="notificationDate">13th May</div>
+                                                  <div class="notificationRow favouriteNotification">
+                                                      <div class="icon">
+                                                          <span>&nbsp;</span>
+                                                      </div>
+                                                      <div class="text">
+                                                          <p><a href="#" class="nameLink">Name goes here</a> Message lives here <a href="#">A non name hyperlink</a></p>
+                                                      </div>
+                                                  </div>
+                                                  <div class="notificationRow commentNotification">
+                                                      <div class="icon">
+                                                          <span>&nbsp;</span>
+                                                      </div>
+                                                      <div class="text">
+                                                          <p><a href="#" class="nameLink">Name goes here</a> Message lives here <a href="#">A non name hyperlink</a></p>
+                                                      </div>
+                                                  </div>
+                                          </div>
+                                          -->
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>

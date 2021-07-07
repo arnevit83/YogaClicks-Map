@@ -1,0 +1,41 @@
+﻿@model Clicks.Yoga.Portal.Models.Notifications.SubjectRequestsPartialModel
+
+<div id="ProfileRequests">
+    @foreach (var request in Model.Requests)
+    {
+        <div class="green-alert" data-role="Request">
+            <button data-role="RejectButton" data-id="@request.Id" class="btn btn-default btn-clear tap pull-right">Reject</button>
+            <button data-role="AcceptButton" data-id="@request.Id" class="btn btn-default btn-clear save highlight pull-right">Confirm</button>
+            <p>@Html.Raw(request.Message)</p>
+        </div>
+    }
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#ProfileRequests');
+
+        var complete = function (element, accept) {
+            var $element = $(element);
+            var requestId = $element.attr('data-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '/Notifications/' + (accept ? 'Accept' : 'Reject'),
+                data: { RequestId: requestId },
+                success: function () {
+                    $element.closest('[data-role=Request]').remove();
+                    top.location.reload();
+                }
+            });
+        };
+
+        $container.on('click', '[data-role=AcceptButton]', function () {
+            complete(this, true);
+        });
+
+        $container.on('click', '[data-role=RejectButton]', function () {
+            complete(this, false);
+        });
+    });
+</script>

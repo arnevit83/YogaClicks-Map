@@ -1,0 +1,62 @@
+﻿@model Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationIndexModel
+
+@{
+    ViewBag.Title = "Find Yoga Accrediting / registering Bodies";
+    ViewBag.Description = "Planning yoga teacher training? Search our guide to yoga certification and accreditation. Find out who does it, where they are, and get in touch.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-accreditingbodies", Model)
+}
+
+@section Head {    
+    <meta property="og:title" content="Meet yoga's standard bearers at YogaClicks" />    
+    <meta property="og:description" content="The wisest of the wise - the trainers, educators and promoters of all things yoga are at YogaClicks" />
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col search-content-col discover-strip padTop20" id="scroll">
+        <section id="bodies" class="pose-group">
+            @foreach (var body in Model.AccreditationBodies)
+            {
+                var country = "";
+                
+                if (body.Country != null)
+                {
+                    country = body.Country.Code;
+                }
+                
+                <article class="pose accrediting-bodies-index-container" data-country="@country">
+                    <a href="@Url.Action("display", new { id = body.Id, slug = body.UrlSlug })" class="image accrediting-bodies-index-link">@Html.Image(body.Image, "ProfileBanner.jpg", i => i.Resize(c => c.Height(89).ScaleBoth()), body.Name, new { @class = "accrediting-bodies-index-image"})</a>
+                    <h3>@body.Name</h3>
+                    <p>@body.Abbreviation</p>
+                </article>
+            }
+            <div class="meta">
+                <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(".accreditation-country").click(function () {
+
+            $(".accreditation-country").each(function () {
+                if ($(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                }
+            });
+
+            $("#bodies article").hide();
+
+            $("#bodies article[data-country='" + $(this).data("country") + "']").show();
+            $(this).addClass("selected");
+        });
+
+    </script>    
+}
+

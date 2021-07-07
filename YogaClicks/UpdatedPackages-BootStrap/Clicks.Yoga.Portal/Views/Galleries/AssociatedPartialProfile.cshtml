@@ -1,0 +1,61 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+
+
+@if (Model.Galleries.Any())
+{
+  
+<div>
+    <div class="well"><h4 >Photos</h4>
+        <div class="infocard">
+          
+        </div><hr /><br />
+
+
+        <div id="owl">
+            @foreach (var gallery in Model.Galleries)
+            {
+
+
+                <div class="item">
+                    <a href="@Url.Action("Gallery", Model.EntityType.Controller, new {Id = Model.EntityId, GalleryId = gallery.Id})" class="galleryItem">
+
+
+
+                        @Html.Image(gallery.Cover, "Profile.jpg", i => i.Resize(c => c.Width(550).Height(550).ScaleBoth().Crop()))
+
+                    </a>
+                    <span class="captionhover">
+                        <span>@gallery.Name</span>
+                    </span>
+
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+
+}
+
+<script>
+    $(document).ready(function () {
+
+        $("#owl").owlCarousel({
+            navigation: true, // Show next and prev buttons
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            items: 3, //10 items above 1000px browser width
+            itemsDesktop: [1000, 2], //5 items between 1000px and 901px
+            itemsDesktopSmall: [900, 2], // betweem 900px and 601px
+            itemsTablet: [600, 1], //2 items between 600 and 0
+            autoplay: true
+        });
+    });
+
+</script>

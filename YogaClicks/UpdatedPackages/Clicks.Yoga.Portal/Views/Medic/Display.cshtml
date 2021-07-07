@@ -1,0 +1,423 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionDisplayModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Medic";
+    var metaDescription = Model.Condition.MetaDescription ?? "";
+    var metaTitle = Model.Condition.MetaTitle ?? "";
+    ViewBag.Title = metaTitle;
+    ViewBag.SiteSection = "'YogaMeds-visited' : 'true'";
+    var prImage = Model.Condition.ProfileBanner != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Condition.ProfileBanner.Uri) : "http://www.yogaclicks.com/images/global/pinterestshare.png";
+}
+
+@section Head {
+    <meta property="og:title" content="@metaTitle" />
+    <meta property="og:description" content="@metaDescription" />
+<meta property="og:image" content="@Html.ImageUrl(Model.Condition.ProfileBanner)" />
+
+    <meta property="title" content="@metaTitle" />
+    <meta property="description" content="@metaDescription" />
+    <meta property="image" content="@Html.ImageUrl(Model.Condition.ProfileBanner)" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" class="Iconsmenu" src="/images/svgicons/Icon_YogaMeds.svg"><span style="color: #B62B31; font-weight: normal">YogaMeds</span><span> - @Model.Condition.Name</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+<div class="medic-strip "></div><br />
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+
+    <div class=" col-xs-12 nopadding" id="scroll">
+
+
+
+        <div class="hidden-xs">
+            @{
+                var location = Session["Styles.Last"] == null ? Url.Action("Directory", "Styles") : Session["Styles.Last"].ToString();
+            }
+            <a href="@location" class="Glink pull-right" alt="back">
+                <span class="glyphicon-stack">
+                    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                    <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                </span><span style="vertical-align: text-bottom; color:#B62B31">Back</span>
+            </a>
+
+            <h1 class="medicHeader pageTitle"><img data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" class="Iconsmenu" src="/images/svgicons/Icon_YogaMeds.svg">@Model.Condition.Name</h1>
+
+
+
+        </div>
+        <div class="shareFindSection hidden-xs">
+            <br />
+            <div class="fr">
+                <span>Share: </span>
+                @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Condition.Id, Model.Condition.EntityTypeName, condition = true })
+
+            </div>
+
+            <a class="practiveVenues" data-toggle="tooltip" title="Find @Model.Condition.Name Teachers" href="/search/teachers?Condition=@Model.Condition.Id"><img src="~/images/SvgIcons/Icon_TeacherPurple.svg" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" /></a>
+
+            <a class="teachersVenues" data-toggle="tooltip" title="Find @Model.Condition.Name Venues" href="/search/venues?Condition=@Model.Condition.Id"><img src="~/images/SvgIcons/Icon_VenuePurple.svg" data-svgpng="/images/SvgIcons/Icon_VenuePurple.png" /></a>
+
+            <a class="teachertrainingVenues" data-toggle="tooltip" title="Find @Model.Condition.Name Teacher Training" href="/search/teachertrainingorganisations?Condition=@Model.Condition.Id"><img src="~/images/SvgIcons/Icon_OrgPurple.svg" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" /></a>
+            <span style="float:left">&nbsp;:Find</span>
+        </div>
+
+
+        @*<div class="imgtxt imgScale" style="margin-left:0;">
+            @Html.Image(Model.Condition.ProfileBanner, i => i.Resize(c => c.Width(715).ScaleBoth()), Model.Condition.Name)
+            @if (!string.IsNullOrEmpty(Model.Condition.ImageCourtesyOf))
+            {
+                <span>@Model.Condition.ImageCourtesyOf</span>
+            }
+        </div>*@
+
+
+        <img src="@Model.Condition.ProfileBanner.Url" class="img-responsive" alt="@Model.Condition.Name" style="width:715px" />
+
+
+   @if (!string.IsNullOrEmpty(Model.Condition.ImageCourtesyOf))
+   {
+            <span class="captionhover">
+                <span>@Model.Condition.ImageCourtesyOf</span>
+            </span>
+        }
+
+
+
+
+
+
+
+
+        <div class="medic-button-container pull-right">
+            @if (SecurityContext.Authenticated)
+            {
+                <a class="btn btn-clear btn-default  reg-form-popup" href="mailto:study@yogaclicks.com?subject=I've got a study for YogaMeds&body=Link to the study:%0D%0A%0D%0AStudy title:%0D%0A%0D%0Aand/or DOI (Digital Object Identifier):">Got a study</a>
+            }
+
+            else
+            {
+                <a class="btn btn-clear btn-default reg-form-popup" href="/">Got a study</a>
+            }
+
+            @if (SecurityContext.Authenticated)
+            {
+                <button onclick="openModal('@Url.Action("TellUs", new { conditionId = Model.Condition.Id })')" class="btn btn-clear btn-default ">Got a story</button>
+            }
+
+            else
+            {
+                <a class="btn btn-clear btn-default reg-form-popup" href="/">Got a story</a>
+            }
+
+            @if (SecurityContext.Authenticated)
+            {
+                <span class="follow-button-container">
+                    @Html.Action("FollowButton", new { Id = Model.Condition.Id })
+                </span>
+            }
+
+            else
+            {
+                <a class="btn btn-clear btn-default  reg-form-popup" href="/">Subscribe</a>
+            }
+
+            @if (SecurityContext.IsSuperUser())
+            {
+                <a href="@Url.Action("Update")" class="btn btn-clear btn-default  ">Super User - Edit</a>
+            }
+        </div>
+
+
+
+        <br style="clear:both" /><br />
+        @*<a href="/" class="reg-form-popup">*@
+            <table class="table table-striped">
+                <tr>
+                    <td>
+
+                        <br />
+
+                        <div class="row nopadding">
+                            <div class=" col-sm-2 nopadding">
+                                <h4>About</h4>
+
+
+                            </div>
+                            <div class=" col-sm-offset-2 col-sm-10">
+
+                                <p>@Html.Raw(Model.Condition.Description)</p>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <br />
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+                                @Html.Action("WhatTheScienceSays", new { conditionId = Model.Condition.Id })
+
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <br />
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+                                @Html.Action("Studies", new { conditionId = Model.Condition.Id })
+
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="medStories">
+                    <td>
+
+                        <br />
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+                                @Html.Action("UserStories", new { conditionId = Model.Condition.Id })
+
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        
+                        <br />
+                        <div class=" col-sm-3 nopadding">
+                            <h4>Have your say! </h4>
+                        </div>
+                        <div class="row nopadding">
+                            <div class=" col-sm-offset-2 col-sm-10">
+
+                             
+                                <div class="fb-comments" data-href="@Request.Url" data-numposts="15" data-width="100%"></div>
+
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+
+            
+                <tr class="MedsFind">
+                    <td>
+
+                        <div class="row nopadding">
+                            <br />
+                            <div class=" col-sm-3 nopadding">
+                                <h4>Find</h4>
+                            </div>
+                            <div class=" col-sm-offset-2 col-sm-10">
+                                <div class="right discoverButtons">
+                                    <p>Use these buttons to find teachers, venues and teacher training for this condition</p>
+                                    <button class="button discoverPanelThin " onclick="location.href = '/search/teachers?Condition=@Model.Condition.Id'; return false"><img src="~/images/SvgIcons/Icon_TeacherPurple.svg" style="float:left" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" /><span style="margin: 15px 0 5px 0;display: block; ">Find teachers</span></button>
+                                    <button class="button discoverPanelThin " onclick="location.href = '/search/venues?Condition=@Model.Condition.Id'; return false"><img src="~/images/SvgIcons/Icon_VenuePurple.svg" style="float:left" data-svgpng="/images/SvgIcons/Icon_VenuePurple.png" /><span style="margin: 15px 0 5px 0;display: block; ">Find venues</span></button>
+                                    <button class="button discoverPanelThin " onclick="location.href = '/search/teachertrainingorganisations?Condition=@Model.Condition.Id'; return false"><img src="~/images/SvgIcons/Icon_OrgPurple.svg" style="float: left" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" /><span style="margin: 15px 0 5px 0; display: block;">Find teacher training</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row nopadding">
+                            <br />
+                            <div class=" col-xs-12 nopadding">
+                                @Html.Partial("Disclaimer", "Shared")
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            @*<section id="style-info" role="style-info">
+                        <article id="description" class="clearfix rating-description">
+
+                            <h1 class="medicHeader"><span>&nbsp;</span>@Model.Condition.Name</h1>
+
+                            <div class="shareRecommendSection medic">
+                                <div class="fr">
+                                    <span>Share: </span>
+                                    @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Condition.Id, Model.Condition.EntityTypeName, condition = true })
+                                </div>
+                            </div>
+
+
+                        </article>
+                    </section>*@
+
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+        @*</a>*@
+        </div></div>
+
+<div id="fb-root"></div>
+
+
+            @section Scripts{
+                <script>
+
+                  
+               
+
+                    $('.facebook-link-div').html('&title=' + '@Model.Condition.Name');
+                    $('.twitter-link-div').html('&text=' + '@Model.Condition.MetaTitle' + ' - find out more @@YogaClicks&hashtags=' + '@Model.Condition.Name.Replace(" ", "")');
+                    $('.pintrest-link-div').html('&description=' + '@Model.Condition.MetaTitle' + ' | YogaClicks&media=' + '@prImage');
+                
+
+                </script>
+
+
+    
+
+
+
+        <script>
+            function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) {
+                        return sParameterName[1];
+                    }
+                }
+                return "";
+            };
+
+            $(document).ready(function () {
+                if (getUrlParameter("StudyID") !== "") {
+                    var study = $("#" + getUrlParameter("StudyID"));
+
+
+                    var $thisInfo = study.next($('.study-info'));
+
+                    $('.study-info').not($thisInfo).hide();
+                    $('.study-title-row .arrow').not($thisArrow).removeClass('up');
+                    $('.single-study-container').not($container).removeClass('open-study');
+                    $thisInfo.toggle();
+                    $thisArrow.toggleClass('up');
+                    $container.toggleClass('open-study');
+                    var study1 = document.getElementById(getUrlParameter("StudyID"));
+                    study1.focus();
+                    study1.scrollIntoView();
+
+                }
+            });
+
+
+
+            $('.study-title-row').click(function(e) {
+
+
+                var $this = $(this),
+                    $thisInfo = $this.find($('.study-info')),
+                    $thisArrow = $this.find('.fa');
+                //  $studytitle = $this.find('.studytitle');
+
+                $('.study-info').not($thisInfo).hide();
+                $('.study-title-row .fa').not($thisArrow).removeClass('fa-arrow-circle-up').addClass('fa-arrow-circle-down');
+                $('.study-title-row').not($this).removeClass('panel-primary').addClass('panel-default');
+
+                $thisInfo.toggle();
+                $thisArrow.toggleClass('fa-arrow-circle-down fa-arrow-circle-up');
+
+
+                //    $thisArrow.toggleClass('medicHeader');
+                $this.toggleClass('panel-primary panel-default');
+
+
+                //   $studytitle.toggleClass('medicHeader');
+                resizeDiv(true);
+
+            });
+
+
+            $('.therapy-type-title-row').click(function(e) {
+                var $this = $(this),
+                    $thisAttr = $this.find($('.therapy-attribute-container')),
+                    $thisArrow = $this.find('.fa');
+
+                $('.therapy-attribute-container').not($thisAttr).hide();
+                $('.therapy-type-title-row').not($this).removeClass('panel-primary').addClass('panel-default');
+
+
+                $('.therapy-type-title-row .fa').not($thisArrow).removeClass('fa-arrow-circle-up').addClass('fa-arrow-circle-down');
+                $thisAttr.toggle();
+                $thisArrow.toggleClass('fa-arrow-circle-down fa-arrow-circle-up');
+                $this.toggleClass('panel-primary panel-default');
+                resizeDiv(true);
+
+            });
+
+
+            $('.user-story-title-row').click(function(e) {
+                var $this = $(this),
+                    $thisInfo = $this.find($('.user-story-info')),
+                    $thisArrow = $this.find('.fa');
+                //$container = $this.parent('.single-story-container');
+                $('.user-story-title-row').not($this).removeClass('panel-primary').addClass('panel-default');
+                $('.user-story-info').not($thisInfo).hide();
+                $('.user-story-title-row .fa').not($thisArrow).removeClass('fa-arrow-circle-up').addClass('fa-arrow-circle-down');
+                // $('.single-story-container').not($container).removeClass('open-story');
+                $thisInfo.toggle();
+                $thisArrow.toggleClass('fa-arrow-circle-down fa-arrow-circle-up');
+                $this.toggleClass('panel-primary panel-default');
+                // $container.toggleClass('open-story');
+                resizeDiv(true);
+            });
+        </script>
+ 
+            }
+@Html.Action("Init", "Facebook")

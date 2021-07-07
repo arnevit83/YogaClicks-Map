@@ -1,0 +1,56 @@
+﻿@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileCreateModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Profiles", FormMethod.Post))
+{
+    <h2 class="greenHeader">
+        Great! Let’s create your professional page
+    </h2>
+    <hr class="modalHr" />
+    <h3 class="cb blackSubHeader">
+        @if (Model.Status == WizardStatus.None)
+        {
+            @:What sort of a page would you like to create?
+        }
+        else if (Model.Status == WizardStatus.First)
+        {
+            @:Select the professional page you want to create.
+        }
+        else if (Model.Status == WizardStatus.Subsequent)
+        {
+            @:Select another option to create another page or click 'Next' to close this window.
+        }
+    </h3>
+    <div class="form-grey-bg professionalButtons">
+        <div class="proButton venueButton">
+            <label>@Html.RadioButtonFor(m => m.Type, ProfileCreateType.Venue) <span>&nbsp;</span>Venue</label>
+        </div>
+        @if (!Model.HasTeacher)
+        {
+            <div class="proButton teacherButton">
+                <label>@Html.RadioButtonFor(m => m.Type, ProfileCreateType.Teacher) <span>&nbsp;</span>Teacher</label>
+            </div>
+        }
+        <div class="proButton teacherTrainingButton">
+            <label>@Html.RadioButtonFor(m => m.Type, ProfileCreateType.TeacherTrainingOrganisation) <span>&nbsp;</span>Teacher Training</label>
+        </div>
+        @*<div class="proButton styleButton">
+            <label>@Html.RadioButtonFor(m => m.Type, ProfileCreateType.StyleOrganisation) <span>&nbsp;</span>Style Organisation</label>
+        </div>*@
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" class="button pink large backBtn create-back-btn">Back</a>
+            <input class="button pink large fr" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+    @Html.HiddenFor(m => m.HasTeacher)
+    @Html.Hidden("Id", SecurityContext.CurrentProfile.Id)
+}

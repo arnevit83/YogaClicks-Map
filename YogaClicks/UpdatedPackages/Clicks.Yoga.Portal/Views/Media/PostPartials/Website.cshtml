@@ -1,0 +1,22 @@
+﻿@model Clicks.Yoga.Portal.Models.Media.MediaPostTypePartialModel
+
+@foreach (var resource in Model.Resources)
+{
+
+    <div class="row nopadding" style="border: 1px solid #e5e5e5; padding: 12px;">
+
+        <div class="nopadding col-sm-4">
+            <a href="@resource.Uri" >
+                @Html.Image(resource.Image, i => i.Resize(c => c.Width(160).Height(160).Crop().ScaleBoth()), "", new {@class = "img-responsive"})
+            </a>
+
+        </div>
+        <div class="nopadding col-sm-8">
+     <div class="hidden-sm hidden-md hidden-lg "><br /></div>
+                <a href="@resource.Uri" target="_blank">@resource.Title</a><br/>
+                <p class="article">@resource.Content</p>
+          
+
+        </div>
+    </div>
+}

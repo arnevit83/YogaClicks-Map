@@ -1,0 +1,18 @@
+﻿<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <nav class="filter">
+                    <h3>Quick Links</h3>
+                    <a href="@Url.Action("Index", "Quotes")">Quotes</a>
+                    <a href="@Url.Action("Index", "Glossary")">Lingo</a>                    
+                    <a href="@Url.Action("beginners-faq", "static")">Beginners FAQ</a>
+                    <a href="@Url.Action("is-yoga-a-religion", "static")">Is yoga a religion?</a>
+                    <a href="@Url.Action("history-of-yoga", "static")">History of yoga</a>
+                    <a href="@Url.Action("what-is-yoga", "static")">What is yoga?</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>

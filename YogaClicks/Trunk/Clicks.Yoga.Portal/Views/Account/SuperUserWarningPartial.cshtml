@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Account.SuperUserWarningPartialModel
+
+<div style="background-color: orange; width: 100%; z-index: 999999; position: fixed; text-align: center">
+    <span style="font-weight: bold">
+        @if (Model.User != null && Model.User.Profile != null && !string.IsNullOrEmpty(Model.User.Profile.Name))
+        {
+            @:You are currently impersonating '@Model.User.Profile.Name ' &nbsp;
+        }
+        else
+        {
+            @:You are currently impersonating another user' &nbsp;
+        }
+    </span>
+    <a href="@Url.Action("RevertSuperUser", "Account")">Click to logout and return to your super user account page</a>
+</div>

@@ -1,0 +1,259 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@using Common
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassWeekContentPartialModel
+
+@{
+    var promoterId = Model.Criteria.TeacherId ?? Model.Criteria.VenueId ?? Model.Criteria.TTOEntityId;
+    var tto = Model.Criteria.TTOEntityId != null ? "true" : "false";
+}
+<div class="year-list"></div>
+<input type="hidden" value="@tto" class="istto" />
+<div class="row nopadding">
+    <div class="col-xs-12 nopadding">
+
+
+        <div class="classesTable class-cal">
+            <div class="tableHeader">
+                <div class="row">
+                    <div class="col-xs-12 centerAlign">
+
+
+                        <h3 class="schedule-header">Classes</h3><br />
+
+                    </div>
+                </div>
+                <div class="row nopadding">
+                    <div class="col-xs-12 centerAlign ">
+
+                        <div class="calander-next-prev">
+                            <div class="prev">
+                                @if (Model.Date > DateTime.Now.WeekBegin(DayOfWeek.Monday))
+                                {
+                                    <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(-7).ToShortDateString()">Previous Week</a>
+                                }
+                            </div>
+
+                            <div class="next">
+                                <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(7).ToString("dd MMM yyyy")">Next Week</a>
+                            </div>
+                            <br /><br />
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row nopadding">
+                    <div class="col-xs-4 nopadding">
+
+
+                        <div class="select-date-container">
+                            <a href="javascript:void(0)" class="week-selected" data-role="NavigateButton" data-date=""></a>
+                            <i class="calender-icon-colour fa fa-calendar"></i>
+                            <input type="text" class="btn btn-clear btn-default" id="datepicker" value="Select Date" style="width: 100px;font-size: 14px;margin: 0;">
+                        </div>
+                    </div>
+              
+                 
+                    <div class="col-xs-4 col-xs-offset-4 ">
+                        <a href="#" class="btn btn-clear btn-default events-year-button  pull-right">
+                            @if (tto == "true")
+                            {
+                            <span>@DateTime.Now.Year Courses & Events Overview</span>
+                            }
+                            else
+                            {
+                            <span>@DateTime.Now.Year Events Overview</span>
+                            }
+
+                        </a>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+            <div data-role="Parameters">
+                @Html.Partial("CriteriaHiddenPartial", Model.Criteria)
+                @Html.Hidden("Editable", Model.Editable)
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        @foreach (var day in Model.Days)
+                    {
+                <tr>
+                    <td colspan="@(Model.Editable ? 4 : 5)" class="dateHeading">@day.Date.ToString("dddd dd MMMM")</td>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Venue</th>
+
+                    @if (!Model.Editable)
+                            {
+                        <th>Teacher</th>
+                            }
+
+                    @if (SecurityContext.Authenticated)
+                            {
+                        <th></th>
+                            }
+                </tr>
+
+                        foreach (var repeat in day.Repeats)
+                        {
+                @Html.Partial("SchedulePartial", new ActivityClassPartialModel(repeat, Model.Editable))
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var uDatepicker = $.datepicker._updateDatepicker;
+        $.datepicker._updateDatepicker = function () {
+            var ret = uDatepicker.apply(this, arguments);
+            var $sel = this.dpDiv.find('select');
+            $sel.find('option').each(function (i) {
+                $(this).text(months[i]);
+            });
+            return ret;
+        };
+    });
+
+    $(document).ready(function() {
+        $(function() {
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                dateFormat: 'dd MM yy'
+            });
+        });
+    });
+
+
+    $('#datepicker').change(function (e) {
+        e.preventDefault();
+        var date = $(this).val();
+        $('.week-selected').attr('data-date', date);
+        $('.week-selected').click();
+    });
+
+    function getMonday(d) {
+        d = new Date(d);
+        var day = d.getDay(),
+            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+        return new Date(d.setDate(diff));
+    }
+
+    if ($('.ajax-reload').val() == 'false') {
+        if ($('.istto').val() == 'true') {
+            var data = {
+                isTeacher : '@Model.Criteria.TeacherId.HasValue',
+                isVenue : '@Model.Criteria.VenueId.HasValue',
+                isTto : '@Model.Criteria.TTOEntityId.HasValue',
+                promoterId: '@promoterId'
+            },
+                url = '@Url.Action("TTOActivitesForYear")';
+            getYearSchedule(url, data, 'true');
+        }
+
+        else {
+            var data = {
+                isTeacher : '@Model.Criteria.TeacherId.HasValue',
+                isVenue : '@Model.Criteria.VenueId.HasValue',
+                isTto : '@Model.Criteria.TTOEntityId.HasValue',
+                promoterId: '@promoterId'
+            },
+                url = '@Url.Action("ActivitesForYear")';
+            getYearSchedule(url, data);
+        }
+    }
+    else {
+        $('.class-cal').show();
+    }
+
+    $('body').delegate('.events-year-button', 'click', (function (e) {
+        e.preventDefault();
+        var data = {
+            isTeacher: '@Model.Criteria.TeacherId.HasValue',
+            isVenue: '@Model.Criteria.VenueId.HasValue',
+            isTto: '@Model.Criteria.TTOEntityId.HasValue',
+            promoterId: '@promoterId'
+        };
+        var url = '@Url.Action("ActivitesForYear")';
+
+        if ($('.istto').val() == 'true') {
+            url = '@Url.Action("TTOActivitesForYear")';
+            $('.tto-create-course-btn-container').show();
+        }
+
+        if ($('.year-list').html().length > 1) {
+            $('.class-cal').hide();
+            $('.year-list').fadeIn(500);
+        }
+
+        else {
+            getYearSchedule(url, data);
+        }
+
+    }));
+
+    function getYearSchedule(url, data, tto) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function (response) {
+                $('.class-cal').hide();
+                if (tto == 'true') {
+                    $('.tto-schedule-container').show();
+                }
+                $('.year-list').html(response).fadeIn(1000);
+                shortenDesc();
+            }
+        });
+    };
+
+    $('body').delegate('.calendar-view-button', 'click', (function (e) {
+        e.preventDefault();
+        $('.ajax-reload').val('true');
+        $('.year-list').hide();
+        $('.tto-create-course-btn-container').hide();
+        $('.class-cal').fadeIn(500);
+    }));
+
+    function shortenDesc() {
+        $('.cal-event-desc').each(function () {
+            var div = $(this),
+                divh = div.height(),
+            span = $('span:first', div);
+            while ($(span).outerHeight() > divh) {
+                $(span).text(function (index, text) {
+                    return text.replace(/\W*\s(\S)*$/, '...');
+                });
+            }
+        });
+    };
+
+</script>

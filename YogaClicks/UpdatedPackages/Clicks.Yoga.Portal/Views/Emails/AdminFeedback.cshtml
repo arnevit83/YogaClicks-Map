@@ -1,0 +1,36 @@
+﻿@model Clicks.Yoga.Emails.AdminFeedbackEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = string.Format("Feedback from {0}", Model.SenderName);
+}
+
+
+
+
+<table width="650" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#14b5e9" style="border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 30px 30px; vertical-align: top; line-height: 42px; font-family: 'Source Sans Pro'; text-align: center; font-weight: 600; color: #ffffff; font-size: 40px;" bgcolor="#14b5e9">
+
+            <!-- Header -->
+
+            <strong>@Model.SenderName</strong><br>
+
+        </td>
+    </tr>
+</table>
+<table width="650" class="deviceWidthblue eoa_c95" border="3" bordercolor="#14b5e9" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="padding:0;border-width:3px;border-style:solid;border-color:#14b5e9;border-collapse:collapse;margin:0 auto;">
+    <tr>
+        <td style="padding: 30px 30px 15px 15px; line-height: 27px; font-family: 'Source Sans Pro'; text-align: left; font-weight: lighter; color: #14b5e9; font-size: 25px;" bgcolor="#ffffff">
+
+
+            <!-- Content -->
+            <a href="mailto:@Model.SenderEmailAddress">@Model.SenderEmailAddress</a><br><br>
+
+            @Html.NewLines(Model.Message)
+
+        </td>
+    </tr>
+</table>
+
+

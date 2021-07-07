@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Site Map";
+    ViewBag.MenuClass = "how-to-navigation";
+    Layout = "~/Views/Layout/layout.cshtml";
+}
+@section LeftNav{
+    @Html.Partial("left-nav-menu")
+}
+<div id="content-slider" class="content-slider">
+
+    <h3 class="content-col thanks-for-signing-up" id="scroll" style="position:relative !important; top:0px !important; margin-top:0px !important"></h3>
+
+        <section class="site-map-page-content">
+
+            <article id="static">
+                
+                <h2 class="site-map-header-text">Site Map</h2>
+                <div class="how-discover">
+                    <img src="/images/how-to-use/four.jpg" alt="" class="scale" />
+                    <i class="icon discover"></i>
+                    <h3><span>Find</span> - Seek and ye shall find</h3>
+                    <p><a href="@Url.Action("Teachers", "Search", new { SortOrder = "Newest" })">Discover teachers</a> - Rockin bod or Bodhisattva? You decide</p>
+                    <p><a href="@Url.Action("Venues", "Search", new { SortOrder = "Newest" })">Discover venues</a> - Hall or hut? Gym or spa? What's your shala?</p>
+                    <p><a href="@Url.Action("index", "accreditationbodys")">Accrediting/registering bodies directory</a> - Meet yoga's standard bearers</p>
+                    <p><a href="@Url.Action("teachertrainingorganisations", "search")">Teacher training directory</a> - Ready to preach what you practice? Find your training here</p>
+                    @*<p><a href="@Url.Action("styleorganisations", "search")">Style organisations</a> - Discover your path to Oneness</p>*@
+                    <p><a href="@Url.Action("search", "activities")">Activities & Classes</a> - Class, weekend, workshop, or holiday/retreat? What's your bliss?<p>
+                    <p><a href="@Url.Action("Groups", "Search")">Groups</a> - Nothing beats chilling in the #YogaHood</p>
+                    <p><a href="@Url.Action("discover", "search")">Lucky Dip</a> - Lost in yoga? Surrender to the wisdom of the universe</p>
+                </div>
+                <div class="how-community">
+                    <img src="/images/how-to-use/two.jpg" alt="" class="scale" />
+                    <i class="icon community"></i>
+                    <h3><span>Newsfeed</span> - Nothing beats chillin' in the yogahood</h3>
+                    <p><a href="@Url.Action("index", "home")">Newsfeed</a> - 'Say what?!' You heard it here first</p>
+                    <p><a href="@Url.Action("index", "home")">Groups</a> - Find a gang, write on a wall</p>
+                </div>
+                <div class="how-practice">
+                    <img src="/images/how-to-use/one.jpg" alt="" class="scale">
+                    <i class="icon practice"></i>
+                    <h3><span>Practice</span> - Discover your yoga style, strike a pose</h3>
+                    <p><a href="@Url.Action("index", "styles")">Style finder</a> - Try yoga's first interactive guide to find the yoga that's right for you</p>
+                    <p><a href="@Url.Action("directory", "styles")">Style directory</a> - Ananda through Yin - all you need to know</p>
+                    <p><a href="@Url.Action("index", "poses")">Pose finder</a> - Search by name, category or level</p>
+                    <p><a href="@Url.Action("directory", "poses")">Pose directory</a> - Filter by English or Sanskrit</p>
+                </div>
+                <div class="how-wisdom">
+                    <img src="/images/how-to-use/three.jpg" alt="" class="scale" />
+                    <i class="icon wisdom"></i>
+                    <h3><span>Wise Up</span> - From darkness into light</h3>
+                    <p><a href="@Url.Action("faqs", "groups")">Site FAQs</a> - From groups to galleries - we tell you how</p>
+                    <p><a href="@Url.Action("beginners-faq", "static")">Beginners FAQs</a> - From what to wear to what to eat  - we've got it covered</p>
+                    <p><a href="@Url.Action("what-is-yoga", "static")">What is yoga?</a> - We break it down</p>
+                    <p><a href="@Url.Action("history-of-yoga", "static")">The history of yoga</a> - 3000 years in 800 words</p>
+                    <p><a href="@Url.Action("is-yoga-a-religion", "static")">Is yoga a religion?</a> - We shine a light</p>
+                    <p><a href="@Url.Action("index", "glossary")">Yoga lingo</a> - Tell  your kleshas from your kriyas</p>
+                    <p><a href="@Url.Action("index", "quotes")">Quotes</a> - From Joan Rivers to Mother Teresa</p>
+                </div>
+                @if (SecurityContext.Authenticated)
+                {
+                    <div class="how-profile">
+                        <img src="/images/how-to-use/six.jpg" alt="" class="scale" />
+                        <i class="icon profile"></i>
+                        <h3><span>Profile</span> - It's all about you</h3>
+                        <p><a href="@Url.Action("update", "profiles", new { SecurityContext.CurrentProfile.Id })">Edit profile</a> - Create your teacher or venue page, activities and classes, groups. Edit your settings.</p>
+                    </div>
+                }
+            </article>
+
+        </section>
+
+</div>
+

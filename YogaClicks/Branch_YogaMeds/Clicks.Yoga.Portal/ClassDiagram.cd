@@ -1,0 +1,3692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Clicks.Yoga.Portal.BundleConfig" Collapsed="true">
+    <Position X="171" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.FilterConfig" Collapsed="true">
+    <Position X="190.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.HandleExceptionAttribute" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="185" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.RouteConfig" Collapsed="true">
+    <Position X="162.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.WebApiConfig" Collapsed="true">
+    <Position X="176.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaNinjectModule" Collapsed="true">
+    <Position X="185" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\YogaNinjectModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaApiController" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Base\YogaApiController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaAuthorizeAttribute" Collapsed="true">
+    <Position X="183.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Base\YogaAuthorizeAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaController" Collapsed="true">
+    <Position X="45" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIgAAAAAAAAACAAAAAAAAAAAAAIACAAAAAABAQAA=</HashCode>
+      <FileName>Base\YogaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaViewPage" Collapsed="true">
+    <Position X="188.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Base\YogaViewPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.YogaViewPage&lt;TModel&gt;" Collapsed="true">
+    <Position X="186.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAABAAAA=</HashCode>
+      <FileName>Base\YogaViewPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.MvcApplication" Collapsed="true">
+    <Position X="160.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.App_Start.NinjectDependencyResolver" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="169.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAACAAAEAAAAAAAAAAAAAAIAAAAAEA=</HashCode>
+      <FileName>App_Start\NinjectDependencyResolver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.App_Start.NinjectWebCommon" Collapsed="true">
+    <Position X="171" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAQACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\NinjectWebCommon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Context.ImageStore" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="188.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABA=</HashCode>
+      <FileName>Context\ImageStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Context.SecurityContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="186.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gkAoyIogMIogEoAICEcgFABBAMAgCAAEAAABAEIAAAA=</HashCode>
+      <FileName>Context\SecurityContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.AccountController" Collapsed="true">
+    <Position X="60.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABBAiABBAAggAAEAAAIIAACIACEAAgAEQAgACCAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.AccreditationBodysController" Collapsed="true">
+    <Position X="65.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AccreditationBodysController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ActivitiesController" Collapsed="true">
+    <Position X="69.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAIIJwDiBQQAFwBCIABTEBQgkAmEQQgQACQAAiSDk=</HashCode>
+      <FileName>Controllers\ActivitiesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ActorsController" Collapsed="true">
+    <Position X="74.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ActorsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.CommentsController" Collapsed="true">
+    <Position X="78.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAEAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CommentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.CommunityController" Collapsed="true">
+    <Position X="83.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Controllers\CommunityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.EmailNotificationsController" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAEAAAAEAAAACAACAAAAgAAAACAA=</HashCode>
+      <FileName>Controllers\EmailNotificationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ErrorsController" Collapsed="true">
+    <Position X="179.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAQAgAAAAEAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Controllers\ErrorsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.FacebookController" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAIAAAEAAgAAAAAAAAACAAAAABA=</HashCode>
+      <FileName>Controllers\FacebookController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.FansController" Collapsed="true">
+    <Position X="13.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAAgAAAAAAAAAAAAAABAAAAAABAIAQAAAAAAAA=</HashCode>
+      <FileName>Controllers\FansController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.FeedbackController" Collapsed="true">
+    <Position X="18" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FeedbackController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.FriendsController" Collapsed="true">
+    <Position X="22.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\FriendsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.GalleriesController" Collapsed="true">
+    <Position X="27" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBQQIAAAaCAIQAACAGCAAAgBUAAAAkBAACCAAAAAAAA=</HashCode>
+      <FileName>Controllers\GalleriesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.GlossaryController" Collapsed="true">
+    <Position X="31.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAA=</HashCode>
+      <FileName>Controllers\GlossaryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.GroupsController" Collapsed="true">
+    <Position X="36" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIQAAAAAACAAAIgABSQAARABAgkBQEQQgBCEBAAAQAg=</HashCode>
+      <FileName>Controllers\GroupsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.HomeController" Collapsed="true">
+    <Position X="40.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ImagesController" Collapsed="true">
+    <Position X="45" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ImagesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.InvitationsController" Collapsed="true">
+    <Position X="47.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAACBA=</HashCode>
+      <FileName>Controllers\InvitationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.MediaController" Collapsed="true">
+    <Position X="49.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAACAAAAgABAAIAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MediaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.MessagingController" Collapsed="true">
+    <Position X="51.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAQgAEEAACBAJCAAAAAKAAACAAAAEAAA=</HashCode>
+      <FileName>Controllers\MessagingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.NewsController" Collapsed="true">
+    <Position X="54" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAQAAAAKAAAiAAAAAAAAAABkAAAAAAAAACAAggAAAA=</HashCode>
+      <FileName>Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.NotificationsController" Collapsed="true">
+    <Position X="56.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAAAAAAAAAAAAAEAAEQUIAAAAAAAAAAAAAAAgAIA=</HashCode>
+      <FileName>Controllers\NotificationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.PosesController" Collapsed="true">
+    <Position X="58.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIABAAAAAAAAAAACAAAQAAAAAAAAAAAAEAAAAAaAA=</HashCode>
+      <FileName>Controllers\PosesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ProfilesController" Collapsed="true">
+    <Position X="63" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AI0EoMCABCEgSIFlcGAIAZEBwCsABGAACESAAIASSAk=</HashCode>
+      <FileName>Controllers\ProfilesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.QuotesController" Collapsed="true">
+    <Position X="67.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\QuotesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.RecommendationsController" Collapsed="true">
+    <Position X="72" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAAAAAAAAAAAAEAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\RecommendationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.RegistrationController" Collapsed="true">
+    <Position X="76.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAAAAAAAAAABAAAAAAAAAIAAIAAAEAAABI=</HashCode>
+      <FileName>Controllers\RegistrationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.ReviewsController" Collapsed="true">
+    <Position X="81" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAASAABAMACAQEBgAAAAEBAAAAAAAAABAA=</HashCode>
+      <FileName>Controllers\ReviewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.SearchController" Collapsed="true">
+    <Position X="85.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIIMJiIKAEQgAAoAAJQQCBCgCQAAgABEFIEoSgCKA=</HashCode>
+      <FileName>Controllers\SearchController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.SharingController" Collapsed="true">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAACEAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SharingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.StaticController" Collapsed="true">
+    <Position X="6.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAKAAAAgAAAgAAEgQBAAAQABAAECGAAAAUA=</HashCode>
+      <FileName>Controllers\StaticController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.StyleOrganisationsController" Collapsed="true">
+    <Position X="11.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAEAAAAAAAABABCAAARAAAgGAAEAAAAAAAIAAQAA=</HashCode>
+      <FileName>Controllers\StyleOrganisationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.StylesController" Collapsed="true">
+    <Position X="15.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAwAAQgAAAAEAAAEAwIAAQAA=</HashCode>
+      <FileName>Controllers\StylesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.TeachersController" Collapsed="true">
+    <Position X="20.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAMgAACEgSABAACAAARCBAggAAAAAIAQAAIAEAAk=</HashCode>
+      <FileName>Controllers\TeachersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.TeacherTrainingCoursesController" Collapsed="true">
+    <Position X="24.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAIASABAICAIAQCAAgEAAEIAAgAAAAAACAA=</HashCode>
+      <FileName>Controllers\TeacherTrainingCoursesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.TeacherTrainingOrganisationsController" Collapsed="true">
+    <Position X="29.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAACABAICIAARAgAgAAAEAAAIAAAJAACAE=</HashCode>
+      <FileName>Controllers\TeacherTrainingOrganisationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.VenuesController" Collapsed="true">
+    <Position X="33.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIMgAACEg6ABAAKAAARABAggQAAEAIAAAgIAMAAk=</HashCode>
+      <FileName>Controllers\VenuesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.WallPostsController" Collapsed="true">
+    <Position X="38.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Controllers\WallPostsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Controllers.WallsController" Collapsed="true">
+    <Position X="42.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAACAgAAAAgEAIAAggAAAA=</HashCode>
+      <FileName>Controllers\WallsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Helpers.ActivitiesHtmlHelper" Collapsed="true">
+    <Position X="190.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Helpers\ActivitiesHtmlHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Helpers.EmailUrlHelpers" Collapsed="true">
+    <Position X="172.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Helpers\EmailUrlHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Helpers.EntityUrlHelpers" Collapsed="true">
+    <Position X="176.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\EntityUrlHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Helpers.GenericHtmlHelpers" Collapsed="true">
+    <Position X="183.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAADAAAAAAAAgAABAAAAgAABAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Helpers\GenericHtmlHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Helpers.ImageHtmlHelpers" Collapsed="true">
+    <Position X="186.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ImageHtmlHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountChangeEmailAddressModel" Collapsed="true">
+    <Position X="160.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountChangeEmailAddressModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountChangePasswordModel" Collapsed="true">
+    <Position X="162.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAABAAAEAAA=</HashCode>
+      <FileName>Models\Account\AccountChangePasswordModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountDeactivateModel" Collapsed="true">
+    <Position X="164" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAA=</HashCode>
+      <FileName>Models\Account\AccountDeactivateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountLoginModel" Collapsed="true">
+    <Position X="165.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAASAAAAIAAAAAAAAGAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountLoginModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountNotificationPreferencesPartialModel" Collapsed="true">
+    <Position X="169.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgABAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountNotificationPreferencesPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountPasswordResetModel" Collapsed="true">
+    <Position X="171" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountPasswordResetModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountPasswordResetRequestModel" Collapsed="true">
+    <Position X="172.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountPasswordResetRequestModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.AccountSettingsModel" Collapsed="true">
+    <Position X="178" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAgAQBACCACAgAABAAgAEAAEACAAAAAgABAAAEgAA=</HashCode>
+      <FileName>Models\Account\AccountSettingsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Account.SuperUserWarningPartialModel" Collapsed="true">
+    <Position X="179.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\SuperUserWarningPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationBodyDisplayModel" Collapsed="true">
+    <Position X="181.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\AccreditationBodies\AccreditationBodyDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationCountryModel" Collapsed="true">
+    <Position X="183.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccreditationBodies\AccreditationCountryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationIndexModel" Collapsed="true">
+    <Position X="185" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAASAAAAIAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\AccreditationBodies\AccreditationIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityAddTeacherModel" Collapsed="true">
+    <Position X="158.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityAddTeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityAttendanceActorPickerModel" Collapsed="true">
+    <Position X="160.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityAttendanceActorPickerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityAttendanceButtonModel" Collapsed="true">
+    <Position X="162.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityAttendanceButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityAttendeesModel" Collapsed="true">
+    <Position X="165.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAgBA=</HashCode>
+      <FileName>Models\Activities\ActivityAttendeesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityAttendingPartialModel" Collapsed="true">
+    <Position X="167.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityAttendingPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityChangeVenueModel" Collapsed="true">
+    <Position X="169.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityChangeVenueModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassDayContentPartialModel" Collapsed="true">
+    <Position X="172.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgAAAQ=</HashCode>
+      <FileName>Models\Activities\ActivityClassDayContentPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassDayModel" Collapsed="true">
+    <Position X="174.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Activities\ActivityClassDayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassDayPartialModel" Collapsed="true">
+    <Position X="176.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassDayPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassPartialModel" Collapsed="true">
+    <Position X="178" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassSummaryPartialModel" Collapsed="true">
+    <Position X="179.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassSummaryPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassTeacherSummaryPartialModel" Collapsed="true">
+    <Position X="181.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassTeacherSummaryPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassVenueSummaryPartialModel" Collapsed="true">
+    <Position X="183.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassVenueSummaryPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassWeekContentPartialModel" Collapsed="true">
+    <Position X="185" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAAAAAAAAAAAAAAAAAAAAAAAABQAACAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassWeekContentPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityClassWeekPartialModel" Collapsed="true">
+    <Position X="186.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAACAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityClassWeekPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassModel" Collapsed="true">
+    <Position X="188.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAEAAAAAAAAIAAAAAAAAAIAQAAg=</HashCode>
+      <FileName>Models\Activities\ActivityCreateClassModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassStep2Model" Collapsed="true">
+    <Position X="190.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAJAAAQAAAAAAAABEAIAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateClassStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassStep3Model" Collapsed="true">
+    <Position X="160.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAQAgAAAABCAAAAAAAAAAAAAABAAAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateClassStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassStep4Model" Collapsed="true">
+    <Position X="164" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateClassStep4Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateClassStep5Model" Collapsed="true">
+    <Position X="165.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateClassStep5Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateModel" Collapsed="true">
+    <Position X="169.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAAAAAAAAEAAAAAAAAIAAAAAAAAAIAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep1Model" Collapsed="true">
+    <Position X="171" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAAAAAABABAAAQAEAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateStep1Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep2Model" Collapsed="true">
+    <Position X="174.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAACAQAgAAAAACAAAAAAIAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep3Model" Collapsed="true">
+    <Position X="178" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep4Model" Collapsed="true">
+    <Position X="179.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityCreateStep4Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityDisplayModel" Collapsed="true">
+    <Position X="183.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAkAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityEditableListContentPartialModel" Collapsed="true">
+    <Position X="185" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAIEAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityEditableListContentPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityEditableListPartialModel" Collapsed="true">
+    <Position X="186.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Activities\ActivityEditableListPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityGalleriesModel" Collapsed="true">
+    <Position X="188.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityGalleriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityGalleryModel" Collapsed="true">
+    <Position X="190.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityGalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityHostingPartialModel" Collapsed="true">
+    <Position X="158.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityHostingPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityInvitesModel" Collapsed="true">
+    <Position X="160.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityInvitesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityNavigationModel" Collapsed="true">
+    <Position X="162.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAEAAAAAAAIAAAAAAAAAEAAAAAAAABAAAAAEAQAA=</HashCode>
+      <FileName>Models\Activities\ActivityNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityOwnedPartialModel" Collapsed="true">
+    <Position X="164" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityOwnedPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityProfessionalsModel" Collapsed="true">
+    <Position X="165.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityProfessionalsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityPromotingPartialModel" Collapsed="true">
+    <Position X="167.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityPromotingPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivitySearchClassesModel" Collapsed="true">
+    <Position X="172.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivitySearchClassesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivitySearchModel" Collapsed="true">
+    <Position X="176.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAJAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivitySearchModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivitySearchResponseModel" Collapsed="true">
+    <Position X="178" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivitySearchResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivitySettingsModel" Collapsed="true">
+    <Position X="179.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIACAAAAAAAAAAAAAAAAAAAAAAAgAAAEAQQAA=</HashCode>
+      <FileName>Models\Activities\ActivitySettingsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityTabsModel" Collapsed="true">
+    <Position X="181.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityTabsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityTeachingPartialModel" Collapsed="true">
+    <Position X="185" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityTeachingPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityUpdateClassModel" Collapsed="true">
+    <Position X="186.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAQAgAAAABCJAAAQAAAAAAAABFAIAAEAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityUpdateClassModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityUpdateModel" Collapsed="true">
+    <Position X="190.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAACAQAgAAAQBCBAAAQAIAAAABAABQAAAEAQAAA=</HashCode>
+      <FileName>Models\Activities\ActivityUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityVideosModel" Collapsed="true">
+    <Position X="160.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityVideosModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Activities.ActivityWallModel" Collapsed="true">
+    <Position X="162.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Activities\ActivityWallModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Actors.PickerPartialModel" Collapsed="true">
+    <Position X="188.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAIAAAAABAAAAAACAAAABAAAAAAAAABEAAI=</HashCode>
+      <FileName>Models\Actors\PickerPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Community.CommunityNavigationModel" Collapsed="true">
+    <Position X="178" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Community\CommunityNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Context.AvailableActorModel" Collapsed="true">
+    <Position X="169.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAACAAAQAQAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Context\AvailableActorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Context.CurrentActorModel" Collapsed="true">
+    <Position X="167.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAQAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Context\CurrentActorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Context.CurrentProfileModel" Collapsed="true">
+    <Position X="169.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAABEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Context\CurrentProfileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.AbilityLevelSelectorModel" Collapsed="true">
+    <Position X="43.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\AbilityLevelSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.AccreditationBodyChooserModel" Collapsed="true">
+    <Position X="16.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\AccreditationBodyChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ActivityRepeatFrequencySelectorModel" Collapsed="true">
+    <Position X="45.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\ActivityRepeatFrequencySelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ActivityTeacherChooserModel" Collapsed="true">
+    <Position X="25.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\ActivityTeacherChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ActivityTypeSelectorModel" Collapsed="true">
+    <Position X="48" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Editors\ActivityTypeSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.AddressEditorModel" Collapsed="true">
+    <Position X="164" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAIBAAIgAAAAAIAAAAgAAAAQQAQAAA=</HashCode>
+      <FileName>Models\Editors\AddressEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.EntitySelectorModel&lt;TEntity, TModel&gt;" Collapsed="true">
+    <Position X="27.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAACAABAAAAAAAAgAAAAAAAAFAAQBAAAA=</HashCode>
+      <FileName>Models\Editors\Base\EntitySelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.EntityValueDictionary&lt;TValue&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="178" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIIAAAAABAAEABAQCAAABAQAAAAAAAAEAAAgAABQIAA=</HashCode>
+      <FileName>Models\Editors\Base\EntityValueDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.MultipleEntitySelectorModel&lt;TEntity, TModel&gt;" Collapsed="true">
+    <Position X="18.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACQAAAAAAAAAAAACAAAAAAAAAUAAQAA=</HashCode>
+      <FileName>Models\Editors\Base\MultipleEntitySelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.SingleEntitySelectorModel&lt;TEntity, TModel&gt;" Collapsed="true">
+    <Position X="44.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACBAAAAAAAAAAAAAAAAAAAAAAAAAQAI=</HashCode>
+      <FileName>Models\Editors\Base\SingleEntitySelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.CountrySelectorModel" Collapsed="true">
+    <Position X="52.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\CountrySelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.DateEditorModel" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAABAACAJAAAAAAAAAgAAAAABAAACAQEQACAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\DateEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.DateTimeEditorModel" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAACIAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\DateTimeEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.EntityHandleChooserModel" Collapsed="true">
+    <Position X="32.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\EntityHandleChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.EntityHandleSelectorModel" Collapsed="true">
+    <Position X="36.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\EntityHandleSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.EntityTypeChooserModel" Collapsed="true">
+    <Position X="5.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\EntityTypeChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.FriendAutocompleteModel" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAEAAAAA=</HashCode>
+      <FileName>Models\Editors\FriendAutocompleteModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.FriendChooserModel" Collapsed="true">
+    <Position X="12" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\FriendChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.GenderSelectorModel" Collapsed="true">
+    <Position X="41.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\GenderSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ImageEditorModel" Collapsed="true">
+    <Position X="6.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAQAAAAAAIAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\ImageEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ImageUploadModel" Collapsed="true">
+    <Position X="190.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAABAAAAAAEAAAAAAAAAQAAAAAAQAAEQAAA=</HashCode>
+      <FileName>Models\Editors\ImageUploadModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.LocationEditorModel" Collapsed="true">
+    <Position X="169.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAQABAAAAAAAAAAAAAAQAEA=</HashCode>
+      <FileName>Models\Editors\LocationEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.MonthEditorModel" Collapsed="true">
+    <Position X="158.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAgAAAAABAAAAAAEAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\MonthEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.NotificationCategoryChooserModel" Collapsed="true">
+    <Position X="14.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\NotificationCategoryChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ProfileBannerEditorModel" Collapsed="true">
+    <Position X="5.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\ProfileBannerEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ProfileImageEditorModel" Collapsed="true">
+    <Position X="7.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\ProfileImageEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.ReviewExperienceChooserModel" Collapsed="true">
+    <Position X="18.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\ReviewExperienceChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.StyleChooserModel" Collapsed="true">
+    <Position X="21" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\StyleChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.StyleSelectorModel" Collapsed="true">
+    <Position X="50.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\StyleSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherAccreditationChooserModel" Collapsed="true">
+    <Position X="23.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\TeacherAccreditationChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherChooserModel" Collapsed="true">
+    <Position X="26.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\TeacherChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherSelectorModel" Collapsed="true">
+    <Position X="172.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\TeacherSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherServiceChooserModel" Collapsed="true">
+    <Position X="30" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\TeacherServiceChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherTrainingCourseTeacherChooserModel" Collapsed="true">
+    <Position X="27.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\TeacherTrainingCourseTeacherChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TeacherTrainingCourseVenueChooserModel" Collapsed="true">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\TeacherTrainingCourseVenueChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.TimeRangeEditorModel" Collapsed="true">
+    <Position X="181.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAABASAAAIgAABEAJAAAAAAoAAACAAAAAIA=</HashCode>
+      <FileName>Models\Editors\TimeRangeEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.VenueAmenityChooserModel" Collapsed="true">
+    <Position X="34.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAEgAAAA=</HashCode>
+      <FileName>Models\Editors\VenueAmenityChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.VenueChooserModel" Collapsed="true">
+    <Position X="3" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\VenueChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.VenueSelectorModel" Collapsed="true">
+    <Position X="160.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\VenueSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.VenueServiceChooserModel" Collapsed="true">
+    <Position X="9.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\VenueServiceChooserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.VenueTypeSelectorModel" Collapsed="true">
+    <Position X="39" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Editors\VenueTypeSelectorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.WebsiteCollectionEditorModel" Collapsed="true">
+    <Position X="178" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAA=</HashCode>
+      <FileName>Models\Editors\WebsiteCollectionEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Editors.WebsiteEditorModel" Collapsed="true">
+    <Position X="179.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAQAAAAACAAAAAAQAAA=</HashCode>
+      <FileName>Models\Editors\WebsiteEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.EmailNotifications.SendDigestEmailRequest" Collapsed="true">
+    <Position X="188.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EmailNotifications\SendDigestEmailRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.AbilityLevelModel" Collapsed="true">
+    <Position X="46" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\AbilityLevelModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.AccreditationBodyModel" Collapsed="true">
+    <Position X="124.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAACBQACAggAAAAAAAAAQAAAIQABAQIIgAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\AccreditationBodyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityAttendeeModel" Collapsed="true">
+    <Position X="164" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAEAAAAA=</HashCode>
+      <FileName>Models\Entities\ActivityAttendeeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityModel" Collapsed="true">
+    <Position X="136" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAQCAYAgAAAQACRAAAQAYAAAABQAAQAAAgAAAAE=</HashCode>
+      <FileName>Models\Entities\ActivityModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityRepeatFrequencyModel" Collapsed="true">
+    <Position X="66.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ActivityRepeatFrequencyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityRepeatInstanceListModel" Collapsed="true">
+    <Position X="169.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ActivityRepeatInstanceListModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityRepeatInstanceModel" Collapsed="true">
+    <Position X="171" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Entities\ActivityRepeatInstanceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivitySearchCriteriaModel" Collapsed="true">
+    <Position X="174.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQRAAIAEACwAAgEAIIGEAAAAgAAAAgAAAEEEiQgAA=</HashCode>
+      <FileName>Models\Entities\ActivitySearchCriteriaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityTeacherModel" Collapsed="true">
+    <Position X="183.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAAAA=</HashCode>
+      <FileName>Models\Entities\ActivityTeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ActivityTypeModel" Collapsed="true">
+    <Position X="93.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAACAA=</HashCode>
+      <FileName>Models\Entities\ActivityTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.AddressModel" Collapsed="true">
+    <Position X="102.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAEAAAAAMAAAIgAAAAAIAAAAgAAAAQQAAAAA=</HashCode>
+      <FileName>Models\Entities\AddressModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.EntityListModel" Collapsed="true">
+    <Position X="174.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Base\EntityListModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.EntityModel&lt;TEntity&gt;" Collapsed="true">
+    <Position X="82" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAEAAAA=</HashCode>
+      <FileName>Models\Entities\Base\EntityModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PrincipalEntityModel&lt;TEntity&gt;" Collapsed="true">
+    <Position X="131.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Base\PrincipalEntityModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.CommentModel" Collapsed="true">
+    <Position X="149.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIAgAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Entities\CommentModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.CountryModel" Collapsed="true">
+    <Position X="154" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\CountryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.EntityHandleModel" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAQIAQIAAAAAAAIAAAQAQAAAABAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityHandleModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.EntityTypeModel" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAEAAAAQAAAAIAAAAAAAQAAAAECAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\Entities\EntityTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.FriendshipModel" Collapsed="true">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAACAAgAACAAAA=</HashCode>
+      <FileName>Models\Entities\FriendshipModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GalleryEntryModel" Collapsed="true">
+    <Position X="25.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIgAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\GalleryEntryModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GalleryModel" Collapsed="true">
+    <Position X="120.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAACIAAAAAAAAAQAAAAAAAAAABAAACAAQAA=</HashCode>
+      <FileName>Models\Entities\GalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GenderModel" Collapsed="true">
+    <Position X="34.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\GenderModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GlossaryEntryModel" Collapsed="true">
+    <Position X="39.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\GlossaryEntryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GroupMemberModel" Collapsed="true">
+    <Position X="48.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAABAgAAAAAAA=</HashCode>
+      <FileName>Models\Entities\GroupMemberModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.GroupModel" Collapsed="true">
+    <Position X="127" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAAAAAAgAAAQAAAAAAQAAAAAABUAAAAAAAEAQAA=</HashCode>
+      <FileName>Models\Entities\GroupModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ImageModel" Collapsed="true">
+    <Position X="131.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAACIAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ImageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.LocationModel" Collapsed="true">
+    <Position X="59.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAEAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\LocationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.MediaResourceModel" Collapsed="true">
+    <Position X="68.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAgIAAEAAAAAAAAAAAAAAABAACQAAQAAAAAA=</HashCode>
+      <FileName>Models\Entities\MediaResourceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.MediaResourceTypeModel" Collapsed="true">
+    <Position X="73" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\MediaResourceTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NewsStoryModel" Collapsed="true">
+    <Position X="77.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAAAAIgIAgABAAIAAACEAQAAAAAAAAQAACAAAAQA=</HashCode>
+      <FileName>Models\Entities\NewsStoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NewsStoryTypeModel" Collapsed="true">
+    <Position X="82" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NewsStoryTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NotificationCategoryModel" Collapsed="true">
+    <Position X="88.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NotificationCategoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NotificationDeliveryModel" Collapsed="true">
+    <Position X="95.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\NotificationDeliveryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NotificationModel" Collapsed="true">
+    <Position X="104.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAA=</HashCode>
+      <FileName>Models\Entities\NotificationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.NotificationTypeModel" Collapsed="true">
+    <Position X="111.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Entities\NotificationTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PoseCategoryModel" Collapsed="true">
+    <Position X="115.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\PoseCategoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PoseDetailModel" Collapsed="true">
+    <Position X="151.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\PoseDetailModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PoseModel" Collapsed="true">
+    <Position X="151.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgAAAgAgAAAARAAAAAAACJAFAAAAgAQAAAAQg=</HashCode>
+      <FileName>Models\Entities\PoseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PrivateConversationModel" Collapsed="true">
+    <Position X="156.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\PrivateConversationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PrivateMessageDeliveryModel" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Entities\PrivateMessageDeliveryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.PrivateMessageModel" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAgAAgAAAAAAAAAAAAAAQAAIAAAAAAAAIAQA=</HashCode>
+      <FileName>Models\Entities\PrivateMessageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ProfileAnswerModel" Collapsed="true">
+    <Position X="23.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\ProfileAnswerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ProfileModel" Collapsed="true">
+    <Position X="118" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAAAACQQAIBAAQABAAAABUAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\ProfileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ProfileQuestionModel" Collapsed="true">
+    <Position X="30.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\ProfileQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.QuoteModel" Collapsed="true">
+    <Position X="37" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAACAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\QuoteModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.RequestModel" Collapsed="true">
+    <Position X="41.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAA=</HashCode>
+      <FileName>Models\Entities\RequestModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.RequestTypeModel" Collapsed="true">
+    <Position X="50.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Entities\RequestTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ReviewExperienceModel" Collapsed="true">
+    <Position X="55" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ReviewExperienceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ReviewModel" Collapsed="true">
+    <Position X="133.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAgIABAAAAAAAAAAEAADAACAAAIAA=</HashCode>
+      <FileName>Models\Entities\ReviewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ReviewRatingModel" Collapsed="true">
+    <Position X="61.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAgAAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ReviewRatingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ReviewRatingSubjectModel" Collapsed="true">
+    <Position X="70.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ReviewRatingSubjectModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.ReviewStatisticsModel" Collapsed="true">
+    <Position X="158.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAEAAAA=</HashCode>
+      <FileName>Models\Entities\ReviewStatisticsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.StyleDetailModel" Collapsed="true">
+    <Position X="84.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\StyleDetailModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.StyleModel" Collapsed="true">
+    <Position X="84.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAAAACAAACAgAAAAAAAAAAQAAAAAABAAAEgAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\StyleModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.StyleOrganisationModel" Collapsed="true">
+    <Position X="140.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAACAQAAAggAAQAAIAAAQAAAAAABCABIAAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\StyleOrganisationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.StyleTraitGroupModel" Collapsed="true">
+    <Position X="97.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\StyleTraitGroupModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.StyleTraitModel" Collapsed="true">
+    <Position X="106.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAI=</HashCode>
+      <FileName>Models\Entities\StyleTraitModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherAccreditationModel" Collapsed="true">
+    <Position X="113.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherAccreditationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherModel" Collapsed="true">
+    <Position X="142.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAAAAAAAAAAAAAQQAIAAEQAAAAAABAABIAAAgAEgAA=</HashCode>
+      <FileName>Models\Entities\TeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherPlacementModel" Collapsed="true">
+    <Position X="147.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherPlacementModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherPlacementTeacherModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="167.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAAIAAAQAAAAAABAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Entities\TeacherPlacementTeacherModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherPlacementVenueModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="169.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAgAAAAAAAAAAQAAAAAABACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherPlacementVenueModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherServiceModel" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherServiceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseModel" Collapsed="true">
+    <Position X="19" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAIAKACoAAAAAQAACQAAAAAABAABAAAGkAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherTrainingCourseModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseSearchCriteriaModel" Collapsed="true">
+    <Position X="174.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAQAAA=</HashCode>
+      <FileName>Models\Entities\TeacherTrainingCourseSearchCriteriaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseTeacherModel" Collapsed="true">
+    <Position X="28" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherTrainingCourseTeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseVenueModel" Collapsed="true">
+    <Position X="32.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherTrainingCourseVenueModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.TeacherTrainingOrganisationModel" Collapsed="true">
+    <Position X="122.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAACCAAAAAgAAQAAAAACQAAAAAABACBAAAAhAAAAA=</HashCode>
+      <FileName>Models\Entities\TeacherTrainingOrganisationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.UserModel" Collapsed="true">
+    <Position X="43.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\UserModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VenueAmenityModel" Collapsed="true">
+    <Position X="52.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Entities\VenueAmenityModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VenueModel" Collapsed="true">
+    <Position X="129.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAAAAACAAAgAAAQQAAAAAQAAAAAABACBYAAAgAAAAA=</HashCode>
+      <FileName>Models\Entities\VenueModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VenueServiceModel" Collapsed="true">
+    <Position X="57.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\VenueServiceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VenueTypeModel" Collapsed="true">
+    <Position X="64" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\Entities\VenueTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VideoModel" Collapsed="true">
+    <Position X="138.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAABAAABAAAAAAEAAAQAAQEAAQAA=</HashCode>
+      <FileName>Models\Entities\VideoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.VideoTypeModel" Collapsed="true">
+    <Position X="75.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\VideoTypeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.WallModel" Collapsed="true">
+    <Position X="79.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\WallModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.WallPostModel" Collapsed="true">
+    <Position X="86.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIIgAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>Models\Entities\WallPostModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.WebsiteModel" Collapsed="true">
+    <Position X="91" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\WebsiteModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.Summaries.EntityHandleSummaryModel" Collapsed="true">
+    <Position X="100" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Summaries\EntityHandleSummaryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.Summaries.NamedSummaryModel&lt;TEntity&gt;" Collapsed="true">
+    <Position X="109" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Summaries\NamedSummaryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.Summaries.NamedSummaryModel" Collapsed="true">
+    <Position X="109" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Summaries\NamedSummaryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Entities.Summaries.ProfileSummaryModel" Collapsed="true">
+    <Position X="145" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAIAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Summaries\ProfileSummaryModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Facebook.FacebookModel" Collapsed="true">
+    <Position X="181.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Facebook\FacebookModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Facebook.FeedbackModel" Collapsed="true">
+    <Position X="188.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Feedback\FeedbackModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Fans.FanButtonModel" Collapsed="true">
+    <Position X="183.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAABAAAAAAAgAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Fans\FanButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Fans.FanConfirmationModel" Collapsed="true">
+    <Position X="185" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Fans\FanConfirmationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Fans.FanListPartialModel" Collapsed="true">
+    <Position X="186.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Fans\FanListPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Friends.FriendButtonModel" Collapsed="true">
+    <Position X="158.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Friends\FriendButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedPartialModel" Collapsed="true">
+    <Position X="162.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAQAgAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryAssociatedPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedVideosPartialModel" Collapsed="true">
+    <Position X="164" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAgAAAAIEAAAAABAAAAAAQAAAAgBAEAAAAACAAAI=</HashCode>
+      <FileName>Models\Galleries\GalleryAssociatedVideosPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryCreateEntryModel" Collapsed="true">
+    <Position X="165.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryCreateEntryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryCreateModel" Collapsed="true">
+    <Position X="167.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAIAAAAAAAAAACQAAAAAhAAAAAAAAAAQQAA=</HashCode>
+      <FileName>Models\Galleries\GalleryCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryDisplayPartialModel" Collapsed="true">
+    <Position X="169.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAACAAAAAAABAAQAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryDisplayPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryEntryPopupModel" Collapsed="true">
+    <Position X="171" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAACABCAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryEntryPopupModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryEntryThumbnailPartialModel" Collapsed="true">
+    <Position X="172.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryEntryThumbnailPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryUpdateEntryModel" Collapsed="true">
+    <Position X="174.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAASAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Galleries\GalleryUpdateEntryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryUpdateModel" Collapsed="true">
+    <Position X="176.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAAAAAAAAAQAAAAAgAAAAAAAAAAQQAA=</HashCode>
+      <FileName>Models\Galleries\GalleryUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryUpdateVideoModel" Collapsed="true">
+    <Position X="178" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAgAAAAAABAAAAAgAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryUpdateVideoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryUploadThumbnailPartialModel" Collapsed="true">
+    <Position X="179.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Galleries\GalleryUploadThumbnailPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Galleries.GalleryVideoPartialModel" Collapsed="true">
+    <Position X="181.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAIAAAAAAAAAAAAAAAAAhAAAEAQAAAAAAAg=</HashCode>
+      <FileName>Models\Galleries\GalleryVideoPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Glossary.GlossaryIndexModel" Collapsed="true">
+    <Position X="185" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Glossary\GlossaryIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupCreateModel" Collapsed="true">
+    <Position X="186.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAIAAAAAAAAAIAQAAA=</HashCode>
+      <FileName>Models\Groups\GroupCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupCreateStep1Model" Collapsed="true">
+    <Position X="188.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAgAAAABAAAAAQAEAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Groups\GroupCreateStep1Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupCreateStep2Model" Collapsed="true">
+    <Position X="158.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAQAAAAAEAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Groups\GroupCreateStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupCreateStep3Model" Collapsed="true">
+    <Position X="160.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Groups\GroupCreateStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupDisplayModel" Collapsed="true">
+    <Position X="162.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAFBAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupGalleriesModel" Collapsed="true">
+    <Position X="164" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupGalleriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupGalleryModel" Collapsed="true">
+    <Position X="165.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupGalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupInvitePartialModel" Collapsed="true">
+    <Position X="167.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupInvitePartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupMembershipButtonModel" Collapsed="true">
+    <Position X="169.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupMembershipButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupMembersModel" Collapsed="true">
+    <Position X="171" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupMembersModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupProfessionalPartialModel" Collapsed="true">
+    <Position X="172.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupProfessionalPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupSettingsModel" Collapsed="true">
+    <Position X="174.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAEAAAAEAAAIAAAAAAAAAAAEgAAAAAQQAA=</HashCode>
+      <FileName>Models\Groups\GroupSettingsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupTabsModel" Collapsed="true">
+    <Position X="176.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupTabsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupUpdateModel" Collapsed="true">
+    <Position X="178" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAAAAgAAAQAAAAAAQAQAAAABEAFgAAAAAQAAA=</HashCode>
+      <FileName>Models\Groups\GroupUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupVideosModel" Collapsed="true">
+    <Position X="181.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupVideosModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Groups.GroupWallModel" Collapsed="true">
+    <Position X="183.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Groups\GroupWallModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Invitations.InvitationInviteFriendsByEmailModel" Collapsed="true">
+    <Position X="160.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Invitations\InvitationInviteFriendsByEmailModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Invitations.InvitationRedirectModel" Collapsed="true">
+    <Position X="162.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Invitations\InvitationRedirectModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Media.MediaPostPartialModel" Collapsed="true">
+    <Position X="171" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAJAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Media\MediaPostPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Media.MediaPostTypePartialModel" Collapsed="true">
+    <Position X="172.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Media\MediaPostTypePartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Media.MediaPreviewPartialModel" Collapsed="true">
+    <Position X="174.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Media\MediaPreviewPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingConversationModel" Collapsed="true">
+    <Position X="178" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAAAAAAIAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingConversationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingConversationPartialModel" Collapsed="true">
+    <Position X="179.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingConversationPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingDeliveriesModel" Collapsed="true">
+    <Position X="181.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Messaging\MessagingDeliveriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingDeliveriesPartialModel" Collapsed="true">
+    <Position X="183.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingDeliveriesPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingPopupPartialModel" Collapsed="true">
+    <Position X="185" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingPopupPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingSendButtonModel" Collapsed="true">
+    <Position X="186.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingSendButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Messaging.MessagingSendModel" Collapsed="true">
+    <Position X="188.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABgAAgAAAAAAAAAAAAAAAAAAAAgCAAAAAAAA=</HashCode>
+      <FileName>Models\Messaging\MessagingSendModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.News.NewsGalleryPartialModel" Collapsed="true">
+    <Position X="162.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\News\NewsGalleryPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.News.NewsInteractionPartialModel" Collapsed="true">
+    <Position X="164" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\News\NewsInteractionPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.News.NewsReviewPartialModel" Collapsed="true">
+    <Position X="165.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\News\NewsReviewPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.News.NewsStoriesPartialModel" Collapsed="true">
+    <Position X="167.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\News\NewsStoriesPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Notifications.FriendRequestsPopupPartialModel" Collapsed="true">
+    <Position X="160.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Notifications\FriendRequestsPopupPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Notifications.NotificationsPopupPartialModel" Collapsed="true">
+    <Position X="172.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Notifications\NotificationsPopupPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Notifications.SubjectRequestsPartialModel" Collapsed="true">
+    <Position X="176.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Notifications\SubjectRequestsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Poses.PoseCategoryDisplayModel" Collapsed="true">
+    <Position X="190.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Poses\PoseCategoryDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Poses.PoseCategoryIndexModel" Collapsed="true">
+    <Position X="158.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Poses\PoseCategoryIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Poses.PoseDirectoryModel" Collapsed="true">
+    <Position X="160.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Poses\PoseDirectoryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Poses.PoseDisplayModel" Collapsed="true">
+    <Position X="162.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAEEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Poses\PoseDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Poses.PoseIndexModel" Collapsed="true">
+    <Position X="164" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABggAAAAAAAAAAAAAEAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\Poses\PoseIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.DeleteButtonModel" Collapsed="true">
+    <Position X="171" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\DeleteButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileActivitiesModel" Collapsed="true">
+    <Position X="165.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileActivitiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileClaimButtonModel" Collapsed="true">
+    <Position X="167.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileClaimButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileClassesModel" Collapsed="true">
+    <Position X="169.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileClassesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateManagePageModel" Collapsed="true">
+    <Position X="171" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateManagePageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateModel" Collapsed="true">
+    <Position X="172.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateTeacherLocationModel" Collapsed="true">
+    <Position X="174.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateTeacherLocationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateTeacherModel" Collapsed="true">
+    <Position X="178" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAAAIAAAgAQAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateTeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateVenueContactModel" Collapsed="true">
+    <Position X="181.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIAAAgAQAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateVenueContactModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateVenueLocationModel" Collapsed="true">
+    <Position X="185" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateVenueLocationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateVenueModel" Collapsed="true">
+    <Position X="188.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateVenueModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileDisplayModel" Collapsed="true">
+    <Position X="158.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAIAAAAAAAAAAAAAAAAAAAAABAIABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileFannedGroupPartialModel" Collapsed="true">
+    <Position X="160.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAQAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileFannedGroupPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileFannedModel" Collapsed="true">
+    <Position X="162.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAABAAgAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileFannedModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileFriendRequestsModel" Collapsed="true">
+    <Position X="164" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileFriendRequestsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileFriendsModel" Collapsed="true">
+    <Position X="165.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileFriendsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileFriendsPartialModel" Collapsed="true">
+    <Position X="167.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileFriendsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileGalleriesModel" Collapsed="true">
+    <Position X="169.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileGalleriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileGalleryModel" Collapsed="true">
+    <Position X="171" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileGalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileGroupsModel" Collapsed="true">
+    <Position X="172.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileNavigationModel" Collapsed="true">
+    <Position X="174.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAgAAAAAAAAAAAAAAAABBAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileNewsFeedItemModel" Collapsed="true">
+    <Position X="176.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgEAAAgAAACAQAAAAAABEACAAAkBAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileNewsFeedItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileNewsModel" Collapsed="true">
+    <Position X="178" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileNewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileNotificationsModel" Collapsed="true">
+    <Position X="179.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileNotificationsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileNotificationsPeriodModel" Collapsed="true">
+    <Position X="181.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileNotificationsPeriodModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileQuestionCaptureModel" Collapsed="true">
+    <Position X="183.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileQuestionCaptureModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileReviewsModel" Collapsed="true">
+    <Position X="185" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileReviewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileUnclaimButtonModel" Collapsed="true">
+    <Position X="188.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileUnclaimButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileUpdateModel" Collapsed="true">
+    <Position X="190.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACQQAIBAAQABEAAABAAABFAAgAQgAA=</HashCode>
+      <FileName>Models\Profiles\ProfileUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.ProfileVideosModel" Collapsed="true">
+    <Position X="160.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileVideosModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Profiles.StartWizardModel" Collapsed="true">
+    <Position X="164" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Profiles\StartWizardModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Quotes.QuoteIndexModel" Collapsed="true">
+    <Position X="162.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAgABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Quotes\QuoteIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Recommendations.RecommendationButtonModel" Collapsed="true">
+    <Position X="164" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Recommendations\RecommendationButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Recommendations.RecommendationSendModel" Collapsed="true">
+    <Position X="165.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAABAIAAAAABAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Recommendations\RecommendationSendModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel" Collapsed="true">
+    <Position X="167.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAACAAQABAAQABEABAAECAABAAAAAAAA=</HashCode>
+      <FileName>Models\Registration\RegisterAccountModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Registration.RegisterCompleteModel" Collapsed="true">
+    <Position X="171" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Registration\RegisterCompleteModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewCreateModel" Collapsed="true">
+    <Position X="0.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewDisplayModel" Collapsed="true">
+    <Position X="174.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewEditorModel" Collapsed="true">
+    <Position X="1.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAhYABAAAAAAAAAAEFGBAAAAAQAIA=</HashCode>
+      <FileName>Models\Reviews\ReviewEditorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewFeedbackModel" Collapsed="true">
+    <Position X="176.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewFeedbackModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewFilterableListPartialModel" Collapsed="true">
+    <Position X="178" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewFilterableListPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewListPartialModel" Collapsed="true">
+    <Position X="179.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAACAEAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewListPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewRatingPartialModel" Collapsed="true">
+    <Position X="181.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewRatingPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewReportModel" Collapsed="true">
+    <Position X="183.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAIAAAAAAAAAAAAAAAAAEQAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewReportModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewSearchCriteriaModel" Collapsed="true">
+    <Position X="188.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAEAABAEAABAAAACAAAAAAAAAAAhAQAAAQAIA=</HashCode>
+      <FileName>Models\Reviews\ReviewSearchCriteriaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewSummaryPartialModel" Collapsed="true">
+    <Position X="160.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewSummaryPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Reviews.ReviewUpdateModel" Collapsed="true">
+    <Position X="2.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Reviews\ReviewUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchAccreditingBodiesModel" Collapsed="true">
+    <Position X="15" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchAccreditingBodiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchCriteriaModel" Collapsed="true">
+    <Position X="164" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEIBIAAANAAQABAAAIIEQCAAAAAAgIBBAAAEIAQggg=</HashCode>
+      <FileName>Models\Search\SearchCriteriaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchDiscoverModel" Collapsed="true">
+    <Position X="165.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Search\SearchDiscoverModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchGroupsModel" Collapsed="true">
+    <Position X="17.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchIndexModel" Collapsed="true">
+    <Position X="167.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchPagingButtonsPartialModel" Collapsed="true">
+    <Position X="169.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABkAAAAIAAAAAAAAAAAAUAAAABAAACAAAEAAAAAI=</HashCode>
+      <FileName>Models\Search\SearchPagingButtonsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchProfilesModel" Collapsed="true">
+    <Position X="171" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchProfilesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchProfilesNavigationModel" Collapsed="true">
+    <Position X="172.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchProfilesNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchResponseModel" Collapsed="true">
+    <Position X="174.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAUCAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchResultModel" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAUAgAAAIIAAIgAQAAAIAABECCQAAAQAAAAA=</HashCode>
+      <FileName>Models\Search\SearchResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchResultsModel" Collapsed="true">
+    <Position X="11.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAAAAAAACAAAACAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Search\SearchResultsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchStyleOrganisationsModel" Collapsed="true">
+    <Position X="176.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchStyleOrganisationsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeacherInformationModel" Collapsed="true">
+    <Position X="178" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeacherInformationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeachersModel" Collapsed="true">
+    <Position X="6" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeachersModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeachersNavigationModel" Collapsed="true">
+    <Position X="179.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Search\SearchTeachersNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingCoursesModel" Collapsed="true">
+    <Position X="8.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeacherTrainingCoursesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingNavigationModel" Collapsed="true">
+    <Position X="181.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAEAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeacherTrainingNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingOrganisationsModel" Collapsed="true">
+    <Position X="10.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeacherTrainingOrganisationsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchTeacherTrainingOrganisationsResultModel" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchTeacherTrainingOrganisationsResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchVenueInformationModel" Collapsed="true">
+    <Position X="183.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchVenueInformationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchVenuesModel" Collapsed="true">
+    <Position X="12.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Search\SearchVenuesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Search.SearchVenuesNavigationModel" Collapsed="true">
+    <Position X="185" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAIAQ=</HashCode>
+      <FileName>Models\Search\SearchVenuesNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel" Collapsed="true">
+    <Position X="186.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shared\ActivateProfileLinkPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.CloseModalModel" Collapsed="true">
+    <Position X="172.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shared\CloseModalModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.CommentPartialModel" Collapsed="true">
+    <Position X="174.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shared\CommentPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.CommentsPartialModel" Collapsed="true">
+    <Position X="176.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAIAA=</HashCode>
+      <FileName>Models\Shared\CommentsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.ReviewsPartialModel" Collapsed="true">
+    <Position X="190.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Shared\ReviewsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Shared.SuperUserAccessPartialModel" Collapsed="true">
+    <Position X="178" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shared\SuperUserAccessPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Sharing.SharingEntityButtonsModel" Collapsed="true">
+    <Position X="158.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Sharing\SharingEntityButtonsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Sharing.SharingEntityByEmailButtonModel" Collapsed="true">
+    <Position X="160.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Models\Sharing\SharingEntityByEmailButtonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Sharing.SharingEntityByEmailModel" Collapsed="true">
+    <Position X="162.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAA=</HashCode>
+      <FileName>Models\Sharing\SharingEntityByEmailModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationActivitiesModel" Collapsed="true">
+    <Position X="176.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationActivitiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationCreateModel" Collapsed="true">
+    <Position X="186.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAIAAAAAAAAAIAQAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationCreateStep1Model" Collapsed="true">
+    <Position X="188.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAIAAAAAAAABAAAAAQAAAAAAACABAAAAAAQAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationCreateStep1Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationCreateStep2Model" Collapsed="true">
+    <Position X="158.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAIAAAgAQAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationCreateStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationCreateStep3Model" Collapsed="true">
+    <Position X="162.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationCreateStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationDisplayModel" Collapsed="true">
+    <Position X="169.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationFansModel" Collapsed="true">
+    <Position X="172.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationFansModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationGroupsModel" Collapsed="true">
+    <Position X="176.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationNavigationModel" Collapsed="true">
+    <Position X="178" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationUpdateModel" Collapsed="true">
+    <Position X="183.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAQAAAggAAQBAIAAAQAAAAAABCABIAAEgAQAAA=</HashCode>
+      <FileName>Models\StyleOrganisations\OrganisationUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Styles.StyleDirectoryNavigationModel" Collapsed="true">
+    <Position X="165.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleDirectoryNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Styles.StyleDisplayModel" Collapsed="true">
+    <Position X="167.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Styles.StyleIndexModel" Collapsed="true">
+    <Position X="169.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Styles.StyleTraitsModel" Collapsed="true">
+    <Position X="172.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleTraitsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Styles.StyleTraitsNavigationModel" Collapsed="true">
+    <Position X="174.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleTraitsNavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherActivitiesModel" Collapsed="true">
+    <Position X="181.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherActivitiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherClassesModel" Collapsed="true">
+    <Position X="183.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherClassesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherCreatePlacementAddressModel" Collapsed="true">
+    <Position X="185" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAABAAAAAAAAAAAAAACAAAAIgAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherCreatePlacementAddressModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherCreatePlacementModel" Collapsed="true">
+    <Position X="186.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherCreatePlacementModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherCreatePlacementOwnershipModel" Collapsed="true">
+    <Position X="188.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAIgAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherCreatePlacementOwnershipModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherDisplayModel" Collapsed="true">
+    <Position X="190.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAgABAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherFansModel" Collapsed="true">
+    <Position X="158.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherFansModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherGalleriesModel" Collapsed="true">
+    <Position X="160.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherGalleriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherGalleryModel" Collapsed="true">
+    <Position X="162.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherGalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherGroupsModel" Collapsed="true">
+    <Position X="164" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherPlacementsModel" Collapsed="true">
+    <Position X="165.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherPlacementsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherReviewsModel" Collapsed="true">
+    <Position X="171" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherReviewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherUpdateModel" Collapsed="true">
+    <Position X="176.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAEAAAAAAAAAAAAQRAIAACQAAAAAABAABIAAAgAQgAA=</HashCode>
+      <FileName>Models\Teachers\TeacherUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Teachers.TeacherVideosModel" Collapsed="true">
+    <Position X="179.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Teachers\TeacherVideosModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseBasicModel" Collapsed="true">
+    <Position X="179.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAAAAAAAAAQAAAAAABAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseBasicModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateAccreditationModel" Collapsed="true">
+    <Position X="181.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAACAAAAAAAAAABAAACAAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateAccreditationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateBasicModel" Collapsed="true">
+    <Position X="185" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACgAAAAAAAAAQAAAAAAAAAAAIAAEAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateBasicModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateModel" Collapsed="true">
+    <Position X="188.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABQAAAAAAAAAkAAAAAAABAAAAAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateNotesModel" Collapsed="true">
+    <Position X="190.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateNotesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateTeachersModel" Collapsed="true">
+    <Position X="158.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateTeachersModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateVenuesModel" Collapsed="true">
+    <Position X="160.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseCreateVenuesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseDisplayModel" Collapsed="true">
+    <Position X="162.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAACAAAAAAAAIAAAAAAAAAAAAAAACAAEAEAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseUpdateModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="164" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAIAIICoAAABAAAACQAAAAABAAABAIACkAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\CourseUpdateModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingCourses.OrganisationBasicModel" Collapsed="true">
+    <Position X="178" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingCourses\OrganisationBasicModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationActivitiesModel" Collapsed="true">
+    <Position X="174.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationActivitiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCoursesModel" Collapsed="true">
+    <Position X="179.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationCoursesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCoursesPartialModel" Collapsed="true">
+    <Position X="181.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationCoursesPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCreateAddressModel" Collapsed="true">
+    <Position X="183.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAgAAAAACAAAAAAAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationCreateAddressModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCreateModel" Collapsed="true">
+    <Position X="185" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAwAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationDisplayModel" Collapsed="true">
+    <Position X="167.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationFansModel" Collapsed="true">
+    <Position X="171" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationFansModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationGroupsModel" Collapsed="true">
+    <Position X="174.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationReviewsModel" Collapsed="true">
+    <Position X="179.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationReviewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationUpdateModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="181.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAIAgAAQAAAAAAQAAAAABBACBAAAAgAQAAA=</HashCode>
+      <FileName>Models\TeacherTrainingOrganisations\OrganisationUpdateModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueActivitiesModel" Collapsed="true">
+    <Position X="185" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueActivitiesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueClaimModel" Collapsed="true">
+    <Position X="186.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAgIAAAAAAAAAIAQAAA=</HashCode>
+      <FileName>Models\Venues\VenueClaimModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueClaimStep1Model" Collapsed="true">
+    <Position X="188.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueClaimStep1Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueClaimStep2Model" Collapsed="true">
+    <Position X="158.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIAAAgAQAAA=</HashCode>
+      <FileName>Models\Venues\VenueClaimStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueClaimStep3Model" Collapsed="true">
+    <Position X="162.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Venues\VenueClaimStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueClassesModel" Collapsed="true">
+    <Position X="165.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueClassesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueCreatePlacementModel" Collapsed="true">
+    <Position X="167.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueCreatePlacementModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueDisplayModel" Collapsed="true">
+    <Position X="171" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACIAEAAAAAAAAAAAAAAAAAAAAADAAAAEAAAA=</HashCode>
+      <FileName>Models\Venues\VenueDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueFansModel" Collapsed="true">
+    <Position X="172.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueFansModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueGalleriesModel" Collapsed="true">
+    <Position X="174.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueGalleriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueGalleryModel" Collapsed="true">
+    <Position X="176.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueGalleryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueGroupsModel" Collapsed="true">
+    <Position X="178" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueGroupsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueObtainStep1Model" Collapsed="true">
+    <Position X="179.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueObtainStep1Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueObtainStep2Model" Collapsed="true">
+    <Position X="183.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAACAAAAAAAAAAAAQAAAAAIAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueObtainStep2Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueObtainStep3Model" Collapsed="true">
+    <Position X="185" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAABAAAAAQAAAAAIAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueObtainStep3Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueObtainStep4Model" Collapsed="true">
+    <Position X="186.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueObtainStep4Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenuePlacementsModel" Collapsed="true">
+    <Position X="188.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Venues\VenuePlacementsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueReviewsModel" Collapsed="true">
+    <Position X="190.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueReviewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueUpdateModel" Collapsed="true">
+    <Position X="162.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAACAIAgAAAQRAAAAAQAAAAAABACBYAAAgAQAAA=</HashCode>
+      <FileName>Models\Venues\VenueUpdateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Venues.VenueVideosModel" Collapsed="true">
+    <Position X="165.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Venues\VenueVideosModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.WallPosts.WallPostDisplayModel" Collapsed="true">
+    <Position X="169.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\WallPosts\WallPostDisplayModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Walls.WallPartialModel" Collapsed="true">
+    <Position X="167.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Walls\WallPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Walls.WallPostPartialModel" Collapsed="true">
+    <Position X="171" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAACAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Walls\WallPostPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Walls.WallPostsPartialModel" Collapsed="true">
+    <Position X="172.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Walls\WallPostsPartialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Models.Walls.WallsAddVideoModalModel" Collapsed="true">
+    <Position X="174.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\Walls\WallsAddVideoModalModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Account" Collapsed="true">
+    <Position X="158.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAABAAAAAAAIAABEkIAAQAAAAAAABAAAAAAgIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Activities" Collapsed="true">
+    <Position X="188.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQABEAAAAQAACAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Authentication" Collapsed="true">
+    <Position X="167.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAgAQACAAAAAAKE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Invitations" Collapsed="true">
+    <Position X="164" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Messaging" Collapsed="true">
+    <Position X="176.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAABEAAAAQAIAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Profiles" Collapsed="true">
+    <Position X="186.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAIAAAAAAAAEAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Registration" Collapsed="true">
+    <Position X="172.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAABAIQABABEEAAAQAAAAAAAAAAAAIAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Reviews" Collapsed="true">
+    <Position X="186.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBAAAAAAAAAAAAAAABEAAAAQAAAEAAAAAAAAAAAIE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Shared" Collapsed="true">
+    <Position X="190.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CkAAEAAAkIAAICABMgABcgEhEUBMABAgABAoAgggCoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.StyleOrganisations" Collapsed="true">
+    <Position X="171" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAABAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Resources.Errors.Venues" Collapsed="true">
+    <Position X="158.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAABEAAAAQAAAAAIAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Account.AccountLoginValidator" Collapsed="true">
+    <Position X="167.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Account\AccountLoginValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Account.AccountPasswordResetRequestValidator" Collapsed="true">
+    <Position X="174.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Account\AccountPasswordResetRequestValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Account.AccountPasswordResetValidator" Collapsed="true">
+    <Position X="176.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Account\AccountPasswordResetValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Account.AccountSettingsValidator" Collapsed="true">
+    <Position X="179.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Account\AccountSettingsValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityChangeVenueValidator" Collapsed="true">
+    <Position X="171" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityChangeVenueValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateClassStep2Validator" Collapsed="true">
+    <Position X="158.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateClassStep2Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateClassStep3Validator" Collapsed="true">
+    <Position X="162.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateClassStep3Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateClassStep5Validator" Collapsed="true">
+    <Position X="167.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateClassStep5Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateStep1Validator" Collapsed="true">
+    <Position X="172.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateStep1Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateStep2Validator" Collapsed="true">
+    <Position X="176.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateStep2Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityCreateStep4Validator" Collapsed="true">
+    <Position X="181.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityCreateStep4Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityUpdateClassValidator" Collapsed="true">
+    <Position X="188.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityUpdateClassValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Activities.ActivityUpdateValidator" Collapsed="true">
+    <Position X="158.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Activities\ActivityUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Editors.AddressEditorValidator" Collapsed="true">
+    <Position X="165.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Editors\AddressEditorValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Editors.ImageUploadValidator" Collapsed="true">
+    <Position X="158.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Editors\ImageUploadValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Editors.WebsiteEditorValidator" Collapsed="true">
+    <Position X="181.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Editors\WebsiteEditorValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Groups.GroupCreateStep1Validator" Collapsed="true">
+    <Position X="190.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Groups\GroupCreateStep1Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Groups.GroupUpdateValidator" Collapsed="true">
+    <Position X="179.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Groups\GroupUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Invitations.InviteFriendsValidator" Collapsed="true">
+    <Position X="165.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Invitations\InviteFriendsValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Messaging.MessagingSendValidator" Collapsed="true">
+    <Position X="190.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Messaging\MessagingSendValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileCreateTeacherLocationValidator" Collapsed="true">
+    <Position X="176.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileCreateTeacherLocationValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileCreateTeacherValidator" Collapsed="true">
+    <Position X="179.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileCreateTeacherValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileCreateVenueContactValidator" Collapsed="true">
+    <Position X="183.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileCreateVenueContactValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileCreateVenueLocationValidator" Collapsed="true">
+    <Position X="186.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileCreateVenueLocationValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileCreateVenueValidator" Collapsed="true">
+    <Position X="190.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileCreateVenueValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Profiles.ProfileUpdateValidator" Collapsed="true">
+    <Position X="158.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Profiles\ProfileUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Registration.RegisterAccountValidator" Collapsed="true">
+    <Position X="169.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Registration\RegisterAccountValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Reviews.ReviewCreateValidator" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Reviews\ReviewCreateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Reviews.EditorValidator&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Reviews\ReviewEditorValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Reviews.ReviewReportValidator" Collapsed="true">
+    <Position X="185" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Reviews\ReviewReportValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Reviews.ReviewUpdateValidator" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Reviews\ReviewUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Sharing.InviteFriendsValidator" Collapsed="true">
+    <Position X="167.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Sharing\SharingEntityByEmailValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.StyleOrganisations.OrganisationCreateStep1Validator" Collapsed="true">
+    <Position X="190.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\StyleOrganisations\OrganisationCreateStep1Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.StyleOrganisations.OrganisationCreateStep2Validator" Collapsed="true">
+    <Position X="160.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\StyleOrganisations\OrganisationCreateStep2Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.StyleOrganisations.OrganisationCreateStep3Validator" Collapsed="true">
+    <Position X="164" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\StyleOrganisations\OrganisationCreateStep3Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.StyleOrganisations.OrganisationUpdateValidator" Collapsed="true">
+    <Position X="186.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\StyleOrganisations\OrganisationUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Teachers.TeacherUpdateValidator" Collapsed="true">
+    <Position X="178" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Teachers\TeacherUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.TeacherTrainingCourses.CourseCreateAccreditationValidator" Collapsed="true">
+    <Position X="183.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\TeacherTrainingCourses\CourseCreateAccreditationValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.TeacherTrainingCourses.CourseCreateBasicValidator" Collapsed="true">
+    <Position X="186.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\TeacherTrainingCourses\CourseCreateBasicValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.TeacherTrainingCourses.CourseUpdateValidator" Collapsed="true">
+    <Position X="165.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\TeacherTrainingCourses\CourseUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.TeacherTrainingOrganisations.OrganisationCreateValidator" Collapsed="true">
+    <Position X="165.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\TeacherTrainingOrganisations\OrganisationCreateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.TeacherTrainingOrganisations.OrganisationUpdateValidator" Collapsed="true">
+    <Position X="185" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\TeacherTrainingOrganisations\OrganisationUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.ValidatorFactory" Collapsed="true">
+    <Position X="183.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\ValidatorFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueClaimStep1Validator" Collapsed="true">
+    <Position X="190.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueClaimStep1Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueClaimStep2Validator" Collapsed="true">
+    <Position X="160.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueClaimStep2Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueClaimStep3Validator" Collapsed="true">
+    <Position X="164" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueClaimStep3Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueCreatePlacementValidator" Collapsed="true">
+    <Position X="169.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueCreatePlacementValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueObtainStep1Validator" Collapsed="true">
+    <Position X="181.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueObtainStep1Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Portal.Validation.Venues.VenueUpdateValidator" Collapsed="true">
+    <Position X="164" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Venues\VenueUpdateValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Clicks.Yoga.Portal.Context.IPortalSecurityContext" Collapsed="true">
+    <Position X="158.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAgIAgAAgAEAAAAAAAAAAAAAAgCAAAAAABAAAAAAA=</HashCode>
+      <FileName>Context\IPortalSecurityContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Clicks.Yoga.Portal.Models.Poses.PoseNavigationType" Collapsed="true">
+    <Position X="160.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Poses\PoseNavigationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Portal.Models.Profiles.WizardStatus" Collapsed="true">
+    <Position X="165.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Portal.Models.Profiles.ProfileCreateType" Collapsed="true">
+    <Position X="162.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAgAA=</HashCode>
+      <FileName>Models\Profiles\ProfileCreateType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Portal.Models.Registration.CreateAccountView" Collapsed="true">
+    <Position X="158.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Registration\RegisterAccountModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Clicks.Yoga.Portal.Models.Styles.StyleNavigationType" Collapsed="true">
+    <Position X="164" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Styles\StyleNavigationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

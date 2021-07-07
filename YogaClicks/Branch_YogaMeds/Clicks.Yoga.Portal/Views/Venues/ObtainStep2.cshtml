@@ -1,0 +1,78 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueObtainStep2Model
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+    <div id="@guid" class="scrollableiFrame">
+        @Html.ValidationSummary()
+    
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Name)
+        <div class="activity-meta">
+            <div class="halfWidth">
+                @Html.RadioButtonFor(m => m.Owned, true) I own/manage this venue
+            </div>
+            <div class="halfWidth">
+                @Html.RadioButtonFor(m => m.Owned, false) I do not own/manage this venue
+            </div>
+        </div>
+        <hr />
+        <div data-role="InviteForm">
+            <h4>Invite this venue to YogaClicks</h4>
+            <div>Fill in this venue's email address and we'll invite them to claim their YogaClicks profile.</div>
+            @Html.LabelFor(m => m.Email) @Html.TextBoxFor(m => m.Email)
+        </div>
+        <div class="wizard-footer-buttons-container">
+            <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+            <div class="wizard-footer-nav-container">
+                @if (Model.ShowBackButton)
+                {
+                    <a href="#" id="ObtainBackButton" class="button pink large backBtn">Back</a>
+                    @Html.HiddenFor(m => m.ShowBackButton)
+                    @Html.HiddenFor(m => m.ObtainBack)
+                }
+                <button class="button pink large" type="submit">Next</button>
+            </div>
+        </div>
+        <div class="cb"></div>
+    </div>
+
+    <script>
+        $(function () {
+            var $container = $('#@guid');
+            var $inviteForm = $container.find("[data-role=InviteForm]");
+
+            $("#ObtainBackButton").click(function() {
+                $("#@Html.IdFor(m => m.ObtainBack)").val('@bool.TrueString');
+                submit();
+            });
+
+            $container.find('button').on('click', function (e) {
+                e.preventDefault();
+                submit();
+            });
+
+            $container.find("input[name='@Html.NameFor(m => m.Owned)']").on("click", function() {
+                if ($(this).val() == "True") {
+                    $inviteForm.hide();
+                } else {
+                    $inviteForm.show();
+                }
+            });
+
+            var submit = (function () {
+                debugger;
+                var $inputs = $container.find('input');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ObtainStep2")',
+                    data: $inputs.serialize(),
+                    success: function (response) {
+                        
+                        $container.replaceWith(response);
+                    }
+                });
+            });
+        });
+    </script>

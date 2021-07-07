@@ -1,0 +1,81 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "The History of Yoga";
+    ViewBag.Description = "A short guide to the history and origins of yoga; from the Upanishads to Bikram, via yoga on TV, we chart yoga’s pathway to the true self.";
+    Layout = "~/Views/Layout/layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+}
+
+@section Head {    
+    <meta property="og:title" content="The history of yoga in 800 words" />    
+    <meta property="og:description" content="We've no room for a thesis so we're keeping it simple" />
+    <meta property="og:image" content=" http://www.yogaclicks.com/images/history-of-yoga/cover.jpg" />
+}
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                    <h1>The history of yoga</h1>
+            </div>
+        </div>
+    </section>
+</div>
+<div id="content-slider" class="content-slider">
+
+	<div class="wisdom-strip content-col" id="scroll">
+
+		<section class="page-content">
+        
+        	<article id="static">
+                
+                <img src="/images/history-of-yoga/cover.jpg" alt="Image: Courtesy of Stephen Rowson" class="scale">
+                               
+                <p>One thing is certain – the origin of yoga is uncertain. Does it go back over 3000 years – to the Indus – a highly civilized culture that, ancient carvings suggest, enjoyed meditation alongside public baths and a sophisticated sewage system? Does it stem only from Hinduism, or does it also have roots in the Sramanas tradition, which gave rise to Buddhism and Jainism? </p>
+                <p>As we've no room for a thesis we're keeping it simple; summarising yoga's evolution through milestone texts, and key markers of popular culture.</p>
+                <img src="/images/history-of-yoga/image1.jpg" alt="Image:  Courtesy of Stephen Rowson" />
+                <h3>The Upanishads, c.800 BCE - 500 BCE </h3>
+                <p>This collection of more than 200 Hindu scriptures describe meditation techniques that strip away the layers separating us from our own true Self, or Atman, helping us perceive ourselves as drops of water in the ocean that is Brahman, the universal spirit. </p>
+                <h3>The Bhagavad Gita (The Lord's Song), c.300-200 BCE.</h3>
+                <p>There's no sitting atop a mountain contemplating our navel with this one. The Gita advocates living in the real world, putting yoga into action through self-knowledge (Jnana yoga), selfless action (Karma yoga), and love and devotion (Bhakti yoga).</p>
+                <h3>The Yoga Sutras of Patanjali, c.200 CE.</h3>
+                <p>Systematises a thousand years of thinking into 195 yoga sutras, or threads. Patanjali's second sutra, that yoga is 'chitta vritti nirodhah' – 'yoga is the cessation of the whirring mind' (i.e. that the state of yoga is a still mind) remains, to this day, one of the go-to definitions of yoga. </p>
+                <p>Up until this point yoga was discussed only as a discipline of the mind. The most significant development of the next millennium was the interest in rejuvenating the body as an additional means of discovering the true Self. </p>
+                <h3>The Hatha Yoga Pradapika, Swami Swatmarama c.1300 – 1500 CE.</h3>
+                <p>Includes many familiar references – there's talk of asana, chakras, bandhas and pranayama. It states the purpose of Hatha Yoga as balancing the physical body, mind and energy. When this balance is achieved the central force – the sushumna nadi – is awakened, and with it the evolution of human consciousness.</p>
+                <img src="/images/history-of-yoga/image2.jpg" alt="Image: Faern from 'Mudras: Simple Daily Use'" />
+                <h3>Yoga Rahasya ('Secrets of Yoga'), Saint Nathamuni, 9th century.</h3>
+                <p>A classic text on yoga as a therapeutic tool. It took over a thousand years but Nathamuni's most distinguished descendent, Sri Tirumalai Krishnamacharya (born 1888) was to bring this practice to a vast audience as he, and his pupils (most notably Iyengar, Pattabhi Jois, Desikachar and Indra Devi) broadened the base of yoga from a few postures to many, from East to West, from sectarian to lay practitioners, and from men to women. </p>
+                <h3>Vivekananda, Paramahansa Yoganada, Paul Brunton, Krishnamurti, et al – late 19th and early 20th century.</h3>
+                <p>Western philosophers and thinkers were the first to embrace yoga. Swami Vivekananda's first US appearance, Chicago 1893, was at the invitation of the World Parliament of Religions. Paul Brunton, a British philosopher, introduced us to Jnana yoga with his discovery of Ramana 'Who am I?' Maharshi in the 1930s, while the elegant, charismatic Krishnamurti's talks drew interest from renowned thinkers Aldous Huxley, Bernard Shaw and Christopher Isherwood. Charlie Chaplin and Greta Garbo were also fans. </p>
+                <p>By the late 40s, thanks in part to the popularity of Paramahansa Yogananda's compelling, miracle-driven <i>Autobiography of a Yogi</i>, yoga had started to go mainstream. Greta Garbo, perhaps inspired by Krishnamurti, was one of Indra Devi's first customers at her Hollywood studio, opened in 1948. Other pupils included Marilyn Monroe, and Gloria Swanson. </p>
+                <img src="/images/history-of-yoga/image3.jpg" alt="Image: Courtesy of Jivamukti Yoga" />
+                <p>Yoga officially entered popular culture in the sixties with Richard Hittleman's Yoga For Health TV series, first aired in the US in 1961. From here the West was introduced to a steady stream of yoga styles – each distinguished by a charismatic guru with his or her own take on the best way to merge with cosmic bliss. </p>
+                <p>Iyengar's Light on Yoga was published in 1966, Kundalini arrived in California in 1969 in the form of Yogi Bhajan, and Swami Sivananda's diaspora spent the decade founding schools in Europe, Canada and the US. Lilias Folan, a Sivananda devotee, owned TV yoga in the seventies, Ashtanga also arrived in the US in that decade, along with Bikram yoga, followed by David Life and Sharon Gannon's Jivamukti yoga in 1984. See our <a href="@Url.Action("directory", "styles")">style directory</a> for the full list. </p>
+                <h3>So, 21st century yogi, next time you step onto your mat, try this:</h3>
+                <p>Regard your left foot as rooted in the past – saluting the distinguished lineage of teachers who created yoga in order that we may dissolve our sad egos and merge with universal bliss.</p>
+                <p>Regard your right foot as rooted in the future – a future in which, whatever style of yoga we practice, and whoever we choose to guide us from darkness into light, we get there.</p>
+                <p><small>With gratitude to Matt Gill, and to Bob Weisenberg, author of Yoga Demystified and The Bhagavad Gita in a Nutshell.</small></p>
+                
+            </article>
+            
+        </section>
+
+	</div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+
+    $("article img").each(function () {
+	    $(this).wrap("<div class='imgtxt' />");
+	    $('.imgtxt').attr('style', $(this).attr('style'));
+	    $(this).after($("<span />").text($(this).attr("alt")));
+	});
+
+});
+</script>
+

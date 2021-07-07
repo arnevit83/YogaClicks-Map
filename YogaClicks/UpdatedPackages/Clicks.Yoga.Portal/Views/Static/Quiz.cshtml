@@ -1,0 +1,203 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "StyleMatch";
+    Layout = "~/Views/Layout/layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+    ViewBag.SiteSection = "'Beginners-visited' : 'true'";
+
+}
+@section LeftNav{
+
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<link href="~/Content/Quiz.css" rel="stylesheet" />
+
+
+<div id="padded" class="background-image ">  </div>
+
+<div style="display: block;" class="contentQuiz row nopadding">
+    <div class="col-sm-offset-1 col-sm-8 col-lg-offset-2 col-lg-6  text-center">
+        <div class="row nopadding ">
+            <div id="yogamatchtitle" class="nopadding text-center col-xs-12"><span class="thintext">StyleMatch </span><span class="thicktext">Quiz</span></div><br /><br />
+        </div>
+        <div class="row nopadding">
+            <div id="yogamatchbox" class="col-xs-12 nopadding white quiz">
+                <div id="questionnum" class="row nopadding">Q1</div>
+                <div id="questiontopiccontainer" class="row nopadding">
+
+                    <div class="nopadding col-xs-12 questiontopic">
+                        <div class="center-block"  style="display: table; height: 120px; overflow: hidden;">
+                            <div style="display: table-cell; vertical-align: middle;">
+                                <div id="questiontopic">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                <div class="row nopadding">
+                    <br/>
+                    <div class="col-sm-8 col-sm-offset-2 well WellColour well-sm ">
+                        <img src="" id="quizimage" class="text-center img-responsive centerimg img-rounded" alt="YogaMatch"/>
+                    </div>
+                </div>
+
+
+                <div >
+                    <div id="questionsubnum" class="questionsub"></div>
+                    <div class="row nopadding">
+                        <div class="col-xs-12 nopadding questionsub">
+
+                            <div class="center-block" style="display: table; height: 75px; overflow: hidden;">
+                                <div style="display: table-cell; vertical-align: middle;">
+                                    <div id="questionsub">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row answerbox" style="padding-top: 14px;">
+             
+                    <button id="yesbutton" onclick="quizzywiz(true)" class="col-xs-5 col-sm-5 col-md-5 text-center nopadding quizbutton">Yes</button>
+                    <span class="infobutton col-xs-2 col-sm-2 col-md-2 nopadding"></span>
+                    <button id="nobutton" onclick="quizzywiz(false)" class="col-xs-5 col-sm-5 col-md-5 text-center nopadding quizbutton">No</button>
+                </div>
+                <div class="row nopadding">
+             
+                    <div class="col-xs-12">
+                        <i onclick="backButton()" style="display: none;" class="fa fa-reply nopadding text-center backbutton"></i>
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <div id="finalbox" class="nopadding final white col-xs-12">
+                <div id="finalboxtitle" class="nopadding">
+                    <div class="row nopadding">
+                        <div id="finaltitle1" class="nopadding col-xs-12">That's it, you're done</div>
+                    </div>
+                    <div class="row nopadding">
+                        <div id="finaltitle2" class="nopadding col-xs-12">Your matches are shown below</div>
+                    </div>
+                </div>
+                <div class="row nopadding">
+                    <div id="stylename" class="col-xs-12 nopadding"></div>
+                </div>
+                <div class="row nopadding">
+                    <div class="col-xs-1 col-sm-1 sideimage nopadding text-center">
+                        <div class="nopadding">
+                            <i id="leftarrow" class="fa fa-arrow-left" onclick="scrollquiz('left')"></i>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-sm-10 nopadding white">
+
+
+                        <img id="leftimage" src="#" class="hidden-xs text-center img-responsive img-rounded GreyOut" onclick="scrollquiz('right')" />
+                        <img id="rightimage" src="#" class="hidden-xs text-center img-responsive img-rounded GreyOut" onclick="scrollquiz('left')" />
+
+                        <div class="wrapperquiz center-block">
+                            <div class="ribbon-wrapper-green">
+                                <div class="ribbon-green">
+                                    1<sup>st</sup> Match
+                                </div>
+                            </div><img id="finalimage" src="#" class="text-center img-responsive centerimg img-rounded " alt="Responsive image" />
+                        </div>
+
+                        @*<div class="nopadding matchbanner text-center">1st match</div>
+                            <img src="/Images/bannerlayer.png" class="matchban nopadding"/>*@
+                    </div>
+                    <div class=" col-xs-1 col-sm-1 sideimage nopadding text-center">
+                        <div class="nopadding">
+                            <i id="rightarrow" class="fa fa-arrow-right" onclick="scrollquiz('right')"></i>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row nopadding">
+                    <div id="finaltext" class="col-sm-offset-1 col-sm-10 white "></div>
+                </div>
+                <div class="row nopadding white text-center  ">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <br />
+                        <a target="_blank" href="#" id="finallink" class="quizbutton center-block ">
+                            More info
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="row white text-center finalcontainer">
+                    @*<div class="col-sm-offset-2 col-sm-4">
+                        <a href="#" target="_blank" class="finalbuttons center-block "><i id="likeus" class="fa fa-thumbs-up"></i><span class="center-block buttonsrwap"> Like Us</span></a>
+
+                    </div>*@
+                    <div class="col-sm-offset-4 col-sm-4">
+
+                        <a href="#" target="_blank" class="finalbuttons center-block facebook-share-link"><i id="sharematches" class="fa fa-share-alt"></i><span class="center-block buttonsrwap"> Share Matches</span></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="background-color:#ffffff" class="row nopadding">
+                <div class="col-xs-12 nopadding">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0">
+                            <span class="sr-only">0% Complete (warning)</span>
+                        </div>
+                    </div>
+                        
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    @*<div class="col-sm-1 nopadding text-center">
+
+
+            <div id="gradientContainer">
+                @*<div style="display:none;" class="progresstext text-center">Progress to your match</div>
+                <div class="gradient"></div>
+
+            </div>
+
+        </div>*@
+
+
+    <br style="clear:both" />
+
+</div>
+
+
+
+
+<br />
+
+
+@section Scripts{
+<script src="~/Scripts/Quiz.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $("#Innercontent").css('min-width', '99%');
+
+        });
+
+    </script>
+}

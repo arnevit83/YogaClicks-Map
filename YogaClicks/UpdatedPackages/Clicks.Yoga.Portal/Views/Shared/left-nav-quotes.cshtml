@@ -1,0 +1,40 @@
+﻿@model Clicks.Yoga.Portal.Models.Quotes.QuoteIndexModel
+
+<div id="navwrap">
+    
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+
+                <h1 class="pageTitle">Quotes</h1>
+                <p>Soak up the wisdom of Guruji Seinfeld, Sri Sri W. Allen, Yogacharya Einstein, Sri Devi Oprah & co</p>
+                <nav class="filter">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <a href="#" class="quote-author" data-author="@author">@author (@Model.Quotes[author].Count)</a>
+                    }
+                </nav>
+            </div>
+        </div>
+    </section><br/><br/>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $("#right-menu-close").click(function () {
+
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+
+    });
+    $(".quote-author").click(function () {
+        $("#right-nav").hide();
+        $(".dark-overlay").hide();
+        resizeDiv();
+    });
+</script>

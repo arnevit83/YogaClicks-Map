@@ -1,0 +1,8 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.MediaResourceModel
+
+<div data-role="PostMediaResource" data-resource-uri="@Model.Uri" data-resource-type="@Model.Type.Tag" class="galleryItemWrap galleryPopUpThumbnail" style="float: left; width: 172px; margin: 10px;">
+    <a data-role="RemoveButton" href="javascript:void(0)" class="deleteButton">Remove</a>
+    <div class="imageWrap">
+        @Html.Image(Model.Image, i => i.Resize(c => c.Width(160).Height(160).ScaleBoth()))
+    </div>
+</div>

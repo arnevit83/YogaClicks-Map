@@ -1,0 +1,16 @@
+﻿@model Clicks.Yoga.Domain.Entities.SearchSortOrder
+
+@{
+    var items = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Newest", Text = "Newest" },
+        new SelectListItem { Value = "Name", Text = "Alphabetical" }
+    };
+    
+    if (ViewBag.LocationKnown)
+    {
+        items.Insert(0, new SelectListItem { Value = "Distance", Text = "Distance" });
+    }
+}
+
+@Html.DropDownListFor(m => m, items)

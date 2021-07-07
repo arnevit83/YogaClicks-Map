@@ -1,0 +1,49 @@
+﻿@model Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationIndexModel
+
+<div id="navwrap">
+    
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h3>Accrediting / registering bodies</h3>
+                <h4>Refine your search</h4>
+                @if (Model.Countries.Count > 0)
+                {
+                    <strong style="display:block;padding:0 0 10px;">Country</strong>
+                    <nav class="filter">
+                        <select id="countries">
+                            <option value="">All</option>
+                            @foreach (var country in Model.Countries)
+                            {
+                                if (country.Country.Code == Model.Country)
+                                {
+                                    <option value="@country.Country.Code" selected="selected">@country.Country.EnglishName</option>
+                                }
+                                else
+                                {
+                                    <option value="@country.Country.Code">@country.Country.EnglishName</option>
+                                }
+                            }
+                        </select>
+                        <a href="@Url.Action("Index", "AccreditationBodys")" class="silver button showAllButton">Show All</a>
+                        <br/><br/>
+                    </nav>
+                }
+                <nav class="filter">
+                    <strong style="display:block;padding:0 0 10px;">A-Z listing</strong>
+                    @foreach (var body in Model.All)
+                    {
+                        <a href="@Url.Action("display", "accreditationbodys", new { id = body.Id })">@body.Name</a>
+                    }
+                </nav>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $("#countries").change(function() {
+        location.href = "/accreditationbodys/index?country=" + $(this).val();
+    })
+</script>

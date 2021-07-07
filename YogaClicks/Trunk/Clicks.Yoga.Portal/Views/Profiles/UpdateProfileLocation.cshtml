@@ -1,0 +1,22 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileLocationUpdateModel
+
+@using (Html.BeginForm("UpdateProfileLocation", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-profile-location-form" }))
+{
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    
+    @Html.HiddenFor(m => m.ProfileId)
+
+    <h3>My location</h3>
+    @Html.EditorFor(m => m.Location)
+    <p><small><font color="red">Please hit Return or select a location from the drop-down list.</font><br />Adding a location will help users find you and make your own searches more accurate. Your location can just be your post code or town, you do not need to give us your complete address.</small></p>
+
+    <div class="profile-location-save-section">
+        <span class="profile-location-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

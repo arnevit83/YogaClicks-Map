@@ -1,0 +1,34 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.DeleteButtonModel
+
+@{
+    var guid = Guid.NewGuid();
+}
+
+<div id="@guid">
+    <a href="javascript:void(0)" data-role="DeleteOwnedButton" data-entity-id="@Model.EntityId" data-entity-type="@Model.EntityType.Name">Delete @Model.EntityType.DisplayName</a>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.find('[data-role=DeleteOwnedButton]').on('click', function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            var id = $this.attr('data-entity-id');
+            var type = $this.attr('data-entity-type');
+
+            if (!confirm('Are you sure you want to delete this ' + type.toLowerCase() + '?')) return;
+
+            $.ajax({
+                url: '@Url.Action("DeleteOwned", "Profiles", new { Model.Profile.Id })',
+                type: 'POST',
+                data: { EntityId: id, EntityType: type },
+                success: function () {
+                    top.location.href = '@Url.Action("Display", "Profiles", new { Model.Profile.Id })';
+                }
+            });
+        });
+    });
+</script>

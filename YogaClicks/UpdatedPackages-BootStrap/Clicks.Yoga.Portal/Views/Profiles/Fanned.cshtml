@@ -1,0 +1,107 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileFannedModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Title = "Fan of";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Profile))
+    {
+        @Html.Action("Navigation")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+@helper Group(string entityTypeName) {
+    if (!Model.EntityTypes.ContainsKey(entityTypeName))
+    {
+        return;
+    }
+        
+    var type = Model.EntityTypes[entityTypeName];
+    var handles = Model.EntityHandles.ContainsKey(entityTypeName) ? Model.EntityHandles[entityTypeName] : new List<EntityHandleModel>();
+        
+    @Html.Partial("FannedGroupPartial", new ProfileFannedGroupPartialModel(type, handles, SecurityContext.IsOwner(Model.Profile)))
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h1 class="greenHeader myProfileHeader"><span>&nbsp;</span>@Model.Profile.Name</h1>
+
+                <div class="profileBanner">
+                    @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                </div>
+                
+                @Html.Partial("Tabs", new { Model.Profile })
+                
+                <h3>I am a fan of...</h3>
+
+                <div id="@guid">
+                    @Group("Teacher")
+                    @Group("Venue")
+                    @Group("TeacherTrainingOrganisation")
+                    @Group("Style")
+                    @Group("StyleOrganisation")
+                    @Group("AccreditationBody")
+                    @Group("Pose")
+                    @Group("Quote")
+                    @Group("GlossaryEntry")
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.find('[data-role=Group]').each(function () {
+            var $group = $(this);
+            
+            $group.on('click', '[data-role=CheckButton]', function (e) {
+                e.preventDefault();
+                $group.find('input').prop('checked', true);
+            });
+
+            $group.on('click', '[data-role=UncheckButton]', function (e) {
+                e.preventDefault();
+                $group.find('input').prop('checked', false);
+            });
+
+            $group.on('click', '[data-role=UnfanCheckedButton]', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Unfan")',
+                    data: $group.find('input').serialize(),
+                    success: function (html) {
+                        $group.html(html);
+                    }
+                });
+            });
+        });
+    });
+</script>

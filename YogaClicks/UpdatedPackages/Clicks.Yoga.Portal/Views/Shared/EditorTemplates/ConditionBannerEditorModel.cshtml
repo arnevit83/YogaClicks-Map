@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionBannerEditorModel
+
+@{
+    Layout = null;
+}
+
+<div class="block-section image-upload condition-banner">
+    @if (Model.CurrentImage != null && Model.CurrentImage.Exists)
+    {
+        @Html.DisplayFor(m => m.CurrentImage, "ConditionBanner")
+    }
+</div>
+<div class="block-section">
+    <h3>Replace banner image</h3>
+    <p>optimal image dimensions are 716 x 376px, recommended file format is PNG or JPEG and 1MB max</p>
+    @Html.EditorFor(m => m.NewImage)
+    <div id="conditionbannerSave" class="saverequired">Saving...</div>
+</div>

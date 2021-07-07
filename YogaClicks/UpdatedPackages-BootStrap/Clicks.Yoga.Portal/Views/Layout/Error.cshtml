@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    <div id="navwrap">
+        
+
+        <section class="filters" id="filter-results">
+            <div id="filter-wrap">
+                <div class="the-sub-menu">
+                    <nav class="filter active">
+                        <h3>Quick links</h3>
+                        <a href="/static/our-story">Our story</a>
+                        <a href="/static/manifesto">Manifesto</a>
+			            <a href="/static/privacy-policy">Privacy</a>
+			            <a href="/static/terms-of-use">Terms of use</a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+       
+    </div>
+}
+
+@RenderBody()

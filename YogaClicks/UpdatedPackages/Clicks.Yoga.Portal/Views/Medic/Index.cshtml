@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Clinical studies prove health benefits of yoga";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Medic";
+}
+
+@section Head {
+    <meta property="og:title" content="Clinical studies demonstrate health benefits of yoga | YogaClicks" />
+    <meta property="og:description" content="Over 200 clinical studies on the health benefits of yoga, mindfulness and meditation, listed by condition. Find a yoga teacher or venue by condition." />
+<meta property="og:image" content="http://www.yogaclicks.com/Images/global/finalinfographicfacebookshareimage.png" />
+
+
+    <meta property="title" content="Clinical studies demonstrate health benefits of yoga" />
+    <meta property="description" content="Over 200 clinical studies on the health benefits of yoga, mindfulness and meditation, listed by condition. Find a yoga teacher or venue by condition." />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" class="Iconsmenu" src="/images/svgicons/Icon_YogaMeds.svg"><span style="color: #B62B31; font-weight: normal">YogaMeds</span><span> - Condition finder</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="medic-strip "></div><br />
+
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class=" content-col" id="scroll">
+        <div class="padTop20">
+
+
+            <div class="styles-wrapper">
+                @Html.Action("MedicsPartial", "Medic")
+            </div>
+            <div class="no-more-styles" style="display:none;"></div>
+            <div class="loading-bar">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-meds active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+            <div class="cb"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#Innercontent").css('min-width', '99%');
+        $(window).scroll(function () {
+            if ($('.no-more-styles:hidden').length > 0) {
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
+                    if ($('.loading-bar:hidden').length > 0) {
+                        $('.loading-bar').show();
+                        var linkToParse = '/medic/MedicsPartial?skip=555';
+                        var link = linkToParse.replace("555", $('.slide').length);
+                        $.ajax({
+                            url: link,
+                            async: true,
+                            success: function (html) {
+                                if (html.length > 290) {
+                                    $(".styles-wrapper").append(html);
+                                } else {
+                                    $('.no-more-styles').show();
+                                }
+                                $('.loading-bar').hide();
+                            }
+                        });
+                    };
+                };
+            };
+        });
+
+    </script>
+}

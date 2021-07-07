@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ProfileModel
+
+@if (Model.ProfileAnswers != null && Model.ProfileAnswers.Count > 0)
+{
+    <h4>My true Self...</h4>
+    foreach (var answer in Model.ProfileAnswers)
+    {
+        <div>
+            <span><strong>@answer.Question.Text</strong></span>
+            <span>@answer.Text</span>
+        </div>
+    }
+}

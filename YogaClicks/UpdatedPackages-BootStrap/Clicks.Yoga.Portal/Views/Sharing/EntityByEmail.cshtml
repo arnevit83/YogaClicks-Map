@@ -1,0 +1,44 @@
+﻿@model Clicks.Yoga.Portal.Models.Sharing.SharingEntityByEmailModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Reference.EntityId)
+    @Html.HiddenFor(m => m.Reference.EntityTypeName)
+
+    <h3 class="greenHeader">Share...</h3>
+    <hr />
+    <div class="share-by-emial-content">
+        @Html.ValidationSummary()
+
+        <div class="clearRow">
+            @Html.LabelFor(m => m.EmailAddress, "Your friend's email address")
+            @Html.TextBoxFor(m => m.EmailAddress, new { style = "width: 100%;" })
+        </div>
+        <div class="clearRow">
+            @Html.LabelFor(m => m.Message, "Your message")
+            @Html.TextAreaFor(m => m.Message, new { style = "width: 100%;" })
+        </div>
+    </div>
+    <hr />
+    <div>
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button type="submit" class="button pink large fr">Send</button>
+    </div>
+}
+
+<script>
+$(document).ready(function () {
+    $('.pink').click(function () {
+
+        var $this = $(this),
+            $input = $this.closest('button');
+
+        $input.after('<button class="button pink large greybg fr" disabled="disabled">' + $input.text() + '</button>');
+        $input.hide();
+    });
+});
+</script>

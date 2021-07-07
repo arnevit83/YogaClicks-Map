@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewRatingPartialModel
+
+@if (Model.Statistics.Exist)
+{
+    <span class="rating-large @Html.StarRatingClass(Model.Statistics.AverageRating)"></span>
+}

@@ -1,0 +1,88 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "What is Yoga?";
+    ViewBag.Description = "What is yoga? A path to enlightenment, or a path to a beach-ready body? ";
+    Layout = "~/Views/Layout/layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+}
+
+@section Head {
+    <meta property="og:title" content="What is yoga? We break it down at YogaClicks" />
+    <meta property="og:description" content="The word yoga is Sanskrit for 'yoke' or 'union' …" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/what-is-yoga/cover.jpg" />
+}
+
+
+<div class="nopadding wisdomBar">
+    <div class="the-sub-menu clearfix">
+        <header>
+            <h2 class="pageTitle"><i class="wisdomIcon pull-left"></i><span style="color: #ff7e00; font-weight: normal">Wise Up</span><span> - What is yoga?</span></h2>
+        </header>
+    </div>
+</div>
+
+<div class="row nopadding">
+    <div class="col-xs-12 nopadding">
+
+        <div id="content-slider" style="margin-top: 55px;" class="content-slider">
+
+            <div class="content-col" id="scroll">
+
+                <section class="page-content">
+
+                    <article id="static">
+
+
+                        <div class="row nopadding">
+
+                            <div class="col-xs-12 nopadding">
+                                <br />
+                                <img src="/images/what-is-yoga/cover.jpg" alt="Image credit: Stacey Rosenberg by Faern" class="Scale">
+                            </div>
+
+                            <div class="col-xs-12 nopadding ">
+                                <br /><br />
+                                <p>The word yoga – ‘yuj’ – is Sanskrit for ‘yoke’ or ‘union.’</p>
+                                <p>Yoga uses physical, mental and spiritual exercises, many of which have roots in ancient traditions, to bring into union the mind, body, breath and spirit.</p>
+                                <p>
+                                    Traditionally the ultimate aim is detachment from the demands of
+                                    ego and unification with all beings. Perhaps even the realization of
+                                    Samadhi … the big E … Enlightenment itself – in which there is no
+                                    division between individual consciousness and the universe and
+                                    existence is pure and boundless bliss.
+                                </p>
+                                <p>
+                                    While this blissful state may feel like a way off, you can be sure of
+                                    one thing – whether you first get into yoga for a beach body, to destress, prep for a baby, unite with all beings, or just with puppies, a
+                                    regular yoga practice will help you live in the present with a clear
+                                    mind, a healthy body and a happy spirit.
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+    <script>
+            $(document).ready(function () {
+
+                $("#static img").each(function () {
+                    $(this).wrap("<div class='imgtxtcenter img-responsive' />");
+                    $('.imgtxtcenter').attr('style', $(this).attr('style'));
+                    $(this).after($("<span />").text($(this).attr("alt")));
+                });
+
+            });
+        </script>
+

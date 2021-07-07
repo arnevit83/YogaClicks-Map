@@ -1,0 +1,239 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@using Clicks.Yoga.Portal.Models.Entities.Summaries
+@using WebGrease.Css.Extensions
+@model Clicks.Yoga.Portal.Models.Activities.ActivityDisplayModel
+
+@{
+    ViewBag.Title = "Activity";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+    var ogString = string.Format("{0}{1} at {2} on {3} at {4}. {5}",
+        Model.Activity.Teachers.Any() ? Model.Activity.Teachers.FirstOrDefault().Name + " is teaching " : " ",
+        Model.Activity.Name, Model.Activity.Venue.Name,
+        Model.Activity.StartTime.ToShortDateString(),
+        Model.Activity.StartTime.ToShortTimeString(),
+        Model.Activity.Description);
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+@section Head {
+    <meta property="og:title" content="@Model.Activity.Name" />
+    <meta property="og:description" content="@ogString" />
+    @if (Model.Activity.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+    }
+
+}
+<div id="content-slider" role="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @if (SecurityContext.CanUpdate(Model.Activity))
+                {
+                    if (Model.Activity.Type.IsClass)
+                    {
+                        <button class="button save fr" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("UpdateClass")'; return false;">Edit</button>
+
+                    }
+                    else
+                    {
+                        <button class="button save fr" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit</button>
+                    }
+                }
+
+
+                <h2 class="greenHeader activitiesHeader" style="width: 500px"><span>&nbsp;</span>@Model.Activity.Type.Name: @Model.Activity.Name</h2>
+
+                <hr />
+                <div class="shareRecommendSection">
+
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Activity.Id, Model.Activity.EntityTypeName })
+                    </div>
+                </div>
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Action("Tabs")
+
+                <div style="clear:both;">
+                    <div class="leftCol">
+                        <div class="profile-pic" style="height:155px; margin:0 0 10px 0; border:1px solid #ccc;overflow:hidden;">
+                            @Html.DisplayFor(m => m.Activity.Image, "ProfileImage")
+                        </div>
+                        @Html.Action("AttendanceButton")
+                    </div>
+                    <div class="rightCol">
+                        <div class="block-section web-section">
+                            <div class="left">
+                                <h4>Details</h4>
+                            </div>
+                            <div class="right">
+                                <p>
+                                    <div class="spacer">
+                                        <strong>Type:</strong>
+                                        @Model.Activity.Type.Name
+                                    </div>
+                                    <div class="spacer">
+                                        <strong>Promoter:</strong>
+                                        <a href="@Url.Entity(Model.Activity.PromoterHandle)">@Model.Activity.PromoterHandle.Name</a><br />
+                                    </div>
+
+                                    <div class="spacer">
+                                        <strong>Teachers:</strong>
+
+                                        @helper TeacherLink(NamedSummaryModel teacher)
+{
+                                        <a href="@Url.Action("Display", "Teachers", new { teacher.Id })">@teacher.Name</a>
+}
+
+                                        @Html.Raw(string.Join(" | ", Model.Teachers.Select(t => TeacherLink(t).ToString().Trim()).ToArray()))
+
+                                        @if (Model.Teachers.Any() && Model.StubTeachers.Any())
+                                        {
+                                            <text>|</text>
+                                        }
+
+                                        @if (Model.StubTeachers.Any())
+                                        {
+                                            @Html.Raw(string.Join(" | ", Model.StubTeachers.ToArray()))
+                                        }
+                                    </div>
+
+                                    <div class="spacer">
+                                        <strong>Ability Level:</strong>
+                                        @Model.Activity.AbilityLevel.Name
+                                    </div>
+                                    <div class="spacer">
+                                        <strong>Booking:</strong>
+                                        @(Model.Activity.BookingRequired ? "Required" : "Not required")
+                                    </div>
+
+                                    <div class="spacer">
+                                        <strong>Price:</strong>
+                                        @Model.Activity.Price
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="left">
+                            <h4>Description</h4>
+                        </div>
+                        <div class="right">
+                            <div>
+                                <p>
+                                    @Html.NewLines(Model.Activity.Description)
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="left">
+                            <h4>Time and place</h4>
+                        </div>
+                        <div class="right">
+                            @Html.DisplayFor(m => m.Activity.Venue.Address, "AddressMap")
+                            <div>
+                                @if (Model.Activity.Venue.Exists)
+                                {
+                                    <br />
+                                    <strong>Venue</strong><br />
+                                    <a href="@Url.Entity(Model.Activity.Venue, "Display", "Venues")">@Model.Activity.Venue.Name</a><br />
+
+                                    if (Model.Activity.Venue.Address != null)
+                                    {
+                                        @Html.NewLines(Model.Activity.Venue.Address.CompleteString)
+                                    }
+                                    <br /><br />
+                                }
+
+                                <div class="spacer">
+                                    <strong>Start date:</strong> @Model.Activity.StartTime.ToString("D")
+                                    @if (Model.Activity.Type.Id == 4 && Model.Activity.StartTime.Hour == 00 && Model.Activity.StartTime.Minute == 00) { }
+                                    else
+                                    {
+                                        <br />
+                                        <strong>Start time:</strong> @Model.Activity.StartTime.ToString("t")
+                                    }
+                                    @if (!Model.Activity.Type.IsClass)
+                                    {
+                                        <br />
+                                        <strong>End date:</strong> @Model.Activity.FinishTime.ToString("D")
+                                    }
+                                    @if (Model.Activity.Type.Id == 4 && Model.Activity.FinishTime.Hour == 00 && Model.Activity.FinishTime.Minute == 00) { }
+                                    else
+                                    {
+                                        <br />
+                                        <strong>End time:</strong> @Model.Activity.FinishTime.ToString("t")
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="left">
+                            <h4>Styles</h4>
+                        </div>
+                        <div class="right">
+                            <div>
+                                <ul>
+                                    @foreach (var style in Model.Styles)
+                                    {
+                                        <li><a href="@Url.Action("Display", "Styles", new { style.Id })">@style.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="left">
+                            <h4>Conditions</h4>
+                        </div>
+                        <div class="right">
+                            <div>
+                                <ul>
+                                    @foreach (var condition in Model.Conditions)
+                                    {
+                                        <li><a href="@Url.Action("Display", "Medic", new { condition.Id })">@condition.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        @if (SecurityContext.CanUpdate(Model.Activity))
+                        {
+                            if (Model.Activity.Type.IsClass)
+                            {
+                                <button class="button save fr" style="clear: both; margin-bottom: 20px;" onclick=" location.href='@Url.Action("UpdateClass")' ; return false; ">Edit</button>
+                            }
+                            else
+                            {
+                                <button class="button save fr" style="clear: both; margin-bottom: 20px;" onclick=" location.href='@Url.Action("Update")' ; return false; ">Edit</button>
+                            }
+                        }
+                    </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        var prImage = Model.Activity.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Activity.Image.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + '@Model.Activity.Name');
+        $('.twitter-link-div').html('&text=Find yoga ' + '@Model.Activity.Type.Name: ' + '@Model.Activity.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find yoga ' + '@Model.Activity.Type.Name: ' + '@Model.Activity.Name' + ' on YogaClicks&media=' + '@prImage');
+    </script>
+}

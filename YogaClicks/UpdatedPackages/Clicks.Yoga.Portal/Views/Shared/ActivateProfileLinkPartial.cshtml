@@ -1,0 +1,11 @@
+﻿@model Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a.personal-profile").each(function(e) {
+            if ($(this).data("type") == "@Model.EntityTypeName" && $(this).data("entityid") == "@Model.EntityId") {
+                $(this).addClass("active");
+            }
+        });
+    });
+</script>

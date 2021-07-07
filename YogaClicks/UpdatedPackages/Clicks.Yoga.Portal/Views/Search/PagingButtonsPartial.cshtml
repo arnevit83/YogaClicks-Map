@@ -1,0 +1,52 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchPagingButtonsPartialModel
+<div class="pagination">
+
+    @if (Model.HasPreviousPage)
+    {
+        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+        {
+            @Html.Partial("CriteriaHidden", Model.Criteria)
+
+            <input type="hidden" name="PageIndex" value="@Model.PreviousPageIndex"/>
+            <input type="hidden" name="PageSize" value="@Model.PageSize"/>
+          <button type="submit" class="silver button">Previous Page</button>
+        }
+    }
+
+    @if (Model.TotalPages > 1)
+    {
+        foreach (var page in Model.QuickLinks)
+        {
+            if (page - 1 == Model.CurrentPage) // this is the current page
+            {
+                <span class="button">@page</span>
+            }
+            else
+            {
+                using (Html.BeginForm(null, null, FormMethod.Get, new {style = "display: inline;"}))
+                {
+                    @Html.Partial("CriteriaHidden", Model.Criteria)
+
+                    <input type="hidden" name="PageIndex" value="@(page - 1)"/>
+                    <input type="hidden" name="PageSize" value="@Model.PageSize"/>
+               
+
+                    <button type="submit" class="silver button">@page</button>
+                }
+            }
+        }
+    }
+
+    @if (Model.HasNextPage)
+    {
+        using (Html.BeginForm(null, null, FormMethod.Get, new { style = "display: inline;" }))
+        {
+            @Html.Partial("CriteriaHidden", Model.Criteria)
+    
+            <input type="hidden" name="PageIndex" value="@Model.NextPageIndex"/>
+            <input type="hidden" name="PageSize" value="@Model.PageSize"/>
+          
+            <button type="submit" class="silver button">Next Page</button>
+        }
+    }
+</div>

@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewFeedbackModel
+
+@if (Model.HelpfulCount > 0)
+{
+    <text>@(Model.HelpfulCount < 0 ? 0 : Model.HelpfulCount) @(Model.HelpfulCount > 1 ? "people" : "person") found this review helpful</text>
+}

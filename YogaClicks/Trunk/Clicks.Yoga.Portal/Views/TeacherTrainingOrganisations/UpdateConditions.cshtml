@@ -1,0 +1,16 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationConditionsUpdateModel
+
+@using (Html.BeginForm("UpdateConditions", "TeacherTrainingOrganisations", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-styles-condtions-form" }))
+{
+    @Html.HiddenFor(m => m.EntityId)
+
+    @Html.EditorFor(m => m.Conditions)
+
+    <div class="venue-services-save-section">
+        <span class="venue-conditions-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

@@ -1,0 +1,97 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileGroupsModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Title = "Groups";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Profile))
+    {
+        @Html.Action("Navigation")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h1 class="greenHeader myProfileHeader"><span>&nbsp;</span>@Model.Profile.Name</h1>
+                <div class="profileBanner">
+                    @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                </div>
+                @Html.Partial("Tabs", new { Model.Profile })
+
+                @if (Model.ManagedGroups.Any(e => e.Public || SecurityContext.IsOwner(Model.Profile)))
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h3>Groups I created</h3>
+                        </header>
+                        @foreach (var group in Model.ManagedGroups.Where(e => e.Public || SecurityContext.IsOwner(Model.Profile)))
+                        {
+                            <article class="result">
+                                <a href="@Url.Action("Display", "Groups", new { id = group.Id })" class="resultLink">
+                                    @Html.Image(group.Image, "Profile.jpg", i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+                                    <strong class="name">@Html.Trim(group.Name, 35)</strong>
+                                    <div style="margin:5px 0 0;float:left;width:100%;">
+                                        @Html.Trim(group.Description, 50)
+                                    </div>
+                                </a>
+                            </article>
+                        }
+                    </section>
+                }
+
+                @if (Model.JoinedGroups.Any(e => e.Public || SecurityContext.IsOwner(Model.Profile)))
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h3>Groups I'm in</h3>
+                        </header>
+                        @foreach (var group in Model.JoinedGroups.Where(e => e.Public || SecurityContext.IsOwner(Model.Profile)))
+                        {
+                            <article class="result">
+                                <a href="@Url.Action("Display", "Groups", new { id = group.Id })" class="resultLink">
+                                    @Html.Image(group.Image, "Profile.jpg", i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+                                    <strong class="name">@Html.Trim(group.Name, 35)</strong>
+                                    <div style="margin:5px 0 0;float:left;width:100%;">
+                                        @Html.Trim(group.Description, 50)
+                                    </div>
+                                </a>
+                            </article>
+                        }
+                    </section>
+                }
+                
+                @if (!Model.ManagedGroups.Any(e => e.Public || SecurityContext.IsOwner(Model.Profile)) && !Model.JoinedGroups.Any(e => e.Public || SecurityContext.IsOwner(Model.Profile)))
+                {
+                    <div>
+                        @if (SecurityContext.IsOwner(Model.Profile))
+                        {
+                            @:You are
+                        }
+                        else
+                        {
+                            @:This person is
+                        }
+                        not a member of any public groups.
+                    </div>
+                }
+            </article>
+        </div>
+    </div>
+</div>

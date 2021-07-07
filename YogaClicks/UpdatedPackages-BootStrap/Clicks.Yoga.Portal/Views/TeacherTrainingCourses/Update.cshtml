@@ -1,0 +1,147 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseUpdateModel
+
+@{
+    ViewBag.Title = "Edit teacher training course";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search", new { organisations = false })
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.EntityId, Model.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h2 class="teacherOrganisationHeader"><span>&nbsp;</span>Edit teacher training course</h2>
+                 @Html.Partial("Tabs", Model.OrganisationId)
+        @using (Html.BeginForm())
+        {  
+            <div>
+                @Html.ValidationSummary()
+            </div>
+            <h3 class="fl">Edit this course</h3>
+            <button class="button save fr" type="submit">Save changes <img src="/images/icon-save.png"></button>
+            <hr />
+            <br />
+            <div class="courseSection">
+                <h4>Course details</h4>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Name, "Title")
+                        @Html.EditorFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Website)
+                        @Html.EditorFor(m => m.Website)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Price)
+                        @Html.EditorFor(m => m.Price)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "course-description-box" })
+                    </div>
+                </div>
+            </div>
+            <div class="courseSection">
+                <br />
+                <h4>Duration</h4>
+                <div class="row">
+                    <div class="columns large-4">
+                        @Html.LabelFor(m => m.Duration, "Course length")
+                        @Html.EditorFor(m => m.Duration)
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="columns large-8">
+                        <div class="date">
+                            @Html.LabelFor(m => m.StartDate, "Start date")
+                            @Html.EditorFor(m => m.StartDate)
+                        </div>
+                        <div class="date">
+                            @Html.LabelFor(m => m.FinishDate, "End date")
+                            @Html.EditorFor(m => m.FinishDate)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <br />
+            <div class="courseSection">
+                <h4>Teachers and Venues</h4>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Teachers, "Add a teacher")
+                        @Html.EditorFor(m => m.Teachers)
+                    </div> 
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Venues, "Add a venue")
+                        @Html.EditorFor(m => m.Venues)
+                    </div> 
+                </div>
+            </div>
+            <hr />
+            <div class="courseSection">
+                <br />
+                <h4>Course information</h4>
+                <div class="row" id="accreditationBodies">
+                    <div class="columns large-12">
+                        @Html.LabelFor(m => m.AccreditationBodies, "Accrediting body(s)")
+                    </div>
+                    @Html.EditorFor(m => m.AccreditationBodies)
+                </div>
+                <div class="row">
+                    <div class="columns large-6">
+                        @Html.LabelFor(m => m.Accreditation, "Resulting qualification")
+                        @Html.EditorFor(m => m.Accreditation)
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.LabelFor(m => m.Style, "Associated style")
+                    @Html.EditorFor(m => m.Style)
+                </div>
+            </div>
+            <hr />            
+            <div class="courseSection">
+                <br />
+                <h4>Additional information</h4>
+                <div class="row">
+                    @Html.LabelFor(m => m.PreRequisites, "Pre-requisites")
+                    @Html.TextAreaFor(m => m.PreRequisites)
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(m => m.Notes, "Other notes")
+                    @Html.TextAreaFor(m => m.Notes)
+                </div>
+            </div>
+            <div>
+                <span class="fl profileDelete button blockButton">
+                    <span>&nbsp;</span>
+                   @Html.Action("DeleteButton", "Profiles", new { Model.EntityId, Model.EntityTypeName, Securable = Model })
+                </span>
+                <button class="button save fr" type="submit">Save changes <img src="/images/icon-save.png"></button>
+            </div>
+        }
+        </article>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityTabsModel
+
+<ul id="tabsNav">
+    <li id="wallTab">@Html.ActionLink("Wall", "Wall")</li>
+    <li id="profileTab">@Html.ActionLink("Info", "Display")</li>
+    <li id="professionalsTab">@Html.ActionLink("Teachers", "Professionals")</li>
+    <li id="galleriesTab">@Html.ActionLink("Galleries", "Galleries")</li>
+    
+    @if (Model.Permissions.Invite)
+    {
+        <li id="invitesTab">@Html.ActionLink("Invites", "Invites")</li>
+    }
+
+    <li id="attendeesTab">@Html.ActionLink("Attendees", "Attendees")</li>
+
+    @if (Model.Permissions.Manage)
+    {
+        <li id="settingsTab">@Html.ActionLink("Settings", "Settings")</li>
+    }
+</ul>
+

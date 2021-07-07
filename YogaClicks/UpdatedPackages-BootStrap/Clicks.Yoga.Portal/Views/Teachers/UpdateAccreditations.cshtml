@@ -1,0 +1,20 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherAccreditationsUpdateModel
+
+@using (Html.BeginForm("UpdateAccreditations", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-accreditations-form" }))
+{
+    @Html.HiddenFor(m => m.TeacherId)
+
+    <div class="my-accreditations-header">
+        <h3 class="fl">My accreditations</h3>
+        <p class="fr">Can't find what you're looking for?<br /><a href="mailto:body@yogaclicks.com">Suggest unlisted accreditation</a></p>
+    </div>
+    @Html.EditorFor(m => m.AccreditationBodies)
+
+    <div class="teacher-accreditation-save-section">
+        <span class="teacher-accreditation-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

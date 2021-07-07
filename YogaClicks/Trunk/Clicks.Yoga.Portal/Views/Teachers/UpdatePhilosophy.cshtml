@@ -1,0 +1,17 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherPhilosophyUpdateModel
+
+@using (Html.BeginForm("UpdatePhilosophy", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-philosophy-form" }))
+{
+    @Html.HiddenFor(m => m.TeacherId)
+
+    <h3>My teaching philosophy</h3>
+    @Html.TextAreaFor(m => m.Philosophy, new { placeholder = "300 word maximum" })
+
+    <div class="venue-about-save-section">
+        <span class="venue-about-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

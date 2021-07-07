@@ -1,0 +1,108 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityTabsModel
+
+
+
+
+<div class="well"><h4 >Explore</h4>
+
+    <div class="infocard">
+
+
+    </div><hr/><br/>
+
+    <div class="row nopadding mininav">
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  btn-Hovercolourteacher" href="@Url.Action("Display")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-info-circle  "></i><br />Info
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourteacher" href="@Url.Action("Wall")">
+                <div class="center-block  text-center navmenuIconmini">
+
+                    <i class="fa fa-rss "></i> <br />Wall
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourteacher" href="@Url.Action("Professionals")">
+                <div class=" center-block  text-center navmenuIconmini">
+
+                    <i class="fa fa-graduation-cap"></i> <br />Teachers
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row nopadding mininav">
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear  btn-Hovercolourteacher" href="@Url.Action("Galleries")">
+                <div class=" center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-photo"></i> <br />Galleries
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear btn-Hovercolourteacher" href="@Url.Action("Invites")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-share-alt "></i> <br />Invites
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  btn-Hovercolourteacher" href="@Url.Action("Attendees")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-check-square-o "></i> <br />Attendees
+
+                </div>
+            </a>
+        </div>
+
+
+    </div>
+    <div class="row nopadding mininav">
+       
+        @if (Model.Permissions.Invite)
+        {
+            <div class="col-xs-4 nopadding">
+                <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear  btn-Hovercolourteacher" href="@Url.Action("Placements")">
+                    <div class=" center-block text-center navmenuIconmini">
+
+                        <i class="fa fa-graduation-cap "></i> <br />Teachers
+
+
+
+                    </div>
+                </a>
+            </div>
+        }
+       @if (Model.Permissions.Manage)
+    {
+         <div class="col-xs-4 nopadding">
+
+             <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear btn-Hovercolourteacher" href="@Url.Action("Settings")">
+                 <div class="center-block  text-center navmenuIconmini">
+
+                     <i class="fa fa-cogs "></i> <br />Settings
+
+                 </div>
+             </a>
+        </div>
+       }
+              
+        <div style="width: 100%; margin: 2px" class="col-xs-4">&nbsp;</div>
+    </div>
+
+
+
+
+</div>

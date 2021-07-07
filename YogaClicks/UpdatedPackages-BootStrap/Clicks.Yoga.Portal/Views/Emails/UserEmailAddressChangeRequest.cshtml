@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Emails.UserEmailAddressChangeRequestEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Email Address Confirmation";
+}
+
+<p>Hello @Model.Request.User.Profile.Forename</p>
+
+<p>Please confirm your email address by clicking the link below.</p>
+
+<p><a href="@Url.EmailAction("ConfirmEmailAddressChange", "Account", new { Model.Request.Key })" target="_blank" style="color:#5da194;text-decoration:underline;">Confirm Email Address</a></p>
+

@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clicks.Yoga.Portal.ImageStore</RootNamespace>
+    <AssemblyName>Clicks.Yoga.Portal.ImageStore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ImageResizer, Version=3.4.3.103, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ImageResizer.3.4.3\lib\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.AzureReader2, Version=3.4.3.103, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ImageResizer.Plugins.AzureReader2.3.4.3\lib\ImageResizer.Plugins.AzureReader2.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.DiskCache, Version=3.4.3.103, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ImageResizer.Plugins.DiskCache.3.4.3\lib\ImageResizer.Plugins.DiskCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.1\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.1\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.1\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.3.1.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Spatial, Version=5.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.1\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Defaults\Profile.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\Pose.Image\003ec953-295c-4f93-b52a-77c128ac4118.png" />
+    <Content Include="Images\Pose.Image\01025c82-ac1a-4edb-b282-4e5376606511.png" />
+    <Content Include="Images\Pose.Image\07c94685-8160-43cf-9a0c-a20ea6b99f9b.png" />
+    <Content Include="Images\Pose.Image\0bff98c8-5258-4f3e-a3fa-bf4f5782c8a0.png" />
+    <Content Include="Images\Pose.Image\13401334-3fae-4965-abcc-e7cf3eeef3aa.png" />
+    <Content Include="Images\Pose.Image\176b69e2-df75-4eac-8477-5b0f73145fec.png" />
+    <Content Include="Images\Pose.Image\1797dc87-2335-42c9-8254-506c984172c7.png" />
+    <Content Include="Images\Pose.Image\18882da2-33bb-4b3d-ae23-b8db998db31c.png" />
+    <Content Include="Images\Pose.Image\1a2291f6-c479-4861-82ec-49dbc0340d9d.png" />
+    <Content Include="Images\Pose.Image\24e8bea5-6856-422e-9a47-d69f8c6d8dd0.png" />
+    <Content Include="Images\Pose.Image\2589f11a-dd41-4063-8585-478b9e50edb1.png" />
+    <Content Include="Images\Pose.Image\25d69d9c-7cf1-4a95-9a14-5f7bffca3649.png" />
+    <Content Include="Images\Pose.Image\271179c2-8b91-4fce-a166-7ee4822e37d9.png" />
+    <Content Include="Images\Pose.Image\28c4864e-c34c-4d63-97d1-b994961c478c.png" />
+    <Content Include="Images\Pose.Image\2c04d3d8-1e64-449a-a55e-20b0c8912522.png" />
+    <Content Include="Images\Pose.Image\2d47bb3b-ba74-4c0d-aab2-10b382c45963.png" />
+    <Content Include="Images\Pose.Image\3336ece7-f9d9-4e94-9ab3-8b5279a5136b.png" />
+    <Content Include="Images\Pose.Image\33737cec-382f-4a5b-872a-ca417c68c105.png" />
+    <Content Include="Images\Pose.Image\35efebf2-f445-4dd4-b57b-8a46387e65c4.png" />
+    <Content Include="Images\Pose.Image\3ad86c13-4224-4db6-b32e-48aeb9a2d485.png" />
+    <Content Include="Images\Pose.Image\3e372001-9884-4878-bf20-8564ff43e0df.png" />
+    <Content Include="Images\Pose.Image\3f420ae1-3876-49ca-9630-2c7a77d7b83b.png" />
+    <Content Include="Images\Pose.Image\40c5449d-0e6c-491c-838a-94cf631a4274.png" />
+    <Content Include="Images\Pose.Image\40f6472a-8421-45fa-92dc-12f41b828870.png" />
+    <Content Include="Images\Pose.Image\4195dc5c-8b5c-4fde-a165-80d1057585b4.png" />
+    <Content Include="Images\Pose.Image\437a175d-0f12-4219-b5a6-ace6dd3fc6ea.png" />
+    <Content Include="Images\Pose.Image\44d5e81e-1cf3-4635-8059-ac20edf13be9.png" />
+    <Content Include="Images\Pose.Image\46abceaf-0c52-4eed-a30f-347c8539e443.png" />
+    <Content Include="Images\Pose.Image\49b1e454-7df3-426b-937f-85cd4a3f7505.png" />
+    <Content Include="Images\Pose.Image\49cf0392-85aa-4947-b6fe-0ea810536a46.png" />
+    <Content Include="Images\Pose.Image\4b1ae2ee-edb5-4c61-8a13-cc0f25ef38df.png" />
+    <Content Include="Images\Pose.Image\4b89d7f9-e463-4da4-a589-1f2103c6f000.png" />
+    <Content Include="Images\Pose.Image\4f5bd818-8029-4857-a0fc-cdcebbffbc75.png" />
+    <Content Include="Images\Pose.Image\4fd43b91-d605-4c03-bc50-5e5e66078da6.png" />
+    <Content Include="Images\Pose.Image\4ff7b6c6-4181-4644-843e-355df7914856.png" />
+    <Content Include="Images\Pose.Image\512ef87a-2e25-4328-b20c-2f1905e29875.png" />
+    <Content Include="Images\Pose.Image\5703d614-48ea-4328-991e-7d9ffbaabc40.png" />
+    <Content Include="Images\Pose.Image\57cc883a-c3bf-4164-a2a5-7c8e231097a5.png" />
+    <Content Include="Images\Pose.Image\5a6909b0-43ad-4084-af52-52ba64afbf04.png" />
+    <Content Include="Images\Pose.Image\5c2df0db-9e34-463e-9852-0d0df0793766.png" />
+    <Content Include="Images\Pose.Image\5e302744-1e5a-4270-974b-ab5181348d01.png" />
+    <Content Include="Images\Pose.Image\6de3c5e6-21ae-4ade-9383-dcfdcd663e7a.png" />
+    <Content Include="Images\Pose.Image\76bb09a5-3118-4923-84d1-fa2c1ae90842.png" />
+    <Content Include="Images\Pose.Image\775c2b9e-e9d9-45f9-af15-28156fdda10e.png" />
+    <Content Include="Images\Pose.Image\785a7108-6f44-45c9-bbf0-7e5fa62ee049.png" />
+    <Content Include="Images\Pose.Image\7ac645ef-c457-4c0c-ab8c-5ce67a326954.png" />
+    <Content Include="Images\Pose.Image\7d7b7a63-3882-4c40-8a3f-c279275adea6.png" />
+    <Content Include="Images\Pose.Image\7e2bca19-0079-4637-bf1d-c6ba0e8c820f.png" />
+    <Content Include="Images\Pose.Image\7fea32f5-1748-453e-98fd-dbcc2f7f1597.png" />
+    <Content Include="Images\Pose.Image\8209279f-3fa4-439d-b716-e49c9d907a98.png" />
+    <Content Include="Images\Pose.Image\890d1bb2-54d9-440a-a01f-1e0284a0c906.png" />
+    <Content Include="Images\Pose.Image\8a2ca4f8-6b04-48f6-b61b-06f440d6de95.png" />
+    <Content Include="Images\Pose.Image\8b7a9757-ae4b-4753-adfd-001e285e35c0.png" />
+    <Content Include="Images\Pose.Image\8c772ccd-c045-409b-a1bf-6e2b7c8bfbf4.png" />
+    <Content Include="Images\Pose.Image\8c81cc4b-404b-410f-8475-a9329d9c6b10.png" />
+    <Content Include="Images\Pose.Image\8d722c33-cfef-4b5d-be9c-ca78a0eef842.png" />
+    <Content Include="Images\Pose.Image\8dea6100-c9e6-4640-b20f-b425c54d7770.png" />
+    <Content Include="Images\Pose.Image\908f1f84-f1c4-4f69-bfb7-9ba4f518e52b.png" />
+    <Content Include="Images\Pose.Image\92020f24-fc73-4445-8127-c86a32fbf9cb.png" />
+    <Content Include="Images\Pose.Image\957a3005-667e-47ff-94a0-3221747a997b.png" />
+    <Content Include="Images\Pose.Image\9db59cdc-22f2-48f4-a2d4-66dd57e73503.png" />
+    <Content Include="Images\Pose.Image\a06feb4c-4fef-414a-9456-faf7a04e549e.png" />
+    <Content Include="Images\Pose.Image\a092e8b6-030f-4bb0-95db-e7e6d145dcb5.png" />
+    <Content Include="Images\Pose.Image\aa836c2c-98f4-4fb7-babc-cec73486ad3d.png" />
+    <Content Include="Images\Pose.Image\aad280a9-2d79-4b02-a4f7-0a00e605fb9a.png" />
+    <Content Include="Images\Pose.Image\aee41fb6-445a-4bbd-bde4-edfe7f42b015.png" />
+    <Content Include="Images\Pose.Image\af370717-c178-4b11-9787-b287a85a1e8c.png" />
+    <Content Include="Images\Pose.Image\b032e284-4370-4060-b732-92ba6ecbca81.png" />
+    <Content Include="Images\Pose.Image\b0e53c22-3fd1-4ad7-b051-c97e48a8efb8.png" />
+    <Content Include="Images\Pose.Image\b11004b8-7229-448b-a26e-47e7387a1645.png" />
+    <Content Include="Images\Pose.Image\b627c98f-0354-4a2e-a138-a4a8e242ed74.png" />
+    <Content Include="Images\Pose.Image\b7b87b12-0818-453b-be32-7fcac4c69b8b.png" />
+    <Content Include="Images\Pose.Image\bbcfb6c2-b3af-4fda-8248-4598e2ac098c.png" />
+    <Content Include="Images\Pose.Image\c00f866f-5bb8-43ef-afe4-3d9389dc33f8.png" />
+    <Content Include="Images\Pose.Image\c3000050-1de1-4e79-8ab6-c31c5ccf9960.png" />
+    <Content Include="Images\Pose.Image\c3f26ce3-c08b-4321-acac-35e7d9a025cc.png" />
+    <Content Include="Images\Pose.Image\c6ae7f6a-0a55-4fa6-94fe-2108ee861082.png" />
+    <Content Include="Images\Pose.Image\c71541dd-1112-4504-b503-d3c146465b0b.png" />
+    <Content Include="Images\Pose.Image\d1b5e378-0579-478e-b658-7f7ccbea3ea3.png" />
+    <Content Include="Images\Pose.Image\d569815f-4c21-4656-bd73-9b89664bf3f0.png" />
+    <Content Include="Images\Pose.Image\d6bda60a-920a-4b9c-bf3f-c40ac4758375.png" />
+    <Content Include="Images\Pose.Image\d831b521-bdc4-4808-836b-07591044bf53.png" />
+    <Content Include="Images\Pose.Image\d904206a-0a63-43a8-ad33-473c4c98458b.png" />
+    <Content Include="Images\Pose.Image\dc421274-5a79-46f0-92ec-59a3c55501e4.png" />
+    <Content Include="Images\Pose.Image\de0f3bec-3a7d-4e20-bc37-fc4ff14842f6.png" />
+    <Content Include="Images\Pose.Image\e46474d6-2ece-4c7e-815a-d725444311dd.png" />
+    <Content Include="Images\Pose.Image\e5b04a1a-415f-468e-9ed4-0468689d8518.png" />
+    <Content Include="Images\Pose.Image\e8d7a513-4110-4359-981c-b370c00d040f.png" />
+    <Content Include="Images\Pose.Image\e91e8ed1-85a0-4f7d-af60-eeede756a3ea.png" />
+    <Content Include="Images\Pose.Image\eb1f07e3-83ae-4dcc-b43c-3124059e9bf8.png" />
+    <Content Include="Images\Pose.Image\eb6dc932-e427-4dbd-a951-fb7d6e23442a.png" />
+    <Content Include="Images\Pose.Image\ed07db6a-a716-40c6-a0b2-05787867f134.png" />
+    <Content Include="Images\Pose.Image\ee9fecf5-29c5-4cc5-9a8d-a8638cb3edd9.png" />
+    <Content Include="Images\Pose.Image\eece7592-c896-4aab-b4a3-ab58695f10f7.png" />
+    <Content Include="Images\Pose.Image\f1e80e9b-3ad2-4eb3-9f86-183456525e5a.png" />
+    <Content Include="Images\Pose.Image\f8015ef1-1a3a-44c8-bb0e-e44646af99df.png" />
+    <Content Include="Images\Pose.Image\f87b7230-b855-47e8-bc58-821f05f8b751.png" />
+    <Content Include="Images\Pose.Image\f932443e-e68d-4ecb-a352-9d783cea3b8a.png" />
+    <Content Include="Images\Style.DirectoryImage\03051bbb-1601-480c-bb06-2ba10c204deb.png" />
+    <Content Include="Images\Style.DirectoryImage\03317ddc-6dd1-4f2b-a098-a4945e13eaf2.png" />
+    <Content Include="Images\Style.DirectoryImage\058afde5-1f31-44b7-af02-89b7415a7c7d.png" />
+    <Content Include="Images\Style.DirectoryImage\08219119-934a-4414-9e7e-2016f84f8520.png" />
+    <Content Include="Images\Style.DirectoryImage\0a2bb88d-14ed-4c73-b8bf-5230d43a169c.png" />
+    <Content Include="Images\Style.DirectoryImage\0d0b2812-b3b7-451d-a5ca-dc7bc67d515d.png" />
+    <Content Include="Images\Style.DirectoryImage\101cb1eb-8316-434b-af48-3ae0b7ae935f.png" />
+    <Content Include="Images\Style.DirectoryImage\10f5548c-6601-4cb9-9355-f5017499c9c4.png" />
+    <Content Include="Images\Style.DirectoryImage\1146be3b-557d-4433-a3c0-8d346af3a332.png" />
+    <Content Include="Images\Style.DirectoryImage\147ef2ea-ffa0-4407-95e1-10f64a316dae.png" />
+    <Content Include="Images\Style.DirectoryImage\18086fbb-f345-4950-9ce7-9e6a1569d556.png" />
+    <Content Include="Images\Style.DirectoryImage\20af8de7-6fb0-44c0-a38b-ad6bd54d68cb.png" />
+    <Content Include="Images\Style.DirectoryImage\20bca81d-23a6-4972-a5de-e91cbad781eb.png" />
+    <Content Include="Images\Style.DirectoryImage\23837de7-9c8e-4de7-b714-d7bcf39a3799.png" />
+    <Content Include="Images\Style.DirectoryImage\23c7c89b-dbb7-43cb-927c-a077a6be2ab4.png" />
+    <Content Include="Images\Style.DirectoryImage\2652ba8b-5b33-4b1c-a59c-c25ed0677240.png" />
+    <Content Include="Images\Style.DirectoryImage\2659d1ff-b2d6-4b62-98e2-4f094242a4c0.png" />
+    <Content Include="Images\Style.DirectoryImage\2814de81-b063-41e8-a9a6-b4f9459b75b0.png" />
+    <Content Include="Images\Style.DirectoryImage\2a268398-0cbc-458f-8b51-e1f6079f8846.png" />
+    <Content Include="Images\Style.DirectoryImage\2a58b7db-b329-4512-a99d-d605fb43f7f0.png" />
+    <Content Include="Images\Style.DirectoryImage\2c2a26e6-c340-4a9a-8067-1ee01d51dc7a.png" />
+    <Content Include="Images\Style.DirectoryImage\2f93e5ab-2b4d-4b86-ae0f-7318e8a7d5ff.png" />
+    <Content Include="Images\Style.DirectoryImage\30e7a29a-9507-4f73-a6f9-bc54482fa7c4.png" />
+    <Content Include="Images\Style.DirectoryImage\31d33824-28fa-4840-89f4-2b88595d06af.png" />
+    <Content Include="Images\Style.DirectoryImage\3a283599-1b71-4d88-9200-c40136a41147.png" />
+    <Content Include="Images\Style.DirectoryImage\3a5778f6-093b-41ac-899c-7843b69f1617.png" />
+    <Content Include="Images\Style.DirectoryImage\3a9def1c-d825-4dbb-8fa0-28623a7cbb6f.png" />
+    <Content Include="Images\Style.DirectoryImage\3e10ed98-e19e-434e-92a4-bf05eac8c7f7.png" />
+    <Content Include="Images\Style.DirectoryImage\495cf6ad-d96e-4630-be07-3d89d2925cc8.png" />
+    <Content Include="Images\Style.DirectoryImage\4a3f542c-7afd-4ca9-b76e-22ed788d42f9.png" />
+    <Content Include="Images\Style.DirectoryImage\4b6e1059-2fa3-485c-8807-029264e75557.png" />
+    <Content Include="Images\Style.DirectoryImage\4d575413-a580-4833-93b4-c4f844742a57.png" />
+    <Content Include="Images\Style.DirectoryImage\4deea693-c50a-426a-a11d-8efd65cec057.png" />
+    <Content Include="Images\Style.DirectoryImage\4f055c20-3fc7-4fa7-b501-709a384dc2ec.png" />
+    <Content Include="Images\Style.DirectoryImage\4f73cf8a-a8c6-4d55-b6d5-8d2d72eb58f9.png" />
+    <Content Include="Images\Style.DirectoryImage\5026cb26-b622-412c-b4c4-f454d9874424.png" />
+    <Content Include="Images\Style.DirectoryImage\5336b97b-d28c-4b3e-8f8b-c4a18bba2beb.png" />
+    <Content Include="Images\Style.DirectoryImage\5655b296-1548-4f84-b081-3de9d3bc394a.png" />
+    <Content Include="Images\Style.DirectoryImage\571170f6-984f-4cb9-ba97-172e0263fb64.png" />
+    <Content Include="Images\Style.DirectoryImage\579c7193-2ae0-47e1-b8eb-fe39bfb93255.png" />
+    <Content Include="Images\Style.DirectoryImage\5b0ec797-1c19-4910-827a-95b2e5063691.png" />
+    <Content Include="Images\Style.DirectoryImage\5c28a865-dc66-4e02-bbb7-e2071916e5c6.png" />
+    <Content Include="Images\Style.DirectoryImage\5c8ca549-8064-4049-8094-2708443421f6.png" />
+    <Content Include="Images\Style.DirectoryImage\5ecd4bbf-213c-4246-93e2-1d01b3e4093c.png" />
+    <Content Include="Images\Style.DirectoryImage\6114fa8f-70a2-42f9-aa9d-e40f98b04365.png" />
+    <Content Include="Images\Style.DirectoryImage\63067ef8-7ec0-4ef7-8cfd-aca367f33063.png" />
+    <Content Include="Images\Style.DirectoryImage\648e7a88-7293-49bd-ad38-9890b2de21eb.png" />
+    <Content Include="Images\Style.DirectoryImage\69dfbef1-f1d7-44fa-9fc0-cd63e593bc65.png" />
+    <Content Include="Images\Style.DirectoryImage\6e7d0b2c-9885-4d35-b9cf-aaa547f1a787.png" />
+    <Content Include="Images\Style.DirectoryImage\6ebb2fe1-7f6f-4ac6-b66c-370191a75180.png" />
+    <Content Include="Images\Style.DirectoryImage\705a9423-6282-4add-9993-58d72907a2f1.png" />
+    <Content Include="Images\Style.DirectoryImage\712b2c4e-cc7e-4e26-b1a4-015839e5db6b.png" />
+    <Content Include="Images\Style.DirectoryImage\72ee7ac2-4bf5-4e4b-bf41-da708c4034e6.png" />
+    <Content Include="Images\Style.DirectoryImage\73c91891-42b8-4989-a4e9-fc2788438982.png" />
+    <Content Include="Images\Style.DirectoryImage\75b722cd-5143-42a8-94bd-7bbd2bae77c2.png" />
+    <Content Include="Images\Style.DirectoryImage\7655750c-3c26-4702-9634-3767cfb35f7f.png" />
+    <Content Include="Images\Style.DirectoryImage\7705263d-f5c4-4579-b62b-32a25283b418.png" />
+    <Content Include="Images\Style.DirectoryImage\77fb9754-582f-4e0c-9a1d-4ffacbdc5e94.png" />
+    <Content Include="Images\Style.DirectoryImage\790c4fa6-2947-4343-ba55-faf4533f1b61.png" />
+    <Content Include="Images\Style.DirectoryImage\7a261796-9910-45c3-8324-b388543fee3f.png" />
+    <Content Include="Images\Style.DirectoryImage\7b154aef-0b85-444c-832c-277fc7b9822d.png" />
+    <Content Include="Images\Style.DirectoryImage\81892523-6108-4ee2-8c52-e45179744931.png" />
+    <Content Include="Images\Style.DirectoryImage\88d3dbfb-39bc-4709-9423-ef243028312e.png" />
+    <Content Include="Images\Style.DirectoryImage\89300181-b189-472b-a84b-fca476044608.png" />
+    <Content Include="Images\Style.DirectoryImage\8936fac0-df89-4ec6-a004-a81658cf7df3.png" />
+    <Content Include="Images\Style.DirectoryImage\8ba00343-9d00-4019-a344-f5a8f63eb0f4.png" />
+    <Content Include="Images\Style.DirectoryImage\8e53560e-6f4f-4f06-aefa-fcf5e8972768.png" />
+    <Content Include="Images\Style.DirectoryImage\902db86d-4fbc-49b0-b005-a32fb54a5bab.png" />
+    <Content Include="Images\Style.DirectoryImage\903abcf9-7e6b-4be7-b9e3-5501c68e42ef.png" />
+    <Content Include="Images\Style.DirectoryImage\914f4fb1-e7ec-4fe5-b1d7-423962b8c0b5.png" />
+    <Content Include="Images\Style.DirectoryImage\91cf4910-0093-49fb-b3c3-a30392ffe018.png" />
+    <Content Include="Images\Style.DirectoryImage\9370dd72-b417-4173-b92c-695b732c4b3e.png" />
+    <Content Include="Images\Style.DirectoryImage\945fdb15-30fc-4f8d-8ada-0ce3116609eb.png" />
+    <Content Include="Images\Style.DirectoryImage\95170271-4171-4b0d-946d-cf05da4cf47b.png" />
+    <Content Include="Images\Style.DirectoryImage\98982820-67aa-47c0-8c9c-d693cc6758bb.png" />
+    <Content Include="Images\Style.DirectoryImage\9a8ba4f4-9537-460c-897b-79f8a355cea5.png" />
+    <Content Include="Images\Style.DirectoryImage\a04d9cde-f37e-4e92-94c6-5283fb834398.png" />
+    <Content Include="Images\Style.DirectoryImage\a3ebde32-978a-486e-b9bf-e2cc449184cc.png" />
+    <Content Include="Images\Style.DirectoryImage\a4b6e4e1-ad51-4c7d-9d70-203a7cd30c4a.png" />
+    <Content Include="Images\Style.DirectoryImage\a5089923-e56b-4cda-8797-b3e8bfda79c7.png" />
+    <Content Include="Images\Style.DirectoryImage\a6d06008-c994-4ac4-b16a-a0d23e433959.png" />
+    <Content Include="Images\Style.DirectoryImage\a7284111-1f4f-49fd-832c-e0a5e2756ff3.png" />
+    <Content Include="Images\Style.DirectoryImage\a93c05e1-72e4-4cd7-8627-26948ecf0656.png" />
+    <Content Include="Images\Style.DirectoryImage\ab67cd6b-be23-463f-b80d-430f61139030.png" />
+    <Content Include="Images\Style.DirectoryImage\ac81e8d4-52e3-4214-9b4c-581bd531b178.png" />
+    <Content Include="Images\Style.DirectoryImage\acb35fc9-78e7-40e1-a406-09caff26ce45.png" />
+    <Content Include="Images\Style.DirectoryImage\b22125a9-fe9e-4d27-800a-80600dd0005f.png" />
+    <Content Include="Images\Style.DirectoryImage\b389651b-8f9b-46bd-93ef-bdad0441c412.png" />
+    <Content Include="Images\Style.DirectoryImage\b7f41193-2238-4aa6-8b61-06a291815746.png" />
+    <Content Include="Images\Style.DirectoryImage\b8f0e9b3-f407-4bac-b985-8971ff3f7d16.png" />
+    <Content Include="Images\Style.DirectoryImage\b9610d74-000b-4bfe-8cdc-c396da2b9327.png" />
+    <Content Include="Images\Style.DirectoryImage\b97c5b9b-c2e5-4087-8c83-5862d031d523.png" />
+    <Content Include="Images\Style.DirectoryImage\bcb5b5e3-2119-4119-951b-6de733f7433f.png" />
+    <Content Include="Images\Style.DirectoryImage\bf765ffc-bd15-4d7e-9b9d-04d70050e8df.png" />
+    <Content Include="Images\Style.DirectoryImage\bfc85660-d13d-4c52-8d28-f685b0f3fd54.png" />
+    <Content Include="Images\Style.DirectoryImage\c47c1025-68b4-43eb-9c80-ae8925e8cf7e.png" />
+    <Content Include="Images\Style.DirectoryImage\c72b82b6-29e3-49a7-bb07-f62c73f08383.png" />
+    <Content Include="Images\Style.DirectoryImage\c8b0380b-23c1-4fd0-bf4c-a525406369b9.png" />
+    <Content Include="Images\Style.DirectoryImage\cb3b2f0f-4521-43c2-98ff-1bc415f52dcc.png" />
+    <Content Include="Images\Style.DirectoryImage\cbbc57d6-877a-44dd-b966-43456bc0eb32.png" />
+    <Content Include="Images\Style.DirectoryImage\cd5aa81c-dc2d-49e3-bc1b-7c9c44f1d8f4.png" />
+    <Content Include="Images\Style.DirectoryImage\ce1859a8-41eb-40a2-b526-02e69cc0cc35.png" />
+    <Content Include="Images\Style.DirectoryImage\cf3b3da0-8758-47c5-9ba0-9d4f6bdd93d2.png" />
+    <Content Include="Images\Style.DirectoryImage\cfb0fa01-9aff-4c17-b20f-55e8096d7bce.png" />
+    <Content Include="Images\Style.DirectoryImage\d1e80611-bba8-4e77-a3e3-5a3cc28ab697.png" />
+    <Content Include="Images\Style.DirectoryImage\d334ef68-c891-4d4c-abce-96bd5727d2e1.png" />
+    <Content Include="Images\Style.DirectoryImage\d3be16be-1d3b-4e9a-9bdb-511c99c91e93.png" />
+    <Content Include="Images\Style.DirectoryImage\d418cfd2-6d95-42fb-b103-ba21afeb728d.png" />
+    <Content Include="Images\Style.DirectoryImage\d4bd0d71-b26e-4be2-a436-e063a7aa57f0.png" />
+    <Content Include="Images\Style.DirectoryImage\d579677f-7355-434b-874f-f5d54f656a86.png" />
+    <Content Include="Images\Style.DirectoryImage\d6651ab4-6dc5-4421-85fc-b989a1eee421.png" />
+    <Content Include="Images\Style.DirectoryImage\d76b92f1-b16a-40da-b901-04894600ba70.png" />
+    <Content Include="Images\Style.DirectoryImage\d9c1e4db-811a-4d1f-a4ff-a9145903ef6b.png" />
+    <Content Include="Images\Style.DirectoryImage\db87312a-fa54-485c-844a-3a812587ff26.png" />
+    <Content Include="Images\Style.DirectoryImage\db9fef4e-141b-4fcf-a7ca-d9e20eec3e16.png" />
+    <Content Include="Images\Style.DirectoryImage\dd58c4f3-57eb-4b99-b309-ae0340b229ad.png" />
+    <Content Include="Images\Style.DirectoryImage\df4e8d1a-130c-4a3d-8458-7869831430a7.png" />
+    <Content Include="Images\Style.DirectoryImage\e07466c1-a5a0-4013-90e0-bfa80925b533.png" />
+    <Content Include="Images\Style.DirectoryImage\e08983a2-53a8-47bb-b912-044e6610a905.png" />
+    <Content Include="Images\Style.DirectoryImage\e2716c67-4158-4e44-a1aa-13a5b78710ea.png" />
+    <Content Include="Images\Style.DirectoryImage\e2c313f6-6815-4db4-b4ee-41700866cab5.png" />
+    <Content Include="Images\Style.DirectoryImage\e533e3b2-a5b8-4bd7-9baf-93d225253795.png" />
+    <Content Include="Images\Style.DirectoryImage\e68da912-5b1b-4ae3-bb6d-3c21cd99b580.png" />
+    <Content Include="Images\Style.DirectoryImage\e8ab5f73-ec90-44dc-b61d-584819f1b43a.png" />
+    <Content Include="Images\Style.DirectoryImage\e922385e-83f3-480e-99a4-b98bd23c7385.png" />
+    <Content Include="Images\Style.DirectoryImage\e9d2bbc2-337d-4e70-962f-0916db158d73.png" />
+    <Content Include="Images\Style.DirectoryImage\eaa12747-222a-49f2-bd9a-fbca5921ce01.png" />
+    <Content Include="Images\Style.DirectoryImage\eae07176-649e-450a-a83a-5841af69cb4a.png" />
+    <Content Include="Images\Style.DirectoryImage\f17ad7f5-58bc-4243-9344-0f7ef77a79bf.png" />
+    <Content Include="Images\Style.DirectoryImage\f4acdacf-2bff-4296-b8f5-7898535870b4.png" />
+    <Content Include="Images\Style.DirectoryImage\f6b71751-3ff0-4a79-a578-3086d15191a4.png" />
+    <Content Include="Images\Style.DirectoryImage\f898da72-eeed-4e8b-a9fb-9ddba89fd34f.png" />
+    <Content Include="Images\Style.DirectoryImage\f9024ae7-991d-4504-918a-70f643de72d9.png" />
+    <Content Include="Images\Style.DirectoryImage\f994eedf-8963-4514-a019-5752d588cfdd.png" />
+    <Content Include="Images\Style.DirectoryImage\fcc6db9e-ab2e-4489-b5dc-fc214b830044.png" />
+    <Content Include="Images\Style.DirectoryImage\fec837b9-745b-46b9-a0c7-0afbd10e83ef.png" />
+    <Content Include="Images\Style.Image\038c01da-6632-4d7f-8654-6cd3e639c225.jpg" />
+    <Content Include="Images\Style.Image\03a294a4-fea4-4340-893c-38acfb0f3cac.jpg" />
+    <Content Include="Images\Style.Image\03a94512-3103-4068-975e-3be3d3795e04.jpg" />
+    <Content Include="Images\Style.Image\06818356-cd8f-454e-b188-ce627e1904ce.jpg" />
+    <Content Include="Images\Style.Image\0761a1eb-e083-4b2a-becb-dc3dbb6d0499.jpg" />
+    <Content Include="Images\Style.Image\07b115cf-aad7-4081-ae41-e527006ed84e.jpg" />
+    <Content Include="Images\Style.Image\09b6b9b0-be06-4696-b341-de01ae0ead37.jpg" />
+    <Content Include="Images\Style.Image\0bf303e7-0855-4f69-8e6d-409ecaf36118.jpg" />
+    <Content Include="Images\Style.Image\0c866208-2666-4646-81c2-3f12f71c701e.jpg" />
+    <Content Include="Images\Style.Image\11a1e6f4-11a1-4a21-badb-49a9ec346938.jpg" />
+    <Content Include="Images\Style.Image\11ecce0b-b6ac-4efd-827f-a01ae28160fd.jpg" />
+    <Content Include="Images\Style.Image\1254ab09-ce04-4c63-b671-ade7f6dbf696.jpg" />
+    <Content Include="Images\Style.Image\1a0c344f-5968-407f-82c3-255b4e97bf84.jpg" />
+    <Content Include="Images\Style.Image\1bef8a18-2271-445f-9cd7-50b14c878931.jpg" />
+    <Content Include="Images\Style.Image\1c014129-4cee-4d07-919e-94acb068d649.jpg" />
+    <Content Include="Images\Style.Image\1edf96f9-1710-47f3-b67d-7472ecb7b044.jpg" />
+    <Content Include="Images\Style.Image\1f599fe2-a964-4074-9450-eb3bbaa8838f.jpg" />
+    <Content Include="Images\Style.Image\239becc7-a4e2-4c79-a0d3-4eadd6bb43b8.jpg" />
+    <Content Include="Images\Style.Image\24d2a3dd-7c8b-4cf3-86f0-663b4da89c7a.jpg" />
+    <Content Include="Images\Style.Image\26013d03-1a60-4a65-b7f4-9de045584611.jpg" />
+    <Content Include="Images\Style.Image\2775fbe7-833f-42c8-9516-20cbc0fcc1cf.jpg" />
+    <Content Include="Images\Style.Image\29562f3f-d3bc-4df7-9485-da87d09427eb.jpg" />
+    <Content Include="Images\Style.Image\2959d2a0-3338-4bbb-a26d-faa3a32dca4b.jpg" />
+    <Content Include="Images\Style.Image\2b8d7a34-7992-45ac-a347-642294141378.jpg" />
+    <Content Include="Images\Style.Image\2bd95da1-e6be-4f41-9fb4-8f03d6fddcd1.jpg" />
+    <Content Include="Images\Style.Image\2f7b1a63-4855-4242-9e5b-3122f8bccbbe.jpg" />
+    <Content Include="Images\Style.Image\3100e372-5b3d-4519-9895-1bae2f0dd20d.jpg" />
+    <Content Include="Images\Style.Image\3255c644-0842-4eb9-aeaa-603b52fb2db7.jpg" />
+    <Content Include="Images\Style.Image\34ce90c1-14ef-4fe0-9bad-524168232007.jpg" />
+    <Content Include="Images\Style.Image\362ee48e-ca0b-4e0b-ac78-064d775e1f3b.jpg" />
+    <Content Include="Images\Style.Image\36c4085b-fab9-4c9c-a723-a31e9ca7d45a.jpg" />
+    <Content Include="Images\Style.Image\37938cb9-8024-4d83-b782-55d81f39ac1e.jpg" />
+    <Content Include="Images\Style.Image\3837d651-a2ef-458b-8968-71ecb3d07193.jpg" />
+    <Content Include="Images\Style.Image\3d3b83cf-3964-48aa-b25b-ffb8a70346fe.jpg" />
+    <Content Include="Images\Style.Image\3de27c96-2ce1-4576-b8ca-414f28478156.jpg" />
+    <Content Include="Images\Style.Image\3f12ced2-25a6-40b0-bef8-462a62286b39.jpg" />
+    <Content Include="Images\Style.Image\3fb98437-675e-4ed7-b130-a57551fb3ae8.jpg" />
+    <Content Include="Images\Style.Image\413ba070-0bb2-4f2b-92f0-179d3c3e9eff.jpg" />
+    <Content Include="Images\Style.Image\4717447c-a054-4291-b2a6-0b267328bcd4.jpg" />
+    <Content Include="Images\Style.Image\4724340c-12ef-479b-8436-585800e0ed80.jpg" />
+    <Content Include="Images\Style.Image\49b50756-b421-4072-92f4-644b090bd2c5.jpg" />
+    <Content Include="Images\Style.Image\4bd74d90-e9aa-44b4-922a-7988760398bc.jpg" />
+    <Content Include="Images\Style.Image\505f57e2-d691-4737-b37b-d1a4563ce340.jpg" />
+    <Content Include="Images\Style.Image\508135df-09f6-4456-83be-5314b12aae85.jpg" />
+    <Content Include="Images\Style.Image\51be42c9-5bb0-4e52-95c3-582f14ade2f8.jpg" />
+    <Content Include="Images\Style.Image\5272abe4-f3d0-42d9-95b7-d36b02284cad.jpg" />
+    <Content Include="Images\Style.Image\535d6897-10d8-4b8f-b204-492df132fe07.jpg" />
+    <Content Include="Images\Style.Image\5767eb42-6415-48c8-bfab-e3506908b5b7.jpg" />
+    <Content Include="Images\Style.Image\5a063b49-9c3c-4240-8135-639b15ca0a66.jpg" />
+    <Content Include="Images\Style.Image\5b2967a0-1b1e-4a02-89a8-2715b35813c9.jpg" />
+    <Content Include="Images\Style.Image\5ea0c19e-ad80-45bd-b6d4-3d06bc151708.jpg" />
+    <Content Include="Images\Style.Image\607b62c3-264e-4a11-9835-90ecb69f3b5d.jpg" />
+    <Content Include="Images\Style.Image\6089863f-7f47-454b-a99b-176fb001fd73.jpg" />
+    <Content Include="Images\Style.Image\62cb2943-fc1e-41e1-80e3-ae861ff57d29.jpg" />
+    <Content Include="Images\Style.Image\6571e406-9a81-4617-b401-524287eb6349.jpg" />
+    <Content Include="Images\Style.Image\67e773fe-c571-4eb2-a500-65c645eea33b.jpg" />
+    <Content Include="Images\Style.Image\69cb5301-d844-43e2-9c05-9ee688ff0442.jpg" />
+    <Content Include="Images\Style.Image\6b017950-80e4-4a86-9ec8-2d14d17d3652.jpg" />
+    <Content Include="Images\Style.Image\6be02650-8c96-429a-bacb-0740a876bffc.jpg" />
+    <Content Include="Images\Style.Image\6e18876a-ea50-4782-b156-ad7f47b8e1f8.jpg" />
+    <Content Include="Images\Style.Image\708e2585-bccd-4aeb-bd21-78e9ca74fef2.jpg" />
+    <Content Include="Images\Style.Image\7186a952-3000-45a7-b9df-7954dc1e1fad.jpg" />
+    <Content Include="Images\Style.Image\71908196-5507-4c8a-990f-7188705083e4.jpg" />
+    <Content Include="Images\Style.Image\756db693-bbd4-4711-a87a-82f0fa9bc877.jpg" />
+    <Content Include="Images\Style.Image\759ac50a-cfc9-46d2-9546-966665c98338.jpg" />
+    <Content Include="Images\Style.Image\780b4913-7741-4147-9a90-fb0596524523.jpg" />
+    <Content Include="Images\Style.Image\80029aff-c5ee-486c-a2fa-d372ab8c8e7f.jpg" />
+    <Content Include="Images\Style.Image\81a19d78-ead6-44d7-b45b-88e48e53db63.jpg" />
+    <Content Include="Images\Style.Image\828696d9-d7a4-4054-b6e3-0af3afe99ad6.jpg" />
+    <Content Include="Images\Style.Image\852eb6e6-2e54-4a03-beec-99335a193bae.jpg" />
+    <Content Include="Images\Style.Image\85dacd6b-91ae-409d-8790-99715796b890.jpg" />
+    <Content Include="Images\Style.Image\86bc8100-9a2e-4757-8522-d2367d0dfbc4.jpg" />
+    <Content Include="Images\Style.Image\86c3cbd6-793a-4896-984d-ad1e6cf575d9.jpg" />
+    <Content Include="Images\Style.Image\88cc36fb-d51d-418c-86dd-40bba5a96f5d.jpg" />
+    <Content Include="Images\Style.Image\88f9ae8f-d9a3-4fe6-853d-c20dd3cfbd03.jpg" />
+    <Content Include="Images\Style.Image\8b7c133d-4426-4d0b-8c34-1e4225b77a92.jpg" />
+    <Content Include="Images\Style.Image\8b83731d-aba0-4097-a582-488daf4b7665.jpg" />
+    <Content Include="Images\Style.Image\8cb730d0-5e7e-40bd-a489-332fdcd02957.jpg" />
+    <Content Include="Images\Style.Image\8d69aec7-a792-48bd-bffa-075e69d83299.jpg" />
+    <Content Include="Images\Style.Image\8fb24474-354e-473d-897a-da45f8f1a4bc.jpg" />
+    <Content Include="Images\Style.Image\914f8711-6756-420d-ba6d-f6ab148791ba.jpg" />
+    <Content Include="Images\Style.Image\947a5d00-e702-4de2-954f-b7220a7e87c8.jpg" />
+    <Content Include="Images\Style.Image\966f9306-8131-4bdc-a914-499f8cd25104.jpg" />
+    <Content Include="Images\Style.Image\9b721dd7-e28d-4fcb-a5da-b7a64470ee5c.jpg" />
+    <Content Include="Images\Style.Image\9c5ed5ad-36e1-44c7-b31e-ec5ec15692ee.jpg" />
+    <Content Include="Images\Style.Image\a19ee845-d21f-48c4-9881-67a340a8d0f8.jpg" />
+    <Content Include="Images\Style.Image\a2461bab-079d-43dd-83d2-59d98edb3b3d.jpg" />
+    <Content Include="Images\Style.Image\a502e6eb-ff79-45e3-872f-b50c53d19e3f.jpg" />
+    <Content Include="Images\Style.Image\a63d02c8-e408-4344-9f74-885a11bc7a67.jpg" />
+    <Content Include="Images\Style.Image\a701b869-424d-4507-a6e4-0edd056c7b4a.jpg" />
+    <Content Include="Images\Style.Image\a8c78fe3-7170-4c3c-9e59-d77b60ff4ceb.jpg" />
+    <Content Include="Images\Style.Image\aa466053-e973-4035-84e7-1e0bb0f7e10d.jpg" />
+    <Content Include="Images\Style.Image\ab3094c4-83ab-492e-b1fb-7ce49cf9e59a.jpg" />
+    <Content Include="Images\Style.Image\ab8d9132-9de9-4e59-80cf-c626843a41e1.jpg" />
+    <Content Include="Images\Style.Image\ae55c489-37b8-4896-9d8b-54ad28cc3262.jpg" />
+    <Content Include="Images\Style.Image\af180303-9f6a-48f2-a313-ec7df9cc1c1f.jpg" />
+    <Content Include="Images\Style.Image\b2924871-e0da-44c0-a2f6-4fa6862f8bf1.jpg" />
+    <Content Include="Images\Style.Image\b2b0006a-ca19-4dad-9b83-13de2bb416b5.jpg" />
+    <Content Include="Images\Style.Image\bb4c6209-e730-4f54-b0df-b9b262275859.jpg" />
+    <Content Include="Images\Style.Image\bdfdc2d9-b15f-4894-8914-f95ed75c05c1.jpg" />
+    <Content Include="Images\Style.Image\c035696a-d8f8-46aa-b5c6-7e42c1cdc48c.jpg" />
+    <Content Include="Images\Style.Image\c13c5036-e8db-4b86-b830-32b310a2ebd0.jpg" />
+    <Content Include="Images\Style.Image\c50de2f6-6562-42ed-b5e3-f1bfa911aa4d.jpg" />
+    <Content Include="Images\Style.Image\c6063a61-809f-4ccb-a9d1-48dfc4aad4ba.jpg" />
+    <Content Include="Images\Style.Image\c6834063-5f1e-4e08-b975-15a1e7982b51.jpg" />
+    <Content Include="Images\Style.Image\c6db1436-ed3e-489c-8989-184a95720a5a.jpg" />
+    <Content Include="Images\Style.Image\cb012fcc-008a-4a82-b98c-67c0964dcc42.jpg" />
+    <Content Include="Images\Style.Image\cb13a6d6-98e5-4c7d-865e-e929a28bf969.jpg" />
+    <Content Include="Images\Style.Image\cc8ce3cd-80c4-49f6-8d07-47b6a057d4ac.jpg" />
+    <Content Include="Images\Style.Image\cdc1937c-62a2-4a5c-ab63-0d7a57e4b679.jpg" />
+    <Content Include="Images\Style.Image\cde4bd2f-f29a-4cca-963c-d091e861a82d.jpg" />
+    <Content Include="Images\Style.Image\ce88fc07-e656-4c70-bc3e-c6fd14b080bb.jpg" />
+    <Content Include="Images\Style.Image\d055d9ee-1524-49d7-85af-0635ce1ef805.jpg" />
+    <Content Include="Images\Style.Image\d0f71c00-54cd-4e07-ab6e-f803818753e8.jpg" />
+    <Content Include="Images\Style.Image\d1b12ab5-c455-4e3a-80cf-266411e7f3c2.jpg" />
+    <Content Include="Images\Style.Image\d21a9b34-51d1-4f53-bf9d-db8f100f1f41.jpg" />
+    <Content Include="Images\Style.Image\d4248321-87bb-4fd6-94e5-f9ccb28ce908.jpg" />
+    <Content Include="Images\Style.Image\d9d4b231-f36a-4e70-929e-b780a2c39c88.jpg" />
+    <Content Include="Images\Style.Image\dabd8129-ee36-4108-9d36-c999a7718610.jpg" />
+    <Content Include="Images\Style.Image\dd4edf2b-8f2f-45fe-a31c-51a2f6a87542.jpg" />
+    <Content Include="Images\Style.Image\def5df7c-28cf-4a67-87ff-67dda304f643.jpg" />
+    <Content Include="Images\Style.Image\e196c332-6ccd-4099-8488-4d4aeeba52b4.jpg" />
+    <Content Include="Images\Style.Image\e22d7cef-5301-4f65-9d40-42bf7b101cde.jpg" />
+    <Content Include="Images\Style.Image\e43e692b-b2b5-418d-a6b1-5fbc63bcf159.jpg" />
+    <Content Include="Images\Style.Image\e6e8d160-9836-46eb-a6ab-b72503f379d6.jpg" />
+    <Content Include="Images\Style.Image\e9329b0a-16a8-42ca-a508-13546a9db0e7.jpg" />
+    <Content Include="Images\Style.Image\edea309c-8891-41da-94d8-635536340885.jpg" />
+    <Content Include="Images\Style.Image\f1afc727-6944-4151-b866-3c4bc825cc57.jpg" />
+    <Content Include="Images\Style.Image\f22e224d-b60d-4798-a653-e42579235cce.jpg" />
+    <Content Include="Images\Style.Image\f25e23cb-2353-4502-b885-41102ec21f1d.jpg" />
+    <Content Include="Images\Style.Image\f344c471-f6f7-48d5-8ee6-7bb9fc6707e9.jpg" />
+    <Content Include="Images\Style.Image\f7592239-b707-4851-8553-3d5a507eb057.jpg" />
+    <Content Include="Images\Style.Image\faaa34d0-50de-4352-8511-4759c1a424ea.jpg" />
+    <Content Include="Images\Style.Image\fb7fc299-2816-45da-ba13-0dba84bc0e4d.jpg" />
+    <Content Include="Images\Style.Image\fbebe934-9686-4201-965a-261ea9ed87d5.jpg" />
+    <Content Include="Images\Style.Image\fd898a69-9753-4fdb-bd82-5699b7a3bfce.jpg" />
+    <Content Include="Images\Style.Image\feb561af-b4da-434a-8977-6253781dcb44.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\00e0abef-8c0d-4356-a64c-b6c5f371f88b.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\0185f47b-132c-4708-a29f-5e6c54fe56a3.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\0254d692-9101-46b4-8bb8-ebd427f7e8f5.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\046aadd0-f455-405c-bebc-fff3297ba66f.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\0e8fc17e-3f0c-4ccf-b4ab-09b41819d701.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\0e9614a1-ecce-4dab-8137-0a31aaccc238.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\12419662-0725-4f16-840e-166bae0fae28.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\14565334-81bc-4090-94a9-34a6c8268b2c.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\172a5de9-9d1f-4949-93e6-59487c6e866e.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\18aec0d0-ab61-4c40-9222-e62e6979e228.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\1c945c70-bfa9-4fce-b6b7-7be6051e35f8.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\23d6deb0-8a5f-4f24-a49b-1ba2142ea2e0.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\2b0c0ec1-5989-4567-88b9-3266b094ce6b.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\2c88091b-8f66-4a86-aa46-0fe371adb96a.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\36578ee4-e9e3-4142-aa10-2901476dc923.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\368d96a2-26b5-4091-b6fb-3a42d30f151e.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\3bd4522f-ada2-409b-9151-c44bce3b78e1.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\3bd5b71f-1ed2-41d7-8965-65c58e9a3fd2.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\3c4183ce-0bfe-41b4-97e1-2415902c488c.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\48c26dbc-368a-4655-be86-0626a33d6091.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\49909bb4-5928-4cd7-9a4f-534182d49e2e.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\4aa613ab-e0a5-4fce-a80c-5be5ceb1d7c8.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\519b7756-781c-43a0-95a5-1907bdfc4b4f.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\56682a5a-1563-4fad-ab32-d9a5e146b794.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\5e35e274-4595-4e52-85e8-61f023562ce3.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\60530adb-7ddd-4d83-a84a-06eef2ee9b09.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\6c42543c-0a25-4891-85e9-e08cb9825805.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\74af4353-a982-4834-a6c9-272761aca446.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\74c21a8d-fe8c-426d-add4-3b264a044807.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\7521a5dd-04a4-4254-9991-d9548aa9a9e4.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\7e0a0732-a63f-4d3c-bf95-c76d0ac10d89.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\7f3345af-cbc1-47fe-9a19-4866150b5abf.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\831673e3-2548-435c-8b33-a2a69582001a.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\8451d5b5-62e4-4c56-8959-7eeeb7359738.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\88a4c008-fbd6-4d24-ab9f-b76bec45af3b.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\8b6a36f7-aa48-435c-a76f-da445e1f5075.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\8c953d2c-d643-4950-964b-d3164f02be4b.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\8d1c8023-6c02-46d4-b928-e4cd1fb09711.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\8f80c122-5368-483b-b5dd-79003b1b5074.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\9afbd436-ad86-48c7-b2c3-21424af059d2.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\9b79cb25-7fa8-4ed8-b14e-da7bc6f64d71.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\9cb1cb45-d9ba-49e5-8364-0cdfc640fe3c.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\9d917941-893a-4595-bb77-d36cec62216d.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\a7d0b34e-0508-4963-9ca4-954bb9138782.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\a8025ea4-e19c-4aa4-96f6-0018b7fd111f.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\a9b1b648-afd8-443a-85f4-6353f0a70bf9.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\b141a1ab-b066-47e4-92ce-f68a3ddeae59.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\b78bc397-7b2d-4206-831d-39af8914e5ae.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\ba0a20e3-bad2-465e-929d-6b18dcd73a78.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\ba5910de-7e3c-40f8-8cbb-73adf88d017e.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\bc20a178-8f65-4291-bb00-f56dde041cdc.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\c1cb5f85-de7f-4e1c-b68d-693969cb91e8.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\d58da14b-7a63-44b4-9b82-5308a41e2f7b.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\d6f5f348-4f57-4053-b094-36f718cc7d60.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\dc0f1aea-7415-4a21-aafa-43f179360a78.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\de402ca6-a2fb-44ef-91e3-eb72bb0c70a7.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\de8fd416-4f8a-4bd8-aaf6-952bf0969b5f.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\e29ce3f6-ea05-4d2b-97f0-8600eb5c1f94.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\eb8362fb-eb59-47a7-87e1-d52cd4a02de4.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\f501f781-74c7-4dd8-8f74-b0ba487c58ec.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\fb3c5e62-c9f3-4da4-be69-3a3fe15ee558.jpg" />
+    <Content Include="Images\TeacherTrainingCourse.Image\fc00df2d-2396-41d5-adaa-0cad3bd3494c.jpg" />
+    <Content Include="robots.txt" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\AccreditationBody.Image\" />
+    <Folder Include="Images\Activity.Image\" />
+    <Folder Include="Images\Activity.ProfileBanner\" />
+    <Folder Include="Images\GalleryEntry.Image\" />
+    <Folder Include="Images\Group.Image\" />
+    <Folder Include="Images\Group.ProfileBanner\" />
+    <Folder Include="Images\Profile.Image\" />
+    <Folder Include="Images\Profile.ProfileBanner\" />
+    <Folder Include="Images\StyleOrganisation.Image\" />
+    <Folder Include="Images\StyleOrganisation.ProfileBanner\" />
+    <Folder Include="Images\Teacher.Image\" />
+    <Folder Include="Images\Teacher.ProfileBanner\" />
+    <Folder Include="Images\TeacherTrainingOrganisation.Image\" />
+    <Folder Include="Images\TeacherTrainingOrganisation.ProfileBanner\" />
+    <Folder Include="Images\Venue.Image\" />
+    <Folder Include="Images\Venue.ProfileBanner\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>7095</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7095/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueCreatePlacementModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h2 class="purpleHeader">Find/add teacher</h2>
+    <hr />
+    <div class="scrollableiFrame">
+     @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+
+        @Html.LabelFor(m => m.Teacher)
+        @Html.EditorFor(m => m.Teacher)
+    </div>
+    <hr />
+    <div>
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <input type="submit" id="CreateButtonandadd" value="Next" class=" btn btn-custom btn-md fr" />
+    </div>
+}
+

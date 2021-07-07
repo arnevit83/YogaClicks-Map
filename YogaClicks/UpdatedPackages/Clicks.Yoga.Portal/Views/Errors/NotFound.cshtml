@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Not Found";
+    Layout = "~/Views/Layout/Error.cshtml";
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2>This is the page we never wanted you to see</h2>
+ 
+               <p>A page with absolutely no yoga on it.</p>
+ 
+                <p>A page to nowhere. Page 404.</p>
+ 
+                <p>We are really sorry.</p>
+ 
+                <p>It seems to us you have three choices:</p>
+
+                <ol class="errorList">
+                    <li>Accept this as a lesson in non-attachment to outcomes.</li>
+                    <li>Vent your frustration by clicking this <a href="javascript:openModal('/feedback')">link really hard</a>. It tells us to fix the problem, and discipline the developer responsible – we give him 108 sun salutations for every 404.</li>
+                    <li>Take a deep breath, and get back to sharing the yoga love by hitting the back button or <a href="@Url.Action("index", "Home")">click here for the homepage</a>.</li>
+                </ol> 
+           </article>
+        </div>
+    </div>
+</div>
+

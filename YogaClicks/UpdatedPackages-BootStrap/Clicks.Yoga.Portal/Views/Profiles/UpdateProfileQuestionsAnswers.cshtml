@@ -1,0 +1,26 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileQuestionsUpdateModel
+
+@using (Html.BeginForm("UpdateProfileQuestionsAnswers", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-profile-questions-form" }))
+{
+    @Html.HiddenFor(m => m.ProfileId)
+
+    <h4>My true Self</h4>
+
+    <p>We've consulted with the mountain sages and these are the seven questions that reveal the true Self</p>
+
+    for (var ctr = 0; ctr < Model.ProfileQuestions.Questions.Count; ctr++)
+    {
+        <div>
+            @Html.HiddenFor(m => m.ProfileQuestions.Questions[ctr].Id)
+            @Html.LabelFor(m => m.ProfileQuestions.Questions[ctr].Response, Model.ProfileQuestions.Questions[ctr].Text)
+            @Html.EditorFor(m => m.ProfileQuestions.Questions[ctr].Response)
+        </div>
+    }
+    <div class="profile-questions-save-section">
+        <span class="profile-questions-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

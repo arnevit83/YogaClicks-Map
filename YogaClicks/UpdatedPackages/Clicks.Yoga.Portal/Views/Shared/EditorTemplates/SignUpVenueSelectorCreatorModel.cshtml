@@ -1,0 +1,198 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpVenueSelectorCreatorModel
+
+<section id="venuelocator">
+
+    <div id="@Html.IdFor(m => m)">
+        @Html.HiddenFor(m => m.Id, new { data_role = "VenueId" })
+        @Html.TextBoxFor(m => m.Name, new { data_role = "VenueName", placeholder = "e.g. The Yoga Hut", data_field_type = "general" })
+        <div data-role="SuggestionsPopup" class="suggestions teacherSuggestions" style="display: none;">
+            <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+            <div data-role="Suggestions"></div>
+        </div>
+
+        <div class="clear-fix"></div>
+    </div>
+
+    <script>
+        $(function () {
+            var $container = $('#venuelocator');
+            var $id = $('#@Html.IdFor(m => m.Id)');
+            var $name = $('#@Html.IdFor(m => m.Name)');
+            var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+            var $suggestions = $container.find('[data-role=Suggestions]');
+            var $createForm = $container.find('[data-role=CreateForm]');
+            var $ownerForm = $container.find('[data-role=venueowned]');
+            var $ownerFormFalseRadio = $ownerForm.find('#OwnedFalse');
+            var $ownerFormTrueRadio = $ownerForm.find('#OwnedTrue');
+            var $emailForm = $container.find('[data-role=inviterow]');
+
+            $name.on('keyup', function () {
+                $suggestionsPopup.hide();
+                //$createForm.show();
+
+                var value = $name.val();
+
+                if (!value || value.length < 3) return;
+
+                $.getJSON(
+                    '/Search/AutocompleteVenues',
+                    { Name: $name.val(), Owned: "null" },
+                    function (entities) {
+                        if (entities.length > 0) {
+                            $suggestions.empty();
+
+                            for (var i in entities) {
+                                var entity = entities[i];
+                                var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                                $link.data('entity', entity);
+                                $suggestions.append($('<div/>').html($link));
+                            }
+
+                        }
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+                    }
+                );
+            });
+
+            $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+                $name.unbind();
+                $id.val("");
+                $suggestionsPopup.hide();
+                var $createformchild = $createForm.find(".location-search-box")[0];
+                $createformchild.setAttribute('data-field-type', 'general');
+                $createForm.show();
+                $ownerForm.show();
+            });
+
+            $ownerFormFalseRadio.on('click', function () {
+                $emailForm.show();
+            });
+
+            $ownerFormTrueRadio.on('click', function () {
+                $emailForm.hide();
+            });
+
+            $suggestions.on('click', 'a', function () {
+                var entity = $(this).data('entity');
+                $id.val(entity.Id);
+                $name.val(entity.Name);
+                $suggestionsPopup.hide();
+            });
+        });
+    </script>
+
+
+    <div class="createform" data-role="CreateForm" style="display: none;">
+        <div id="signup-address-editor" class="@(Model.Latitude == 0 ? "" : "addresswrapper")">
+            <input type="text" data-role="Location" autocomplete="off" placeholder="Please enter the address e.g. 108 Yoga Street, Utopia, NR3 1HA" class="location-search-box" data-field-type="notrequired" style="display: @(Model.Latitude == 0 ? "block" : "none");" />
+            <div class="suggestionsContainer" style="display: @(Model.Latitude == 0 ? "block" : "none");">
+                <div class="suggestions" data-role="LocationSuggestions"></div>
+            </div>
+
+            <div id="venueAddress" style="display: @(Model.Latitude > 0 ? "block" : "none");">
+                @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude", data_field_type = "notrequired" })
+                @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude", data_field_type = "notrequired" })
+                <div class="right">
+                    <fieldset>
+                        <div class="inputwrap">@Html.TextBoxFor(model => model.Line1, new { data_role = "Line1", placeholder = "Address Line 1", data_field_type = "notrequired" })</div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="inputwrap">@Html.TextBoxFor(model => model.Line2, new { data_role = "Line2", placeholder = "Address Line 2", data_field_type = "notrequired" })</div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="inputwrap">@Html.TextBoxFor(model => model.City, new { data_role = "City", placeholder = "Address City", data_field_type = "notrequired" })</div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="inputwrap">@Html.TextBoxFor(model => model.Area, new { data_role = "Area", placeholder = "Address Area", data_field_type = "notrequired" })</div>
+                    </fieldset>
+                    <fieldset id="addressfinderpostcode">
+                        <div class="inputwrap">@Html.TextBoxFor(model => model.Postcode, new { data_role = "Postcode", placeholder = "Postcode", data_field_type = "notrequired" })</div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="inputwrap">@Html.EditorFor(model => Model.Country, "CountrySelector", new { Countries = ViewData["Countries"], data_field_type = "notrequired" })</div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row venueowned" data-role="venueowned" style="display: none">
+        <div class="col-xs-12 col-sm-6 venueownedlabel">
+            <label>Is this your venue?</label>
+        </div>
+        <div class="col-xs-12 col-sm-6 radioselect">
+            <input type="radio" name="Venue.Owned" id="OwnedTrue" value="True" />
+            <label for="OwnedTrue">Yes</label>
+            <input type="radio" name="Venue.Owned" id="OwnedFalse" value="False" />
+            <label for="OwnedFalse">No</label>
+        </div>
+    </div>
+
+    <div id="inviteemailsend" class="row invite-row margintop30" data-role="inviterow" style="display: none">
+        <div class="col-xs-12">
+            @Html.LabelFor(m => m.Email, "Want to invite this venue to join YogaClicks?") <span>*optional</span>
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "Enter email address", data_field_type = "notrequired" })
+            <a class="btn">Send</a>
+        </div>
+    </div>
+    <div data-role="emailsuccess" class="row invite-row emailsuccess margintop30" style="display: none">
+        <div class="col-xs-12">
+            <div style="font-size:30px">
+                <p style="padding: 0 0 10px 0">
+                    Invite sent! Thanks for sharing. <i class="fa fa-check" style="display: inline-block; padding: 0"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div data-role="emailfailure" class="row invite-row emailfailure margintop30" style="display: none">
+        <div class="col-xs-12">
+            <div style="font-size:30px">
+                <p style="padding: 0 0 10px 0; color:red">
+                    Invite failed! Please check and try again.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#signup-address-editor").yogaSignupLocationPicker();
+
+            $("#inviteemailsend").find(".btn").click(function () {
+                $("#PleaseWait").show();
+                var formDiv = $(this).parent().parent().parent();
+                formDiv.find(".emailsuccess").hide();
+                formDiv.find(".emailfailure").hide();
+                $.ajax({
+                    type: "POST",
+                    url: "venueinvite",
+                    data: {
+                        emailAddress: formDiv.find("#inviteemailsend input").val(),
+                        venueName: formDiv.find("#Venue_Name").val(),
+                        fromName: $("name").html()
+                    },
+                    success: function (data) {
+                        if (data == "true") {
+                            formDiv.find(".emailsuccess").show();
+                            formDiv.find("#inviteemailsend input").val("");
+                        } else {
+                            formDiv.find(".emailfailure").show();
+                        }
+                        $("#PleaseWait").hide();
+                    },
+                    error: function () {
+                        formDiv.find(".emailfailure").show();
+                        $("#PleaseWait").hide();
+                    }
+                });
+            });
+
+        })
+    </script>
+</section>

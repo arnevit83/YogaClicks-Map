@@ -1,0 +1,231 @@
+﻿INSERT INTO EntityType
+(Name, SystemName, DisplayName, DisplayPlural, Controller, IsProfessional,IsFanable, IsReviewable, IsSearchable, 
+IsGalleryAssociate, CreationTime, ModificationTime, IsActor, IsHuman)
+VALUES
+('Condition', 'Clicks.Yoga.Domain.Entities.Condition', 'Condition', 'Conditions', 'Medic', 0, 0, 0, 1, 0, GETDATE(), GETDATE(), 0, 0)
+CREATE TABLE [dbo].[Condition] (
+[Id] [int] NOT NULL IDENTITY,
+[Name] [nvarchar](max),
+[Description] [nvarchar](max),
+[ImageCourtesyOf] [nvarchar](max),
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+[ProfileBanner_Id] [int],
+CONSTRAINT [PK_dbo.Condition] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_ProfileBanner_Id] ON [dbo].[Condition]([ProfileBanner_Id])
+CREATE TABLE [dbo].[Study] (
+[Id] [int] NOT NULL IDENTITY,
+[Title] [nvarchar](max),
+[Abstract] [nvarchar](max),
+[DateOfStudy] [datetime] NOT NULL,
+[Journal] [nvarchar](max),
+[Volume] [nvarchar](max),
+[Institution] [nvarchar](max),
+[Source] [nvarchar](max),
+[NumberOfCitations] [int] NOT NULL,
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+CONSTRAINT [PK_dbo.Study] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[TherapyType] (
+[Id] [int] NOT NULL IDENTITY,
+[Name] [nvarchar](max),
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+CONSTRAINT [PK_dbo.TherapyType] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[Author] (
+[Id] [int] NOT NULL IDENTITY,
+[Name] [nvarchar](max),
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+CONSTRAINT [PK_dbo.Author] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[TherapyTypeStudy] (
+[TherapyType_Id] [int] NOT NULL,
+[Study_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.TherapyTypeStudy] PRIMARY KEY ([TherapyType_Id], [Study_Id])
+)
+CREATE INDEX [IX_TherapyType_Id] ON [dbo].[TherapyTypeStudy]([TherapyType_Id])
+CREATE INDEX [IX_Study_Id] ON [dbo].[TherapyTypeStudy]([Study_Id])
+CREATE TABLE [dbo].[AuthorStudy] (
+[Author_Id] [int] NOT NULL,
+[Study_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.AuthorStudy] PRIMARY KEY ([Author_Id], [Study_Id])
+)
+CREATE INDEX [IX_Author_Id] ON [dbo].[AuthorStudy]([Author_Id])
+CREATE INDEX [IX_Study_Id] ON [dbo].[AuthorStudy]([Study_Id])
+CREATE TABLE [dbo].[StudyCondition] (
+[Study_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.StudyCondition] PRIMARY KEY ([Study_Id], [Condition_Id])
+)
+CREATE INDEX [IX_Study_Id] ON [dbo].[StudyCondition]([Study_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[StudyCondition]([Condition_Id])
+CREATE TABLE [dbo].[ConditionTeacher] (
+[Condition_Id] [int] NOT NULL,
+[Teacher_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.ConditionTeacher] PRIMARY KEY ([Condition_Id], [Teacher_Id])
+)
+CREATE INDEX [IX_Condition_Id] ON [dbo].[ConditionTeacher]([Condition_Id])
+CREATE INDEX [IX_Teacher_Id] ON [dbo].[ConditionTeacher]([Teacher_Id])
+CREATE TABLE [dbo].[ConditionVenue] (
+[Condition_Id] [int] NOT NULL,
+[Venue_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.ConditionVenue] PRIMARY KEY ([Condition_Id], [Venue_Id])
+)
+CREATE INDEX [IX_Condition_Id] ON [dbo].[ConditionVenue]([Condition_Id])
+CREATE INDEX [IX_Venue_Id] ON [dbo].[ConditionVenue]([Venue_Id])
+CREATE TABLE [dbo].[TeacherTrainingOrganisationCondition] (
+[TeacherTrainingOrganisation_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.TeacherTrainingOrganisationCondition] PRIMARY KEY ([TeacherTrainingOrganisation_Id], [Condition_Id])
+)
+CREATE INDEX [IX_TeacherTrainingOrganisation_Id] ON [dbo].[TeacherTrainingOrganisationCondition]([TeacherTrainingOrganisation_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[TeacherTrainingOrganisationCondition]([Condition_Id])
+CREATE TABLE [dbo].[ConditionActivity] (
+[Condition_Id] [int] NOT NULL,
+[Activity_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.ConditionActivity] PRIMARY KEY ([Condition_Id], [Activity_Id])
+)
+CREATE INDEX [IX_Condition_Id] ON [dbo].[ConditionActivity]([Condition_Id])
+CREATE INDEX [IX_Activity_Id] ON [dbo].[ConditionActivity]([Activity_Id])
+ALTER TABLE [dbo].[Condition] ADD CONSTRAINT [FK_dbo.Condition_dbo.Image_ProfileBanner_Id] FOREIGN KEY ([ProfileBanner_Id]) REFERENCES [dbo].[Image] ([Id])
+ALTER TABLE [dbo].[TherapyTypeStudy] ADD CONSTRAINT [FK_dbo.TherapyTypeStudy_dbo.TherapyType_TherapyType_Id] FOREIGN KEY ([TherapyType_Id]) REFERENCES [dbo].[TherapyType] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[TherapyTypeStudy] ADD CONSTRAINT [FK_dbo.TherapyTypeStudy_dbo.Study_Study_Id] FOREIGN KEY ([Study_Id]) REFERENCES [dbo].[Study] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[AuthorStudy] ADD CONSTRAINT [FK_dbo.AuthorStudy_dbo.Author_Author_Id] FOREIGN KEY ([Author_Id]) REFERENCES [dbo].[Author] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[AuthorStudy] ADD CONSTRAINT [FK_dbo.AuthorStudy_dbo.Study_Study_Id] FOREIGN KEY ([Study_Id]) REFERENCES [dbo].[Study] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[StudyCondition] ADD CONSTRAINT [FK_dbo.StudyCondition_dbo.Study_Study_Id] FOREIGN KEY ([Study_Id]) REFERENCES [dbo].[Study] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[StudyCondition] ADD CONSTRAINT [FK_dbo.StudyCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionTeacher] ADD CONSTRAINT [FK_dbo.ConditionTeacher_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionTeacher] ADD CONSTRAINT [FK_dbo.ConditionTeacher_dbo.Teacher_Teacher_Id] FOREIGN KEY ([Teacher_Id]) REFERENCES [dbo].[Teacher] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionVenue] ADD CONSTRAINT [FK_dbo.ConditionVenue_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionVenue] ADD CONSTRAINT [FK_dbo.ConditionVenue_dbo.Venue_Venue_Id] FOREIGN KEY ([Venue_Id]) REFERENCES [dbo].[Venue] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[TeacherTrainingOrganisationCondition] ADD CONSTRAINT [FK_dbo.TeacherTrainingOrganisationCondition_dbo.TeacherTrainingOrganisation_TeacherTrainingOrganisation_Id] FOREIGN KEY ([TeacherTrainingOrganisation_Id]) REFERENCES [dbo].[TeacherTrainingOrganisation] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[TeacherTrainingOrganisationCondition] ADD CONSTRAINT [FK_dbo.TeacherTrainingOrganisationCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionActivity] ADD CONSTRAINT [FK_dbo.ConditionActivity_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ConditionActivity] ADD CONSTRAINT [FK_dbo.ConditionActivity_dbo.Activity_Activity_Id] FOREIGN KEY ([Activity_Id]) REFERENCES [dbo].[Activity] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Condition] ADD [DirectoryImage_Id] [int]
+ALTER TABLE [dbo].[Condition] ADD CONSTRAINT [FK_dbo.Condition_dbo.Image_DirectoryImage_Id] FOREIGN KEY ([DirectoryImage_Id]) REFERENCES [dbo].[Image] ([Id])
+CREATE INDEX [IX_DirectoryImage_Id] ON [dbo].[Condition]([DirectoryImage_Id])
+ALTER TABLE [dbo].[Condition] ADD [MetaDescription] [nvarchar](max)
+CREATE TABLE [dbo].[WhatTheScienceSays] (
+[Id] [int] NOT NULL IDENTITY,
+[Description] [nvarchar](max),
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+CONSTRAINT [PK_dbo.WhatTheScienceSays] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[WhatTheScienceSaysTherapyType] (
+[WhatTheScienceSays_Id] [int] NOT NULL,
+[TherapyType_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.WhatTheScienceSaysTherapyType] PRIMARY KEY ([WhatTheScienceSays_Id], [TherapyType_Id])
+)
+CREATE INDEX [IX_WhatTheScienceSays_Id] ON [dbo].[WhatTheScienceSaysTherapyType]([WhatTheScienceSays_Id])
+CREATE INDEX [IX_TherapyType_Id] ON [dbo].[WhatTheScienceSaysTherapyType]([TherapyType_Id])
+CREATE TABLE [dbo].[WhatTheScienceSaysCondition] (
+[WhatTheScienceSays_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.WhatTheScienceSaysCondition] PRIMARY KEY ([WhatTheScienceSays_Id], [Condition_Id])
+)
+CREATE INDEX [IX_WhatTheScienceSays_Id] ON [dbo].[WhatTheScienceSaysCondition]([WhatTheScienceSays_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[WhatTheScienceSaysCondition]([Condition_Id])
+ALTER TABLE [dbo].[WhatTheScienceSaysTherapyType] ADD CONSTRAINT [FK_dbo.WhatTheScienceSaysTherapyType_dbo.WhatTheScienceSays_WhatTheScienceSays_Id] FOREIGN KEY ([WhatTheScienceSays_Id]) REFERENCES [dbo].[WhatTheScienceSays] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[WhatTheScienceSaysTherapyType] ADD CONSTRAINT [FK_dbo.WhatTheScienceSaysTherapyType_dbo.TherapyType_TherapyType_Id] FOREIGN KEY ([TherapyType_Id]) REFERENCES [dbo].[TherapyType] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[WhatTheScienceSaysCondition] ADD CONSTRAINT [FK_dbo.WhatTheScienceSaysCondition_dbo.WhatTheScienceSays_WhatTheScienceSays_Id] FOREIGN KEY ([WhatTheScienceSays_Id]) REFERENCES [dbo].[WhatTheScienceSays] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[WhatTheScienceSaysCondition] ADD CONSTRAINT [FK_dbo.WhatTheScienceSaysCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+　
+CREATE TABLE [dbo].[UserStory] (
+[Id] [int] NOT NULL IDENTITY,
+[Title] [nvarchar](max),
+[Content] [nvarchar](max),
+[OwnerHidden] [bit] NOT NULL,
+[Active] [bit] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+[Owner_Id] [int],
+CONSTRAINT [PK_dbo.UserStory] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_Owner_Id] ON [dbo].[UserStory]([Owner_Id])
+CREATE TABLE [dbo].[UserStoryCondition] (
+[UserStory_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.UserStoryCondition] PRIMARY KEY ([UserStory_Id], [Condition_Id])
+)
+CREATE INDEX [IX_UserStory_Id] ON [dbo].[UserStoryCondition]([UserStory_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[UserStoryCondition]([Condition_Id])
+ALTER TABLE [dbo].[UserStory] ADD CONSTRAINT [FK_dbo.UserStory_dbo.User_Owner_Id] FOREIGN KEY ([Owner_Id]) REFERENCES [dbo].[User] ([Id])
+ALTER TABLE [dbo].[UserStoryCondition] ADD CONSTRAINT [FK_dbo.UserStoryCondition_dbo.UserStory_UserStory_Id] FOREIGN KEY ([UserStory_Id]) REFERENCES [dbo].[UserStory] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[UserStoryCondition] ADD CONSTRAINT [FK_dbo.UserStoryCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+　
+CREATE TABLE [dbo].[UserStoryTeacher] (
+[UserStory_Id] [int] NOT NULL,
+[Teacher_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.UserStoryTeacher] PRIMARY KEY ([UserStory_Id], [Teacher_Id])
+)
+CREATE INDEX [IX_UserStory_Id] ON [dbo].[UserStoryTeacher]([UserStory_Id])
+CREATE INDEX [IX_Teacher_Id] ON [dbo].[UserStoryTeacher]([Teacher_Id])
+CREATE TABLE [dbo].[UserStoryVenue] (
+[UserStory_Id] [int] NOT NULL,
+[Venue_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.UserStoryVenue] PRIMARY KEY ([UserStory_Id], [Venue_Id])
+)
+CREATE INDEX [IX_UserStory_Id] ON [dbo].[UserStoryVenue]([UserStory_Id])
+CREATE INDEX [IX_Venue_Id] ON [dbo].[UserStoryVenue]([Venue_Id])
+ALTER TABLE [dbo].[UserStoryTeacher] ADD CONSTRAINT [FK_dbo.UserStoryTeacher_dbo.UserStory_UserStory_Id] FOREIGN KEY ([UserStory_Id]) REFERENCES [dbo].[UserStory] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[UserStoryTeacher] ADD CONSTRAINT [FK_dbo.UserStoryTeacher_dbo.Teacher_Teacher_Id] FOREIGN KEY ([Teacher_Id]) REFERENCES [dbo].[Teacher] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[UserStoryVenue] ADD CONSTRAINT [FK_dbo.UserStoryVenue_dbo.UserStory_UserStory_Id] FOREIGN KEY ([UserStory_Id]) REFERENCES [dbo].[UserStory] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[UserStoryVenue] ADD CONSTRAINT [FK_dbo.UserStoryVenue_dbo.Venue_Venue_Id] FOREIGN KEY ([Venue_Id]) REFERENCES [dbo].[Venue] ([Id]) ON DELETE CASCADE
+CREATE TABLE [dbo].[SearchRecordCondition] (
+[SearchRecord_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.SearchRecordCondition] PRIMARY KEY ([SearchRecord_Id], [Condition_Id])
+)
+CREATE INDEX [IX_SearchRecord_Id] ON [dbo].[SearchRecordCondition]([SearchRecord_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[SearchRecordCondition]([Condition_Id])
+ALTER TABLE [dbo].[SearchRecordCondition] ADD CONSTRAINT [FK_dbo.SearchRecordCondition_dbo.SearchRecord_SearchRecord_Id] FOREIGN KEY ([SearchRecord_Id]) REFERENCES [dbo].[SearchRecord] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[SearchRecordCondition] ADD CONSTRAINT [FK_dbo.SearchRecordCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Condition] ADD [MetaTitle] [nvarchar](max)
+CREATE TABLE [dbo].[Follow] (
+[Id] [int] NOT NULL IDENTITY,
+[FollowerId] [int] NOT NULL,
+[CreationTime] [datetime] NOT NULL,
+[ModificationTime] [datetime] NOT NULL,
+[FollowerType_Id] [int],
+CONSTRAINT [PK_dbo.Follow] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_FollowerType_Id] ON [dbo].[Follow]([FollowerType_Id])
+CREATE TABLE [dbo].[FollowCondition] (
+[Follow_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.FollowCondition] PRIMARY KEY ([Follow_Id], [Condition_Id])
+)
+CREATE INDEX [IX_Follow_Id] ON [dbo].[FollowCondition]([Follow_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[FollowCondition]([Condition_Id])
+ALTER TABLE [dbo].[Follow] ADD CONSTRAINT [FK_dbo.Follow_dbo.EntityType_FollowerType_Id] FOREIGN KEY ([FollowerType_Id]) REFERENCES [dbo].[EntityType] ([Id])
+ALTER TABLE [dbo].[FollowCondition] ADD CONSTRAINT [FK_dbo.FollowCondition_dbo.Follow_Follow_Id] FOREIGN KEY ([Follow_Id]) REFERENCES [dbo].[Follow] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[FollowCondition] ADD CONSTRAINT [FK_dbo.FollowCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Study] ALTER COLUMN [DateOfStudy] [nvarchar](max)
+DECLARE @notificationCatid int
+INSERT INTO NotificationCategory (Name, CreationTime, ModificationTime, Tag, IncludedInDigest, IsFriendshipRequests)
+VALUES ('Condition Follower update', GETDATE(), GETDATE(), 'ConditionFollowerUpdate', 0, 0)
+SET @notificationCatid = SCOPE_IDENTITY()
+INSERT INTO NotificationType (Tag, [Message], Icon, CreationTime, ModificationTime, CategoryId)
+VALUES('ConditionFollowerUpdate', 'A new study has been added to {1:N}', 'icon-new-content.png', GETDATE(), GETDATE(), @notificationCatid),
+('ConditionUserStoryFollowerUpdate', 'A new user story has been added to {1:N}', 'icon-new-content.png', GETDATE(), GETDATE(), @notificationCatid)
+　
+CREATE TABLE [dbo].[GroupCondition] (
+[Group_Id] [int] NOT NULL,
+[Condition_Id] [int] NOT NULL,
+CONSTRAINT [PK_dbo.GroupCondition] PRIMARY KEY ([Group_Id], [Condition_Id])
+)
+CREATE INDEX [IX_Group_Id] ON [dbo].[GroupCondition]([Group_Id])
+CREATE INDEX [IX_Condition_Id] ON [dbo].[GroupCondition]([Condition_Id])
+ALTER TABLE [dbo].[GroupCondition] ADD CONSTRAINT [FK_dbo.GroupCondition_dbo.Group_Group_Id] FOREIGN KEY ([Group_Id]) REFERENCES [dbo].[Group] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[GroupCondition] ADD CONSTRAINT [FK_dbo.GroupCondition_dbo.Condition_Condition_Id] FOREIGN KEY ([Condition_Id]) REFERENCES [dbo].[Condition] ([Id]) ON DELETE CASCADE

@@ -1,0 +1,383 @@
+﻿@model Clicks.Yoga.Portal.Models.SignUp.ActivityCreateViewModel
+
+@{
+    ViewBag.Title = "Create Activity";
+    ViewBag.HideYogaMedsSelectionHeader = "True";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding   @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id=" scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader myProfileHeader">
+
+                    @*@if (Model.Profile != null)
+                    {
+                        <a href="@Url.Action("Display", "Profiles", new {Model.Profile.Id})">
+                            @(SecurityContext.IsOwner(Model.Profile) ? Html.Raw("<img src='/images/svgicons/Icon_ProfileTeal.svg' data-svgpng='/images/SvgIcons/Icon_ProfileTeal.png'/>") : Html.Raw("<img src='/images/svgicons/Icon_ProfileBlue.svg' data-svgpng='/images/SvgIcons/Icon_ProfileBlue.png'/>"))
+                        </a>
+
+                    }
+
+                    @if (Model.HasTeacher)
+                    {
+                        <a href="@Url.Action("Display", "Teachers", new {Model.Teacher.Id})"><img src="~/images/svgicons/Icon_TeacherGrey.svg" data-svgpng="/images/SvgIcons/Icon_TeacherGrey.png" /></a>
+                    }
+                    @if (Model.HasVenue)
+                    {
+                        <a href="@Url.Action("Display", "Venues", new {Model.VenueModel.Id})"><img src="~/images/svgicons/Icon_VenueGrey.svg" data-svgpng="/images/SvgIcons/Icon_VenueGrey.png" /></a>
+                    }
+                    @if (Model.HasTTO)
+                    {
+                        <a href="@Url.Action("Display", "TeacherTrainingOrganisations", new {Model.TTO.Id})"><img src="~/images/svgicons/Icon_OrgGrey.svg" data-svgpng="/images/SvgIcons/Icon_OrgGrey.png" /></a>
+                    }*@
+
+                    <name class="hidden-xs">
+
+                        @Html.DisplayFor(m => m.Profile.Name)
+
+                    </name>
+
+                </h2>
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+
+                @using (Html.BeginForm("CreateEvent", "Activities", FormMethod.Post, new { enctype = "multipart/form-data", id = "create-course-1", @class = "green-text" }))
+                {
+                    <div class="row green-text">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10 signup-row-title signup-large-text">
+                            <img src="/images/svgicons/Icon_CalendarTeal.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_CalendarTeal.png" alt="add class">
+                            <p>Add your @ViewBag.TypeOfPage</p>
+                        </div>
+                        <div class="col-xs-1"></div>
+                    </div>
+
+                    <input type="hidden" class="hidden" name="HiddenType" value="@Model.Type.Id" />
+                    <input type="hidden" class="hidden" name="HiddenHandle" value="@Model.PromoterHandle.Id" />
+
+                    <div class="row green-text activity-row-normal">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-5 singup-input">
+                            @Html.LabelFor(m => m.Name, Model.ActivityTypeName)
+                            @Html.TextBoxFor(m => m.Name, new { maxlength = 50, data_field_type = "general", data_required_error_message = "Name required" })
+                        </div>
+                        <div class="col-xs-12 col-lg-5 singup-input">
+                            @Html.LabelFor(m => m.AbilityLevel, "Level")<span class="questionMark">?</span>
+                            @Html.EditorFor(m => m.AbilityLevel)
+                            <div class="levelBox" style="display: none; top: 48px !important; left: 15px !important;">
+                                <strong>Everyone has their own definition but here's a rough guide:</strong>
+                                <ul>
+                                    <li><strong>Beginners</strong> - Introduces the basics</li>
+                                    <li><strong>Level 1</strong> - Builds familiarity</li>
+                                    <li><strong>Level 2</strong> - Intermediate, develops understanding</li>
+                                    <li><strong>Level 3</strong> - Advanced, develops mastery</li>
+                                    <li><strong>Open</strong> - All levels, usually taught with modifications</li>
+                                </ul>
+                                <a href="#" class="close">x</a>
+                            </div>
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            <label for="Venue_Name">Venue</label>
+                            @Html.EditorFor(m => m.Venue)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.EditorFor(m => m.Teachers)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Description)
+                            @Html.TextAreaFor(m => m.Description, new { placeholder = "This is what will be seen when shared to social media sites", style = "width: 99%", data_field_type = "general" })
+                            @Html.ValidationMessageFor(model => model.Description)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    @Html.LabelFor(m => m.Date, "Start Date")
+                                    @Html.EditorFor(m => m.Date)
+                                </div>
+                                <div class="col-xs-6">
+                                    @Html.LabelFor(m => m.TimeRange, "Start Time")
+                                    <div class="row">
+                                        <div class="col-xs-6">@Html.DropDownListFor(m => m.TimeRange.StartHour, new SelectList(Model.TimeRange.HourOptions, "Value", "Text", Model.TimeRange.StartHour), new { data_field_type = "notrequired" })</div>
+                                        <div class="col-xs-6">@Html.DropDownListFor(m => m.TimeRange.StartMinute, new SelectList(Model.TimeRange.MinuteOptions, "Value", "Text", Model.TimeRange.StartMinute), new { data_field_type = "notrequired" })</div>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.TimeRange)
+                            <div class="row">
+
+                                @if (Model.HiddenType == 1)
+                                {
+                                    <div class="col-xs-6">
+                                        @Html.LabelFor(m => m.RepeatFrequency, "Frequency")
+                                        @Html.EditorFor(m => m.RepeatFrequency)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-xs-6">
+                                        @Html.LabelFor(m => m.EndDate, "End Date")
+                                        @Html.EditorFor(m => m.EndDate)
+                                    </div>
+                                }
+
+                                <div class="col-xs-6">
+                                    @Html.LabelFor(m => m.TimeRange, "End Time")
+                                    <div class="row">
+                                        <div class="col-xs-6">@Html.DropDownListFor(m => m.TimeRange.FinishHour, new SelectList(Model.TimeRange.HourOptions, "Value", "Text", Model.TimeRange.FinishHour), new {data_field_type = "notrequired"})</div>
+                                        <div class="col-xs-6">@Html.DropDownListFor(m => m.TimeRange.FinishMinute, new SelectList(Model.TimeRange.MinuteOptions, "Value", "Text", Model.TimeRange.FinishMinute), new {data_field_type = "notrequired"})</div>
+                                    </div>
+                                    <div id="invalidtimeerror" class="form-error" style="display: none">Selected times are invalid</div>
+                                </div>
+                            </div>
+
+                            <div class="row" id="invalidDateTimeError" style="display: none">
+                                <div class="col-xs-12">
+                                    <div class="form-error">End date and time can't be before the start date and time</div>
+                                </div>
+                            </div>
+
+                            @if (Model.HiddenType != 1)
+                            {
+                                <div class="row margintop30">
+                                    <div class="col-xs-12">
+                                        @Html.CheckBoxFor(m => m.Private, new { @class = "css-checkbox-green", data_field_type = "notrequired" })
+                                        @Html.LabelFor(m => m.Private, "Is this a private activity?", new { @class = "css-label-green green-text" })
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="col-xs-12">
+
+                                <div class="row repeat-days-container dayscheckboxes margintop30">
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatMonday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatMonday, "Mo ")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatTuesday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatTuesday, "Tu")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatWednesday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatWednesday, "We ")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatThursday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatThursday, "Th")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatFriday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatFriday, "Fr ")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatSaturday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatSaturday, "Sa")
+                                    </div>
+                                    <div class="activity-repeat-day">
+                                        @Html.CheckBoxFor(x => x.RepeatSunday, new { data_field_type = "notrequired" })
+                                        @Html.LabelFor(x => x.RepeatSunday, "Su")
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.LabelFor(m => m.Price)
+                            @Html.TextBoxFor(m => m.Price, new { placeholder = "e.g. £5 per person, £4 concessions", data_field_type = "notrequired" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+                    <div class="row green-text">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            @Html.CheckBoxFor(m => m.BookingRequired, new { @class = "css-checkbox-green", data_field_type = "notrequired" })
+                            @Html.LabelFor(m => m.BookingRequired, "Booking required", new { @class = "css-label-green green-text" })
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text signup-row-chosen margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            <label for="">Styles taught</label>
+                            @Html.EditorFor(m => m.Styles)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+
+                    <div class="row green-text signup-row-chosen margintop100">
+                        <div class="hidden-xs col-sm-1"></div>
+                        <div class="col-xs-12 col-lg-10 singup-input">
+                            <label for="">YogaMeds taught</label>
+                            @Html.EditorFor(m => m.Conditions)
+                        </div>
+                        <div class="hidden-xs col-sm-1">
+                        </div>
+                    </div>
+
+                    <div class="clear-fix"></div>
+                    <div class="row padding-top-100" style="text-align: center">
+                        <input id="createevent" type="submit" value="Save" class="btn btn-default btn-lg green-border green-text" />
+                    </div>
+
+
+                    <div style="height: 200px;"></div>
+                }
+
+            <script type="text/javascript">
+                var stubbedcheck = false;
+                $('document').ready(function () {
+          
+                    $(".search-field input").attr("data-field-type", "notrequired");
+                    if ($('form').length > 0) {
+                        $('form:not(.search)').isValid({ ignore: ":hidden:not(select)" });
+
+                    }
+
+                    $("#createevent").click(function (event) {
+                        if (stubbedcheck) {
+                            $('#TeacherStubbed').attr("style", "display:block");
+                            event.preventDefault();
+                            if ($(".invalid").length > 0) {
+                                // Do stuff with $(".Mandatory")
+                                $(".invalid").each(function () {
+                                    // "this" points to current item in looping through all elements with
+                                    // class="Mandatory"
+                                    $(this).doSomejQueryWithElement();
+                                });
+                            }
+                            if ($('.invalid').length > 0) {
+                              
+                            } else {
+                                $('html, body').animate({
+                                    scrollTop: $("#teacherName").offset().top
+                                }, 1);
+                            }
+                        
+
+                          
+                            return;
+                        } else {
+                            $('#TeacherStubbed').attr("style", "display:none;");
+                         
+                        }
+                         
+                         
+                        var startHour = $("#TimeRange_StartHour").find(":selected").text();
+                        var startMinute = $("#TimeRange_StartMinute").find(":selected").text();
+                        var endHour = $("#TimeRange_FinishHour").find(":selected").text();
+                        var endMinute = $("#TimeRange_FinishMinute").find(":selected").text();
+
+                        if ($('#EndDate_Day').length > 0) {
+                            // need to check the full date
+                            var startDay = $("#Date_Day").find(":selected").text();
+                            var startMonth = $("#Date_Month").find(":selected").val();
+                            var startYear = $("#Date_Year").find(":selected").text();
+                            var endDay = $("#EndDate_Day").find(":selected").text();
+                            var endMonth = $("#EndDate_Month").find(":selected").val();
+                            var endYear = $("#EndDate_Year").find(":selected").text();
+
+                            var startDateTime = moment({ year: startYear, month: startMonth, day: startDay, hour: startHour, minute: startMinute });
+                            var endDateTime = moment({ year: endYear, month: endMonth, day: endDay, hour: endHour, minute: endMinute });
+
+                            if (!startDateTime.isBefore(endDateTime)) {
+                                $("#invalidDateTimeError").show();
+                                if ($('.invalid').length > 0) {
+
+                                } else {
+                                    $('html, body').animate({
+                                        scrollTop: $("#Date_Day").offset().top
+                                    }, 1);
+                                }
+                                event.preventDefault();
+                          
+
+                            } else {
+                                $("#invalidDateTimeError").hide();
+                            }
+                        } else {
+
+                            var startTime = moment({ hour: startHour, minute: startMinute });
+                            var endTime = moment({ hour: endHour, minute: endMinute });
+
+                            if (!startTime.isBefore(endTime)) {
+                                $("#invalidtimeerror").show();
+                                if ($('.invalid').length > 0) {
+
+                                } else {
+                                    $('html, body').animate({
+                                        scrollTop: $("#Date_Day").offset().top
+                                    }, 1);
+                                }
+                                event.preventDefault();
+                            } else {
+                                $("#invalidtimeerror").hide();
+                            }
+                        }
+
+
+                    });
+
+
+                    $("input[type=checkbox]").each(function () {
+                        var parentContainer = $(this).parent();
+                        parentContainer.find("input[type=hidden]").insertAfter(parentContainer);
+                    });
+                });
+            </script>
+
+            </article>
+        </div>
+    </div>
+
+</div>

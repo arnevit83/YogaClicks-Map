@@ -1,0 +1,1757 @@
+﻿#map {
+  width: auto;
+  height: 100%;
+    /*min-height: 700px ;*/
+    box-shadow:none!important;
+}
+
+#content-slider a:hover {
+    text-decoration:none!important;
+}
+
+ #container {
+  height: 100%!important;
+  
+  width: 100%;
+  overflow: hidden;
+ 
+}
+.label{cursor:pointer!important;}
+.modal-open, .modal-open .navbar-fixed-top {
+  margin-right: 0 !important;
+}
+.AddressQuestionToggletext:hover {
+
+    cursor: pointer;
+}
+  /*#AddStorymini:hover{
+      text-decoration:none;
+      cursor:pointer;
+      color:#7CC144!important;
+  }
+  #AddStorymini{
+       margin-bottom:5px;
+     
+  }
+  #AddStoryTextmini{
+      display:inline-block;
+      padding-left:10px;
+        padding-right:10px;
+           font-size: 20px;
+  }*/
+  .Story-text{
+  color:   #7CC144;
+}
+
+
+  .leaflet-container {
+    background-color:#ffffff!important;
+}
+
+
+
+ /*! Version: 0.43.0
+Date: 2015-05-27 */
+
+/* Compatible with Leaflet 0.7 */
+.leaflet-touch .leaflet-bar-part-single {
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border-radius: 7px 7px 7px 7px;
+  border-bottom: none;
+}
+.leaflet-touch .leaflet-control-locate {
+  box-shadow: none;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+}
+
+.leaflet-control-locate a {
+  font-size: 1.4em;
+  color: #444;
+}
+h1 {
+    margin-right: 0 !important;
+}
+
+#right-nav h1 {
+    color: #9AC578 !important;
+
+}
+
+.NormalLabel {
+      color:inherit;
+    display: block;
+    font-size: inherit;
+    font-weight: inherit;
+    margin:inherit;
+}
+
+
+
+.leaflet-control-locate.active a {
+  color: #7CC144;
+}
+.leaflet-control-locate.active.following a {
+  color: #7CC144;
+}
+.SmallArrows {
+     color: #7CC144;
+    float: left;margin-top: 3px;
+}
+.maincontainerB {
+    min-height: 1600px;
+
+}
+.ArrowG {
+    color: #7CC144; font-size: 40px;margin-top: -10px;
+}
+.BoxG {
+    border-color:#7CC144!important;
+    margin-top: -12px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+    @media (max-width:768px ) {
+      
+          .Maplogincontant #fbLoginButton {
+           text-align:center;
+           padding-left: 5px;
+        }
+            .Maplogincontant {
+   
+    bottom:-155px!important;
+
+}       .Maplogincontant div #fbLoginButtonmap {
+            text-align: center !important;
+              padding-left: 8px;
+        }
+            
+       .MapTab {
+
+
+        width: 100% !important;
+           font-weight: 300 !important;
+        padding-top:10px;
+    } 
+ 
+          .PBYMaptag {
+
+      font-size: 28px !important;
+  }
+        .PopupYCColour {
+            font-size: 28px !important;
+            margin-top: 0px !important;
+
+        }
+
+        .TypeSToggleText {
+
+            margin-bottom: 15px !important;
+        }
+        .mapiup {
+            
+            padding-top:10px !important;
+            margin-bottom: 5px !important;
+        }
+
+          #AddStoryPopUp {
+        padding: 10px !important;
+    }
+  .BoxG {
+ font-size:12px!important;
+
+
+}
+   #StoryTitlePopbig{
+ 
+    margin: 0px!important
+
+
+   }
+
+         }
+.BoxG:hover {
+    border-color:#7CC144!important;
+
+}
+
+
+.HeaderG {
+    color: #7CC144; 
+      font-size: 16px;
+    font-weight: lighter;
+}
+.NormG {
+      color: #606060; 
+      font-size: 16px;
+    font-weight: lighter;
+}
+.TitleG {
+   color: #FFF; 
+      background-color: #7CC144; 
+      font-weight:bold;
+   padding:25px;
+   margin-top:-1px;
+}
+.hrG {
+    border-top: 1px solid #7CC144;
+      margin: 4px -5px;
+}
+
+.IconG {
+  bottom: 6px;
+
+    font-size: 32px;
+    height: 32px;
+    position: absolute;
+    right: 44px;
+    width: 40px !important;
+}
+.IconG {
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.IconGBig {
+
+    color: #7CC144;
+      font-size: 56px;
+    position: relative;
+    top: -21px;
+
+}
+.IconGBig {
+    cursor: pointer;
+    text-decoration: none;
+
+}
+.Bigpin {
+    margin-top:-55px;  
+}
+.ShareG {
+    margin-top:10px;
+    margin-bottom:-11px;
+    min-width: 74px;
+}
+#AddStoryPopUp {
+     font-family:"Source Sans Pro",sans-serif;
+}
+.PopupYCColour {
+     font-family:"Source Sans Pro",sans-serif; 
+}
+
+.thumbnailmaxacB{
+
+
+    min-height:209px;
+   
+          position: relative;
+          text-align:center;
+}
+.thumnailcenteracB {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+    width: 100%;
+    text-align:left;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  /*width:100%;*/
+}
+.parB {
+    padding-top:0px;
+      padding-bottom:14px;
+      display: block;
+}
+
+
+
+
+/*.PopoutleftG {
+    width:382px;
+    height:65px; border-style:none;
+    background-image: url('/Images/Stories/PinClick.png');
+    display: block; border-style: none !important;
+    backface-visibility:visible;
+    background-size: 100% 200%;
+}
+.PopoutleftG:hover {
+
+    background-position: bottom;
+        cursor: url('/images/SvgIcons/marker-icon.png') 32 40,crosshair!important;
+}*/
+
+
+/*.PopoutleftG {
+
+
+    cursor: pointer;
+    position: relative;
+    right: 0;
+    text-align: center;
+    text-decoration: none;
+    max-width: 320px;
+    z-index: 895;
+    min-height:71px;
+    margin: 0 auto;
+    display:block;
+    background-image: url("/images/Stories/PinClick.png");
+}
+
+.PopoutleftG:hover {
+  
+          background-image: url("/images/Stories/PinClicked.png")!important;
+
+ text-decoration:none!important;
+}
+
+
+.PopoutleftG strong {
+    margin-top:3px;
+     display: block;
+     color:#fff;
+     background-color:#444;
+}
+.PopoutleftGmini {
+     width: 100%!important;
+      margin: 0!important;
+      padding: 7px!important;
+}
+@-moz-keyframes spinR { 50% { -moz-transform: rotateY(90deg); } }
+@-webkit-keyframes spinR { 50% { -webkit-transform: rotateY(90deg); } }
+@keyframes spinR { 50% { -webkit-transform: rotateY(90deg); transform:rotateY(90deg); } }*/
+video {
+    width: 100%;
+
+    object-fit: cover;
+}
+.PinkG {
+ 
+}
+.curserB {
+  cursor: url('/images/SvgIcons/marker-icon.png') 32 40,crosshair!important;
+}
+
+
+
+.chosen-container.chosen-container-multi {
+    font-size: 15px !important;
+    line-height: 10px !important;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    padding: 3px 10px !important;
+  font-size: 15px;
+    margin-top: 3px;
+}
+
+
+.OkG {
+      color: #7CC144;
+     
+    font-size: 65px;
+    font-weight:lighter;
+}
+.OkGText {
+     color: #7CC144;
+    font-size: 28px;
+}
+.Comments {
+     color: #8a8a8a;
+  
+}
+.signup-suggestions {
+    
+    border-color: rgb(124, 193, 68) !important;
+      border-radius: 0 0 3px 3px;
+
+}
+.signup-suggestions div a {
+  color:  rgb(68, 68, 68) !important
+
+
+}
+
+.ClosePopupG {
+   margin-bottom: -30px;
+    margin-top: 2px;
+    right: 1px;
+}
+.BigSave {
+        background-color: #FFF;
+    color: #1AC1DE;
+    text-decoration: underline;
+    font-size:25px;
+    font-weight:600;
+    border:none;
+
+}
+.BigSave:hover,.BigSave:active ,.BigSave:focus {
+          color: #1AC1DE!important;
+    border:none!important;
+      background-color: #fff;
+}
+.TextGline {
+      border-radius: 5px;
+   
+    line-height: 24px;
+    padding: 0 5px;
+    position: relative;
+    width: 100%;border-color: #7CC144;
+    /*background-color: #E5E5E5;*/
+   height:45px;
+}
+input[type="password"], input[type="search"], input[type="text"] {
+    border-color: #7CC144;
+}
+
+.chosen-choices {
+       border-radius: 2px!important;
+   
+    line-height: 24px!important;
+    padding: 0 5px!important;
+  
+    width: 100%; border-color: #7CC144!important;
+   
+ 
+}
+.chosen-container.chosen-container-multi {
+    border: none !important;
+ 
+}
+.chosen-container-multi .chosen-choices li.search-choice {
+    margin: 5px 5px 3px 0 !important;
+    height:34px!important;
+}
+
+.search-choice {
+     padding-top: 0!important;
+}
+.chosen-container-multi .chosen-choices {
+    min-height:45px;
+    display: inline-block;
+}
+
+
+.search-field {
+    padding-top: 5px!important;
+}
+
+.chosen-container .chosen-drop {
+    border-color: #7CC144!important;
+}
+.chosen-container .chosen-results li {
+     padding: 12px 6px!important;
+}
+.chosen-container .chosen-results li.highlighted {
+  background-color: #7CC144!important;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop( #1AC1DD), color-stop( #7CC144))!important;
+  background-image: -webkit-linear-gradient(to top left, #1AC1DD , #7CC144 )!important;
+  background-image: -moz-linear-gradient(to top left, #1AC1DD , #7CC144 )!important;
+  background-image: -o-linear-gradient(to top left, #1AC1DD , #7CC144 )!important;
+  background-image: linear-gradient(to top left, #1AC1DD , #7CC144 )!important;
+}
+#available_conditions_chosen {
+    margin-bottom:5px!important;
+}
+
+.Arrow {
+     background-image: url(/images/select_arrow_map.gif)!important;
+}
+
+
+
+.Imageupload {
+         border: 3px solid #7CC144;
+    border-radius: 2px;
+    position: relative;
+}
+
+.textboxGline {
+    height: 150px !important;
+
+    padding-left:7px!important;
+}
+
+ .ThumbVideo {
+      background-color: rgba(255, 255, 255, 0.48);
+    color: #cb0d63;
+     font-size:26px;
+  padding: 5px 7px 6px;
+ }
+
+ .modal-backdrop.in {
+     opacity: 0.85 !important;
+
+ }
+
+
+/*BootStrap Overrides*/
+
+/*.panel-success > .panel-heading {
+    background-color: #7cc144!important;
+    border-color: #7cc144!important;
+    color: #ffffff!important;
+    font-weight: bold!important;
+    font-size: 26px!important;
+    padding: 10px;
+
+}*/
+
+/*.MainpanelHeader {
+          min-height: 115px!important;
+    padding-top: 20px!important;
+}*/
+
+.leftBtext {
+    display: block;
+    margin-left:15px;
+}
+
+
+        @media (max-width:992px ) {
+        
+      
+            .mappadding {
+
+    padding-left: 2%!important;
+    padding-right: 2%!important;
+}
+
+  .leftBtext {
+    display: block;
+    margin-left:0!important;
+}
+
+         }
+        .form-control{
+            background-image:inherit;
+        }
+
+    .field-validation-valid {
+        display: block;
+        margin-bottom:22px; 
+
+    }   
+
+.btn-success {
+    background-color: #7cc144!important;
+}
+
+#SubmitGAdd:hover {
+    cursor: pointer;
+}
+.form-control {
+    font-size: 15px !important;
+    
+}
+.field-validation-valid {
+    margin-bottom: 10px !important;
+
+}
+.has-success .form-control {
+    color: #444 !important;
+
+}
+    .btn-lg {
+    font-size: 30px;
+    padding: 20px 100px;
+}
+
+
+        @media (max-width: 768px) {
+
+            #AddStoryPopUp .ColourMappopup {
+                padding: 1px !important;
+}
+
+
+
+            #StoryBannerPopup .chaveates {
+                margin-top: -28px !important;
+                right: 16px !important;
+            }
+
+            
+            #StoryBannerPopup .chaveates i {
+                font-size: 13px !important;
+            }
+          .btn-lg {
+
+               padding: 30px 50px;
+            }
+
+         }
+
+  @media (min-width: 1200px) {
+          
+   
+       .NomapImage .Teacher {
+
+         font-size: 14px !important;
+}
+.NomapImage .Shop {
+ 
+     font-size: 14px !important;
+}
+.NomapImage .Student {
+   font-size: 14px !important;
+}
+          #StorysContainer, #StoryLocations {
+                 
+padding-left:15%;
+padding-right:15%;
+             }
+        
+   
+        
+
+}
+       
+@media (min-width: 768px) {
+
+
+    #StoryDisplay {
+        margin-top: -450px;
+    }
+
+            
+
+.BoxG {
+    z-index: 100000 !important;
+    box-shadow: 0 0 55px #000;
+}
+
+         }
+
+        .mapPOPup {
+            
+ 
+    width: 235px;
+    height: 340px;
+
+        }
+       .mapPOPup img {
+           overflow: hidden;
+                 border-top-left-radius:4px;
+                  border-top-right-radius:4px;
+        }
+         .mapPOPup p {
+           
+    padding-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:5px;
+
+               font-weight:bolder;
+
+
+        }
+
+         .mapPOPup a {
+           bottom: 30px;
+    position: absolute;
+    right: 18px;
+         }
+        
+        .Teacher    .Videobuttonspop i {
+color: #73669C;
+}
+
+        .Student   .Videobuttonspop i {
+       color: #1AB5E9;
+}
+         
+           .Shop     .Videobuttonspop i {
+      color: #FFBB00;
+}
+
+         .Teacher     .Maparrows{
+             color: #73669C;
+             font-size:32px;
+         
+         }
+
+         .Student     .Maparrows{
+             color: #1AB5E9;
+             font-size:32px;
+  
+         }
+               .Shop     .Maparrows{
+             color: #FFBB00;
+             font-size:32px;
+        
+         }
+
+              
+               
+        .popupName {
+            font-weight:bold;
+            font-family:"Source Sans Pro",sans-serif;
+            font-size: 16px;
+        }
+        .popupcation {
+             font-weight:normal;
+            font-family:"Source Sans Pro",sans-serif;
+            font-size: 16px;
+        }
+.popuppbydate {
+        font-size:12px;
+        font-weight: 400;
+    display: block;
+  
+     font-family:"Source Sans Pro",sans-serif;
+}
+
+  .Teacher .popupcation{
+       color: #73669C;
+}
+
+    .Student .popupcation{
+        color: #1AB5E9;
+}
+
+      .Shop .popupcation{
+     color: #FFBB00;
+}
+
+   .leaflet-popup-content-wrapper {
+            font-family:"Source Sans Pro",sans-serif;
+       border-radius: 4px !important;
+   }
+
+
+   .MaxpopFolder {
+     background-color: #ffffff;
+    height: 34px;
+    left: 233px;
+    position: absolute;
+    top: 0;
+       height: 340px;
+    width: 500px;
+    display:none;
+     font-family:"Source Sans Pro",sans-serif;
+     box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+       border-top-right-radius:4px;
+                  border-bottom-right-radius:4px;
+   }
+   
+   #ShareYC {
+      bottom: 10px;
+    float: right;
+    font-size: 25px;
+    margin-top: -4px;
+    padding-right: 20px;
+    position: absolute;
+    right: 0;
+ 
+   }
+.Conditionsbig {
+    max-width: 390px; display: block; height: 40px; overflow: hidden; padding-top: 8px;
+}
+ 
+
+   #StoryTitlePopbigMenu {
+
+         display: table-cell;
+    height: 40px;
+    max-height: 40px;
+    max-width: 500px;
+    overflow: auto;
+    padding-left: 20px;
+    vertical-align: middle;
+    width: 500px;
+    word-wrap: break-word;
+
+
+   }
+
+.Sharebigmap {
+
+     padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    background-color: white;
+    
+      border-radius:2px;
+                  
+
+    bottom: 44px;
+    float: right;
+    margin-bottom: 0;
+    position: absolute;
+    right: 13px;
+           display: none;
+}
+.Sharebigmap a {
+    padding-right: 0px !important;
+    margin-bottom:7px;
+       color: white !important;
+}
+
+.Sharebigmap a:hover {
+    color: white !important;
+}
+
+   #StoryTitlePopbigMenu a {
+       color:rgb(159, 159, 159);
+       padding-right:5px;
+   }
+    #StoryTitlePopbigMenu a:hover {
+       color:rgb(68, 68, 68) ;
+
+   }
+
+
+   #StoryTitlePopbig{
+    display: block;
+    height: 280px;
+ margin: 15px 15px 0;
+    font-family:"Source Sans Pro",sans-serif;
+       overflow-y: auto;
+       padding:5px;
+       white-space: pre-line;
+           font-size:14px;
+
+   }
+
+
+
+
+
+
+.StoryTitlePopbig b {
+    font-size: 16px;
+}
+
+
+
+@media (max-width:890px ) {
+   
+    #StoryTitlePopbig {
+       margin: 0px !important;
+        height: auto !important;
+    }
+
+
+    #StoryTitlePopbigMenu {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+
+        display: inline !important;
+    }
+    #StoryTitlePopbigMenu hr {
+        margin-bottom: 20px !important;  
+
+    }
+  
+    #ShareYC {
+        
+        padding-right: 3px!important;
+            position: static!important;
+    }
+ .IconG {
+     bottom: 12px !important;
+
+ }
+
+    #StoryTitlePopbig {
+          margin: 0px  0px   22px !important;
+
+    }
+
+    .Teacher p {
+        margin-top:25px !important;
+    }
+    .Student p {
+        margin-top:25px !important;
+    }
+    .Shop p {
+        margin-top:25px !important;
+    }
+     #MaxpopFolder {
+        margin-top:-10px!important
+    }
+  .Videobuttonspop {
+
+     position: static !important;
+         padding-left:2px;
+         padding-right:2px;
+          font-size: 30px!important
+         
+        }
+    .Editbuttonspop {
+
+      position: static !important;
+         padding-left:2px;
+         padding-right:2px;
+          font-size: 30px!important
+         
+        }
+   .Movebuttonspop {
+
+      position: static !important;
+              padding-left:2px;
+         padding-right:2px;
+          font-size: 30px!important
+         
+        }
+   .Deletebuttonspop {
+       
+       
+      position: static !important;
+              padding-left:2px;
+         padding-right:2px;
+          font-size: 30px!important
+   }
+
+   
+
+}
+
+  .Deletebuttonspop {
+       width:20px;
+          bottom: 24px !important;
+    position: fixed;
+            left: 45px !important;
+         
+            font-size: 16px;
+        }
+        .Deletebuttonspop i {
+               color:#9f9f9f;
+        }
+.Deletebuttonspop i:hover {
+
+            color:#444!important;
+        }
+
+
+
+
+
+        .Videobuttonspop {
+    
+         bottom: 24px !important;
+    font-size: 32px;
+    left: 152px !important;
+            position: fixed;
+         
+         
+        }
+     
+
+
+        .Editbuttonspop {
+             width:20px;
+          bottom: 23px !important;
+    position: fixed;
+            left: 22px !important;
+         
+            font-size: 16px;
+        }
+        .Editbuttonspop i {
+               color:#9f9f9f;
+        }
+.Editbuttonspop i:hover {
+
+            color:#444!important;
+        }
+
+
+        .Movebuttonspop {
+          bottom: 23px !important;
+    position: fixed;   width:20px;
+            left: 42px !important;
+         
+            font-size: 16px;
+        }
+        .Movebuttonspop i {
+               color:#9f9f9f;
+        }
+.Movebuttonspop i:hover {
+
+            color:#444!important;
+        }
+.PopupYCColour {
+    color: #7CC144;
+    font-size:32px;   
+    margin-top: -18px;
+}
+.TypeSToggleText {
+
+    
+}
+.TypeSToggleText:hover {
+    
+   cursor: pointer;
+}
+
+.TypeTToggleText {
+
+    
+}
+.TypeTToggleText:hover {
+    cursor: pointer;
+}
+.YCMapreq {
+    float: right;
+    font-style: italic;
+    color: #888;
+    font-weight: 100;
+    margin-right: 20px;
+}
+.PopupYCColour-Title {
+
+    color: #444;
+text-align:left;
+margin-bottom:10px;
+   font-weight:100;
+ display: block;
+   font-size:17px;
+}
+.PopupYCColour-sub {
+    color: #8B8989;
+    font-size:15px;
+    font-weight:100;
+text-align:left;
+margin-top:-10px;
+    display: block;
+}
+.form-control:focus {
+    
+    border-color: #7CC144;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(124, 193, 68, 0.6);
+}
+.has-success .form-control:focus {
+
+
+    border-color: #7CC144 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(124, 193, 68, 0.6) !important;
+}
+.has-success .form-control {
+      border-color: #7CC144 !important;
+
+}
+input[type=checkbox].css-checkbox-story {
+    position: absolute !important;
+    z-index: -1000 !important;
+    left: -1000px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    width: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+input[type=checkbox].css-checkbox-story + label.css-label-story {
+        padding-left: 65px !important;
+        height: 50px !important;
+        display: inline-block !important;
+        /*line-height: 50px !important;*/
+        background-repeat: no-repeat !important;
+        background-position: 0 0;
+      
+  
+        font-size: 20px !important;
+        vertical-align: middle !important;
+        cursor: pointer !important;
+    }
+#Image_signupcanvas i {
+
+    padding-left: 5px !important;
+}
+.signupprofileimagerightmargin {
+    border: 1px solid !important;
+
+
+}
+#HiddenStory {
+    display:none;
+
+}
+.block-section {
+    padding: 0px !important;
+       
+}
+#Displaymodel_Story {
+    background-color: #FFF !important;border:thin solid #7CC144;   border-radius:3px;
+
+
+}
+    input[type=checkbox].css-checkbox-story:checked + label.css-label-story {
+        background-position: 0 -50px !important;
+    }
+   
+   
+label.css-label-story {
+    background-image: url(/Images/Stories/csscheckbox-story.png) !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    width:27px;
+        min-width:27px;
+       border:thin solid #7CC144;
+        border-radius:3px;
+ 
+     height:27px;
+}
+label.css-label-story:hover {
+     background-position: bottom !important;
+}
+.css-label-story-clicks {
+    background-position: bottom !important;
+}
+#HealthCont {
+    display:none;
+    margin-bottom: 10px !important;
+}
+#challengeCont {
+    display:none;
+    margin-bottom: 20px !important;
+}
+#TVCont {
+      display:none;
+    margin-bottom: 10px !important;
+}
+ #challengeCont {
+        margin-bottom:15px;
+}
+
+#HealthCont {
+        margin-bottom:15px;
+    }
+@media(min-width:767px) {
+  
+    #HealthCont {
+        margin-bottom:0px;
+    }
+    #challengeCont {
+        margin-bottom:0px;
+    }
+    #HiddenStorytoggle {
+     float: left !important;
+
+ }
+}
+
+#HealthCont p{
+    display:none;
+
+}
+#challengeCont p{
+    display:none;
+
+}
+
+
+#StoryBannerPopup {
+    width: 100%;
+    height:100%;
+     border-radius:5px;
+  
+}
+#StoryBannerPopup img {
+
+    border-radius: 5px !important;
+  
+}
+#StoryBannerPopup img:hover {
+cursor:pointer;
+  
+}
+#StoryBannerPopup .chaveates {
+
+    position: absolute;
+    right:28px;
+    margin-top:-45px
+  
+}
+#StoryBannerPopup .chaveates:hover {
+    cursor:pointer;
+  
+}
+.default {
+    width: 100% !important;
+}
+#StoryBannerPopup .chaveates i {
+
+color:white;
+
+    font-size: 18px;
+    letter-spacing:-5px;
+    font-weight:100;
+
+ 
+}
+
+.mapls {
+    max-width: 300px;
+    margin: -25px auto 30px;
+    text-align: center;
+}
+#AddStoryPopUp {
+  border-radius:4px;
+    display: none;
+   padding: 30px;
+ background-image:
+    linear-gradient(
+      to top left, 
+    #1AC1DE,  #6DCF51
+    );
+}
+#YearTaughtreturn {
+    color: rgb(153, 153, 153);  
+
+}
+#YearTaughtreturn option {
+    color: rgb(68, 68, 68) !important;
+
+}
+
+#AddStoryPopUp .ColourMappopup {
+     border-radius:25px;
+    background-color: white;padding:10px;
+}
+
+#pop  .panel-body{
+
+    padding: 0!important;
+}
+#pop .panel {
+    
+    border:none!important;
+}
+.form-group-title {
+    color: rgb(68, 68, 68);
+    font-weight:100;
+    font-size:17px;
+    display: block;
+}
+#HiddenStorytoggle, #TVContToggle, #HealthContToggle , #challengeContToggle{
+ 
+    margin-top: -3px !important;
+ }
+.HealthContToggletext:hover, .HiddenStorytoggletext:hover, .TVContToggletext:hover, .challengeContToggletext:hover  {
+    cursor:pointer;
+}
+
+#Image_signupcanvas canvas, #ProfileBanner_signupcanvas canvas, .signupbannerimagechange img, .signupprofileimagechange img {
+     border: 1px solid;
+    border-radius: 30px;
+}
+.profile-image-conatiner {
+       float: none;
+    margin: 0 auto;
+
+}
+.BigpopupFav {
+    /*color: rgb(159, 159, 159);*/
+ font-family: "Source Sans Pro",sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+
+
+}
+
+.BigpopupFav a {
+    color: rgb(68, 68, 68) !important;
+
+}
+.BigpopupFav a:hover {
+    text-decoration: underline !important;
+      color:black!important;
+
+}
+.maplight {
+    color: #8B8989;
+}
+.signupprofileimagechange i {
+    left:86%!important;
+
+}
+.suggestions {
+    border-color: rgb(124, 193, 68) !important;
+    border-radius: 0 0 3px 3px;
+}
+.button.silver {
+    float: right;
+}
+
+#AddressQuestion {
+    display:none;
+}
+.mapiup {
+    margin-bottom:23px;
+    padding-top:5px;
+}
+
+#AddStory {
+    height:60px;
+    width:175px;
+    font-size: 17px;
+    text-align:center;
+    border: solid solid #59A098;
+   background-image:
+    linear-gradient(
+      to top left, 
+    #1AC1DE,  #6DCF51
+    );
+   opacity:0.9;
+    color: #FFF !important;
+
+  font-family:"Source Sans Pro",sans-serif;
+    display: block;
+    float: right;
+}
+
+#AddStoryMoreInfo {
+  height:60px;
+    width:175px;
+    font-size: 17px;
+     border: solid solid #59A098;
+    text-align:center;
+      font-family:"Source Sans Pro",sans-serif;
+ opacity:0.9;
+     background-image:
+    linear-gradient(
+      to top left, 
+    #1AC1DE,  #6DCF51
+    );
+    color: #7FBF44 !important;
+        color: #FFF !important;
+    display: block;
+     float: right;
+}
+
+
+
+.btnalt {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 55px;
+    margin: 0 auto 1em;
+
+    position: relative;
+    text-decoration: none;
+
+    vertical-align: middle;
+    width: 100%;
+}
+
+@media(max-width: 480px) {
+     .Maplogincontant #fbLoginButtonmap {
+
+         padding-left: 38px !important;
+        }
+            
+
+  .editspa {
+
+      margin-bottom: 66px !important;
+    margin-top: -31px !important;
+  }
+  
+  .NomapImage .Teacher {
+      
+  }
+  #StorysContainer span {
+      font-size: 12px !important;
+      padding: 5px 5px 5px 5px !important;
+}
+    .PBYMaptag {
+        font-size: 24px !important;
+        padding: 15px 5px !important;
+    }
+
+       .mappadding {
+        padding-left: 0 !important ;
+        padding-right: 0 !important;
+    }
+}
+@media(max-width: 1200px)  and (min-width: 768px) {
+    .MapTab {
+        font-size: 12px !important;
+       width: 15% !important;
+        margin: 0 -0.8% !important;
+     
+    }   .PBYMaptag {
+
+      font-size: 28px !important;
+  }
+      #MenuMap {
+          padding-left: 0px !important;
+    }
+}
+@media(max-width: 1650px)  and (min-width: 1201px) {
+    .MapTab {
+        font-size: 16px !important;
+       
+        width: 14% !important;
+    }
+    #MenuMap {
+          padding-left: 0px !important;
+    }
+}
+@media(max-width: 1200px) {
+  
+    .mappadding {
+        padding-left: 10% ;
+        padding-right: 10% ;
+    }
+}
+  .mappadding {
+        padding-left: 5% ;
+        padding-right: 5% ;
+    }
+  
+  @media(min-width: 480px) {
+ 
+    .btnalt:nth-of-type(even) {
+      margin-right: 2em;
+    }
+    
+    .btnalt:nth-of-type(odd) {
+      margin-right: 15px;
+    }
+    
+  }
+  
+  .btnalt:hover { text-decoration: none; }
+
+
+
+.btn-4 {
+    border: 1px solid;
+    overflow: hidden;
+    position: relative;
+}
+ .btnalt span {
+    z-index: 20;
+  }
+  
+  .btnalt:after {
+
+
+      background-image: none !important;
+ 
+      background: #fff !important;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+  }
+  
+  
+  .btnalt:after .AddStory{
+
+      background: none !important;
+ 
+  }
+    
+  .btnalt:hover:after .AddStory {
+ 
+    background: none !important;
+  
+}
+
+  
+  .btnalt:hover:after{
+ 
+    left: 120%;
+    transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  
+}
+
+  .PBYMaptag {
+        font-family:"Source Sans Pro",sans-serif;
+        font-size:34px;
+        padding:20px 15px;
+      display: block;
+      font-weight:300;
+  }
+
+  .MapTab {
+       display: inline-block;
+    font-family: "Source Sans Pro",sans-serif;
+    font-size: 18px;
+    margin: 0 -0.1%;
+    color: rgb(68, 68, 68);
+    width: 13%;
+        font-weight: 400;
+           vertical-align: middle;
+  }
+   /*.MapTab:hover {
+   text-decoration:underline;
+  }*/
+  /*@font-face {
+  font-family: 'FontAwesome';
+  src: url('../font/fontawesome-webfont.eot?v=3.0.1');
+  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+    url('../font/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+    url('../font/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+   .MapNavSelected span {
+       color: #7BBF44 !important;
+           font-weight: 600;
+           text-decoration:underline;
+   }
+  /*.MapNavSelected span:after{
+      content: " \f107  ";
+       font-family: "FontAwesome";
+       font-size:0.9em;
+    
+  }*/
+  .mapprogress-bar-styles {
+      
+      background-color:#80C14B;
+  }
+
+
+#StorysContainer div {
+   margin-bottom: 7px;
+    margin-top: 7px;
+
+    overflow: hidden;
+         font-family:"Source Sans Pro",sans-serif;
+}
+#StorysContainer .Teacher:hover {
+    cursor: pointer;
+}
+#StorysContainer .Shop:hover {
+    cursor: pointer;
+}
+#StorysContainer .Student:hover {
+    cursor: pointer;
+}
+#StorysContainer span {
+    display: block;
+ padding: 5px 20px;
+  
+}
+
+
+.NomapImage .Teacher {
+
+    background-image:
+    linear-gradient(   to top left, 
+       #8274ae ,
+    #4e3e82
+    );
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+}
+ .NomapImage .Shop {
+
+     background-image:
+    linear-gradient(   to top left, 
+     
+    #FFBB00,  #ff942d
+    );
+    font-size: 14px;
+       color: white;
+     padding: 10px;
+}
+ .NomapImage .Student {
+   
+      background-image:
+    linear-gradient(   to top left, 
+     
+    #14B5E9,  #1f73a8
+    );
+    font-size: 14px;
+       color: white;
+     padding: 10px;
+}                
+#StorysContainer .Teacher {
+    box-shadow:0px 0px 9px #999;
+    padding-bottom:7px;
+
+}
+#StorysContainer .Shop {
+   box-shadow:0px 0px 9px #999; 
+     padding-bottom:7px;
+
+}
+#StorysContainer .Student {
+    
+     box-shadow:0px 0px 9px #999;
+       padding-bottom:7px;
+}
+
+
+.arrmap {
+    color:#999;
+      margin-top: 10px;
+}
+
+.Edrm {
+  
+    font-size: 13px;
+    padding-bottom: 10px !important;
+    padding-top: 5px !important;
+    position: relative;
+    text-decoration:underline;
+    text-align: center;
+}
+.iconxy {
+   
+    margin-top: -16px;
+
+    }
+
+#right-nav {
+    left: 35% !important;
+}
+.maphr {
+    border-top: 1px solid rgb(125, 193, 72) !important;
+}
+.mblinks a {
+    color: black;
+   /*text-decoration: underline !important;*/
+       font-family: "Source Sans Pro",sans-serif;
+    font-size: 16px;
+    font-weight:600;
+}
+.mblinks a:hover,.mblinks a:focus,.mblinks a:active,.mblinks a:visited {
+    color: black !important;
+    text-decoration: none !important;
+    outline-offset: 0px !important;
+}
+   #MapToggle:active {
+           color: black !important;
+    text-decoration: none !important;
+    outline-offset: 0px !important;
+   }
+.editorspan {
+    height: 98px !important;
+    overflow:hidden;
+
+}
+.editorspanblank {
+  
+    overflow:hidden;
+  
+}
+
+.editspa {
+   height: 97px !important;
+   overflow:hidden;
+   margin-bottom: 117px;
+    margin-top: -82px;
+    text-align:center;
+}
+[data-LocationMap]:hover {
+    cursor: pointer;  
+}
+[data-LocationMap] {
+  padding-bottom:30px;
+}
+[data-challengesmap]:hover {
+    cursor: pointer;  
+}
+[data-challengesmap] {
+  padding-bottom:30px;
+}
+.Locationop {
+    opacity:0.5;
+}
+.NomapImage {
+    margin-top: -2px;
+}
+#MenuMap {
+     margin-bottom:10px;
+ }
+.addmargin {
+    margin-left:15px;
+       margin-right:15px;
+}
+#MenuMapMin a {
+    color:rgb(125, 193, 72);
+       font-family: "Source Sans Pro",sans-serif;
+     font-size: 16px;
+}
+#MenuMapMin a:hover {
+      color:rgb(125, 193, 72);
+}
+#MenuMapMin  {
+  
+      margin-bottom: 10px;
+    margin-top: -10px;  
+   
+}
+.MapTog {
+    display: none !important;
+
+}
+
+.Maplogincontant {
+    position: absolute;
+    bottom:-138px;
+    width:100%;
+    padding-left:7%;
+      padding-right:7%;
+}
+.Maplogincontant a {
+   display: block;
+
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+.Maplogincontant button {
+     margin-bottom: 5px;
+    width:100%
+}
+
+.MaplogincontantLogin {
+
+    bottom: -240px !important;
+
+  
+}
+.MaplogincontantLoginAuto {
+        bottom: -290px!important;
+
+    
+}
+.Maspchexck {
+   color:white;
+    margin-top:1px;
+    text-align: center;
+}
+.Maspchexck span{
+   color:white;
+
+}
+#LoginPanned {
+    text-decoration: underline;
+}#MenuMap {
+          padding-left: 0px !important;
+    }

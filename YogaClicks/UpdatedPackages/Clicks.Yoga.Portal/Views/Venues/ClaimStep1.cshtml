@@ -1,0 +1,31 @@
+﻿@using Clicks.Yoga.Portal.Models.Venues
+@model Clicks.Yoga.Portal.Models.Venues.VenueClaimStep1Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("ClaimStep1", "Venues"))
+{
+  //  @Html.Serialize("ClaimModel", ViewBag.ClaimModel as VenueClaimModel)
+    
+    <h2 class="greenHeader">Claim ownership of this venue</h2>
+    <hr />
+    <ul class="steps steps3">
+        <li class="active"><span>Step 1</span></li>
+        <li><span>Step 2</span></li>
+        <li><span>Step 3</span></li>
+    </ul>
+    <div class="activity-meta scrollableiFrame">
+        @Html.ValidationSummary()
+        <h3 class="cb">@Model.Name</h3>
+        <div class="halfWidth">
+            @Html.CheckBoxFor(m => m.Owned) I own/manage this venue
+        </div>
+    </div>
+    <hr />
+    <div>
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button class="button pink large fr">Next</button>
+    </div>
+}

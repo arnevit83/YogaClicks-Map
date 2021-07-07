@@ -1,0 +1,8 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ImageModel
+
+@{
+    var width = ViewBag.Width ?? 200;
+    var height = ViewBag.Height ?? 200;
+}
+
+@Html.Image(Model, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })

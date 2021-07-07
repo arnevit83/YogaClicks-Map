@@ -1,0 +1,52 @@
+﻿@model Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel
+
+<div class="largerForm">
+    @Html.HiddenFor(m => m.Professional)
+
+    @Html.ValidationSummary()
+    
+    @if (!Model.Professional)
+    {
+        @Html.TextBoxFor(m => m.Forename, new { placeholder = "First name", style = "width:48%" })
+
+        @Html.TextBoxFor(m => m.Surname, new { placeholder = "Last name", style = "width:48%; float: right" })
+    }
+
+    @Html.TextBoxFor(m => m.Username, new { placeholder = "Email address" })
+
+    @Html.PasswordFor(m => m.Password, new { placeholder = "Create password" })
+
+    @Html.PasswordFor(m => m.PasswordConfirmation, new { placeholder = "Confirm password" })
+    
+    @if (!Model.Professional)
+    {
+        <div class="form-grey-bg">
+            @Html.LabelFor(m => m.BirthDate, "Date of birth")
+            @Html.EditorFor(model => model.BirthDate)
+            <div style="margin-left: 5px; font-size: 11px;">Don't worry, this is our secret</div>
+        </div>
+
+        <div class="form-grey-bg">
+            @Html.LabelFor(m => m.Gender, "Gender")
+            @Html.EditorFor(e => e.Gender)
+        </div>
+    }
+            
+    <div class="term-of-use-form-section">
+        By clicking &quot;Sign-up&quot; or signing in with Facebook you agree to our <a href="/static/terms-of-use">terms of use</a>.
+        <!--           
+            <div>
+                @Html.EditorFor(m => m.NewsletterOptOut) Newsletter opt-out
+            </div>
+                
+            <div>
+                @Html.EditorFor(m => m.ThirdPartyOptOut) Third-party opt-out
+            </div>
+            -->
+    </div>
+            
+    <button class="button pink activeSignup" type="submit">Sign up</button>
+    <button class="button pink greybg disabledSignUp" type="button">Sign up</button>
+    <br />
+    <a href="#" class="facebook fbButton"><img src="/images/buttons/sign-up-with-facebook.gif" alt="Sign up with facebook"></a>
+</div>

@@ -1,0 +1,71 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchDiscoverModel
+
+@{
+    ViewBag.Title = "Find Yoga Teachers, Classes, Teacher Training";
+    ViewBag.Description = "Find the yoga teachers, studios, activities, teacher training and accrediting / registering bodies for you. Not sure what you’re looking for? Take our Lucky Dip.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-discover", Model)
+}
+
+@section Scripts{
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col search-content-col discover-strip purple-strip" id="scroll">
+        <div>
+        <header class="search-results">
+            <h1 class="purpleHeader"><span>&nbsp;</span>Lucky Dip <a href="@Url.Action("discover", "search")" class="refresh"></a></h1>
+        </header>
+        <div id="resultContainer">
+        @foreach (var category in Model.CategorisedResults)
+        {
+            if (category.Value.Count == 0)
+            {
+                continue;
+            }
+            <section class="search-group" data-category="@category.Key">
+                <header role="result-type">
+                    <h2>
+                        @switch (category.Key.ToLower())
+                        {
+                            case "teachertrainingcourse":
+                                <text>Teacher training</text>
+                                <a href="@Url.Action("teachertrainingorganisations")" class="view-all button">view all</a>
+                                break;
+                            case "accreditationbody":
+                                <text>Accrediting / registering bodies</text>
+                                <a href="@Url.Action("index", "accreditationbodys")" class="view-all button">view all</a>
+                                break;
+                            case "activity":
+                                <text>Activities</text>
+                                <a href="@Url.Action("search", "activities")" class="view-all button">view all</a>
+                                break;
+                            case "styleorganisation":
+                                <text>Style organisations</text>
+                                <a href="@Url.Action("styleorganisations", "search")" class="view-all button">view all</a>
+                                break;                                
+                            default:
+                                @(category.Key + "s")
+                                <a href="@Url.Action(category.Key + "s")" class="view-all button ">view all</a>
+                                break;
+                        }
+                    </h2>
+                </header>
+            @foreach (var result in category.Value)
+            {
+                @Html.Partial("SearchResultPartial", result)
+            }
+            </section>
+            <div class="cb"></div>
+        }
+            @Html.Partial("Disclaimer", "Shared")
+
+
+        </div>
+    </div>
+</div>
+</div>

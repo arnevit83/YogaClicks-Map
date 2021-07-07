@@ -1,0 +1,178 @@
+﻿@model Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel
+
+@{
+    ViewBag.Title = "Find, love and live great yoga";
+    ViewBag.Description = "YogaClicks is the global community that lives and breathes all things yoga. Get exploring. Get sharing. Get inspired";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.BodyClass = "manual-register-page";
+}
+
+@section Head {
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/slide-7-main.jpg" />
+}
+<input type="hidden" id="registrationPage" value="true" />
+<div class="slide" id="slide0" data-slide="0" data-stellar-background-ratio="0.5">
+    <div class="parallax-1-content-wrapper">
+        <div class="homepage-top-container">
+            <div>
+                YogaClicks is the global community that lives and breathes all things yoga.
+            </div>
+            <div class="parallax-1-sub-text">
+                Connect with teachers, venues and fellow yogis.<br />
+                Get exploring. Get sharing. Get inspired.
+            </div>
+            <div class="parallax-1-buttons-wrapper">
+                <div>
+                    <a href="@Url.Action("directory", "styles")" class="button pink parallax-button-students scrollTo">Students</a>
+                    <a href="@Url.Action("teachers", "search", new { SortOrder = "Name" })" class="button pink parallax-button-teachers scrollTo">Teachers</a>
+                </div>
+                <div class="parallax-1-click-for-more">
+                    Let's go!
+                </div>
+                <div class="parallax-1-button-row">
+                    <a href="@Url.Action("teachertrainingorganisations", "search", new { SortOrder = "Name" })" class="button pink parallax-button-tt scrollTo">Teacher training</a>
+                    <a href="@Url.Action("venues", "search", new { SortOrder = "Name" })" class="button pink parallax-button-venues scrollTo">Venues</a>
+                </div>
+            </div>
+            <div class="parallax-1-down-arrow parallax-1-sub-text">
+                Scroll down for more
+                <a href="#slide1" class="scrollTo" style="outline:0;"><img src="@Url.Content("~/images/parallax/parallax-down-arrow.png")" /></a>
+            </div>
+
+        </div>
+    </div>
+    <span class="parallax-1-copyright">Image by: Faern</span>
+</div>
+
+
+<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
+    <div class="auto-margin-lr parallax-student-image">
+        <a href="@Url.Action("directory", "styles")">
+            <img src="@Url.Content("~/images/parallax/parallax-student.jpg")" />
+        </a>
+    </div>
+</div><!--End Slide 1-->
+
+
+<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
+    <span class="copyright">Image: KK Ledford by Faern</span>
+</div><!--End Slide 2-->
+
+
+<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
+    <div class="auto-margin-lr parallax-teacher-image">
+        <a href="@Url.Action("teachers", "search", new { SortOrder = "Name" })">
+            <img src="@Url.Content("~/images/parallax/parallax-teachers.jpg")" />
+        </a>
+    </div>
+</div><!--End Slide 3-->
+
+
+<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+    <span class="copyright">Image: Debbie Steingeisser by Faern</span>
+
+</div>
+
+
+<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="0.5">
+    <div class="auto-margin-lr parallax-venues-image">
+        <a href="@Url.Action("venues", "search", new { SortOrder = "Name" })">
+            <img src="@Url.Content("~/images/parallax/parallax-venues.jpg")" />
+        </a>
+    </div>
+</div>
+
+
+<div class="slide" id="slide6" data-slide="6" data-stellar-background-ratio="0.5">
+    <span class="copyright">Image: 'Deanna Brolly' by Faern</span>
+</div>
+
+<div class="slide" id="slide7" data-slide="7" data-stellar-background-ratio="0.5">
+    <div class="auto-margin-lr parallax-tt-image">
+        <a href="@Url.Action("teachertrainingorganisations", "search", new { SortOrder = "Name" })">
+            <img src="@Url.Content("~/images/parallax/parallax-tt.jpg")" />
+        </a>
+    </div>
+</div>
+
+<div class="slide" id="slide8" data-slide="8" data-stellar-background-ratio="0.5">
+    <span class="copyright">Image: Katie Rose by Faern</span>
+</div>
+
+<div class="slide" id="slide9" data-slide="9" data-stellar-background-ratio="0.5">
+    <div class="wrapper">
+        <div class="two columns">
+            <div class="col parralaxText">
+                <p class="book-title">The book that inspired YogaClicks</p>
+                <p>I never expected my book to inspire a website but that's exactly what happened.</p>
+                <p>When Yoga School Dropout hit the stands yogis from Manchester to Montana got in touch wanting recommendations on yoga teachers, training and retreats.</p>
+                <p><strong>YogaClicks</strong> is my answer.</p>
+                <p>A place for the global community to find, love and live great yoga - the teachers that inspire us, the studios that welcome us, the holidays that change our lives.</p>
+                <p>Over to you!</p>
+            </div>
+            <div class="">
+                <img src="/images/parallax/book.jpg" class="lucy-book" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cookie-message">
+    <div class="container-960">
+        <p class="fr no-mrg-top"><img src="images/close.png" class="hide-cookie-message"> &nbsp; <a href="" class="hide-cookie-message">Don't show this message again</a></p>
+        <p>
+            We use cookies to improve your site experience, and to help us understand how the site is being used.<br />
+            See our <a href="@Url.Action("privacy-policy", "static")">Privacy Policy</a> for more info. By using our site you agree to this policy and our use of cookies.
+        </p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.hide-cookie-message').on('click', function (e) {
+            e.preventDefault();
+            setCookie("allowcookies", "true", 3650);
+            $(".cookie-message").hide();
+        });
+
+        var hasCookie = getCookie("allowcookies");
+
+        if (hasCookie != "true") {
+            $(".cookie-message").show();
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+    });
+
+    $('.registerRevealBtn').attr('href', '#');
+
+    /* Paralllax */
+    jQuery(document).ready(function ($) {
+
+        //initialise Stellar.js
+        if (!Modernizr.touch) {
+            $(window).stellar();
+        }
+
+    });
+
+    /* Popup Register Form */
+
+
+
+</script>

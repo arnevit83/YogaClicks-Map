@@ -1,0 +1,70 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Yoga Practice, Yoga Styles, Yoga Poses";
+    ViewBag.Description = "Need help developing your yoga practice? We’ll help you find yoga styles and yoga poses, whether you’re a yoga beginner or an advanced human pretzel.";
+    ViewBag.MenuClass = "how-to-navigation";
+    Layout = "~/Views/Layout/Layout.cshtml";
+   // ViewBag.MenuSection = "Practice";
+}
+@section LeftNav{
+
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="practice-strip "></div>
+    <div class="single-content landingPage practicePage" id="scroll">
+
+        <section class="page-content">
+
+            <article id="static">
+                    <header>
+                        <h2 class="pageTitle"><span class="logo">&nbsp;</span><span class="colorTitle">Styles &amp; Poses</span><span> - Discover your yoga style, strike a pose</span></h2>
+                    </header>
+                <div class="imageWrap">
+                    <div class="image">
+                        <img src="/images/practice-landing.jpg" class="img-responsive"/>
+                    </div>
+                    <div class="caption">
+                        Image courtesy of Robert Sturman
+                    </div>
+                </div>
+
+
+
+                <div class="navWrap">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Index", "Styles")">
+                                <strong>Style finder</strong> - Try yoga's first interactive guide to find the yoga that's right for you <span class="arrow">&gt;</span>
+                            </a>
+                        </li>
+                        @*<li>
+                            <a href="@Url.Action("Directory", "Styles")">
+                                <strong>Style directory</strong> - Ananda through Yin - all you need to know <span class="arrow">&gt;</span>
+                            </a>
+                        </li>*@
+                        <li>
+                            <a href="@Url.Action("Index", "Poses")">
+                                <strong>Pose finder</strong> - Search by name, category or level <span class="arrow">&gt;</span>
+                            </a>
+                        </li>
+                        @*<li>
+                            <a href="@Url.Action("Directory", "Poses")">
+                                <strong>Pose directory</strong> - Filter by English or Sanskrit <span class="arrow">&gt;</span>
+                            </a>
+                        </li>*@
+                    </ul>
+                </div>
+
+
+
+                
+            </article>
+
+        </section>
+
+    </div>
+
+</div>
+    

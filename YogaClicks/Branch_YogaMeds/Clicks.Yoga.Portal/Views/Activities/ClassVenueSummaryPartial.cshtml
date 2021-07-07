@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityClassVenueSummaryPartialModel
+
+
+<p>
+@if (!string.IsNullOrEmpty(Model.Venue.Description))
+{
+    <p>@Html.NewLines(Model.Venue.Description)</p>
+}
+
+@if (Model.Venue.Address != null)
+{
+      <strong>Location</strong>
+    @Model.Venue.Address.City<span>,</span>
+    @Model.Venue.Address.Country.EnglishName<br />
+}
+
+<a href="@Url.Action("Display", "Venues", new { Model.Venue.Id })">View profile</a>
+
+</p>

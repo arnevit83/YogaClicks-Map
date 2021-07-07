@@ -1,0 +1,332 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Domain.Services
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js" lang="en"> <![endif]-->
+<html lang="en">
+<head>
+    <title>@ViewBag.Title | YogaClicks</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="@ViewBag.Description" />
+
+    @if (ViewBag.NoIndex != null && ViewBag.NoIndex == true)
+    {
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    }
+
+
+    <meta name="p:domain_verify" content="9558cb83db2192a34c488049b7db461e" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/global/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/global/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/global/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/global/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/global/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/global/apple-touch-icon-76x76.png">
+    <link rel="icon" type="image/png" href="/images/global/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/global/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/global/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    @*<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">*@
+
+    <link href="//db.onlinewebfonts.com/c/1b4cd06b44538d529084b3599f708643?family=MuseoSansW01-Rounded300" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Playfair+Display" rel="stylesheet"> 
+
+
+    <meta property="fb:app_id" content="@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]" />
+
+    <link rel="publisher" href="https://plus.google.com/101409381209229779027" />
+
+    @Scripts.Render("~/bundles/js/head")
+
+    @Styles.Render("~/bundles/Clear")
+
+
+    
+    @RenderSection("Head", false)
+
+
+    @*<link rel="stylesheet" href="~/css/jquery.sidr.light.css">
+        <link href="~/css/slider-override.css" rel="stylesheet">*@
+
+</head>
+<body class="@ViewBag.BodyClass" >
+    <div id="fb-root"></div>
+
+    <div class="container-fluid container-clear  ">
+
+        @Html.Action("SuperUserWarning", "Account")
+
+
+        @*<header id="header" class="row headermainClear main">
+
+            <div>
+                <div class="col-xs-10 col-sm-3 col-lg-3 col-lg-offset-1 Spacingmain">
+                    @*<a href="@Url.Action("index", "home")" id="logo" class="alignCenter">
+
+                        <img id="LogoMainWhite" src="/images/global/logo.svg" alt="YogaClicks. Find it. Love it. Shop it." class="img-responsive hidden-xs" data-svgpng="/images/global/logo.png" style="max-height: 60px;">
+
+                    </a>
+                </div>
+          
+
+
+                <div class="col-sm-9 col-lg-7    centerAlign main nopadding   ">
+
+                    <div id="login-container">
+                        @Html.Action("LoginPartialblank", "Account")
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </header>*@
+
+
+
+
+        <div class="row nopadding" id="mainsearch" style="display: none;">
+            <div class="col-xs-12  ">
+
+                @using (Html.BeginForm("Results", "Search", FormMethod.Get, new { @class = "BsSearch" }))
+                {
+                    @Html.TextBox("keywords", "", new { placeholder = "Type what you're looking for - and hit return", type = "search", @class = "form-control nopadding", Style = "margin-bottom:0px;" })
+                }
+
+            </div>
+        </div>
+
+
+
+        <div class="row nopadding">
+
+
+
+            <div id="maincontent" class="col-xs-12 nopadding ">
+
+                @RenderBody()
+
+            </div>
+            <div class="col-xs-12 nopadding">
+
+
+                <div id="fot" class="hidden-sm hidden-xs hidden-md" style="   margin-top: -20px;">
+                    <div class="share-title">
+                        <a href="#" id="share-link">Share this page</a>
+                    </div>
+                    <footer id="footer-navigation" role="contentinfo" class="pagefooter clearfix">
+                        <div class="title">Share this page</div><p class="copyrightmarkfooter">&copy; YogaClicks @DateTime.Today.Year</p>
+                        <div class="left">
+                            <nav class="footer-navigation">
+                                <ul>
+                                    <li><a href="javascript:openModal('/feedback/index')" class="button purple">Feedback</a></li>
+
+                                    <li><a href="#" onclick="javascript: $('body').attr('style', ' overflow: hidden;'); $('#explorer').slideDown()">Explore</a></li>
+                                    <li><a href="http://blog.yogaclicks.store">Our new blog!</a></li>
+                                    @*<li><a href="@Url.Action("lucys-Story", "static")">Lucy's story</a></li>*@
+                                    @*<li><a href="@Url.Action("faq", "static")">FAQ's</a></li>*@
+                                    <li><a href="@Url.Action("privacy-policy", "static")">Privacy</a></li>
+                                    <li><a href="@Url.Action("terms-of-use", "static")">Terms of use</a></li>
+                                    @*<li><a href="@Url.Action("advertise-with-us", "static")">Advertise</a></li>*@
+                      
+                                    <li></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="right">
+
+
+
+
+                            <a href="http://blog.yogaclicks.store/" target="_blank"  class="btn btn-social-icon btn-openid btn-xs footerIconsshare"><i class=" fa fa-rss"></i></a>
+
+
+
+                            <a href="" target="_blank" class="btn btn-social-icon btn-facebook btn-xs facebook-share-link footerIconsshare"><i style="position:!important" class="fa fa-facebook"></i></a>
+
+                            <a href="" target="_blank" class="btn btn-social-icon btn-twitter btn-xs twitter-share-link footerIconsshare"><i class="fa fa-twitter"></i></a>
+
+                            <a href="" target="_blank" class="btn btn-social-icon btn-pinterest btn-xs pintrest-share-link footerIconsshare"><i class="fa fa-pinterest"></i></a>
+
+
+
+                        </div>
+                        <div class="facebook-link-div" style="display:none">&title=@ViewBag.Title</div>
+                        <div class="twitter-link-div" style="display:none">&text=YogaClicks inspires, informs and equips us to transform life’s challenges and create the life we love</div>
+                        <div class="pintrest-link-div" style="display:none">&description=YogaClicks helps us transform life challenges and create lives we want. Be inspired, informed and equipped.&media=http://www.yogaclicks.com/images/global/pinterestshare-Generic.png</div>
+                    </footer>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        @if (SecurityContext == null || !SecurityContext.Authenticated)
+        {
+            <div id="registerPopup" style="display:none;" class="largerForm">
+                <div>
+                    <span title="Close" data-toggle="tooltip" class="pull-right LoginlogoClose close"><span>×</span></span>
+                    <div class="loginlogo hidden-xs">
+                        <img src="/images/global/logowhite.svg" alt="YogaClicks. Find it. Love it. Live it." class="loginlogoimg" data-svgpng="/images/global/logowhite.png" style="max-height: 75px;">
+                    </div>
+                    <h2 class="reg-title">
+                        Join YogaClicks!<br /> It's free and it's easy.
+                    </h2>
+
+                    @using (Html.BeginForm("CreateAccount", "Registration", FormMethod.Post, new { @class = "full", data_role = "Registration", data_partial_action = Url.Action("CreateAccountPopupPartial", "Registration") }))
+                    {
+                        @Html.Action("CreateAccountPopupPartial", "Registration")
+                    }
+
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+
+
+
+
+
+    <div class="dark-overlay" style="display:none;"></div>
+
+
+
+
+
+
+
+
+
+    @Html.Action("Init", "Facebook")
+    <script type="text/javascript">$(document).ready(function () { setTimeout(function () { null != parent.$.fancybox && null != parent.$.fancybox.current && (top.location.href = "@ViewContext.HttpContext.Request.Url") }, 0) });</script>
+
+    @Scripts.Render("~/bundles/js/Clear")
+
+<script type="text/javascript">
+    $(function () { var e = $("form[data-role=Registration]"); e.on("click", "button[type=submit]", function (e) { e.preventDefault(); var t = $(this), i = t.closest("form"), a = i.find("input, select"); $(".disabledSignUp").show(), $(".activeSignup").hide(), $.ajax({ type: "POST", url: i.attr("data-partial-action"), data: a.serialize(), success: function (e) { e ? (i.html(e), $(".disabledSignUp").hide(), $(".activeSignup").show()) : location.href = '@Url.Action("CreateAccountComplete", "Registration")' } }) }), $("#createPopUp").fancybox({ width: "40%",  autoScale: 0, 'afterClose': myClose, 'beforeShow': myStart, transitionIn: "fade", transitionOut: "fade", 'closeBtn': false }), $("body").delegate(".reg-form-popup", "click", function (e) { 0 == $(this).attr("href").indexOf("/") && (e.preventDefault(), $(".reg-title").html("You need to be a member for this. It's free and it's easy."), $("#createPopUp").click()) }), $("body").delegate(".reg-form-header", "click", function (e) { 0 == $(this).attr("href").indexOf("/") && (e.preventDefault(), $(".reg-title").html("Join YogaClicks!<br /> It's free and it's easy."), $("#createPopUp").click()) }) });
+</script>
+    @RenderSection("Scripts", false)
+
+
+@*<div data-checkout_button_text="Checkout" data-cart_button_text="Cart" data-button_text_color="ffffff" data-button_background_color="77B0A9" data-background_color="ffffff" data-text_color="000000" data-accent_color="242424" data-cart_title="Your cart" data-discount_notice_text="Shipping and discount codes are added at checkout." data-cart_total_text="Total" data-sticky="true" data-empty_cart_text="Your cart is empty." data-embed_type="cart" data-shop="yogaclicks.myshopify.com"></div>
+    <script type="text/javascript">
+        document.getElementById('ShopifyEmbedScript') || document.write('<script type="text/javascript" src="https://widgets.shopifyapps.com/assets/widgets/embed/client.js" id="ShopifyEmbedScript"><\/script>');
+    </script>*@
+    @*<script type="text/javascript">
+    adroll_adv_id = "CAHWN3SKK5G37GJ6NWJW5A";
+    adroll_pix_id = "SNAGXJNRHVCTJL3ICOD7VM";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function () {
+            if (document.readyState && !/loaded|complete/.test(document.readyState)) { setTimeout(_onload, 10); return }
+            if (!window.__adroll_loaded) { __adroll_loaded = true; setTimeout(_onload, 50); return }
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) { window.addEventListener('load', _onload, false); }
+        else { window.attachEvent('onload', _onload) }
+    }());
+    </script>*@
+
+ @if (!HttpContext.Current.IsDebuggingEnabled)
+ {
+
+     if (SecurityContext != null && SecurityContext.Authenticated)
+     {
+         <script type="text/javascript">
+             $(document).ready(function() {
+                 analytics.identify('@SecurityContext.CurrentProfile.Id', {
+                     name: '@SecurityContext.CurrentProfile.Name',
+                     type: 'identify',
+                     email: '@SecurityContext.CurrentProfile.Email',
+                     traits: {
+                         CreatedAt: '@SecurityContext.CurrentProfile.CreateDate.ToString("yyyy-MM-ddTHH:mm:ssZ")',
+                         NumberofLogins: '@SecurityContext.CurrentProfile.NumberofLoginIn',
+                         LastLoggedIn: '@SecurityContext.CurrentProfile.LastLoggedIn.ToString("yyyy-MM-ddTHH:mm:ssZ")',
+                         @Html.Raw(ViewBag.SiteSection)
+
+                     }
+
+                 });
+
+             });
+         </script>
+     }
+     else
+     {
+         if (ViewBag.SiteSection != null)
+         {
+
+             <script type="text/javascript">
+                 $(document).ready(function() {
+                     analytics.identify({
+                         type: 'identify',
+
+                         traits: {
+                             @Html.Raw(ViewBag.SiteSection)
+
+                         }
+
+                     });
+
+                 });
+             </script>
+         }
+     }
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="registerBanner">
+        <a href="#registerPopup" class="button large pink" id="createPopUp">Sign up to see more. Live dangerously! It's free!</a>
+    </div>
+  
+    @Html.Partial("Explore_partial")
+
+    <div class="modal fade" id="Manifesto" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <div class="modal-body">
+                <button type="button" class="close" style=" position: absolute; right: 20px;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <img data-dismiss="modal" class="img-responsive" src="~/Images/Homepage/Manifesto.png" />
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityClassSummaryPartialModel
+
+<!--<p>@Html.Raw(string.Join(", ", Model.Styles.Select(s => Html.ActionLink(s.Name, "Display", "Styles", new { s.Id }, new { target = "_blank" }))))</p>
+    -->
+<p>
+@if (Model.Styles.Any())
+{
+    <strong>Style</strong>
+    @Model.Styles.First().Name@:,
+    foreach (var style in Model.Styles.Skip(1))
+    {
+        @:,@style.Name
+    }
+    <span>&nbsp;</span>
+}
+@if (Model.Activity.AbilityLevel != null)
+{
+    <strong>Level</strong>
+    @Model.Activity.AbilityLevel.Name <br />
+}
+
+@if (!string.IsNullOrEmpty(Model.Activity.Description))
+{
+    @Html.NewLines(Model.Activity.Description)
+}
+    <br />
+<a href="@Url.Action("Display", "Activities", new { Model.Activity.Id })">More info</a>
+        </p>

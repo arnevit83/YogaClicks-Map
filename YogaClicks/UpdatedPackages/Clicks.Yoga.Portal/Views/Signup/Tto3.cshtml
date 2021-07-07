@@ -1,0 +1,191 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.TtoStep3ViewModel
+
+@{
+    ViewBag.Title = "Teacher Training Step 3";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+    var progressModel = new SignUpProgressBar()
+        {
+            Step = 2,
+            NumberOfSteps = 4,
+            ColorCssClass = "purple-text"
+        };
+
+    if (Model.IsEdit)
+    {
+        progressModel.Step = 1;
+        progressModel.NumberOfSteps = 3;
+    }
+
+    if (Session["newTto"] != "true")
+    {
+        progressModel.Step = 1;
+        progressModel.NumberOfSteps = 3;
+    }
+
+    var imageModel = new SignUpImages()
+    {
+        Image = Model.Image,
+        ProfileBanner = Model.ProfileBanner,
+        ColorCssClass = "purple-text"
+    };
+    
+    ViewBag.SignupProfileImageText = "Show us your logo, upload a photo";
+    ViewBag.SignupProfileBannerImageText = "Add a banner image that represents your brand ";
+
+}
+
+@if (Model.IsEdit)
+{
+    <div class="btn btn-default purple-border purple-text signup-deletebutton">
+        @Html.Action("DeleteButton", "Profiles", new { EntityId = Model.Id, EntityTypeName = "TeacherTrainingOrganisation", Securable = Model.UserProfile })
+    </div>
+}
+
+<img src="/images/svgicons/Icon_OrgPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" alt="namaste teacher training">
+@using (Html.BeginForm("TtoStep3", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-tto-3", step = 3 }))
+{
+
+    if (Model.IsEdit)
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Edit your teacher training page.</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+    else if (Session["newTeacher"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Create your teacher training page.</p>
+                <p>Tell us about your organisation to begin connecting with your community.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>2. Create your teacher training page.</p>
+                <p>Tell us about your organisation to begin connecting with your community.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-3 signup-large-text">
+            <p>Organisation name:</p>
+        </div>
+        <div class="col-xs-12 col-lg-7 singup-input">
+            <input id="signup-name" name="name" type="text" data-field-type="general" value="@Model.Name" />
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal  margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-3 signup-large-text">
+            <p>Founder:</p>
+        </div>
+        <div class="col-xs-12 col-lg-7 singup-input">
+            <input id="signup-telephone" name="founder" type="text" data-field-type="general" value="@Model.Founder" />
+            @Html.ValidationMessageFor(model => model.Founder)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal  margintop100">
+        <div class="hidden-xs col-lg-1"></div>
+        <div class="col-xs-12 col-lg-3 signup-large-text">
+            <p>Web / social:</p>
+        </div>
+        <div class="col-xs-12 col-lg-7 singup-input">
+            @Html.EditorFor(m => m.Website)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12  col-lg-3 signup-large-text">
+            <p>Organisation HQ:</p>
+        </div>
+        <div class="col-xs-12 col-lg-7 singup-input">
+            <div class="venueWrap">
+                @Html.EditorFor(m => m.Address)
+            </div>
+            <div class="cb"></div>
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    @Html.Partial("_SignUpImagesSection", imageModel);
+
+    @Html.Partial("_SignUpProgressBar", progressModel);
+    @Html.HiddenFor(m => m.Id)
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+    @if (Model.IsEdit)
+    {
+        <script type="text/javascript">
+            $field1 = $("input[name='Address.Line1']");
+            $field1.attr('data-field-type', 'general');;
+            $field1.attr('data-required-error-message', 'House number / name is required');
+            //$field1.attr('data-invalid-error-message', 'house number / name is required');
+            $(document).ready(function () {
+                if ($('form').length > 0) {
+                    $('form').isValid();
+                }
+            });
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if ($('form').length > 0) {
+                    $('form').isValid();
+                }
+            });
+        </script>
+    }

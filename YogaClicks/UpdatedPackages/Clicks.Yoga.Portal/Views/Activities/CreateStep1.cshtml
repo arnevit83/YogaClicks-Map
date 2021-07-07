@@ -1,0 +1,112 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep1Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="textiFrame">
+    @using (Html.BeginForm("CreateStep1", "Activities"))
+    {
+        @Html.HiddenFor(m => m.OwnerId)
+    
+        <h2 class="greenHeader">Create a new event</h2>
+    <hr class="modalHrSteps" />
+        <ul class="steps steps4">
+            <li class="active"><span>Step 1</span></li>
+            <li><span>Step 2</span></li>
+            <li><span>Step 3</span></li>
+            <li><span>Step 4</span></li>
+        </ul>
+        <div class="scrollableiFrame">
+            @Html.ValidationSummary()
+            <h3 class="cb blackSubHeader">What sort of event is this?</h3>
+            <div data-role="Type" class="type">
+                <!-- @Html.LabelFor(m => m.Type)-->
+                <div class="form-grey-bg activity-step-1">
+                    @Html.EditorFor(m => m.Type)
+                </div>
+            </div>
+
+            <div class="row">
+                @Html.LabelFor(m => m.PromoterHandle, "Which of your pages will promote this event?")<!--<span style="color: #f00">select your own venue or teacher profile for this if you have one.</span>-->
+                @Html.EditorFor(m => m.PromoterHandle)
+            </div>
+
+            <div data-role="Extended" class="activity-meta-step-one activity-meta">
+                <div class="row">
+                    <div class="halfWidth">
+                        @Html.LabelFor(m => m.Name, "Activity name")
+                        @Html.TextBoxFor(m => m.Name, new { maxlength = 50 })
+                    </div>
+    
+                    <div class="halfWidth">
+                        <div class="levelWrap">
+                            @Html.LabelFor(m => m.AbilityLevel, "Level")
+                            <span class="questionMark">?</span>
+                        </div>
+                        @Html.EditorFor(m => m.AbilityLevel)
+                    </div>
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(m => m.Private, "Is this a private activity?")
+                    @Html.EditorFor(m => m.Private)
+                </div>
+                <div class="levelBox">
+                            <strong>Everyone has their own definition but here's a rough guide:</strong>    
+                                    <ul>
+                                        <li><strong>Beginners</strong> - Introduces the basics</li>
+                                        <li><strong>Level 1</strong> - Builds familiarity</li>
+                                        <li><strong>Level 2</strong> - Intermediate, develops understanding</li>
+                                        <li><strong>Level 3</strong> - Advanced, develops mastery</li>
+                                        <li><strong>Open</strong> - All levels, usually taught with modifications</li>
+                                    </ul>
+                                    <a href="#" class="close">x</a>
+                                </div>
+            </div>
+        </div>
+
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+    }
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $extended = $container.find('[data-role=Extended]');
+
+        $container.find('[data-role=Type] input[type=radio]').change(function () {
+            var $this = $(this);
+            $extended.toggle($this.is(':checked') && ($this.attr('data-is-class') ? false : true));
+        });
+
+        var $checked = $container.find('[data-role=Type] input[type=radio]:checked');
+        $extended.toggle(($checked.length == 0 || $checked.attr('data-is-class')) ? false : true);
+    });
+</script>
+
+<script>
+    $('document').ready(function () {
+        $('.questionMark').click(function () {
+            $('.activity-meta').toggleClass('padding-bottom');
+
+        });
+        $('.close').click(function () {
+            $('.levelBox').slideUp();
+
+        });
+    });
+
+</script>

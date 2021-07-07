@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationProfessionalsModel
+
+@{
+    ViewBag.Title = "Professionals";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.TeacherTrainingOrganisation))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search", new { organisations = false })
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.TeacherTrainingOrganisation.Name" />
+    <meta property="og:description" content="@Model.TeacherTrainingOrganisation.Description" />
+
+    @if (Model.TeacherTrainingOrganisation.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.TeacherTrainingOrganisation.Image)" />
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.TeacherTrainingOrganisation.Id, Model.TeacherTrainingOrganisation.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.TeacherTrainingOrganisation) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.TeacherTrainingOrganisation.Id, SubjectTypeName = Model.TeacherTrainingOrganisation.EntityTypeName })
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.TeacherTrainingOrganisation.Id, SubjectType = Model.TeacherTrainingOrganisation.EntityTypeName })
+
+                <h1 class="teacherOrganisationHeader pageTitle"><span>&nbsp;</span>@Model.TeacherTrainingOrganisation.Name</h1>
+
+                <div class="profileBanner teacherOrganisationBanner">
+                    @Html.DisplayFor(m => m.TeacherTrainingOrganisation.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Partial("Tabs")
+
+                <div class="block-section associatedProfilesWrap">
+                    @foreach (var teacher in Model.AssociatedTeachers)
+                    {
+                        @Html.Partial("ProfessionalPartial", teacher)
+                    }
+                </div>
+                <div id="no-placements" style="display: @(Model.AssociatedTeachers.Count > 0 ? "none" : "")">
+                    <p>We're sure there is a faculty but they haven't listed anyone yet.</p>
+                </div>
+                <div class="meta">
+                    <p>YogaClicks does not warrant that any of the teachers, venues or teacher training organisations found on our site will meet your health or medical requirements.<p>
+                    <p>YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.</p>
+                    <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                    <br />
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

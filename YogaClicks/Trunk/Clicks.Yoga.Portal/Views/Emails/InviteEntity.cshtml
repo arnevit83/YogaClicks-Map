@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Emails.InviteEntityEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Join us at YogaClicks!";
+}
+
+<p>Hello @Model.Invite.EntityHandle.Name</p>
+<p>@Model.Invite.User.Profile.Name thinks you'd like YogaClicks.</p>
+<a href="@Url.EmailAction("Display", Model.Invite.EntityHandle.EntityType.Controller, new { Model.Invite.EmailAddress, id = Model.Invite.EntityHandle.EntityId })" style="color: #5CA29A; text-decoration: underline;">Click here to add your profile.</a> 
+<br />
+<br />
+<p>Hope to see you soon!</p>
+<p>Namaste</p>
+<p>Lucy and the YogaClicks team</p>
+
+<br /><br />
+<p style="font-size: 10px">YogaClicks &copy; @DateTime.Now.Year</p>

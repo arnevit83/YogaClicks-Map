@@ -1,0 +1,90 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileGalleriesModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Title = "Galleries";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Profile))
+    {
+        @Html.Action("Navigation")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                @(!SecurityContext.IsOwner(Model.Profile) ? Html.Raw("<img src='/images/svgicons/icon_findBlue.svg' data-svgpng='/images/SvgIcons/icon_findBlue.png'/><span style='color: #1AB5E9; font-weight: normal'>Profile</span><span></span>") : Html.Raw("<img src='/images/svgicons/icon_findTeal.svg' data-svgpng='/images/SvgIcons/icon_findTeal.png' /><span style='color: #459088; font-weight: normal'>Profile</span><span></span>"))
+            </h2>
+
+
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+    </div>
+</section>
+<div class="@(SecurityContext.IsOwner(Model.Profile) ? "profile-strip-line" : "community-strip-line")"></div>
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding   @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id=" scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader myProfileHeader">
+                    @(SecurityContext.IsOwner(Model.Profile) ? Html.Raw("<img src='/images/svgicons/Icon_ProfileTeal.svg' data-svgpng='/images/SvgIcons/Icon_ProfileTeal.png'/>") : Html.Raw("<img src='/images/svgicons/Icon_ProfileBlue.svg' data-svgpng='/images/SvgIcons/Icon_ProfileBlue.png'/>"))
+                    @Html.DisplayFor(m => m.Profile.Name)
+                </h2>
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+                <div class="profileBanner">
+                  
+                        @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                    
+                </div>
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+                        @Html.Partial("Tabs", new { Model.Profile })
+
+                    </div>
+                    <div class="panel-body">
+                        <div class=" col-xs-12 nopadding">
+
+                            @Html.Action("AssociatedPartial", "Galleries", new { EntityId = Model.Profile.Id, Model.Profile.EntityTypeName })
+
+
+
+                        </div>
+                        <div class=" col-xs-12 nopadding">
+
+
+                            <div class="hidden-md hidden-lg hidden-sm">
+                                @Html.Partial("Tabsmini")
+                            </div>
+                            @Html.Partial("Disclaimer", "Shared")
+
+
+                        </div>
+
+                    </div>
+                </div>
+      
+        </article>
+    </div>
+</div>
+</div>

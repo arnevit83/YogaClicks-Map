@@ -1,0 +1,71 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.SignUpAddressEditorModel
+
+@{
+    Layout = null;
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="@(Model.Latitude == 0 ? "" : "addresswrapper")">
+
+
+
+    @if (string.IsNullOrEmpty(Model.Line1))
+    {
+        <input type="text" data-role="Location" autocomplete="off" placeholder="e.g. 108 Yoga Street, Utopia, NR3 1HA" class="location-search-box" data-field-type="@(Model.Latitude == 0 ? "general" : "notrequired")" style="display: @(Model.Latitude == 0 ? "block" : "none");" />
+    }
+    <div class="suggestionsContainer" style="display: @(Model.Latitude == 0 ? "block" : "none");">
+        <div class="signup-suggestions" data-role="LocationSuggestions"></div>
+    </div>
+
+    <div id="venueAddress" style="display: @(Model.Latitude > 0 ? "block" : "none");">
+        @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude", data_field_type="notrequired" })
+        @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude", data_field_type="notrequired"  })
+        @*<div class="left">
+                <p class="size16">
+                    <strong>Pinpoint exact location</strong>
+                </p>
+                <div class="map" data-role="Map" style="height: 300px;"></div>
+                @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude" })
+                @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude" })
+            </div>*@
+        <div class="right">
+            @*<p class="size16">
+                    <strong>Amend address details</strong>
+                </p>*@
+            <fieldset>
+                @*@Html.LabelFor(m => m.Line1, "Address line 1")*@
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Line1, new { data_role = "Line1", placeholder = "Address Line 1", data_field_type = "notrequired" })</div>
+            </fieldset>
+            <fieldset>
+                @*@Html.LabelFor(m => m.Line2, "Address line 2")*@
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Line2, new { data_role = "Line2", placeholder = "Address Line 2", data_field_type="notrequired" })</div>
+            </fieldset>
+            <fieldset>
+                @*@Html.LabelFor(m => m.City, "Town/City")*@
+                <div class="inputwrap">@Html.TextBoxFor(model => model.City, new { data_role = "City", placeholder = "Address City", data_field_type = "notrequired" })</div>
+            </fieldset>
+            <fieldset>
+                @*@Html.LabelFor(m => m.Area, "County/State")*@
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Area, new { data_role = "Area", placeholder = "Address Area", data_field_type = "notrequired" })</div>
+            </fieldset>
+            <fieldset id="addressfinderpostcode">
+                @*@Html.LabelFor(m => m.Postcode, "Postcode/ZIP code")*@
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Postcode, new { data_role = "Postcode", placeholder = "Postcode", data_field_type = "general" })</div>
+            </fieldset>
+            <fieldset>
+                @*@Html.LabelFor(m => m.Country, "Country")*@
+                <div class="inputwrap">@Html.EditorFor(model => Model.Country, "CountrySelector", new { Countries = ViewData["Countries"] })</div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#@guid').yogaSignupLocationPicker();
+    })
+</script>

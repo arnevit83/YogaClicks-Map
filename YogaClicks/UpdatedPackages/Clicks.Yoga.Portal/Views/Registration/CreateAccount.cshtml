@@ -1,0 +1,1247 @@
+﻿@model Clicks.Yoga.Portal.Models.Registration.RegisterAccountModel
+
+
+
+@{
+
+    ViewBag.Title = "Everything you need to be #PoweredByYoga ";
+
+    ViewBag.Description = "YogaClicks is everything you need to be #PoweredByYoga – join The Yoga Map Project, shop yoga clothes, get yoga for health conditions, find teachers & retreats";
+
+    Layout = "~/Views/Layout/LayoutClearheader.cshtml";
+
+    ViewBag.BodyClass = "manual-register-page";
+
+}
+
+
+@section Head {
+
+    <meta property="og:title" content="We’re made by yogis - sharing the power of yoga for health, happiness and creativity" />
+
+    <meta property="og:description" content="Get the clinical studies. Tell your yoga story. Shop yoga’s creative talent - gifts, malas, clothes, equipment..." />
+
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+
+}
+
+<input type="hidden" id="registrationPage" value="true" />
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+@*<nav style="display:none"  class="Quick-navigation">
+
+        <a style="display:none" href="#A" class="Quick-navigation-item"><img alt="navShop" class="sideminiIcon" data-svgpng="/images/Homepage/shop.png" src="~/Images/Homepage/map.svg" /></a>
+
+        <a style="display:none" href="#B" class="Quick-navigation-item"><img class="sideminiIcon" alt="navabout" data-svgpng="/images/Homepage/about.png" src="~/Images/Homepage/about.svg" /></a>
+
+        <a href="#C" class="Quick-navigation-item"><img class="sideminiIcon" alt="navmap" data-svgpng="/images/Homepage/be-inspired.png" src="~/Images/Homepage/be-inspired.svg" /></a>
+
+        <a href="#E" class="Quick-navigation-item"><img class="sideminiIcon" alt="navshop" data-svgpng="/images/Homepage/be-equipped.png" src="~/Images/Homepage/be-equipped.svg" /></a>
+
+        <a href="#D" class="Quick-navigation-item"><img class="sideminiIcon" alt="navmeds" data-svgpng="/images/Homepage/be-informed.png" src="~/Images/Homepage/be-informed.svg" /></a>
+
+        <div class="Scroll-progress-indicator"></div>
+
+    </nav>*@
+
+
+<article class="advertResult trendingpopuptitle hidden-sm hidden-xs">
+
+
+
+
+
+    <img class="img-responsive" style="left: -18px; position: relative" src="/Images/What-you-can-do/trending_popupBack.png"><span id="mini-close" title="Close" class="close pull-right" style="margin-top: -225px; margin-right: 22px;" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+    <br /> <a href="/static/Trending"><strong>Back to #Trending</strong></a>
+
+    <br />
+
+
+
+
+</article>
+
+@*
+
+    <section id="A" class="js-scroll-step height-fix">
+
+            <div class="centerhomeblockhome2 height-fix ">
+
+                <div class="row centercenterblock nopadding">
+
+                    <div class="col-xs-12  centerAlign homepagetitle">
+
+
+
+                        <img alt="Be Powered by yoga" style="margin-top:-50px;margin-bottom:10px;" src="~/Images/Homepage/we-are-yogaclicks.png" class="center-block img-responsive hidden-xs"/>
+
+                        <img alt="Be Powered by yoga" style="margin-top:-50px;margin-bottom:10px;" src="~/Images/Homepage/we-are-yogaclicks -mini.png" class="center-block img-responsive hidden-sm hidden-lg hidden-md" />
+
+
+
+
+
+                        We are made by yogis - sharing the transformative power of yoga -<br class="hidden-xs" /> for health, happiness and creativity.
+
+                        <br /><br />
+
+
+
+
+
+                    </div>
+
+
+
+                    <div class="col-sm-4  centerAlign ">
+
+                    <a href="/YogaMeds?lg=true">
+
+                        <img alt="Yoga for Health" src="~/Images/Homepage/health.png" class="center-block img-responsive thumbnail" />
+
+                    </a>
+
+                </div>
+
+                <div class="col-sm-4  centerAlign ">
+
+                    <a href="#" onclick="ShopClick();" >
+
+                        <img alt="Yoga for Creativity" src="~/Images/Homepage/creativity.png" class="center-block img-responsive thumbnail" />
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="col-sm-4  centerAlign ">
+
+                    <a href="/YogaMap?lg=true">
+
+                        <img alt="Yoga for Happiness" src="~/Images/Homepage/happiness.png" class="center-block img-responsive thumbnail" />
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div style="position:relative">
+
+            <div class="homepagepopupper">
+
+                <div class="HomepageCaption">Photo of Julee Yew-Crijns, powered by yoga since 1999</div>
+
+                <div class="row centercenterblocknav nopadding">
+
+                    <div class=" col-xs-4 homenavaddpadding">
+
+                        <a href="/YogaMap?lg=true">
+
+                            <img class="img-responsive center-block" alt="navMap" data-svgpng="/images/SvgIcons/map-thicker.png" src="/images/SvgIcons/map-thicker.svg" style="width: 35%; background-color: white; border-radius: 500px; margin-bottom:-10px;" />
+
+
+
+                            <span class="MapButton btn btn-clear menusm">
+
+                                <span id="" class="">BE INSPIRED</span>
+
+                            </span>
+
+                            <span class="hidden-xs navp">
+
+                                The Yoga Map Project celebrates your transformation through yoga. Share your story to get featured and inspire others.
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="  col-xs-4 homenavaddpadding">
+
+                        <a href="/YogaMeds?lg=true" >
+
+                            <img class="img-responsive center-block" alt="navMeds" data-svgpng="/images/SvgIcons/meds-thicker.png" src="/images/SvgIcons/meds-thicker.svg" style="width: 35%; background-color: white; border-radius: 500px; margin-bottom:-10px;" />
+
+
+
+                            <span class="MedsButton btn btn-clear menusm">
+
+                                <span id="" class="">BE INFORMED</span>
+
+                            </span>
+
+                            <span class="hidden-xs navp">
+
+                                Yoga will help you transform your health challenges. Discover over 300 clinical studies on 30+ medical conditions.
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="  col-xs-4 homenavaddpadding">
+
+                        <a href="#" onclick="ShopClick();">
+
+                            <img class="img-responsive center-block" alt="navShop" data-svgpng="/images/SvgIcons/shop-thicker.png" src="/images/SvgIcons/shop-thicker.svg" style="width: 35%; background-color: white; border-radius: 500px; margin-bottom:-10px;" />
+
+
+
+
+
+                            <span class="ShopButton btn btn-clear menusm" id="">
+
+                                <span id="" class="">BE EQUIPPED</span>
+
+                            </span>
+
+                            <span class="hidden-xs navp">
+
+                                The yoga community is a creative community. Shop our curated collections and be a friend to yoga’s emerging talent.
+
+                            </span>
+
+
+
+
+
+                        </a>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            </div>
+
+
+
+    </section>*@
+
+
+<a class="trendinglinks hidden-md hidden-lg" href="/static/Trending">Back to #Trending</a>
+<br/>
+<br class=" hidden-md hidden-lg" /><br class=" hidden-md hidden-lg" /><br class=" hidden-md hidden-lg" />
+
+<section id="B" class="js-scroll-step height-fix">
+
+
+
+    <div class="row nopadding centerhomemenu ">
+
+        <div class="col-xs-12 FindBan ">
+
+            Girl on a mission.
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="centerhomeblock height-fix">
+
+        <div class="row centercenterblock nopadding">
+
+            <div class="col-xs-12">
+
+                <br class=" hidden-md hidden-lg" />
+
+
+
+              
+                Yoga changed my life. My book Yoga School Dropout chronicled my unlikely transformation - from burnt out ad director to born again writer - and readers got in touch, telling me they related to my story – that yoga had also changed their lives, helping them on the road to health, happiness and creativity. That’s the power of yoga.
+
+
+                <br /><br /><img class="img-responsive centerAlign center-block" src="~/Images/Homepage/shop Books.png" /><br />
+
+                That’s why I created YogaClicks, the shop, the blog, the Yoga Map Project and the #PoweredByYoga channel. To share what we’re creating out of yoga – whether that’s better health, stronger relationships, yoga pants made out of coffee grounds (yes really), or just having more fun in life. 
+                <br />
+
+                <br />
+
+
+                In sharing what we’re creating we’ll inspire each other, and get the world on its mat!
+                <br />
+
+                <br />
+
+                There are several ways to get involved – scroll down to find out how. And remember to hashtag #PoweredByYoga - broadcast yourself live on the yoga channel. 
+                <br />
+
+                <br />
+
+                Lucy
+                <br />
+
+                <br />
+
+
+
+
+                
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+
+<section id="C" class="js-scroll-step height-fix">
+
+    <div class="row nopadding centerhomemenu">
+
+        <div class="col-xs-12 MapBan">
+
+            Spread the word about yoga for happiness 
+        </div>
+
+
+    </div>
+
+    <div class="centerhomeblock height-fix ">
+
+        <div class="row centercenterblock centerAlign  nopadding">
+
+            <div class="col-sm-6 ">
+
+                <br />
+
+                <img class="img-responsive  center-block" alt="Amanda" src="~/Images/Homepage/amanda.png" />
+
+            </div>
+
+            <div class="col-sm-6">
+
+
+
+                <img data-svgpng="/images/SvgIcons/map-thicker.png" alt="MapIcon" class="homeICON center-block" src="/images/SvgIcons/map-thicker.svg">
+
+                <span class="slidebanheader">Join the Yoga Map Project</span><br /><br />
+
+
+                Help us celebrate you and the life you’re creating through yoga. Add your story to get featured and inspire others on the same path.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br /><br />
+
+                <div class="row nopadding">
+
+                    <div class="col-xs-4 centerAlign"><span class="Numhome counter">367</span><br />stories</div>
+
+                    <div class="col-xs-4 centerAlign"><span class="Numhome counter">45</span><br />countries</div>
+
+                    <div class="col-xs-4 centerAlign"><span class="Numhome ">1</span><br />mission</div>
+
+
+                </div>
+
+
+
+
+
+                <br />
+
+                <div style="margin: 0 auto;width:220px">
+
+                    <a class="MapButton btn btn-clear" id="">
+
+                        <span id="" class="">TELL YOUR STORY</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="E" class="js-scroll-step height-fix">
+
+    <div class="row nopadding centerhomemenu">
+
+        <div class="col-xs-12 ShopBan ">
+
+            Shop yoga’s creative talent
+
+        </div>
+
+
+    </div>
+
+    <div class="centerhomeblock height-fix">
+
+        <div class="row centercenterblock centerAlign  nopadding">
+
+
+            <div class="col-sm-12">
+
+                <img data-svgpng="/images/SvgIcons/shop-thicker.png" alt="ShopIcon" class="homeICON center-block" src="/images/SvgIcons/shop-thicker.svg">
+
+                <span class="slidebanheader">YogaClicks.Store</span><br /><br />
+
+
+
+                Out of stillness the creativity flows. We are home to yoga’s most creative and inspiring designers, creating from their heart for you.
+
+
+
+
+
+                <br /><br />
+
+                <div style="max-width: 800px; margin: 0 auto" class="row nopadding centerAlign center-block">
+
+                    <div class="row nopadding nomargin">
+
+                        <div class="col-xs-6 col-sm-3">
+
+
+                            <img class="img-responsive center-block" alt="arctic flamingo" src="~/Images/Homepage/ohmme.png" />
+
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 ">
+
+
+                            <img class="img-responsive center-block" alt="Hay Honey" src="~/Images/Homepage/kismet.png" />
+
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3">
+
+
+                            <img class="img-responsive center-block" alt="kismet" src="~/Images/Homepage/pebble.png" />
+
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3">
+
+
+                            <img class="img-responsive center-block" alt="limber stretch" src="~/Images/Homepage/rebecca.png" />
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                <div class="row nopadding">
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2 centerAlign nopadding"><span class="Numhome"><span class="counter">42</span></span><br />designers</div>
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2 centerAlign nopadding"><span class="Numhome counter">2500</span><br />creations</div>
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2 centerAlign nopadding"><span class="Numhome ">1</span><br />mission</div>
+
+                </div>
+
+
+                <br />
+
+
+                <div style="margin: 0 auto; max-width: 332px">
+
+
+
+
+
+                    <a class="ShopButton btn btn-clear" id="">
+
+                        <span id="" class="">SHOP CLOTHING, MATS, MALAS AND MORE</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="D" class="js-scroll-step height-fix">
+
+    <div class="row nopadding centerhomemenu">
+
+        <div class="col-xs-12 MedBan ">
+
+            Spread the word about yoga for health
+
+        </div>
+
+
+    </div>
+
+    <div class="centerhomeblock height-fix">
+
+        <div class="row centercenterblock centerAlign  nopadding">
+
+
+            <div class="col-sm-12">
+
+
+
+                <img data-svgpng="/images/SvgIcons/meds-thicker.png" alt="MedsIcon" class="homeICON center-block" src="/images/SvgIcons/meds-thicker.svg">
+
+                <span class="slidebanheader">YogaMeds</span><br /><br />
+
+
+
+                Browse our library of over 300 clinical studies, all of them from respected institutions. They validate yoga for over 30 health conditions - from anxiety and stress, to coping with cancer.
+
+                <br /><br />
+
+                <div class="row nopadding">
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2 centerAlign nopadding"><span class="Numhome  center-block"><span class="Numhome counter">300</span><span class="hidden-xs">+</span></span><br />studies</div>
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2  centerAlign nopadding"><span class="Numhome  text-center counter">34</span><br />conditions</div>
+
+                    <div class="col-sm-push-3 col-xs-4 col-sm-2 centerAlign nopadding"><span class="Numhome center-block">1</span><br />mission</div>
+
+                </div>
+
+
+                <br />
+
+
+                <div style="margin: 0 auto;width:220px">
+
+
+
+                    <span class="MedsButton btn btn-clear">
+
+                        <span id="" class="">GET YOGA FOR HEALTH</span>
+
+                    </span>
+
+                </div><br /><br /><br /><br /><br />
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<button class="Scroll-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i><span class="hidden-xs"> TOP</span></button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cookie-message">
+
+    <div class="container-960">
+
+        <div class="row nopadding">
+
+
+            <div class="col-sm-8 col-xs-11">
+
+                <p>
+
+                    We use cookies to improve your site experience, and to help us understand how the site is being used.
+
+                    See our <a href="@Url.Action("privacy-policy", "static")">Privacy Policy</a> for more info. By using our site you agree to this policy and our use of cookies.
+
+                </p>
+
+            </div>
+
+            <div class="col-sm-4 col-xs-1 center-block centerAlign nopadding ">
+
+                <a href="#" class="hide-cookie-message hidden-xs dontshowhome">Don't show this message again</a>  &nbsp; <a href="#" class="hide-cookie-message"><i style="margin-right:10px;" class="fa  fa-times-circle  Downwardarrow"></i></a>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+
+
+        function smoothScrollGo(target) {
+
+            $('html, body').animate({
+
+                scrollTop: $(target).offset().top
+
+            }, 1000);
+
+
+
+        };
+
+
+
+        $('.facebook-link-div').html('&title=We’re made by yogis - sharing the power of yoga for health, happiness and creativity' + '&description=Get the clinical studies. Tell your yoga story. Shop yoga’s creative talent - gifts, malas, clothes, equipment... ');
+
+
+
+        $(document).ready(function () {
+
+
+
+            $("#mini-close").click(function () {
+
+                $(".trendingpopuptitle").hide();
+
+
+
+            });
+
+
+
+            $('#B').click(function () {
+
+                location.href = '/static/trending';
+
+            });
+
+            $('#C').click(function () {
+
+                location.href = '/YogaMap';
+
+            }); $('#D').click(function () {
+
+                location.href = '/YogaMeds';
+
+            });
+
+            $('#E').click(function () {
+
+                ShopClick();
+
+            });
+
+
+
+
+
+            $('.counter').counterUp({
+
+                delay: 5,
+
+                time: 1000
+
+            });
+
+            $('.hide-cookie-message').on('click', function (e) {
+
+                e.preventDefault();
+
+                setCookie("allowcookies", "true", 3650);
+
+                $(".cookie-message").hide();
+
+            });
+
+
+
+            var hasCookie = getCookie("allowcookies");
+
+            if (hasCookie != "true") {
+
+                $(".cookie-message").show();
+
+            }
+
+
+
+            function setCookie(cname, cvalue, exdays) {
+
+                var d = new Date();
+
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+
+                var expires = "expires=" + d.toGMTString();
+
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+
+            }
+
+
+
+            function getCookie(cname) {
+
+                var name = cname + "=";
+
+                var ca = document.cookie.split(';');
+
+                for (var i = 0; i < ca.length; i++) {
+
+                    var c = ca[i].trim();
+
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+
+                }
+
+                return "";
+
+            }
+
+
+
+
+
+
+
+        });
+
+        $('.registerRevealBtn').attr('href', '#');
+
+
+
+        ////Page Scoller
+
+        (function () {
+
+
+
+            //////////////////////
+
+            // Utils
+
+            //////////////////////
+
+            function throttle(fn, delay, scope) {
+
+                // Default delay
+
+                delay = delay || 250;
+
+                var last, defer;
+
+                return function () {
+
+                    var context = scope || this,
+
+                        now = +new Date(),
+
+                        args = arguments;
+
+                    if (last && now < last + delay) {
+
+                        clearTimeout(defer);
+
+                        defer = setTimeout(function () {
+
+                            last = now;
+
+                            fn.apply(context, args);
+
+                        }, delay);
+
+                    } else {
+
+                        last = now;
+
+                        fn.apply(context, args);
+
+                    }
+
+                }
+
+            }
+
+
+
+            function extend(destination, source) {
+
+                for (var k in source) {
+
+                    if (source.hasOwnProperty(k)) {
+
+                        destination[k] = source[k];
+
+                    }
+
+                }
+
+                return destination;
+
+            }
+
+
+
+
+
+            var ScrollManager = (function () {
+
+
+
+                var defaults = {
+
+                    steps: null,
+
+                    navigationContainer: null,
+
+                    links: null,
+
+                    scrollToTopBtn: null,
+
+
+
+                    navigationElementClass: '.Quick-navigation',
+
+                    currentStepClass: 'current',
+
+                    smoothScrollEnabled: true,
+
+                    stepsCheckEnabled: true,
+
+
+
+                    // Callbacks
+
+                    onScroll: null,
+
+
+
+                    onStepChange: function (step) {
+
+                        var self = this;
+
+                        var relativeLink = [].filter.call(options.links, function (link) {
+
+                            link.classList.remove("sideminiIconactive");
+
+                            return link.hash === '#' + step.id;
+
+                        });
+
+                        relativeLink[0].classList.add("sideminiIconactive");
+
+
+
+
+
+                        switch (step.id) {
+
+                            case "A":
+
+                                $('.Quick-navigation').hide();
+
+
+
+                                break;
+
+
+
+                            default:
+
+                                $('.Quick-navigation').show("slow");
+
+
+
+                                break;
+
+                        }
+
+
+
+                    },
+
+
+
+                    // Provide a default scroll animation
+
+                    smoothScrollAnimation: function (target) {
+
+                        $('html, body').animate({
+
+                            scrollTop: target + 1
+
+                        }, 'slow');
+
+                    }
+
+                },
+
+
+
+                    options = {};
+
+
+
+                // Privates
+
+                var _animation = null,
+
+                    currentStep = null,
+
+                    throttledGetScrollPosition = null;
+
+
+
+                return {
+
+                    scrollPosition: 0,
+
+
+
+                    init: function (opts) {
+
+
+
+                        options = extend(defaults, opts);
+
+
+
+                        if (options.steps === null) {
+
+                            console.warn('Smooth scrolling require some sections or steps to scroll to :)');
+
+                            return false;
+
+                        }
+
+
+
+                        // Allow to customize the animation engine ( jQuery / GSAP / velocity / ... )
+
+                        _animation = function (target) {
+
+                            target = typeof target === 'number' ? target : $(target).offset().top;
+
+                            return options.smoothScrollAnimation(target);
+
+                        };
+
+
+
+                        // Activate smooth scrolling
+
+                        if (options.smoothScrollEnabled) this.smoothScroll();
+
+
+
+                        // Scroll to top handling
+
+                        if (options.scrollToTopBtn) {
+
+                            options.scrollToTopBtn.addEventListener('click', function () {
+
+                                options.smoothScrollAnimation(0);
+
+                            });
+
+                        }
+
+
+
+                        // Throttle for performances gain
+
+                        throttledGetScrollPosition = throttle(this.getScrollPosition).bind(this);
+
+                        window.addEventListener('scroll', throttledGetScrollPosition);
+
+                        window.addEventListener('resize', throttledGetScrollPosition);
+
+
+
+                        this.getScrollPosition();
+
+                    },
+
+
+
+                    getScrollPosition: function () {
+
+                        this.scrollPosition = window.pageYOffset || window.scrollY;
+
+                        if (options.stepsCheckEnabled) this.checkActiveStep();
+
+                        if (typeof options.onScroll === 'function') options.onScroll(this.scrollPosition);
+
+                    },
+
+
+
+                    scrollPercentage: function () {
+
+                        var body = document.body,
+
+                            html = document.documentElement,
+
+                            documentHeight = Math.max(body.scrollHeight, body.offsetHeight,
+
+                                html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+
+
+                        var percentage = Math.round(this.scrollPosition / (documentHeight - window.innerHeight) * 100);
+
+                        if (percentage < 0) percentage = 0;
+
+                        if (percentage > 100) percentage = 100;
+
+                        return percentage;
+
+                    },
+
+
+
+                    doSmoothScroll: function (e) {
+
+                        if (e.target.nodeName === 'A') {
+
+                            e.preventDefault();
+
+                            if (location.pathname.replace(/^\//, '') === e.target.pathname.replace(/^\//, '') && location.hostname === e.target.hostname) {
+
+                                var targetStep = document.querySelector(e.target.hash);
+
+                                targetStep ? _animation(targetStep) : console.warn('Hi! You should give an animation callback function to the Scroller module! :)');
+
+                            }
+
+                        }
+
+                    },
+
+
+
+                    smoothScroll: function () {
+
+                        if (options.navigationContainer !== null) options.navigationContainer.addEventListener('click', this.doSmoothScroll);
+
+                    },
+
+
+
+                    checkActiveStep: function () {
+
+                        var scrollPosition = this.scrollPosition;
+
+
+
+                        [].forEach.call(options.steps, function (step) {
+
+                            var bBox = step.getBoundingClientRect(),
+
+                                position = step.offsetTop - 400,
+
+                                height = position + bBox.height;
+
+
+
+                            if (scrollPosition >= position && scrollPosition < height && currentStep !== step) {
+
+                                currentStep = step;
+
+                                step.classList.add(self.currentStepClass);
+
+                                if (typeof options.onStepChange === 'function') options.onStepChange(step);
+
+                            }
+
+                            step.classList.remove(options.currentStepClass);
+
+                        });
+
+                    },
+
+
+
+                    destroy: function () {
+
+                        window.removeEventListener('scroll', throttledGetScrollPosition);
+
+                        window.removeEventListener('resize', throttledGetScrollPosition);
+
+                        options.navigationContainer.removeEventListener('click', this.doSmoothScroll);
+
+                    }
+
+                }
+
+            })();
+
+
+
+
+
+            var scrollToTopBtn = document.querySelector('.Scroll-to-top'),
+
+                steps = document.querySelectorAll('.js-scroll-step'),
+
+                navigationContainer = document.querySelector('.Quick-navigation'),
+
+                links = navigationContainer.querySelectorAll('a'),
+
+                progressIndicator = document.querySelector('.Scroll-progress-indicator');
+
+
+
+            ScrollManager.init({
+
+                steps: steps,
+
+                scrollToTopBtn: scrollToTopBtn,
+
+                navigationContainer: navigationContainer,
+
+                links: links,
+
+
+
+
+
+                onScroll: function () {
+
+                    var percentage = ScrollManager.scrollPercentage();
+
+                    percentage >= 50 ? scrollToTopBtn.classList.add('visible') : scrollToTopBtn.classList.remove('visible');
+
+                    //percentage > 0 ? $('.homepagepopupper').addClass('homepagepopupperexpand') : $('.homepagepopupper').removeClass('homepagepopupperexpand');;
+
+
+
+
+
+                },
+
+
+
+
+
+            });
+
+
+
+
+
+        })();
+
+
+
+        $(document).ready(function () {
+
+            $('.height-fix').each(function () {
+
+                //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+                var h = $(this).height();
+
+
+
+                $(this).attr("style", "height:" + h + ",min-height:" + h + "!important");
+
+                //  }
+
+            });
+
+        });
+
+    </script>
+
+}
+
+

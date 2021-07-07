@@ -1,0 +1,49 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivitySearchClassesModel
+
+@{
+    ViewBag.Title = "All classes";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Classes</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line purple-strip"></div>
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding " id="scroll">
+        <div id="page-content">
+            <article id="static"><br />
+                <h2 class="purpleHeader  activitesHeader hidden-xs pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" />Classes</h2>
+
+                @Html.Action("ClassDayPartial", new ActivityClassDayPartialModel(Model.Date, Model.Criteria))
+            </article>
+        </div>
+    </div>
+</div>

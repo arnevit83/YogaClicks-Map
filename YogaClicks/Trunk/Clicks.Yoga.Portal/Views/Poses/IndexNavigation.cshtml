@@ -1,0 +1,68 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseIndexModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters directory finder poseDirectory" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h2>Pose finder</h2>
+                <p>Need a pose?<br /> You're in the right place.<br />
+                    Search by name, category or level
+                </p>
+                
+                @using (Html.BeginForm("Index", "Poses", FormMethod.Get, new { @class = "clearfix", id = "posesearch" }))
+                {
+                    <fieldset class="fancylabels search searchByName">
+                        <label>Search by name</label>
+                        @Html.TextBox("search", string.Empty, new { @class = "search-term" })
+                    </fieldset>
+      
+                    <fieldset class="fancylabels search searchLevel">
+                        <div class="levelWrap">
+                            <label>Level</label>    
+                            <span class="questionMark">?</span>
+                        </div>
+                        @Html.DropDownList("abilityLevelId", Model.AbilityLevelOptions, "All")
+                        <div class="levelBox">
+                            <strong>Everyone has their own definition but here's a rough guide:</strong>    
+                                <ul>
+                                    <li><strong>Level 1</strong> - Builds familiarity</li>
+                                    <li><strong>Level 2</strong> - Intermediate, develops understanding</li>
+                                    <li><strong>Level 3</strong> - Advanced, develops mastery</li>
+                                </ul>
+                            <a href="#" class="close">x</a>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit" class="silver button">Search</button>
+                    </fieldset>
+                }
+
+                <nav class="filter">
+                    <h3>Categories</h3>
+               
+                        <a href="/poses/">All (@Model.TotalCount)</a>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <a href="/poses/categories/@cat.Id">@cat.Name (@cat.Count)</a>
+                        }
+                  
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(function () {
+        $('#abilityLevelId').change(function () {
+            $(this).closest('form').submit();
+        });
+
+            $('h3').click(function () {
+                $(this).toggleClass('open');
+                $('.toggleWrap').slideToggle('slow');
+            });
+
+        })
+</script>

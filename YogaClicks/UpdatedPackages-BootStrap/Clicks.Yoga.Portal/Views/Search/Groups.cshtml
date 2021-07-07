@@ -1,0 +1,59 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchGroupsModel
+
+@{
+    ViewBag.Title = "Create or Join a Yoga Group and Connect";
+    ViewBag.Description = "Create or join a yoga group and build your yoga community. Connect with other yoga teachers, or with the people you met on that yoga holiday.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+    @Html.Action("GroupsNavigation", "Search", new { Keywords = Model.Criteria.Keywords })
+}
+
+@section Head {    
+    <meta property="og:title" content="Nothing beats chillin' in the YogaHood at YogaClicks" />    
+    <meta property="og:description" content="Join or create a group at YogaClicks and unite with all beings " />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/faqs/feet.jpg" />
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col search-content-col discover-strip" id="scroll">
+
+        <div class="padTop20">
+            <header class="search-results">
+                <h1>Search results</h1>
+                <p>Showing @Model.PageDescription.</p>
+            </header>
+            <div id="resultContainer styleOrganisationResults">
+                <br />
+                <section class="search-group">
+                    @foreach (var result in Model.Results)
+                    {
+                        @Html.Partial("SearchResultPartial", result)
+                    }
+                    
+                    @if (Model.Response.TotalCount == 0)
+                    {
+                        <div id="search-no-results-pos">
+                            <h3 class="cb blackSubHeader">
+                                <br />
+                                We are sorry that your search returned no results.
+                                <br /><br /><br />
+                                Please use different search criteria to find more results.
+                                <br /><br />
+                            </h3>
+                        </div>
+                    }
+
+                </section>
+            </div>
+            @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+            <div class="meta">
+                <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+            </div>
+        </div>
+
+    </div>
+</div>

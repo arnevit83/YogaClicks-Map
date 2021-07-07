@@ -1,0 +1,512 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.StudiesModel
+@{
+    var yoga = false;
+    var meditation = false;
+    var mindfulness = false;
+}
+
+
+
+
+<div class="row nopadding">
+  
+
+    <div class=" col-xs-12 nopadding">
+        <h4>The clinical studies</h4>
+    </div>
+ 
+
+
+</div>
+    <div class="row nopadding">
+        <div class=" col-sm-offset-2 col-sm-10">
+
+
+            @if (Model.Studies.Any())
+            {
+
+
+                <div class="studies-container">
+
+                @{
+                    var StudyCount = 0;
+                }
+
+
+                @foreach (var study in Model.Studies)
+                {
+                    StudyCount++;
+
+
+                    if (study.TherapyTypes != null)
+                    {
+                        yoga = study.TherapyTypes.Where(x => x.Name.ToLower() == "yoga").Any();
+                        meditation = study.TherapyTypes.Where(x => x.Name.ToLower() == "meditation").Any();
+                        mindfulness = study.TherapyTypes.Where(x => x.Name.ToLower() == "mindfulness").Any();
+                    }
+
+
+
+
+                    if (StudyCount < 4)
+                    {
+
+
+                        <div class="single-study-container ">
+
+
+
+
+
+                            @*@if (SecurityContext != null)
+                            {
+
+
+                                if (!SecurityContext.Authenticated)
+                                {
+
+                                    <a href="/" class="reg-form-popup">
+                                        <div class="panel panel-default study-title-row medicpanel ">
+                                            <div class="panel-heading">
+                                                <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                    <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                }
+                                else
+                                {*@
+                                    <div class="panel panel-default study-title-row medicpanel ">
+                                        <div class="panel-heading">
+                                            <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body study-info nopadding">
+                                            <table class="table table-striped  noMargins" style="margin-bottom: 3px !important;">
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Practice</b> <br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <ul class="therapy-types">
+                                                                    <li class="@(yoga ? "active" : "")">Yoga</li>
+                                                                    <li class="@(meditation ? "active" : "")">Meditation</li>
+                                                                    <li class="@(mindfulness ? "active" : "")">Mindfulness</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Abstract</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@Html.Raw(study.Abstract)</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Citations</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.NumberOfCitations.ToString()</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Authors</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                @{ var i = 1; }
+                                                                @foreach (var author in study.Authors)
+                                                                {
+                                                                    <span>@author.Name</span>
+                                                                    if (i != study.Authors.Count())
+                                                                    {
+                                                                        <span>| </span>
+                                                                    }
+
+                                                                    i++;
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Published</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.DateOfStudy</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Journal</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Journal</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Volume / Issue</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Volume</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Author's primary institution</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Institution</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Source</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <div class="LinkWordwrap" style="max-width: 260px;">
+                                                                    <a href="@study.Source" target="_blank">@study.Source</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                @*}
+                            }
+                            else if (SecurityContext == null)
+                            {
+                                <a href="/" class="reg-form-popup">
+                                    <div class="panel panel-default study-title-row medicpanel ">
+                                        <div class="panel-heading">
+                                            <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+                            }*@
+
+
+
+
+
+
+                        </div>
+
+
+                    }
+                    else
+                    {
+
+                        if (StudyCount == 4)
+                        {
+                        
+                            @:<div class="collapse" data-toggle="false" id="collapse">
+
+                        }
+
+                        <div class="single-study-container ">
+
+
+
+
+
+                            @*@if (SecurityContext != null)
+                            {
+
+
+                                if (!SecurityContext.Authenticated)
+                                {
+
+                                    <a href="/" class="reg-form-popup">
+                                        <div class="panel panel-default study-title-row medicpanel ">
+                                            <div class="panel-heading">
+                                                <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                    <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                }
+                                else
+                                {*@
+                                    <div class="panel panel-default study-title-row medicpanel ">
+                                        <div class="panel-heading">
+                                            <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body study-info nopadding">
+                                            <table class="table table-striped  noMargins" style="margin-bottom: 3px !important;">
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Practice</b> <br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <ul class="therapy-types">
+                                                                    <li class="@(yoga ? "active" : "")">Yoga</li>
+                                                                    <li class="@(meditation ? "active" : "")">Meditation</li>
+                                                                    <li class="@(mindfulness ? "active" : "")">Mindfulness</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Abstract</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@Html.Raw(study.Abstract)</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Citations</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.NumberOfCitations.ToString()</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Authors</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                @{ var i = 1; }
+                                                                @foreach (var author in study.Authors)
+                                                                {
+                                                                    <span>@author.Name</span>
+                                                                    if (i != study.Authors.Count())
+                                                                    {
+                                                                        <span>| </span>
+                                                                    }
+
+                                                                    i++;
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Published</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.DateOfStudy</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Journal</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Journal</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Volume / Issue</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Volume</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Author's primary institution</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <span>@study.Institution</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> Source</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                <div class="LinkWordwrap" style="max-width: 260px;">
+                                                                    <a href="@study.Source" target="_blank">@study.Source</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                @*}
+                            }
+                            else if (SecurityContext == null)
+                            {
+                                <a href="/" class="reg-form-popup">
+                                    <div class="panel panel-default study-title-row medicpanel ">
+                                        <div class="panel-heading">
+                                            <div class="titg" id="@study.Id" style="font-weight: bold;">
+                                                <span class="studytitle">@study.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+                            }*@
+
+
+
+
+
+
+                        </div>
+
+
+                        if (StudyCount == Model.Studies.Count)
+                        {
+                            @:</div>
+
+    @:<div id="Moreinfo" data-toggle="collapse" href="#collapse" aria-expanded="true" aria-controls="collapse" class=" col-sm-12 nopadding"><a style="width:100%" data-toggle="collapse" href="#collapse" aria-expanded="true" aria-controls="collapse" class="Glink pull-right" alt="More"><div class="panel panel-primary medicpanel "><div class="panel-heading"><div style="font-weight: bold;" class="centerAlign"><i id="Morefa1" class="pull-left medicdrop fa fa-plus-circle"></i><span id="moreTxt">Click here to see more</span><i id="Morefa2" class="pull-right medicdrop fa fa-plus-circle"></i></div></div></div></a></div>
+
+
+                        }
+
+
+
+
+
+
+
+
+
+                    }
+
+
+                }
+
+</div>
+
+
+            }
+            else
+            {
+                <span>There are currently no studies for this condition<br /><br /></span>
+            }
+
+
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+
+    $('#Moreinfo').click(function(e) {
+   
+        
+        e.preventDefault();
+
+     
+        if ($('.collapse').hasClass("in")) {
+            $('#moreTxt').html("Click here to see more");
+            $('#Morefa2').removeClass("fa-minus-circle");
+            $('#Morefa1').removeClass("fa-minus-circle");
+            $('#Morefa2').addClass("fa-plus-circle");
+            $('#Morefa1').addClass("fa-plus-circle");
+        
+        } else{
+            $('#moreTxt').html("Click here to see less");
+            $('#Morefa2').removeClass("fa-plus-circle");
+            $('#Morefa1').removeClass("fa-plus-circle");
+            $('#Morefa2').addClass("fa-minus-circle");
+            $('#Morefa1').addClass("fa-minus-circle");
+          
+        }
+
+        setTimeout(
+  function () {
+      resizeDiv(true);
+  }, 1000);
+      
+
+        
+    });
+</script>

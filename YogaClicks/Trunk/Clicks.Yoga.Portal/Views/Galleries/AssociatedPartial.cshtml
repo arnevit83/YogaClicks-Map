@@ -1,0 +1,77 @@
+﻿<div class="imagesVideoTabs">
+    <ul class="clearfix">
+        @model Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedPartialModel
+
+        @{
+            var guid = Guid.NewGuid().ToString();
+        }
+        <li class="selected">
+            <a href="@Url.Action("Galleries", Model.EntityType.Controller, new { Id = Model.EntityId })" class="text"><span class="name">Photos</span><span class="arrow">&nbsp;</span></a>
+            @if (Model.Galleries.Count > 0)
+            {
+                if (Model.Permissions.Associate)
+                {
+                
+                    <button onclick="openModal('@Url.Action("Create", new { Model.EntityId, EntityTypeName = Model.EntityType.Name })') " class="button silver">Add another gallery +</button>
+                }
+            }
+        </li>
+        <li>
+            @if (Model.Galleries.Count == 0)
+            {
+                if (Model.Permissions.Associate)
+                {
+                    <button onclick="openModal('@Url.Action("Create", new { Model.EntityId, EntityTypeName = Model.EntityType.Name })') " class="silver button">Create a new gallery +</button>
+                }
+            }
+        </li>
+    </ul>
+</div>
+<span class="albums-title">Albums</span>
+<div id="@guid" class="galleryList">
+    @if (!Model.Galleries.Any())
+    {
+        <div>Sorry, there doesn't seem to be any pictures here at the moment.</div>
+    }
+
+    @foreach (var gallery in Model.Galleries)
+    {
+        <div data-role="Gallery" class="block-section">
+            @if (Model.Permissions.Disassociate || SecurityContext.CanDelete(gallery))
+            {
+                <a href="javascript:void(0)" data-role="DeleteButton" class="deleteButton" data-url="@Url.Action("Disassociate")" data-id="@gallery.Id" data-entity-id="@Model.EntityId" data-entity-type-name="@Model.EntityType.Name">Delete</a>
+            }
+
+            <a href="@Url.Action("Gallery", Model.EntityType.Controller, new { Id = Model.EntityId, GalleryId = gallery.Id })" class="galleryItem">
+                @Html.Image(gallery.Cover, "Profile.jpg", i => i.Resize(c => c.Width(206).Height(206).ScaleBoth().Crop()))
+            </a>
+            <strong>@gallery.Name</strong>
+        </div>
+    }
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.find('[data-role=DeleteButton]').on('click', function () {
+            var $this = $(this);
+
+            if (!window.confirm("Are you sure you wish to delete this gallery?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: $this.attr('data-url'),
+                data: {
+                    Id: $this.attr('data-id'),
+                    EntityId: $this.attr('data-entity-id'),
+                    EntityTypeName: $this.attr('data-entity-type-name')
+                },
+                success: function () {
+                    $this.closest('[data-role=Gallery]').remove();
+                }
+            });
+        });
+    });
+</script>

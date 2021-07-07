@@ -1,0 +1,129 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.VenueChooserModel
+
+
+<div id="@Html.IdFor(m => m)">
+    <label>Name</label> <input type="text" data-role="Name" placeholder="e.g. The Yoga Hut">
+
+    <div data-role="SuggestionsPopup" class="suggestions teacherSuggestions" style="display: none;">
+        <div data-role="Suggestions"></div>
+        <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+    </div>
+
+    <div data-role="CreateForm" style="display: none;">
+        <label>Location</label> <input type="text" data-role="Location">
+        <div data-role="LocationSuggestions" class="suggestions teacherSuggestions"></div>
+        <input type="hidden" data-role="Latitude">
+        <input type="hidden" data-role="Longitude">
+        <button data-role="CreateButton" class="button silver">Add +</button>
+    </div>
+    
+    <div data-role="Selections" class="selections venueSelections"></div>
+</div>
+@Scripts.Render("~/bundles/mapsapi")
+@Scripts.Render("~/bundles/maps")
+<script>
+    $(function() {
+        var $container = $('#@Html.IdFor(m => m)');
+
+        $container.yogaLocationPicker();
+
+        var $name = $container.find('[data-role=Name]');
+        var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        var $selections = $container.find('[data-role=Selections]');
+
+        var $createForm = $container.find('[data-role=CreateForm]');
+        var $createButton = $createForm.find('[data-role=CreateButton]');
+        var $location = $createForm.find('[data-role=Location]');
+        var $latitude = $createForm.find('[data-role=Latitude]');
+        var $longitude = $createForm.find('[data-role=Longitude]');
+        
+        var add = function (id, name) {
+            var $item = $('<div></div>');
+            
+            $item.append('<input type="hidden" name="@(Html.NameFor(m => m.Selection))[' + id + ']" value="true">');
+            $item.append(name + ' ');
+            $item.append('<a href="javascript:void(0)" data-role="RemoveButton">x</a>');
+
+            $item.appendTo($selections);
+
+            $selections.show();
+        };
+        
+        @foreach (var option in Model.Options)
+        {
+            @:add(@option.Id, '@HttpUtility.JavaScriptStringEncode(option.Name)');
+        }
+        
+        $name.on('keyup', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+            
+            var value = $name.val();
+
+            if (!value || value.length < 3) return;
+
+            $.getJSON(
+                '/Search/AutocompleteVenues',
+                { Name: $name.val() },
+                function (entities) {
+                    if (entities.length > 0) {
+                        $suggestions.empty();
+
+                        for (var i in entities) {
+                            var entity = entities[i];
+                            var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                            $link.data('entity', entity);
+                            $suggestions.append($('<div/>').html($link));
+                        }
+
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+                    }
+                }
+            );
+        });
+
+        $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+        });
+
+        $suggestions.on('click', 'a', function () {
+            var entity = $(this).data('entity');
+            add(entity.Id, entity.Name);
+            $suggestionsPopup.hide();
+            $name.val('');
+        });
+
+        $selections.on('click', 'a[data-role=RemoveButton]', function() {
+            $(this).parent().remove();
+        });
+
+        $createButton.on('click', function (e) {
+            e.preventDefault();
+            
+            var name = $name.val();
+            var location = $location.val();
+            var latitude = $latitude.val();
+            var longitude = $longitude.val();
+
+            if (!name || !location || !latitude || !longitude) return;
+
+            $.ajax({
+                type: 'POST',
+                url: '/Venues/CreateStubbed',
+                data: { Name: name, Location: location, Latitude: latitude, Longitude: longitude },
+                success: function(id) {
+                    if (!id) return;
+                    add(id, name);
+                    
+                    $name.val('');
+                    $location.val('');
+                    $createForm.hide();
+                }
+            });
+        });
+    })
+</script>

@@ -1,0 +1,9 @@
+﻿@model int
+<ul id="tabsNav">
+    <li class="profileNav">@Html.ActionLink("Profile", "Display", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+    <li class="courseNav">@Html.ActionLink("Courses", "Courses", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+    <li class="reviewNav">@Html.ActionLink("Reviews", "Reviews", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+    <li class="activityNav">@Html.ActionLink("Activities", "Activities", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+    <li class="groupNav">@Html.ActionLink("Groups", "Groups", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+    <li class="fanNav">@Html.ActionLink("Fans", "Fans", "TeacherTrainingOrganisations", new { id = Model }, new { })</li>
+</ul>

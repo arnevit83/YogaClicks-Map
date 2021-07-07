@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Profile Information";
+    ViewBag.HeaderClass = "blue-border";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<img src="/images/svgicons/Icon_ProfileBlue.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_ProfileBlue.png" alt="namaste students">
+<div class="row blue-text sign-up-page1">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 signup-large-text">
+        <p>Namaste! Create a YogaClicks profile to connect with the powered by yoga community.</p>
+        <a href="/Signup/Profile/2" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover">
+            Get started!
+        </a>        
+            <p>Use your student profile to:</p>
+        <ul class="signup-list">
+
+            
+            
+            
+            
+            
+
+
+            <li>Share your yoga story with the world</li>
+            <li>Meet like-minded students and teachers</li>
+            <li>Delve into 300+ clinical yoga studies</li>
+            <li>Shop the community’s creations</li>
+            <li>And much more!</li>
+        </ul>
+</div>
+    <div class="col-xs-1"></div>
+</div>
+<div class="row signup-footer-blue">
+    @Html.Partial("_FooterBar")
+</div>
+<div class="row">
+    <div class="col-xs-12 blue-text signup-footer-back">
+        <p><a href="javascript:history.go(-1)">Not a student?</a></p>   
+    </div>
+</div>
+<p></p>

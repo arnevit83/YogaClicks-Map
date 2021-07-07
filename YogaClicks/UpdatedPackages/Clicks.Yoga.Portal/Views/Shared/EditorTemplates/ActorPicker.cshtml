@@ -1,0 +1,3 @@
+﻿@model Clicks.Yoga.Domain.Entities.EntityReference
+
+@Html.Action("PickerPartial", "Actors", new { Prefix = Html.NameFor(m => m), Model.EntityId, Model.EntityTypeName })

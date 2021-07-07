@@ -1,0 +1,73 @@
+﻿@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Glossary.GlossaryIndexModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.BodyClass = "discover";
+    ViewBag.Title = "Hundreds of Yoga Words Demystified";
+    ViewBag.Description = "From yoga sutras to yoga shalas, from kleshas to kriyas, our lingo library will demystify those baffling yoga words.";
+    ViewBag.MenuSection = "Wisdom";
+}
+
+@section Head {    
+    <meta property="og:title" content="Tell your kleshas from your kriyas" />    
+    <meta property="og:description" content="Learn to speak like a true yogi with our guide to yoga lingo" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/faqs/what.jpg" />
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-lingo", Model)
+}
+
+@section Scripts{
+    <script>
+        $(function () {
+            var term = @Html.Raw(JsonConvert.SerializeObject(Model.Term));
+            var $letters = $(".lingo-letter");
+            var $articles = $('#glossary article');
+
+            $(".lingo-letter").click(function() {
+                var $letter = $(this);
+                var letter = $letter.data('letter');
+
+                $articles.hide();
+                $articles.filter('[data-letter=' + letter + ']').show();
+
+                $letters.removeClass('selected');
+                $letter.addClass("selected");
+            });
+
+            if (term) {
+                $letters.filter('[data-letter=' + term[0] + ']').trigger('click');
+                
+                var $article = $('#term-' + term);
+
+                if ($article.length) {
+                    $('#scroll').animate({ scrollTop: $article.offset().top - 100 }, 1000);
+                }
+            }
+            else {
+                $letters.eq(Math.floor(Math.random() * $letters.length)).trigger('click');
+            }
+        });
+    </script>    
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="wisdom-strip content-col" id="scroll">
+        <section id="glossary">
+            @foreach (var entry in Model.Entries)
+            {
+                <article id="term-@Clicks.Yoga.Web.WebUtility.UrlSlug(entry.Term)" class="glossary-group clearfix" data-letter="@entry.Term.ToLower()[0]">
+                    <header role="term">
+                        <h2>@entry.Term</h2>
+                    </header>
+                    <div class="text">
+                        <p>@entry.Definition</p>
+                        <div class="wisdomFanBtnWrap">@Html.Action("Button", "Fans", new { EntityId = entry.Id, entry.EntityTypeName })</div>
+                    </div>
+                </article>
+            }
+        </section>
+    </div>
+</div>

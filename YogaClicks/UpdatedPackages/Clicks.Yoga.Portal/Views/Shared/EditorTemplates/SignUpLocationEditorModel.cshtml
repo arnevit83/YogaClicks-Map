@@ -1,0 +1,29 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.SignUpLocationEditorModel
+
+@{
+    Layout = null;
+}
+
+<div id="@Html.IdFor(m => m)">
+    <div class="signup-locationWrap">
+        @Html.TextBoxFor(m => m.Name, new { data_role = "Location", autocomplete = "off", placeholder = "Please type your post code, town or address", @class="location-search-box", data_field_type="notrequired" })
+        @if (ViewBag.SignUpLocationPublic != "true")
+        {
+            <span class="signup-underinput-text">This info will not be public</span>
+        }
+    </div>
+    <div class="signup-suggestionWrap">
+        <div class="signup-suggestions" data-role="LocationSuggestions"></div>
+    </div>
+
+
+    @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude" })
+    @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude" })
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#@Html.IdFor(m => m)').yogaLocationPicker({ cityonly: @(Model == null ? bool.FalseString.ToLower() : Model.ShowCityOnly.ToString().ToLower()), profilesignup: true ,autocode: false});
+    })
+</script>

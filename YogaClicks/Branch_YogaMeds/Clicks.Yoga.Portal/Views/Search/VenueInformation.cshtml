@@ -1,0 +1,14 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchVenueInformationModel
+<p>
+<strong><a href="@Url.Action("Display", "Venues", new { Model.Venue.Id })">@Model.Venue.Name</a></strong><br />
+
+@if (Model.Venue.Address != null)
+{
+@Model.Venue.Address.CompleteString
+}
+@if (Model.Venue.Type != null)
+{
+<hr />
+<span>@Model.Venue.Type.Name (@(Model.Venue.Type.Residential ? "Residential" : "Non-Residential"))</span>
+}
+</p>

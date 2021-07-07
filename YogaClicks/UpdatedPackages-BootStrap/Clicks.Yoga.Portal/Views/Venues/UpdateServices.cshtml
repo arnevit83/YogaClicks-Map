@@ -1,0 +1,20 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueServicesUpdateModel
+
+@using (Html.BeginForm("UpdateServices", "Venues", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-services-form" }))
+{
+    @Html.HiddenFor(m => m.VenueId)
+
+    <div style="overflow:hidden;">
+        <h3 class="fl">Services</h3>
+        <p class="fr" style="font-size:10px;">Can't find what you're looking for?<br /><a href="mailto:info@yogaclicks.com?subject=Suggest&nbsp;a&nbsp;service">Suggest unlisted service</a></p>
+    </div>
+    @Html.EditorFor(m => m.Services)
+
+    <div class="venue-services-save-section">
+        <span class="venue-services-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

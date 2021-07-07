@@ -1,0 +1,59 @@
+﻿@using Clicks.Yoga.Portal.Models.Groups
+@model Clicks.Yoga.Portal.Models.Groups.GroupWallModel
+
+@{
+    ViewBag.Title = "Wall";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Page = "wall";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Group))
+    {
+   
+            @Html.Action("Navigation", "Community")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Group.Name" />
+    @if (!string.IsNullOrEmpty(Model.Group.Description))
+    {
+        <meta property="og:description" content="@Model.Group.Description" />
+    }
+    @if (Model.Group.ProfileBanner != null)
+    {
+        <meta property="og:image" content="@Model.Group.ProfileBanner.Url" />
+    }
+    
+}
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Group.Id, Model.Group.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Group) ? "" : "community-strip") @ViewBag.Page" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader communityHeader"><span>&nbsp;</span>@Model.Group.Name</h2>
+                <hr />
+                <div class="shareRecommendSection">
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+                    </div>
+                </div>
+
+                <div class="profileBanner groupBanner">
+                    @Html.DisplayFor(m => m.Group.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Partial("Tabs", new GroupTabsModel(Model.Permissions, Model.Group))
+
+                @Html.Action("WallPartial", "Walls", new { Model.Group.Wall.Id })
+            </article>
+        </div>
+    </div>
+</div>

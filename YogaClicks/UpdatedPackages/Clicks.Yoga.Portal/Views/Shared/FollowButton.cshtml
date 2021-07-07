@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Follow.FollowButtonModel
+
+@if (Model.IsCurrentlyFollowing)
+{
+    <a href="#" class="btn btn-clear btn-default follow-btn" data-toggle="tooltip" title="Unfollowing this condition means you'll not get updates in your Newsfeed" data-add-follow="false">Unfollow</a>
+}
+else
+{
+    <a href="#" class="btn btn-clear btn-default   follow-btn" data-toggle="tooltip" title="Following this condition means you'll get updates in your Newsfeed" data-add-follow="true">Follow</a>
+}
+
+<script>
+    $('.follow-btn').click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this),
+            $id = @Model.EntityId,
+            $addFollow = $this.data('add-follow');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("FollowButton", Model.EntityName)',
+            async: true,
+            data: { id: $id, addFollow: $addFollow },
+            success: function (html) {
+                $('.follow-button-container').html(html);
+            }
+        });
+    });
+</script>

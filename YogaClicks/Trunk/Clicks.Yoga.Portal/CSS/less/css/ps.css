@@ -1,0 +1,102 @@
+﻿.profile-strip.purple-strip .teacherHeader span {
+    background-position: -48px -50px;
+}
+
+.profile-strip .teacherOrganisationHeader a.profileLink span {
+    background: url('/images/icons.png') -151px -448px no-repeat !important;
+    margin: 0 0 0 0 !important;
+}
+
+.profile-strip .teacherHeader a.profileLink span {
+    background: url('/images/icons.png') -151px -449px no-repeat !important;
+}
+
+/*Removed*/
+
+        /*.purple-strip h2 span, .purple-strip .pageTitle span {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            background: url('/images/icons.png') no-repeat 0 -192px;
+            vertical-align: middle;
+            margin: 0 10px 0 0;
+        }*/
+
+        
+/*.profile-strip.purple-strip .venueHeader span {
+    background-position: -48px 0 !important;
+}*/
+
+/* New */
+
+/*TTO header Icons*/
+.teacherOrganisationHeader span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 0;
+    background: url('/images/icons.png') no-repeat -48px -100px !important;
+}
+
+.teacherOrganisationHeader span.profile-link {
+    background: url('/images/icons.png') -151px -449px no-repeat !important;
+}
+
+.teacherOrganisationHeader a.venueLink span {
+    background: url('/images/icons.png') no-repeat -50px -399px !important;
+}
+
+.teacherOrganisationHeader .teacherLink span {  
+    background: url('/images/icons.png') no-repeat -203px -448px !important;
+}
+
+/*Teacher header Icons*/
+.profile-strip .teacherHeader span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background: url('/images/icons.png') no-repeat -99px -50px;
+    margin: 0;
+}
+
+.teacherHeader span.profileLink {
+    background: url('/images/icons.png') -151px -449px no-repeat !important;
+}
+
+.teacherHeader a.venueLink span {
+    background: url('/images/icons.png') no-repeat -50px -399px !important;
+}
+
+.teacherHeader a.ttoLink span {
+    background: url('/images/icons.png') no-repeat -100px -399px !important;
+}
+
+/*Venue header Icons*/
+.venueHeader span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 0;
+}
+
+.venueHeader .venueLink {
+    background: url('/images/icons.png') no-repeat -48px 0 !important;
+}
+.venueHeader a.profileLink span {
+    background: url('/images/icons.png') -151px -449px no-repeat !important;
+}
+
+.venueHeader a.teacherLink span {
+    background: url('/images/icons.png') no-repeat -203px -449px !important
+}
+
+.venueHeader a.ttoLink span {
+    background: url('/images/icons.png') no-repeat -100px -399px !important;
+}
+
+.teacherRightCol .right ul.full-width li {
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin: 0 0 15px;
+}

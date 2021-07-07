@@ -1,0 +1,144 @@
+﻿@using Clicks.Yoga.Portal.Models.Groups
+@model Clicks.Yoga.Portal.Models.Groups.GroupGalleriesModel
+
+@{
+    ViewBag.Title = "Galleries";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Group))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Group.Name" />
+    @if (!string.IsNullOrEmpty(Model.Group.Description))
+    {
+        <meta property="og:description" content="@Model.Group.Description" />
+    }
+    @if (Model.Group.ProfileBanner != null)
+    {
+        <meta property="og:image" content="@Model.Group.ProfileBanner.Url" />
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Group.Id, Model.Group.EntityTypeName))
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" /><span style="color: #13b4ea; font-weight: normal">@Model.Group.Name</span><span></span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+    <br />
+</section>
+<div class="community-strip-line"></div><br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class="community-strip content-col">
+        <div id="page-content">
+
+
+            <div class="hidden-xs">
+
+                @if (Request.UrlReferrer != null)
+                {
+                    <a onclick="history.go(-1); return false;" class="ARlink pull-right" alt="back" href="#">
+
+                        <span class="glyphicon-stack">
+                            <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                            <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                        </span><span style="vertical-align: text-bottom; color: #1AB5E9;">Back</span>
+                    </a>
+                }
+                <h1 class="greenHeader communityHeader"><img src="~/images/svgicons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" />@Model.Group.Name</h1>
+
+                <br />
+            </div>
+
+            <div class="shareRecommendSection groupshare">
+                <div class="fr">
+                    <span>Share: </span>
+                    @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+                </div>
+            </div>
+
+            <div class="profileBanner groupBanner hidden-xs">
+                @Html.DisplayFor(m => m.Group.ProfileBanner, "ProfileBanner")
+            </div>
+
+
+
+            <article>
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+                        @Html.Partial("Tabs", new GroupTabsModel(Model.Permissions, Model.Group))
+
+                        <div class="panel-body">
+                            <br /><br />
+                            <div class="row nopadding">
+                                <div class="col-sm-12 nopadding">
+
+
+                                    @Html.Action("AssociatedPartial", "Galleries", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+
+                                </div>
+
+                                <div class="col-sm-12 nopadding">
+
+                                    <div class="hidden-md hidden-lg hidden-sm">
+                                        <br /><br />
+                                        @Html.Partial("Tabsmini")
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </article>
+        </div>
+    </div>
+</div>

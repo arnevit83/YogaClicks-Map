@@ -1,0 +1,194 @@
+﻿@using System.Resources
+@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileDisplayModel
+
+@{
+    ViewBag.Title = "About me";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+    ViewBag.NoIndex = Model.Visible;
+
+    var trueSelfQA = new List<string>();
+    foreach (var answer in Model.Profile.ProfileAnswers)
+    {
+        trueSelfQA.Add(string.Format("{0} {1}. ", answer.Question.Text, answer.Text));
+    }
+    var ogTrueSelf = string.Format("{0}{1}", "True self: ", (string.Join("", trueSelfQA)));
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Profile))
+    {
+        @Html.Action("Navigation")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    <meta property="og:description" content="@ogTrueSelf" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col  @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SuperUserAccessButton", "Account", new { userId = Model.Profile.OwnerId })
+
+                @if (SecurityContext.CanUpdate(Model.Profile))
+                {
+                    <div class="review-header">
+                        <button class="button fr save" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Profile</button>
+                    </div>
+                }
+
+                <h2 class="greenHeader myProfileHeader">
+                    <span>&nbsp;</span>
+                    @if (Model.HasTeacher)
+                    {
+                        <a href="@Url.Action("Display", "Teachers", new { Model.Teacher.Id })" class="teacherLink"><span>&nbsp;</span></a>
+                    }
+                    @if (Model.HasVenue)
+                    {
+                        <a href="@Url.Action("Display", "Venues", new { Model.Venue.Id })" class="venueLink"><span>&nbsp;</span></a>
+                    }
+                    @if (Model.HasTTO)
+                    {
+                        <a href="@Url.Action("Display", "TeacherTrainingOrganisations", new { Model.TTO.Id })" class="ttoLink"><span>&nbsp;</span></a>
+                    }
+                    @Model.Profile.Name
+                </h2>
+
+                <div class="profileBanner">
+                    @if (SecurityContext.CanUpdate(Model.Profile))
+                    {
+                        if (Model.Profile.ProfileBanner.Name == null)
+                        {
+                            <a href="@Url.Action("Update")"><img src="~/Images/default/profile-no-banner.jpg" /></a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                    }
+                    
+                </div>
+                @Html.Partial("Tabs", new { Model.Profile })
+                <div class="leftCol">
+                    @Html.DisplayFor(m => m.Profile.Image, "ProfileImage")
+
+                    @Html.Action("Button", "Friends", new { ProfileId = Model.Profile.Id, ProfileName = Model.Profile.Name })
+
+                    @if (SecurityContext.Authenticated || SecurityContext.IsSuperUser())
+                    {
+                        @Html.Action("SendButton", "Messaging", new { SecurityContext.CurrentProfile.Id, EntityId = Model.Profile.Id, Model.Profile.EntityTypeName })
+                    }
+                    @if (!SecurityContext.Authenticated)
+                    {
+                        <a class="silver button reg-form-popup sendMessageBtn unauth-msg-button" href="/">Send Message<span>&nbsp;</span></a>
+                    }
+                </div>
+
+                <div class="rightCol">
+                    @if (Model.Visible)
+                    {
+                        if (Model.Images.Count > 0)
+                        {
+                            <div class="imageGalleryImages">
+                                @foreach (var image in Model.Images)
+                                {
+                                    @Html.DisplayFor(m => image, "ProfileImage")
+                                }
+                            </div>
+                        }
+                        if (Model.Images.Count < 1 && Model.Profile.OwnerId == SecurityContext.CurrentActor.Id)
+                        {
+                            <a href="@Url.Action("Galleries")">
+                                <img src="~/Images/default/promoted-image-placeholder.jpg" />
+                            </a>
+                        }
+
+                        if (Model.Profile.Location.Exists)
+                        {
+                            <div class="locationName">
+                                <h3>
+                                    <span>&nbsp;</span>
+                                    @Model.Profile.Location.Name
+                                </h3>
+                            </div>
+                        }
+
+                        if (!string.IsNullOrEmpty(Model.Profile.EmailAddress) || Model.Profile.Websites.Count > 0)
+                        {
+                            <div class="block-section web-section">
+                                @if (!string.IsNullOrEmpty(Model.Profile.EmailAddress))
+                                {
+                                    <div class="row">
+                                        <div class="left">
+                                            <strong>Email:</strong>
+                                        </div>
+                                        <div class="right">
+                                            <a href="mailto:@Model.Profile.EmailAddress">@Model.Profile.EmailAddress</a>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.Profile.Websites.Count > 0)
+                                {
+                                    <div class="row">
+                                        <div class="left">
+                                            <strong>Web:</strong>
+                                        </div>
+                                        <div class="right">
+                                            @foreach (var website in Model.Profile.Websites)
+                                            {
+                                                <a href="@website.Url" target="_blank">@website.Url</a><br />
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        <hr />
+                    }
+
+                    @if (Model.Profile.ProfileAnswers.Count > 0)
+                    {
+                        <div class="left">
+                            <h4>True Self</h4>
+                        </div>
+                        <div class="right">
+                            @foreach (var answer in Model.Profile.ProfileAnswers)
+                            {
+                                <div>
+                                    <p>
+                                        <strong>@answer.Question.Text</strong><br />
+                                        @answer.Text
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    @if (SecurityContext.CanUpdate(Model.Profile))
+                    {
+                        <hr />
+                        <button class="button save fr" onclick=" location.href='@Url.Action("Update")' ; return false; ">Edit profile</button>
+                    }
+
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

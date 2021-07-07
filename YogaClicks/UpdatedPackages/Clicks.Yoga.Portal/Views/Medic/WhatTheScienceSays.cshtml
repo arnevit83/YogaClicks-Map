@@ -1,0 +1,66 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.WhatTheScienceSaysesModel
+@using Clicks.Yoga.Portal.Models.Medic
+
+@{
+    var therapyTypesPresent = new List<string>();
+    foreach (var wtss in Model.WhatTheScienceSayses)
+    {
+        foreach (var therapyType in wtss.TherapyTypes)
+        {
+            therapyTypesPresent.Add(therapyType.Name);
+        }
+    }
+}
+
+
+
+<div class="row nopadding">
+    <div class=" col-sm-12 nopadding">
+        <h4>What the clinical studies say</h4>
+    </div>
+    </div>
+<div class="row nopadding">
+    <div class=" col-sm-offset-2 col-sm-10">
+        @if (Model.WhatTheScienceSayses.Any())
+        {
+            <div class="therapy-types-container">
+                @foreach (var therapyType in therapyTypesPresent.Distinct())
+                {
+
+                    <div class="panel panel-default therapy-type-title-row medicpanel">
+                        <div class="panel-heading  ">
+                            <div class="" style="font-weight:bold;">@therapyType <i class="pull-right medicdrop fa fa-arrow-circle-down"></i></div>
+                        </div>
+
+                        <ul class="therapy-attribute-container list-group nopadding">
+                            @foreach (var wtss in Model.WhatTheScienceSayses
+            .Where(x => x.TherapyTypes.Select(y => y.Name)
+                .Contains(therapyType)).
+                OrderBy(x => x.Description))
+                            {
+
+                                <li class="list-group-item">@wtss.Description</li>
+                            }
+                        </ul>
+
+
+                    </div>
+
+
+
+                }
+            </div>
+
+        }
+        else
+        {
+            <span>There are currently no "What the science says" entries for this condition<br /><br /></span>
+        }
+
+    </div>
+</div>
+
+
+
+
+

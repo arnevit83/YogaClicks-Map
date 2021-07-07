@@ -1,0 +1,249 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseDisplayModel
+@{
+    ViewBag.Title = Model.Pose.EnglishName;
+    ViewBag.Description = "We explain " + Model.Pose.EnglishName + " and how to do it. We give you the health benefits and the reasons to love it.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section LeftNav{
+    @Html.Action("Navigation", new { PoseId = Model.Pose.Id })
+}
+
+@section Scripts{
+    <script type="text/javascript">
+   
+        $(document).ready(function() {
+
+            resizeDiv(true);
+        });
+    </script>
+}
+
+
+
+@section Head {
+    <meta property="og:title" content="We love @Model.Pose.EnglishName at YogaClicks" />
+    <meta property="og:description" content="We break it down - why we love it, how to do it and more" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Pose.Image)" />
+}
+@{
+    var location = Session["Poses.Last"] == null ? Url.Action("Directory", "Styles") : Session["Poses.Last"].ToString();
+}
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><i class="practiceIcon pull-left"></i><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - @Model.Pose.EnglishName</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+
+   
+    
+
+                <section id="pose-info" class="pose-info">
+                    <article id="description" class="">
+                       
+                        <div class="hidden-xs">
+
+                            <a href="@location" class="Glink pull-right" alt="back">
+                                <span class="glyphicon-stack">
+                                    <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                                    <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                                </span><span style="vertical-align:text-bottom">Back</span>
+                            </a>
+
+                            <h1 class="pinkHeader"><span>&nbsp;</span>@Model.Pose.EnglishName</h1>
+
+
+
+                        </div>
+
+                        <div class="shareFindSection hidden-xs">
+                            <br />
+                            <div class="fr">
+                                <span>Share: </span>
+                                @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="img-thumbnail" style="width:707px;">
+                            <img src="@Model.Pose.Image.Url" class="img-responsive  center-block" style="width: 500px;" />
+                            @*<span class="pull-left" style="color: #a3a3a3;font: 20px source sans pro,sans-serif; margin-top:8px;">
+                &copy; yogaclicks @DateTime.Today.Year
+            </span>*@
+                        </div>
+                        <span class="captionhover">
+                            <span>&copy; yogaclicks @DateTime.Today.Year</span>
+                        </span>
+                        
+
+
+                        <div class="pull-right hidden-xs">
+                            <div class="leftCol">
+                                @Html.Action("Button", "Fans", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })<br />
+                            </div>
+                        </div>
+
+                        
+
+
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+                                    <br />
+                                    <div class="row nopadding">
+                                        <div class=" col-xs-3 nopadding">
+                                            <p>
+                                                <strong>Sanskrit name:</strong><br />
+                                            </p>
+                                            <p>
+                                                <strong>Ability level:</strong> <br />
+                                            </p>
+                                               @if (Model.Pose.Roots.Count > 0)
+                                               {
+
+<p>
+    <strong>Roots:</strong>
+</p>
+                                                }
+</div>
+                                        <div class=" col-sm-offset-1  col-xs-8 ">
+                                            <p>
+                                                @Model.Pose.SanskritName
+                                            &nbsp;</p>
+                                            <p>
+                                                @Model.Pose.AbilityLevel.Name
+                                                &nbsp;</p>
+                                            @if (Model.Pose.Roots.Count > 0)
+                                            {
+
+                                                <p>
+
+                                                    @string.Join(", ", Model.Pose.Roots)
+                                                    &nbsp;</p>
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr><td><br/>
+                                <div class="row nopadding">
+                                    <div class=" col-sm-3 nopadding">
+                                        <h4>Why we love this pose</h4>
+                                    </div>
+                                    <div class=" col-sm-offset-1  col-sm-8 ">
+                                        @foreach (var effect in Model.Pose.Tips)
+                                        {
+                                            <p>@effect</p>
+                                        }
+                                    </div>
+                                </div>
+
+                            </td></tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <div class="row nopadding">
+                                        <div class=" col-sm-3 nopadding">
+                                            <h4>How to do @Model.Pose.EnglishName</h4>
+                                        </div>
+                                        <div class=" col-sm-offset-1  col-sm-8 ">
+                                            @foreach (var instruction in Model.Pose.Instructions)
+                                            {
+                                                <p>@instruction</p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr >
+                                <td>
+                                    <br />
+                                    <div class="row nopadding">
+                                        <div class=" col-sm-3 nopadding">
+                                            <h4>Good for</h4>
+                                        </div>
+                                        <div class=" col-sm-offset-1  col-sm-8 ">
+                                            <ul class="Halflist">
+                                                @foreach (var indication in Model.Pose.Indications)
+                                                {
+                                                    <li>@indication</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr >
+                                <td>
+                                    <br />
+                                    <div class="row nopadding">
+                                        <div class=" col-sm-offset-1  col-sm-3 nopadding">
+                                            <h4>Bad for</h4>
+                                        </div>
+                                        <div class=" col-sm-offset-1  col-sm-8 ">
+                                            <ul class="Halflist">
+                                                @foreach (var contraindication in Model.Pose.Contraindications)
+                                                {
+                                                    <li>@contraindication</li>
+                                                }
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br />
+                                    
+                                    <div class="row nopadding">
+
+                                        <div class=" col-xs-12 nopadding">
+                                            <div class="meta">
+                                                <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+
+
+</article>
+                </section>
+
+            
+        </div>

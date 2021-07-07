@@ -1,0 +1,86 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewSearchCriteriaModel
+
+
+<div class="well buisnesscard" style="vertical-align: middle;">
+
+
+
+    <div id="reviews">
+        @Html.HiddenFor(m => m.SubjectId)
+        @Html.HiddenFor(m => m.SubjectType)
+        @Html.HiddenFor(m => m.ParentId)
+        @Html.HiddenFor(m => m.ParentType)
+        @Html.HiddenFor(m => m.AuthorId)
+        @Html.HiddenFor(m => m.AuthorType)
+
+        @if (!string.IsNullOrEmpty(Model.Title))
+        {
+            <h4 class="reviewsMainTitle">@Model.Title</h4>
+        }
+      
+        <div data-role="Filters">
+            <div class="reviewsOrderWrap">
+                <!--@Html.Action("SummaryPartial", "Reviews", Model)-->
+                @if (Model.Experiences.AvailableOptions.Count > 1)
+            {
+            <div class="sortOrderWrap">
+                <label for="sortOrder">Sort by</label>
+                @Html.EditorFor(m => m.SortOrder)
+            </div>
+         }
+            </div>
+            @if (Model.Experiences.AvailableOptions.Count > 1)
+            {  <hr />
+        <div class="reviewsFilter">
+            <div class="filters">
+                <strong>Filter by Experience</strong>
+                @foreach (var experience in Model.Experiences.AvailableOptions)
+                    {
+                    <label>
+                        @Html.CheckBoxFor(m => m.Experiences.Selection[experience.Id])
+                        @experience.Name
+                    </label>
+                    }
+            </div>
+        </div>
+        }
+          
+        </div>
+        <br style="clear:both" />
+        <output></output>
+    </div><br style="clear: both"/>
+
+
+
+
+</div> 
+    <script>
+        $(function () {
+            var $container = $('#reviews');
+            var $output = $container.find('output');
+            var $inputs = $container.find('input, select');
+            var $filters = $container.find('div[data-role=Filters]');
+
+            var refresh = function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListPartial", "Reviews")',
+                    data: $inputs.serialize(),
+                    success: function (html) {
+                        $output.html(html);
+                        $container.toggle($output.find('div[data-role=Review]').length > 0);
+                        $('.more-block').readmore();
+                    }
+                });
+            };
+
+            $inputs.on('change', function () {
+                refresh();
+             
+            });
+        
+            refresh();
+          
+        });
+   
+    </script>

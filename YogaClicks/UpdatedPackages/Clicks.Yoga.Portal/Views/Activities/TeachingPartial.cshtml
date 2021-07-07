@@ -1,0 +1,33 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityTeachingPartialModel
+
+@if (Model.Activities.Count > 0)
+{
+    <div class="block-section">
+
+        @foreach (var activity in Model.Activities)
+        {
+            <div class="notificationRow">
+                <div class="icon">
+                    <span>&nbsp;</span>
+                </div>
+                <div class="text">
+                    <strong>@activity.Type.Name:</strong>
+
+                    <a href="@Url.Action("Display", "Activities", new { activity.Id })">@activity.Name</a>
+
+                    @if (activity.Venue != null)
+                    {
+                        @:at
+                        <a href="@Url.Action("Display", "Venues", new { activity.Venue.Id })">@activity.Venue.Name</a>
+                    }
+
+                    on @activity.StartTime.ToString("dd/MM/yyyy")
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>None yet.</p>
+}

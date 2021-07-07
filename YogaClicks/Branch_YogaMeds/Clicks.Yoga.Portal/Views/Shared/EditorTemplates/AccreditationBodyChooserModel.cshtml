@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.AccreditationBodyChooserModel
+
+@foreach (var body in Model.Options)
+{
+    <label>@Html.CheckBoxFor(m => m.Selection[body.Id]) @body.Name</label>
+}

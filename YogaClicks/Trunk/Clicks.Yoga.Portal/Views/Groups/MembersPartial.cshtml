@@ -1,0 +1,39 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupMembersPartialModel
+
+@foreach (var member in Model.Members)
+{
+    <div data-role="Member" class="attendee member">
+        <div class="fl image">
+            <a href="@Url.Action("Display", "Profiles", new { member.Profile.Id })">
+                @Html.DisplayFor(m => member.Profile.Image, "ProfileImage", new { Width = 70, Height = 70 })
+            </a>
+        </div>
+        <div class="fl info">
+
+
+            <div class="name"><a href="@Url.Action("Display", "Profiles", new { member.Profile.Id })">@member.Profile.Name</a></div>
+
+            <div>@Html.MultiLine(member.Profile.Location.Name)</div>
+
+            @if (member.Administrator)
+            {
+                <div class="admin">
+                    <strong><span class="adminIcon">&nbsp;</span>Administrator</strong>
+
+                    @if (Model.PermissionToManageAdmin && !member.Profile.IsOwnedBy(Model.GroupOwnerId))
+                    {
+                        <text>(<a href="javascript:void(0)" data-role="DemoteButton" data-id="@member.Profile.OwnerId">cancel</a>)</text>
+                    }
+                </div>
+            }
+
+            @if ((Model.PermissionToManage || Model.PermissionToManageAdmin) && Model.GroupOwnerId.HasValue)
+            {
+                if (!member.Profile.IsOwnedBy(Model.GroupOwnerId))
+                {
+                    <input type="checkbox" name="UserIds" value="@member.Profile.OwnerId" />
+                }
+            }
+        </div>
+    </div>
+}

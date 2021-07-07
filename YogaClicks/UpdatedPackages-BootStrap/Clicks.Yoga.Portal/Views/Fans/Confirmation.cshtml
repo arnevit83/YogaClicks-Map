@@ -1,0 +1,42 @@
+﻿@model Clicks.Yoga.Portal.Models.Fans.FanConfirmationModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //debugger;
+        setTimeout(function () {
+            if (parent.$.fancybox == null || parent.$.fancybox.current == null)
+                return;
+            parent.$.fancybox.current.height = 250;
+            parent.$.fancybox.update();
+        }, 100);
+    })
+</script>
+
+
+<h2 class="greenHeader becomeHeader"><span>&nbsp;</span>Congratulations</h2>
+<hr />
+
+@if (!string.IsNullOrEmpty(Model.EntityName))
+{
+    <p>Now you're a fan of <em>@Model.EntityName</em> you'll get their posts in your Newsfeed.</p>
+    <p>Everything you're a fan of lists on your profile on your Fan tab.</p>
+}
+else
+{
+    <p>You are now a fan.</p>
+}
+
+<hr />
+<button class="large button fr pink">Close</button>
+
+<script>
+    $(function () {
+        $('button').on('click', function () {
+            top.closeModal();
+        });
+    });
+</script>

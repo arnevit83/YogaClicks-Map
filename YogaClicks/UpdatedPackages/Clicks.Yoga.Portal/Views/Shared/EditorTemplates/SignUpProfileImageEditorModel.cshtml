@@ -1,0 +1,40 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpProfileImageEditorModel
+
+@{
+    
+}
+
+<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 profile-image-conatiner">
+
+    <div id="Image_signupcanvas" style="display: none;">
+        <canvas id="Image_signupcanvascanvas" class="img-responsive signupprofileimagechange"></canvas>
+        <i class="fa fa-pencil"></i>
+    </div>
+
+    <div class="profile-pic img-responsive signupprofileimagechange">
+        @Html.DisplayFor(m => m.CurrentImage, "ProfileImage")
+        @if (Model != null)
+        {
+            <i class="fa fa-pencil"></i>
+        }
+    </div>
+    <div id="Image_signupcontainer" class="block-section ">
+        <span class="hidden">@Html.EditorFor(m => m.NewImage)</span>
+    </div>
+
+</div>
+<div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 image-upload-text">
+    @*@if (Model == null)
+    {*@
+        <section>
+            <p class="signup-large-text">
+                @ViewBag.SignupProfileImageText
+            </p>
+            <div style="line-height: 15px;">
+                <span>optimal image dimensions are 240px x 240px, recommended file format is PNG or JPEG and 40MB max</span>
+            </div>
+        </section>
+    @*}*@
+</div>
+<div class="hidden-xs hidden-sm col-md-1 col-lg-2"></div>
+

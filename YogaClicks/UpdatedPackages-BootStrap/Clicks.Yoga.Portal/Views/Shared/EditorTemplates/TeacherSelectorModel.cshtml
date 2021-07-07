@@ -1,0 +1,116 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.TeacherSelectorModel
+
+<div id="@Html.IdFor(m => m)">
+    @Html.HiddenFor(m => m.Id)
+    @Html.LabelFor(m=>m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @placeholder = "Type a name and pick an option from the dropdown list"})
+
+    <div data-role="SuggestionsPopup" style="display: none;">
+        <div data-role="Suggestions"></div>
+        <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+    </div>
+
+    <div data-role="CreateForm" style="display: none;overflow:hidden;">
+        <label>Location</label> 
+        <input type="text" data-role="Location">
+        <div data-role="LocationSuggestions" class="suggestions"></div>
+        <input type="hidden" data-role="Latitude">
+        <input type="hidden" data-role="Longitude">
+        @*<h4>Invite this teacher to YogaClicks</h4>
+        <div>Fill in this teacher's email address and we'll invite them to claim their YogaClicks profile.</div>*@
+        <label>Email (optional)</label> <input type="text" data-role="Email" />
+        <button data-role="CreateButton" class="button silver fr">Create teacher</button>
+    </div>
+</div>
+@Scripts.Render("~/bundles/mapsapi")
+@Scripts.Render("~/bundles/maps")
+<script>
+    $(function () {
+        var $container = $('#@Html.IdFor(m => m)');
+
+        $container.yogaLocationPicker();
+
+        var $id = $('#@Html.IdFor(m => m.Id)');
+        var $name = $('#@Html.IdFor(m => m.Name)');
+        var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        
+        var $createForm = $container.find('[data-role=CreateForm]');
+        var $createButton = $createForm.find('[data-role=CreateButton]');
+        var $location = $createForm.find('[data-role=Location]');
+        var $latitude = $createForm.find('[data-role=Latitude]');
+        var $longitude = $createForm.find('[data-role=Longitude]');
+        var $email = $createForm.find('[data-role=Email]');
+
+        $name.on('keyup', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+            
+            var value = $name.val();
+
+            if (!value || value.length < 3) return;
+
+            $.getJSON(
+                '/Search/AutocompleteTeachers',
+                { Name: $name.val() },
+                function (entities) {
+                    if (entities.length > 0) {
+                        $suggestions.empty();
+
+                        for (var i in entities) {
+                            var entity = entities[i];
+                            var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                            $link.data('entity', entity);
+                            $suggestions.append($('<div/>').html($link));
+                        }
+
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+                    }
+                }
+            );
+        });
+
+        $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+        });
+
+        $suggestions.on('click', 'a', function () {
+            var entity = $(this).data('entity');
+            $id.val(entity.Id);
+            $name.val(entity.Name);
+            $suggestionsPopup.hide();
+        });
+
+        $createButton.on('click', function (e) {
+            e.preventDefault();
+
+            var name = $name.val();
+            var location = $location.val();
+            var latitude = $latitude.val();
+            var longitude = $longitude.val();
+            var email = $email.val();
+
+            if (!name || !location || !latitude || !longitude) return;
+
+            $.ajax({
+                type: 'POST',
+                url: '/Teachers/CreateStubbed',
+                data: { Name: name, Location: location, Latitude: latitude, Longitude: longitude, Email: email },
+                success: function (id) {
+                    if (!id) return;
+                    $id.val(id);
+                    $name.val(name);
+                    $location.val('');
+                    $email.val('');
+                    $createForm.hide();
+                    $('.add-teacher-input-container').hide();
+                    $('.adding').show();
+                    $('.add-teach-next').click();
+                }
+            });
+        });
+    });
+</script>

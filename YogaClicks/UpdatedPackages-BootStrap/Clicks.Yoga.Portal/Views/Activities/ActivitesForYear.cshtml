@@ -1,0 +1,98 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityYearViewModel
+<div>
+    <div>
+        <a href="#" class="button fr calendar-view-button schedule-type-btn">View Classes</a>
+    </div>
+    <h3 class="events-header">Events</h3>
+</div>
+@if (Model.Events.Any())
+{
+    <div class="classesTable year-schedule-table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                    @if (Model.Events.FirstOrDefault().PromoterHandle.EntityTypeName == "Venue")
+                    {
+                        <th>Teachers</th>}
+                    else
+                    {
+                        <th>Venue</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ycEvent in Model.Events)
+                {
+                    <tr>
+                        <td class="cal-day-td">
+                            <div class="cal-day-container">
+                                <div class="cal-day-day">@ycEvent.StartTime.ToString("dd") @ycEvent.StartTime.ToString("MMM")</div>
+                                <div class="cal-day-year">@ycEvent.StartTime.ToString("yyyy")</div>
+                                @if (ycEvent.Type.Id == 4 && ycEvent.StartTime.Hour == 00 && ycEvent.StartTime.Minute == 00)
+                                {
+                                    <div class="cal-day-time">TBC</div>
+                                }
+                                else
+                                {
+                                    <div class="cal-day-time">@ycEvent.StartTime.ToString("hh:mm tt")</div>
+                                }
+                            </div>
+                            <div class="cal-to">to</div>
+                            <div class="cal-day-container">
+                                <div class="cal-day-day">@ycEvent.FinishTime.ToString("dd") @ycEvent.FinishTime.ToString("MMM")</div>
+                                <div class="cal-day-year">@ycEvent.FinishTime.ToString("yyyy")</div>
+                                @if (ycEvent.Type.Id == 4 && ycEvent.FinishTime.Hour == 00 && ycEvent.FinishTime.Minute == 00)
+                                {
+                                    <div class="cal-day-time">TBC</div>
+                                }
+                                else
+                                {
+                                    <div class="cal-day-time">@ycEvent.FinishTime.ToString("hh:mm tt")</div>
+                                }
+
+                            </div>
+                        </td>
+                        <td class="cal-event-td">
+                            @Html.ActionLink(ycEvent.Name, "display", "activities", new { id = ycEvent.Id }, null)
+                            <div class="cal-event-desc">
+                                <span>
+                                    @ycEvent.Description
+                                </span>
+                            </div>
+                        </td>
+                        @if (ycEvent.PromoterHandle.EntityTypeName == "Venue")
+                        {
+                            <td class="cal-venue-td">
+                                @if (ycEvent.Teachers != null)
+                                {
+                                    foreach (var teacher in ycEvent.Teachers)
+                                    {
+                                        <div>@Html.ActionLink(teacher.Name, "display", "teachers", new { id = teacher.Id }, null)</div>
+                                    }
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="cal-venue-td">
+                                @Html.ActionLink(ycEvent.Venue.Name, "display", "venues", new { id = ycEvent.Venue.Id }, null)
+                                <div>
+                                    @ycEvent.Venue.Address.City <br />
+                                    @ycEvent.Venue.Address.Country.EnglishName
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+else
+{
+    <div class="no-events">No events found</div>
+}

@@ -1,0 +1,41 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewReportModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+<div class="formFields">
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ReviewId)
+    @Html.HiddenFor(m => m.Reason)
+
+     <fieldset>
+        <h3 class="redHeader">Reporting an illegal or unacceptable review</h3>
+         <hr />
+    </fieldset>   
+    
+    @Html.ValidationSummary()
+    
+
+    <fieldset class="explnationWrap">
+        @Html.TextAreaFor(m => m.Explanation, new { placeholder = "Breifly detail the nature of your complaint" })
+    </fieldset>
+
+    <fieldset>
+        <iframe src="ReportPolicy" style="width: 550px; height: 500px; border:none;"></iframe>
+    </fieldset>
+
+    <fieldset>
+        @Html.CheckBoxFor(m => m.TermsAccepted) I have read and understood the terms.
+    </fieldset>
+
+    <fieldset>
+        <div class="fl">
+            <a href="javascript:closeModal()" class="textLink">Cancel</a>
+        </div>
+        <div class="fr">
+            <input type="submit" class="button redButton" value="Submit Report"/>
+        </div>
+    </fieldset>
+}
+    </div>

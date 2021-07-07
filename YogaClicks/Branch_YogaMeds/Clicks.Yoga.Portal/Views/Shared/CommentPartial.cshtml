@@ -1,0 +1,26 @@
+﻿@model Clicks.Yoga.Portal.Models.Shared.CommentPartialModel
+
+<div id="comment-@Model.Comment.Id" data-role="Comment" class="comment">
+    <div class="left-col fl">
+        <div class="profile-pic-sml">
+            <a href="@Url.Entity(Model.Comment.Actor)">
+                 @Html.Image(Model.Comment.Actor.Image, "Profile.jpg", i => i.Resize(c => c.Width(50).Height(50).ScaleBoth().Crop()))
+            </a>
+        </div>
+    </div>
+    <div class="right-col fr text">
+        <p><strong><a href="@Url.Entity(Model.Comment.Actor)">@Model.Comment.Actor.Name</a></strong></p>
+
+        <p>@Html.NewLines(Model.Comment.Content)</p>
+
+        <small>
+            @* DWTIMEHERE *@
+            @Html.LocalDateTime(@Model.Comment.CreationTime.ToUniversalTime().ToString("u")) | 
+        
+            @if (Model.Permissions.Delete || SecurityContext.IsOwner(Model.Comment))
+            {
+                <a href="javascript:void(0)" data-role="DeleteCommentButton" data-url="@Url.Action("Delete", "Comments")" data-comment-id="@Model.Comment.Id" data-subject-id="@Model.Subject.EntityId" data-subject-type-name="@Model.Subject.EntityTypeName">Delete reply</a>
+            }
+        </small>
+    </div>
+</div>

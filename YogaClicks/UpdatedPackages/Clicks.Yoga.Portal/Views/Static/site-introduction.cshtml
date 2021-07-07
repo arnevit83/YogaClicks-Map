@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "Site Introduction";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.BodyClass = "manual-register-page site-intro";    
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<div class="slide" id="slide0" data-slide="0" data-stellar-background-ratio="0.5">
+    <div class="wrapper">
+        <div class="slideText">  
+            <h1 class="welcome">Find, love and live your yoga</h1>
+            <h2>Join the global community<br />Scroll down to discover more</h2>
+        </div>  
+    </div>
+    <a href="http://www.facebook.com/Artist.Photografia" class="copyrightLink">Image courtesy of Robert Sturman</a>
+</div>
+
+
+    <div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="two columns">
+                <div class="col parralaxText">
+                    <h2>Inspired by the yoga community, for the yoga community</h2>
+                    <p>I never expected my book to inspire a website but that's exactly what happened.</p>
+                    <p>When Yoga School Dropout hit the stands yogis from Manchester to Montana got in touch wanting recommendations on yoga teachers, training and retreats.</p>
+                    <p><strong>YogaClicks</strong> is my answer.</p>
+                    <p>A place for the global community to find, love and live great yoga - the teachers that inspire us, the studios that welcome us, the holidays that change our lives.</p>
+                    <p>Over to you!</p>
+                    <img style="display: inline-block; margin-left: 100px; margin-top: -30px;" src="/Images/parallax/lucy-sig.png"/>
+                </div>
+                <div class="">
+                    <img src="/images/parallax/book.jpg" alt="" />
+                </div>
+            </div>
+            <div style="margin-top: 130px;" class="parralaxText">
+                <table width="100%" cellpadding="14" style="margin-bottom: 30px">
+                    <tr>
+                        <td style="text-align: center; height: 150px; vertical-align: middle; padding-bottom: 20px;">
+                            <a href="@Url.Action("Discover", "Static")" class="body">
+                                <img src="/Images/how-to-use/FindLogo.png" style="display: inline;" />
+                                <h3>Find</h3>
+                                <p>
+                                    Teachers, studios, retreats.<br />
+                                    Holidays / retreats, workshops, classes.<br />
+                                    Teacher training. Groups.
+                                </p>
+                            </a>
+                        </td>
+                        <td style="text-align: center; height: 150px; vertical-align: middle; padding-bottom: 20px;" rowspan="2">
+                            <a href="@(SecurityContext == null || !SecurityContext.Authenticated ? "/" : Url.Action("Update", "Profiles", new { SecurityContext.CurrentProfile.Id }))" class="body">
+                                <img src="/Images/how-to-use/ProfileLogo.png" style="display: inline;" />
+                                <h3>Profile</h3>
+                                <p>Add teacher or venue pages.<br />
+                                Reveal your true self.<br/>
+                                The more you give,<br/>
+                                the more you get back.</p>
+                            </a>
+                        </td>
+                        <td style="text-align: center; height: 150px; vertical-align: middle; padding-bottom: 20px;">
+                            <a href="/" class="body">
+                                <img src="/Images/how-to-use/ShareLogo.png" style="display: inline;" />
+                                <h3>Newsfeed</h3>
+                                <p>Your newsfeed. Your stories.<br />
+                                Your friends. Your groups.<br />
+                                Get social.</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; height: 150px; vertical-align: middle; padding-bottom: 20px;">
+                            <a href="@Url.Action("Wisdom", "Static")" class="body">
+                                <img src="/Images/how-to-use/WiseUpLogo.png" style="display: inline;" />
+                                <h3>Beginners</h3>
+                                <p>
+                                    Got a question? Need a quote?<br />
+                                    Beginners FAQ's. Site FAQ's.<br />
+                                    We have it nailed.
+                                </p>
+                            </a>
+                        </td>
+                        <td style="text-align: center; height: 150px; vertical-align: middle; padding-bottom: 20px;">
+                            <a href="@Url.Action("Practice", "Static")" class="body">
+                                <img src="/Images/how-to-use/PracticeLogo.png" style="display: inline;" />
+                                <h3>Practice</h3>
+                                <p>
+                                    Find the right yoga style for you.<br />
+                                    Look up a pose.<br />
+                                    Smile at our stickmen.
+                                </p>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+	</div><!--End Slide 1-->
+
+
+	<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
+        <span class="copyright">Image: KK Ledford by Faern</span>
+	</div><!--End Slide 2-->
+
+
+	<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="two columns">
+                <div class="col parralaxText centerAlign findAndBeFound">
+                    <h2>Find and be found</h2>
+                    <div class="iconSpan">
+                        <span>&nbsp;</span>
+                    </div>
+                    <p>If you're a teacher or a venue you can use YogaClicks to help new students find you - simply create a profile and bob's your uncle - you'll appear in relevant searches.</p>
+                    <p>It's that simple.</p>
+                    <img src="/images/parallax/mag_glass.jpg" alt="" />
+                </div>
+                <div class="col">
+                    <img src="/images/global/slide-13-main.jpg" alt="Find and be found" />
+                </div>
+            </div>
+
+        </div>
+        
+	</div><!--End Slide 3-->
+
+
+	<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+        <span class="copyright">Image: 'Yoga for Hope' by Faern</span>
+        
+	</div>
+	
+	
+	<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="three columns">
+                <div class="col parralaxText">
+                    <h2>Join our yoga community</h2>
+                </div>
+                <div class="col parralaxText">
+                    <p>Create or join a group, become a fan, make a friend - and keep up to date with all the action on your personal newsfeed</p>
+                </div>
+                <div class="col parralaxText">
+                    <ul class="iconListTwo">
+                        <li><span class="iconOne">&nbsp;</span> Share</li>
+                        <li><span class="iconTwo">&nbsp;</span> Groups</li>
+                        <li><span class="iconThree">&nbsp;</span> Newsfeed</li>
+                        <li><span class="iconFour">&nbsp;</span> Fans</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="three columns">
+                <div class="col">
+                    <img src="/images/global/slide-3-1.jpg" alt="" />
+                </div>
+                <div class="col">
+                    <img src="/images/global/slide-3-2.jpg" alt="" />
+                </div>
+                <div class="col">
+                    <img src="/images/global/slide-3-3.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+	</div>
+
+
+	<div class="slide" id="slide6" data-slide="6" data-stellar-background-ratio="0.5">
+        <span class="copyright">Image: 'Deanna Brolly' by Faern</span>
+	</div>
+	
+	<div class="slide" id="slide7" data-slide="7" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="two columns smallLeftCol">
+                <div class="col parralaxText">
+                    <h2>Help others find yoga they'll love</h2>
+                    <p>Write reviews of your favourite teachers, studios and retreat centres and help other people find the yoga they'll love.</p>
+                    <ul class="starRating">
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                    </ul>
+                </div>
+                <img src="/images/parallax/tablet.jpg" alt="" class="tablet">
+            </div>
+        </div>
+    </div>
+	
+	<div class="slide" id="slide8" data-slide="8" data-stellar-background-ratio="0.5">
+        <span class="copyright">Image: Marina Luna by Faern</span>
+	</div>
+	
+	<div class="slide" id="slide9" data-slide="9" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="one columns parralaxText findYourYogaStyle centerAlign">
+                <h2>Find your yoga style</h2>
+                <div class="iconSpan">
+                    <span>&nbsp;</span>
+                </div>
+                <p>Use our interactive style finder - a world first - find the style of yoga that's right for you.</p>
+                <p>We've got over sixty styles covered - so whether you like your yoga hot or chilled, you want to perfect your body or your mind, you'll find it here.</p>
+                <div class="image">
+                    <img src="/images/global/slide-7-main.jpg" alt="Fide your yoga style" />
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	<div class="slide" id="slide10" data-slide="10" data-stellar-background-ratio="0.5">
+		<span class="copyright">Image: Debbie Steingeisser by Faern</span>
+	</div>
+	
+	<div class="slide" id="slide11" data-slide="11" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="two columns smallLeftCol">
+                <div class="col parralaxText centerAlign wiseUp">
+                    <h2>Beginners</h2>
+                    <div class="iconSpan">
+                        <span>&nbsp;</span>
+                    </div>
+                    <p>Beginners' FAQs from 'What is yoga?' to 'What should I wear?'</p>
+                    <p>Can't tell your kleshas from your kriyas? All you need is 'Yoga lingo'</p>
+                    <p>Need some inspiration? Look no further. We've got wise words from Jerry Seinfeld to Sharath Jois.</p>
+                </div>
+                <div class="col">
+                    <img src="/images/global/slide-9-main.jpg" alt="Wise up" />
+                </div>
+            </div>
+
+        </div>
+
+	</div>
+	
+	<div class="slide" id="slide12" data-slide="12" data-stellar-background-ratio="0.5">
+		<span class="copyright">Image: Katie Rose by Faern</span>
+	</div>
+	
+	<div class="slide" id="slide13" data-slide="13" data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="two columns">
+                <div class="col parralaxText centerAlign strikeAPose">
+                    <h2>Strike a pose</h2>
+                    <div class="iconSpan">
+                        <span>&nbsp;</span>
+                    </div>
+                    <p>We've got 99 poses and we're planning more.</p>
+                    <p>Look them up by category or by name - in English or Sanskrit. Find out how to do them and why we love them - even when they make us cry.</p>
+                </div>
+                <div class="col">
+                    <img src="/images/parallax/polaroid.jpg" alt="" />
+                </div>
+            </div>
+
+        </div>
+	</div>
+	
+	<div class="slide" id="slide14" data-slide="14" data-stellar-background-ratio="1" data-stellar-vertical-offset="100">
+</div>
+
+
+<!--
+<div class="cookie-message">
+	<div class="container-960">
+		<p class="fr no-mrg-top"><img src="images/close.png"> &nbsp; <a href="" class="hide-cookie-message">Don't show this message again</a></p>
+        <p>We use cookies to improve your site experience, and to help us understand how the site is being used.<br />
+        See our <a href="">Privacy Policy</a> for more info. By using our site you agree to this policy and our use of cookies.</p>
+	</div>
+</div>
+-->
+
+
+<script>
+
+    /* Paralllax */
+    jQuery(document).ready(function ($) {
+
+        //initialise Stellar.js
+        if (!Modernizr.touch) {
+            $(window).stellar();
+        }
+
+    });
+
+
+</script>
+

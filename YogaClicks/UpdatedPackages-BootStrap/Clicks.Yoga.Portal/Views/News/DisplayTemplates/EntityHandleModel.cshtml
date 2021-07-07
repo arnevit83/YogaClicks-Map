@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.EntityHandleModel
+
+<a href="@Url.Entity(Model)">
+    @Html.Image(Model.Image, "Profile.jpg", i => i.Resize(c => c.Width(60).Height(60).ScaleBoth().Crop()))
+    @Model.Name
+</a>

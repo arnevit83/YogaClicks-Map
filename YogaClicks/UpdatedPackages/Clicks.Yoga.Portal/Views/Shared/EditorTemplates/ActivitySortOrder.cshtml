@@ -1,0 +1,8 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Domain.Entities.ActivitySortOrder
+
+@{
+    var items = Enum.GetNames(typeof(ActivitySortOrder)).Select(n => new SelectListItem { Value = n, Text = n });
+}
+
+@Html.DropDownListFor(m => m, items)

@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryVideoPartialModel
+
+<div data-role="Video" data-class="@Model.Video.IsClass" data-length="@Model.Video.Length" data-level="@(Model.Video.AbilityLevel == null ? "" : Convert.ToString(Model.Video.AbilityLevel.Id))" class="block-section videoSection">
+    <div class="videoPlayer">
+        <div class="embed-responsive embed-responsive-16by9">
+            @Html.Raw(Model.Video.GetEmbedHtml(643, 401))
+            </div>
+        </div>
+    <div class="videoDescription">
+        @if (Model.Permissions.Disassociate || SecurityContext.CanUpdate(Model.Video))
+        {
+            <a href="javascript:void(0)" data-role="DeleteButton" class="deleteButton" data-url="@Url.Action("DisassociateVideo")" data-id="@Model.Video.Id" data-entity-id="@Model.EntityId" data-entity-type-name="@Model.EntityTypeName">Delete</a>
+        }
+
+        @if (SecurityContext.CanUpdate(Model.Video))
+        {
+            @Html.Hidden("Id", Model.Video.Id)
+
+            <div>
+                <label>Description</label>
+                @Html.TextArea("Description", Model.Video.Description)
+            </div>
+
+            <div style="float:left; margin:0 10px 0 0;clear:both;">
+                <label>Length of class</label>
+                @Html.DropDownList("Length", Model.LengthOptions, "Not a class")
+            </div>
+
+            <div style="float:left;">
+                <label>Ability level</label>
+                @Html.DropDownList("AbilityLevelId", Model.AbilityLevelOptions, "Select if applicable")
+            </div>
+
+            <div style="clear:both">
+                <label>Share this gallery to...</label>
+                <div class="associateHandles">
+                    @Html.EditorFor(m => m.AssociateHandles)
+                </div>
+            </div>
+
+            <button data-role="UpdateButton" data-url="@Url.Action("UpdateVideo")" data-success="@Url.Action("UpdatedConfirmation")" class="button save">Save changes &nbsp; <img src="/images/icon-save.png"></button>
+        }
+        else
+        {
+            <p>@Html.NewLines(Model.Video.Description)</p>
+            @* DWTIMEHERE *@
+            <p>Added on @Html.LocalDateTime(@Model.Video.CreationTime.ToUniversalTime().ToString("u"))</p>
+
+            if (Model.Video.Length != null)
+            {
+                <p>
+                    <strong>Length of class</strong>
+                    @Model.Video.Length
+                </p>
+            }
+            if (Model.Video.AbilityLevel.Name != null)
+            {
+                <p>
+                    <strong>Ability level</strong>
+                    @Model.Video.AbilityLevel.Name
+                </p>
+            }
+        }
+    </div>
+</div>

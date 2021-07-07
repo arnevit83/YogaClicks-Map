@@ -1,0 +1,45 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.CreateCourseAccreditationBodyChooserModel
+
+@*@foreach (var body in Model.Options)
+{
+    <label>@Html.CheckBoxFor(m => m.Selection[body.Id]) @body.Name</label>
+}*@
+
+@{
+    Dictionary<int, string> list = new Dictionary<int, string>();
+}
+
+
+@foreach (var body in Model.Options)
+{
+    if (body.Abbreviation != "BCYT" && body.Abbreviation != "IAYT" && body.Abbreviation != "AAYT")
+    {
+        <div class="col-xs-12">
+            <div class="green-signup-checkbox">
+                @Html.CheckBoxFor(m => m.Selection[body.Id], new { @class = "css-checkbox-green", data_field_type = "notrequired" })
+                @Html.LabelFor(m => m.Selection[body.Id], @body.Name, new { @class = "css-label-green green-text" })
+            </div>
+        </div>
+    }
+    else
+    {
+        list.Add(body.Id, body.Name);
+    }
+
+}
+
+<div class="col-xs-12 signup-med-text signup-accreditations margintop30">
+    <label>Specialist yoga therapist bodies</label>
+</div>
+
+@foreach (var body in list)
+{
+    <div class="col-xs-12">
+        <div class="green-signup-checkbox">
+            @Html.CheckBoxFor(m => m.Selection[body.Key], new { @class = "css-checkbox-green", data_field_type = "notrequired" })
+            @Html.LabelFor(m => m.Selection[body.Key], @body.Value, new { @class = "css-label-green green-text" })
+        </div>
+    </div>
+}
+
+

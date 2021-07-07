@@ -1,0 +1,193 @@
+﻿@using Clicks.Yoga.Portal.Models.Medic
+@model ConditionUpdateModel
+
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="medic-strip content-col" id="scroll">
+        <section id="style-info" role="style-info">
+            <article id="description" class="clearfix rating-description">
+
+                <h1 class="medicHeader"><span>&nbsp;</span>Edit @Model.Name page</h1>
+                <button class="button fr save back-to-profile" onclick="location.href = '@Url.Action("Display")'; return false;">Back to @Model.Name page</button>
+
+                <div id="update-banner-container">
+                    @Html.Partial("UpdateBanner",
+                             new ConditionBannerUpdateModel
+                    {
+                        ConditionBanner = Model.ProfileBanner,
+                        ConditionId = Model.Id
+                    })
+                </div>
+
+                <div>
+                    @Html.Partial("UpdateDirectoryImage",
+                    new ConditionDirectoryImageUpdateModel
+                    {
+                        ConditionDirectoryImage = Model.DirectoryImage,
+                        ConditionId = Model.Id
+                    })
+                </div>
+
+                @Html.Partial("UpdateDescription",
+                    new ConditionDescriptionModel
+                    {
+                        Description = Model.Description,
+                        Id = Model.Id,
+                        MetaDescription = Model.MetaDescription,
+                        ImageCourtesyOf = Model.ImageCourtesyOf,
+                        MetaTitle = Model.MetaTitle
+                    })
+
+                @Html.Action("UpdateWTSS",
+                    new ConditionWTSSModel
+                    {
+                        WhatTheScienceSayses = Model.WhatTheScienceSayses,
+                        Id = Model.Id
+                    })
+
+                @Html.Partial("UpdateStudies",
+                    new ConditionStudiesModel
+                    {
+                        Studies = Model.Studies,
+                        Id = Model.Id
+                    })
+
+                @Html.Partial("UpdateUserStories",
+                    new ConditionUserStoriesModel
+                    {
+                        UserStories = Model.UserStories,
+                        Id = Model.Id
+                    })
+                <a class="button silver delete-condition-btn"><span></span>Delete condition</a>
+            </article>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#update-condition-description-form').submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateDescription")',
+                async: true,
+                data: $form.serialize(),
+                success: function (html) {
+                    $('.profile-details-saved-text').fadeIn(500);
+                    setTimeout(function () {
+                        $('.profile-details-saved-text').fadeOut(500);
+                    }, 2000);
+                }
+            });
+
+            return false;
+        });
+
+        $('.existing-WTSS span').click(function () {
+
+            var $this = $(this),
+            $li = $this.parent('.existing-WTSS');
+            $id = $li.data('wtss-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveWTSSFromCondition")',
+                async: true,
+                data: { conditionId: @Model.Id, wtssId: $id},
+                success: function (html) {
+                    $li.hide();
+                }
+            });
+
+        });
+
+        $('.add-wtss-btn').click(function(e){
+            e.preventDefault();
+
+            var $this = $(this),
+                $txtBox = $this.prev('.new-WTSS'),
+                $wtssType = $txtBox.data('wtss-type-id'),
+                $wtssText = $txtBox.val(),
+                $li = $txtBox.parent('li');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("AddWTSSToCondition")',
+                async: true,
+                data: { conditionId: @Model.Id, wtssType: $wtssType, wtssText: $wtssText},
+                success: function (html) {
+                    $("<li>" + $wtssText + "</li>").insertBefore($li);
+                    $txtBox.val("");
+                }
+            });
+        });
+
+        $('.update-study-list span').click(function () {
+
+            var $this = $(this),
+            $li = $this.parent('li');
+            $id = $li.data('study-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveStudyFromCondition")',
+                async: true,
+                data: { conditionId: @Model.Id, studyId: $id},
+                success: function (html) {
+                    $li.hide();
+                }
+            });
+        });
+
+        $('.update-user-story-list span').click(function () {
+
+            var $this = $(this),
+            $li = $this.parent('li');
+            $id = $li.data('user-story-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveUserStoryFromCondition")',
+                async: true,
+                data: { conditionId: @Model.Id, userStoryId: $id},
+                success: function (html) {
+                    $li.hide();
+                }
+            });
+        });
+
+        $('.delete-condition-btn').click(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeactivateCondition")',
+                async: true,
+                data: { conditionId: @Model.Id},
+                success: function (html) {
+                    window.location.href = '@Url.Action("index")';
+                }
+            });
+
+        });
+
+    </script>
+}

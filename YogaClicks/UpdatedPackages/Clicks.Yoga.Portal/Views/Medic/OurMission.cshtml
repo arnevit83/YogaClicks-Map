@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Clinical studies prove health benefits of yoga";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Medic";
+    ViewBag.SiteSection = "'YogaMeds-visited' : 'true'";
+}
+
+@section Head {
+    <meta property="og:title" content="Clinical studies demonstrate health benefits of yoga | YogaClicks" />
+    <meta property="og:description" content="Over 300 clinical studies on the health benefits of yoga, mindfulness and meditation, by condition. Find a yoga teacher or yoga studio by condition." />
+    <meta property="og:image" content="http://www.yogaclicks.com/Images/global/finalinfographicfacebookshareimage.png" />
+
+    <meta property="title" content="Clinical studies demonstrate health benefits of yoga" />
+    <meta property="description" content="Over 300 clinical studies on the health benefits of yoga, mindfulness and meditation, by condition. Find a yoga teacher or yoga studio by condition." />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" class="Iconsmenu" src="/images/svgicons/Icon_YogaMeds.svg"><span style="color: #B62B31; font-weight: normal">YogaMeds</span><span> - Our YogaClicks Mission</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="medic-strip "></div><br />
+
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class=" content-col" id="scroll">
+        <div class="padTop20">
+
+            <img class="img-responsive" src="~/Images/Homepage/infographic.jpg"/>
+         
+          
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#Innercontent").css('min-width', '99%');
+
+        $('.pintrest-link-div').html('&description=' + '@ViewBag.Title' + ' | YogaClicks&media=http://www.yogaclicks.com/Images/global/finalinfographicfacebookshareimage.png');
+</script>
+}

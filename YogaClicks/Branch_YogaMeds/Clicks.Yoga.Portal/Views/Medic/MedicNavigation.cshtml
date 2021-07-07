@@ -1,0 +1,59 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionsModel
+
+@{ var order = new List<string> { "Mind", "Body", "Spirit", "Focus", "Environment", "Who" };}
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <div class="levelWrap">
+                    <h1 class="pageTitle">YogaMeds</h1>
+                </div>
+                <p><b>Using yoga as medicine</b></p>
+                <div class="medic-nav-sub-text">
+            
+                    
+                View 200+ clinical studies.<br />
+
+                    
+                  Share your story.<br />
+                 
+
+                    Find teachers, venues, and teacher training.
+                </div>
+                <nav class="filter">
+                    @foreach (var condition in Model.Conditions.OrderBy(x => x.Name))
+                    {
+                        <a href="@Url.Action("Display", "Medic", new { id = condition.Id, slug = condition.UrlSlug })">@condition.Name</a>
+                    }
+                    @if (SecurityContext.IsSuperUser())
+                    {
+                        <h2>Super user menu</h2>
+                        @Html.Action("DeactivatedConditions")
+                        <a href="@Url.Action("AddCondition")" class="silver button add-condition-nav-btn">Super User - Add new condition</a>
+                    }
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $('.reactivate-condition').click(function () {
+        var $this = $(this),
+        $li = $this.parent('li');
+        $id = $li.data('condition-id');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ReactivateCondition")',
+            async: true,
+            data: { conditionId: $id },
+            success: function (html) {
+                location.reload();
+            }
+        });
+    });
+
+</script>

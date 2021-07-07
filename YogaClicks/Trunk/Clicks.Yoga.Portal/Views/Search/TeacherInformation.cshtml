@@ -1,0 +1,10 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchTeacherInformationModel
+<p>
+<strong><a href="@Url.Action("Display", "Teachers", new { Model.Teacher.Id })">@Model.Teacher.Name</a></strong><br />
+
+@if (Model.Teacher.Location != null)
+{
+    @Model.Teacher.Location.Name
+}
+</p>
+

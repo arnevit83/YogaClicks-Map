@@ -1,0 +1,118 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueClassesModel
+
+@{
+    ViewBag.Title = "Classes";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav
+{
+    @if (SecurityContext.IsOwner(Model.Venue))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("VenuesNavigation", "Search", new { Action = "Venues" })
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Venue.Name" />
+    @if (!string.IsNullOrEmpty(Model.Venue.Description))
+    {
+        <meta property="og:description" content="@Model.Venue.Description" />
+    }
+    else
+    {
+        <meta property="og:description" content=" " />
+    }
+
+    @if (Model.Venue.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Venue.Image)" />
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Venue.Id, Model.Venue.EntityTypeName))
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                @(!SecurityContext.IsOwner(Model.Venue) ? Html.Raw("<img src='/images/svgicons/icon_find.svg' data-svgpng='/images/SvgIcons/icon_find.png'/><span style='color: #786EA1; font-weight: normal'>Venues</span><span></span>") : Html.Raw("<img src='/images/svgicons/icon_findTeal.svg' data-svgpng='/images/SvgIcons/icon_findTeal.png' /><span style='color: #459088; font-weight: normal'>Venues</span><span></span>"))
+            </h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Venue) ? "" : "purple-strip")"></div>
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Venue) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Venue.Id, SubjectTypeName = Model.Venue.EntityTypeName })
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Venue.Id, SubjectType = Model.Venue.EntityTypeName })
+
+
+                <h2 class="purpleHeader teacherHeader">@(SecurityContext.IsOwner(Model.Venue) ? Html.Raw("<img src='/images/svgicons/Icon_VenueTeal.svg' data-svgpng='/images/SvgIcons/Icon_VenueTeal.png'/>") : Html.Raw("<img src='/images/svgicons/Icon_VenuePurple.svg' data-svgpng='/images/SvgIcons/Icon_VenuePurple.png'/>")) @Html.DisplayFor(m => m.Venue.Name)</h2>
+
+
+                <hr style="margin-top: 7px; margin-bottom:7px;">
+                <div class="profileBanner venueBanner">
+                    @Html.DisplayFor(m => m.Venue.ProfileBanner, "ProfileBanner")
+                </div>
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+                        @Html.Partial("Tabs")
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+
+                                <div class="well buisnesscard" style="vertical-align: middle;">
+
+                                    <h4>Schedule</h4>
+
+                                    <hr />
+
+                                    @Html.Action("ScheduleWeekPartial", "Activities", new { VenueId = Model.Venue.Id, Editable = SecurityContext.IsOwner(Model.Venue) })
+
+
+                                </div>
+
+                                <div class="hidden-md hidden-lg hidden-sm">
+                                    @Html.Partial("Tabsmini")
+                                </div>
+
+                                @Html.Partial("Disclaimer", "Shared")
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    </div>
+
+

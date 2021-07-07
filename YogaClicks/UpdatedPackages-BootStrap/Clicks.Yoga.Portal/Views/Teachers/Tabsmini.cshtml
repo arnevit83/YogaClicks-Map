@@ -1,0 +1,103 @@
+﻿@*<ul id="tabsNav">
+        <li id="profileNav">@Html.ActionLink("Profile", "Display")</li>
+        <li id="classesNav">@Html.ActionLink("Schedule", "Schedule")</li>
+        <li id="reviewNav">@Html.ActionLink("Reviews", "Reviews")</li>
+        <li id="galleriesNav">@Html.ActionLink("Photos", "Galleries")</li>
+        <li id="galleriesNav">@Html.ActionLink("Videos", "Videos")</li>
+        <li id="venueNav">@Html.ActionLink("Venues", "Placements")</li>
+        <li id="groupsNav">@Html.ActionLink("Groups", "Groups")</li>
+        <li id="fanNav">@Html.ActionLink("Fans", "Fans")</li>
+
+
+
+    </ul>*@
+<div class="well"><h4 >Explore</h4>
+
+    <div class="infocard">
+    
+
+    </div><hr /><br />
+    <div class="row nopadding mininav">
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Display")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-user "></i><br />Profile
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Schedule")">
+                <div class="center-block  text-center navmenuIconmini">
+
+                    <i class="fa fa-calendar "></i> <br />Schedule
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Galleries")">
+                <div class=" center-block  text-center navmenuIconmini">
+
+                    <i class="fa fa-picture-o "></i> <br />Photos
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row nopadding mininav">
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Reviews")">
+                <div class=" center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-comments"></i> <br />Reviews
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Videos")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-video-camera "></i> <br />Videos
+
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin-left: 2px; margin-right: 2px;" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Placements")">
+                <div class=" center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-home "></i> <br />Venues
+
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row nopadding mininav">
+        <div class="col-xs-4 nopadding">
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Groups")">
+                <div class="center-block text-center navmenuIconmini">
+
+                    <i class="fa fa-users "></i> <br />Groups
+
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xs-4 nopadding">
+
+            <a style="width: 98%; margin: 2px" class="btn btn-default btn-clear  @(SecurityContext.IsOwner(Model.Teacher) ? "btn-hovercolour" : "btn-Hovercolourteacher")" href="@Url.Action("Fans")">
+                <div class="center-block  text-center navmenuIconmini">
+
+                    <i class="fa fa-heart "></i> <br />Fans
+
+                </div>
+            </a>
+        </div>
+        <div style="width: 100%; margin: 2px" class="col-xs-4">&nbsp;</div>
+    </div>
+
+</div>

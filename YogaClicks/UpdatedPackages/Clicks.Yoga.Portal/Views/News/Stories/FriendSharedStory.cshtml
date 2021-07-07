@@ -1,0 +1,46 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.NewsStoryModel
+@using System.Configuration
+@{
+        var advertiserUserId = int.Parse(ConfigurationManager.AppSettings["Clicks.Yoga.Advertiser.UserId"]);
+}
+
+<div class="wallPost friendPosted sharedStory">
+    <div class="wallPostIcon hidden-xs" >
+        <img src="~/images/SvgIcons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" />
+    </div>
+    <div class="content" style="border-bottom: 1px solid #e5e5e5; padding-bottom: 12px;">
+        <div class="text">
+            <div class="more-block readmore-js-section">
+                @Html.DisplayFor(m => m.Actor) shared a post by 
+                @if (Model.ShareOriginal.Actor.Id == advertiserUserId)
+                {
+                    <span class="news-updates-post-title">YogaClicks News & Updates</span>
+                }
+                else
+                {
+                 @Html.DisplayFor(m => m.ShareOriginal.Actor, "EntityHandleModelNoAvatar")
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial(Model.ShareOriginal.ViewPath, Model.ShareOriginal)
+
+<div class="wallPost friendPosted sharedStory">
+    <div class="content">
+
+        <div class="news-share-button-container">
+            @Html.Partial("ShareButtonPartial", Model)
+        </div>
+
+        <small>
+            @Model.Time
+
+            @if (Model.EntityId > 0 && SecurityContext.IsOwner(Model.Subject))
+            {
+                <a href="javascript:void(0)" data-role="DeletePostButton" data-url="@Url.Action("DeletePost")" data-post-id="@Model.EntityId">Delete</a>
+            }
+        </small>
+    </div>
+</div>

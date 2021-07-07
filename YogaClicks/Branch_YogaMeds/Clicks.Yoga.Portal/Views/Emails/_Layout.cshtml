@@ -1,0 +1,75 @@
+﻿@model Clicks.Yoga.Emails.EmailBase
+@{
+    Layout = null;
+}
+From: @Html.Raw(Model.From)
+To: @Html.Raw(Model.To)
+Subject: @Html.Raw(Model.Subject)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>YogaClicks - Here's what's been happening on YogaClicks this week...</title>
+	<style type="text/css">
+		* {-webkit-text-size-adjust: none}
+		#outlook a {padding:0;}
+		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; color:#444; background-color:#f2f2f2;} 
+		.ReadMsgBody { width: 100%;} 
+		.ExternalClass {width:100%;}
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;} 
+		a img {border:none;}
+		table td {border-collapse: collapse;}
+		table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+		a { color:#444444; text-decoration:underline; }
+	</style>
+</head>
+<body style="background-color:#f2f2f2; font-family: Arial;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td valign="top" bgcolor="#f2f2f2"> 
+
+		<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
+            <tr>
+				<td align="left" valign="top" bgcolor="#FFFFFF" style="border-top:1px solid #c7ced4;border-left:1px solid #c7ced4;border-right:1px solid #c7ced4">
+                
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="left" valign="top" style="border-top:2px solid #5da194;border-bottom:1px solid #c7ced4" bgcolor="#fcfcfc">
+                    		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td align="left" valign="top" style="padding:22px 0 23px 37px;">
+                            		<a href="http://www.yogaclicks.com" target="_blank">
+                            			<img src="http://www.yogaclicks.com/images/global/logo.png" alt="YogaClicks" title="YogaClicks" style="display:block;border:none;" width="241" height="61" />
+                            		</a>
+                            </td>
+                            <td align="right" valign="top">
+                            		&nbsp;
+                            </td>
+                          </tr>
+                        </table>
+                    </td>
+                 </tr>
+                 <tr>  
+                    <td align="left" valign="top" style="padding:12px 20px;">
+                       @RenderBody()
+                    </td>
+                </tr> 
+                 <tr>
+                    <td align="left" valign="top">
+						<img src="http://www.yogaclicks.com/images/email/footer.jpg" alt="" style="display:block;border:none;" />                   
+                    </td>
+                 </tr>
+                </table>
+	
+              </td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>  
+
+</body>
+</html>

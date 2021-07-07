@@ -1,0 +1,32 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchProfilesModel
+
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col discover-strip" id="scroll">
+        <div>
+            <header class="search-results">
+                <h1>Search results</h1>
+                <p>Showing @Model.Response.Results.Count results based on your search for '@Model.Criteria.Keywords'</p>
+            </header>
+            <div id="resultContainer">
+                @foreach (var result in Model.Response.Results)
+                {
+                    @Html.Partial("SearchResultPartial", result)
+                }
+            </div>
+            <div class="meta">
+                <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

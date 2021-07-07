@@ -1,0 +1,54 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.StudyDetailsUpdateModel
+
+<div class="block-section">
+    @using (Html.BeginForm("UpdateStudyDetails", "Medic", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-study-details-form" }))
+    {
+        @Html.HiddenFor(x => x.Id)
+
+        <div class="row">
+            @Html.LabelFor(m => m.Title)
+            @Html.EditorFor(m => m.Title)
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Abstract)
+            @Html.TextAreaFor(m => m.Abstract, new { @class = "story-content-textarea" })
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Citations, "Citations")
+            @Html.EditorFor(m => m.Citations)
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.DateOfStudy, "Date published")
+            @Html.EditorFor(m => m.DateOfStudy)
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Journal)
+            @Html.EditorFor(m => m.Journal)
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Volume, "Volume / Issue")
+            @Html.EditorFor(m => m.Volume)
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Institution, "Author's primary institution")
+            @Html.EditorFor(m => m.Institution)
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Source, "Source (Enter full URL)")
+            @Html.EditorFor(m => m.Source)
+        </div>
+
+        <div class="condition-save-btn-container">
+            <span class="profile-details-saved-text">Changes Saved</span>
+            <button type="submit" class="button save fr">
+                Save changes &nbsp;
+                <img src="/images/icon-save.png">
+            </button>
+        </div>
+    }
+</div>

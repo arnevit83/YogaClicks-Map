@@ -1,0 +1,67 @@
+﻿@model Clicks.Yoga.Portal.Models.Account.AccountLoginModel
+
+@{
+    ViewBag.Title = "Login to yogaclicks!";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@using (Html.BeginForm("Authenticate", "Account")) {
+    @Html.HiddenFor(m => m.Destination)
+
+    <div class="boxFullWidth floatRight">
+        <h2 class="textColourProfile"></h2>
+        <p>YogaClicks is currently only available to previewers.</p>
+        <p>If you're not a previewers, we'd love you to <a href="~/Interest">register your interest</a> and we'll let you know when we launch.</p>
+    </div>
+    <div class="boxHalfWidth floatLeft">
+        <h2 class="textColourProfile">Sign in to YogaClicks</h2>
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>LoginModel</legend>
+            <p class="title">
+                E-mail address
+            </p>
+            <p class="validationLeft">@Html.ValidationMessageFor(model => model.Username)</p>
+            <p>
+                @Html.EditorFor(model => model.Username)
+            </p>
+            <p class="title">
+                Password
+            </p>
+            <p class="validationLeft">@Html.ValidationMessageFor(model => model.Password)</p>
+            <p>
+                @Html.PasswordFor(model => model.Password)
+            </p>
+            <p>
+                <input type="submit" class="backgroundColourProfile" value="sign in" />
+            </p>
+            <p><a href="~/Account/PasswordResetRequest">Forgotten your password?</a></p>
+        </fieldset>
+
+    </div>
+    <div class="boxHalfWidth floatRight">
+        <h2 class="textColourProfile">don't have a YogaClicks account?</h2>
+        <p class="marginBottom1em alignCenter">If you're a teacher or a venue</p>
+        <div id="fbButton">
+            <div id="fbButtonLeft"></div>
+            SIGN IN WITH FACEBOOK
+                            <div id="fbButtonRight"></div>
+        </div>
+        <p class="title alignCenter">OR</p>
+        <p class="marginBottom1em backgroundColourProfile alignCenter searchLink">
+            <a href="~/Registration/CreateAccount" class="bold">CREATE AN ACCOUNT</a>
+        </p>
+        <!--                    <p>If you're not a teacher or a venue, we'd love you to <a href="#">register your interest</a> and we'll let you know when we launch.</p>-->
+    </div>
+    <div class="clearBoth"></div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fbButton').on('click', function () {
+            FB.login(function (response) {
+                handleFacebookAuthResponse(response, "@( Ajax.JavaScriptStringEncode(Model.Destination) )");
+            });
+        });
+    });
+</script>

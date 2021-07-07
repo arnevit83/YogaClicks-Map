@@ -1,0 +1,23 @@
+﻿@model Clicks.Yoga.Emails.ShareEntityEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = string.Format("Visit {0} on YogaClicks!", Model.Handle.Name);
+}
+
+<p>Hello</p>
+
+@if (string.IsNullOrWhiteSpace(Model.Message))
+{
+    @:@Model.Sender.Name wants you to take a look at @Model.Handle.Name on YogaClicks.<br><br>
+}
+else
+{
+    @:@Model.Sender.Name wants you to take a look at @Model.Handle.Name on YogaClicks. <br><br>Here's @Model.Sender.Name<span>'s</span> message:<br><br>
+    @:@Html.NewLines(Model.Message)<br><br>
+}
+
+<a href="@Url.EmailAction("Display", Model.Handle.EntityType.Controller, new { Id = Model.Handle.EntityId })" style="color: #5CA29A; text-decoration: underline;">Click here to view the page</a>.
+
+<br /><br />
+<p style="font-size: 10px">YogaClicks &copy; @DateTime.Now.Year</p>

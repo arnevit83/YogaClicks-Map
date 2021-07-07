@@ -1,0 +1,107 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseDisplayModel
+@{
+    ViewBag.Title = Model.Pose.EnglishName;
+    ViewBag.Description = "We explain " + Model.Pose.EnglishName + " and how to do it. We give you the health benefits and the reasons to love it.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section LeftNav{
+    @Html.Action("Navigation", new { PoseId = Model.Pose.Id })
+}
+
+@section Head {
+    <meta property="og:title" content="We love @Model.Pose.EnglishName at YogaClicks" />
+    <meta property="og:description" content="We break it down - why we love it, how to do it and more" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Pose.Image)" />
+}
+<div id="content-slider" class="content-slider">
+	<div class="practice-strip content-col" id="scroll">
+		<section id="pose-info" class="pose-info">
+			<article id="description" class="profile-slide clearfix rating-description">
+			    <header>
+			        @{
+                        var location = Session["Poses.Last"] == null ? Url.Action("Directory", "Styles") : Session["Poses.Last"].ToString();
+			        }
+
+			        <a href="@location" class="back"><img src="/images/buttons/back.gif" alt="back" width="24" height="24">Back</a><h1 class="pageTitle pinkHeader"><span>&nbsp;</span>@Model.Pose.EnglishName</h1>
+			    </header>
+                <div class="shareRecommendSection">
+
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })
+                    </div>
+                </div>
+			    <div class="pose-image">
+			        <div>&#169; 2013 YogaClicks</div>
+                    @Html.Image(Model.Pose.Image, null)
+			    </div>
+                <div class="leftCol">
+                   <div class="greyBlock">
+                        <p><strong>Sanskrit name:</strong> @Model.Pose.SanskritName</p>
+                        <p><strong>Ability level:</strong> @Model.Pose.AbilityLevel.Name</p>
+				        <!--p><strong>Pronounced:</strong> @Model.Pose.Pronounciation</p-->
+                        @if (Model.Pose.Roots.Count > 0)
+                        {
+                            <p><strong>Roots:</strong>
+                                @string.Join(", ", Model.Pose.Roots)
+                            </p>
+                        }
+                   </div>
+                    @Html.Action("Button", "Fans", new { EntityId = Model.Pose.Id, Model.Pose.EntityTypeName })
+                </div>
+				<div class="rightCol">
+
+                        <div class="left">
+					        <h4>Why we love this pose</h4>
+                        </div> 
+					    <div class="right">
+                        @foreach (var effect in Model.Pose.Tips)
+                        { 
+                            <p>@effect</p>
+                        }
+					    </div>
+                    <hr />
+                        <div class="left">
+				            <h4>How to do @Model.Pose.EnglishName</h4>
+                        </div>
+                    <div class="right">
+                        @foreach (var instruction in Model.Pose.Instructions)
+                        {
+                            <p>@instruction</p>
+                        }
+		            </div>
+                    <hr />
+				   <div class="left">
+					    <h4>Good for</h4>
+                    </div>
+                     <ul class="right">
+                        @foreach (var indication in Model.Pose.Indications)
+                        { 
+                            <li>@indication</li>
+                        }
+				    </ul>
+                    <hr />
+				    <div class="left">
+					    <h4>Bad for</h4>
+                    </div>
+                    <ul class="right">
+                        @foreach (var contraindication in Model.Pose.Contraindications)
+                        {
+                            <li>@contraindication</li>
+                        }
+				    </ul>
+                    <div class="meta">
+                        <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>        
+                    </div>
+               </div>
+			</article>
+		</section>
+		<!--section role="images">
+			<img src="images/misc/sample-image.jpg" alt="sample-image" />
+			<img src="images/misc/sample-image.jpg" alt="sample-image" />
+			<img src="images/misc/sample-image.jpg" alt="sample-image" />
+		</section-->
+	</div>
+</div>

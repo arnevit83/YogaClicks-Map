@@ -1,0 +1,89 @@
+﻿@model Clicks.Yoga.Portal.Models.Fans.FanButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@if (Model.CanFan)
+{
+    <div id="@guid">
+        @if (Model.NewsFeed && Model.FanCount > 0)
+        {
+            <div class="news-fan-likes">
+                @Model.FanCount.ToString() <img class="news-heart" src="~/Images/green-heart.png" />
+            </div>
+        }
+
+        @if (Model.IsFanned)
+        {
+            if (Model.NewsFeed)
+            {
+                <button data-action="Unfan" data-news="true" class="silver button unfan news-fan-button">Unheart</button>
+            }
+            else
+            {
+                <button data-action="Unfan" class="silver button unfan">Stop being a fan <span>&nbsp;</span></button>
+            }
+
+        }
+        else
+        {
+            if (Model.NewsFeed)
+            {
+                <button data-action="Fan" data-news="true" class="silver button fan news-fan-button">Heart</button>
+            }
+            else
+            {
+                <button data-action="Fan" class="silver button fan" title="See their posts in your newsfeed">Become a fan <span>&nbsp;</span></button>
+            }
+        }
+    </div>
+
+    <script>
+        $(function () {
+            var $container = $('#@guid'),
+            entityId = @Model.EntityId,
+            entityTypeName = '@HttpUtility.JavaScriptStringEncode(Model.EntityTypeName)',
+            news = $container.find('.button').data('news');
+
+            var toggle = function (action) {
+                $.ajax({
+                    type: 'POST',
+                    async:false,
+                    url: '/Fans/' + action,
+                    data: { EntityId: entityId, EntityTypeName: entityTypeName, newsfeed: '@Model.NewsFeed' },
+                    success: function (html) {
+                        $container.html(html);
+
+                        if (news != true)
+                        {
+                            if (action == 'Fan') {
+                                openModal('/Fans/Confirmation?EntityId=' + escape(entityId) + '&EntityTypeName=' + escape(entityTypeName), false);
+                            }
+                        }
+
+                        else {
+                            if (action == 'Fan') {
+
+                            }
+                        }
+                    }
+                });
+            };
+
+            $container.on('click', '[data-action=Fan]', function () {
+                toggle('Fan');
+            });
+
+            $container.on('click', '[data-action=Unfan]', function () {
+                toggle('Unfan');
+            });
+        })
+    </script>
+
+}
+
+@if (!SecurityContext.Authenticated)
+{
+    <a class="silver button fan reg-form-popup unauth-fan-btn" href="/" title="See their posts in your newsfeed">Become a fan <span>&nbsp;</span></a>
+}

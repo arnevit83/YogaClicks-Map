@@ -1,0 +1,27 @@
+﻿@model Clicks.Yoga.Portal.Models.Recommendations.RecommendationSendModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="recommendHeader">
+        <h2 class="greenHeader fl">Recommend @Model.Entity.Name</h2>
+        <div class="fr">
+            <button name="Group" value="Selected" class="silver button">Send to selected friends</button>
+            <button name="Group" value="All" class="silver button">Send to all friends</button>
+        </div>
+    </div>
+    
+    @Html.ValidationSummary()
+    
+    <div style="position: relative; overflow-y: scroll; height:442px;" class="attendingWrap">
+        @Html.EditorFor(m => m.Friends)
+    </div>
+    <div>
+        <hr />  
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+
+    </div>
+}

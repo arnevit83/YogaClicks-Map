@@ -1,0 +1,64 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueObtainStep3Model
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="scrollableiFrame">
+    <div>
+        @Html.ValidationSummary()
+    
+        @*@Html.HiddenFor(m => m.Id)*@
+        <input type="hidden" name="Id" id="Id" value="@Model.Id" data-val="@Model.Id" />
+
+        @Html.HiddenFor(m => m.Name)
+
+        <div>
+            @Html.EditorFor(m => m.Address)
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            @if (Model.ShowBackButton)
+            {
+                <a href="#" id="ObtainBackButton" class="button pink large backBtn">Back</a>
+                @Html.HiddenFor(m => m.ShowBackButton)
+                @Html.HiddenFor(m => m.ObtainBack)
+            }
+            <button class="button pink large" type="submit">Next</button>
+        </div>
+    </div>
+    <div class="cb"></div>
+
+</div>
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $("#ObtainBackButton").click(function () {
+            $("#@Html.IdFor(m => m.ObtainBack)").val('@bool.TrueString');
+            submit();
+        });
+
+        $container.find('button').on('click', function (e) {
+            e.preventDefault();
+            submit();
+        });
+
+        var submit = (function () {
+            debugger;
+            var $inputs = $container.find('input, select');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ObtainStep3")',
+                data: $inputs.serialize(),
+                success: function(response) {
+                    $container.replaceWith(response);
+                }
+            });
+        });
+    });
+</script>
+

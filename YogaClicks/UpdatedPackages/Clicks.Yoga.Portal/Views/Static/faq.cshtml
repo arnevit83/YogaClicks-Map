@@ -1,0 +1,273 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "FAQ's";
+    Layout = "~/Views/Layout/layout.cshtml";
+}
+@section LeftNav{
+    @Html.Partial("left-nav-static-footer")
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<div style="margin-left: -15px;margin-right:-15px" class="nopadding hidden-sm hidden-md hidden-lg">
+    <section class="filters greyScale" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu addpadding">
+                <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon"></span></a>
+                <h1>FAQ's</h1>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<div class="row nopadding">
+<div class="col-xs-12 ">
+
+    <section class="page-content QLinks" style="min-height: 1100px;">
+        <article id="static">
+            <h1 class="hidden-xs">FAQ's</h1><br />
+
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What is YogaClicks?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            When my book Yoga School Dropout hit the stands, readers got in touch. As I‘d shared the story of my transition, from corporate burn out to born again writer, they shared theirs. How yoga was also inspiring them to live differently; to create new possibilities – in how they lived, and what they wanted for their lives.<br /><br />
+
+                            <b>I realised that we were all transforming our lives through yoga and I wanted to inspire everyone with that possibility.</b><br /><br />
+
+                            Think of YogaClicks as the Powered By Yoga Collective. We support each other as we transform life’s challenges and create new lives through yoga – working together we can, and will, transform the world. <br /><br />
+
+                            Here’s some of the ways we support each other:<br /><br /><br />
+
+                            <img src="~/Images/static/shop.png" alt="Shop" /><br /><br />
+
+                            Our designers have transformed their own lives through yoga, and they’d love to inspire you as you transform yours. They’re so in flow with their yoga and so in tune with the yoga community, they’re creating exactly what we need – whether it's the perfect pair of yoga leggings (that just happen to be made from recycled plastic), a manifesting mala, or an inspiring book.
+
+                            <br /><br />
+                            <a target="_blank" href="http://www.yogaclicks.store">Don’t miss our unique, curated range of collections from yoga loving, independent designers around the globe »</a>
+                            <br /><br />
+
+                            <img src="~/Images/static/meds.png" /><br /><br />
+
+                            Yoga will help you with all of life’s big challenges – whether you want to banish the blues, deal with anxiety and stress, or cope with a serious illness like cancer. Don’t believe us?<br /><br />
+
+
+
+                            <a href="@Url.Action("Index", "Medic")">Get stuck into over 300 clinical studies from renowned institutions proving the power of yoga for over 30 health conditions »</a><br /><br />
+
+                            <a href="@Url.Action("teacher", "Signup", new {step = 1})"> If you’re a yoga therapist, create a therapist profile and get found »</a>
+
+                            <br /><br />
+
+                            <img src="~/Images/static/map.png" /><br /><br />
+                            The Yoga Map Project will blow you away with the personal stories of people transforming their lives through yoga.<br /><br />
+
+                            <a href="@Url.Action("Index", "Yogamap")"><b>Add your story to get celebrated for your journey,</b> to inspire other yogis on the same path, and to get the whole world on its mat »</a>
+                            <br /><br />
+                            <b>Newbies</b>
+                            <br /><br />
+                            We’re really into breaking down the barriers that stand between <b>newbies and yoga.</b>
+                            <br /><br />
+                            <a href="@Url.Action("wisdom", "Static")">We help you find the style that’s right for you, and answer all your questions – from what to wear to what to eat »</a>
+                            <br /><br />
+                            Namaste!
+                            <br />
+                            Lucy
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                                I’m already on another yoga website – why should I join yours?
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            It’s very simple: to join the Powered By Yoga Collective and all it stands for. We support each other as we transform life’s challenges and create new lives through yoga – working together we can, and will, transform the world.
+                            <br /><br />
+                            Here’s some of the ways we support each other:
+                            <br /><br />
+
+                            <img src="~/Images/static/shop.png" /><br /><br />
+                            Our designers have transformed their own lives through yoga, and they’d love to inspire you as you transform yours. They’re so in flow with their yoga and so in tune with the yoga community, they’re creating exactly what we need – whether it's the perfect pair of yoga leggings (that just happen to be made from recycled plastic), a manifesting mala, or an inspiring book.
+
+                            <a target="_blank" href="http://www.yogaclicks.store">
+                                <br /><br /> Don’t miss our unique, curated range of collections from yoga loving, independent designers around the globe »
+                            </a>
+                            <br /><br />
+
+                            <img src="~/Images/static/meds.png" /><br /><br />
+
+                            Yoga will help you with all of life’s big challenges – whether you want to banish the blues, deal with anxiety and stress, or cope with a serious illness like cancer. Don’t believe us?
+                            <br /><br />
+                            <a href="@Url.Action("Index", "Medic")">
+                                Get stuck into over 300 clinical studies from renowned institutions proving the power of yoga for over 30 health conditions »
+                            </a>
+                            <br /><br />
+                            <a href="@Url.Action("teacher", "Signup", new {step = 1})">
+                                If you’re a yoga therapist, create a therapist profile and get found »
+                            </a>
+                            <br /><br />
+
+                            <img src="~/Images/static/map.png" /><br /><br />
+
+                            The Yoga Map Project will blow you away with the personal stories of people transforming their lives through yoga.
+                            <br /><br />
+                            <a href="@Url.Action("Index", "Yogamap")">
+                                <b>Add your story to get celebrated for your journey,</b> to inspire other yogis on the same path, and to get the whole world on its mat »
+                            </a>
+                            <br /><br />
+                            <b>Newbies</b>
+                            <br /><br />
+                            We’re really into breaking down the barriers that stand between <b>newbies and yoga.</b>
+                            <br /><br />
+                            <a href="@Url.Action("wisdom", "Static")">We help you find the style that’s right for you, and answer all your questions – from what to wear to what to eat » </a>
+
+                            <br /><br />
+                            Namaste!<br />
+
+                            Lucy
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne">
+                                Why should I create a professional page?
+
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne2" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            Many yogis, teachers, venues and training organisations don’t have the time to grow a community online. A YogaClicks professional page gives you a platform on which existing students can write reviews, upload photos, and share the joy of your teaching. New students find you by searching for your classes, retreats and through the styles and YogaMeds in which you specialise. The more info and personality you add to your professional page, the easier our users will find it to find you, and the more likely they are to connect with you.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne">
+                                Ok, cool… but, what kind of professional page should I have?
+
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            If you are a yoga teacher – please create a professional Teacher page. Through this page you can list all your classes/events, share these events and connect venues you teach at, styles you teach, and more. You can even use this professional page as your very own website – for example, http://www.yogaclicks.com/ingridgottschalk - capturing all your info in one place.<br /><br />
+
+                            If you are a venue or own/manage a venue – please create a professional Venue page. Share your retreats, classes, workshops and more. In early 2016, you’ll be able to sell your events right here on YC! Additionally, make sure you connect with teachers who teach at your venue – this will link your venue to their profiles and give you (and them) more exposure.<br /><br />
+
+                            If you are a teacher training organisation – please create a professional teacher training organisation page. Share upcoming training courses and invite your faculty and graduates for maximum exposure to anyone looking for new training courses.<br /><br />
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne">
+                                I have a lot going on - can I have more than one professional page?
+
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne4" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            Of course! The more the merrier. If you manage or own a venue, but you’re also a teacher, you should create separate professional pages – one for you as a teacher and for one for your venue. Everything is connected on YC, so by creating more than one professional page, you’ll appear in more locations on the site and get found more easily!
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne5">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne5" aria-expanded="true" aria-controls="collapseOne">
+
+                                Hmm…it looks like someone has already created a professional page for me. How can I claim it as mine?
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne5" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            If you see a professional page that appears to be yours, you can claim it. If it looks like somebody has claimed a professional page that is definitely yours, please let us know so we can sort it.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne6">
+                        <h4 class="panel-title PanelLinksNorm">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne6" aria-expanded="true" aria-controls="collapseOne">
+                                I can’t find my teacher or the venue I practice at on your website. Can I add their profile for them?
+
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne6" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            What! We definitely want to get them listed so you guys can connect but please don’t add it for them. Instead, please invite them to YC via our invite buttons!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </article>
+
+
+
+
+
+
+
+    </section>
+</div>
+</div>
+
+<script>
+  
+    $("#Innercontent").css('min-height', '2500px');
+</script>

@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.EntityHandleModel
+
+@{
+    ViewBag.Title = "Deleted";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2>Page Removed</h2>
+
+                <p>This @(Model != null ? Model.EntityType.DisplayName.ToLower() : "page") has been removed.</p>
+            </article>
+        </div>
+    </div>
+</div>
+

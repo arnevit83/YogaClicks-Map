@@ -1,0 +1,12 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ReviewStatisticsModel
+
+@if (!Model.Exist)
+{
+    <h3>Not Rated Yet</h3>
+}
+else
+{
+    <h3>Rating</h3>
+    <span class="rating-large @Html.StarRatingClass(Model.AverageRating)"></span>
+    <p>(Based on @Model.Count reviews)</p>
+}

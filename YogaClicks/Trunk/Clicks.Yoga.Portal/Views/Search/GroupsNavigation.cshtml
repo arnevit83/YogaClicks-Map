@@ -1,0 +1,21 @@
+﻿@model Clicks.Yoga.Portal.Models.Community.CommunityNavigationModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+
+    <section class="filters profileFilters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h3>Find groups</h3>
+                @using (Html.BeginForm("Groups", "Search", FormMethod.Get, new { style = "padding-bottom: 0;" }))
+                {
+                    <label>Keywords</label>
+                    @Html.TextBox("Keywords", Model.Keywords)
+
+                    <button type="submit" class="silver button">Search</button>
+                    <a href="@Url.Action("Groups", "Search")" class="silver button showAllButton">Show All</a>
+                }
+            </div>
+        </div>
+    </section>
+</div>

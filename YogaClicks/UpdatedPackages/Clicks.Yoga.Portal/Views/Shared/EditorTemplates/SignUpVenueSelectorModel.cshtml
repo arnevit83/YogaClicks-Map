@@ -1,0 +1,65 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpVenueSelectorModel
+
+<div id="@Html.IdFor(m => m)">
+@Html.HiddenFor(m => m.Id, new { data_role = "VenueId" })
+@Html.TextBoxFor(m => m.Name, new { data_role = "VenueName", placeholder = "e.g. The Yoga Hut" })
+
+<div data-role="SuggestionsPopup" class="suggestions teacherSuggestions" style="display: none;">
+                <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+                <div data-role="Suggestions"></div>
+</div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@Html.IdFor(m => m)');
+        var $id = $('#@Html.IdFor(m => m.Id)');
+        var $name = $('#@Html.IdFor(m => m.Name)');
+        var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        var $createForm = $container.find('[data-role=CreateForm]');
+
+        $name.on('keyup', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+            
+            var value = $name.val();
+
+            if (!value || value.length < 3) return;
+
+            $.getJSON(
+                '/Search/AutocompleteVenues',
+                { Name: $name.val(), Owned: "null" },
+                function (entities) {
+                    if (entities.length > 0) {
+                        $suggestions.empty();
+
+                        for (var i in entities) {
+                            var entity = entities[i];
+                            var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                            $link.data('entity', entity);
+                            $suggestions.append($('<div/>').html($link));
+                        }
+
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+                    } else {
+                        $suggestionsPopup.show();
+                    }
+                }
+            );
+        });
+
+        $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+        });
+
+        $suggestions.on('click', 'a', function () {
+            var entity = $(this).data('entity');
+            $id.val(entity.Id);
+            $name.val(entity.Name);
+            $suggestionsPopup.hide();
+        });
+    });
+</script>

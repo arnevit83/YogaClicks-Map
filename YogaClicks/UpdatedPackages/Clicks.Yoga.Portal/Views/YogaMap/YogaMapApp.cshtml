@@ -1,0 +1,113 @@
+﻿
+@using System.Web.Optimization
+
+@model Clicks.Yoga.Portal.Models.YogaMap.YogaStoryModel
+
+
+@{
+    var metaDescription = "We’re sharing our stories to create a world that’s powered by yoga. Share your story. Together we can get the world on its mat.";
+    var metaTitle = "Join the Yoga Map Project!" ;
+    ViewBag.Title = "Are you #PoweredByYoga? Join The Yoga Map Project!";
+       ViewBag.Description = metaDescription;
+       var prImage = "http://www.yogaclicks.com/Images/global/finalpbyfacebookshareimage2.png";
+   
+       ViewBag.prImage = prImage;
+
+
+
+}
+<meta property="og:title" content="@ViewBag.Title" />
+<meta property="og:description" content="@ViewBag.Description" />
+<meta property="og:image" content="@ViewBag.prImage" />
+
+
+@Html.Hidden("Lng", "")
+@Html.Hidden("Lat", "")
+
+
+<div id="fb-root"></div>
+
+<div id="MapTitle"  class="stories-strip "></div><br />
+
+
+<div id="content-slider" class="row nopadding maincontainerB">
+
+    <div class=" col-xs-12 nopadding" id="scroll">
+        <br />
+        <div class="row nopadding">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+
+                <a style=" margin-bottom: -15px;margin-right: -20px;margin-top: -15px; " href="#" id="right-menu" class="pull-right hidden-sm hidden-md hidden-lg" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+                <img class="img-responsive hidden-xs " style=" width:100%; " data-svgpng="~/Images/Stories/TheYogaMap.png" src="~/Images/Stories/TheYogaMap.svg" />
+                <img class="img-responsive hidden-sm  hidden-md hidden-lg" style="width:100%; " data-svgpng="~/Images/Stories/TheYogaMap.png" src="~/Images/Stories/TheYogaMapMobile.svg" />
+
+
+
+            </div>
+        </div>
+
+
+        <br />
+        <div class="row nopadding">
+
+            @Html.Partial("Mappartial", Model)
+        </div>
+
+      
+      
+        @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+    </div>
+
+
+</div>
+<script>
+    $("#Innercontent").css('min-width', '99%');
+    $("#Innercontent").css('min-height', '2500px');
+</script>
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD8aSrFJU47Kd3Ye7aHImysjhF2L4OHOPM"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+
+@section Scripts{
+    @{
+        @Scripts.Render("~/bundles/js/StoriesMap")
+        @Styles.Render("~/bundles/StoriesMap")
+    }
+   
+<script>
+    $('.facebook-link-div').html('&title=' + '@ViewBag.MetaTitle');
+    $('.twitter-link-div').html('&text=' + '@ViewBag.MetaTitle');
+    $('.pintrest-link-div').html('&description=' + '@ViewBag.Title' + ' | YogaClicks&media=' + '@ViewBag.prImage');
+
+    
+
+     $("#right-menu-close").click(function () {
+
+         $("#right-nav").fadeToggle("fast");
+         $(".dark-overlay").fadeToggle("slow");
+
+     });
+    
+</script>
+
+
+}
+
+
+
+@Html.Action("Init", "Facebook")

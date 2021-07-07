@@ -1,0 +1,55 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@using Common
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassWeekContentPartialModel
+
+<div class="classesTable">
+    <div class="tableHeader">
+        <h3>@Model.WeekName</h3>
+
+        <div class="prev">
+            @if (Model.Date > DateTime.Now.WeekBegin(DayOfWeek.Monday))
+            {
+                <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(-7).ToString()">Previous Week</a>
+            }
+        </div>
+        <div class="next"> 
+            <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(7).ToString()">Next Week</a>
+        </div>
+    </div>
+
+    <div data-role="Parameters">
+        @Html.Partial("CriteriaHiddenPartial", Model.Criteria)
+        @Html.Hidden("Editable", Model.Editable)
+    </div>
+
+    <table>
+        <tbody>
+            @foreach (var day in Model.Days)
+            {
+                <tr>
+                    <td colspan="@(Model.Editable ? 4 : 5)" class="dateHeading">@day.Date.ToString("dddd dd MMMM")</td>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Venue</th>
+            
+                    @if (!Model.Editable)
+                    {
+                        <th>Teacher</th>
+                    }
+                    
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <th></th>
+                    }
+                </tr>
+                
+                foreach (var repeat in day.Repeats)
+                {
+                    @Html.Partial("ClassPartial", new ActivityClassPartialModel(repeat, Model.Editable))
+                }
+            }
+        </tbody>
+    </table>
+    </div>

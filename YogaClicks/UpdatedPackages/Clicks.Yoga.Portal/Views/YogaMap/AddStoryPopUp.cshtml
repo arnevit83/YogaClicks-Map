@@ -1,0 +1,707 @@
+﻿@model Clicks.Yoga.Portal.Models.YogaMap.AddStoryPopUpModelUpdate
+@{
+    ViewBag.HideYogaMedsSelectionHeader = "True";
+}
+@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Shared
+@using Clicks.Yoga.Portal.Models.YogaMap
+@{
+    ViewBag.Width = 700;
+    ViewBag.Height = 700;
+
+    ViewBag.BlankImage = true;
+
+    var imageModel = new ImagesModel()
+    {
+        Image = Model.Image,
+
+        ColorCssClass = "Story-text"
+    };
+
+    ViewBag.TextColorClass = "Story-text";
+}
+@Html.Action("Init", "Facebook")
+<div id="pop">
+
+
+
+<a class="ClosePopup ClosePopupG" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+<div class="panel">
+@*<div data-accent_color="767676" data-background_color="ffffff" data-button_background_color="7fb466" data-button_text_color="ffffff" data-cart_button_text="Cart" data-cart_title="Your cart" data-cart_total_text="Total" data-checkout_button_text="Checkout" data-discount_notice_text="Shipping and discount codes are added at checkout." data-embed_type="cart" data-empty_cart_text="Your cart is empty." data-shop="yogaclicks.myshopify.com" data-sticky="true" data-text_color="000000"></div>
+        <div data-background_color="ffffff" data-button_background_color="7fb466" data-button_text_color="ffffff" data-buy_button_out_of_stock_text="Out of Stock" data-buy_button_product_unavailable_text="Unavailable" data-buy_button_text="Book Now" data-collection_handle="PoweredByYoga" data-display_size="compact" data-embed_type="collection" data-has_image="true" data-next_page_button_text="Next page" data-product_handle="" data-product_modal="true" data-product_name="" data-product_title_color="000000" data-redirect_to="modal" data-shop="yogaclicks.myshopify.com"></div>
+        <script type="text/javascript">document.getElementById('ShopifyEmbedScript') || document.write('<script type="text/javascript" src="https://widgets.shopifyapps.com/assets/widgets/embed/client.js" id="ShopifyEmbedScript"><\/script>');</script>*@
+<div class="panel-body">
+
+<div id="StoryBannerPopup">
+
+    <img class="img-responsive" src="~/Images/Stories/YogaMapPopup/map.png"  />
+
+  
+
+    <div id="maplogincontainer">
+
+
+        @Html.Partial("MapLogin", new MapLogin())
+
+    </div>
+
+</div>
+
+
+
+<form id="AddStoryPopUp" method="post" enctype="multipart/form-data" action="/YogaMap/AddStoryPopUp">
+
+
+
+
+<div class="ColourMappopup">
+<div class="text-center PopupYCColour ">
+    <br/>
+    Tell the world you're <br/>#PoweredByYoga
+
+</div>
+<span class="YCMapreq hidden">* required</span>
+<br/><br/>
+@Html.AntiForgeryToken()
+@Html.Hidden("Displaymodel.Latpop", Model.Displaymodel.Latpop)
+@Html.Hidden("Displaymodel.Lanpop", Model.Displaymodel.Lanpop)
+@Html.Hidden("Displaymodel.HasProflile", Model.Displaymodel.HasProflile)
+@Html.Hidden("Displaymodel.IsupdateId", Model.Displaymodel.IsupdateId)
+@Html.Hidden("Fbimage", Model.Fbimage)
+@Html.Hidden("FbLocation", Model.FbLocation)
+
+
+
+
+
+    
+
+<div class="row nopadding">
+<div class="col-sm-12">
+@* Login Stuff *@
+@if (Model.Displaymodel.HasProflile)
+{
+                        @*@Html.TextBoxFor(x => x.Displaymodel.Name, "Currently logged in as " + Model.Displaymodel.Name, new { @class = "TextGline", disabled = "disabled" })
+                <br /><br />*@
+}
+else
+{
+
+    <div class="row ">
+        <div class="col-sm-6 ">
+
+            <div class="form-group">
+                <span class="form-group-title">First name</span>
+                @Html.TextBox("Displaymodel.Forename", Model.Displaymodel.Forename, new {@class = "form-control TextGline", style = "margin-bottom:6px!important;"})
+                @Html.ValidationMessage("Displaymodel.Forename")
+
+            </div>
+        </div>
+        <div class="col-sm-6 ">
+            <div class="form-group">
+                <span class="form-group-title">Last name</span>
+                @Html.TextBox("Displaymodel.Surname", Model.Displaymodel.Surname, new {@class = "form-control TextGline", style = "margin-bottom:6px!important;"})
+                @Html.ValidationMessage("Displaymodel.Surname")
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="form-group-title">Email address</span>
+        @Html.TextBox("Displaymodel.Email", Model.Displaymodel.Email, new {@class = "form-control TextGline", style = "margin-bottom:6px!important;"})
+        @Html.ValidationMessage("Displaymodel.Email")
+
+    </div>
+    <div class="form-group">
+        <span class="form-group-title">Password</span>
+        @Html.Password("Displaymodel.Password", Model.Displaymodel.Password, new {@class = "form-control TextGline", style = "margin-bottom:6px!important;"})
+        @Html.ValidationMessage("Displaymodel.Password")
+
+    </div>
+
+}
+
+@* #Address lookup *@
+<div id="Mapaddress" class="form-group">
+
+
+    @* Question Story *@
+    <div id="AddressQuestion" class="row nopadding">
+        <div class="col-xs-1 nopadding">
+            <label id="AddressQuestionToggle" class="css-label-story"></label>
+        </div>
+        <div class="col-xs-11  AddressQuestionToggletext">
+            <span class="PopupYCColour-Title">Update your location (optional)</span>
+
+        </div>
+
+    </div>
+    <div id="AddressAnswer">
+        <span class="form-group-title">Where to drop your pin?</span>
+
+        @Html.Editor("Displaymodel.Address", new {@class = "TextGline form-control"})
+        @Html.ValidationMessage("Displaymodel.Address.Latitude")
+    </div>
+</div>
+
+@* #PBY/ST *@
+<div class="row nopadding mapiup">
+    <div class="form-group">
+
+        @Html.Hidden("TSreturn", Model.TSreturn, new {@class = "form-control"})
+        <div class="col-sm-6 nopadding">
+
+
+            <div class="row nopadding">
+                <div class="col-sm-2 col-xs-1 nopadding">
+                    <label id="TypeSToggle" class="css-label-story form-control"></label>
+                </div>
+                <div class="col-sm-10  col-xs-11 ">
+                    <span class="PopupYCColour-Title TypeSToggleText">I'm a yoga student</span>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+
+            <div class="row nopadding">
+                <div class="col-sm-2 col-xs-1  nopadding">
+                    <label id="TypeTToggle" class="css-label-story form-control"></label>
+                </div>
+                <div class="col-sm-10  col-xs-11  ">
+                    <span class="PopupYCColour-Title TypeTToggleText">I'm a yoga teacher</span>
+
+                </div>
+
+            </div>
+        </div>
+
+        @Html.ValidationMessage("TSreturn")
+
+
+
+    </div>
+</div>
+
+<div class="row nopadding">
+
+    <div class="col-sm-12 nopadding">
+        <div class="form-group">
+
+            @Html.DropDownList("YearTaughtreturn", new SelectList(Model.Displaymodel.YearTaught), "I've been practicing yoga since:", new {@class = "TextGline form-control Arrow"})
+            @Html.ValidationMessage("YearTaughtreturn")
+            <script>
+
+                $(document).ready(function() {
+                    var text1 = "I've been practicing yoga since:";
+                    $("#YearTaughtreturn option").filter(function() {
+                        //may want to use $.trim in here
+
+                        return $(this).text() == text1;
+
+                    }).val("0");
+                });
+
+            </script>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@* Photo upload *@
+<div style="width: 100%; margin: 0px;"><br/>
+    @Html.Partial("_ImagesSection", imageModel)
+    <span class="PopupYCColour-sub maplight mapls">Give us your best shot - add <br />a photo to your pin!</span>
+</div>
+
+
+@* Video *@
+<div id="videoupdate" style="display:none;">
+    <span class="form-group-title">Share your video (optional)</span>
+    <input type="text" class="TextGline form-control" placeholder="e.g. Vimeo, YouTube etc. URL" name="Displaymodel.VideoUrl">
+    <br/>
+</div>
+
+    
+<div class="row nopadding">
+    <div class="col-xs-12 nopadding">
+
+        <div style="width: 100%; height: 20px; border-bottom: 1px dashed #58CC74; margin-top: 10px; text-align: center">
+            <span style="font-size: 15px; background-color: #fff; top: 7px; position: relative; padding: 0 10px; color: #58CC74; font-weight: 100;">
+                Add your story to get featured
+                                </span>
+        </div>
+        <br/><br/>
+    </div>
+</div>
+
+
+@* Question Story *@
+    <div class="row nopadding">
+        <div class="col-xs-1 nopadding">
+            <label id="HiddenStorytoggle" class="css-label-story"></label>
+        </div>
+        <div class="col-xs-11  HiddenStorytoggletext">
+            <span class="PopupYCColour-Title">I want to share how yoga inspires me/makes a difference</span>
+           
+            <br />
+        </div>
+
+    </div>
+    @* Story *@
+    <div id="HiddenStory" class="row nopadding">
+        <div class="col-xs-12 nopadding">
+
+
+            <div class="form-group">
+
+
+                @Html.TextBox("Displaymodel.Title", Model.Displaymodel.Title, new { @class = "form-control TextGline", placeholder = "What's the headline", style = "margin-bottom:6px!important;" })
+                @Html.ValidationMessage("Displaymodel.Title")
+
+            </div>
+
+            <div class="form-group">
+                @Html.TextArea("Displaymodel.Story", Model.Displaymodel.Story, new { @class = "form-control textboxGline ", placeholder = "Tell us how you're #PoweredByYoga", style = "margin-bottom:6px!important;" })
+                @Html.ValidationMessage("Displaymodel.Story")
+            </div>
+      
+
+        </div>
+    </div>
+
+    @* life challenges *@
+    <div class="row nopadding">
+        <div class="col-xs-1 nopadding">
+            <label id="challengeContToggle" class="css-label-story"></label>
+        </div>
+        <div class="col-xs-11 challengeContToggletext">
+
+            <span class="PopupYCColour-Title">I want to list a life challenge</span>
+
+
+            <br />
+        </div>
+
+    </div>
+    <div id="challengeCont" class="row nopadding">
+        <div class="col-xs-12 nopadding">
+            @Html.Editor("Displaymodel.LifeChallenges", new { @class = "TextGline form-control" })
+        </div>
+    </div>
+
+
+    @* Add teacher/venue *@
+
+
+    <div class="row nopadding">
+        <div class="col-xs-1 nopadding">
+            <label id="TVContToggle" class="css-label-story"></label>
+        </div>
+        <div class="col-xs-11 TVContToggletext">
+
+            <span class="PopupYCColour-Title">I want to acknowledge my teachers/venues</span>
+           
+            
+            
+   
+
+            <br />
+        </div>
+
+    </div>
+<div id="TVCont" class="row nopadding">
+
+        <div class="col-xs-12 nopadding">
+
+      
+            <span class="PopupYCColour-Title">My teacher(s) - add as many as you like</span>
+
+
+
+            @Html.EditorFor(m => m.Displaymodel.Teachers, new { @class = "TextGline form-control " })
+
+            <br />
+            <span class="PopupYCColour-Title">My venue(s) – add as many as you like</span>
+
+            @Html.EditorFor(m => m.Displaymodel.Venues, new { @class = "TextGline form-control" })
+
+
+            <br />
+
+        </div>
+    </div>
+
+
+    @* Conditions *@
+
+
+    <div class="row nopadding">
+        <div class="col-xs-1 nopadding">
+            <label id="HealthContToggle" class="css-label-story"></label>
+        </div>
+        <div class="col-xs-11 HealthContToggletext">
+
+            <span class="PopupYCColour-Title">I want to list a health condition on my story</span>
+
+
+            <br />
+        </div>
+
+    </div>
+    <div id="HealthCont" class="row nopadding">
+        <div class="col-xs-12 nopadding">
+            @Html.Editor("Displaymodel.Conditions", new { @class = "TextGline form-control" })
+        </div>
+    </div>
+
+
+
+
+@* Submit *@
+<div class="row nopadding">
+    <div class="col-xs-12 addpadding">
+
+        <div id="SubmitMid" class="centerAlign">
+
+            @*<button id="btn-submit" type="submit" class="btn  BigSave">Done</button>
+            <br/><br/>*@
+        </div>
+        @* Submit *@
+        <div id="SubmitFinal" class="centerAlign">
+
+            <button id="btn-submit-final" type="submit" class="btn  BigSave">Done</button>
+            <br /><br />
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</form>
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+        var input = $('.input-validation-error:first');
+        if (input) {
+            input.focus();
+        }
+
+
+        if ($("#Displaymodel_Title").val() === "Story coming soon." || $("#Displaymodel_Title").val() === "") {
+            $("#Displaymodel_Title").val("");
+            $("#Displaymodel_Story").val("");
+        } else {
+            $("#HiddenStorytoggle").toggleClass('css-label-story-clicks');
+            $("#HiddenStory").toggle();
+            $("#SubmitMid").toggle();
+        }
+        if ($(".chosen-choices").find(".search-choice").length !== 0) {
+            $("#HealthContToggle").toggleClass('css-label-story-clicks');
+            $("#HealthCont").toggle("slow");
+        }
+        if ($('#Displaymodel_IsupdateId').val() !== "0") {
+            // $('#Mapaddress').hide();
+
+            $("#AddressQuestion").show();
+            $("#videoupdate").show();
+            
+            $("#AddressAnswer").hide();
+
+
+            $("#Displaymodel_Address_Latitude").attr('disabled', 'disabled');
+
+            $("#StoryBannerPopup").hide();
+            $("#AddStoryPopUp").slideDown();
+            switch ($("#TSreturn").val()) {
+            case "Student":
+                $("#TypeSToggle").addClass('css-label-story-clicks');
+                $("#TypeTToggle").removeClass('css-label-story-clicks');
+                break;
+            case "Teacher":
+                $("#TypeSToggle").removeClass('css-label-story-clicks');
+                $("#TypeTToggle").addClass('css-label-story-clicks');
+                break;
+            case "Shop":
+                $(".mapiup").hide();
+                break;
+            }
+            $(".mapls").text("Update your photo (optional)");
+            if ($(".selections").find("div").length > 0) {
+                $("#TVContToggle").toggleClass('css-label-story-clicks');
+                $("#TVCont").slideToggle("slow");
+            }
+            
+
+
+        }
+
+        $('.location-search-box').change(function() {
+            if ($('.location-search-box').val() === "") {
+                $('#Displaymodel_Address_Latitude').val("0");
+            };
+
+        });
+
+        $("#StoryBannerPopup img").click(function() {
+
+     
+            AddstoryswitchImg();
+    
+      
+        });
+        $("#COtuni").click(function() {
+            $("#StoryBannerPopup").hide();
+            $("#AddStoryPopUp").slideDown();
+        });
+
+
+    });
+    $("#TVContToggle").click(function () {
+        $("#TVContToggle").toggleClass('css-label-story-clicks');
+        $("#TVCont").slideToggle("slow");
+    });
+    $(".TVContToggletext").click(function () {
+        $("#TVContToggle").toggleClass('css-label-story-clicks');
+        $("#TVCont").slideToggle("slow");
+    });
+
+
+
+    $('#Displaymodel_Venues').find("label").addClass("form-group-title");
+    $('#Displaymodel_Venues').find("input").addClass("form-control TextGline");
+    $('#Displaymodel_Teachers').find("label").addClass("form-group-title");
+    $('#Displaymodel_Teachers').find("input").addClass("form-control TextGline");
+
+
+
+    $("[for*='teacherName']").hide();
+    $("#Displaymodel_Venues").find("label:first").hide();
+
+
+    $('#Displaymodel_Latpop').val(localStorage.getItem("Latpop"));
+    $('#Displaymodel_Lanpop').val(localStorage.getItem("Lanpop"));
+
+    $("#btn-submit").unbind("click");
+    $("#btn-submit-final").click(function() {
+    });
+
+    $("#HealthContToggle").click(function() {
+        $("#HealthContToggle").toggleClass('css-label-story-clicks');
+        $("#HealthCont").slideToggle("slow");
+    });
+    $(".HealthContToggletext").click(function() {
+        $("#HealthContToggle").toggleClass('css-label-story-clicks');
+        $("#HealthCont").slideToggle("slow");
+    });
+    $("#challengeContToggle").click(function () {
+        $("#challengeContToggle").toggleClass('css-label-story-clicks');
+        $("#challengeCont").slideToggle("slow");
+    });
+    $(".challengeContToggletext").click(function () {
+        $("#challengeContToggle").toggleClass('css-label-story-clicks');
+        $("#challengeCont").slideToggle("slow");
+    });
+    
+    $("#TypeSToggle").click(function() {
+        $("#TypeSToggle").addClass('css-label-story-clicks');
+        $("#TypeTToggle").removeClass('css-label-story-clicks');
+        $("#TSreturn").val("Student");
+
+
+        $(".mapiup").find('.has-error').removeClass("has-error");
+        $(".mapiup").find('.field-validation-error').hide();
+
+
+    });
+    $(".TypeSToggleText").click(function() {
+        $("#TypeSToggle").addClass('css-label-story-clicks');
+        $("#TypeTToggle").removeClass('css-label-story-clicks');
+        $("#TSreturn").val("Student");
+        $(".mapiup").find('.has-error').removeClass("has-error");
+        $(".mapiup").find('.field-validation-error').hide();
+    });
+    $(".TypeTToggleText").click(function() {
+        $("#TypeSToggle").removeClass('css-label-story-clicks');
+        $("#TypeTToggle").addClass('css-label-story-clicks');
+        $("#TSreturn").val("Teacher");
+        $(".mapiup").find('.has-error').removeClass("has-error");
+        $(".mapiup").find('.field-validation-error').hide();
+    });
+
+
+    $("#TypeTToggle").click(function() {
+        $("#TypeSToggle").removeClass('css-label-story-clicks');
+        $("#TypeTToggle").addClass('css-label-story-clicks');
+        $("#TSreturn").val("Teacher");
+        $(".mapiup").find('.has-error').removeClass("has-error");
+        $(".mapiup").find('.field-validation-error').hide();
+    });
+
+    $("#HiddenStorytoggle").click(function() {
+        $("#HiddenStorytoggle").toggleClass('css-label-story-clicks');
+        $("#HiddenStory").slideToggle("slow");
+        $("#SubmitMid").slideToggle("slow");
+        if ($('#Displaymodel_Title').is(':visible')) {
+            $('#popupmain').animate({
+                scrollTop: $("#btn-submit-final").offset().top
+            }, 1000);
+
+        }
+    });
+
+    $("#AddressQuestionToggle").click(function() {
+
+
+        if ($('#AddressAnswer').is(':visible')) {
+            $("#AddressQuestionToggle").removeClass('css-label-story-clicks');
+
+            $("#AddressAnswer").hide();
+
+            $("#Displaymodel_Address_Latitude").attr('disabled', 'disabled');
+
+
+        } else {
+            $("#AddressQuestionToggle").addClass('css-label-story-clicks');
+
+            $("#AddressAnswer").show();
+            $("#Displaymodel_Address_Latitude").removeAttr('disabled');
+            $("#AddressAnswer").find('.form-group-title').text("Where to move your pin?");
+
+
+            $(".location-search-box").focus();
+        }
+
+        $(".location-search-box").focus();
+
+
+    });
+
+    $(".AddressQuestionToggletext").click(function() {
+
+        if ($('#AddressAnswer').is(':visible')) {
+            $("#AddressQuestionToggle").removeClass('css-label-story-clicks');
+            $("#AddressAnswer").hide();
+            $("#Displaymodel_Address_Latitude").attr('disabled', 'disabled');
+
+
+        } else {
+            $("#AddressQuestionToggle").addClass('css-label-story-clicks');
+            $("#AddressAnswer").show();
+            $("#Displaymodel_Address_Latitude").removeAttr('disabled');
+            $("#AddressAnswer").find('.form-group-title').text("Where to move your pin?");
+            $(".location-search-box").focus();
+        }
+    });
+
+
+    $("#Displaymodel_Address_Latitude").change(function() {
+
+        if ($('#Displaymodel_Address_Latitude').val() !== "0") {
+            $("#Mapaddress").removeClass("has-error");
+            $("#Mapaddress").find('.field-validation-error').hide();
+        }
+    });
+
+
+    $(".HiddenStorytoggletext").click(function() {
+        $("#HiddenStorytoggle").toggleClass('css-label-story-clicks');
+        $("#HiddenStory").slideToggle("slow");
+        $("#SubmitMid").slideToggle("slow");
+        if ($('#Displaymodel_Title').is(':visible')) {
+            $('#popupmain').animate({
+                scrollTop: $("#btn-submit-final").offset().top
+            }, 1000);
+        }
+    });
+
+
+    setTimeout(function() {
+        $("#AddStoryPopUp").data("validator").settings.ignore = "";
+        if ($('#Displaymodel_Forename').is(':visible')) {
+            $('#Displaymodel_Forename').focus();
+        } else {
+            if ($("#FbLocation").val() !== "") {
+                $(".suggestionsContainer").find("div div a").first().click();
+            }
+            $('.location-search-box').focus();
+        }
+    }, 1750);
+
+
+    $(document).on("keypress", "#maplogincontainer input", function(event) {
+
+        if (event.which == 13) {
+            event.preventDefault();
+            $("#login-buttonmap").click();
+        }
+
+    });
+
+    //$(".chosen").chosen().change(function () {
+    //    alert(+$(this).val());
+
+    //});
+    // iOS check...ugly but necessary
+    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        $('.modal').on('show.bs.modal', function() {
+            // Position modal absolute and bump it down to the scrollPosition
+            $(this)
+                .css({
+                    position: 'absolute',
+                    marginTop: $(window).scrollTop() + 'px',
+                    bottom: 'auto'
+                });
+            // Position backdrop absolute and make it span the entire page
+            //
+            // Also dirty, but we need to tap into the backdrop after Boostrap 
+            // positions it but before transitions finish.
+            //
+            setTimeout(function() {
+                $('.modal-backdrop').css({
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: Math.max(
+                        document.body.scrollHeight, document.documentElement.scrollHeight,
+                        document.body.offsetHeight, document.documentElement.offsetHeight,
+                        document.body.clientHeight, document.documentElement.clientHeight
+                    ) + 'px'
+                });
+            }, 0);
+        });
+    }
+
+
+</script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
+<script src="~/Scripts/libs/jcrop/jquery.Jcrop.min.js"></script>
+<script src="~/Scripts/libs/jcrop/ProfileImagesCrop.js"></script>
+
+
+
+    
+
+
+</div>

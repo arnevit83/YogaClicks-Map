@@ -1,0 +1,58 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingCourses
+@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateAccreditationModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateAccreditation", "TeacherTrainingCourses"))
+{
+    @Html.Serialize("CreateModel", ViewBag.CreateModel as CourseCreateModel)
+    
+    <h2 class="greenHeader">Create a course</h2>
+    <hr class="modalHr" />
+    <ul class="steps steps5">
+            <li><span>Step 1</span></li>
+            <li class="active"><span>Step 2</span></li>
+            <li><span>Step 3</span></li>
+            <li><span>Step 4</span></li>
+            <li><span>Step 5</span></li>
+        </ul>
+    <div class="scrollableiFrame tto-course-creation-scrollframe">
+        <div class="accreditationBodiesModal">
+            <strong>Accrediting body(s)</strong>
+            @Html.EditorFor(m => m.AccreditationBodies)
+            <p><a href="mailto:body@yogaclicks.com">Tell us about an unlisted accrediting body</a></p>
+        </div>
+
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.Accreditation, "Qualification")
+                @Html.EditorFor(m => m.Accreditation)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Style.Selection, "Associated style")
+            @Html.EditorFor(m => m.Style)
+        </div>
+    </div>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.Back)
+}
+
+@section Scripts{
+    <script>
+        $("#BackButton").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+            $(this).closest("form").submit();
+        });
+    </script>
+}

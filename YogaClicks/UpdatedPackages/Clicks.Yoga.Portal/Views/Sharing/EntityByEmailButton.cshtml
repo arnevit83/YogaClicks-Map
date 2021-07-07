@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Sharing.SharingEntityByEmailButtonModel
+
+@{
+    var guid = string.Format("guid-{0}", Guid.NewGuid());
+    var css = Model.Wide ? "share-by-email-wide" : "share-by-email";
+}
+
+<a class="btn btn-social-icon btn-xs btn-default" id="@guid" title="Share by email" data-toggle="tooltip" href="javascript:void(0)" data-action="@Url.Action("EntityByEmail", new { Model.Reference.EntityId, Model.Reference.EntityTypeName })"><i style="color: #333; font-size:14px;" class="fa fa-envelope"></i></a>
+
+<script>
+    $(function () {
+        var $button = $('#@guid');
+
+        $button.on('click', function () {
+            openModal($button.data('action'), false, 400, 350);
+        });
+    });
+</script>

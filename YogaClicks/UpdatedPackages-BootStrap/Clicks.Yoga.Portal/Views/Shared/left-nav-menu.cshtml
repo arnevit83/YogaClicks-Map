@@ -1,0 +1,118 @@
+﻿<nav role="navigation" class="@(ViewBag.MenuClass ?? "")">
+    <div class="navInnerWrap">
+        <a href="@Url.Action("discover", "Static")" id="discover" title="Find - Seek and ye shall find" class="menu @(ViewBag.MenuSection == "Discover" ? "selected" : "")"><i></i>Find</a>
+        <div id="discover-sub" class="sub-menu @(ViewBag.MenuSection == "Discover" ? "selected" : "")">
+            <ul>
+                @if (SecurityContext != null)
+                {
+                    if (!SecurityContext.Authenticated)
+                    {
+                        <li><a href="@Url.Action("Teachers", "Search", new { SortOrder = "default" })">Teachers<span>&nbsp;</span></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("TeachersMap", "Search")">Teachers<span>&nbsp;</span></a></li>
+                    }
+                }
+                else if (SecurityContext == null)
+                {
+                    <li><a href="@Url.Action("Teachers", "Search", new {SortOrder = "default"})">Teachers<span>&nbsp;</span></a></li>
+                }
+
+                @if (SecurityContext != null)
+                {
+                    if (!SecurityContext.Authenticated)
+                    {
+                        <li><a href="@Url.Action("Venues", "Search", new {SortOrder = "Name"})">Venues<span>&nbsp;</span></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("VenuesMap", "Search")">Venues<span>&nbsp;</span></a></li>
+                    }
+                }
+                else if (SecurityContext == null)
+                {
+                    <li><a href="@Url.Action("Venues", "Search", new {SortOrder = "Name"})">Venues<span>&nbsp;</span></a></li>
+                }
+
+                <li><a href="@Url.Action("Index", "AccreditationBodys")">Accrediting / registering bodies<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("TeacherTrainingOrganisations", "Search")">Teacher training<span>&nbsp;</span></a></li>
+                @*<li><a href="@Url.Action("StyleOrganisations", "Search")">Style organisations<span>&nbsp;</span></a></li>*@
+                <hr/>
+                <li><a href="@Url.Action("Search", "Activities", new {TypeId = 1})">Classes<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Search", "Activities", new {TypeId = 2})">Workshops<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Search", "Activities", new {TypeId = 3})">Weekends<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Search", "Activities", new {TypeId = 4})">Holidays / retreats<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Search", "Activities", new {EventTypeId = 7, se = "true"})">Special events<span>&nbsp;</span></a></li>
+                <hr/>
+                <li><a href="@Url.Action("Groups", "Search")">Groups<span>&nbsp;</span></a></li>
+            </ul>
+        </div>
+        @if (SecurityContext != null)
+        {
+            if (!SecurityContext.Authenticated)
+            {
+                <a href="/" id="community" title="Newsfeed" class="reg-form-popup menu "><i></i>Newsfeed</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Home")" id="community" title="Newsfeed" class="menu @(ViewBag.MenuSection == "Community" ? "selected" : "")"><i></i>Newsfeed</a>
+            }
+        }
+        else if (SecurityContext == null)
+        {
+            <a href="/" id="community" title="Newsfeed" class="reg-form-popup menu "><i></i>Newsfeed</a>
+        }
+
+        <div id="community-sub" class="@(ViewBag.MenuSection == "Community" ? "selected" : "")"></div>
+        <a href="@Url.Action("practice", "Static")" id="practice" title="Practice - Discover your yoga style, strike a pose" class="menu @(ViewBag.MenuSection == "Practice" ? "selected" : "")"><i></i>Styles &amp; Poses</a>
+        <div id="practice-sub" class="sub-menu @(ViewBag.MenuSection == "Practice" ? "selected" : "")">
+            <ul>
+                <li><a href="@Url.Action("Index", "Styles")" class="">Style finder<span>&nbsp;</span></a></li>
+                @*<li><a href="@Url.Action("Directory", "Styles")">Style directory<span>&nbsp;</span></a></li>*@
+                <li><a href="@Url.Action("Index", "Poses")" class="">Pose finder<span>&nbsp;</span></a></li>
+                @*<li><a href="@Url.Action("Directory", "Poses")">Pose directory<span>&nbsp;</span></a></li>*@
+            </ul>
+        </div>
+
+        <a href="@Url.Action("wisdom", "Static")" id="wisdom" title="Wise Up - From darkness into light" class="menu @(ViewBag.MenuSection == "Wisdom" ? "selected" : "")"><i></i>Wise Up</a>
+        <div id="wisdom-sub" class="sub-menu @(ViewBag.MenuSection == "Wisdom" ? "selected" : "")">
+            <ul>
+                <li><a href="@Url.Action("beginners-faq", "Static")">Beginners FAQs<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("what-is-yoga", "Static")">What is yoga?<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("history-of-yoga", "Static")">The history<br/> of yoga<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("is-yoga-a-religion", "Static")">Is yoga a religion?<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Index", "Glossary")">Yoga lingo<span>&nbsp;</span></a></li>
+                <li><a href="@Url.Action("Index", "Quotes")">Quotes<span>&nbsp;</span></a></li>
+            </ul>
+        </div>
+
+        @if (SecurityContext != null)
+        {
+            if (!SecurityContext.Authenticated)
+            {
+                <a href="/" id="myaccount" title="My profile" class="reg-form-popup menu"><i></i>My profile</a>
+            }
+        }
+        else if (SecurityContext == null)
+        {
+            <a href="/" id="myaccount" title="My profile" class="reg-form-popup menu"><i></i>My profile</a>
+        }
+
+        @if (SecurityContext != null && SecurityContext.CurrentProfile != null && !SecurityContext.CurrentProfile.Professional)
+        {
+            <a href="@Url.Action("Display", "Profiles", new {SecurityContext.CurrentProfile.Id})" id="myaccount" title="My profile:&#10;About me&#10;My friends&#10;Galleries&#10;My reviews&#10;My events&#10;Fan of&#10;My groups" class="menu @(ViewBag.MenuSection == "My profile" ? "selected" : "")"><i></i>My profile</a>
+            <div id="myaccount-sub" class="sub-menu @(ViewBag.MenuSection == "My profile" ? "selected" : "")">
+                <ul>
+                    <li><a href="@Url.Action("Display", "Profiles", new {SecurityContext.CurrentProfile.Id})">About me<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Friends", "Profiles", new {SecurityContext.CurrentProfile.Id})">My friends<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Galleries", "Profiles", new {SecurityContext.CurrentProfile.Id})">Galleries<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Reviews", "Profiles", new {SecurityContext.CurrentProfile.Id})">My reviews<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Activities", "Profiles", new {SecurityContext.CurrentProfile.Id})">My events<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Fanned", "Profiles", new {SecurityContext.CurrentProfile.Id})">Fan of<span>&nbsp;</span></a></li>
+                    <li><a href="@Url.Action("Groups", "Profiles", new {SecurityContext.CurrentProfile.Id})">My groups<span>&nbsp;</span></a></li>
+                </ul>
+            </div>
+        }
+    </div>
+</nav>

@@ -1,0 +1,68 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueGalleriesModel
+
+@{
+    ViewBag.Title = "Galleries";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Venue))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("VenuesNavigation", "Search", new { Action = "Venues" })
+    }
+}
+
+@section Head {
+<meta property="og:title" content="@Model.Venue.Name" />
+@if (!string.IsNullOrEmpty(Model.Venue.Description))
+{
+    <meta property="og:description" content="@Model.Venue.Description" />
+}
+else
+{
+    <meta property="og:description" content=" " />
+}
+
+@if (Model.Venue.Image != null)
+{
+    <meta property="og:image" content="@Html.ImageUrl(Model.Venue.Image)" />
+}
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Venue.Id, Model.Venue.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Venue) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Venue.Id, SubjectTypeName = Model.Venue.EntityTypeName })
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Venue.Id, SubjectType = Model.Venue.EntityTypeName })
+
+                    <h1 class="venueHeader pageTitle"><span>&nbsp;</span>@Model.Venue.Name</h1>
+
+                <div class="profileBanner venueBanner">
+
+                @Html.DisplayFor(m => m.Venue.ProfileBanner, "ProfileBanner")
+
+                </div>
+
+                @Html.Partial("Tabs")
+
+                @Html.Action("AssociatedPartial", "Galleries", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName })
+
+                
+                    <div class="meta">
+                        <p>
+                            YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.
+                        </p>
+                        <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                    </div>
+            </article>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Poses.PoseDirectoryModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters directory poseDirectory" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h2>Pose directory</h2>
+                <p>
+                    Know the name of your pose?<br />
+                    Browse our directory in English or Sanskrit
+                </p>
+                <p>
+                    Use our <a href="/poses/">pose finder</a> to find by category or level
+                </p>
+                <nav class="filter">
+                    <strong>Language</strong>    
+                    <div>
+                          <input type="radio" name="sanskrit-switch" class="sanskrit-switch" data-lang="english"> English
+                    </div>
+                    <div>
+                        <input type="radio" name="sanskrit-switch" class="sanskrit-switch" data-lang="sanskrit"> Sanskrit
+                    </div>
+                    <h3>Directory<span class="down-arrow">&nbsp;</span></h3>
+                        <div class="toggleWrap">
+                        <a href="/poses/">All</a>
+                            @foreach (var pose in Model.Poses)
+                            {
+                                var css = "";
+                        
+                                if (Model.Pose != null && pose.Id == Model.Pose.Id)
+                                {
+                                    css = "selected";
+                                }
+                        
+                                <a class="@css pose-name" href="@Url.Action("display", "poses", new { id = pose.Id })" data-english="@pose.EnglishName" data-sanskrit="@pose.SanskritName">@pose.EnglishName</a>
+                            }
+                        </div>            
+           
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $radios = $('.sanskrit-switch');
+        var defaultLang = @JsonConvert.SerializeObject(Model.SanskritEnabled) ? 'sanskrit' : 'english';
+
+        var changeLang = function (lang) {
+            $(".pose-name").each(function () {
+                $(this).html($(this).data(lang));
+            });
+        };
+
+        changeLang(defaultLang);
+        $radios.filter('[data-lang=' + defaultLang + ']').prop('checked', true);
+
+        $radios.click(function(e) {
+            var lang = $(this).attr('data-lang');
+
+            changeLang(lang);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Sanskrit")',
+                data: { enabled: lang == 'sanskrit' }
+            });
+        });
+
+        $('h3').click(function () {
+            $(this).toggleClass('open');
+            $('.toggleWrap').slideToggle('slow');
+        });
+
+    })
+</script>

@@ -1,0 +1,7 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.VenueServiceChooserModel
+
+@foreach (var option in Model.Options.OrderBy(s => s.DisplayOrder))
+{
+    @Html.CheckBoxFor(m => m.Selection[option.Id])
+    @Html.LabelFor(m => m.Selection[option.Id], option.Name)
+}

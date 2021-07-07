@@ -1,0 +1,9 @@
+﻿@model Clicks.Yoga.Portal.Models.Shared.SuperUserAccessPartialModel
+
+@if (SecurityContext.IsSuperUser() && SecurityContext.CurrentActor.Id != Model.User.Id)
+{
+    <div class="review-header">
+        <button class="button fr save" onclick="location.href = '@Url.Action("SuperUserAccess", "Account", new {userId = Model.UserId, destination = Request.Url})'; return false;">Super User - Login as this user</button>
+    </div>
+}
+

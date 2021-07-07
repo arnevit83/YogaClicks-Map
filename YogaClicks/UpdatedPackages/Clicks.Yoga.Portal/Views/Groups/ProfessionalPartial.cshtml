@@ -1,0 +1,66 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupProfessionalPartialModel
+
+@{
+    var owned = SecurityContext.IsOwner(Model.Professional);
+}
+
+
+<div class="well buisnesscard" style="vertical-align: middle;">
+
+
+
+
+
+    @if (Model.PromotedGroups.Any(e => e.Public || owned))
+    {
+        <section class="search-group">
+       
+                <h4>@(Model.Professional.EntityType.IsHuman ? "My" : "Our") Groups</h4>
+     
+            <hr />
+            @foreach (var group in Model.PromotedGroups.Where(e => e.Public || owned))
+            {
+                <article class="result">
+                    <a href="@Url.Action("Display", "Groups", new { group.Id })" class="resultLink">
+                        @Html.Image(group.Image, "Profile.jpg", i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+                        <strong class="name">@Html.Trim(group.Name, 35)</strong>
+                        <div style="margin: 5px 0 0; float: left; width: 100%; color:black">
+                            @Html.Trim(group.Description, 50)
+                        </div>
+                    </a>
+                </article>
+            }
+        </section>
+    }
+
+    @if (Model.JoinedGroups.Any(e => e.Public || owned))
+    {
+        <section class="search-group">
+
+                <h4>Groups @(Model.Professional.EntityType.Name == "Teacher" ? "I'm" : "we're") in</h4>
+     
+            <hr />
+            @foreach (var group in Model.JoinedGroups.Where(e => e.Public || owned))
+        {
+        <article class="result">
+            <a href="@Url.Action("Display", "Groups", new { group.Id })" class="resultLink">
+                @Html.Image(group.Image, "Profile.jpg", i => i.Resize(c => c.Width(160).Height(160).ScaleBoth().Crop()))
+                <strong class="name">@Html.Trim(group.Name, 35)</strong>
+                <div style="margin: 5px 0 0; float: left; width: 100%;color:black">
+                    @Html.Trim(group.Description, 50)
+                </div>
+            </a>
+        </article>
+        }
+        </section>
+    }
+ 
+    @if (!owned && !Model.PromotedGroups.Any(g => g.Public) && !Model.JoinedGroups.Any(g => g.Public))
+    {
+        <div>
+            @(Model.Professional.EntityType.IsHuman ? "I'm" : "We're") not a member of any public groups.
+        </div>
+
+    }
+    <br style="clear:both" />
+</div>

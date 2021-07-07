@@ -1,0 +1,26 @@
+﻿@model Clicks.Yoga.Portal.Models.Messaging.MessagingPopupPartialModel
+
+@foreach (var delivery in Model.Deliveries)
+{
+    <div class="dropDownMessage">
+        <div class="fl">
+            <a href="@Url.Entity(delivery.Message.Sender)">
+                @Html.DisplayFor(m => delivery.Message.Sender.Image, "ProfileThumbnail")
+            </a>
+        </div>
+        <div class="fr">
+            <a href="@Url.Entity(delivery.Message.Sender)">@delivery.Message.Sender.Name</a> &rarr;
+            <a href="@Url.Entity(delivery.Recipient)">@delivery.Recipient.Name</a>
+            <div style="font-size: 80%; color: #888">
+                @* DWTIMEHERE *@
+                @Html.LocalDateTime(@delivery.Message.CreationTime.ToUniversalTime().ToString("u"))
+            </div>
+            <div class="text">
+                <p>
+                    @delivery.Message.ContentPreview(50)
+                    <a href="@Url.Action("Conversation", new { Id = SecurityContext.CurrentProfile.Id, ConversationId = delivery.Message.Conversation.Id })#message-@delivery.Message.Id">Read more</a>
+                </p>
+            </div>
+        </div>
+    </div>
+}

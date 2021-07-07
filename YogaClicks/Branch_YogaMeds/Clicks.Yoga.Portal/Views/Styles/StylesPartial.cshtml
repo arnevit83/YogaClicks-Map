@@ -1,0 +1,35 @@
+﻿@model  Clicks.Yoga.Portal.Models.Styles.StyleTraitsModel
+
+@if (Model.Styles.Count > 0)
+{
+    foreach (var style in Model.Styles)
+    {
+        <a href="@Url.Action("Display", "styles", new { id = style.Id, slug = style.UrlSlug })">
+            <article class="slide">
+                <header>@style.Name</header>
+                <div class="image">@Html.Image(style.DirectoryImage, i => i.Resize(c => c.Width(266).Height(118)), style.Name)</div>
+                <p class="style-tile-text">
+                    @if (style.Description.Length > 130)
+                    {
+                        @(style.Description.Substring(0, 130) + "...")
+                    }
+                    else
+                    {
+                        @style.Description
+                    }
+                </p>
+            </article>
+        </a>
+    }
+}
+else
+{
+    <section class="page-content">
+        <article id="static">
+            <div class="noStylesMatchYourCriteria">
+                <h2>No styles match your criteria.</h2>
+                <p>Please amend you search.</p>
+            </div>
+        </article>
+    </section>
+}

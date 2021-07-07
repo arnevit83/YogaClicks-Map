@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.EntityTypeChooserModel
+
+@foreach (var type in Model.Options)
+{
+    <label>@Html.CheckBoxFor(m => m.Selection[type.Id]) @type.DisplayPlural</label>
+}

@@ -1,0 +1,42 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Account.AccountDeactivateModel
+@{
+    ViewBag.Title = "Deactivate";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { Id = Model.ProfileId })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h1 class="pageTitle greenHeader"><span>&nbsp;</span>Delete your account</h1>
+                @using (Html.BeginForm("Deactivate", "Account"))
+                {
+                    <input type="hidden" name="@Html.NameFor(m => m.Strategy)" id="@Html.IdFor(m => m.Strategy)" value="@DeactivationStrategy.Delete"/>
+                    
+                    <h3>Are you sure?</h3>
+
+                    <div class="block-section">
+                        Deleting your profile will delete everything you own, this incudes any teachers, venues, style organisations and teacher training organisations associated with your profile as well as all your posts, reviews and groups you have created.
+                        This is a permanent operation and can not be undone - please be careful!
+                    </div>
+
+                    <button type="submit" class="button">Delete my account</button>
+                }
+            </article>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("form").submit(function(e) {
+            if (!window.confirm("Are you sure you wish to delete your YogaClicks account?\n\nThis is a permanent operation and can not be undone."))
+                e.preventDefault();
+        });
+    });
+</script>

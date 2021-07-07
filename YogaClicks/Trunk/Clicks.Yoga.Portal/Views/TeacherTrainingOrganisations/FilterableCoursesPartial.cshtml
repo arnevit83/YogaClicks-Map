@@ -1,0 +1,44 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherTrainingCourseSearchCriteriaModel
+
+<div id="courses">
+    @Html.Hidden("OrganisationId", Model.OrganisationId)
+      
+    <div class="">
+        <strong>View:</strong>
+        @Html.EditorFor(m => m.Completed, "TeacherTrainingCourseCompleted")
+    </div>
+   <hr /> 
+    <output></output>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#courses');
+        var $output = $container.find('output');
+        var $inputs = $container.find('input, select');
+        var $filters = $container.find('div[data-role=Filters]');
+
+        var refresh = function (callback) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CoursesPartial", "TeacherTrainingOrganisations")',
+                data: $inputs.serialize(),
+                success: function (html) {
+                    $output.html(html);
+                    $('.sectionToggleHeader').click(function () {
+                        $(this).toggleClass('open');
+                        $(this).next('.sectionToggle').slideToggle();
+                    });
+                }
+            });
+        };
+
+        $inputs.on('change', function () {
+            refresh();
+        });
+
+        refresh(function () {
+            $filters.toggle($output.find('div[data-role=Course]').length > 1);
+        });
+    });
+</script>

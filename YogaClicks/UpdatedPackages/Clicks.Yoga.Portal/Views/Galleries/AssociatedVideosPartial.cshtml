@@ -1,0 +1,64 @@
+﻿@using Clicks.Yoga.Portal.Models.Galleries
+@model Clicks.Yoga.Portal.Models.Galleries.GalleryAssociatedVideosPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+  
+
+
+    <div class="well buisnesscard" style="vertical-align: middle;">
+
+        <h4><a href="@Url.Action("Videos", Model.EntityType.Controller, new { Id = Model.EntityId })" class="ARlink">Videos</a></h4>
+
+        <hr />
+
+
+
+
+
+        <div data-role="Filters" class="block-section filtersSection">
+            <div>
+                <strong>View</strong>
+                <input type="radio" name="isClass" data-role="Class" value="" checked="checked" id="allVideos"> all videos
+                <input type="radio" name="isClass" data-role="Class" value="True" id="classes"> classes
+            </div>
+            <div class="classLengthAbilityLevelRow">
+                <strong>Class length &amp; ability level</strong>
+                @Html.DropDownList("Length", Model.LengthOptions, "Please select", new { data_role = "Length" })
+
+                <select data-role="AbilityLevel" name="Level">
+                    <option value="">Please select</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Level 1</option>
+                    <option value="3">Level 2</option>
+                    <option value="4">Level 3</option>
+                </select>
+            </div>
+            <input type="hidden" id="entityId" name="EntityId" value="@Model.EntityId" />
+            <input type="hidden" id="entityTypeName" name="EntityTypeName" value="@Model.EntityType.Name" />
+            <input type="hidden" id="page" name="page" value="1" />
+        </div>
+        @if (Model.Permissions.Associate)
+        {
+            <div data-role="CreateForm" class="block-section addVideoForm">
+                YouTube/Vimeo URL:
+                <input type="text" name="Url">
+                <input type="hidden" name="EntityId" id="EntityId" value="@Model.EntityId">
+                <input type="hidden" name="EntityTypeName" id="EntityTypeName" value="@Model.EntityType.Name">
+                <button data-role="CreateButton" class="silver button" data-url="@Url.Action("CreateVideo")">Add video +</button>
+            </div>
+        }
+
+        <div data-role="Videos" id="Videos">
+            @Html.Partial("FilteredVideosPartial", Model)
+        </div>
+    </div>
+
+</div><script>
+    $(function () {
+        $('#@guid').yogaVideos();
+    });
+</script>

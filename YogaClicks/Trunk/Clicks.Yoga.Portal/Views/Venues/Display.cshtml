@@ -1,0 +1,320 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueDisplayModel
+
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discovery";
+
+    var ogDescription = string.Format("{0}{1}{2}",
+        Model.Venue.Name,
+        Model.Venue.Address != null ? " | " + (Model.Venue.Address.City != null ? Model.Venue.Address.City : "") + ", " + (Model.Venue.Address.Country != null ? Model.Venue.Address.Country.EnglishName : "") : "",
+        Model.Venue.Description != null ? " | " + Model.Venue.Description : "");
+
+    var metaDescription = Model.Venue.Description != null ? string.Format("{0}. {1}", Model.Venue.Name, Model.Venue.Description)
+    : string.Format("{0} is a yoga venue on YogaClicks. Join us at YogaClicks to connect with {1} and other yoga places all over the world.", Model.Venue.Name, Model.Venue.Name);
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Venue))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("VenuesNavigation", "Search", new { Action = "Venues" })
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Venue.Name" />
+    <meta property="og:description" content="@ogDescription" />
+    <meta name="description" content="@metaDescription">
+
+    @if (Model.Venue.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Venue.Image)" />
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Venue.Id, Model.Venue.EntityTypeName))
+
+<div id="content-slider" class="content-slider venueProfile">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Venue) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Venue.Id, SubjectTypeName = Model.Venue.EntityTypeName })
+
+                @if (SecurityContext.CanUpdate(Model.Venue))
+                {
+                    <button class="button save fr" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                }
+
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Venue.Id, SubjectType = Model.Venue.EntityTypeName })
+
+                <!-- @Html.Action("Button", "Recommendations", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName }) -->
+
+                <h1 class="pageTitle venueHeader" style="width: 500px;">
+                    @if (Model.Profile != null)
+                    {
+                        <a href="@Url.Action("Display", "Profiles", new {Model.Profile.Id})" class="profileLink"><span>&nbsp;</span></a>
+                    }
+
+                    @if (Model.HasTeacher)
+                    {
+                        <a href="@Url.Action("Display", "Teachers", new {Model.Teacher.Id})" class="teacherLink"><span>&nbsp;</span></a>
+                    }
+                    <span class="venueLink">&nbsp;</span>
+                    @if (Model.HasTTO)
+                    {
+                        <a href="@Url.Action("Display", "TeacherTrainingOrganisations", new {Model.TTO.Id})" class="ttoLink"><span>&nbsp;</span></a>
+                    }
+                    @Model.Venue.Name
+                </h1>
+
+                <hr />
+                <div class="shareRecommendSection">
+
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName })
+                    </div>
+                </div>
+                
+                <div class="profileBanner venueBanner">
+
+                    @if (SecurityContext.CanUpdate(Model.Venue))
+                    {
+                        if (Model.Venue.ProfileBanner == null)
+                        {
+                            <a href="@Url.Action("Update")"><img src="~/Images/default/profile-no-banner.jpg" /></a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.Venue.ProfileBanner, "ProfileBanner")
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(m => m.Venue.ProfileBanner, "ProfileBanner")
+                    }
+
+                </div>
+
+                @Html.Partial("Tabs")
+
+                <div class="leftCol">
+
+                    <!--<div class="profile-pic" style="height:155px; margin:0 0 10px 0; border:1px solid #ccc;">
+                    </div>-->
+                    <div class="profile-pic" style="height:155px; margin:0 0 10px 0; border:1px solid #ccc;overflow:hidden;">
+                        @Html.DisplayFor(m => m.Venue.Image, "ProfileImage")
+                    </div>
+                    @Html.Action("Button", "Fans", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName })
+                    @Html.Action("Button", "Recommendations", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName })
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                        @Html.Action("SendButton", "Messaging", new { SecurityContext.CurrentProfile.Id, EntityId = Model.Venue.Id, Model.Venue.EntityTypeName })
+                    }
+                    @if (!SecurityContext.Authenticated)
+                    {
+                        <a class="silver button reg-form-popup sendMessageBtn unauth-msg-button" href="/">Send Message<span>&nbsp;</span></a>
+                    }
+                </div>
+                <div class="rightCol">
+
+                    @Html.Action("ClaimButton", "Profiles", new { EntityId = Model.Venue.Id, Model.Venue.EntityTypeName, Id = "", Slug = "" })
+
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <div class="block-section">
+                            @if (Model.Venue.Address != null)
+                            {
+                                <div class="half-col fl" style="padding-right:10px;">
+                                    <a href="javascript:void(0);" onclick="openModal('@Url.Action("LargeMap", new { id = Model.Venue.Id })', false)">
+                                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=@(Model.Venue.Address.Latitude),@(Model.Venue.Address.Longitude)&zoom=15&size=160x120&maptype=roadmap&sensor=false&markers=color:green%7C@(Model.Venue.Address.Latitude),@(Model.Venue.Address.Longitude)" width="220" height="120" />
+                                    </a>
+                                </div>
+                                <div class="half-col fl address">
+                                    <address>
+                                        @Html.NewLines(Model.Venue.Address.CompleteString)
+                                    </address>
+                                    <p>
+                                        <strong>Venue type</strong><br /> @if (Model.Venue.Type != null)
+                                        {
+                                            @Model.Venue.Type.Name
+                                            if (Model.Venue.Type.Residential)
+                                            {
+                                                <text> (Residential)</text>
+                                            }
+                                            else
+                                            {
+                                                <text> (Non Residential)</text>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <text>Unknown</text>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="cb phoneWebsiteInfo">
+                                    @if (!string.IsNullOrEmpty(Model.Venue.Telephone))
+                                    {
+                                        <br />
+                                        <strong>Telephone: </strong>
+                                        <span>@Model.Venue.Telephone</span>
+
+                                        @*Epic 736:Protect our email addresses -- Remove Email Addresses*@
+                                        @*<br />
+                                        <strong>Email: </strong>
+                                        <span>@Model.Venue.EmailAddress</span>*@
+                                    }
+                                    @if (Model.Venue.Websites.Count > 0)
+                                    {
+                                        <br /><strong>Web/social media: </strong>
+
+                                        foreach (var website in Model.Venue.Websites)
+                                        {
+                                            <a href="@website.Url" target="_blank">@website.Url</a>
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <hr />
+                    }
+
+                    <div class="left">
+                        <h4>About</h4>
+                    </div>
+                    <div class="right">
+                        @Html.NewLines(Model.Venue.Description)
+
+                    </div>
+
+                    <hr />
+                    <div class="left">
+                        <h4>Services offered</h4>
+                    </div>
+                    <div class="right">
+                        @if (Model.Venue.Services.Count > 0)
+                        {
+                            <ul>
+
+                                @foreach (var service in Model.Venue.Services)
+                                {
+                                    <li>
+                                        @service.Name
+                                    </li>
+                                }
+
+                            </ul>
+                        }
+
+                    </div>
+
+                    <hr />
+                    <div class="left">
+                        <h4>Amenities</h4>
+                    </div>
+                    <div class="right">
+                        @if (Model.Venue.Amenities.Count > 0)
+                        {
+
+                            <ul>
+
+                                @foreach (var amenitie in Model.Venue.Amenities)
+                                {
+                                    <li>
+                                        @amenitie.Name
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    <hr />
+                    <div class="left">
+                        <h4>Styles taught</h4>
+                    </div>
+                    <div class="right">
+
+                        @if (Model.Venue.Styles.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var style in Model.Venue.Styles)
+                                {
+                                    <li><a href="@Url.Action("Display", "Styles", new { id = @style.Id, slug = @style.UrlSlug })">@style.Name</a></li>
+                                }
+                            </ul>
+                        }
+                    </div>
+
+                    <hr />
+
+                    @if (SecurityContext.IsYogaMeds())
+                    {
+                        // DEPLOYMENT OF YODAMEDS - remove this
+                        <div class="left">
+                            <h4>YogaMeds taught</h4>
+                        </div>
+                        <div class="right">
+
+                            @if (Model.Venue.Conditions.Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var condition in Model.Venue.Conditions)
+                                    {
+                                        <li><a href="@Url.Action("Display", "Medic", new { id = @condition.Id, slug = @condition.UrlSlug })">@condition.Name</a></li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+
+                        <hr />
+                    }
+                    
+                    <div style="clear:both;">
+                        @if (SecurityContext.CanUpdate(Model.Venue))
+                        {
+                            <button class="button silver fr" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+                        }
+
+                    </div>
+                    <div class="meta">
+                        <p>YogaClicks does not warrant that any of the teachers, venues or teacher training organisations found on our site will meet your health or medical requirements.<p>
+                        <p>YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.</p>
+                        <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                        <br />
+                    </div>
+
+                </div>
+                <!--article id="teacher-training" class="profile-slide clearfix rating-description">
+                    <header>
+                        <button class="button silver">Add a course</button>
+                        <h3>Teacher training</h3>
+                    </header>
+                    <p>Lorem ipsum dolor sit amet, vel adsum oppeto exerci, quadrum et. Multo cui premo pala duis qui, plaga immitto reprobo. Facilisi, augue imputo iriure luptatum in euismod vero ille immitto. Dignissim iusto tamen aliquip valetudo tamen melior vel, quidne eu. Facilisis os, lenis epulae autem abluo facilisi iriure utrum sit iustum ad, metuo huic. Pecus quidne refero feugait laoreet in.</p>
+                    <p>Lorem ipsum dolor sit amet, vel adsum oppeto exerci, quadrum et. Multo cui premo pala duis qui, plaga immitto reprobo. Facilisi, augue imputo iriure luptatum in euismod vero ille immitto. Dignissim iusto tamen aliquip valetudo tamen melior vel, quidne eu. Facilisis os, lenis epulae autem abluo facilisi iriure utrum sit iustum ad, metuo huic. Pecus quidne refero feugait laoreet in.</p>
+                    <p><strong>Styles:</strong> xxxxxxxx</p>
+                    <p><strong>Duration:</strong> xxxxxxxx</p>
+                    <p><strong>Accrediting body:</strong> UKYOGA</p>
+                    <p><strong>Contact:</strong> lucy@yogaclicks.com</p>
+
+                </article-->
+            </article>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        var prImage = Model.Venue.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Venue.Image.Uri) : "http://www.yogaclicks.com/images/global/logo.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + '@Model.Venue.Name');
+        $('.twitter-link-div').html('&text=Find yoga venue ' + '@Model.Venue.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find yoga venue ' + '@Model.Venue.Name' + ' on YogaClicks&media=' + '@prImage');
+    </script>
+}

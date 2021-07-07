@@ -1,0 +1,31 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewDisplayModel
+
+@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Community")
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <article id="reviews" class="clearfix">
+                    <ul class="listings reviewListings">
+                        <li>
+                            @Html.Partial("ReviewPartial", Model.Review)
+                        </li>
+                    </ul>
+                </article>
+            </article>
+        </div>
+    </div>
+</div>
+

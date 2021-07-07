@@ -1,0 +1,4 @@
+﻿User-Agent: *
+Disallow: 
+
+Sitemap: http://ksrresources.com/sitemap.xml

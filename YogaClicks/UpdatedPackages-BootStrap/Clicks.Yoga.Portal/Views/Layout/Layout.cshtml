@@ -1,0 +1,388 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Domain.Services
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js" lang="en"> <![endif]-->
+<html lang="en">
+<head>
+    <title>@ViewBag.Title | YogaClicks</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="@ViewBag.Description" />
+
+    @if (ViewBag.NoIndex != null && ViewBag.NoIndex == true)
+    {
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    }
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/global/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/global/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/global/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/global/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/global/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/global/apple-touch-icon-76x76.png">
+    <link rel="icon" type="image/png" href="/images/global/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/global/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/global/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="publisher" href="https://plus.google.com/101409381209229779027" />
+
+    @Scripts.Render("~/bundles/js/head")
+
+    @Styles.Render("~/bundles/css")
+
+    @RenderSection("Head", false)
+
+
+    @*<link rel="stylesheet" href="~/css/jquery.sidr.light.css">
+        <link href="~/css/slider-override.css" rel="stylesheet">*@
+
+</head>
+<body class="@ViewBag.BodyClass">
+    <div id="fb-root"></div>
+
+    <div class="container-fluid">
+    
+        @Html.Action("SuperUserWarning", "Account")
+
+
+        <header class="row headermain main">
+            <div class="col-xs-2 hidden-md hidden-lg hidden-sm ">
+                <a href="#" id="left-menu" title="Menu"><span class="glyphicon glyphicon-align-justify Menu-icon"></span></a>
+            </div>
+            <div class="col-xs-8 col-sm-3 nopadding">
+                <a href="@Url.Action("index", "home")" id="logo" class="alignCenter">
+
+                    <img id="LogoMain" src="/images/global/logo.svg" alt="YogaClicks. Find it. Love it. Live it." class="img-responsive" style="max-height: 75px;">
+
+
+
+                </a>
+            </div>
+            <div class="col-xs-2 hidden-sm hidden-md hidden-lg nopadding">
+                <div style="width: 90px; padding-right: 20px;" class="pull-right">
+
+                    <a href="#" id="Search-menu" class="pull-right" title="Search for anything"><span class="fa fa-search Login-icon"></span></a>
+                    @if (SecurityContext == null || !SecurityContext.Authenticated)
+                    {
+
+                        <a href="/" id="Login-menu" class="pull-right reg-form-popup menu " title="Log-in to your account"><span class="fa fa-pencil-square-o  Login-icon"></span></a>
+
+                    }
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-5  hidden-xs nopadding">
+
+                @using (Html.BeginForm("Results", "Search", FormMethod.Get, new { @class = "search" }))
+                {
+                @Html.TextBox("keywords", "", new { placeholder = "Type what you're looking for - and hit return", type = "search", @class = "form-control" })
+                }
+            </div>
+
+            <div class="col-sm-4  hidden-xs centerAlign main nopadding ">
+                <div id="login-container">
+                    @Html.Action("LoginPartial", "Account")
+
+                    @if (SecurityContext != null && SecurityContext.Authenticated)
+                    {
+                        <div class="notifications">
+                            @if (!SecurityContext.CurrentProfile.Professional)
+                        {
+                            <a href="#" class="FriendRequestsIndicator icons friend" data-format="{0}" title="Friend requests"></a>
+                            <a href="#" class="MessagesIndicator icons messages" data-format="{0}" title="Messages"></a>
+                            <a href="#" class="NotificationsIndicator icons news" data-format="{0}" title="Notifications"></a>
+                        }
+
+                            @if (!SecurityContext.CurrentProfile.Professional)
+                        {
+                            <div id="FriendRequestsPopup" class="FriendRequests fly-down friend" style="display: none;">
+                                <h3>Friend requests</h3>
+                                <hr />
+                                <div class="popupContent">
+                                    <output></output>
+                                </div>
+                                <hr />
+                                <p class="center"><b><a href="@Url.Action("FriendRequests", "Profiles", new { SecurityContext.CurrentProfile.Id })">View all requests</a></b></p>
+                            </div>
+
+                            <div id="MessagesPopup" class="fly-down messages" style="display: none;">
+                                <h3>Messages</h3>
+                                <hr />
+                                <div class="popupContent">
+                                    <output></output>
+                                </div>
+                                <hr />
+                                <p class="center"><b><a href="@Url.Action("Deliveries", "Messaging", new { SecurityContext.CurrentProfile.Id })">View all messages</a></b></p>
+                                <div class="newMessageBtn">
+                                    <button onclick="javascript:top.location.href = '@Url.Action("Send", "Messaging", new { SecurityContext.CurrentProfile.Id })'" class="button fr">New message +</button>
+                                </div>
+                            </div>
+
+                            <div id="NotificationsPopup" class="Notifications fly-down news" style="display: none;">
+                                <h3>Notifications</h3>
+                                <hr />
+                                <div class="popupContent">
+                                    <output></output>
+                                </div>
+                                <hr />
+                                <p class="center"><b><a href="@Url.Action("Notifications", "Profiles", new { SecurityContext.CurrentProfile.Id })">View all notifications</a></b></p>
+                            </div>
+                        }
+                        </div>
+                        <div class="profile">
+                            @if (SecurityContext.HasActor)
+                            {
+                                <div class="profile-icon">
+
+                                    <a href="@Url.Action("Display", SecurityContext.CurrentActor.EntityType.Controller, new {SecurityContext.CurrentActor.Id})" class="current-actor-link">@Html.Image(SecurityContext.CurrentActor.Image, "Profile.jpg", i => i.Resize(c => c.Width(34).Height(39).ScaleBoth().Crop()), SecurityContext.CurrentActor.Name, new { @class = "current-actor-image" })</a>
+
+
+                                </div>
+                                <strong><a href="@Url.Action("Display", SecurityContext.CurrentActor.EntityType.Controller, new { SecurityContext.CurrentActor.Id })" class="current-actor-link current-actor-name">@Html.Trim(SecurityContext.CurrentActor.Name, 10)</a></strong>
+                            }
+
+                            <div class="profileDropDown">
+                                @if (SecurityContext.AvailableActors.Count > 1)
+                                {
+                                    <div id="global-actor-picker">
+                                        <div id="global-actor-picker-heading">
+                                            Post as...
+                                        </div>
+
+                                        <div>
+                                            @foreach (var actor in SecurityContext.AvailableActors)
+                        {
+                    <label class="@(actor.Current ? "selected" : "")">
+                        @Html.RadioButton(
+                                                "Actor",
+                                                string.Format("{0}-{1}", actor.EntityType.Name, actor.Id),
+                                                actor.Current,
+                                                new
+                                                {
+                                                    data_action = Url.Action("ChangeActor", "Account"),
+                                                    data_actor_id = actor.Id,
+                                                    data_actor_type_name = actor.EntityType.Name,
+                                                })
+
+                        @actor.Name
+
+                        @if (actor.EntityType.Name == typeof(Teacher).Name)
+                                {
+                            @:(teacher)
+                                            }
+                    </label>
+                        }
+                                        </div>
+                                    </div>
+                                    <script>
+                    $(document).ready(function () {
+                        $('#global-actor-picker').yogaGlobalActorPicker();
+                    });
+                                    </script>
+                                }
+                                <ul>
+                                    @if (!SecurityContext.CurrentProfile.Professional)
+                                    {
+                                        <li class="editTab"><i class="fa fa-pencil icon fa-2x"></i><a href="@Url.Action("Update", "Profiles", new { SecurityContext.CurrentProfile.Id })">Edit profile</a></li>
+                                    }
+
+                                    <li class="accountTab"><i class="fa fa-cog  icon fa-2x"></i><a href="@Url.Action("Settings", "Account", new { SecurityContext.CurrentProfile.Id })">Account settings</a></li>
+                                    <li class="helpTab">
+                                        <i class="fa fa-question-circle fa-2x icon"></i>
+                                        <ul>
+                                            <li><a href="@Url.Action("profile-professional-guide", "static")">Profile and professional pages guide</a></li>
+                                            <li><a href="@Url.Action("faqs", "Groups")">FAQs</a></li>
+                                            <!--<li><a href="@Url.Action("site-introduction", "static")">- YogaClicks intro</a></li>-->
+
+                                            <li><a href="@Url.Action("site-map", "static")">Site map</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="logOutTabNew">    <i class="fa fa-sign-out  fa-2x icon"></i><a href="/account/logout">Logout</a></li>
+                                </ul>
+                            </div>
+                            <span class="toggle">
+                                <span class="fa-stack  ">
+                                    <i class="fa fa-circle-thin fa-stack-2x"></i>
+                                    <i class="fa fa-chevron-down  fa-stack-1x "></i>
+                                </span>
+
+                            </span>
+
+
+
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+
+        </header>
+
+
+
+
+        <div class="row nopadding" id="mainsearch" style="display: none;">
+            <div class="col-xs-12  ">
+
+                @using (Html.BeginForm("Results", "Search", FormMethod.Get, new { @class = "BsSearch" }))
+                {
+                    @Html.TextBox("keywords", "", new { placeholder = "Type what you're looking for - and hit return", type = "search", @class = "form-control nopadding", Style = "margin-bottom:0px;" })
+                }
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+            <div id="left-slider" class="col-sm-1 nopadding">
+                @Html.Partial("left-nav-menu")
+                <br />
+                <div class="row nopadding hidden-lg ">
+                    <div class="col-xs-12 col-sm-12 nopadding text-justify  centerAlign footerMenu ">
+                        <sub> <a href="javascript:openModal('/feedback')">Feedback</a></sub><br />
+                        <sub>
+                            <a href="@Url.Action("our-story", "static")">Our story</a>
+                        </sub><br />
+                        <sub>
+                            <a href="@Url.Action("advertise-with-us", "static")">Advertise</a>
+                        </sub><br />
+                        <sub>
+                            <a href="@Url.Action("privacy-policy", "static")">Privacy</a>
+                        </sub><br />
+                        <sub>
+                            <a href="@Url.Action("terms-of-use", "static")">Terms of use</a>
+                        </sub>
+                        <br /><br />
+                        <sub style="color: #9f9f9f;"> &copy; YogaClicks <br />@DateTime.Today.Year</sub>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div id="right-nav" class="nopadding" style="display: none !important">
+                @RenderSection("LeftNav", false)
+            </div>
+
+            <div id="maincontent" class="col-xs-12  col-sm-11 ">
+                <div id="Innercontent" class="maincontentlargSize">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="hidden-sm hidden-xs hidden-md" style="   margin-top: -20px;">
+            <div class="share-title">
+                <a href="#" id="share-link">Share this page</a>
+            </div>
+            <footer id="footer-navigation" role="contentinfo" class="pagefooter clearfix">
+                <div class="title">Share this page</div>
+                <div class="left">
+                    <nav class="footer-navigation">
+                        <ul>
+                            <li><a href="javascript:openModal('/feedback')" class="button purple">Feedback</a></li>
+                            <li><a href="@Url.Action("our-story", "static")">Our story</a></li>
+                            <li><a href="@Url.Action("privacy-policy", "static")">Privacy</a></li>
+                            <li><a href="@Url.Action("terms-of-use", "static")">Terms of use</a></li>
+                            <li><a href="@Url.Action("advertise-with-us", "static")">Advertise</a></li>
+                            <li><p>&copy; YogaClicks @DateTime.Today.Year</p></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="right">
+                    <a href="http://blog.yogaclicks.com/" target="_blank">
+                        <img alt="Blog" src="/Images/SmallBlogIcon.jpg" style="height: 15px;  padding-right: 10px;" />
+                    </a>
+                    <a class="facebook-share-link" href="" target="_blank">
+                        <img alt="Share To Facebook" src="~/Images/social-icons/facebook-icon.jpg" style="height: 15px; padding-right: 10px;" />
+                    </a>
+                    <a class="twitter-share-link" href="" target="_blank">
+                        <img alt="Share To Twitter" src="~/Images/social-icons/twitter-icon.jpg" style="height: 15px; padding-right: 10px;" />
+                    </a>
+                    <a class="pintrest-share-link" href="" target="_blank">
+                        <img alt="Share To Pintrest" src="~/Images/social-icons/pintrest-icon.jpg" style="height: 15px; padding-right: 10px;" />
+                    </a>
+                </div>
+                <div class="facebook-link-div" style="display:none">&title=@ViewBag.Title</div>
+                <div class="twitter-link-div" style="display:none">&text=Find it. Love it. Live it on YogaClicks</div>
+                <div class="pintrest-link-div" style="display:none">&description=Find it. Love it. Live it on YogaClicks&media=http://www.yogaclicks.com/images/global/logo.png</div>
+            </footer>
+
+        </div>
+
+
+
+
+    </div>
+
+
+    @if (SecurityContext == null || !SecurityContext.Authenticated)
+    {
+        <div id="registerPopup" style="display:none;" class="largerForm">
+            <div>
+                <h2 class="reg-title">Join YogaClicks!<br /> It's free and it's easy.</h2>
+
+                @using (Html.BeginForm("CreateAccount", "Registration", FormMethod.Post, new { @class = "full", data_role = "Registration", data_partial_action = Url.Action("CreateAccountPopupPartial", "Registration") }))
+                {
+                    @Html.Action("CreateAccountPopupPartial", "Registration")
+                }
+
+            </div>
+        </div>
+    }
+
+
+
+
+
+
+    <div class="dark-overlay" style="display:none;"></div>
+
+
+
+
+
+
+
+
+
+    @Html.Action("Init", "Facebook")
+    <script type="text/javascript">$(document).ready(function () { setTimeout(function () { null != parent.$.fancybox && null != parent.$.fancybox.current && (top.location.href = "@ViewContext.HttpContext.Request.Url") }, 0) });</script>
+
+    @Scripts.Render("~/bundles/js/body")
+
+    <script type="text/javascript">$(function () { var e = $("form[data-role=Registration]"); e.on("click", "button[type=submit]", function (e) { e.preventDefault(); var t = $(this), i = t.closest("form"), a = i.find("input, select"); $(".disabledSignUp").show(), $(".activeSignup").hide(), $.ajax({ type: "POST", url: i.attr("data-partial-action"), data: a.serialize(), success: function (e) { e ? (i.html(e), $(".disabledSignUp").hide(), $(".activeSignup").show()) : location.href = '@Url.Action("CreateAccountComplete", "Registration")' } }) }), $("#createPopUp").fancybox(), $("body").delegate(".reg-form-popup", "click", function (e) { 0 == $(this).attr("href").indexOf("/") && (e.preventDefault(), $(".reg-title").html("You need to be a member for this. It's free and it's easy."), $("#createPopUp").click()) }), $("body").delegate(".reg-form-header", "click", function (e) { 0 == $(this).attr("href").indexOf("/") && (e.preventDefault(), $(".reg-title").html("Join YogaClicks!<br /> It's free and it's easy."), $("#createPopUp").click()) }) });</script>
+    @RenderSection("Scripts", false)
+
+
+
+
+    <div id="registerBanner">
+        <a href="#registerPopup" class="button large pink" id="createPopUp">Sign up to see more. Live dangerously! It's free!</a>
+    </div>
+
+
+</body>
+</html>

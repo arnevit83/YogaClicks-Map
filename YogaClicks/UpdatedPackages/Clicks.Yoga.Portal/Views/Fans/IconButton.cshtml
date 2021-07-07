@@ -1,0 +1,113 @@
+﻿@model Clicks.Yoga.Portal.Models.Fans.FanButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+
+
+@if (Model.CanFan)
+{
+        <div id="@guid">
+        
+
+                @if (Model.FanCount > 0)
+                {
+                    <div class="news-fan-likes">
+                        @Model.FanCount.ToString() <i class="fa fa-heart"></i>
+                    </div>
+                }
+
+                @if (Model.IsFanned)
+                {
+
+
+
+                    <a data-action="UnFanIcon" data-toggle="tooltip" title="Stop being a fan"><i class="fa fa-heart-o IconG"></i></a>
+                    <br />
+                    <text>Unfan this story</text>
+
+
+                }
+                else
+                {
+
+
+
+                    <a data-action="FanIcon" data-toggle="tooltip" title="Become a fan of this story"><i class="fa fa-heart IconG"></i></a>
+                    <br />
+                    <text>Fan this story</text>
+
+                }
+        
+    </div>
+    <script>
+        $(function() {
+            var $container = $('#@guid'),
+                entityId = @Model.EntityId,
+                entityTypeName = '@HttpUtility.JavaScriptStringEncode(Model.EntityTypeName)',
+                news = $container.find('.btn').data('news');
+
+            var toggle = function(action) {
+
+                $.ajax({
+                    type: 'POST',
+                    async: false,
+                    url: '/Fans/' + action,
+                    data: { EntityId: entityId, EntityTypeName: entityTypeName, newsfeed: '@Model.NewsFeed' },
+                    success: function(html) {
+                        $container.html(html);
+
+                        if (news != true) {
+                            if (action == 'Fan') {
+                                //openModal('/Fans/Confirmation?EntityId=' + escape(entityId) + '&EntityTypeName=' + escape(entityTypeName), false);
+                            }
+                        } else {
+                            if (action == 'Fan') {
+
+                            }
+                        }
+                    },
+                    error: function(html) {
+
+                    }
+                });
+            };
+
+            $container.on('click', '[data-action=FanIcon]', function() {
+                toggle('FanIcon');
+            });
+
+            $container.on('click', '[data-action=UnFanIcon]', function() {
+                toggle('UnFanIcon');
+            });
+        })
+    </script>
+
+}
+else
+{
+
+    if (!SecurityContext.Authenticated)
+    {
+    
+            <a class="reg-form-popup " data-toggle="tooltip" href="/" title="Become a fan of this story"><i class="fa fa-heart IconG"></i></a>
+
+            <br /> <text>Fan this story</text>
+
+
+    }
+    else
+    {
+
+        <i class="fa fa-heart IconG"></i>
+        <br /> <text>Others can fan your story</text>
+    }
+
+
+
+}
+
+
+    
+

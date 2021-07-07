@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5F55549-9D78-4D59-909A-EBD36DA7904F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clicks.Yoga.Data</RootNamespace>
+    <AssemblyName>Clicks.Yoga.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.4.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest">
+      <HintPath>..\packages\NEST.0.12.0.0\lib\NET4\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.2-unstable-9037\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Spatial">
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ObjectStateExtensions.cs" />
+    <Compile Include="Context\YogaEntityContext.cs" />
+    <Compile Include="Mappings\AbilityLevelMapping.cs" />
+    <Compile Include="Mappings\AccreditationBodyMapping.cs" />
+    <Compile Include="Mappings\ActivityAttendeeMapping.cs" />
+    <Compile Include="Mappings\ActivityMapping.cs" />
+    <Compile Include="Mappings\ActivityRepeatFrequencyMapping.cs" />
+    <Compile Include="Mappings\ActivityTeacherMapping.cs" />
+    <Compile Include="Mappings\ActivityTypeMapping.cs" />
+    <Compile Include="Mappings\ActivityWallMapping.cs" />
+    <Compile Include="Mappings\AddressMapping.cs" />
+    <Compile Include="Mappings\Base\EntityMapping.cs" />
+    <Compile Include="Mappings\Base\PrincipalEntityMapping.cs" />
+    <Compile Include="Mappings\CommentMapping.cs" />
+    <Compile Include="Mappings\EntityHandleInviteMapping.cs" />
+    <Compile Include="Mappings\GalleryAssociationMapping.cs" />
+    <Compile Include="Mappings\GalleryEntryMapping.cs" />
+    <Compile Include="Mappings\GalleryMapping.cs" />
+    <Compile Include="Mappings\GroupWallMapping.cs" />
+    <Compile Include="Mappings\CountryMapping.cs" />
+    <Compile Include="Mappings\EntityHandleMapping.cs" />
+    <Compile Include="Mappings\EntityTypeMapping.cs" />
+    <Compile Include="Mappings\FanMapping.cs" />
+    <Compile Include="Mappings\FederatedLoginMapping.cs" />
+    <Compile Include="Mappings\FederatedLoginProviderMapping.cs" />
+    <Compile Include="Mappings\FriendshipMapping.cs" />
+    <Compile Include="Mappings\GenderMapping.cs" />
+    <Compile Include="Mappings\GlossaryEntryMapping.cs" />
+    <Compile Include="Mappings\GroupMapping.cs" />
+    <Compile Include="Mappings\GroupMemberMapping.cs" />
+    <Compile Include="Mappings\ImageMapping.cs" />
+    <Compile Include="Mappings\ImageTypeMapping.cs" />
+    <Compile Include="Mappings\InvitationMapping.cs" />
+    <Compile Include="Mappings\LocationMapping.cs" />
+    <Compile Include="Mappings\MediaResourceMapping.cs" />
+    <Compile Include="Mappings\MediaResourceTypeMapping.cs" />
+    <Compile Include="Mappings\NewsStoryMapping.cs" />
+    <Compile Include="Mappings\NewsStoryTypeMapping.cs" />
+    <Compile Include="Mappings\NewsSubscriptionMapping.cs" />
+    <Compile Include="Mappings\NotificationCategoryMapping.cs" />
+    <Compile Include="Mappings\NotificationDeliveryMapping.cs" />
+    <Compile Include="Mappings\NotificationMapping.cs" />
+    <Compile Include="Mappings\NotificationPreferencesMapping.cs" />
+    <Compile Include="Mappings\NotificationTypeMapping.cs" />
+    <Compile Include="Mappings\NotificationCategoryPreferencesMapping.cs" />
+    <Compile Include="Mappings\PasswordLoginMapping.cs" />
+    <Compile Include="Mappings\PasswordResetActionMapping.cs" />
+    <Compile Include="Mappings\PasswordResetRequestMapping.cs" />
+    <Compile Include="Mappings\PersonMapping.cs" />
+    <Compile Include="Mappings\PoseCategoryMapping.cs" />
+    <Compile Include="Mappings\PoseMapping.cs" />
+    <Compile Include="Mappings\PrivacyPreferencesMapping.cs" />
+    <Compile Include="Mappings\PrivateConversationMapping.cs" />
+    <Compile Include="Mappings\PrivateMessageDeliveryMapping.cs" />
+    <Compile Include="Mappings\PrivateMessageMapping.cs" />
+    <Compile Include="Mappings\ProfileAnswerMapping.cs" />
+    <Compile Include="Mappings\ProfileQuestionMapping.cs" />
+    <Compile Include="Mappings\ProfileWallMapping.cs" />
+    <Compile Include="Mappings\QuoteMapping.cs" />
+    <Compile Include="Mappings\RequestMapping.cs" />
+    <Compile Include="Mappings\RequestTypeMapping.cs" />
+    <Compile Include="Mappings\ReviewExperienceMapping.cs" />
+    <Compile Include="Mappings\ReviewFeedbackResponseMapping.cs" />
+    <Compile Include="Mappings\ReviewMapping.cs" />
+    <Compile Include="Mappings\ReviewRatingMapping.cs" />
+    <Compile Include="Mappings\ReviewRatingSubjectMapping.cs" />
+    <Compile Include="Mappings\RoleMapping.cs" />
+    <Compile Include="Mappings\SearchRecordMapping.cs" />
+    <Compile Include="Mappings\StyleMapping.cs" />
+    <Compile Include="Mappings\StyleOrganisationMapping.cs" />
+    <Compile Include="Mappings\StyleTraitGroupMapping.cs" />
+    <Compile Include="Mappings\StyleTraitMapping.cs" />
+    <Compile Include="Mappings\TeacherAccreditationMapping.cs" />
+    <Compile Include="Mappings\TeacherMapping.cs" />
+    <Compile Include="Mappings\TeacherPlacementMapping.cs" />
+    <Compile Include="Mappings\TeacherServiceMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseTeacherMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingCourseVenueMapping.cs" />
+    <Compile Include="Mappings\TeacherTrainingOrganisationMapping.cs" />
+    <Compile Include="Mappings\TimescaleMapping.cs" />
+    <Compile Include="Mappings\UserActivationRequestMapping.cs" />
+    <Compile Include="Mappings\UserEmailAddressChangeActionMapping.cs" />
+    <Compile Include="Mappings\UserEmailAddressChangeRequestMapping.cs" />
+    <Compile Include="Mappings\UserMapping.cs" />
+    <Compile Include="Mappings\UserRoleMapping.cs" />
+    <Compile Include="Mappings\VenueMapping.cs" />
+    <Compile Include="Mappings\VenueServiceMapping.cs" />
+    <Compile Include="Mappings\VenueTypeMapping.cs" />
+    <Compile Include="Mappings\VideoAssociationMapping.cs" />
+    <Compile Include="Mappings\VideoMapping.cs" />
+    <Compile Include="Mappings\VideoTypeMapping.cs" />
+    <Compile Include="Mappings\WallMapping.cs" />
+    <Compile Include="Mappings\WallPostMapping.cs" />
+    <Compile Include="Mappings\WebsiteMapping.cs" />
+    <Compile Include="Migrations\201504171322491_AddYogaMedsEntities.cs" />
+    <Compile Include="Migrations\201504171322491_AddYogaMedsEntities.designer.cs">
+      <DependentUpon>201504171322491_AddYogaMedsEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241018517_AddWTSSAsCollection.cs" />
+    <Compile Include="Migrations\201504241018517_AddWTSSAsCollection.designer.cs">
+      <DependentUpon>201504241018517_AddWTSSAsCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241318481_AdduserStoriesAsCollection.cs" />
+    <Compile Include="Migrations\201504241318481_AdduserStoriesAsCollection.designer.cs">
+      <DependentUpon>201504241318481_AdduserStoriesAsCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.cs" />
+    <Compile Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.designer.cs">
+      <DependentUpon>201504241352002_AddTeachersVenuesToUserStory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504300927266_AddDirectoryImageToCondition.cs" />
+    <Compile Include="Migrations\201504300927266_AddDirectoryImageToCondition.designer.cs">
+      <DependentUpon>201504300927266_AddDirectoryImageToCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505060848518_MakeConditionINamed.cs" />
+    <Compile Include="Migrations\201505060848518_MakeConditionINamed.designer.cs">
+      <DependentUpon>201505060848518_MakeConditionINamed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505061422587_AddConditionToSearchRecord.cs" />
+    <Compile Include="Migrations\201505061422587_AddConditionToSearchRecord.designer.cs">
+      <DependentUpon>201505061422587_AddConditionToSearchRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505110810342_AddmetaTitleToCondition.cs" />
+    <Compile Include="Migrations\201505110810342_AddmetaTitleToCondition.designer.cs">
+      <DependentUpon>201505110810342_AddmetaTitleToCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.cs" />
+    <Compile Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.designer.cs">
+      <DependentUpon>201505120914316_AddFollowerEntityAndConditonLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505141404299_ChangeStudyDateTimeToString.cs" />
+    <Compile Include="Migrations\201505141404299_ChangeStudyDateTimeToString.designer.cs">
+      <DependentUpon>201505141404299_ChangeStudyDateTimeToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505190909004_AddConditionsToGroup.cs" />
+    <Compile Include="Migrations\201505190909004_AddConditionsToGroup.designer.cs">
+      <DependentUpon>201505190909004_AddConditionsToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505211127140_AddQualificationAndTeacherLink.cs" />
+    <Compile Include="Migrations\201505211127140_AddQualificationAndTeacherLink.designer.cs">
+      <DependentUpon>201505211127140_AddQualificationAndTeacherLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\PrincipalRepository.cs" />
+    <Compile Include="Repositories\Base\RepositoryQuery.cs" />
+    <Compile Include="Repositories\EntityTypeRepository.cs" />
+    <Compile Include="Repositories\Base\Repository.cs" />
+    <Compile Include="Context\YogaDataContext.cs" />
+    <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\StyleRepository.cs" />
+    <Compile Include="Repositories\StyleTraitRepository.cs" />
+    <Compile Include="Search\ElasticSearchEngine.cs" />
+    <Compile Include="Search\SearchEngine.cs" />
+    <Compile Include="Search\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504171322491_AddYogaMedsEntities.resx">
+      <DependentUpon>201504171322491_AddYogaMedsEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241018517_AddWTSSAsCollection.resx">
+      <DependentUpon>201504241018517_AddWTSSAsCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241318481_AdduserStoriesAsCollection.resx">
+      <DependentUpon>201504241318481_AdduserStoriesAsCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504241352002_AddTeachersVenuesToUserStory.resx">
+      <DependentUpon>201504241352002_AddTeachersVenuesToUserStory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504300927266_AddDirectoryImageToCondition.resx">
+      <DependentUpon>201504300927266_AddDirectoryImageToCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505060848518_MakeConditionINamed.resx">
+      <DependentUpon>201505060848518_MakeConditionINamed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505061422587_AddConditionToSearchRecord.resx">
+      <DependentUpon>201505061422587_AddConditionToSearchRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505110810342_AddmetaTitleToCondition.resx">
+      <DependentUpon>201505110810342_AddmetaTitleToCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505120914316_AddFollowerEntityAndConditonLink.resx">
+      <DependentUpon>201505120914316_AddFollowerEntityAndConditonLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505141404299_ChangeStudyDateTimeToString.resx">
+      <DependentUpon>201505141404299_ChangeStudyDateTimeToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505190909004_AddConditionsToGroup.resx">
+      <DependentUpon>201505190909004_AddConditionsToGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505211127140_AddQualificationAndTeacherLink.resx">
+      <DependentUpon>201505211127140_AddQualificationAndTeacherLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clicks.Yoga\Clicks.Yoga.csproj">
+      <Project>{f6a75331-8dd9-498b-9b40-de48fa815de3}</Project>
+      <Name>Clicks.Yoga</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{B46292BA-1B57-496E-84CE-1FF4500785B0}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="YogaMedsDeployment\Script2.txt" />
+    <Content Include="YogaMedsDeployment\Script1.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

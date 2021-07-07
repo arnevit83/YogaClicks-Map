@@ -1,0 +1,136 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityInvitesModel
+
+@{
+    ViewBag.Title = "Invites";    
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+@section Head {
+<meta property="og:title" content="@Model.Activity.Name" />
+@if (!string.IsNullOrEmpty(Model.Activity.Description))
+{
+    <meta property="og:description" content="@Model.Activity.Description" />
+}
+else
+{
+    <meta property="og:description" content=" " />
+}
+@if (Model.Activity.Image != null)
+{
+    <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+}
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader"><span>&nbsp;</span>@Model.Activity.Type.Name: @Model.Activity.Name</h2>
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Action("Tabs")
+                
+                <div id="@guid">
+                    <div class="inviteFriends">
+                        <strong>Invite your friends</strong>
+                        <button data-role="CheckFriendsButton" class="silver button">Select all</button>
+                        <button data-role="UncheckFriendsButton" class="silver button">Clear all</button>
+                        <button data-role="InviteFriendsButton" class="silver button">Send invites</button>
+                     </div>
+                    
+                    <div class="inviteFans">
+                        <strong>Invite all your fans</strong>
+                        <button data-role="InviteFansButton" class="silver button">Send invites</button>
+                    </div>
+                    <div class="invite-fans-share-this-page" style="display:none">
+                        <p>
+                            Sorry, you don't have any fans yet. Want some? Share this page.
+                            <br />
+                            <span class='st_facebook_hcount' displaytext='Facebook'></span>
+                            <span class='st_twitter_hcount' displaytext='Tweet'></span>
+                            @Html.Action("EntityByEmailButton", "Sharing", new { EntityId = Model.Activity.Id, EntityTypeName = Model.Activity.EntityTypeName, Wide = true })
+                        </p>
+                    </div>
+                    
+                     <div class="attendingWrap inviteFriendsWrap">
+                        @Html.EditorFor(m => m.Friends)
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $checkboxes = $container.find('input');
+
+        $container.find('[data-role=CheckFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+            $checkboxes.prop('checked', true);
+        });
+
+        $container.find('[data-role=UncheckFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+            $checkboxes.prop('checked', false);
+        });
+
+        $container.find('[data-role=InviteFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+
+            var ids = [];
+
+            $checkboxes.filter(':checked').each(function () {
+                ids.push($(this).attr('data-id'));
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InviteFriends")',
+                data: JSON.stringify({ FriendIds: ids }),
+                contentType: 'application/json',
+                success: function () {
+                    window.top.location.reload();
+                }
+            });
+        });
+
+        $container.find('[data-role=InviteFansButton]').on('click', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InviteFans")',
+                success: function (response) {
+                    if (response.noOfFans > 0) {
+                        $('.inviteFans').html('Your fans have been invited');
+                    }
+                    else {
+                        $('.inviteFans').hide();
+                        $('.invite-fans-share-this-page').show();
+                    }
+
+                }
+            });
+        });
+    });
+</script>

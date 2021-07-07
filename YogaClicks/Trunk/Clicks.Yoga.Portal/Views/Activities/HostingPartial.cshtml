@@ -1,0 +1,29 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityHostingPartialModel
+
+@if (Model.Activities.Count > 0)
+{
+    <div class="block-section">
+
+        @foreach (var activity in Model.Activities)
+        {
+            <div class="notificationRow">
+                <div class="icon">
+                    <span>&nbsp;</span>
+                </div>
+                <div class="text">
+                    <strong>@activity.Type.Name:</strong>
+
+                    @(SecurityContext.IsOwner(Model.Venue) ? "You" : Model.Venue.Name) are hosting
+
+                    <a href="@Url.Action("Display", "Activities", new { activity.Id })">@activity.Name</a>
+
+                    on @activity.StartTime.ToString("dd/MM/yyyy")
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>None yet.</p>
+}

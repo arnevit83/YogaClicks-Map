@@ -1,0 +1,188 @@
+﻿@model Clicks.Yoga.Portal.Models.YogaMap.YogaMap
+<div id="navwrap">
+    
+    <section id="filter-results" class="">
+        <div id="filter-wrap">
+
+            <div class="the-sub-menu">
+
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <br/><br/>
+  
+                    <img class="img-responsive" id="MapTitlelogo" style="width:90%;padding-left:10%; " src="~/Images/Stories/theyogamapproject-world.png" />
+           
+                <p class="well well-sm hidden">
+                    <span style="display: block;font-size: 15px; padding-right:16px;">
+                        <i class="fa fa-caret-right SmallArrows hidden-sm hidden-xs"></i>
+                        <span class="leftBtext">
+                            Is yoga your super-power? 
+                        </span><br  />
+                        <i class="fa fa-caret-right SmallArrows hidden-sm hidden-xs"></i>
+                        <span class="leftBtext">
+                            Awesome! </span>
+                        <br  />
+
+                            <i class="fa fa-caret-right SmallArrows hidden-sm hidden-xs"></i>
+                        <span class="leftBtext">
+                            We created the map for you.</span>
+                        
+                    <br />
+
+                    <i class="fa fa-caret-right SmallArrows hidden-sm hidden-xs"></i>
+                    <span class="leftBtext">
+                        Drop a pin and raise a hand to being <span class="hidden-xs hidden-lg">#Powered By Yoga</span><span class="hidden-sm  hidden-md ">#PoweredByYoga</span>
+                    </span>
+                    </span>
+
+                </p>
+                
+                <br/>
+
+                <h1 class="pageTitle"><span >Invite your yoga buddies</span></h1>
+                <div class="parB">
+                
+
+@using (Html.BeginForm("NominateEmail","YogaMap"))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-xs-12 nopadding">
+
+      
+        <div class="form-group">
+      
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control TextGline", placeholder = "yoga buddy's email", style = "margin-bottom:6px!important;" })
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        
+        </div>
+
+
+        <div style="display: none;" id="hiddenEmailB">
+
+            <div class="form-group">
+                @Html.TextBox("ToName", Model.ToName, new { @class = "form-control TextGline", placeholder = "yoga buddy's name", style = "margin-bottom:6px!important;" })
+                @Html.ValidationMessageFor(m => m.ToName)
+            </div>
+
+            <div class="form-group">
+
+                @Html.TextBox("FromName", Model.FromName, new { @class = "form-control TextGline", placeholder = "Your name", style = "margin-bottom:6px!important;" })
+                @Html.ValidationMessageFor(m => m.FromName)
+            </div>
+        </div><br/>
+
+
+
+    
+        @Html.Raw(Model.FilererrorEmail)
+
+
+        <button id="GoemailB" class="btn btn-success pull-right disabled" type="submit">Go!</button>
+
+        
+        <br /><br /><br />
+    </div>
+
+
+
+
+}
+
+                       
+                        
+
+
+</div><br />
+                <br />
+                    <h1 class="pageTitle"><span>Filter the Yoga Map</span></h1>
+
+                <div class="parB">
+                    <form method="post"  id="signupform">
+
+
+
+                        <div class="col-xs-12 nopadding">
+                            Teachers/students etc
+
+                            @Html.DropDownList("TSreturn", new SelectList(Model.TS, Model.TS), "Please select", new { @class = "TextGline form-control Arrow" })
+
+
+
+
+
+                            People using yoga for a health condition
+                            @Html.DropDownList("Condition", new SelectList(Model.Conditions, "Id", "Name", Model.Conditions), "Please select", new { @class = "TextGline form-control Arrow" })
+
+                         
+
+
+                            <br />
+
+                            
+                            
+                            
+                            <label id="Filererror"></label>
+                           
+                            <br />
+                            
+
+                            <div class="hidden-sm">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-default pull-left mapclear" type="reset">Clear</button>
+
+                                    </div>
+
+                                    <div class="btn-group" role="group">
+
+
+                                        <button class="btn btn-success pull-right" type="submit">Search</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="hidden-md hidden-lg hidden-xs ">
+
+                            <button class="btn btn-default pull-left btn-block mapclear" type="reset">Clear</button>
+
+                            <br />
+
+                            <button class="btn btn-success pull-right  btn-block" type="submit">Search</button>
+
+                        </div>
+
+
+
+                            <br /><br />
+                            <br /><br />
+                        </div>
+                    </form>
+</div>
+
+                <br />
+                <h1 class="pageTitle"><span>Instagram</span> </h1>
+
+                <div class="well well-sm">
+              
+                    <!-- LightWidget WIDGET -->
+                    <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/fdc3dc7dcaa955fb9c60543c731e7458.html" id="lightwidget_fdc3dc7dca" name="lightwidget_fdc3dc7dca" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                </div>
+
+                <br /><br /><br /><br /><br /><br />
+                </div>
+
+        </div>
+    </section>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#right-menu-close").click(function () {
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+    });
+
+</script>

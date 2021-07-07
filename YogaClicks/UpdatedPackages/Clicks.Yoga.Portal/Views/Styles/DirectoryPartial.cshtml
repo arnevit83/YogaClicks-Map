@@ -1,0 +1,21 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleIndexModel
+
+@foreach (var style in Model.Styles)
+{
+    <a href="@Url.Action("Display", "styles", new { id = style.Id, slug = style.UrlSlug })">
+        <article class="slide">
+            <header>@style.Name</header>
+            <div class="image">@Html.Image(style.DirectoryImage, null, style.Name)</div>
+            <p class="style-tile style-tile-text">
+                @if (style.Description.Length > 130)
+                {
+                    @(style.Description.Substring(0, 130) + "...")
+                }
+                else
+                {
+                    @style.Description
+                }
+            </p>
+        </article>
+    </a>
+}

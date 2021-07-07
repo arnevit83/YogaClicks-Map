@@ -1,0 +1,101 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileFriendsModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Title = "Friends";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Profile))
+    {
+        @Html.Action("Navigation")
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h1 class="greenHeader myProfileHeader"><span>&nbsp;</span>@Model.Profile.Name</h1>
+
+                <div class="profileBanner">
+                    @Html.DisplayFor(m => m.Profile.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Partial("Tabs", new { Model.Profile })
+
+                <div id="@guid">
+                    @Html.Action("FriendsPartial")
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $inputs = $container.find('input');
+
+        $container.on('click', '[data-role=UnfriendButton]', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Unfriend")',
+                data: $inputs.serialize(),
+                success: function () {
+                    $container.find('input:checked').closest('[data-role=Friend]').remove();
+                }
+            });
+        });
+
+        $container.on('click', '[data-role=BlockButton]', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Block")',
+                data: $inputs.serialize(),
+                success: function (html) {
+                    $container.html(html);
+                }
+            });
+        });
+
+        $container.on('click', '[data-role=UnblockButton]', function (e) {
+            e.preventDefault();
+
+            var $button = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Unblock")',
+                data: { friendIds: $button.attr('data-friend-id') },
+                success: function (html) {
+                    $container.html(html);
+                }
+            });
+        });
+
+        $container.yogaInvitationButtons();
+    });
+</script>

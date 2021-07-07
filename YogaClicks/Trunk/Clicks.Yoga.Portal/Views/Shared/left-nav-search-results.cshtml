@@ -1,0 +1,43 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchResultsModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h2>Search Results</h2>
+                <h4>Refine by category</h4>
+                <nav class="filter">
+                    @foreach (var cat in Model.CategorisedResults)
+                    {
+                        if (cat.Key.ToLower() == "teacher")
+                        {
+                        <form action="@Url.Action("Teachers", "Search")" method="get">
+                            <a href="#" class="search-filter" data-category="@cat.Key">@(cat.Key)s (@cat.Value.Count)</a>
+                            @Html.Hidden("Keywords")
+                        </form>
+                        }
+                        else if (cat.Key.ToLower() == "venue")
+                        {
+                        <form action="@Url.Action("Venues", "Search")" method="get">
+                            <a href="#" class="search-filter" data-category="@cat.Key">@(cat.Key)s (@cat.Value.Count)</a>
+                            @Html.Hidden("Keywords")
+                        </form>
+                        }
+                        else if (cat.Key.ToLower() == "accreditationbody")
+                        {
+                            <a href="@Url.Action("Index", "AccreditationBodys")">Accrediting / registering Bodies (@cat.Value.Count)</a>
+                        }
+                        else if (cat.Key.ToLower() == "teachertrainingcourse")
+                        {
+                        <form action="@Url.Action("Index", "TeacherTrainingCourses")" method="get">
+                            <a href="#" class="search-filter" data-category="@cat.Key">Teacher Training Courses (@cat.Value.Count)</a>
+                            @Html.Hidden("Search", Model.Criteria.Keywords)
+                        </form>
+                        }
+                    }
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>

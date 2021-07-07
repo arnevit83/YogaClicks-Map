@@ -1,0 +1,57 @@
+﻿@model Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationBodyDisplayModel
+
+
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+
+
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+
+
+                <h1 class="pageTitle"><span style="float: left">Accrediting / registering bodies</span></h1>
+                
+                
+                <br /><br /><br />
+                Refine your search<br />
+                <nav class="filter">
+                    <h3 class="open">Country</h3>
+                    <select id="countries">
+                        <option value="">All</option>
+                        @foreach (var country in Model.Countries)
+                        {
+                            <option value="@country.Country.Code">@country.Country.EnglishName</option>
+                        }
+                    </select>
+                    <a href="@Url.Action("Index", "AccreditationBodys")" class="btn btn-clear btn-default">Show All</a>
+                    <br /><br />
+                </nav>
+                
+                <nav class="filter">
+                    <h3 class="open">A-Z listing</h3>
+             
+                    <div class="list-group">
+                        @foreach (var body in Model.All)
+                        {
+                            <a class="list-group-item" href="@Url.Action("display", "accreditationbodys", new {id = body.Id})">@body.Name</a>
+                        }
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $("#countries").change(function() {
+        location.href = "/accreditationbodys/index?country=" + $(this).val();
+    });
+    $("#right-menu-close").click(function () {
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+    });
+</script>

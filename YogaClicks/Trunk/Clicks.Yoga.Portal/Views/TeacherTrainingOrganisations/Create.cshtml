@@ -1,0 +1,53 @@
+﻿@using System.Activities.Expressions
+@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCreateModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("Create", "TeacherTrainingOrganisations", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.UserId)
+
+    <h3 class="greenHeader">Your Teacher Training page</h3>
+    <hr class="modalHrSteps" />
+    <ul class="steps steps2">
+        <li class="active"><span>Step 1</span></li>
+        <li><span>Step 2</span></li>
+    </ul>
+    <div class="scrollableiFrame">
+        @Html.ValidationSummary()
+        <div>
+            <h3>Your organisation details</h3>
+            <div class="clearRow">
+                <div class="halfWidth">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name)
+                </div>
+            </div>
+        </div>
+
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.EmailAddress, "Email")
+                @Html.TextBoxFor(m => m.EmailAddress)
+            </div>
+        </div>
+
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.Label("Websites / social media (copy & paste full URL)")
+                @Html.TextBoxFor(m => m.Website.Url)
+            </div>
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="@Url.Action("Create", "Profiles", new { id = SecurityContext.CurrentProfile.Id })" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+}

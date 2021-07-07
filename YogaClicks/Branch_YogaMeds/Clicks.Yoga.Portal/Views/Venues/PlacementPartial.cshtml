@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherPlacementModel
+
+@if (Model.Confirmed || SecurityContext.IsOwner(Model.Teacher) || SecurityContext.IsOwner(Model.Venue))
+{
+<div class="connectionWrap">   
+    <span class="connection" data-teacherid="@Model.Teacher.Id">
+        <a href="@Url.Action("Display", "Teachers", new { id = Model.Teacher.Id })">
+            <div class="image">
+                @Html.Image(Model.Teacher.Image, i => i.Resize(c => c.Width(128).Height(128).ScaleBoth().Crop()))
+            </div>
+            <span class="name">
+                <strong>@Model.Teacher.Name</strong>
+            </span>
+            <span class="location">
+                @if (Model.Teacher.Location != null)
+                {
+                    @Model.Teacher.Location.Name
+                }
+            </span>
+        </a>
+        @if (SecurityContext.Authenticated)
+        {
+            if (SecurityContext.CanUpdate(Model.Teacher) || SecurityContext.CanUpdate(Model.Venue))
+            {
+                <a class="remove-placement" href="#" data-venueid="@Model.Venue.Id" data-teacherid="@Model.Teacher.Id">Remove professional</a>
+            }
+        }
+    </span>
+</div> 
+}

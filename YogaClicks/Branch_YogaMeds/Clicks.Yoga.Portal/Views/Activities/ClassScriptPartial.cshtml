@@ -1,0 +1,39 @@
+﻿@model string
+
+<script>
+    $(function () {
+        var $container = $('#@Model');
+        
+        $container.on('click', 'a[data-role=SummaryButton]', function () {
+            var $this = $(this);
+            var $tr = $this.closest('tr');
+            var $summary = $this.closest('tr').next('.classesRevealContent');
+            var $output = $tr.next('tr').find("div.activitySummary");
+            var $buttons = $tr.find('a[data-role=SummaryButton]');
+
+            if ($this.data('selected')) {
+                $this.data('selected', false);
+                $buttons.removeClass('selected');
+                $summary.hide();
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: $this.data('action'),
+                    data: {
+                        Id: $this.data('id')
+                    },
+                    success: function (html) {
+                        $buttons.data('selected', false);
+                        $buttons.removeClass('selected');
+                        $this.data('selected', true);
+                        $this.addClass('selected');
+                        $output.html(html);
+                        $summary.show();
+                    }
+                });
+            }
+
+        });
+    });
+</script>

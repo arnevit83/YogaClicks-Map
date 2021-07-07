@@ -1,0 +1,67 @@
+﻿@model Clicks.Yoga.Portal.Models.Account.AccountLoginModel
+@if (!SecurityContext.Authenticated)
+{
+    <a href="/" class="button large pink registerRevealBtn scrollTo reg-form-header">Join us</a>
+
+    <a href="#" class="button large loginRevealBtn grey-button">Log in</a>
+<div class="loginReveal">
+
+        @using (Html.BeginForm("Authenticate", "Account", FormMethod.Post, new {@class = "login", id = "login-form"}))
+        {
+            @Html.Hidden("Destination", Request.QueryString["Destination"])
+            
+            if (!string.IsNullOrEmpty(Model.Validation))
+            {
+                <div class="validation-summary-errors">
+                    <ul>
+                        <li>@Model.Validation</li>
+                    </ul>
+                </div>
+            }
+            
+            <p><strong>Please enter your login details</strong></p>
+
+            @Html.TextBoxFor(m => m.Username, new {placeholder = "Email address", style = "margin-right: 3px;"})
+            @Html.PasswordFor(m => m.Password, new {placeholder = "Password"})
+            <input type="hidden" name="@Html.NameFor(m => m.Destination)" id="@Html.IdFor(m => m.Destination)" value="@ViewContext.Controller.ControllerContext.HttpContext.Request.Url.PathAndQuery"/>
+            @Html.CheckBoxFor(m => m.Persist) @:<small class="remember">Keep me logged in</small>
+            <div class="btnWrap">
+                <button type="button" id="login-button" class="button pink">Log in</button>
+                <a href="#" id="fbLoginButton" class="facebook"><img src="/images/buttons/login-with-facebook-btn.png" alt="Login with facebook"></a>
+                <a href="#" class="loginRevealBtn close-login-button"><img src="~/Images/buttons/up-arrow.png" /></a>
+                <small><a href="@Url.Action("passwordresetrequest", "account")">Forgotten password? </a></small>
+            </div>
+        }
+   
+    
+    @if (!string.IsNullOrEmpty(Model.Destination))
+    {
+        @Html.HiddenFor(m => m.Destination)
+    }
+</div>    
+    }
+    @*
+    <form class="clearfix">
+        <legend>Previewers, <span>nice to meet you</span></legend>
+        <button class="button yellow" onclick="location.href = '@Url.Action("createaccount", "registration")'; return false;">Sign up</button>
+        <a href="#" id="fbButton" class="facebook"><img src="/images/buttons/sign-up-with-facebook.gif" alt="Sign up with facebook" width="154" height="25"></a>
+    </form>
+    *@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fbLoginButton').on('click', function (e) {
+            e.preventDefault();
+            facebookConnect(function() {
+                var newUrl = window.location.href;
+                if (newUrl.indexOf("register") > 0) {
+                    newUrl = "/";
+                } else {
+                    newUrl = window.location.href.replace("#", "");
+                }
+                window.location.replace(newUrl);
+            });
+        });
+    });
+</script>

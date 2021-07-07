@@ -1,0 +1,130 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityUpdateClassModel
+
+@{
+    ViewBag.Title = "Edit class";    
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+<div id="content-slider" role="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader"><span>&nbsp;</span>@Model.Activity.Type.Name: @Model.Activity.Name</h2>
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Action("Tabs")
+
+                @using (Html.BeginForm())
+                {
+                    <h3 class="fl">Edit this class</h3>
+                    <button class="button save fr" type="submit">Save Changes <img src="/images/icon-save.png"></button>
+                    <hr />
+                    @Html.ValidationSummary()
+                    <div class="courseSection">
+                        <h4>Class details</h4>
+                        <div class="row">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.Name)
+                                @Html.TextBoxFor(m => m.Name, new { maxlength = 50 })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.AbilityLevel, "Ability level")
+                                @Html.EditorFor(m => m.AbilityLevel)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.PromoterHandle, "Promoter")
+                                @Html.EditorFor(m => m.PromoterHandle)
+                            </div>
+                        </div>
+                        <div class="row courseCheckboxRow">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.BookingRequired)
+                                @Html.EditorFor(m => m.BookingRequired)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.Price)
+                                @Html.EditorFor(m => m.Price)
+                            </div>
+                        </div>
+                        <div class="row">
+                           <div class="columns large-6">
+                                @Html.LabelFor(m => m.Date)
+                                @Html.EditorFor(m => m.Date)
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="courseSection">
+                        <h4>Duration</h4>
+                        <div class="row">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.TimeRange, "")
+                                @Html.EditorFor(m => m.TimeRange)
+                            </div>
+                        </div>
+                    
+                        <div class="row courseCheckboxRow">
+                           <div class="columns large-6">
+                                @Html.LabelFor(m => m.Repeat)
+                                @Html.EditorFor(m => m.Repeat)
+                            </div>
+                        </div>
+                    
+                        <div class="row courseCheckboxRow">
+                            <div class="columns large-6">
+                                @Html.LabelFor(m => m.RepeatFrequency, "How frequent?")
+                                @Html.EditorFor(m => m.RepeatFrequency)
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="courseSection">
+                        <h4>Venue and styles</h4>
+                        <div class="row changeVenueButton">
+                            <div class="columns large-6">
+                                @Model.Activity.Venue.Name
+                                <button onclick="openModal('@Url.Action("ChangeVenue")'); return false;" class="silver button">Change</button>
+                            </div>
+                        </div>
+
+                        <div class="block-section update-class-desc">
+                            <div>
+                                @Html.LabelFor(m => m.Description)
+                                @Html.TextAreaFor(m => m.Description)
+                            </div>
+                        </div>   
+
+                        <div class="block-section styles-taught-section">
+                            @Html.EditorFor(m => m.Styles)
+                        </div>
+
+                        <div class="block-section conditions-taught-section">
+                            @Html.EditorFor(m => m.Conditions)
+                        </div>
+                    </div>
+                    <span class="fl profileDelete button blockButton">
+                        <span>&nbsp;</span>
+                        @Html.Action("DeleteButton", "Profiles", new { entityId = Model.Activity.Id, Model.Activity.EntityTypeName, securable = Model.Activity })
+                    </span>
+                    <button class="button save fr" type="submit">Save Changes <img src="/images/icon-save.png"></button>
+                }
+            </article>
+        </div>
+    </div>
+</div>
+

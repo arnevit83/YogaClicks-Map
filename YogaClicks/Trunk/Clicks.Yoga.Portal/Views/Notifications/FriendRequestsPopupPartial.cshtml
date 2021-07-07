@@ -1,0 +1,16 @@
+﻿@model Clicks.Yoga.Portal.Models.Notifications.FriendRequestsPopupPartialModel
+
+@foreach (var request in Model.Requests)
+{
+    <div data-role="Request" class="request request-dropdown">
+        <div class="image">
+            @Html.Image(request.ActorHandle.Image, "Profile.jpg", i => i.Resize(c => c.Width(60).Height(60).ScaleBoth().Crop()) , request.ActorHandle.Name, new { @class = "friend-small" })
+        </div>
+        <div class="text">
+            <p>@Html.Raw(request.Message)</p>
+            <button data-role="AcceptButton" data-id="@request.Id" class="button save highlight">Confirm</button>
+            <button data-role="RejectButton" data-id="@request.Id" class="button save tap">Ignore</button>
+            <button data-role="BlockButton" data-id="@request.Id" class="button save tap"><img src="/images/icon-block.png"> Block user</button>
+        </div>   
+     </div>          
+}

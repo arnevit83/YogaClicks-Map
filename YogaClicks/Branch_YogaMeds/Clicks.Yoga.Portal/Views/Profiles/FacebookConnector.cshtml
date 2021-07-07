@@ -1,0 +1,28 @@
+﻿@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    <div class="find-facebook-friends personalProfileFacebook">
+        <div class="fl">
+            Connect with Facebook to find friends and share YogaClicks
+        </div>
+        <div class="facebook-friends">
+            <a href="javascript:void(0)" data-role="FacebookConnectButton"><img src="/images/buttons/connect-with-facebook-btn.jpg"></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.on('click', 'a[data-role=FacebookConnectButton]', function (e) {
+            e.preventDefault();
+            facebookConnect(function () {
+                $container.remove();
+                facebookInvite();
+            });
+        });
+    });
+</script>

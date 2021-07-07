@@ -1,0 +1,56 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model SearchTeacherTrainingCoursesModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+    ViewBag.Title = "Teacher training course search";
+}
+
+@section LeftNav {
+    @Html.Action("TeacherTrainingNavigation", new { organisations = false })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col search-content-col purple-strip" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <!--
+            <header role="search-results" class="search-results">
+                    <p class="fr"><a href="#" class="list-view active">List view</a><a href="#" class="map-view">Map view</a></p>
+                    <p class="fl">Showing  results</p>
+            </header>
+                -->
+                <div class="organisationsHeader">
+                    <div class="left-col">
+                        <h2>Organisations</h2>
+                    </div>
+                    <div class="right-col">
+                        <h2>Courses (@Model.PageDescription)</h2>
+                    </div>
+                </div>
+                    @foreach (var organisation in Model.OrganisationResults)
+                    {
+                    <div class="block-section course-section cb">
+                        <div class="left-col fl" style="background:#fff; padding:10px; margin:-10px; border-right:1px solid #ccc;">
+                            <div class="image">
+                                <a href="@organisation.Uri">@Html.Image(organisation.Image, "Profile.jpg", i => i.Resize(c => c.Width(170).Height(170).ScaleBoth().Crop()))</a>
+                            </div>
+                            <p><b class="name"><a href="@organisation.Uri">@organisation.Name</a></b><br />
+                            @organisation.Address</p>
+                        </div>
+                        <div class="right-col fr">
+
+                            @foreach (var course in organisation.CourseResults)
+                            {
+                                <a href="@course.Uri">@course.Name</a><br/>
+                            }
+                        </div>
+                    </div>
+                    }
+                @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+                
+            </article>
+        </div>
+    </div>
+</div>

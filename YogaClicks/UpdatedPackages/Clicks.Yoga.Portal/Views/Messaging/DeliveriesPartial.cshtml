@@ -1,0 +1,71 @@
+﻿@model Clicks.Yoga.Portal.Models.Messaging.MessagingDeliveriesPartialModel
+
+@foreach (var delivery in Model.Deliveries)
+{
+    <div data-role="Message" class="block-section message">
+     
+
+
+
+ 
+ 
+
+        <div class="row nopadding">
+            <div class="col-sm-2 nopadding">
+                <div class=" checkBox messagecheckbox">
+                    <input type="checkbox" name="DeliveryIds" value="@delivery.Id">
+                    <input type="hidden" data-role="Content" value="@delivery.Message.Sender.Name @delivery.Message.Content">
+                </div>
+
+                <div class="img-thumbnail messagesthumnail hidden-xs">
+                    <a class="" href="@Url.Entity(delivery.Message.Sender)">
+                        @Html.DisplayFor(m => delivery.Message.Sender.Image, "ProfileThumbnail")
+                    </a>
+
+                    @if (!delivery.Read)
+                    {
+                        <strong>NEW</strong>
+                    }
+                </div>
+
+            </div>
+            <div class="col-sm-10 nopadding">
+                <div>
+                    
+                    <div class="well WellColour well-sm">
+                        <a href="@Url.Entity(delivery.Message.Sender)"><strong>@delivery.Message.Sender.Name</strong></a> <i class="fa fa-long-arrow-right"></i>
+
+
+                        <a href="@Url.Entity(delivery.Recipient)">@delivery.Recipient.Name</a>
+                        @* DWTIMEHERE *@
+                        @Html.LocalDateTime(delivery.Message.CreationTime.ToUniversalTime().ToString("u"))<br style="clear: both"/><hr style="margin-top: 7px; margin-bottom:7px;" /><br />
+
+                        <p data-role="Preview">
+                            @delivery.Message.ContentPreview(200)
+
+                            @if (delivery.Message.Content.Length > 200)
+                            {
+                                <a href="javascript:void(0)" data-role="ExpandButton">Read more</a>
+                            }
+                        </p>
+
+                        <p data-role="Content" style="display: none;">
+                            @delivery.Message.Content
+                        </p>
+                    </div>
+
+                    <div class="pull-right">
+                        <a href="@Url.Action("Conversation", new {ConversationId = delivery.Message.Conversation.Id, MessageId = delivery.Message.Id})#reply" class="btn btn-clear btn-default  btn-sm"><i class="fa fa-reply"></i> Reply</a>
+                        <a href="@Url.Action("Conversation", new {ConversationId = delivery.Message.Conversation.Id})#message-@delivery.Message.Id" class="btn btn-clear btn-default  btn-sm"><i class="fa fa-comments"></i> View conversation</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    
+    </div>
+}

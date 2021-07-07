@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "WizardIntro";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h2 class="greenHeader">Welcome!</h2>
+    <hr class="modalHr studentHr" />
+    <div class="wizard-intro-header">On YogaClicks everyone has a personal profile</div>
+    <div>
+        <img src="~/Images/wizard/wizard-intro.jpg" />
+    </div>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <span class="fr"><input class="button pink large fr" type="submit" value="Next" /></span>
+    </div>
+    <div class="cb"></div>
+}

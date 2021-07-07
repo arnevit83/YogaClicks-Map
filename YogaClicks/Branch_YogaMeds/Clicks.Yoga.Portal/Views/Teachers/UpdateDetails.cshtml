@@ -1,0 +1,26 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherDetailsUpdateModel
+
+@using (Html.BeginForm("UpdateDetails", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-details-form" }))
+{
+    @Html.HiddenFor(m => m.TeacherId)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+
+    @Html.LabelFor(m => m.Telephone)
+    @Html.EditorFor(m => m.Telephone)
+
+    @Html.LabelFor(m => m.EmailAddress, "Email address")
+    @Html.EditorFor(m => m.EmailAddress)
+
+    @Html.LabelFor(m => m.Websites)
+    @Html.EditorFor(m => m.Websites)
+
+    <div>
+        <span class="profile-details-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

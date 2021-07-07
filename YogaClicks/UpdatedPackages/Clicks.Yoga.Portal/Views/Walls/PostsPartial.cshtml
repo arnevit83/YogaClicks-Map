@@ -1,0 +1,26 @@
+﻿@using Clicks.Yoga.Portal.Models.Walls
+@model Clicks.Yoga.Portal.Models.Walls.WallPostsPartialModel
+
+@if (Model.Posts.Count == 0)
+{
+    if (Model.Permissions.Post)
+    {
+        <p data-role="PostsEmpty">There doesn't seem to be anything here yet. Why not leave a post and shake things up a bit?</p>
+    }
+    else
+    {
+        <p>Sorry, there doesn't seem to be anything here at the moment. Why not come back in a little while?</p>
+    }
+}
+else
+{
+    if (!Model.Permissions.Post)
+    {
+        <p>Goin sup stop join in.</p>
+    }
+}
+
+@foreach (var post in Model.Posts)
+{
+    @Html.Partial("PostPartial", new WallPostPartialModel(post, Model.Permissions))
+}

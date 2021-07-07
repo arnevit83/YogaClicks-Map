@@ -1,0 +1,51 @@
+﻿@using Clicks.Yoga.Portal.Enums.Profiles;
+@model Clicks.Yoga.Portal.Models.Profiles.CongratulationsProfileCreatedModel
+
+@{
+    ViewBag.Title = "CongratulationsProfileCreated";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h2 class="greenHeader">Congratulations! That’s the basics done.</h2>
+<hr class="modalHrSteps" />
+
+<div class="wizard-congrats-text-container">
+    @switch (Model.ProfileType)
+    {
+        case ProfileTypeEnum.Personal:
+            break;
+        case ProfileTypeEnum.Venue:
+            <p>Your professional page will now be visible in searches.</p>
+            <p>You can edit your venue page from your personal profile.</p>
+            <p>Your personal profile is not shown when people search for your venue.</p>
+            break;
+        case ProfileTypeEnum.Teacher:
+        <p>Your professional page will now be visible in searches.</p>
+        <p>You can edit your teacher page from your personal profile.</p>
+        <p>You can create another professional page from your personal profile.</p>
+            break;
+        case ProfileTypeEnum.TTO:
+        <p>Your Teacher Training page will now be visible in searches.</p>
+        <p>You can edit your Teacher Training page from your personal profile.</p>
+        <p>Your personal profile is not shown when people search for your Teacher Training organisation.</p>
+            break;
+        case ProfileTypeEnum.SO:
+        <p>Your Style Organisation page will now be visible in searches.</p>
+        <p>You can edit your Style Organisation from your personal profile.</p>
+        <p>Your personal profile is not shown when people search for your Style Organisation.</p>
+            break;
+        default:
+            break;
+    }
+</div>
+<div class="wizard-congrats-image-container">
+    <img src="@Url.Content("~/images/wizard/wizard-nav-bar.jpg")" />
+</div>
+
+<div class="wizard-footer-buttons-container">
+    <div class="wizard-footer-nav-container">
+        <a href="@Url.Action("PrettifyProfile", new { id = Model.Id, profileType = Model.ProfileType })" class="button pink large">Next</a>
+    </div>
+</div>
+
+<div class="cb"></div>

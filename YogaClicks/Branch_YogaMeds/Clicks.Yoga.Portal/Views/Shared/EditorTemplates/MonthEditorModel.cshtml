@@ -1,0 +1,25 @@
+﻿@using System.Globalization
+@model Clicks.Yoga.Portal.Models.Editors.MonthEditorModel
+
+@{
+    Layout = null;
+}
+
+@{
+    var yearOptions = new List<int>();
+    var monthOptions = new List<int>();
+    
+    for (var i = DateTime.Now.Year; i < DateTime.Now.Year + 10; i++)
+    {
+        yearOptions.Add(i);
+    }
+    
+    for (var i = 1; i < 13; i++)
+    {
+        monthOptions.Add(i);
+    }
+}
+
+@Html.DropDownListFor(m => m.Month, new SelectList(monthOptions.Select(v => new { Value = v, Text = CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(v) }), "Value", "Text"), "")
+
+@Html.DropDownListFor(m => m.Year, new SelectList(yearOptions.Select(v => new { Value = v, Text = v }), "Value", "Text"), "")

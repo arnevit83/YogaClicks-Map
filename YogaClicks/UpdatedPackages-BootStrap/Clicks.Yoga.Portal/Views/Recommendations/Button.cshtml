@@ -1,0 +1,12 @@
+﻿@model Clicks.Yoga.Portal.Models.Recommendations.RecommendationButtonModel
+
+
+@if (SecurityContext.Authenticated)
+{
+    <button onclick="openModal('@Url.Action("Send", new { Model.EntityId, Model.EntityTypeName })')" class="btn btn-default btn-clear  btn-sm  recommendButton">Recommend to a friend</button>
+}
+
+else
+{
+    <a class="btn btn-default btn-clear btn-sm reg-form-popup" href="/">Recommend to a friend</a>
+}

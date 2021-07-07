@@ -1,0 +1,9 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.VenueAmenityChooserModel
+
+@foreach (var option in Model.Options)
+{
+    <div class="VenueTypeDependent @(option.IsResidential ? "Residential" : "NonResidential")" style="display: @(option.IsResidential == Model.Residential ? "block" : "none")">
+        @Html.CheckBoxFor(m => m.Selection[option.Id])
+        @Html.LabelFor(m => m.Selection[option.Id], option.Name)
+    </div>
+}

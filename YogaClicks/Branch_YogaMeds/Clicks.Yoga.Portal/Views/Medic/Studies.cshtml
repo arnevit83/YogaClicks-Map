@@ -1,0 +1,110 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.StudiesModel
+@{
+    var yoga = false;
+    var meditation = false;
+    var mindfulness = false;
+}
+<h4>The clinical studies</h4>
+
+@if (Model.Studies.Any())
+{
+
+
+    <div class="studies-container">
+        @foreach (var study in Model.Studies)
+        {
+            if (study.TherapyTypes != null)
+            {
+                yoga = study.TherapyTypes.Where(x => x.Name.ToLower() == "yoga").Any();
+                meditation = study.TherapyTypes.Where(x => x.Name.ToLower() == "meditation").Any();
+                mindfulness = study.TherapyTypes.Where(x => x.Name.ToLower() == "mindfulness").Any();
+            }
+
+            <div class="single-study-container">
+                <div class="study-title-row" id="@study.Id"><span>@study.Title</span> <i class="arrow"></i></div>
+                <div class="study-info">
+                    <hr />
+                    <div>
+                        <span class="practice-title">Practice</span>
+                        <ul class="therapy-types">
+                            <li class="@(yoga ? "active" : "")">Yoga</li>
+                            <li class="@(meditation ? "active" : "")">Meditation</li>
+                            <li class="@(mindfulness ? "active" : "")">Mindfulness</li>
+                        </ul>
+                    </div>
+                    <hr />
+                    <div class="study-section">
+                        <div class="leftCol">Abstract</div>
+                        <div class="rightCol">
+                            <span>@Html.Raw(study.Abstract)</span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Citations</div>
+                        <div class="rightCol">
+                            <span>@study.NumberOfCitations.ToString()</span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Authors</div>
+                        <div class="rightCol">
+                            @{var i = 1; }
+                            @foreach (var author in study.Authors)
+                            {
+                                <span>@author.Name</span>
+                                if (i != study.Authors.Count())
+                                {
+                                    <span>| </span>
+                                }
+
+                                i++;
+                            }
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Published</div>
+                        <div class="rightCol">
+                            <span>@study.DateOfStudy</span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Journal</div>
+                        <div class="rightCol">
+                            <span>@study.Journal</span>
+                        </div>
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Volume / Issue</div>
+                        <div class="rightCol">
+                            <span>@study.Volume</span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Author's primary institution</div>
+                        <div class="rightCol">
+                            <span>@study.Institution</span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="study-section">
+                        <div class="leftCol">Source</div>
+                        <div class="rightCol">
+                            <span><a href="@study.Source" target="_blank">@study.Source</a></span>
+                        </div>
+                        <div class="clear-float"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <span>There are currently no studies for this condition</span>
+}
+<hr />

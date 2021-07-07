@@ -1,0 +1,4 @@
+﻿@model bool
+
+@Html.RadioButton("", "true", Model ? true : false, new { @class = "repeat-radio-true" }) @(ViewBag.TrueText ?? "Yes")
+@Html.RadioButton("", "false", Model ? false : true, new { @class = "repeat-radio-false" }) @(ViewBag.FalseText ?? "No")

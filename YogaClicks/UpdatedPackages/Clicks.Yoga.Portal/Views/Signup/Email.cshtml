@@ -1,0 +1,48 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.SignUp.VenueTest
+
+@{
+    ViewBag.Title = "Teacher Step 3";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+@using (Html.BeginForm("EmailTestPost", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "venue-test" }))
+{
+    <input name="ToEmail" type="text" placeholder="blah" data-field-type="email" />
+    <input name="SenderEmail" type="text" placeholder="Your email" data-field-type="email" />
+    <textarea rows="5" name="Message" type="text" placeholder="Type your message here" data-field-type="general"></textarea>
+    <input type="button" value="Send" class="btn btn-default btn-lg @string.Format("purple-inverse-text-hover")" />
+}
+
+
+
+<div id="testing"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".btn").click(function () {
+            var form = $(this).closest("form");
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $("#testing").append(data); // show response from the php script.
+                },
+                error: function () {
+                    alert("Something went wrong, please check the email addresses and try again");
+                }
+            });
+        });
+
+    });
+</script>

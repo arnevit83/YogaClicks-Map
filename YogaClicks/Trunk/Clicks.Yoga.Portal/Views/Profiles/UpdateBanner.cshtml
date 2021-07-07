@@ -1,0 +1,24 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileBannerUpdateModel
+
+<div>
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm("UpdateBanner", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-banner-form" }))
+{
+    @Html.HiddenFor(m => m.ProfileId)
+
+    <div id="File">
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Width)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Height)
+        @Html.EditorFor(m => m.ProfileBanner)
+    </div>
+
+    <div id="cropfancybox" style="display: none">
+        <div id="upload-cut">
+            <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+        </div>
+    </div>
+}

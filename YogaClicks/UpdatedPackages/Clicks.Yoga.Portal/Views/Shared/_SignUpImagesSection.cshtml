@@ -1,0 +1,88 @@
+﻿@model Clicks.Yoga.Portal.Models.SignUp.SignUpImages
+
+@{
+
+}
+
+<div class="row @Model.ColorCssClass hr-row-margin-bottom margintop100">
+    <div class="hidden-xs col-sm-1"></div>
+    <div class="col-xs-12 col-sm-10"><hr /></div>
+    <div class="hidden-xs col-sm-1"></div>
+</div>
+
+<div class="row @Model.ColorCssClass signup-row-image-row">
+    <div class="hidden-xs col-sm-1"></div>
+    <div class="col-lg-2"></div>
+    <div class="col-xs-12 col-lg-8">
+        <div class="row">
+            @Html.HiddenFor(m => m.Image.ImageCrop.XCoord)
+            @Html.HiddenFor(m => m.Image.ImageCrop.YCoord)
+            @Html.HiddenFor(m => m.Image.ImageCrop.Width)
+            @Html.HiddenFor(m => m.Image.ImageCrop.Height)
+            @Html.EditorFor(m => m.Image)
+        </div>
+    </div>
+    <div class="hidden-xs col-sm-1"></div>
+</div>
+
+<div class="row @Model.ColorCssClass signup-row-image-row">
+    <div class="hidden-xs col-sm-1"></div>
+    <div class="col-lg-2"></div>
+    <div class="col-xs-12 col-lg-8">
+            @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.XCoord)
+            @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.YCoord)
+            @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Width)
+            @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Height)
+            @Html.EditorFor(m => m.ProfileBanner)
+    </div>
+    <div class="hidden-xs col-lg-1"></div>
+</div>
+
+@*<div class="row @Model.ColorCssClass signup-row-image-row">
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+    <div class="col-xs-12 col-lg-10 no-padding">
+        @Html.HiddenFor(m => m.Image.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.Image.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.Image.ImageCrop.Width)
+        @Html.HiddenFor(m => m.Image.ImageCrop.Height)
+        @Html.EditorFor(m => m.Image)
+    </div>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+</div>
+
+<div class="row @Model.ColorCssClass signup-row-image-row">
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+    <div class="col-xs-12 col-lg-10 no-padding">
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Width)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Height)
+        @Html.EditorFor(m => m.ProfileBanner)
+    </div>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+</div>*@
+
+<div id="PleaseWait" style="display: none;"><img src="/images/loading.svg" id="pleaseWait-loading" class="pleaseWait-loading Spinner" data-svgpng="/Images/loading.gif">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        if ($('form').length > 0) {
+            $('input:submit').click(function () {
+
+                var invalid = false;
+                $('[data-field-type="general"]').each(function(e) {
+                    if ($(this).val() == 0) {
+                        invalid = true;
+                    }
+                });
+
+                if (!invalid) {
+                    $("#PleaseWait").show();
+                }
+            });
+        }
+    });
+</script>

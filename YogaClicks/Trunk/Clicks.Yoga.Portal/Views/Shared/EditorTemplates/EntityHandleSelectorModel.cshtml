@@ -1,0 +1,3 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.EntityHandleSelectorModel
+
+@Html.DropDownListFor(m => m.Selection, new SelectList(Model.Options.Select(s => new { Value = s.Id, Text = s.Name }), "Value", "Text"))

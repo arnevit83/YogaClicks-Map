@@ -1,0 +1,37 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewSummaryPartialModel
+
+<div class="review-header">
+    @if (!Model.Statistics.Exist)
+    {
+        <a href="@Url.Action("Reviews", Model.Subject.EntityTypeName + "s", new { id = Model.Subject.Id })"><span>Not Rated Yet</span></a>
+    }
+    else
+    {
+        <a href="@Url.Action("Reviews", Model.Subject.EntityTypeName + "s", new { id = Model.Subject.Id })">
+            <span>
+                Average (@Model.Statistics.Count @(Model.Statistics.Count == 1 ? "review" : "reviews"))
+                <span class="rating-large @Html.StarRatingClass(Model.Statistics.AverageRating)"></span>
+            </span>
+        </a>
+    }
+    @if (Model.Subject.Exists && SecurityContext.HasActor && !SecurityContext.IsOwner(Model.Subject))
+    {
+        <a class="button silver write-review" href="javascript:openModal('@Url.Action("Create", "Reviews", new { SubjectId = Model.Criteria.SubjectId.Value, Model.Criteria.SubjectType })');" data-actor-can-review="@(SecurityContext.CurrentActor.EntityType.CanReview.ToString().ToLower())">Write a review</a>
+    }
+    else if (!SecurityContext.Authenticated)
+    {
+        <a class="button silver reg-form-popup" href="/">Write a review</a>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".write-review").click(function () {
+            var $button = $(this);
+            if (!$button.data('actor-can-review')) {
+                openModal('@Url.Action("HumansOnly", "Account")', false, 300, 100);
+                e.preventDefault();
+            }
+        });
+    });
+</script>

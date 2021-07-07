@@ -1,0 +1,86 @@
+﻿@model Clicks.Yoga.Portal.Models.Styles.StyleTraitsNavigationModel
+
+@{ var order = new List<string> { "Mind", "Body", "Spirit", "Focus", "Environment", "Who" };}
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle  hidden-sm hidden-md hidden-lg">
+                    <span style="float: left">Style finder</span>
+                </h1>
+
+
+
+                <div class="levelWrap ">
+                    <a class="hidden-xs" tabindex="0" role="button" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Style finder" data-content="<strong>We've grouped 30+ yoga style attributes under the 6 headers below.</strong><br /><br />Tick the boxes to select the attributes you’re looking for.<br /><br />Only styles with those attributes will display.<br /><br />To deselect an attribute untick the box.<br /><br /><em>Your search doesn't return any searches? Congratulations. You’ve invented a new style!</em>">
+                          <h1 class="pageTitle"><span style="float: left">Style finder</span> <i class="fa fa-question-circle  questionMarkBS"></i>
+                          </h1>
+                      </a>
+
+                </div>
+
+                <div style="clear:both">
+                    <br />
+
+                    @foreach (var group in Model.Traits.OrderBy(e => e.DisplayOrder))
+                    {
+                        if (group.Traits.Count > 0)
+                        {
+                            var display = group.Traits.Any(t => t.Selected) ? string.Empty : "none";
+
+                            <nav class="filter">
+                                <h3 style="margin: 0; ">
+                                    <a href="#" class="toggle-traits" data-visible="@string.IsNullOrEmpty(display).ToString().ToLower()">
+                                        @group.Name
+                                        <span class="glyphicon-stack pull-right" style="font-size:13px; margin-top:-3px;">
+                                            <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                                            <i class="glyphicon glyphicon-menu-down glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                                        </span>
+
+
+                                    </a>
+                                </h3>
+                                <div class="trait-box  well" style="display: @display; padding: 10px;">
+
+                                    @foreach (var trait in group.Traits)
+                                    {
+                                        var action = trait.Selected ? "UnselectTrait" : "SelectTrait";
+                                        var selected = trait.Selected ? "selected" : "";
+
+                                        @Html.ActionLink(trait.Name + " (" + trait.Count + ")", action, "Styles", new { traitIdString = Model.TraitIdString, traitNameString = Model.TraitNameString, traitId = trait.Id }, new { @class = selected })
+                                    }
+                                </div>
+                            </nav>
+                        }
+                    }
+                    @if (Model.Traits.Any(g => g.Traits.Any(t => t.Selected)))
+                    {
+                        <div class="the-sub-footer">
+
+
+
+                            <br />
+                            <a class="btn btn-default btn-clear hidden-sm" role="button" href="/styles/index">Clear All Selections</a>
+                            <a class="btn btn-default btn-clear hidden-lg hidden-md hidden-xs" role="button" href="/styles/index">Clear All </a>
+                        </div>
+                    }
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $("#right-menu-close").click(function () {
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+    });
+</script>

@@ -1,0 +1,126 @@
+﻿@if (ViewBag.TeacherId == null)
+{
+
+
+
+    <ul id="nav-tabs" class="nav nav-tabs nav-justified">
+
+        <li>
+            <a id="profileNav" href="@Url.Action("Display")">
+                <i class="fa fa-user navmenuIcon"></i> Profile
+            </a>
+        </li>
+
+        <li>
+            <a id="classesNav" href="@Url.Action("Schedule")">
+                <i class="fa fa-calendar navmenuIcon"></i> Schedule
+            </a>
+
+        </li>
+        @*<li id="reviewNav">
+
+                <a href="@Url.Action("Reviews")">
+                    <i class="fa fa-comments"></i> Reviews
+                </a>
+
+            </li>*@
+        <li id="galleriesNav">
+            <a href="@Url.Action("Galleries")">
+                <i class="fa fa-picture-o navmenuIcon"></i> Photos
+            </a>
+        </li>
+        <li id="galleriesNav">
+
+            <a href="@Url.Action("Videos")">
+                <i class="fa fa-video-camera navmenuIcon"></i> Videos
+            </a>
+        </li>
+        <li id="venueNav">
+
+            <a href="@Url.Action("Placements")">
+                <i class="fa fa-home navmenuIcon"></i> Venues
+            </a>
+
+        </li>
+        <li id="groupsNav">
+            <a class=""
+               href="@Url.Action("Groups")">
+                <i class="fa fa-users navmenuIcon"></i> Groups
+            </a>
+        </li>
+        <li id="fanNav">
+            <a href="@Url.Action("Fans")">
+                <i class="fa fa-heart navmenuIcon"></i> Fans
+            </a>
+
+        </li>
+    </ul>
+
+}
+else
+{
+
+    <ul id="nav-tabs" class="nav nav-tabs nav-justified">
+        @{
+    var profileUrl = "/" + ViewBag.TeachTextSearch + "/profile/display";
+    var scheduleUrl = "/" + ViewBag.TeachTextSearch + "/profile/schedule";
+  
+    var galleriesUrl = "/" + ViewBag.TeachTextSearch + "/profile/galleries";
+    var videosUrl = "/" + ViewBag.TeachTextSearch + "/profile/videos";
+    var placementsUrl = "/" + ViewBag.TeachTextSearch + "/profile/placements";
+    var groupsUrl = "/" + ViewBag.TeachTextSearch + "/profile/groups";
+    var fansUrl = "/" + ViewBag.TeachTextSearch + "/profile/fans";
+        }
+
+
+
+        <li>
+            <a id="profileNav" href="@profileUrl">
+                <i class="fa fa-user navmenuIcon"></i> Profile
+            </a>
+        </li>
+
+        <li>
+            <a id="classesNav" href="@scheduleUrl">
+                <i class="fa fa-calendar navmenuIcon"></i> Schedule
+            </a>
+
+        </li>
+        <li id="galleriesNav">
+            <a href="@galleriesUrl">
+                <i class="fa fa-picture-o navmenuIcon"></i> Photos
+            </a>
+        </li>
+        <li id="galleriesNav">
+
+            <a href="@videosUrl">
+                <i class="fa fa-video-camera navmenuIcon"></i> Videos
+            </a>
+        </li>
+        <li id="venueNav">
+
+            <a href="@placementsUrl">
+                <i class="fa fa-home navmenuIcon"></i> Venues
+            </a>
+
+        </li>
+        <li id="groupsNav">
+            <a class=""
+               href="@groupsUrl">
+                <i class="fa fa-users navmenuIcon"></i> Groups
+            </a>
+        </li>
+        <li id="fanNav">
+            <a href="@fansUrl">
+                <i class="fa fa-heart navmenuIcon"></i> Fans
+            </a>
+
+        </li>
+    
+
+
+    </ul>
+}
+
+
+

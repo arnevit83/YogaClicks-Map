@@ -1,0 +1,47 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityEditableListContentPartialModel
+
+@if (Model.Activities.Count > 0)
+{
+    foreach (var activity in Model.Activities)
+    {
+        <div class="activityWrap">
+            <div class="header">
+                <h3 class="fl"><a href="@Url.Action("Display", "Activities", new { activity.Id })">@activity.Type.Name: @activity.Name</a></h3>
+                @if (SecurityContext.CanUpdate(activity))
+                {
+                    <div class="fr">
+                        @if (@activity.Finished)
+                        {
+                            <a href="javascript:void(0)" data-role="DeleteButton" data-id="@activity.Id" class="btn btn-default btn-clear  deleteButton"><span>&nbsp;</span></a>
+
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Update", "Activities", new { activity.Id })" class="btn btn-default btn-clear editButton">Edit this event <span>&nbsp;</span></a>
+    <a href="javascript:void(0)" data-role="DeleteButton" data-action="@Url.Action("DeleteOwned", "Profiles", new { @SecurityContext.CurrentProfile.Id })" data-id="@activity.Id" class="btn btn-default btn-clear deleteButton"><span>&nbsp;</span></a>
+                        }
+                    </div>
+                }
+            </div>
+
+            @if (!Model.HidePromoter)
+            {
+                <div><strong>Promoter:</strong> <a href="@Url.Action("Display", activity.PromoterHandle.Controller, new { id = activity.PromoterHandle.Id })">@activity.PromoterHandle.Name</a></div>
+            }
+            
+            <div><strong>Venue:</strong> <a href="@Url.Action("Display", "Venues", new { id = activity.Venue.Id })">@activity.Venue.Name</a></div>
+            <div class="startDate"><strong>Start date:</strong> @activity.StartTime.ToString("D")</div>
+        </div>
+    }
+}
+else
+{
+    if (SecurityContext.CanUpdate(Model.Actor))
+    {
+        <p>Click the Create button on the grey filter column to add Activities and Classes.</p>
+    }
+    else
+    {
+        <p>None yet.</p>
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model Clicks.Yoga.Portal.Models.Messaging.MessagingConversationPartialModel
+
+@foreach (var message in Model.Messages)
+{
+    var className = "";
+
+    if (SecurityContext.IsOwner(message.Sender))
+    {
+        className = "sender";
+    }
+
+    <div class="messageWrap">
+        <div id="message-@message.Id" data-role="Message" class="block-section message-section @className">
+            <div class="message messageSingle row nopadding"><br />
+                <div class="nopadding col-sm-2 hidden-xs">
+
+                    <div class="img-thumbnail">
+                        <a href="@Url.Entity(message.Sender)">
+                            @Html.DisplayFor(m => message.Sender.Image, "ProfileThumbnail")
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-10 nopadding">
+
+                    <div class="well well-sm WellColour">
+
+                        <a href="@Url.Entity(message.Sender)"><strong>@message.Sender.Name</strong></a> <i class="fa fa-long-arrow-right"></i>
+                        <a href="@Url.Entity(message.Recipient)">@message.Recipient.Name</a>
+                        @* DWTIMEHERE *@
+                        (@Html.LocalDateTime(message.CreationTime.ToUniversalTime().ToString("u")))
+                        <hr style="margin-top: 7px; margin-bottom:7px;" />
+                        <br /><p>
+    @Html.NewLines(message.Content)
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,59 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityTabsModel
+
+
+
+<ul id="nav-tabs" class="nav nav-tabs nav-justified">
+
+    <li>
+        <a id="InfoNav" href="@Url.Action("Display")">
+            <i class="fa fa-info-circle navmenuIcon"></i> Info
+        </a>
+
+    </li>
+    <li>
+        <a id="WallNav" href="@Url.Action("Wall")">
+            <i class="fa fa-rss navmenuIcon"></i> Wall
+        </a>
+    </li>
+
+    <li>
+        <a id="ProfessionalsNav" href="@Url.Action("Professionals")">
+
+            <i class="fa fa-graduation-cap navmenuIcon"></i> Teachers
+        </a>
+
+    </li>
+  
+    <li>
+        <a id="GalleriesNav" href="@Url.Action("Galleries")">
+
+            <i class="fa fa-photo navmenuIcon"></i> Galleries
+        </a>
+
+    </li>
+@if (Model.Permissions.Invite)
+    {
+        <li>
+            <a id="InvitesNav" href="@Url.Action("Invites")">
+
+                <i class="fa fa-share-alt navmenuIcon"></i> Invites
+            </a>
+
+        </li>
+    }
+    <li>
+        <a id="AttendeesNav" href="@Url.Action("Attendees")">
+
+            <i class="fa fa-check-square-o navmenuIcon"></i> Attendees
+        </a>
+
+    </li>
+    @if (Model.Permissions.Manage)
+    {
+    <li>
+        <a id="SettingsNav" href="@Url.Action("Settings")">
+            <i class="fa fa-cog navmenuIcon"></i> Settings
+        </a>
+    </li>
+    }
+</ul>

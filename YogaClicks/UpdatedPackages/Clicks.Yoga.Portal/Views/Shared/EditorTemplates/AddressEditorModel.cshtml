@@ -1,0 +1,105 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.AddressEditorModel
+
+@{
+    Layout = null;
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    <div class="clearfix">
+        <div class="wrappedinput">
+            <fieldset class="fancylabels">
+                <label>Enter the address details and select<br />from the suggested results</label>
+                <div>
+                    <p class="wizard-location-select-info-text">
+                        <span class="red-text">
+                            Please select a location from the drop-down list.
+                        </span>
+                    </p>
+                    <div class="location-select-example">
+                        <img src="@Url.Content("~/images/global/select-location.png")" />
+                    </div>
+                </div>
+                <input type="text" data-role="Location" autocomplete="off" placeholder="e.g. 108 Yoga Street, Utopia, NR3 1HA" class="location-search-box" />
+                <!--<button class="button" type="button" data-role="AcceptButton">Populate Address</button>-->
+                <span id="scrolldownpagepostcodemessage" style="display: none; color:red">Please scroll down the page to enter your postcode</span>
+            </fieldset>
+        </div>
+        <div class="suggestionsContainer">
+            <div class="suggestions" data-role="LocationSuggestions"></div>
+        </div>
+    </div>
+    <hr />
+    
+    <div class="iFrameVenueAddress" id="venueAddress" style="display:@(Model.Latitude > 0 ? "block" : "none");">
+        <div class="left">
+            <p class="size16">
+                <strong>Pinpoint exact location</strong>
+            </p>
+            <div class="map" data-role="Map" style="height: 300px;"></div>
+            @Html.HiddenFor(m => m.Latitude, new { data_role = "Latitude" })
+            @Html.HiddenFor(m => m.Longitude, new { data_role = "Longitude" })
+        </div>
+        <div class="right">
+            <p class="size16">
+                <strong>Amend address details</strong>
+            </p>
+            <fieldset>
+                @Html.LabelFor(m => m.Line1, "Address line 1")
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Line1, new { data_role = "Line1" })</div>
+            </fieldset>
+            <fieldset>
+                @Html.LabelFor(m => m.Line2, "Address line 2")
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Line2, new { data_role = "Line2" })</div>
+            </fieldset>
+            <fieldset>
+                @Html.LabelFor(m => m.City, "Town/City")
+                <div class="inputwrap">@Html.TextBoxFor(model => model.City, new { data_role = "City" })</div>
+            </fieldset>
+            <fieldset>
+                @Html.LabelFor(m => m.Area, "County/State")
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Area, new { data_role = "Area" })</div>
+            </fieldset>
+            <fieldset id="addressfinderpostcode">
+                @Html.LabelFor(m => m.Postcode, "Postcode/ZIP code")
+                <div class="inputwrap">@Html.TextBoxFor(model => model.Postcode, new { data_role = "Postcode" })</div>
+            </fieldset>
+            <fieldset>
+                @Html.LabelFor(m => m.Country, "Country")
+                <div class="inputwrap">@Html.EditorFor(model => Model.Country, "CountrySelector", new { Countries = ViewData["Countries"] })</div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#@guid').yogaLocationPicker();
+
+        var proLocation = $('.pro-location-bool').val();
+
+        if (proLocation == 'true') {
+            $('.location-select-example').addClass('pro-location-example-position');
+        }
+
+
+    })
+</script>

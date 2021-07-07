@@ -1,0 +1,16 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryEntryThumbnailPartialModel
+
+@{var owner = (SecurityContext.IsOwner(Model.Entry) || SecurityContext.IsOwner(Model.Entry.Image) || SecurityContext.IsSuperUser()) ? true : false;}
+
+<div data-role="Entry" class="galleryItemWrap" data-imageid="@Model.Entry.Id">
+    @if (owner)
+    {
+        <a href="javascript:void(0)" data-role="DeleteEntryButton" class="deleteButton" data-url="@Url.Action("DeleteEntry")" data-id="@Model.Entry.Id">Delete</a>
+    }
+
+    <a data-role="Thumbnail" href="javascript:void(0)" data-url="@Url.Action("EntryPopup", new { EntryId = Model.Entry.Id })" data-owner="@owner" class="galleryItem">
+        @Html.Image(Model.Entry.Image, i => i.Resize(c => c.Width(150).Height(150).ScaleBoth().Crop()))
+        
+    </a>
+    <div class="galleryItemName">@Model.Entry.Name</div>
+</div>

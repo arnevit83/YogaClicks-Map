@@ -1,0 +1,162 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Editors.TeacherChooserModel
+
+<div id="@Html.IdFor(m => m)">
+    <div class="clearRow">
+        <div class="">
+            <label for="teacherName">Teacher name</label> <input type="text" id="teacherName" data-role="Name" placeholder="e.g. Lucy Edge" data-field-type="notrequired">
+            <div data-role="SuggestionsPopup" class="suggestions teacherSuggestions" style="display: none;">
+                <div data-role="Suggestions"></div>
+                <a href="javascript:void(0)" data-role="CreateButton">None of these</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="CreateForm" id="createForm" style="display: none;">
+        <div class="clearRow">
+            <div class="">
+                <label>Location</label> <input type="text" data-role="Location" autocomplete="off" value="" data-field-type="notrequired">
+               
+                <div data-role="LocationSuggestions" class="suggestions teacherSuggestions"></div>
+                <input type="hidden" data-role="Latitude" data-field-type="notrequired">
+                <input type="hidden" data-role="Longitude" data-field-type="notrequired">
+
+                @*<h4>Invite this teacher to YogaClicks</h4>
+                <div>Fill in this teacher's email address and we'll invite them to claim their YogaClicks profile.</div>*@
+                <label>Email (optional)</label> <input type="text" data-role="Email" />
+                <p data-role="CreateError" style="display: none; color: #C00;">Please ensure you have entered a name and chosen a location.</p>
+                <div class="wizard-add-teacher-button"><button data-role="CreateButton" class="silver button">Add teacher</button></div>
+            </div>
+        </div>
+    </div>
+    <div data-role="Selections" class="selections selectedTeachers"></div>
+</div>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+<script>
+    $(function() {
+        var $container = $('#@Html.IdFor(m => m)');
+
+        $container.yogaLocationPicker({ autocode: true });
+
+        var $name = $container.find('[data-role=Name]');
+        var $suggestionsPopup = $container.find('[data-role=SuggestionsPopup]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        var $selections = $container.find('[data-role=Selections]');
+
+        var $createForm = $container.find('[data-role=CreateForm]');
+        var $createButton = $createForm.find('[data-role=CreateButton]');
+        var $createError = $createForm.find('[data-role=CreateError]');
+        var $location = $createForm.find('[data-role=Location]');
+        var $latitude = $createForm.find('[data-role=Latitude]');
+        var $longitude = $createForm.find('[data-role=Longitude]');
+        var $email = $createForm.find('[data-role=Email]');
+
+        var add = function (id, name) {
+            var $item = $('<div></div>');
+
+            $item.append('<input type="hidden" name="@(Html.NameFor(m => m.Selection))[' + id + ']" value="true">');
+            $item.append(name + ' ');
+            $item.append('<a href="javascript:void(0)" data-role="RemoveButton">x</a>');
+
+            $item.appendTo($selections);
+
+            $selections.show();
+        };
+
+        @foreach (var option in Model.SelectedEntities)
+        {
+            @:add(@option.Id, '@HttpUtility.JavaScriptStringEncode(option.Name)');
+                        }
+
+        $name.on('keyup', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+
+            var value = $name.val();
+
+            if (!value || value.length < 3) return;
+
+            $.getJSON(
+                '/Search/AutocompleteTeachers',
+                { Name: $name.val() },
+                function (entities) {
+                    if (entities.length > 0) {
+                        $suggestions.empty();
+
+                        for (var i in entities) {
+                            var entity = entities[i];
+                            var $link = $('<a>', { href: 'javascript:void(0)', text: entity.Name });
+                            $link.data('entity', entity);
+                            $suggestions.append($('<div/>').html($link));
+                        }
+
+                        $suggestionsPopup.show();
+                        $createForm.hide();
+                    }
+                }
+            );
+        });
+
+        $suggestionsPopup.on('click', 'a[data-role=CreateButton]', function () {
+            $suggestionsPopup.hide();
+            $createForm.show();
+        });
+
+        $suggestions.on('click', 'a', function () {
+            var entity = $(this).data('entity');
+            add(entity.Id, entity.Name);
+            $suggestionsPopup.hide();
+            $name.val('');
+        });
+
+        $selections.on('click', 'a[data-role=RemoveButton]', function() {
+            $(this).parent().remove();
+        });
+
+        $createButton.on('click', function (e) {
+            e.preventDefault();
+
+            var name = $name.val();
+            var location = $location.val();
+            var latitude = $latitude.val();
+            var longitude = $longitude.val();
+            var email = $email.val();
+
+            if (!name || !location || !latitude || !longitude) {
+                $createError.show();
+                return;
+            }
+            else {
+                $createError.hide();
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/Teachers/CreateStubbed',
+                data: { Name: name, Location: location, Latitude: latitude, Longitude: longitude, Email: email },
+                success: function(id) {
+                    if (!id) return;
+                    add(id, name);
+
+                    $name.val('');
+                    $location.val('');
+                    $email.val('');
+                    $createForm.hide();
+                }
+            });
+        });
+    })
+</script>

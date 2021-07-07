@@ -1,0 +1,75 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationFansModel
+
+@{
+    ViewBag.Title = "Fans";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Organisation))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Organisation.Name" />
+    @if (Model.Organisation.Address != null)
+    {
+        <meta property="og:description" content="@Model.Organisation.Address.CompleteString" />
+    }
+    @if (Model.Organisation.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Organisation.Image)" />
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Organisation.Id, Model.Organisation.EntityTypeName))
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Organisation) ? " " : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Action("SubjectRequestsPartial", "Notifications", new { SubjectId = Model.Organisation.Id, SubjectTypeName = Model.Organisation.EntityTypeName })
+
+                @Html.Action("SummaryPartial", "Reviews", new { SubjectId = Model.Organisation.Id, SubjectType = Model.Organisation.EntityTypeName })
+
+                <h1 class="teacherOrganisationHeader pageTitle"><span>&nbsp;</span>@Model.Organisation.Name</h1>
+                <div class="profileBanner teacherOrganisationBanner">
+                    @Html.DisplayFor(m => m.Organisation.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Partial("Tabs")
+                <h3>Fans of @Model.Organisation.Name</h3>
+                @if (!SecurityContext.Authenticated)
+                {
+                    <p>
+                        Not a member of YogaClicks? Get involved <a href="/" class="textLink reg-form-header">register here</a>.
+                    </p>
+                    <br />
+                }
+                else
+                {
+                    <div class="shareThisPage">
+                        <p>
+                            Want more fans? Share this page.
+                            <span class='st_facebook_hcount' displaytext='Facebook'></span>
+                            <span class='st_twitter_hcount' displaytext='Tweet'></span>
+                            @Html.Action("EntityByEmailButton", "Sharing", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName, Wide = true })
+                        </p>
+                    </div>
+                }
+                <div class="attendingWrap">
+                    @Html.Action("ListPartial", "Fans", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                </div>
+                <div class="meta">
+                    <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileClassesModel
+
+@{
+    ViewBag.Title = "Classes";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = SecurityContext.IsOwner(Model.Profile) ? "My Account" : "Community";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Profile.Name" />
+    @if (Model.Profile.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Profile.Image)" />
+    }
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col @(SecurityContext.IsOwner(Model.Profile) ? "profile-strip" : "community-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader"><span>&nbsp;</span>Classes</h2>
+                <hr />
+               <!-- @Html.Partial("Tabs", new { Model.Profile }) -->
+
+             
+
+                @Html.Action("ClassWeekPartial", "Activities", new { Model.Profile.OwnerId, Editable = true })
+            </article>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@*<ul id="tabsNav">
+    <li id="profileNav">@Html.ActionLink("Profile", "Display")</li>
+    <li id="classesNav">@Html.ActionLink("Schedule", "Schedule")</li>
+    <li id="reviewNav">@Html.ActionLink("Reviews", "Reviews")</li>
+    <li id="galleriesNav">@Html.ActionLink("Photos", "Galleries")</li>
+    <li id="galleriesNav">@Html.ActionLink("Videos", "Videos")</li>
+    <li id="venueNav">@Html.ActionLink("Venues", "Placements")</li>
+    <li id="groupsNav">@Html.ActionLink("Groups", "Groups")</li>
+    <li id="fanNav">@Html.ActionLink("Fans", "Fans")</li>
+    
+    
+
+</ul>*@
+
+
+<ul id="nav-tabs" class="nav nav-tabs nav-justified">
+
+    <li>
+        <a id="profileNav" href="@Url.Action("Display")">
+            <i class="fa fa-user navmenuIcon"></i> Profile
+        </a>
+    </li>
+
+    <li>
+        <a id="classesNav" href="@Url.Action("Schedule")" >
+            <i class="fa fa-calendar navmenuIcon"></i> Schedule
+        </a>
+
+    </li>
+    @*<li id="reviewNav">
+
+        <a href="@Url.Action("Reviews")">
+            <i class="fa fa-comments"></i> Reviews
+        </a>
+
+    </li>*@
+    <li id="galleriesNav">
+        <a href="@Url.Action("Galleries")">
+            <i class="fa fa-picture-o navmenuIcon"></i> Photos
+        </a>
+
+    </li>
+    <li id="galleriesNav">
+
+
+        <a href="@Url.Action("Videos")">
+            <i class="fa fa-video-camera navmenuIcon"></i> Videos
+        </a>
+
+
+
+    </li>
+    <li id="venueNav">
+
+        <a href="@Url.Action("Placements")">
+            <i class="fa fa-home navmenuIcon"></i> Venues
+        </a>
+
+
+
+
+    </li>
+    <li id="groupsNav">
+        <a class=""
+           href="@Url.Action("Groups")">
+            <i class="fa fa-users navmenuIcon"></i> Groups
+        </a>
+
+
+    </li>
+    <li id="fanNav">
+        <a href="@Url.Action("Fans")">
+            <i class="fa fa-heart navmenuIcon"></i> Fans
+        </a>
+
+    </li>
+
+
+
+
+</ul>

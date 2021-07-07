@@ -1,0 +1,429 @@
+﻿@{
+    ViewBag.Title = "Explore";
+    Layout = "~/Views/Layout/layout.cshtml";
+}
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+
+
+
+<div class="White-overlay" style="display:none;"></div>
+
+
+
+    <section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+        <div class="col-xs-12 nopadding">
+            <header>
+                <h2 class="pageTitle ">
+                    <span class="center-block" style="color: #13b4ea; text-align: center; font-weight: normal">
+                        Be #PoweredByYoga<br />What would you like to do today?
+
+                    </span><span></span>
+                </h2>
+            </header>
+        </div>
+
+    </section>
+
+
+    <div class="community-strip-line"></div><br />
+
+<div class="hidden-sm hidden-md hidden-lg " >
+    <div class="PBYEXPlorer">
+        <h2 style="margin-bottom:0;">
+            <span class="center-block">
+                Be #PoweredByYoga<br />What would you like to do today?
+
+            </span>
+
+        </h2>
+
+        <div class="community-strip-line"></div>
+    </div>
+</div>
+
+
+<div id="content-slider" class="content-slider" style="min-height: 1100px;">
+    <div class="community-strip content-col" id="scroll">
+
+        <div class=" row row-no-margin">
+            <div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2 no-padding">
+                <div class=" row row-no-margin">
+                    <br />
+
+                    <div class="  GSPop GSfindpop ">
+                        <div class="col-sm-6 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/find-expand.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/icon_find.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/icon_find.png" /><span class="center-block centerAlign" style="color: #5a4f7a;">FIND CLASSES, RETREATS & EVENTS<br /><br /></span></span>
+                             
+                                <span>Find the yoga you need, where and when you need it.</span>
+                                <br /><br />
+                                <span>Add your own classes and events so new students can find you.</span>
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+                            <a href="@Url.Action("discover", "static")">FIND</a>
+
+                            @if (SecurityContext == null || !SecurityContext.Authenticated)
+                            {
+                                <a href="/" class="reg-form-header" title="Log-in to your account">ADD</a>
+
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Activities", "Activities")">ADD</a>
+                            }
+
+
+
+                        </span>
+                    </div>
+
+
+                    <div class="  GSPop GSshoppop ">
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/shop-expand.png" class="img-responsive" />
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+
+
+
+
+
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/shopicon.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/shopicon.png" /><span class="center-block centerAlign" style="color: #CE9506;">SHOP YOUR YOGA<br /><br /></span></span>
+
+                                <span>Curated collections of yoga clothes, malas, jewellery and accessories from around the world.</span>
+                                <br /><br />
+
+                                <span>Designed by yogis for yogis</span>
+                                <br /><br />
+                                <span>Sell your yoga products in our marketplace.</span>
+                            </span>
+
+
+
+                        </div>
+                        <span class="GSLinks  pull-right ">
+                            <a href="@Url.Action("sell-with-us", "static")">SELL</a>
+                            <a href="#" onclick="javascript: ShopClick();">SHOP</a>
+                        </span>
+                    </div>
+
+
+                    <div class="  GSPop GSmedspop  " >
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/meds-expandpng.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/Icon_YogaMeds.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" /><span class="center-block centerAlign" style="color: #B42B32;">YOGA CAN HELP YOU HEAL<br /><br /></span></span>
+
+                                <span>Connect with yoga therapists, share your story, read clinical studies.</span>
+                                <br /><br />
+                                <span>Teach yoga for health conditions? Add to your profile, get found.
+
+</span>
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+                            <a href="@Url.Action("Index", "Medic")">CONNECT</a>
+                            @if (SecurityContext == null || !SecurityContext.Authenticated)
+                            {
+                                <a href="/" class="reg-form-header" title="Log-in to your account">ADD</a>
+
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("teacher", "Signup", new { step = "5" })#YogaMedsFC">ADD</a>
+                            }
+
+                        </span>
+                    </div>
+
+
+
+
+
+
+                    <div class="  GSPop GSposepop ">
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/pose-expand.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/Icon_Practice.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/Icon_Practice.png" /><span class="center-block centerAlign" style="color: #BB1F69;">EXPLORE & SHARE YOGA POSES<br /><br /></span></span>
+
+                                <span>Explore our pose gallery, share your own pose pics or watch a demo.</span>
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+
+                            <a href="@Url.Action("Directory", "Poses")">EXPLORE & SHARE</a>
+                        </span>
+                    </div>
+                    <div class="  GSPop GSpinpop ">
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/pin-expand.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/Icon_PinGreen.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/Icon_PinGreen.png" />
+                                <span class="center-block centerAlign" style="color: #629838;">The Yoga Map Project<br /><br /></span></span>
+
+                                <span>How does yoga inspire you?</span>
+                                <br /><br />
+                                <span>We're collecting the human stories behind the power of yoga, to get everyone on a mat.</span>
+                                <br /><br />
+                                <span>Tell the world you're #PoweredByYoga!</span>
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+
+                            <a href="@Url.Action("Index", "YogaMap")#MapTitle">PIN</a>
+                        </span>
+                    </div>
+
+
+                    <div class="  GSPop GSbeginpop ">
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/beginners-expand.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/Icon_beginner.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/Icon_beginner.png" /><span class="center-block centerAlign" style="color: #C7690F;">FIND YOUR YOGA STYLE<br /><br /></span></span>
+
+                                <span>Our StyleMatch quiz is exactly that - see which yoga style is your perfect match.</span>
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+
+                            <a href="@Url.Action("quiz", "static")">TAKE THE QUIZ</a>
+                        </span>
+                    </div>
+
+
+                    <div class="  GSPop GSambassadorpop ">
+                        <div class="col-sm-5 no-padding hidden-xs  ">
+                            <img src="~/Images/What-you-can-do/ambassador-expand.png" class="img-responsive" />
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <span class="pull-right GSpopuptextclose  hidden-xs">x</span>
+                            <span class="GSpopuptext ">
+                                <span class="xs-explorer-icon hidden-md hidden-sm hidden-lg"><img src="~/images/svgicons/Icon_AmbassadorTeal.svg" class="Iconsmenu center-block" data-svgpng="/images/SvgIcons/Icon_AmbassadorTeal.png" /><span class="center-block centerAlign" style="color: #41746D;">BECOME A YC AMBASSADOR<br /><br /></span></span>
+
+                                Want to help us get the world #PoweredByYoga?
+                            </span>
+                        </div><span class="GSLinks  pull-right ">
+                            <a href="@Url.Action("YCAmbassador", "static")">JOIN IN</a>
+
+                        </span>
+                    </div>
+
+
+
+                </div>
+                <br />
+
+
+
+
+
+                <img id="DialImage" class="DialCla hidden-xs" usemap="#BeginersMap" hidefocus="true" src="~/Images/What-you-can-do/dial.png" />
+
+               
+
+            </div>
+
+        </div>
+
+        <map name="BeginersMap">
+            <area alt="shop" title="" href="#" shape="poly" coords="776,16,740,22,699,41,655,83,629,141,626,204,649,258,679,296,718,321,758,331,816,331,870,308,905,280,934,221,940,156,918,95,880,49,833,25" />
+            <area alt="find" title="" href="#" shape="poly" coords="442,205,397,214,352,237,318,274,296,320,290,379,299,422,316,451,335,474,369,501,417,519,475,518,531,497,571,463,602,405,603,328,562,255,507,217" />
+            <area alt="meds" title="" href="#" shape="poly" coords="348,564,302,569,266,586,234,611,210,640,193,681,189,734,196,770,214,810,243,841,274,863,313,876,353,880,403,867,447,846,478,809,500,763,500,682,478,634,441,596,397,573" />
+            <area alt="begin" title="" href="#" shape="poly" coords="589,858,530,868,490,889,458,920,440,948,427,998,428,1050,443,1092,466,1124,499,1152,531,1167,570,1174,618,1171,669,1150,693,1130,718,1102,736,1064,743,1010,727,948,695,904,652,874" />
+            <area alt="ambassador" title="" href="#" shape="poly" coords="1004,857,957,864,927,877,889,907,861,944,850,975,844,1018,848,1058,862,1092,882,1121,913,1146,945,1165,988,1174,1035,1172,1078,1154,1117,1125,1144,1085,1159,1025,1148,954,1108,901,1063,870" />
+            <area alt="pose" title="" href="#" shape="poly" coords="1234,559,1188,568,1154,583,1124,606,1100,636,1083,673,1077,712,1079,749,1087,775,1102,806,1130,837,1159,857,1200,871,1242,876,1279,868,1313,856,1345,833,1373,794,1389,750,1393,701,1377,648,1339,601,1290,570" />
+            <area alt="pin" title="" href="#" shape="poly" coords="1129,206,1092,211,1052,230,1020,256,996,288,980,329,978,383,989,426,1011,462,1043,492,1069,507,1117,521,1160,520,1200,507,1236,487,1265,455,1283,420,1292,381,1292,340,1280,300,1252,256,1209,223,1168,207" />
+
+        </map>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/libs/rwdImageMaps/jquery.rwdImageMaps.min.js"></script>
+    <script type="text/javascript">
+        $('.facebook-link-div').html('&title=Let us help you transform life’s challenges and create the life you want' + '&description=We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books...');
+
+        function ShopClick() {
+            analytics.identify({
+
+                type: 'identify',
+
+                traits: {
+                    'Shop-visited': 'true'
+                }
+
+            }, function () {
+                $(location).attr('href', 'https://www.yogaclicks.store/');
+
+            });
+        }
+        function closepops() {
+            $(".White-overlay").fadeToggle("fast");
+            $(".GSshoppop").fadeOut();
+            $(".GSfindpop").fadeOut();
+            $(".GSmedspop").fadeOut();
+            $(".GSbeginpop").fadeOut();
+            $(".GSambassadorpop").fadeOut();
+            $(".GSposepop").fadeOut();
+            $(".GSpinpop").fadeOut();
+        }
+        $("#Innercontent").css('min-width', '99%');
+
+        $('img[usemap]').rwdImageMaps();
+           
+        $("area").on({
+            mouseenter: function () {
+
+                switch ($(this).attr('alt')) {
+
+                case 'shop':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/shop-hover.png');
+                    break;
+                case 'find':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/find-hover.png');
+                    break;
+                case 'meds':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/heal-hover.png');
+                    break;
+                case 'begin':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/begin-hover.png');
+                    break;
+                case 'ambassador':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/ambassador-hover.png');
+                    break;
+                case 'pose':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/pose-hover.png');
+                    break;
+                case 'pin':
+                    $('#DialImage').attr('src', '/Images/What-you-can-do/pin-hover.png');
+
+                    break;
+                default:
+
+                }
+            },
+            mouseleave: function () { $('#DialImage').attr('src', '/Images/What-you-can-do/dial.png'); },
+            click: function () {
+
+                closepops();
+                switch ($(this).attr('alt')) {
+                case 'shop':
+                    $(".GSshoppop").fadeIn();
+                    break;
+                case 'find':
+                    $(".GSfindpop").fadeIn();
+                    break;
+                case 'meds':
+                    $(".GSmedspop").fadeIn();
+                    break;
+                case 'begin':
+                    $(".GSbeginpop").fadeIn();
+                    break;
+                case 'ambassador':
+                    $(".GSambassadorpop").fadeIn();
+                    break;
+                case 'pose':
+                    $(".GSposepop").fadeIn();
+                    break;
+                case 'pin':
+                    $(".GSpinpop").fadeIn();
+                    break;
+                default:
+
+                }
+            }
+
+        });
+
+        $(".GSpopuptextclose").on({
+            click: function () {
+                closepops();
+            }
+        });
+
+        $(".White-overlay").on({
+            click: function () {
+                closepops();
+            }
+        });
+
+
+
+        function preloadImages(array) {
+            if (!preloadImages.list) {
+                preloadImages.list = [];
+            }
+            var list = preloadImages.list;
+            for (var i = 0; i < array.length; i++) {
+                var img = new Image();
+                img.onload = function () {
+                    var index = list.indexOf(this);
+                    if (index !== -1) {
+                        // remove image from the array once it's loaded
+                        // for memory consumption reasons
+                        list.splice(index, 1);
+                    }
+                }
+                list.push(img);
+                img.src = array[i];
+            }
+        }
+
+
+        preloadImages(["/Images/What-you-can-do/dial.png", "/Images/What-you-can-do/ambassador-hover.png", "/Images/What-you-can-do/begin-hover.png", "/Images/What-you-can-do/heal-hover.png", "/Images/What-you-can-do/find-hover.png", "/Images/What-you-can-do/pin-hover.png", "/Images/What-you-can-do/pose-hover.png", "/Images/What-you-can-do/shop-hover.png"], true);
+
+
+        $(document).ready(function () {
+
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 74) {
+      
+                    $(".PBYEXPlorer").attr("style", 'display:block;position:fixed!important;top:0;z-index:1;-webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.65);-moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.65);box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.65);');
+
+                } else {
+
+                    $(".PBYEXPlorer").attr("style", 'display:none;position:none!important;top:inherit;z-index:0; -webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;');
+
+
+                }
+            });
+
+           
+
+        });
+
+
+    </script>
+}

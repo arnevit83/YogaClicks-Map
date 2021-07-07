@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityClassTeacherSummaryPartialModel
+
+@if (!Model.Teacher.Stubbed)
+{
+    <a href="@Url.Action("Display", "Teachers", new { Model.Teacher.Id })" target="_blank">View profile</a>
+}
+else
+{
+    <span>@Model.Teacher.Name is not current a member of YogaClicks</span>
+}
+
+@if (!string.IsNullOrEmpty(Model.Teacher.Philosophy))
+{
+    <p>@Html.NewLines(Model.Teacher.Philosophy)</p>
+}

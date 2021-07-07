@@ -1,0 +1,22 @@
+﻿@model Clicks.Yoga.Portal.Models.Search.SearchIndexModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Results", "Search", FormMethod.Get))
+{
+    foreach (var type in Model.Criteria.TypeList)
+    {
+        @Html.Hidden("type", type)
+    }
+    
+    <div>
+        Keywords: @Html.TextBox("keywords")
+    </div>
+    
+    <input type="submit" value="Search"/>
+}

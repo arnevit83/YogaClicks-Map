@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.AddressModel
+
+@if (Model != null && Model.Latitude != 0 && Model.Longitude != 0)
+{
+    <img src="http://maps.googleapis.com/maps/api/staticmap?center=@(Model.Latitude),@(Model.Longitude)&zoom=12&size=240x240&maptype=roadmap&sensor=false&markers=color:green%7C@(Model.Latitude),@(Model.Longitude)" />
+}

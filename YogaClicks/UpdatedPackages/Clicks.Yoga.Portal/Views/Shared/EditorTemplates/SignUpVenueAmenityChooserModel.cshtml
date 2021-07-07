@@ -1,0 +1,11 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpVenueAmenityChooserModel
+
+@foreach (var option in Model.Options.Where(option => option.IsResidential == Model.Residential))
+{
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="purple-signup-checkbox">
+            @Html.CheckBoxFor(m => m.Selection[option.Id], new { @class = "signUpVenueAmenitiesCheckBox css-checkbox" })
+            @Html.LabelFor(m => m.Selection[option.Id], option.Name, new { @class = "css-label" })
+        </div>
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@using Humanizer
+@model Clicks.Yoga.Emails.NotificationDigestEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Your YogaClicks notification digest";
+}
+
+<div style="font-family:'Source Sans Pro', sans-serif; font-size: 12px; color: #808099" width="100%">
+    <div style="margin-left: 80px;">
+        Hi @Model.Profile.Forename,<br /><br />
+
+        Here's what you've missed on YogaClicks.
+        <br /><br />
+
+        @foreach (var pair in Model.Notifications)
+        {
+            @pair.Value@: @pair.Key.Name<br />
+        }
+
+        @foreach (var pair in Model.Requests)
+        {
+            @pair.Value@: @pair.Key.Name<br />
+        }
+
+        @if (Model.MessageCount > 0)
+        {
+            @Model.MessageCount@: unread messages<br />
+        }
+
+        <br />
+
+        See you soon! <br /><br />
+
+        Namaste! <br /><br /><br />
+    </div>
+    <table style="width: 100%;">
+        <tr >
+            <td colspan="2" valign="top" style="border-top:2px solid #5da194;"></td>
+        </tr>
+        <tr style="padding-top: 5px;">
+            <td style="font-family:'Source Sans Pro', sans-serif; font-size: 10px; color: #808099;">
+                YogaClicks &copy; @DateTime.Now.Year
+            </td>
+            <td>
+                <div style="float: right;" align="right">
+                    <a href="mailto:info@yogaclicks.com?Subject=Hello%20Yogaclicks"><img src="http://www.yogaclicks.com/Images/email/1.png" /></a>
+                    <a href="http://twitter.com/yogaclicks" target="_blank"><img src="http://www.yogaclicks.com/Images/email/2.png" /></a>
+                    <a href="http://facebook.com/yogaclicks" target="_blank"><img src="http://www.yogaclicks.com/Images/email/3.png" /></a>
+                    <a href="http://pinterest.com/yogaclicks" target="_blank"><img src="http://www.yogaclicks.com/Images/email/4.png" /></a>
+                    <a href="http://blog.yogaclicks.com/" target="_blank"><img src="http://www.yogaclicks.com/Images/email/5.png" /></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+

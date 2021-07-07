@@ -1,0 +1,38 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.VenueModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var options = {
+            center: new google.maps.LatLng(@(Model.Address.Latitude), @(Model.Address.Longitude)),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var contentString = '<strong>@Model.Name</strong><br /><br />@Html.NewLines(Model.Address.CompleteString)';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var map = new google.maps.Map($("#map").get(0), options);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(@(Model.Address.Latitude), @(Model.Address.Longitude)),
+            map: map,            
+            icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+            draggable: false,
+            animation: google.maps.Animation.DROP
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+
+    });
+</script>
+<div id="map" class="venueMap" style="width: 100%; height: 400px"></div>
+<p><a href="http://maps.google.com/maps?saddr=&daddr=@(Model.Address.Latitude),@(Model.Address.Longitude)&sll=@(Model.Address.Latitude),@(Model.Address.Longitude)" target="_blank">Get directions</a><br /><small>This will open in a new window</small></p>

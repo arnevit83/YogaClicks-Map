@@ -1,0 +1,48 @@
+﻿@media (max-width: 1337px) {
+
+    .profile-guide-container {
+        width:850px;
+    }
+
+    .profile-guide-top-top-steps {
+        width:850px;
+    }
+    .profile-guide-top-top-small-step .step-image {
+        width:116px;
+    }
+
+    .profile-guide-manage-from-profile img {
+        width:167px;
+        min-width: 167px;
+    }
+
+    .profile-guide-manage-from-profile {
+        margin-left:65px;
+    }
+
+    .profile-guide-lines img {
+        width:537px;
+        min-width:537px;
+    }
+
+    .profile-guide-lines {
+        width:700px;
+    }
+
+    .profile-guide-bottom-step .step-image {
+        width:210px;
+    }
+}
+
+
+@media (max-width: 830px) {
+    .profile-guide-manage-from-profile {
+       margin-left:82px;
+       width: 442px;
+    }
+
+    .profile-guide-lines {
+        width:700px;
+        margin-left:0px;
+    }
+}

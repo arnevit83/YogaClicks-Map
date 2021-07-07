@@ -1,0 +1,14 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionStudiesModel
+
+<div class="block-section">
+    @Html.Label("Studies")
+
+    <ul class="update-study-list">
+        @foreach (var study in Model.Studies.Studies)
+        {
+            <li data-study-id="@study.Id"><a href="@Url.Action("UpdateStudy", new { id = study.Id, conditionId = Model.Id })">@study.Title</a><span>X</span></li>     
+        }
+    </ul>
+
+    <button onclick="openModal('@Url.Action("AddStudy", "Medic", new { conditionId = Model.Id })')" class="button silver">Add new study</button>
+</div>

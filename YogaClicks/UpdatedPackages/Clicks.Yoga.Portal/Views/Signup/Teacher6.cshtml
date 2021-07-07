@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Teacher Step 7";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.BodyClass = "additionalselectorpage";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<div class="row purple-text margintop100">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 signup-row-normal signup-large-text">
+        <p>Would you like to add another professional page?</p>
+    </div>
+    <div class="col-xs-1"></div>
+
+    </div>
+    <div class="row purple-text images margintop100">
+    <div class="col-xs-12">
+        @Html.Raw(@Html.ActionLink("[replacetext]", "TeacherTrainingOrganisation", "SignUp", new { step = 1 }, new { @class = "fakeclass" }).ToHtmlString().Replace("[replacetext]", "<img src=\"" + @Url.Content("/images/svgicons/Icon_OrgPurple.svg") + "\" data-svgpng=\"/images/SvgIcons/Icon_OrgPurple.png\" alt=\"Create Teacher Training Organisation\" /><br />Training Organisation"))
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Venue", "SignUp", new { step = 1 }, new { @class = "fakeclass" }).ToHtmlString().Replace("[replacetext]", "<img src=\"" + @Url.Content("/images/svgicons/Icon_VenuePurple.svg") + "\" data-svgpng=\"/images/SvgIcons/Icon_VenuePurple.png\" alt=\"Create venue\" /><br />Venue"))
+    </div>
+</div>
+
+    <div class="row margintop100">
+    <div class="col-xs-12">@Html.ActionLink("No thanks", "Teacher", "SignUp", new { step = 7 }, new { @class = "btn btn-default purple-border purple-text purple-inverse-text-hover" })</div>
+</div>

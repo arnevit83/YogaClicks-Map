@@ -1,0 +1,14 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueBannerUpdateModel
+
+@using (Html.BeginForm("UpdateBanner", "Venues", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-banner-form" }))
+{
+    @Html.HiddenFor(m => m.VenueId)
+    
+    <div id="File">
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Width)
+        @Html.HiddenFor(m => m.ProfileBanner.ImageCrop.Height)
+        @Html.EditorFor(m => m.ProfileBanner)
+    </div>
+}

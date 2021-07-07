@@ -1,0 +1,230 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityInvitesModel
+
+@{
+    ViewBag.Title = "Invites";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Activity.Name" />
+    @if (!string.IsNullOrEmpty(Model.Activity.Description))
+    {
+        <meta property="og:description" content="@Model.Activity.Description" />
+    }
+    else
+    {
+        <meta property="og:description" content=" " />
+    }
+    @if (Model.Activity.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+    }
+}
+
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Classes</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page"></div>
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h2 class="greenHeader activitiesHeader">
+                    <img src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" />
+
+                    @Model.Activity.Name
+
+                </h2>
+
+
+
+
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+
+
+
+
+
+
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+
+
+                        @Html.Action("Tabs")
+
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+
+                              
+                                    <div id="@guid">
+
+
+
+
+                                        <div class="row nopadding ">
+                                            <div class="col-sm-7 nopadding">
+                                                <div class="inviteFriends">
+                                                    <strong>Invite your friends</strong>
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                                        <button data-role="CheckFriendsButton" class="btn btn-default btn-clear btn-sm">Select all</button>
+                                                        <button data-role="UncheckFriendsButton" class="btn btn-default btn-clear btn-sm ">Clear all</button>
+                                                        <button data-role="InviteFriendsButton" class="btn btn-default btn-clear btn-sm ">Send invites</button>
+                                                    </div>
+                                                </div><div class="attendingWrap inviteFriendsWrap">
+    @Html.EditorFor(m => m.Friends)
+</div>
+
+                                            </div>
+                                            <div class="col-sm-5 nopadding">
+                                                <div class="inviteFans">
+                                                    <strong>Invite all your fans</strong>
+                                                    <button data-role="InviteFansButton" class="btn btn-default btn-sm btn-clear">Send invites</button>
+                                                </div>
+                                                <div class="invite-fans-share-this-page" style="display:none">
+                                                    <p>
+                                                        Sorry, you don't have any fans yet. Want some? Share this page.
+                                                        <br />
+                                                        <span class='st_facebook_hcount' displaytext='Facebook'></span>
+                                                        <span class='st_twitter_hcount' displaytext='Tweet'></span>
+                                                        @Html.Action("EntityByEmailButton", "Sharing", new { EntityId = Model.Activity.Id, EntityTypeName = Model.Activity.EntityTypeName, Wide = true })
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        
+
+
+                                    </div><br style="clear:both" />
+                                </div>
+
+                                <div class="hidden-md hidden-lg hidden-sm">
+                                    @Html.Action("Tabsmini")
+                                </div>
+                                <br />
+                            @Html.Partial("Disclaimer", "Shared")
+
+
+
+                        </div>
+                    </div>
+                </div>
+</article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $checkboxes = $container.find('input');
+
+        $container.find('[data-role=CheckFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+            $checkboxes.prop('checked', true);
+        });
+
+        $container.find('[data-role=UncheckFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+            $checkboxes.prop('checked', false);
+        });
+
+        $container.find('[data-role=InviteFriendsButton]').on('click', function (e) {
+            e.preventDefault();
+
+            var ids = [];
+
+            $checkboxes.filter(':checked').each(function () {
+                ids.push($(this).attr('data-id'));
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InviteFriends")',
+                data: JSON.stringify({ FriendIds: ids }),
+                contentType: 'application/json',
+                success: function () {
+                    window.top.location.reload();
+                }
+            });
+        });
+
+        $container.find('[data-role=InviteFansButton]').on('click', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InviteFans")',
+                success: function (response) {
+                    if (response.noOfFans > 0) {
+                        $('.inviteFans').html('Your fans have been invited');
+                    }
+                    else {
+                        $('.inviteFans').hide();
+                        $('.invite-fans-share-this-page').show();
+                    }
+
+                }
+            });
+        });
+    });
+</script>

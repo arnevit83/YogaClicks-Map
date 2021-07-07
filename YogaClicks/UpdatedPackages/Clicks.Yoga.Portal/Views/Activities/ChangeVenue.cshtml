@@ -1,0 +1,12 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityChangeVenueModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("ChangeVenue", "Activities"))
+{
+    <h2 class="greenHeader">Change venue</h2>
+    <hr class="modalHr">  
+    @Html.Action("Obtain", "Venues")
+}

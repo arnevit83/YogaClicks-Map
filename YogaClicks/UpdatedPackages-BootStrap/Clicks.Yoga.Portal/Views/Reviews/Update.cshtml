@@ -1,0 +1,45 @@
+﻿@model Clicks.Yoga.Portal.Models.Reviews.ReviewUpdateModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<script src="~/Scripts/review.js"></script>
+<div id="reviewForm">
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.ReviewId)
+    <div class="boxFullWidth">
+        <h2 class="textColourFind">Editing review of</h2>
+    
+        @Html.HiddenFor(m => m.Subject.Image.Name)
+        @Html.HiddenFor(m => m.Subject.Name)
+        @Html.HiddenFor(m => m.Subject.EntityType)
+        
+        @Html.DisplayFor(m => m.Subject.Image, "Thumbnail")
+
+        <h3 class="textColourFind">@Model.Subject.Name
+            <span class="proType">(@Model.Subject.EntityType)</span></h3>
+    </div>
+    
+    if (Model.HelperDetails.Count > 0)
+    {
+        <div>
+            @foreach (var detail in Model.HelperDetails)
+            {
+                <div>
+                    <strong>@detail.Item1</strong>: @detail.Item2
+                </div>
+            }
+        </div>
+    }
+
+    Html.RenderPartial("EditorPartial");
+    
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+}
+    </div>

@@ -1,0 +1,25 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.UpdateUserPoseImagesUpdateModel
+
+<div>
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm("UpdateDirectoryImage", "Poses", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-condition-directory-image-form" }))
+{
+    @Html.HiddenFor(m => m.PosesId)
+
+    <div id="UserPoseImages" class="btn btn-custom  btn-file btn-block">
+        Add your pose to our gallery!
+        @Html.HiddenFor(m => m.UpdateUserPoseImages.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.UpdateUserPoseImages.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.UpdateUserPoseImages.ImageCrop.Width)
+        @Html.HiddenFor(m => m.UpdateUserPoseImages.ImageCrop.Height)
+        @Html.EditorFor(m => m.UpdateUserPoseImages)
+    </div>
+
+    <div id="cropfancybox" style="display: none">
+        <div id="upload-cut">
+            <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+        </div>
+    </div>
+}

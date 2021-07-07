@@ -1,0 +1,82 @@
+﻿@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Quotes.QuoteIndexModel
+
+@{
+    ViewBag.Title = "Inspirational Quotes and Positive Thinking";
+    ViewBag.Description = "Browse our inspirational quotes and let the positive thinking of Einstein, the Dalai Lama and um, Jerry Seinfeld, guide you from darkness into light.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+}
+
+@section Head {    
+    <meta property="og:title" content="Yoga quotes from Joan Rivers to Lao Tzu" />    
+    <meta property="og:description" content="Let our quotes lead you from 'gu' to 'ru' - from darkness into light" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/faqs/old.jpg" />
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-quotes", Model)
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="wisdom-strip content-col" id="scroll">
+        <section id="quotes">
+            @foreach (var author in Model.Authors)
+            {
+                var quotes = Model.Quotes[author];
+
+                if (quotes.Count == 0)
+                {
+                    continue;
+                }
+            
+                <article role="quote-group" data-author="@author" class="clearfix">
+                    <header role="author">
+                        <h2>@author</h2>
+                    </header>
+                    @foreach (var quote in quotes)
+                    {
+                        <div class="text">
+                            <p>&ldquo;@quote.Quotation&rdquo;</p>
+                            <div class="wisdomFanBtnWrap">@Html.Action("Button", "Fans", new { EntityId = quote.Id, quote.EntityTypeName })</div>
+                        </div>
+                    }
+                </article>
+            }
+        </section>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var author = @Html.Raw(JsonConvert.SerializeObject(Model.Author));
+
+            var items = $(".quote-author");
+            var item = null;
+
+            if (author) {
+                item = items.filter("[data-author='" + author + "']");
+            }
+            else {
+                item = $(items[Math.floor(Math.random() * items.length) + 1]);
+            }
+
+            item.trigger('click');
+        });
+
+        $(".quote-author").click(function () {
+
+            $(".quote-author").each(function () {
+                if ($(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                }
+            });
+
+            $("#quotes article").hide();
+
+            $("#quotes article[data-author='" + $(this).attr("data-author") + "']").show();
+            $(this).addClass("selected");
+        });
+
+    </script>    
+}

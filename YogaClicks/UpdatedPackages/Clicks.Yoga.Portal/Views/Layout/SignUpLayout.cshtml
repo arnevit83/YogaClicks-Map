@@ -1,0 +1,82 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Domain.Services
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js" lang="en"> <![endif]-->
+<html lang="en">
+<head>
+    <title>@ViewBag.Title | YogaClicks</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="@ViewBag.Description" />
+
+    @if (ViewBag.NoIndex != null && ViewBag.NoIndex == true)
+    {
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    }
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/global/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/global/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/global/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/global/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/global/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/global/apple-touch-icon-76x76.png">
+    <link rel="icon" type="image/png" href="/images/global/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/global/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/global/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+
+    @Scripts.Render("~/bundles/js/head")
+
+    @Styles.Render("~/bundles/signupcss")
+
+    @RenderSection("Head", false)
+</head>
+<body id="signup" class="sourcesans @ViewBag.BodyClass" >
+<div class="container-fluid">
+    <header class="row signupheader @ViewBag.HeaderClass">
+        <div class="col-sm-2"></div>
+        <div class="col-xs-12 col-sm-8">
+            <a href="@Url.Action("index", "home")" id="logo" class="alignCenter">
+                <img id="LogoMain" src="/images/global/logo.svg" alt="YogaClicks. Find it. Love it. Shop it." class="img-responsive" data-svgpng="/images/global/logo.png" style="max-height: 75px;">
+            </a>
+        </div>
+        <div class="col-sm-2"></div>
+    </header>
+</div>
+    <div class="container-fluid signupcontainer img-responsive">
+        <div class="row">
+            <div class="hidden-xs col-sm-1 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-10 col-lg-10 signupcontent text-center">
+                @RenderBody()
+            </div>
+            <div class="hidden-xs col-sm-1 col-lg-1"></div>
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/js/body")
+    @RenderSection("Scripts", false)
+
+<script>
+
+    $('document').ready(function() {
+        $("input[type=checkbox]").each(function () {
+            var parentContainer = $(this).parent();
+            parentContainer.find("input[type=hidden]").insertAfter(parentContainer);
+        });
+    });
+
+</script>
+</body>
+</html>

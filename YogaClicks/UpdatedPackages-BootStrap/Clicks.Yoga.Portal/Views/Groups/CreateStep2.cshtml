@@ -1,0 +1,63 @@
+﻿@using Clicks.Yoga.Portal.Models.Groups
+@model Clicks.Yoga.Portal.Models.Groups.GroupCreateStep2Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateStep2","Groups"))
+{
+    //  @Html.Serialize("CreateModel", ViewBag.CreateModel as GroupCreateModel)
+
+    @Html.Hidden("CreateModel2", new MvcSerializer().Serialize((GroupCreateModel)ViewBag.CreateModel2, SerializationMode.Signed))
+    <h2 class="greenHeader">Create a new group</h2>
+    <hr />
+        <ul class="steps steps3">
+            <li><span>Step 1</span></li>
+            <li class="active"><span>Step 2</span></li>
+            <li><span>Step 3</span></li>
+        </ul>
+    <div class="scrollableiFrame">
+         @Html.ValidationSummary()
+        <h3 class="cb blackSubHeader">Type of group</h3>
+        <div class="halfColumns">
+            <div>
+                <label>@Html.RadioButtonFor(m => m.Professional, false) All users</label>
+                <label>@Html.RadioButtonFor(m => m.Professional, true) Selected Professionals</label>
+            </div>
+          
+            <div id="professions" style="@(Model.Professional ? "" : "display: none;")">
+                @Html.EditorFor(m => m.Professions)
+            </div>
+        </div>
+     
+    </div>
+       <p><small>If you choose selected professionals only those professionals will be able to find and access the group.</small></p>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+   
+    @Html.HiddenFor(m => m.Back)
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#BackButton").click(function (e) {
+            e.preventDefault();
+            $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+            $(this).closest("form").submit();
+        });
+    });
+    $("input[name=@Html.NameFor(m => m.Professional)]:radio").change(function () {
+        if ($(this).attr("value") == "@bool.TrueString")
+            $("#professions").show();
+        else
+            $("#professions").hide();
+    });
+</script>

@@ -1,0 +1,15 @@
+﻿@model Clicks.Yoga.Portal.Models.Venues.VenueObtainStep4Model
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="scrollableiFrame">
+    <input type="hidden" name="VenueId" value="@Model.Id">
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').closest('form').submit();
+    });
+</script>

@@ -1,0 +1,247 @@
+﻿@using System.Web.DynamicData
+@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileNavigationModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+
+
+
+                <div id="navwrap">
+
+
+                    <section class="filters profileFilters" id="filter-results">
+                        <div id="filter-wrap">
+                            <div class="the-sub-menu">
+                                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+
+                                <h1 class="pageTitle"><span style="float: left">My Profile</span></h1><br/><br />
+
+                                <div id="@guid">
+
+
+
+
+
+                                    @if (!Model.Profile.Professional)
+                                    {
+                                        <a href="@Url.Action("Display", "Profiles", new {Model.Profile.Id})" class="personal-profile"><img data-svgpng="/images/SvgIcons/Icon_ProfileTeal.png" style="width:28px" src="/images/svgicons/Icon_ProfileTeal.svg">Personal profile</a>
+                                    }
+
+                                    <br />
+                                    <hr style="margin-top:25px; margin-bottom:5px;" />
+                                    <h1 class="pageTitle"><span style="float: left">My pages</span></h1><br /><br />
+                                    <div class="row nopadding">
+                                        <div class="col-xs-7 nopadding">
+                                            @*<h4>
+                                                
+                                            </h4><br />*@
+                                            <h5 >
+                                                Create professional pages
+
+                                            </h5>
+                                        </div>
+                                        <div class="col-sm-5 nopadding">
+                                            <a href="@Url.Action("profile", "Signup")" style="color:white;margin-top:10px;" class="btn  btn-sm btn-success pull-right"><span class=" glyphicon glyphicon-plus" aria-hidden="true"></span><span class="hidden-md hidden-sm"> Create</span></a>
+                                        </div>
+                                    </div>
+                                        <div class="row nopadding">
+                                            <div class="col-sm-12 nopadding">
+                                          
+                                                <span class="smalltext">(Teacher/Yoga therapist, Venue, Teacher Training)</span>
+                                          
+
+                                            </div>
+                                         
+                                        </div><br />
+                                        <div class="row nopadding">
+                                            <div class="col-xs-12 nopadding">
+
+                                                @foreach (var page in Model.Pages)
+                                                {
+                                                    <a href="@Url.Action("Display", string.Format("{0}s", page.EntityType.Name), new {page.Id})" data-type="@page.EntityTypeName" data-entityid="@page.EntityId" class="personal-profile">
+
+                                                        @if (page.EntityType.Name == typeof(Teacher).Name)
+                                                        {
+                                                            @:<img class="hidden-md hidden-sm" data-svgpng="/images/SvgIcons/Icon_TeacherTeal.png" style="width:28px" src="/images/svgicons/Icon_TeacherTeal.svg">
+                                                        }
+                                                        @if (page.EntityType.Name == typeof(Venue).Name)
+                                                        {
+                                                            @:<img class="hidden-md hidden-sm" data-svgpng="/images/SvgIcons/Icon_VenueTeal.png" style="width:28px" src="/images/svgicons/Icon_VenueTeal.svg">
+                                                        }
+                                                        @if (page.EntityType.Name == typeof(TeacherTrainingOrganisation).Name)
+                                                        {
+                                                            @:<img class="hidden-md hidden-sm" data-svgpng="/images/SvgIcons/Icon_OrgTeal.png" style="width:28px" src="/images/svgicons/Icon_OrgTeal.svg">
+                                                        }
+                                                        @page.Name
+
+                                                        @if (page.EntityType.Name == typeof(Teacher).Name)
+                                                        {
+                                                            @:(teacher)
+                                                        }
+                                                    </a>
+                                                }
+
+                                            </div>
+                                        </div>
+                                
+
+                                            @if (SecurityContext.HasActor)
+                                            {
+
+                                                if (Model.CanCreateActivity)
+                                                {    <br /><br />
+                                                    <div class="row nopadding">
+                                                        <div class="col-xs-7 nopadding">
+                                                            <h5 >
+                                                                Create events and classes
+
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-5 nopadding">
+                                                            <a href="@Url.Action("Activities", "Activities")" style="color: white;margin-top:10px;" class="btn  btn-sm btn-success pull-right" ><span class=" glyphicon glyphicon-plus" aria-hidden="true"></span><span class="hidden-md hidden-sm"> Create</span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row nopadding">
+                                                        <div class="col-sm-12 nopadding">
+                                                            <span class="smalltext">(Holidays/retreats, workshops, weekends, special events)</span>
+                                                        </div>
+                                                       
+                                                    </div>
+                                               
+                                                    }
+                                                    <br /><br />
+                                                <div class="row nopadding">
+                                                    <div class="col-xs-7 nopadding">
+                                                        <h5 >
+                                                            Create groups
+
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-5 nopadding">
+                                                        <a href="javascript:openModal('@Url.Action("Create", "Groups", new {Model.Profile.OwnerId})')" style="color: white;margin-top:10px;" class="btn  btn-sm btn-success pull-right" ><span class=" glyphicon glyphicon-plus" aria-hidden="true"></span><span class="hidden-md hidden-sm"> Create</span></a>
+                                                    </div>
+                                                </div>
+                                               <div class="row nopadding">
+                                                    <div class="col-sm-12 nopadding">
+                                                        <span class="smalltext">(Engage with your community, start a debate, champion a cause)</span>
+                                                    </div>
+                                                </div>
+                                           
+                                            }
+
+
+
+                                    <div><br /><hr style="margin-top: 25px; margin-bottom: 5px;"/>
+
+                                        <h1 class="pageTitle"><span style="float: left">Profile admin</span></h1><br /><br />
+
+                                  
+                                        <div class="profileAdmin">
+                                            @if (SecurityContext.HasActor)
+                                            {
+                                                <a href="@Url.Action("Notifications", "Profiles", new {Model.Profile.Id})" class="account-settings personal-profile "><span class="NotificationsIndicatorprofile" data-format="({0})"></span> Notifications</a>
+                                                <a href="@Url.Action("Deliveries", "Messaging", new {Model.Profile.Id})" class="account-settings personal-profile "><span class="MessagesIndicatorprofile" data-format="({0})"></span> Messages</a>
+
+                                                if (!Model.Profile.Professional)
+                                                {
+                                                    <a href="@Url.Action("FriendRequests", "Profiles", new {Model.Profile.Id})" class="account-settings personal-profile "><span class="FriendRequestsIndicatorprofile" data-format="({1})"></span> Friend requests</a>
+                                                }
+                                            }
+                                                                                        @if (SecurityContext != null)
+                                            {
+                                                if (!SecurityContext.Authenticated)
+                                                {
+                                                    <a href="/" id="" title="Newsfeed" class="reg-form-popup account-settings personal-profile "><span class=" friendrequestsindicatorprofile" data-format="({1})">
+                                                        </span>
+                                                        Newsfeed
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@Url.Action("News", "Profiles", new {SecurityContext.CurrentProfile.Id})" id="community" title="Newsfeed" class="account-settings personal-profile "><span class="FriendRequestsIndicatorprofile" data-format="({1})"></span>Newsfeed</a>
+                                                }
+                                            }
+                                            else if (SecurityContext == null)
+                                            {
+                                                <a href="/" id="" title="Newsfeed" class="reg-form-popup account-settings personal-profile "><span class="FriendRequestsIndicatorprofile" data-format="({1})"></span>Newsfeed</a>
+                                            }
+                                            <a href="@Url.Action("Settings", "Account", new {Model.Profile.Id})" class="account-settings personal-profile "><span>&nbsp;</span>Account settings</a>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+
+                        </div>
+                    </section>
+                </div>
+
+
+
+
+
+
+
+<script>
+    $(function () {
+
+        $("#right-menu-close").click(function () {
+
+            $("#right-nav").fadeToggle("fast");
+            $(".dark-overlay").fadeToggle("slow");
+
+        });
+
+                        var $container = $('#@guid');
+
+                        $container.find('[data-role=DeleteOwnedButton]').on('click', function (e) {
+                            e.preventDefault();
+
+                            var $this = $(this);
+                            var id = $this.attr('data-entity-id');
+                            var type = $this.attr('data-entity-type');
+
+                            if (!confirm('Are you sure you want to delete this ' + type.toLowerCase() + '?')) return;
+
+                            $.ajax({
+                                url: '@Url.Action("DeleteOwned", "Profiles", new { @Model.Profile.Id })',
+                                type: 'POST',
+                                data: { EntityId: id, EntityType: type },
+                                success: function () {
+                                    top.location.reload();
+                                }
+                            });
+                        });
+
+                        $container.find('a').each(function () {
+                            var $this = $(this);
+                            var matches = /^\/\w+\/\w+\/\w+/.exec($this.attr('href').toLowerCase());
+                            var prefix = matches ? matches[0] : null;
+
+                            if (!prefix) return;
+
+                            if (window.location.href.toLowerCase().indexOf(prefix) >= 0) {
+                                $this.attr('class', $this.attr('class') + " active");
+                                return false;
+                            }
+                        });
+
+                        if ($container.find('a.active').length == 0) {
+                            $container.find('a').each(function () {
+                                var $this = $(this);
+                                var matches = /^\/\w+\/\w+/.exec($this.attr('href').toLowerCase());
+                                var prefix = matches ? matches[0] : null;
+
+                                if (!prefix) return;
+
+                                if (window.location.href.toLowerCase().indexOf(prefix) >= 0) {
+                                    $this.attr('class', $this.attr('class') + " active");
+                                    return false;
+                                }
+                            });
+                        }
+                    });
+                </script>

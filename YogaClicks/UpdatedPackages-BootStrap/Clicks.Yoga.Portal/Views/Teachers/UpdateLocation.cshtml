@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherLocationUpdateModel
+
+@using (Html.BeginForm("UpdateLocation", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-location-form" }))
+{
+    @Html.HiddenFor(m => m.TeacherId)
+
+    <h3>My teaching area</h3>
+
+    @Html.EditorFor(m => m.Location)
+    <p style="float:right; width:458px;"><small>Adding a location will help you find information relevant to you.</small></p>
+
+    <div class="teacher-location-save-section">
+        <span class="teacher-location-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

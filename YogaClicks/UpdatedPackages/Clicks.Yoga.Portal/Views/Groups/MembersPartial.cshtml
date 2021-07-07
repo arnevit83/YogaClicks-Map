@@ -1,0 +1,60 @@
+﻿@model Clicks.Yoga.Portal.Models.Groups.GroupMembersPartialModel
+
+
+@{
+    int counter = 0;
+    foreach (var member in Model.Members)
+    {
+        if (counter == 0)
+        {
+            @Html.Raw("<div class=\"row\">")
+        }
+        else if (counter > 0 && counter % 2 == 0)
+        {
+            @Html.Raw("</div><div class=\"row\">")
+        }
+        counter++;
+
+   
+    <div class="col-sm-6">
+        <div data-role="Member" style="margin:10px;" class="row well well-sm member">
+
+
+            <div class="col-xs-5 nopadding ">
+                <a href="@Url.Action("Display", "Profiles", new { member.Profile.Id })">
+                    @Html.DisplayFor(m => member.Profile.Image, "ProfileImage", new { Width = 170, Height = 170 })
+                </a>
+            </div>
+            <div class="col-xs-7">
+
+
+                <div class="name"><a href="@Url.Action("Display", "Profiles", new { member.Profile.Id })">@member.Profile.Name</a></div>
+
+                <div>@Html.MultiLine(member.Profile.Location.Name)</div>
+
+                @if (member.Administrator)
+                {
+                    <div class="admin">
+                        <strong><img src="~/images/svgicons/flag.svg" class="Flag" data-svgpng="/images/SvgIcons/flag.png" />Administrator</strong>
+
+                        @if (Model.PermissionToManageAdmin && !member.Profile.IsOwnedBy(Model.GroupOwnerId))
+                        {
+                            <text>(<a href="javascript:void(0)" data-role="DemoteButton" data-id="@member.Profile.OwnerId">cancel</a>)</text>
+                        }
+                    </div>
+                }
+
+                @if ((Model.PermissionToManage || Model.PermissionToManageAdmin) && Model.GroupOwnerId.HasValue)
+                {
+                    if (!member.Profile.IsOwnedBy(Model.GroupOwnerId))
+                    {
+                        <input type="checkbox" name="UserIds" value="@member.Profile.OwnerId" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    }
+
+}

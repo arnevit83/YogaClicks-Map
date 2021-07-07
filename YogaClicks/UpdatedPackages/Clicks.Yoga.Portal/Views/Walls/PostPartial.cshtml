@@ -1,0 +1,38 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Portal.Models.Shared
+@model Clicks.Yoga.Portal.Models.Walls.WallPostPartialModel
+
+<div data-role="Post" class="post row nopadding">
+    <div class="col-md-2">
+        <a href="@Url.Action("Display", Model.Post.Actor.Controller, new { id = Model.Post.Actor.Id })">
+            @Html.DisplayFor(m => m.Post.Actor.Image, "ProfileThumbnail")
+        </a>
+    </div>
+    <div class="col-md-10 ">
+        <p><strong><a href="@Url.Action("Display", Model.Post.Actor.Controller, new { id = Model.Post.Actor.Id })">@Model.Post.Actor.Name</a></strong></p>
+
+        <p>@Html.NewLinesAndUris(Model.Post.Content)</p>
+       
+        @Html.Action("PostPartial", "Media", new { Ids = Model.Post.Resources.Select(r => r.Id), Width = 576 })
+  
+        <br/>
+
+        <small>
+            @if (Model.Permissions.Share && Model.Post.Actor.SharingPermitted && !SecurityContext.IsOwner(Model.Post))
+            {
+                <button data-role="SharePostButton" data-url="@Url.Action("Share")" data-post-id="@Model.Post.Id" class="btn btn-default btn-clear btn-sm pull-right shareButton">Share</button>
+            }
+
+            @* DWTIMEHERE *@
+            @Html.LocalDateTime(Model.Post.CreationTime.ToUniversalTime().ToString("u"))
+
+            @if (Model.Permissions.Administrate || SecurityContext.IsOwner(Model.Post))
+            {
+                <a href="javascript:void(0)" data-role="DeletePostButton" data-url="@Url.Action("DeletePost")" data-post-id="@Model.Post.Id">Delete</a>
+            }
+        </small>
+        <br /><br />
+        @Html.Partial("CommentsPartial", new CommentsPartialModel(Model.Post.Id, "WallPost", Model.Post.Comments, Model.CommentPermissions))
+    </div>
+    <div class="clear"></div>
+</div>

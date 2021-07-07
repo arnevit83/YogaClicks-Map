@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "KSR Resources: Contact Us";
+
+    ViewBag.Description = "Get in touch with KSR Resources, by phone, email or drop in. Call us on 01603 639014";
+}
+
+
+<img alt="KSR Resources: Contact Us" class="img-responsive" src="~/Images/Contact/main.png" />
+<span class="Strapline ">The human network</span>
+<div class="row  mainBack nomargin nopadding">
+    <div class="col-xs-12 nopadding">
+        <h1>Contact Us.</h1>
+    </div>
+  
+</div>
+
+<div class="row  mainBack nomargin ">
+    <br/>
+    <div class="col-sm-4  contactuscontact mainBackalt2colour nopadding">
+        <span id="contact1">
+            <i class="fa fa-phone" aria-hidden="true"></i><br />
+            We love to talk.
+        </span>
+    </div>
+    <div  class="col-sm-4  contactuscontact mainBackalt3colour nopadding">
+        <span id="contact2">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i><br />
+            Drop us a line.
+        </span>
+    </div>
+    <div  class="col-sm-4  contactuscontact mainBackalt2colour nopadding">
+        <span id="contact3">
+            <i class="fa fa-coffee" aria-hidden="true"></i><br />
+            Call in and chat.
+        </span>
+    </div>
+</div>
+
+<div class="row  mainBack nomargin mainfinisher">
+    <div class="col-sm-4 mappadding">
+        <div class="google-maps ">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d605.4144539392657!2d1.2980849361620497!3d52.630027498715215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9e3e7df7655df%3A0xae436413f4571172!2s12+Upper+King+St%2C+Norwich%2C+Norfolk+NR3+1HA%2C+UK!5e0!3m2!1sen!2sus!4v1465378300185" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div><br />
+    </div>
+    <div class="col-sm-8 mainBackalt3colour fullcontact mainBackalt3colour">
+        <span class="conus-1">KSR Resources </span><br />
+        <span class="conus-2">12 Upper King Street, Norwich<br />Norfolk, NR3 1HA</span><br />
+        <span class="conus-3">01603 239014</span><br />
+        <span class="conus-4"><a href="mailto:career@ksrresources.com">career@ksrresources.com</a></span>
+    </div>
+</div>
+<div class="row  mainBack nomargin nopadding">
+    <div class="col-xs-12 nopadding">
+        <br /><br />
+    </div>
+
+</div>
+@*@section scripts
+    {
+    <script type="text/javascript">
+        $("#contact1").hover(
+            function() {
+
+                $(this).html($("<block> <i class='fa fa-phone' aria-hidden='true'></i><br />01603 239014</block>"));
+            },
+            function() {
+
+                $(this).html($("<block> <i class='fa fa-phone' aria-hidden='true'></i><br />We love to talk.</block>"));
+
+            });
+
+        $("#contact2").hover(
+           function () {
+
+                $(this).html($("<block> <i class='fa fa-envelope-o' aria-hidden='true'></i><br /><a href'mailto:careers@ksrresources.com'>careers@ksrresources.com</block>"));
+            },
+         function () {
+
+             $(this).html($("<block> <i class='fa fa-envelope-o' aria-hidden='true'></i><br />Drop us a line.</block>"));
+
+         }
+               );
+              $("#contact3").hover(
+                  function () {
+
+            $(this).html($("<block> <i class='fa fa-coffee' aria-hidden='true'></i><br />12 Upper King st, NR3 1HA</block>"));
+        },
+        function () {
+
+            $(this).html($("<block> <i class='fa fa-coffee' aria-hidden='true'></i><br />Call in and chat.</block>"));
+
+        }
+
+
+    );
+
+
+
+
+    </script>
+    }
+*@

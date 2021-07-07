@@ -1,0 +1,203 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityNavigationModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap" class="scroll-pane">
+            <div class="the-sub-menu activitiesMenu">
+                <h1 class="pageTitle">Events and classes</h1>
+                <div id="@guid">
+                    @using (Html.BeginForm("Search", "Activities", FormMethod.Get))
+                    {
+                        var cls = Model.Types.First(e => e.IsClass);
+
+                        <!--<label>Type</label>-->
+
+                        <div data-role="ActivityType" class="activityType">
+
+                            <label>
+                                @Html.RadioButton("TypeId", cls.Id, Model.Criteria.TypeId == cls.Id, new { data_role = "ClassRadio" }) Classes
+                            </label>
+
+                            @foreach (var option in Model.Types.Where(o => !o.IsEvent && !o.IsClass))
+                            {
+                                <label data-role="ActivityCriteria">
+                                    @Html.RadioButton("TypeId", option.Id, Model.Criteria.TypeId == option.Id) @option.Name
+                                </label>
+                            }
+
+                            <div class="events" data-role="ActivityCriteria">
+                                <label>
+                                    @Html.RadioButton("TypeId", "", Model.Criteria.EventTypeId.HasValue, new { data_role = "EventRadio", @class = "special-event-radio" }) Special event
+                                </label>
+                                @Html.DropDownList("EventTypeId", new SelectList(Model.Types.Where(o => o.IsEvent).Select(s => new { Value = s.Id, Text = s.Name }), "Value", "Text", Model.Criteria.EventTypeId), "Please select", new { data_role = "EventSelect" })
+                            </div>
+
+                            <span class="footer">&nbsp;</span>
+                        </div>
+                        <div class="row">
+                            <label for="VenueName">Venue</label>
+                            @Html.TextBox("VenueName", Model.Criteria.VenueName, new { placeholder = "e.g. 'The Yoga Hut. Norwich'" })
+
+                        </div>
+                        <div class="row">
+                            <label for="Location">Location</label>
+                            @Html.TextBox("Location", Model.Criteria.Location, new { data_role = "Location", autocomplete = "off", placeholder = "e.g. 'City/Town' or 'Post/Zipcode'" })
+                            <div id="LocationSuggestions" data-role="LocationSuggestions"></div>
+
+                            @Html.Hidden("Latitude", Model.Criteria.Latitude, new { data_role = "Latitude" })
+                            @Html.Hidden("Longitude", Model.Criteria.Longitude, new { data_role = "Longitude" })
+                            @Html.Hidden("Radius", Model.Criteria.Longitude, new { data_role = "Radius" })
+
+                        </div>
+                        <div class="row" data-role="ActivityCriteria">
+                            <label for="StartDate">Event start date</label>
+                            <div>
+                                @Html.TextBox("StartDate", string.Format("{0:d MMM yyyy}", Model.Criteria.TypeId == cls.Id ? null : Model.Criteria.StartDate))
+                                <label for="StartDateFlexible">@Html.CheckBox("StartDateFlexible", Model.Criteria.StartDateFlexible) I'm flexible (+/- 10 days)</label>
+                            </div>
+                        </div>
+                        <div class="row" data-role="ClassCriteria">
+                            <label for="DayOfWeek">Day of week</label>
+                            @Html.DropDownList("DayOfWeek", Model.DayOfWeekOptions, "Please select")
+                        </div>
+                        <div class="row" data-role="ClassCriteria">
+                            <label for="TimeOfDay">Time of day</label>
+                            @Html.DropDownList("TimeOfDay", Model.TimeOfDayOptions, "Please select")
+                        </div>
+                        <div class="row" data-role="ClassCriteria">
+                            <label for="Duration">Duration</label>
+                            @Html.DropDownList("Duration", Model.DurationOptions, "Please select")
+                        </div>
+                        <div class="row levelRow">
+                            <label for="AbilityLevelId">Level <span class="questionMark">?</span></label>
+                            @Html.DropDownList("AbilityLevelId", new SelectList(Model.AbilityLevels, "Id", "Name", Model.Criteria.AbilityLevelId), "Please select")
+                            <div class="levelBox">
+                                <strong>Everyone has their own definition but here's a rough guide:</strong>
+                                <ul>
+                                    <li><strong>Beginners</strong> - Introduces the basics</li>
+                                    <li><strong>Level 1</strong> - Builds familiarity</li>
+                                    <li><strong>Level 2</strong> - Intermediate, develops understanding</li>
+                                    <li><strong>Level 3</strong> - Advanced, develops mastery</li>
+                                    <li><strong>Open</strong> - All levels, usually taught with modifications</li>
+                                </ul>
+                                <a href="#" class="close">x</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="TeacherName">Teacher name</label>
+                            @Html.TextBox("TeacherName", Model.Criteria.TeacherName, new { placeholder = "e.g. 'John Smith'" })
+                        </div>
+                        <div class="row">
+                            <label for="StyleId">Style</label>
+                            @Html.DropDownList("StyleId", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.StyleId), "Please select")
+                        </div>
+                        if (SecurityContext.IsYogaMeds())
+                        {
+                            // DEPLOYMENT OF YODAMEDS - remove this
+                            <div class="row">
+                                <label for="StyleId">YogaMeds</label>
+                                @Html.DropDownList("ConditionId", new SelectList(Model.Conditions, "Id", "Name", Model.Criteria.ConditionId), "Please select")
+                            </div>
+                        }
+                        <div class="row">
+                            <label for="Keywords">Keywords</label>
+                            @Html.TextBox("Keywords", Model.Criteria.Keywords)
+                        </div>
+
+                        <button type="submit" class="silver button" data-role="SearchSubmit">Search</button>
+                        <input type="reset" data-role="ResetButton" class="silver button" value="Clear Form" />
+                        <a href="@Url.Action("Search")" class="silver button showAllButton">Show All</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(function () {
+        $('#navwrap').yogaLocationPicker({ autocode: true });
+    });
+</script>
+
+<script>
+    $(function () {
+        $('#@Html.Id("StartDate")').datepicker({ dateFormat: 'd M yy' });
+    });
+</script>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        var $typeRadios = $container.find('input[type=radio]');
+        var $eventRadio = $container.find('input[data-role=EventRadio]');
+        var $eventSelect = $container.find('select[data-role=EventSelect]');
+        var $activityFields = $container.find('[data-role=ActivityCriteria]');
+        var $classFields = $container.find('[data-role=ClassCriteria]');
+        var $resetButton = $container.find('[data-role=ResetButton]');
+
+        var refreshFields = function () {
+            var $checkedRadio = $typeRadios.filter(':checked');
+            var isClass = $checkedRadio.attr('data-role') == 'ClassRadio';
+            var isEvent = $checkedRadio.attr('data-role') == 'EventRadio';
+
+            $classFields.toggle(isClass);
+
+            if (!isEvent) {
+                $eventSelect.find('option').prop('selected', false);
+            }
+
+            $typeRadios.closest('label').removeClass('selected');
+            $typeRadios.closest('div.events').removeClass('selected');
+            $checkedRadio.closest('label').addClass('selected');
+            $checkedRadio.closest('div.events').addClass('selected');
+        };
+
+        $typeRadios.on('change', function () {
+            if ($(this).val() != "" || $(this).data("role") == "All") {
+                $eventSelect.val("");
+                $(this).closest("form").submit();
+            } else {
+                refreshFields();
+            }
+        });
+
+        $resetButton.on('click', function () {
+            setTimeout(refreshFields, 100);
+        });
+
+        $eventSelect.on('click', function () {
+            $eventRadio.prop('checked', true);
+        });
+
+        $eventSelect.on('change', function () {
+            $(this).closest("form").submit();
+        });
+
+        if ($eventSelect.val()) {
+            $eventRadio.prop('checked', true);
+        }
+
+        refreshFields();
+
+        if (getParameterByName('se') == "true") {
+            $('.special-event-radio').click();
+        }
+
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+    });
+</script>

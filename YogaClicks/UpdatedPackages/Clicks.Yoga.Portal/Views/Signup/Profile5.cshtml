@@ -1,0 +1,50 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.ProfileStep5ViewModel
+
+@{
+    ViewBag.Title = "Profile Step 5";
+    ViewBag.HeaderClass = "blue-border";
+    ViewBag.BodyClass = "blue-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+    
+}
+
+<img src="/images/svgicons/Icon_ProfileBlue.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_ProfileBlue.png" alt="namaste students">
+@using (Html.BeginForm("Profile5", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-profile-5", step = 5 }))
+{
+    <div class="row blue-text">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-8 col-md-10 signup-row-title">
+            <p>My true Self</p>
+            <p>We've consulted with the mountain sages and these are the seven questions that reveal the true Self</p>
+        </div>
+        <div class="col-xs-2 col-md-1"></div>
+    </div>
+
+
+    for (var ctr = 0; ctr < Model.ProfileQuestions.Questions.Count; ctr++)
+    {
+        <div class="row blue-text signup-row-normal margintop100">
+            <div class="hidden-xs col-lg-1"></div>
+            <div class="col-xs-12 col-lg-10 singup-input">
+                @Html.HiddenFor(m => m.ProfileQuestions.Questions[ctr].Id)
+                @Html.LabelFor(m => m.ProfileQuestions.Questions[ctr].Response, Model.ProfileQuestions.Questions[ctr].Text)
+                @Html.EditorFor(m => m.ProfileQuestions.Questions[ctr].Response)
+            </div>
+            <div class="hidden-xs col-lg-1">
+            </div>
+        </div>
+    }
+
+
+
+
+
+
+    <div class="row margintop100" style="margin-bottom: 100px;">
+        <input type="submit" value="Save" class="btn btn-default btn-lg blue-border blue-text blue-inverse-text-hover" />
+    </div>
+
+}

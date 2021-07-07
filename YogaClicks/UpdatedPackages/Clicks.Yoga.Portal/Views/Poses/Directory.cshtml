@@ -1,0 +1,126 @@
+﻿@using Clicks.Yoga.Portal.Models.Poses
+@model Clicks.Yoga.Portal.Models.Poses.PoseDirectoryModel
+
+@{
+    ViewBag.Title = "90 + Yoga Poses or Asana, Beginners to Advanced";
+    ViewBag.Description = "Everything you need to know about yoga poses, including health benefits, Sanskrit name, difficulty level and how to do them – in one comprehensive library. ";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section Head {
+    <meta property="og:title" content="Uttanasana or Utkatasana? Never strike out again at YogaClicks" />
+    <meta property="og:description" content="We've detailed 100+ poses - why we love them, how to do them and more at YogaClicks. Search by name, level or category" />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", new { Type = PoseNavigationType.Directory })
+}
+
+<script type="text/javascript">
+    $(document).on("keypress", "#posesearch .search-term", function (e) {
+        if (e.keyCode == 13) {
+            $('#posesearch').submit();
+        }
+    });
+    $(document).ready(function () {
+
+        $("#Innercontent").css('min-width', '99%');
+        resizeDiv(true);
+    });
+</script>
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/icon_practice.svg" data-svgpng="/images/SvgIcons/icon_practice.png" /><span style="color: #ec2c82; font-weight: normal">Styles & Poses</span><span> - Pose finder</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+ 
+
+</section>
+
+
+
+<div class="practice-strip "></div><br />
+
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col " id="scroll">
+
+
+
+
+
+        <br />
+
+
+
+        <section class="pose-group">
+            @foreach (var pose in Model.Poses)
+            {
+            
+                    <article class="pose">
+                        <a href="@Url.Action("Display", new {pose.Id})" class="thumbnail">
+
+                            @Html.Image(pose.Image, null, i => i.Resize(c => c.Width(266).Height(192).ScaleBoth().Crop()))
+
+
+
+
+
+    
+                        </a>
+                        <h3>@pose.EnglishName</h3>
+                        <p>@pose.SanskritName</p>
+                    </article>
+
+
+                    }
+
+                 
+
+                </section>
+
+
+
+                    <br /><br />
+        @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+
+
+        <article class="advertResult posepopuptitle hidden-sm hidden-xs">
+
+
+      
+            <img class="img-responsive" style="left:-18px;position:relative" src="/Images/What-you-can-do/pose_popup.png"><span id="mini-close" title="Close" class="close pull-right" style="  margin-top: -225px;margin-right:22px;" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+        <br /><strong>Click on the pose to add your picture</strong><br />
+
+
+        </article>
+        @section Scripts{
+            <script type="text/javascript">
+    $("#mini-close").click(function () {
+        $(".posepopuptitle").hide();
+
+    });
+    </script>
+    }
+                </div>
+</div>

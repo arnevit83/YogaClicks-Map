@@ -1,0 +1,189 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.TeacherStep3ViewModel
+
+@{
+    ViewBag.Title = "Teacher Profile";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    ViewBag.Width = 240;
+    ViewBag.Height = 240;
+    ViewBag.BannerWidth = 710;
+    ViewBag.BannerHeight = 240;
+    ViewBag.BlankImage = true;
+    ViewBag.SignUpLocationPublic = "true";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+
+    var progressModel = new SignUpProgressBar()
+    {
+        Step = 2,
+        NumberOfSteps = 4,
+        ColorCssClass = "purple-text"
+    };
+
+
+    if (Model.IsEdit)
+    {
+        progressModel.Step = 1;
+        progressModel.NumberOfSteps = 3;
+    }
+
+    if (Session["newTeacher"] != "true")
+    {
+        progressModel.Step = 1;
+        progressModel.NumberOfSteps = 3;
+    }
+
+    var imageModel = new SignUpImages()
+    {
+        Image = Model.Image,
+        ProfileBanner = Model.ProfileBanner,
+        ColorCssClass = "purple-text"
+    };
+    
+    ViewBag.SignupProfileImageText = "Upload your professional photo";
+    ViewBag.SignupProfileBannerImageText = "Add a banner image, something that represents your teaching philosophy";
+    
+}
+
+@if (Model.IsEdit)
+{
+    <div class="btn btn-default purple-border purple-text signup-deletebutton">
+        @Html.Action("DeleteButton", "Profiles", new { EntityId = Model.Id, EntityTypeName = "Teacher", Securable = Model.UserProfile })
+    </div>
+}
+
+<img src="/images/svgicons/Icon_TeacherPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" alt="namaste students">
+@using (Html.BeginForm("TeacherStep3", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-teacher-3", step = 3 }))
+{
+
+
+    if (Model.IsEdit)
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Edit your teacher page.</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else if (Session["newTeacher"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>1. Create your teacher page.</p>
+                <p>Here you can fill out all things professional and get started connecting with students.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>2. Create your teacher page.</p>
+                <p>Here you can fill out all things professional and get started connecting with students.</p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+    <div class="row purple-text signup-row-normal">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Name:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <input id="signup-name" name="name" type="text" placeholder="What name do you go by when you teach?" data-field-type="general" value="@Model.Name"/>
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2  signup-large-text">
+            <p>Phone:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <input id="signup-telephone" name="telephone" type="text" data-field-type="notrequired" value="@Model.Telephone" style="z-index: 100" />
+            <span class="signup-underinput-text">This info will be public so students can contact you for classes.</span>
+            @Html.ValidationMessageFor(model => model.Telephone)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Web / social:</p>
+        </div>
+        <div class="col-xs-11 col-sm-11 col-lg-8 singup-input">
+            @Html.EditorFor(m => m.Websites)
+        </div>
+        <div class="col-xs-1 under390nopadding">
+            <a data-role="AddButton" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-lg-2 signup-large-text">
+            <p>Teaching location:</p>
+        </div>
+        <div class="col-xs-12 col-lg-8 singup-input">
+            <div class="venueWrap">
+                @Html.EditorFor(m => m.Address)
+            </div>
+            <span class="signup-underinput-text">You can add venues you teach at once signed up</span>
+            <div class="cb"></div>
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+
+
+    @Html.Partial("_SignUpImagesSection", imageModel);
+
+    @Html.Partial("_SignUpProgressBar", progressModel);
+    
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if ($('form').length > 0) {
+                    $('form').isValid();
+                }
+
+                $(function () {
+                    $('.location-search-box').click(function () {
+                        var target = $('#Location');
+                        $('html,body').animate({ scrollTop: target.offset().top }, 1000);
+                        return false;
+                    });
+                });
+            });
+        </script>

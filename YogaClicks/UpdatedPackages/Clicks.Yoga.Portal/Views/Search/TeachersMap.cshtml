@@ -1,0 +1,190 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Search.SearchTeachersModel
+
+@{
+    ViewBag.Title = "Find a Yoga Teacher or Instructor";
+    ViewBag.Description = "Find a yoga teacher anywhere in the world. Filter by style, location" +
+                          ", classes, holidays/retreats, date, and more.";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+}
+
+@section Head {
+    <meta property="og:title" content="Rockin' bod or Bodhisattva? Your teacher, your choice at YogaClicks" />
+    <meta property="og:description" content="Find your teacher at YogaClicks." />
+    <meta property="og:image" content="www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+@section LeftNav {
+    @Html.Action("TeachersNavigation", new { Action = "TeachersMap" })
+}
+
+<style>
+      #container {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+    }
+    
+
+    </style>
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Find</span><span> - Teachers</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+<div class="discover-strip "></div><br />
+
+<div class="row">
+    <header id="containerhead" class="col-xs-12 ">
+        <div class="fr">
+            @using (Html.BeginForm("TeachersMap", null, FormMethod.Get, new { style = "display: inline;" }))
+            {
+                @Html.Partial("CriteriaHidden", Model.Criteria)
+                <button type="submit" class="btn btn-default  btn-sm disabled " style="margin-left:4px;"><i class="fa fa-map-marker"></i>&nbsp;Map view</button>
+            }
+            @using (Html.BeginForm("Teachers", null, FormMethod.Get, new { style = "display: inline;" }))
+            {
+                @Html.Partial("CriteriaHidden", Model.Criteria)
+                <button type="submit" class="btn btn-default btn-sm" style="margin-left: 4px;"><i class="glyphicon glyphicon-th-list"></i>&nbsp;List view</button>
+            }
+        </div>
+        @*<p class="fl">Showing <span data-role="ResultCount">0</span> <span data-role="ResultMultiple">results</span></p>*@
+        <br /><br />  <hr />
+    </header>
+
+
+
+
+</div>
+    <div id="content-slider" class=" search-content-col" id="scroll">
+        <div id="container">
+       
+
+
+            <div id="sidebar" style="display:block">
+                <div class="sidebar-wrapper">
+                    <div id="features" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Teachers
+                                <button id="sidebar-hide-btn" class="btn btn-xs btn-default pull-right" type="button"><i class="fa fa-chevron-left"></i></button>
+                            </h3>
+                        </div>
+
+                        <div class="sidebar-table">
+
+                            <div data-role="Results" class="list-group ">
+                                <div class="list-group-item btn-clear" data-role="ResultTemplate" style="display: none;">
+                                    <a href="{{Uri}}" class="">
+
+                                        <strong style="color: #5DA3A1;">{{Name}}</strong>
+                                    </a><br />
+
+                                    {{#City}}
+                                    <div>{{City}}</div>
+                                    {{/City}}
+
+                                    {{#Country}}
+                                    <div>{{Country}}</div>
+                                    {{/Country}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            @*<div class="col-sm-3 hidden-xs nopadding">
+
+                    <p><strong>Teachers</strong></p>
+
+                <div data-role="Results" class="list-group ">
+                    <div class="list-group-item btn-clear" data-role="ResultTemplate" style="display: none;">
+                        <a href="{{Uri}}" class="">
+
+                            <strong style="color: #5DA3A1;">{{Name}}</strong>
+                        </a><br />
+
+                            {{#City}}
+                            <div>{{City}}</div>
+                            {{/City}}
+
+                            {{#Country}}
+                            <div>{{Country}}</div>
+                            {{/Country}}
+                    </div>
+                </div>
+            </div>*@
+
+
+            <div data-role="Map" id="map" data-search-url="@Url.Action("TeachersJson")" data-information-url="@Url.Action("TeacherInformation")"></div>
+
+        </div>
+    </div>
+
+    @section Scripts {
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#content-slider').yogaSearchMap(@Html.Raw(Model.Criteria.Json));
+            });
+
+            $("#Innercontent").css('min-width', '99%');
+
+
+
+            $(document).ready(function () {
+ 
+                resizeDivmap();
+            });
+            window.onresize = function (event) {
+                resizeDivmap();
+            }
+            function resizeDivmap() {
+
+                var vph = $(window).height() ;
+                //vph = Math.max(vph, $("#left-slider").height()  );
+         
+                if ($(window).width() > 768) {
+
+                    vph = Math.max(vph - 195, $("#left-slider").height());
+                    
+                } else {
+                    vph = vph - 255;
+                }
+              
+
+                $("#content-slider").css({ 'height': vph + "px" });
+
+                $("#sidebar").css({ 'height': vph + "px" });
+                
+               google.maps.event.trigger(map, 'resize');
+
+            }
+            $("#sidebar-hide-btn").click(function () {
+                $("#sidebar").hide();
+                google.maps.event.trigger(map, 'resize');
+            });
+
+        </script>
+    }

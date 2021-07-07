@@ -1,0 +1,26 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.NewsStoryModel
+
+<div class="wallPost friendAddedEntity @Model.Target.EntityType.DisplayName.ToLower()">
+    <div class="wallPostIcon hidden-xs" >
+        <img src="~/images/SvgIcons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" />
+    </div>
+    <div class="content">
+        <div class="text">
+            <span class="actorImage">@Html.DisplayFor(m => m.Actor)</span> added a new @Model.Target.EntityType.DisplayName.ToLower() <span class="actorImage">@Html.DisplayFor(m => m.Target, "EntityHandleModelNoAvatar")</span>.
+        </div>
+
+        <div class="news-fan-container">
+            @Html.Action("Button", "Fans", new { EntityId = Model.Id, entityTypeName = Model.EntityTypeName, newsfeed = true })
+        </div>
+
+        <small>
+            @* DWTIMEHERE *@
+            @Html.LocalDateTime(@Model.CreationTime.ToUniversalTime().ToString("u"))
+
+            @if (Model.EntityId > 0 && SecurityContext.IsOwner(Model.Subject))
+            {
+                <a href="javascript:void(0)" data-role="DeletePostButton" data-url="@Url.Action("DeletePost")" data-post-id="@Model.EntityId">Delete</a>
+            }
+        </small>
+    </div>
+</div>

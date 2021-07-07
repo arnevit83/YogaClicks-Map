@@ -1,0 +1,24 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionDirectoryImageUpdateModel
+
+<div>
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm("UpdateDirectoryImage", "Medic", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-condition-directory-image-form" }))
+{
+    @Html.HiddenFor(m => m.ConditionId)
+
+    <div id="ConditionDirectoryImage">
+        @Html.HiddenFor(m => m.ConditionDirectoryImage.ImageCrop.XCoord)
+        @Html.HiddenFor(m => m.ConditionDirectoryImage.ImageCrop.YCoord)
+        @Html.HiddenFor(m => m.ConditionDirectoryImage.ImageCrop.Width)
+        @Html.HiddenFor(m => m.ConditionDirectoryImage.ImageCrop.Height)
+        @Html.EditorFor(m => m.ConditionDirectoryImage)
+    </div>
+
+    <div id="cropfancybox" style="display: none">
+        <div id="upload-cut">
+            <img alt="Field for image cutting" id="preview" src="@Url.Content("~/Images/empty.png")" />
+        </div>
+    </div>
+}

@@ -1,0 +1,142 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityWallModel
+
+@{
+    ViewBag.Title = "Wall";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.Page = "wall";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Activity.Name" />
+    @if (!string.IsNullOrEmpty(Model.Activity.Description))
+    {
+        <meta property="og:description" content="@Model.Activity.Description" />
+    }
+    else
+    {
+        <meta property="og:description" content=" " />
+    }
+    @if (Model.Activity.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+    }
+}
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Classes</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page"></div>
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                    <h2 class="greenHeader activitiesHeader">
+                        <img src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" />
+          
+                            @Model.Activity.Name
+              
+                    </h2>
+
+
+
+
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+
+
+
+
+
+
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+
+
+                        @Html.Action("Tabs")
+
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+
+
+                                <div class="well">
+                                    <h4>Wall</h4>
+
+                                    <div class="infocard">
+
+
+                                    </div><hr /><br />
+
+                                    @Html.Action("WallPartial", "Walls", new { Model.Activity.Wall.Id })
+
+                                    </div>
+
+
+
+                                    <div class="hidden-md hidden-lg hidden-sm">
+                                        @Html.Action("Tabsmini")
+                                    </div>
+                                    <br />
+                                @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+
+                                </div>
+                        </div>
+                    </div>
+                </div>     
+                </article>
+                        </div>
+                    </div>
+                </div>

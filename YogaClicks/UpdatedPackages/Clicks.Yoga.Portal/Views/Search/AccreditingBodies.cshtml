@@ -1,0 +1,38 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchAccreditingBodiesModel
+
+@{
+    ViewBag.Title = "Teachers";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-accreditingbody-search", Model)
+}
+
+@section Scripts{
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col search-content-col discover-strip" id="scroll">
+        <div class="content-col" id="scroll">
+            <div class="padTop20">
+                <header class="search-results">
+                    <h1>Search results</h1>
+                    <p>Showing @Model.PageDescription based on your search for '@Model.Criteria.Keywords'</p>
+                </header>
+                <div id="resultContainer">
+                    @foreach (var result in Model.Results)
+                    {
+                        @Html.Partial("SearchResultPartial", result)
+                    }
+                </div>
+                @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+                @Html.Partial("Disclaimer", "Shared")
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="WindowsAzureYoga" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
+  <Role name="Clicks.Yoga.Portal">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=portalvhdsz6sxx66c3vrh3;AccountKey=WEc/zUiKZwfzrGqDaFN9uhPhsmW8coqYyOEPSsw4dU7nkbtKS01z5an2ujD9VQXaTB4EDiT2/vZOGJlPC3cZmQ==" />
+      <Setting name="ImageStorageAccountConn" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="Clicks.Yoga.Portal.ImageStore">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=portalvhdsz6sxx66c3vrh3;AccountKey=WEc/zUiKZwfzrGqDaFN9uhPhsmW8coqYyOEPSsw4dU7nkbtKS01z5an2ujD9VQXaTB4EDiT2/vZOGJlPC3cZmQ==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

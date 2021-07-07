@@ -1,0 +1,8 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ImageModel
+
+@{
+    var width = ViewBag.Width ?? 300;
+    var height = ViewBag.Height ?? 300;
+}
+
+@Html.Image(Model, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height, @class = "img-thumbnail img-responsive center-block" })

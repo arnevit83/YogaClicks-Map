@@ -1,0 +1,12 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionUserStoriesModel
+
+<div class="block-section">
+    @Html.Label("User Stories")
+
+    <ul class="update-user-story-list">
+        @foreach (var userStory in Model.UserStories.UserStories)
+        {
+            <li data-user-story-id="@userStory.Id">@userStory.Title<span>X</span></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,102 @@
+﻿@model Clicks.Yoga.Portal.Models.YogaMap.AssociatedPartialProfileModel
+@if (Model.Stories != null)
+{
+  
+
+if (Model.Stories.Any())
+{
+  
+<div>
+    <div class="well"><h4 >@Model.Header</h4>
+
+
+        <table class="table table-striped">
+            @foreach (var Story in Model.Stories)
+            {
+
+                <tr>
+                    <td>
+                        <br />
+
+
+                        <div class="row nopadding">
+                            <div class=" col-sm-4 nopadding ">
+                                #PoweredByYoga since:
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-7 ">
+                                @Story.PoweredFrom
+                                <br /><br />
+                            </div>
+                        </div>
+
+                        @if (Story.Conditions.Count > 0)
+                        {
+                            <div class="row nopadding ">
+                                <div class=" col-sm-4 nopadding">
+
+                                    I’ve used yoga for :
+                                </div>
+                                <div class=" col-sm-offset-1  col-sm-7">
+
+                                    <div class="NormG">
+                                        <ul class="Halflist">
+                                            @foreach (var condition in Story.Conditions)
+                                            {
+                                                <li><a href="@Url.Action("Display", "Medic", new {id = @condition.Id, slug = @condition.UrlSlug})">@condition.Name</a></li>
+                                            }
+                                        </ul>
+                                    </div><br /><br />
+                                </div>
+                            </div>
+
+
+                        }
+
+
+
+
+                        <div class="row nopadding">
+                            <div class=" col-sm-4 nopadding ">
+
+                                <span class="centerAlign" style="max-width: 200px;">
+                                    <img class="Profilepin img-circle" src="@Story.Image" />
+                                    <img class="centerAlign " style="width: 200px;min-width:200px;" data-svgpng="~/Images/Stories/greenPin.png" src="~/Images/Stories/greenPin.svg" />
+
+
+
+
+                                </span>
+
+                            </div>
+                            <div class=" col-sm-offset-1  col-sm-7"><br />
+                                <b>@Story.Title</b>
+                                <br /><br />
+                                @Story.Story
+                                <br style="clear: both" /><br />
+
+                            </div>
+                        </div>
+
+                        <div class="row nopadding">
+                            <div class=" col-sm-12 nopadding">
+
+                                <a href="/YogaMap/@Story.StoryId" class="btn btn-md btn-custom pull-right">Get the full story</a>
+                                <br style="clear: both" /><br />
+                            </div>
+                        </div>
+
+                     
+
+                    </td>
+                </tr>
+
+
+            }
+            </table>
+
+</div>
+</div>
+
+}
+}
+

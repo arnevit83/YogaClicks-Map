@@ -1,0 +1,123 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityAttendeesModel
+
+@{
+    ViewBag.Title = "Attendees";    
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+@section Head {
+<meta property="og:title" content="@Model.Activity.Name" />
+@if (!string.IsNullOrEmpty(Model.Activity.Description))
+{
+    <meta property="og:description" content="@Model.Activity.Description" />
+}
+else
+{
+    <meta property="og:description" content=" " />
+}
+@if (Model.Activity.Image != null)
+{
+    <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+}
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader"><span>&nbsp;</span>@Model.Activity.Type.Name: @Model.Activity.Name</h2>
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+                @Html.Action("Tabs")
+                
+               
+                
+                @if (Model.ConfirmedAttendees.Count > 0)
+                {
+                    <h3>Attending (@Model.ConfirmedAttendees.Count)</h3>
+                    
+                    <div class="attendingWrap">
+                        @foreach (var attendee in Model.ConfirmedAttendees)
+                        {
+                            <div class="attendee">
+                                <div class="fl">
+                                    <a href="@Url.Entity(attendee)">
+                                        @Html.DisplayFor(m => attendee.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                                    </a>
+                                </div>
+                                <div class="fl info">
+                                    <div class="name"><a href="@Url.Entity(attendee)">@attendee.Name</a></div>
+                                    <div class="location">@attendee.Location</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                 }
+              
+                @if (Model.UnconfirmedAttendees.Count > 0)
+                {
+                    <br />
+                    <h3>Invited (@Model.UnconfirmedAttendees.Count)</h3>
+                    
+                    
+                    <div class="attendingWrap">
+                        @foreach (var attendee in Model.UnconfirmedAttendees)
+                        {
+                            <div class="attendee">
+                                <div class="fl">
+                                    <a href="@Url.Entity(attendee)">
+                                        @Html.DisplayFor(m => attendee.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                                    </a>
+                                </div>
+                                <div class="fl info">
+                                    <div><a href="@Url.Entity(attendee)">@attendee.Name</a></div>
+                                    <div class="location">@attendee.Location</div>
+                                </div>
+                            </div>
+                        }
+                    </div>      
+              
+                }
+
+                @if (SecurityContext.IsOwner(Model.Activity) && Model.RejectedAttendees.Count > 0)
+                {
+                    <br />
+                    <h3>Declined (@Model.RejectedAttendees.Count)</h3>
+                    
+                    
+                    <div class="attendingWrap">
+                        @foreach (var attendee in Model.RejectedAttendees)
+                        {
+                            <div class="attendee">
+                                <div class="fl">
+                                    <a href="@Url.Entity(attendee)">
+                                        @Html.DisplayFor(m => attendee.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                                    </a>
+                                </div>
+                                <div class="fl info">
+                                    <div><a href="@Url.Entity(attendee)">@attendee.Name</a></div>
+                                    <div class="location">@attendee.Location</div>
+                                </div>
+                            </div>
+                        }
+                    </div>      
+              
+                }
+            </article>
+        </div>
+    </div>
+</div>

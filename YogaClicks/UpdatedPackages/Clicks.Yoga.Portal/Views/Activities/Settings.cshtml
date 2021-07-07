@@ -1,0 +1,131 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivitySettingsModel
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">Classes</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page"></div>
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")  @ViewBag.Page" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+                <h2 class="greenHeader activitiesHeader">
+                    <img src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" />
+
+                    @Model.Activity.Name
+
+                </h2>
+
+
+
+
+                <hr style="margin-top: 7px; margin-bottom:7px;" />
+
+
+
+
+
+
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+
+
+                        @Html.Action("Tabs")
+
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="personalProfileHeader">
+                                        <h3 class="fl">Your event privacy settings</h3>
+                                        <button type="submit" class="button save fr">Save changes &nbsp; <img src="/images/icon-save.png"></button>
+                                    </div>
+
+                                    @Html.ValidationSummary()
+
+                                    <div class="block-section clear privacySettings">
+                                        <p><strong>Workshop is public or private?</strong></p>
+                                        @Html.EditorFor(m => m.Public, "BooleanRadios", new { TrueText = "Public", FalseText = "Private" })
+
+                                        <p><strong>Invitees can invite others</strong></p>
+                                        @Html.EditorFor(m => m.AttendeeInvitationsPermitted, "BooleanRadios")
+
+                                        <p><strong>Invitees can post on event wall</strong></p>
+                                        @Html.EditorFor(m => m.AttendeePostingPermitted, "BooleanRadios")
+
+                                        <p><strong>Invitees can create galleries</strong></p>
+                                        @Html.EditorFor(m => m.AttendeeGalleriesPermitted, "BooleanRadios")
+                                    </div>
+
+
+                                }
+                                <div class="hidden-md hidden-lg hidden-sm">
+                                    @Html.Action("Tabsmini")
+                                </div>
+                                <br />
+                                @Html.Partial("Disclaimer", "Shared")
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

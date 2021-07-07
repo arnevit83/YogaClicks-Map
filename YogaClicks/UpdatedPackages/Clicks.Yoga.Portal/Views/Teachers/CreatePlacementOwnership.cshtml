@@ -1,0 +1,54 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherCreatePlacementOwnershipModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h2 class="greenHeader">Find/add a venue</h2>
+<hr />
+<ul class="steps steps3">
+    <li><span>Step 1</span></li>
+    <li class="active"><span>Step 2</span></li>
+    <li><span>Step 3</span></li>
+</ul>
+<div class="scrollableiFrame">
+    @Html.ValidationSummary()
+    @using (Html.BeginForm("CreatePlacementOwnership", "Teachers"))
+    {
+        @Html.HiddenFor(m => m.VenueId)
+        @Html.HiddenFor(m => m.VenueName)
+
+        <div style="padding:15px 0 25px; overflow:hidden;">
+            <div class="halfWidth">
+                @Html.RadioButtonFor(m => m.Owned, true) I own/manage this venue
+            </div>
+            <div class="halfWidth">
+                @Html.RadioButtonFor(m => m.Owned, false) I do not own/manage this venue
+            </div>
+        </div>
+        <div data-role="InviteForm">
+            <h4>Invite this venue to YogaClicks</h4>
+            <div>Fill in this venue's email address and we'll invite them to claim their YogaClicks profile.</div>
+            @Html.TextBoxFor(m => m.EmailAddress)
+        </div>
+        <hr />
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <button class="pink large button fr" type="submit">Next</button>
+
+        <div class="cb"></div>
+    }
+</div>
+
+<script>
+    $(function() {
+        var $inviteForm = $("[data-role=InviteForm]");
+
+        $container.find("input[name='@Html.NameFor(m => m.Owned)']").on("click", function() {
+            if ($(this).val() == true) {
+                $inviteForm.hide();
+            } else {
+                $inviteForm.show();
+            }
+        });
+    });
+</script>

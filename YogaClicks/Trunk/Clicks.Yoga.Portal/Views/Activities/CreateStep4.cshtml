@@ -1,0 +1,37 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityCreateStep4Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@{
+    var createModel = ViewBag.CreateModel as ActivityCreateModel;
+}
+
+@using (Html.BeginForm("CreateStep4", "Activities"))
+{
+    @Html.Serialize("CreateModel", ViewBag.CreateModel as ActivityCreateModel)
+    
+    <h2 class="greenHeader">Create Activity: @createModel.ActivityTypeName</h2>
+    <hr />
+    <ul class="steps steps4">
+            <li><span>Step 1</span></li>
+            <li><span>Step 2</span></li>
+            <li><span>Step 3</span></li>
+            <li class="active"><span>Step 4</span></li>
+        </ul>
+  
+        @Html.HiddenFor(m => m.Back)
+        
+        @Html.Action("Obtain", "Venues", new { showBackButton = true })
+
+}
+
+<script type="text/javascript">
+    $(document).on("click", "#BackButton", function(e) {
+        e.preventDefault();
+        $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+        $(this).closest("form").submit();
+    });
+</script>

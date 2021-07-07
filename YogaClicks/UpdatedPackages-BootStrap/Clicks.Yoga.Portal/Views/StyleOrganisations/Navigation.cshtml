@@ -1,0 +1,29 @@
+﻿@model Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationNavigationModel
+
+<div id="navwrap">
+    
+
+    <section class="filters styleOrganisationsFilter" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h3>Styles</h3>
+                <nav class="filter">
+                    @foreach (var style in Model.Styles)
+                    {
+                        <a href="@Url.Action("StyleOrganisations", "Search", new { style = style.Id })">@style.Name</a>
+                    }
+                    <br />
+                </nav>
+                <br /><br />
+                <h3>Style organisations</h3>
+                <nav class="filter">
+                    @foreach (var organisation in Model.Organisations)
+                    {
+                        <a href="@Url.Action("Display", new { @organisation.Id })">@organisation.Name</a>
+                    }
+                    <br />
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>

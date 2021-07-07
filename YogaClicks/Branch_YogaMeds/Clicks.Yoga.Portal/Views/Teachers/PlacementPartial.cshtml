@@ -1,0 +1,43 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherPlacementModel
+
+@if (Model.Confirmed || SecurityContext.IsOwner(Model.Teacher) || SecurityContext.IsOwner(Model.Venue))
+{
+    <div class="block-section venue-section connection" data-venueid="@Model.Venue.Id">
+
+        @if (SecurityContext.Authenticated)
+        {
+            if (SecurityContext.CanUpdate(Model.Venue) || SecurityContext.CanUpdate(Model.Teacher))
+            {
+                <p class="fr">
+                    <a class="remove-placement" href="#" data-venueid="@Model.Venue.Id" data-teacherid="@Model.Teacher.Id">Remove this venue from profile</a>
+
+                    @if (Model.Venue.OwnerId == null)
+                    {
+                        <text>| <a href="javascript:openModal('@Url.Action("Claim", "Venues", new { Model.Venue.Id })')">Claim ownership of this venue</a></text>
+                    }
+                </p>
+            }
+        }
+            
+        <div class="headerWrap"> 
+            @Html.Image(Model.Venue.Image, i => i.Resize(c => c.Width(50).Height(50).ScaleBoth().Crop()))
+            <h2><a href="@Url.Action("Display", "Venues", new { Model.Venue.Id })">@Model.Venue.Name</a></h2>
+        </div>   
+        <hr />
+
+        <div style="float:left; margin: 0 15px 0 0;">
+
+        @if (Model.Venue.Address != null)
+        {
+            @Html.DisplayFor(m => m.Venue.Address, "AddressMap")
+        }
+
+        </div>
+
+        @if (Model.Venue.Address != null)
+        {
+            <strong>Address</strong><br /> 
+            @Html.DisplayFor(m => m.Venue.Address, "Address")
+        }
+    </div>
+}

@@ -1,0 +1,9 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ImageUploadModel
+
+@{
+    Layout = null;
+}
+
+@Html.HiddenFor(e => e.Id)
+
+<input type="file" id="@Html.IdFor(e => e.PostedFile)" name="@Html.NameFor(e => e.PostedFile)" accept="image/*" />

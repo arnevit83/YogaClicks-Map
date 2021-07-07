@@ -1,0 +1,35 @@
+﻿<div id="navwrap">
+    
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <nav class="filter text-justify centerAlign ">
+
+                    <span id="right-menu-close"  title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                    <h3>Work with us</h3>
+                    <div class="list-group">
+                        <a class="list-group-item" href="@Url.Action("sell-with-us", "static")">Sell your products and events</a>
+                        <a class="list-group-item" href="@Url.Action("YCAmbassador", "static")">Become a YC Ambassador</a>
+                        @*<a class="list-group-item" href="@Url.Action("advertise-with-us", "static")">Advertise with us</a>*@
+
+
+                    </div>
+
+
+     
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+
+    $("#right-menu-close").click(function () {
+
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+
+    });
+
+</script>

@@ -1,0 +1,89 @@
+﻿@using System.Web.Optimization
+@model Clicks.Yoga.Portal.Models.Search.SearchTeachersNavigationModel
+
+
+<div id="navwrap">
+    
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle">Teachers</h1><br/>
+                Refine your search<br/><br/>
+                @using (Html.BeginForm(Model.Action, "Search", FormMethod.Get))
+                {
+                    <label>Teacher name</label>
+
+                    @Html.TextBox("Keywords", Model.Criteria.Keywords, new {@class = " form-control"})
+
+                    <label>Location</label>
+
+                    @Html.TextBox("Location", Model.Criteria.Location, new {data_role = "Location", autocomplete = "off", placeholder = "You must enter a location - town, country etc.", @class = "form-control"})
+
+                    <div id="LocationSuggestions" data-role="LocationSuggestions"></div>
+
+                    @Html.Hidden("Latitude", Model.Criteria.Latitude, new {data_role = "Latitude"})
+                    @Html.Hidden("Longitude", Model.Criteria.Longitude, new {data_role = "Longitude"})
+                    @Html.Hidden("Radius", Model.Criteria.Radius, new {data_role = "Radius"})
+
+                    <label>Style</label>
+
+                    @Html.DropDownList("Style", new SelectList(Model.Styles, "Id", "Name", Model.Criteria.Style), "Please select")
+
+                    <label>Accrediting body</label>
+
+                    @Html.DropDownList("AccreditationBody", new SelectList(Model.Accreditations, "Id", "Name", Model.Criteria.AccreditationBody), "Please select")
+
+                    <label>Service</label>
+
+                    @Html.DropDownList("TeacherService", new SelectList(Model.Services, "Id", "Name", Model.Criteria.TeacherService), "Please select")
+
+                    <br/>
+                    <div class="btn-group btn-group-justified hidden-lg hidden-md " role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="submit" onclick="javascript: ResetForm(); return false;" class="btn btn-default btn-clear">Clear</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="@Url.Action("Teachers")" class="btn btn-default btn-clear">All</a>
+                        </div>
+                    </div>
+                    <div class="btn-group btn-group-justified hidden-xs hidden-sm" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="submit" onclick="javascript: ResetForm(); return false;" class="btn btn-default btn-clear">Clear Form</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="@Url.Action("Teachers")" class="btn btn-default btn-clear">Show All</a>
+                        </div>
+                    </div>
+                    <div class="btn-group btn-group-justified FindButtons" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-custom " data-role="SearchSubmit">Search</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+
+    <script type="text/javascript">
+    $(function () {
+        $('#navwrap').yogaLocationPicker({ autocode: true });
+        $("#right-menu-close").click(function () {
+
+            $("#right-nav").fadeToggle("fast");
+            $(".dark-overlay").fadeToggle("slow");
+
+        });
+
+    });
+
+    function ResetForm() { document.getElementById("Keywords").value = "", document.getElementById("Location").value = "", document.getElementById("Style").selectedIndex = 0, document.getElementById("AccreditationBody").selectedIndex = 0, document.getElementById("TeacherService").selectedIndex = 0 }
+    </script>
+

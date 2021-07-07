@@ -1,0 +1,23 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.ConditionWTSSModel
+
+<div class="block-section">
+
+    @Html.Label("What the science says")
+
+    <div>
+        @foreach (var therapyType in Model.TherapyTypes)
+        {
+            <div>@therapyType.Name</div>
+            <ul>
+                @foreach (var wtss in Model.WhatTheScienceSayses.WhatTheScienceSayses
+            .Where(x => x.TherapyTypes.Select(y => y.Name)
+                .Contains(therapyType.Name)).
+                OrderBy(x => x.Description))
+                {
+                    <li class="existing-WTSS" data-wtss-id="@wtss.Id">@wtss.Description <span>X</span></li>
+                }
+                <li>@Html.TextBox(therapyType + "-new-entry", null, new { @class = "new-WTSS", data_wtss_type_id = therapyType.Id }) <a class="silver button add-wtss-btn" href="#">Add</a></li>
+            </ul>
+        }
+    </div>
+</div>

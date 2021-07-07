@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Teacher Information";
+    ViewBag.HeaderClass = "purple-border";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<img src="/images/svgicons/Icon_OrgPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" alt="Make yourself discoverable">
+<div class="row purple-text sign-up-page1">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 signup-large-text">
+        <p>Namaste! Create a teacher training page to connect with students and other teachers.</p>
+        <a href="/Signup/TeacherTrainingOrganisation/2" class="btn btn-default btn-lg purple-border purple-text purple-inverse-text-hover">
+            Get started!
+        </a>
+        <p>Use your teacher training page to:</p>
+        <ul class="signup-list">
+
+            <li>Share your story with the world</li>
+            <li>Attract new students and teachers</li>
+            <li>Promote your schedule (free!)</li>
+            <li>Research 300+ clinical yoga studies</li>
+            <li>Shop the community’s creations</li>
+            <li>And much more!</li>
+
+
+        </ul>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+<div class="row signup-footer-purple">
+    @Html.Partial("_FooterBar")
+</div>
+<div class="row">
+    <div class="col-xs-12 purple-text signup-footer-back">
+        <p><a href="javascript:history.go(-1)">Not a teacher training organisation?</a></p>
+    </div>
+</div>
+<p></p>

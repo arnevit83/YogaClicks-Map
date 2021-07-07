@@ -1,0 +1,122 @@
+﻿@using System.Configuration
+@model Clicks.Yoga.Portal.Models.Editors.FriendAutocompleteModel
+
+<div id="@Html.IdFor(m => m)">
+    <label>@(ViewData["Label"] ?? "Search by name")</label> <input type="text" class="form-control" data-role="Name">
+
+    <div data-role="Suggestions" class="suggestions">
+        <div>
+            <img src="{{Image.Url}}?width=20&height=20&scale=both&mode=crop" width="20" height="20">
+            <a href="javascript:void(0)">{{Name}}</a>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; display: none;" data-role="Selected">
+        <label>Selected</label>
+    </div>
+
+    <div data-role="Selections" class="selections">
+        <div>
+            <img src="{{Image.Url}}?width=20&height=20&scale=both&mode=crop" width="20" height="20">
+            {{Name}} <a  href="javascript:void(0)" data-id="{{Id}}"><i class="fa fa-times"></i></a>
+            <input type="hidden" name="@(Html.NameFor(m => m.Selection))[{{Id}}]" value="true">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var friends = @Html.Raw(Model.OptionsJson);
+        var selected = @Html.Raw(Model.SelectedJson);
+
+        var $container = $('#@Html.IdFor(m => m)');
+        var $name = $container.find('[data-role=Name]');
+        var $suggestions = $container.find('[data-role=Suggestions]');
+        var $selections = $container.find('[data-role=Selections]');
+        var $selected = $container.find('[data-role=Selected]');
+
+        var suggestionTemplate = Hogan.compile($suggestions.html().trim());
+        var selectionTemplate = Hogan.compile($selections.html().trim());
+
+        var isOver = true;
+
+        var add = function (friend) {
+            $selections.append(selectionTemplate.render(friend));
+            $selections.show();
+            $selected.show();
+
+            selected.push(friend);
+        };
+
+        $suggestions.empty();
+        $selections.empty();
+
+        $name.on('keyup', function () {
+            var text = $name.val().toLowerCase();
+
+            if (!text) return;
+
+            var options = $.grep(
+                friends,
+                function (friend) {
+                    if (friend.Name.toLowerCase().indexOf(text) < 0) return false;
+
+                    for (var i in selected) {
+                        if (selected[i].Id == friend.Id) return false;
+                    }
+
+                    return true;
+                }
+            );
+
+            if (options.length == 0) {
+                $suggestions.hide();
+                return;
+            }
+
+            $suggestions.empty();
+
+            for (var i in options) {
+                var option = options[i];
+                var $suggestion = $(suggestionTemplate.render(option)).appendTo($suggestions);
+                $suggestion.find('a').data('friend', option);
+            }
+
+            $suggestions.show();
+        });
+
+        $name.on('blur', function () {
+            setTimeout(hideSuggestions, 1000);
+        });
+
+        var hideSuggestions = function() {
+            $suggestions.hide();
+            $name.val('');
+        }
+
+        $suggestions.on('click', 'a', function () {
+            var friend = $(this).data('friend');
+            add(friend);
+            $suggestions.hide();
+            $name.val('');
+        });
+
+        $selections.on('click', 'a', function() {
+            var $this = $(this);
+            var $parent = $this.parent();
+            var id = $this.data("id");
+            selected = $.grep(selected, function (s) { return s.Id != id; });
+            $parent.remove();
+            
+            if ($selections.html().length > 0) {
+                $selected.show();
+            } else {
+                $selected.hide();
+            }
+        });
+
+        for (var i in selected) {
+            add(selected[i]);
+        }
+    });
+</script>

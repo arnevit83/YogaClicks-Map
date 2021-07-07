@@ -1,0 +1,230 @@
+﻿
+@using System.Web.Optimization
+
+@model Clicks.Yoga.Portal.Models.YogaMap.YogaMap
+
+
+@{
+    var metaDescription = "We’re sharing our stories to create a world that’s powered by yoga. Share your story. Together we can get the world on its mat.";
+    var metaTitle = "Join the Yoga Map Project!";
+    ViewBag.Title = "Are you #PoweredByYoga? Join The Yoga Map Project!";
+    ViewBag.Description = metaDescription;
+    var prImage = "http://www.yogaclicks.com/Images/global/finalpbyfacebookshareimage2.png";
+    if (Model.ViewModel != null)
+    {
+        prImage = Model.ViewModel.Image ?? "...";
+        if (prImage.Contains("ProfileGreen"))
+        {
+            prImage = "http://www.yogaclicks.com/Images/global/finalpbyfacebookshareimage2.png";
+        }
+    }
+    else
+    {
+        prImage = "http://www.yogaclicks.com/Images/global/finalpbyfacebookshareimage2.png";
+    }
+    ViewBag.prImage = prImage;
+
+    ViewBag.SiteSection = "'YogaMap-visited' : 'true'";
+    if (Model.ViewModel != null)
+    {
+        ViewBag.MetaTitle = Model.ViewModel.Name + "'s joined The Yoga Map Project.";
+    }
+    else
+    {
+        ViewBag.MetaTitle = "Join the Yoga Map Project!";
+    }
+    
+    
+    Layout = "~/Views/Layout/Layout.cshtml";
+        ViewBag.MenuSection = "YogaMap";
+    }
+
+
+@section Head {
+    <meta property="og:title" content="@ViewBag.MetaTitle" />
+    <meta property="og:description" content="@ViewBag.Description" />
+    <meta name="image" property="og:image" content="@ViewBag.prImage" />
+}
+
+
+@if (Model.ViewModel != null)
+{
+
+
+    @Html.Hidden("Id", Model.ViewModel.Id);
+    @Html.Hidden("Lng", Model.ViewModel.Lng);
+    @Html.Hidden("Lat", Model.ViewModel.Lat);
+
+}
+
+<div id="MapTitle" class="stories-strip "></div><br />
+
+<div id="content-slider" class="row nopadding maincontainerB">
+
+    <div class=" col-xs-12 nopadding" id="scroll">
+
+        <br />
+  
+
+        <br />
+
+        @Html.Partial("Mappartial")
+
+
+        
+        @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD8aSrFJU47Kd3Ye7aHImysjhF2L4OHOPM"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+
+
+
+<script>
+            $("#Innercontent").css('min-width', '99%');
+            $("#Innercontent").css('min-height', '2500px');
+            $("#deletebutton").click(function() {
+                var isGood = confirm('Are you sure you would like to delete this story?');
+                if (!isGood) {
+                    return false;
+                } else {
+                    $('#deleteform').submit();
+                }
+            });
+        </script>
+        @section Scripts{
+            @{
+                @Scripts.Render("~/bundles/Validation")
+                @Scripts.Render("~/bundles/js/StoriesMap")
+                @Styles.Render("~/bundles/StoriesMap")
+            }
+@if (Model.UserHasConnectedFacebook)
+{
+    <script>
+        Facebookbool = true;
+    </script>
+}
+else
+{
+    <script>
+        Facebookbool = false;
+    </script>
+}
+            <script>
+                $('.facebook-link-div').html('&title=' + '@ViewBag.MetaTitle' + '&description=' + '@ViewBag.Description');
+                $('.twitter-link-div').html('&text=' + '@ViewBag.MetaTitle');
+    $('.pintrest-link-div').html('&description=' + '@ViewBag.MetaTitle' + ' | YogaClicks&media=' + '@ViewBag.prImage');
+    $("#right-menu-close").click(function () {
+
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+
+    });
+
+    if (@Html.Raw(Json.Encode(Model.AddStoryupdateModel)) != null) {
+
+
+        $.ajax({
+            type: 'POST',
+
+            url: "/YogaMap/AddStoryPopUpInvalid/",
+
+            data: '@Html.Raw(Json.Encode(Model.AddStoryupdateModel))',
+
+            contentType: 'application/json; charset=utf-8',
+
+
+            success: function(data) {
+
+                $("#modellg").html(data);
+                $("#popupmain").modal({ backdrop: 'static' });
+                $("#popupmain").css("padding-right", "0");
+                $("#StoryBannerPopup").hide();
+                $("#AddStoryPopUp").slideDown();
+
+            }
+
+        });
+    }
+  
+    function AddstoryswitchImg() {
+        if (Facebookbool) {
+
+
+
+            $(".spip").unbind('swiperight');
+            $(".spip").unbind('swipeleft');
+
+            FB.getLoginStatus(function (response) {
+                facebookConnectYogaMap(function () {
+                    if ($("#FbLocation").val() !== "") {
+                        $(".location-search-box").val($("#FbLocation").val());
+
+
+
+
+                        $(".location-search-box").trigger(jQuery.Event("keyup"), function () {
+
+                        });
+
+
+
+
+                    }
+
+
+
+
+
+                });
+
+            });
+        }
+        else {
+
+
+            $(".spip").unbind('swiperight');
+            $(".spip").unbind('swipeleft');
+
+
+
+            $("#StoryBannerPopup").hide();
+            $("#AddStoryPopUp").slideDown();
+
+
+
+
+
+
+
+        }
+    }
+            </script>
+        }
+
+
+
+
+
+
+@Html.Action("Init", "Facebook")

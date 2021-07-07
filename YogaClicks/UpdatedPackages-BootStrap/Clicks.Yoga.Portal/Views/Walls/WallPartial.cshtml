@@ -1,0 +1,40 @@
+﻿@model Clicks.Yoga.Portal.Models.Walls.WallPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" data-role="PostsContainer" data-media-preview-url="@Url.Action("PreviewPartial", "Media")">
+    @if (Model.Permissions.Post)
+    {
+        <div data-role="PostContainer" class="shareSomething block-section">
+            <h3>Share something</h3>
+
+            <textarea data-role="PostContent" placeholder="300 word maximum"></textarea>
+
+            <div data-role="PostMedia" style="margin-top: 10px;">
+                <div data-role="Entries">
+                    <div data-role="UploadingTemplate" class="uploadingTemplate" style="display: none;"></div>
+                </div>
+            </div>
+
+            <div style="clear: both;">
+                <div class="postingAs">You are posting as <span class="current-actor-name">@SecurityContext.CurrentActor.Name</span></div>
+
+                <button data-role="PostButton" data-url="@Url.Action("Post", "Walls")" class="button fr">Post</button>
+                <button data-role="AddVideoButton" data-url="@Url.Action("AddVideoModal", "Walls")" class="button fr" style="margin-right: 5px;">Post Video</button>
+                <button data-role="UploadButton" data-url="@Url.Action("UploadImage", "Media")" id="guid-@Guid.NewGuid()" class="button fr" style="margin-right: 5px;">Post photos</button>
+            </div>
+        </div>
+    }
+
+    <div data-role="Posts" class="posts">
+        @Html.Action("PostsPartial")
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaWall();
+    })
+</script>

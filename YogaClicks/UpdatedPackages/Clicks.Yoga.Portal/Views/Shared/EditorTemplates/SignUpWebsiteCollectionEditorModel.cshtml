@@ -1,0 +1,50 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpWebsiteCollectionEditorModel
+
+@{
+    Layout = null;
+}
+
+<div class="row signup-websites @ViewBag.TextColorClass" id="@Html.IdFor(m => m)">
+    @for (var i = 0; i < Model.Entities.Count; i++)
+    {
+        if (!Model.Entities[i].Id.HasValue || !string.IsNullOrEmpty(Model.Entities[i].Url))
+        {
+            <div class="col-xs-12">
+                @Html.HiddenFor(m => m.Entities[i].Id)
+                @Html.EditorFor(m => m.Entities[i].Url, new { data_field_type = "notrequired" })
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var $container = $('#@Html.IdFor(m => m)');
+
+        var $div = $('#@Html.IdFor(m => m) > div:first');
+        var $inputs = $div.find('input');
+
+        $inputs.each(function () {
+            $(this).attr("data-field-type", "notrequired");
+        });
+
+        $container.parent().parent().find('[data-role=AddButton]').on('click', function () {
+            var $this = $(this);
+            // parent = signup row
+            var $parent = $this.parent().parent().find('#@Html.IdFor(m => m) > div:first');
+            var $div = $parent.clone();
+            var $inputs = $div.find('input');
+
+            var index = $container.find('input').length / 2;
+
+            $inputs.each(function () {
+                var $input = $(this);
+                $input.val('');
+                $input.attr('id', $input.attr('id').replace('0', index));
+                $input.attr('name', $input.attr('name').replace('0', index));
+            });
+
+            $container.append($div);
+        });
+    });
+</script>

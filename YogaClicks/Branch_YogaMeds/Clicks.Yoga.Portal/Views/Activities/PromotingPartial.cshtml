@@ -1,0 +1,4 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityPromotingPartialModel
+
+@Html.Partial("EditableListPartial", new ActivityEditableListPartialModel("PromotingContentPartial", new { Model.Actor.EntityId, Model.Actor.EntityTypeName, Future = true }))

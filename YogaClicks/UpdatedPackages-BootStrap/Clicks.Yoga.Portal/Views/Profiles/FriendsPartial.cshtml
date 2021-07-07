@@ -1,0 +1,79 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileFriendsPartialModel
+
+<h3>My friends (@Model.Friendships.Count)</h3>
+
+@if (SecurityContext.CanUpdate(Model.Profile))
+{
+    <div class="find-facebook-friends">
+        <div class="facebook-friends">
+            @*<a href="javascript:void(0)" data-role="InviteFromFacebookButton"><img src="/images/facebook-friends.png"></a>*@
+            <a href="http://www.facebook.com/share.php?u=http://www.yogaclicks.com&title=Join me on YogaClicks" target="_blank"><img src="/images/invite-facebook-friends.jpg"></a>
+        </div>
+@if (Model.Friendships.Count > 0)
+{
+    <div class="buttonWrap">
+        <button data-role="BlockButton" class="button silver save tap fr blockButton"><span>&nbsp;</span>Block selected</button>
+        <button data-role="UnfriendButton" class="button silver save tap fr">Delete selected</button>
+        <p>Manage your friend list</p>
+    </div>
+}
+        <button data-role="InviteByEmailButton" data-action="@Url.Action("InviteFriendsByEmail", "Invitations")" class="button" style="width: 194px; margin: 10px 0 0 15px;">Invite a friend by email</button>
+    </div>
+}
+
+@if (Model.Friendships.Count > 0)
+{
+
+    <div class="attendingWrap">
+        @foreach (var friendship in Model.Friendships)
+        {
+            <div data-role="Friend" class="attendee member">
+                         
+                <div class="fl image">
+                    <a href="@Url.Action("Display", "Profiles", new { friendship.Friend.Id })">  
+                        @Html.DisplayFor(m => friendship.Friend.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                    </a>
+                </div>
+                <div class="fl info"> 
+                    <div class="name"><a href="@Url.Action("Display", "Profiles", new { friendship.Friend.Id })">@friendship.Friend.Name</a></div>
+                
+                    @if (SecurityContext.CanUpdate(Model.Profile))
+                    {
+                        <input type="checkbox" name="FriendIds" value="@friendship.Friend.Id"/>
+                    }
+                                    
+                    @if (friendship.Friend.Location.Exists)
+                    {
+                        @friendship.Friend.Location.Name
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+                    
+@if (SecurityContext.CanUpdate(Model.Profile) && Model.BlockedFriendships.Count > 0)
+{
+    <br />
+    <h3>Blocked users</h3>
+                    
+    <div class="attendingWrap blockedUserWrap">
+        @foreach (var friendship in Model.BlockedFriendships)
+        {
+            <div data-role="Friend" class="attendee member">
+                         
+                <div class="fl image">
+                    <a href="@Url.Action("Display", "Profiles", new { friendship.Friend.Id })">  
+                        @Html.DisplayFor(m => friendship.Friend.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                    </a>
+                </div>
+                <div class="fl info"> 
+                    <div class="name"><a href="@Url.Action("Display", "Profiles", new { friendship.Friend.Id })">@friendship.Friend.Name</a></div>
+                    <br />
+                    <br />                    
+                    <button data-role="UnblockButton" data-friend-id="@friendship.Friend.Id" class="silver button">Unblock User</button>
+                </div>
+            </div>
+        }
+    </div>
+}

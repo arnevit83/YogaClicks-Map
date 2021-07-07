@@ -1,0 +1,68 @@
+﻿@model Clicks.Yoga.Emails.UserActivationRequestEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Nearly there... Please activate your YogaClicks account";
+}
+
+<table style="width:600px; margin:0 auto;">
+    <tr>
+        <td>Hooray! Thanks for joining YogaClicks. We're very happy to welcome you aboard.</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>
+            <a style="color:#5da29a; font-weight:bold; text-decoration: underline;" href="@Url.EmailAction("ActivateAccount", "Register", new { Model.Request.Key })">Please click here to verify your account.</a>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold;">Students</td>
+    </tr>
+    <tr>
+        <td>Create a profile, reveal your true Self, add some pictures, and get inspired by fellow yogis, teachers and venues close to home and far away. </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="font-weight:bold;">Yoga professionals</td>
+    </tr>
+    <tr>
+        <td>Create your professional pages and share your yoga to connect with other teachers, discover amazing new studios and retreats, and to enable new students to find you.</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><img src="http://www.yogaclicks.com/images/email/email-banner.jpg" /></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>What's not to love? It's free!</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>See you soon.</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Namaste!</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Lucy and the YogaClicks team</td>
+    </tr>
+</table>

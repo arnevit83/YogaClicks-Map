@@ -1,0 +1,46 @@
+﻿@using Clicks.Yoga.Portal.Models.Medic
+@using Clicks.Yoga.Domain.Entities
+@model NewConditionModel
+
+@{
+    ViewBag.Title = "AddCondition";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section Head {
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+}
+
+@section LeftNav{
+    @Html.Action("MedicNavigation", "Medic")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="medic-strip content-col" id="scroll">
+        <section id="style-info" role="style-info">
+            <article id="description" class="clearfix rating-description">
+                <h1 class="medicHeader"><span>&nbsp;</span>Add new condition</h1>
+                @using (Html.BeginForm("AddCondition", "Medic"))
+                {
+                    <div class="block-section">
+                        <div class="row">
+                            @Html.LabelFor(m => m.Name)
+                            @Html.EditorFor(m => m.Name)
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.Description, "About")
+                            @Html.TextAreaFor(m => m.Description)
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.MetaDescription)
+                            @Html.EditorFor(m => m.MetaDescription)
+                        </div>
+                    </div>
+                    <input class="button pink large" type="submit" value="Add condition" />
+                }
+            </article>
+        </section>
+    </div>
+</div>

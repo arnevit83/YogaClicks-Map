@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+<h3 class="greenHeader">Share...</h3>
+<hr />
+<p>Thanks. We've sent your friend an email.</p>
+<hr />
+<button class="large button fr pink">Continue</button>
+
+<script>
+    $(function () {
+        $('button').on('click', function () {
+            top.closeModal();
+        });
+    });
+</script>

@@ -1,0 +1,447 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@using Clicks.Yoga.Portal.Models.Entities.Summaries
+@using WebGrease.Css.Extensions
+@model Clicks.Yoga.Portal.Models.Activities.ActivityDisplayModel
+
+@{
+    ViewBag.Title = "Activity";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+    var ogString = string.Format("{0}{1} at {2} on {3} at {4}. {5}",
+        Model.Activity.Teachers.Any() ? Model.Activity.Teachers.FirstOrDefault().Name + " is teaching " : " ",
+        Model.Activity.Name, Model.Activity.Venue.Name,
+        Model.Activity.StartTime.ToShortDateString(),
+        Model.Activity.StartTime.ToShortTimeString(),
+        Model.Activity.Description);
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+@section Head {
+    <meta property="og:title" content="@Model.Activity.Name" />
+    <meta property="og:description" content="@ogString" />
+    @if (Model.Activity.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+    }
+
+
+}
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/icon_find.svg" data-svgpng="/images/SvgIcons/icon_find.png" /><span style="color: #786EA1; font-weight: normal">@Model.Activity.Type.Name</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")"></div>
+
+
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+
+
+
+                @if (SecurityContext.CanUpdate(Model.Activity))
+                {
+                    if (Model.Activity.Type.IsClass)
+                    {
+                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("UpdateClass")'; return false;">Edit</button>
+    <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("CloneActivity")'; return false;"><i class="fa fa-clone"></i>
+ Duplicate</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit</button>
+    <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("CloneActivity")'; return false;"><i class="fa fa-clone"></i>
+ Duplicate</button>
+                    }
+                }
+
+
+                <h2 class="greenHeader activitiesHeader">
+                    <img class="hidden-xs"  src="~/images/svgicons/Icon_CalendarPurple.svg" data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" />
+                    <name class="hidden-xs">
+                        @Model.Activity.Name
+                    </name>
+                </h2>
+
+
+                <hr class="hidden-xs"  style="margin-top: 7px; margin-bottom:7px;" />
+
+
+                    
+                <div class="profileBanner activityBanner  hidden-xs ">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+
+
+
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+                        @Html.Action("Tabs")
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="row nopadding">
+
+
+                            <div class="col-sm-5  profilebuttons">
+                                <div style="padding-bottom:5px;" class="purpleHeader hidden-lg hidden-md hidden-sm text-center">
+                                    @Model.Activity.Name
+                                </div>
+                                @Html.DisplayFor(m => m.Activity.Image, "ProfileImage")
+                          
+                                @if (Model.Activity.BuyButton != "")
+                                {
+                                    <div class="spacer">
+                                     
+                                        @Html.Raw(Model.Activity.BuyButton)
+                                    </div>                                <br />
+                                }
+                                                  
+
+
+                                @Html.Action("AttendanceButton")
+
+                                <br /><br />
+
+
+                            </div>
+                            <div class="col-sm-7 nopadding">
+                                <div class="well buisnesscard" style="vertical-align: middle;">
+
+
+                                    <div class="infocard">
+                                        <span style="font-size: 14px;"> Share : </span>
+                                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Activity.Id, Model.Activity.EntityTypeName })
+
+                                    </div>
+                                    <hr />
+
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-12">
+                                            <h4>Details</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Type:</strong>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            @Model.Activity.Type.Name
+                                        </div>
+                                    </div>
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Promoter:</strong>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <a href="@Url.Entity(Model.Activity.PromoterHandle)">@Model.Activity.PromoterHandle.Name</a><br />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Teachers:</strong>
+
+                                        </div>
+                                        <div class="col-xs-8">
+                                            @helper TeacherLink(NamedSummaryModel teacher)
+{
+                                            <a href="@Url.Action("Display", "Teachers", new {teacher.Id})">@teacher.Name</a>
+}
+
+                                            @Html.Raw(string.Join(" | ", Model.Teachers.Select(t => TeacherLink(t).ToString().Trim()).ToArray()))
+
+                                            @if (Model.Teachers.Any() && Model.StubTeachers.Any())
+                                            {
+                                                <text>|</text>
+                                            }
+
+                                            @if (Model.StubTeachers.Any())
+                                            {
+                                                @Html.Raw(string.Join(" | ", Model.StubTeachers.ToArray()))
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Ability Level:</strong>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            @Model.Activity.AbilityLevel.Name
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Booking:</strong>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            @(Model.Activity.BookingRequired ? "Required" : "Not required")
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row nopadding">
+                                        <div class="col-xs-4">
+                                            <strong>Price:</strong>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <div class="readmore-Price">
+                                                <p>
+                                                    @Model.Activity.Price
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                    </div>
+                                </div>
+                         
+                          
+
+                            @*<div class="hidden-md hidden-lg hidden-sm">
+                @Html.Partial("Tabsmini")
+                </div>*@
+
+                        <div class="row nopadding">
+
+                            <div class=" col-xs-12 nopadding">
+
+
+                                <table class="table table-striped">
+                                    @if (Model.Activity.Description != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <br />
+                                                <div class="row nopadding">
+                                                    <div class=" col-sm-3 nopadding">
+                                                        <h4>Description</h4>
+                                                    </div>
+                                                    <div class=" col-sm-offset-1  col-sm-8">
+                                                        <p class="article" style="margin: 10px 0 10px; font-style: italic;">@Html.NewLines(Model.Activity.Description)</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td>
+                                            <br />
+                                            <div class="row nopadding">
+                                                <div class=" col-sm-3 nopadding">
+                                                    <h4>Time and place</h4>
+                                                </div>
+                                                <div class=" col-sm-offset-1  col-sm-8">
+                                                    <div class="row nopadding">
+                                                        <div class=" col-sm-5 nopadding">
+                                                            @Html.DisplayFor(m => m.Activity.Venue.Address, "AddressMap")<br /><br />
+                                                        </div>
+                                                        <div class=" col-sm-7 ">
+
+                                                            @if (Model.Activity.Venue.Exists)
+                                                                    {
+
+                                                                <strong>Venue</strong><br />
+                                                                <a href="@Url.Entity(Model.Activity.Venue, "Display", "Venues")">@Model.Activity.Venue.Name</a><br />
+
+                                                                        if (Model.Activity.Venue.Address != null)
+                                                                        {
+                                                                            @Html.NewLines(Model.Activity.Venue.Address.CompleteString)
+                                                                        }
+                                                                        <br /><br />
+                                                                    }
+
+                                                            <div class="spacer">
+                                                                <strong>Start date:</strong> @Model.Activity.StartTime.ToString("D")
+                                                                @if (Model.Activity.Type.Id == 4 && Model.Activity.StartTime.Hour == 00 && Model.Activity.StartTime.Minute == 00) { }
+                                                                        else
+                                                                        {
+                                                                    <br />
+                                                                    <strong>Start time:</strong> @Model.Activity.StartTime.ToString("t")
+                                                                        }
+                                                                @if (!Model.Activity.Type.IsClass)
+                                                                        {
+                                                                    <br />
+                                                                    <strong>End date:</strong> @Model.Activity.FinishTime.ToString("D")
+                                                                        }
+                                                                @if (Model.Activity.Type.Id == 4 && Model.Activity.FinishTime.Hour == 00 && Model.Activity.FinishTime.Minute == 00) { }
+                                                                        else
+                                                                        {
+                                                                    <br />
+                                                                    <strong>End time:</strong> @Model.Activity.FinishTime.ToString("t")
+                                                                        }
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  </td>
+                           
+
+
+
+                            </tr>
+                            @if (Model.Styles.Count > 0)
+                            {
+                                <tr>
+                                    <td>
+                                        <br />
+                                        <div class="row nopadding">
+                                            <div class=" col-sm-3 nopadding">
+                                                <h4>Styles</h4>
+                                            </div>
+                                            <div class=" col-sm-offset-1  col-sm-8">
+                                                <ul class="Halflist">
+                                                    @foreach (var style in Model.Styles)
+                                                            {
+                                                        <li><a href="@Url.Action("Display", "Styles", new { style.Id })">@style.Name</a></li>
+                                                            }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                          
+                         
+                                @if (Model.Conditions.Count > 0)
+                                {
+                                    <tr>
+                                        <td>
+                                            <br />
+                                            <div class="row nopadding">
+                                                <div class=" col-sm-3 nopadding">
+                                                    <h4>Conditions</h4>
+                                                </div>
+                                                <div class=" col-sm-offset-1  col-sm-8">
+                                                    <ul class="Halflist">
+                                                        @foreach (var condition in Model.Conditions)
+                                                                {
+                                                        <li><a href="@Url.Action("Display", "Medic", new {condition.Id})">@condition.Name</a></li>
+                                                                }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            
+                         
+                                <tr>
+                                    <td>
+                                        <br />
+                                        <div class="row nopadding">
+
+                                            <div class="col-xs-12">
+                                                @if (SecurityContext.CanUpdate(Model.Activity))
+                                                {
+                                                    if (Model.Activity.Type.IsClass)
+                                                    {
+                                                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("UpdateClass")'; return false;">Edit</button>
+                                                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("CloneActivity")'; return false;"><i class="fa fa-clone"></i>
+ Duplicate</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit</button>
+                                                        <button class="btn btn-default btn-clear pull-right" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("CloneActivity")'; return false;"><i class="fa fa-clone"></i>
+ Duplicate</button>
+                                                    }
+                                                }
+
+                                                <br />
+                                                @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                                <div class="hidden-md hidden-lg hidden-sm">
+                                    @Html.Action("Tabsmini")
+                                </div>
+                        </div>
+
+
+
+                            </div>
+
+                    </div>
+
+
+                                       
+
+
+                                        </div>
+</article>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        var prImage = Model.Activity.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.Activity.Image.Uri) : "http://www.yogaclicks.com/images/global/pinterestshare.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + '@Model.Activity.Name');
+        $('.twitter-link-div').html('&text=Find yoga ' + '@Model.Activity.Type.Name: ' + '@Model.Activity.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find yoga ' + '@Model.Activity.Type.Name: ' + '@Model.Activity.Name' + ' on YogaClicks&media=' + '@prImage');
+        $('.article').readmore({
+            collapsedHeight: 50
+        });
+        $('.readmore-Price').readmore({
+            collapsedHeight: 50
+        });
+    </script>
+}

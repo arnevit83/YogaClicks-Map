@@ -1,0 +1,23 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivitySearchClassesModel
+
+@{
+    ViewBag.Title = "All classes";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation")
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="discover-strip content-col purple-strip" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitesHeader"><span class="findIcon">&nbsp;</span>Classes</h2>
+                
+                @Html.Action("ClassDayPartial", new ActivityClassDayPartialModel(Model.Date, Model.Criteria))
+            </article>
+        </div>
+    </div>
+</div>

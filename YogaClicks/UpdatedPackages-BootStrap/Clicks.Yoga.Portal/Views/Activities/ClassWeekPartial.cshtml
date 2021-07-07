@@ -1,0 +1,61 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@using Common
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassWeekPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    <div data-role="Parameters">
+        @Html.Partial("CriteriaHiddenPartial", Model.Criteria)
+        @Html.Hidden("Editable", Model.Editable)
+    </div>
+</div>
+
+@Html.Partial("ClassScriptPartial", guid)
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        
+        var load = function (date) {
+            var $inputs = $container.find('[data-role=Parameters] input');
+            var params = 'Date=' + encodeURIComponent(date) + '&' + $inputs.serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ClassWeekContentPartial")',
+                data: params,
+                success: function (html) {
+                    $container.html(html);
+
+                    $container.find('[data-role=DeleteButton]').on('click', function (e) {
+                        e.preventDefault();
+
+                        var $this = $(this);
+                        var id = $this.attr('data-id');
+
+                        if (!confirm('Are you sure you want to delete this class? This will delete all occurances.')) return;
+
+                        $.ajax({
+                            url: '@Url.Action("DeleteOwned", "Profiles")',
+                            type: 'POST',
+                            data: { EntityId: id, EntityType: "Activity" },
+                            success: function () {
+                                top.location.reload();
+                            }
+                        });
+                    });
+                }
+            });
+        };
+
+        $container.on('click', '[data-role=NavigateButton]', function () {
+            var date = $(this).attr('data-date');
+            load(date);
+        });
+
+        load('@Model.Date.ToShortDateString()');
+    });
+</script>

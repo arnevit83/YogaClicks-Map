@@ -1,0 +1,44 @@
+﻿@using Clicks.Yoga.Portal.Models.Activities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassDayContentPartialModel
+
+<div class="classesTable">
+    <div class="tableHeader">
+        <h3>@Model.DayName</h3>
+        <div class="prev">
+            @if (Model.Date > DateTime.Now.Date)
+            {
+                <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(-1).ToString()">Previous</a>
+            }
+        </div>    
+        <div class="next">
+            <a href="javascript:void(0)" data-role="NavigateButton" data-date="@Model.Date.AddDays(1).ToString()">Next</a>
+        </div>
+    </div>
+    
+    <div data-role="Parameters">
+        @Html.Partial("CriteriaHiddenPartial", Model.Criteria)
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Venue</th>
+                <th>Teacher</th>
+
+                @if (SecurityContext.Authenticated)
+                {
+                    <th></th>
+                }
+            </tr>
+        </thead>
+    
+        <tbody>
+            @foreach (var repeat in Model.Repeats)
+            {
+                @Html.Partial("ClassPartial", new ActivityClassPartialModel(repeat, false))
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+﻿@using Clicks.Yoga.Portal.Models.Venues
+@model Clicks.Yoga.Portal.Models.Venues.VenueClaimStep3Model
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("ClaimStep3", "Venues"))
+{
+    @Html.Serialize("ClaimModel", ViewBag.ClaimModel as VenueClaimModel)
+    
+    <h2 class="greenHeader">Claim ownership of this venue</h2>
+    <hr />
+    <ul class="steps steps3">
+        <li><span>Step 1</span></li>
+        <li><span>Step 2</span></li>
+        <li class="active"><span>Step 3</span></li>
+    </ul>
+    <div class="scrollableiFrame">
+        @Html.ValidationSummary()
+        <h3 class="cb">Confirm the venue's location</h3>
+    
+        @Html.ValidationSummary()
+
+        <div>
+            @Html.EditorFor(m => m.Address)
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="#" id="BackButton" class="button pink large backBtn">Back</a>
+            @Html.HiddenFor(m => m.Back)
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#BackButton").click(function(e) {
+            e.preventDefault();
+            $("#@Html.IdFor(m => m.Back)").val('@bool.TrueString');
+            $(this).closest("form").submit();
+        });
+    });
+</script>

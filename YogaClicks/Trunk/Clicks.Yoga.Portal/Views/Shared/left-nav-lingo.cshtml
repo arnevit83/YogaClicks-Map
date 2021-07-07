@@ -1,0 +1,21 @@
+﻿@model Clicks.Yoga.Portal.Models.Glossary.GlossaryIndexModel
+
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section id="filter-results" class="filters lingoFliterResults">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h1 class="pageTitle">Lingo</h1>
+                <p><strong>Filter alphabetically</strong></p>
+                <nav class="filter lingoFliter">
+                    @foreach (var letter in Model.Entries.Select(x => x.Term.ToLower()[0]).Distinct())
+                    {
+                        <a href="#" class="lingo-letter" data-letter="@letter">@letter.ToString().ToUpper()</a>
+                    }
+                </nav>
+                <p><small>Lingo extract from Yoga School Dropout. Lucy Edge's quest for life's deeper meaning in the yoga schools of India. Published by Ebury Press.</small></p>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,177 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.TeacherStep5ViewModel
+
+@{
+    ViewBag.Title = "Teacher Profile";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+
+    var progressModel = new SignUpProgressBar()
+    {
+        Step = 4,
+        NumberOfSteps = 4,
+        ColorCssClass = "purple-text"
+    };
+
+    if (Model.IsEdit)
+    {
+        progressModel.Step = 3;
+        progressModel.NumberOfSteps = 3;
+        progressModel.IsEdit = true;
+    }
+
+
+    if (Session["newTeacher"] != "true")
+    {
+        progressModel.Step = 3;
+        progressModel.NumberOfSteps = 3;
+    }
+}
+
+<img src="/images/svgicons/Icon_TeacherPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" alt="namaste students">
+@using (Html.BeginForm("TeacherStep5", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-teacher-5", step = 5 }))
+{
+
+    if (Model.IsEdit || Session["newTeacher"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>3. Tell us more about your teaching</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>4. Tell us more about your teaching</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-5"></div>
+        <div class="col-xs-2">
+            <h2>Services</h2>
+        </div>
+        <div class="col-xs-5"></div>
+    </div>
+    
+        <div class="row purple-text signup-row-normal">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Services)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2>Styles taught</h2>
+        </div>
+    </div>
+    
+        <div class="row purple-text signup-row-chosen">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Styles)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2 id="YogaMedsFC" style="margin: 100px 0 0 0">YogaMeds taught</h2>
+        </div>
+    </div>
+        <div class="row purple-text signup-row-chosen">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.EditorFor(m => m.Conditions)
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <h2>Describe your teaching philosophy</h2>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+        <div class="row purple-text signup-row-normal">
+            <div class="hidden-xs col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 singup-input">
+                @Html.TextAreaFor(m => m.Philosophy, new { placeholder = "300 word maximum" })
+            </div>
+            <div class="hidden-xs col-sm-1">
+            </div>
+        </div>
+
+
+        <div class="clear-fix"></div>
+         @Html.Partial("_SignUpProgressBar", progressModel);
+        }
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(function () {
+                    $('.location-search-box').click(function () {
+                        var target = $('#Location');
+                        $('html,body').animate({ scrollTop: target.offset().top }, 1000);
+                        return false;
+                    });
+                });
+            });
+        </script>

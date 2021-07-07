@@ -1,0 +1,36 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.NewsStoryModel
+<div class="wallPost activityPosted">
+    <div class="wallPostIcon">
+        <span>&nbsp;</span>
+    </div>
+    <div class="content">
+        <span class="actorImage">@Html.DisplayFor(m => m.Actor)</span> posted in <span class="actorImage">@Html.DisplayFor(m => m.Target, "EntityHandleModelNoAvatar")</span>
+        <p>@Html.NewLinesAndUris(Model.Text)</p>
+
+        @Html.Action("PostPartial", "Media", new { Ids = Model.Resources.Select(r => r.Id) })
+
+        @if (!Model.IsShared)
+        {
+            <div>
+                @Html.Partial("ShareButtonPartial", Model)
+            </div>
+        }
+
+        <div class="news-fan-container">
+            @Html.Action("Button", "Fans", new { EntityId = Model.Id, entityTypeName = Model.EntityTypeName, newsfeed = true })
+        </div>
+
+        @if (!Model.IsShared)
+        {
+            <small>
+                @* DWTIMEHERE *@
+                @Html.LocalDateTime(@Model.CreationTime.ToUniversalTime().ToString("u"))
+
+                @if (Model.EntityId > 0 && SecurityContext.IsOwner(Model.Subject))
+                {
+                    <a href="javascript:void(0)" data-role="DeletePostButton" data-url="@Url.Action("DeletePost")" data-post-id="@Model.EntityId">Delete</a>
+                }
+            </small>
+        }
+    </div>
+</div>

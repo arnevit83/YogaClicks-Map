@@ -1,0 +1,43 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityAttendingPartialModel
+
+@if (Model.Attendances.Count > 0)
+{
+    <div class="block-section">
+
+        @foreach (var attendance in Model.Attendances)
+        {
+            <div class="notificationRow">
+                <div class="icon">
+                    <span>&nbsp;</span>
+                </div>
+                <div class="text">
+                    <strong>@attendance.Activity.Type.Name:</strong>
+
+
+                    @if (SecurityContext.IsOwner(Model.Attendee))
+                    {
+                        @:You @(attendance.IsConfirmed ? "are" : "might be") attending
+                    }
+                    else
+                    {
+                        @:@Model.Attendee.Name @(attendance.IsConfirmed ? "is" : "might be") attending
+                    }
+
+                    <a href="@Url.Action("Display", "Activities", new { attendance.Activity.Id })">@attendance.Activity.Name</a>
+
+                    @if (attendance.Activity.Venue != null)
+                    {
+                        @:at
+                        <a href="@Url.Action("Display", "Venues", new { attendance.Activity.Venue.Id })">@attendance.Activity.Venue.Name</a>
+                    }
+
+                    on @attendance.Activity.StartTime.ToString("dd/MM/yyyy")
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+        <p>None yet.</p>
+}

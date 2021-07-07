@@ -1,0 +1,84 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityAttendanceButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+    var actorCount = SecurityContext.AvailableActors.Count(a => a.EntityType.IsHuman);
+}
+
+@if (!Model.Finished)
+{
+    <div id="@guid">
+        @switch (Model.Status)
+        {
+            case ActivityAttendanceStatus.Open:
+            case ActivityAttendanceStatus.Rejected:
+                if (SecurityContext.HasActor)
+                {
+                    <p><button data-role="AttendButton" class="btn btn-clear btn-default  current-actor-human" style="width:100%;" data-actor-human="@(SecurityContext.CurrentActor.EntityType.IsHuman ? "true" : "false")" data-actor-count="@actorCount">Count me in</button></p>
+                }
+                break;
+            case ActivityAttendanceStatus.Unconfirmed:
+            <p class="btn btn-clear btn-default " style="width:100%;">Attendance pending</p>
+                break;
+            case ActivityAttendanceStatus.Confirmed:
+            <p><button data-role="UnattendButton" class="btn btn-clear btn-default " style="width:100%;">Count me out</button></p>
+                break;
+        }
+
+        @if (!SecurityContext.Authenticated)
+        {
+            <a class="btn btn-clear btn-default  reg-form-popup unauth-friend-button" href="/">Count me in</a>
+        }
+    </div>
+}
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.on('click', 'button[data-role=AttendButton]', function () {
+            var $button = $(this);
+
+            var actorHuman = $button.data('actor-human');
+            var actorCount = $button.data('actor-count');
+
+            if (!actorHuman || actorCount > 1) {
+                openModal(
+                    '@Url.Action("AttendanceActorPicker")',
+                    false,
+                    400, 300,
+                    function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("AttendanceButton")',
+                            success: function (html) {
+                                $container.html(html);
+                            }
+                        });
+                    }
+                );
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Attend")',
+                success: function (html) {
+                    $container.html(html);
+                }
+            });
+        });
+
+        $container.on('click', 'button[data-role=UnattendButton]', function () {
+            if (window.confirm("Are you sure?")) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Unattend")',
+                    success: function (html) {
+                        $container.html(html);
+                    }
+                });
+            }
+        });
+    });
+</script>

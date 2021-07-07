@@ -1,0 +1,198 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.UserStoriesModel
+@{
+    var width = ViewBag.Width ?? 100;
+    var height = ViewBag.Height ?? 100;
+}
+
+
+
+
+<div class="row nopadding">
+    <div class=" col-sm-12 nopadding">
+        <h4>Your stories</h4><br />
+    </div>
+</div>
+<div class="row nopadding">
+    <div class=" col-sm-offset-2 col-sm-10">
+
+
+
+
+        @if (Model.UserStories.Any())
+        {
+            <div class="user-story-container">
+                @foreach (var userStory in Model.UserStories)
+                {
+
+
+                    if (SecurityContext != null)
+                    {
+
+
+                        if (!SecurityContext.Authenticated)
+                        {
+                            <a href="/" class="reg-form-popup">
+                                <div class="single-story-container">
+                                    <div class="panel panel-default user-story-title-row medicpanel">
+                                        <div class="panel-heading">
+                                            <div class="titg" style="font-weight: bold;">
+                                                <span class="studytitle">@userStory.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+
+
+                                }
+                                else
+                                {
+                                <div class="single-story-container">
+                                    <div class="panel panel-default user-story-title-row medicpanel">
+                                        <div class="panel-heading">
+                                            <div class="titg" style="font-weight: bold;">
+                                                <span class="studytitle">@userStory.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body study-info nopadding user-story-info">
+                                            <table class="table table-striped  noMargins" style="margin-bottom: 3px !important;">
+                                                @if (userStory.OwnerHidden == false)
+                                            {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row nopadding">
+                                                                <div class=" col-sm-3 nopadding">
+                                                                    <b> Name</b> <br /><br />
+                                                                </div>
+                                                                <div class=" col-sm-9 nopadding">
+                                                                    <span>@userStory.Owner.Profile.Name</span>
+                                                                    @* @Html.DisplayFor(m => userStory.Owner.Profile.Image, "ProfileImage")*@
+                                                                    <div class="profile-image">
+                                                                        @Html.Image(userStory.Owner.Profile.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            }
+                                                <tr>
+                                                    <td>
+                                                        <div class="row nopadding">
+                                                            <div class=" col-sm-3 nopadding">
+                                                                <b> My story</b> <br /><br />
+                                                            </div>
+                                                            <div class=" col-sm-9 nopadding">
+                                                                @userStory.Content
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @if (userStory.Teachers.Any())
+                                            {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row nopadding">
+                                                                <div class=" col-sm-3 nopadding">
+                                                                    <b> Teachers</b> <br /><br />
+                                                                </div>
+                                                                <div class=" col-sm-9 nopadding">
+                                                                    @foreach (var teacher in userStory.Teachers)
+                                                                {
+                                                                        <div class="pro-entity">
+                                                                            <span>@teacher.Name</span>
+                                                                            <div class="profile-image">
+                                                                                @Html.Image(teacher.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                                                            </div>
+                                                                        </div>
+                                                                }
+
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                            }
+                                                @if (userStory.Venues.Any())
+                                            {
+
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row nopadding">
+                                                                <div class=" col-sm-3 nopadding">
+                                                                    <b> Venue(s)</b> <br /><br />
+                                                                </div>
+                                                                <div class=" col-sm-9 nopadding">
+                                                                    @foreach (var venue in userStory.Venues)
+                                                                {
+                                                                        <div class="pro-entity">
+                                                                            <span>@venue.Name</span>
+                                                                            <div class="profile-image">
+                                                                                @Html.Image(venue.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                                                            </div>
+                                                                        </div>
+                                                                }
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                            }
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                }
+                    }
+                    else if (SecurityContext == null)
+                    {
+                        <a href="/" class="reg-form-popup">
+                            <div class="single-story-container">
+                                <div class="panel panel-default user-story-title-row medicpanel">
+                                    <div class="panel-heading">
+                                        <div class="titg" style="font-weight: bold;">
+                                            <span class="studytitle">@userStory.Title</span><i class="pull-right medicdrop fa fa-arrow-circle-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+</div>
+
+                                }
+                                else
+                                {
+                                <span>Be the first to share your story<br /><br /></span>
+                                }
+                            </div>
+                        </div>

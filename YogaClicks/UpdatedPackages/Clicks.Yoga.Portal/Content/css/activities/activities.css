@@ -1,0 +1,447 @@
+﻿/* COMMON */
+
+.margintop30 {
+    margin-top: 30px;
+}
+
+/* END COMMON*/
+
+
+#activityselector {
+    font-size: 25px;
+}
+
+#activityselector .activity-input select {
+     margin: 0 0 50px 0;
+    display: block;
+    font-size: 100%;
+}
+#activityselector .activity-title{
+    font-weight: 300;
+    font-size: 58px;
+    margin: 40px 0 40px 0;   
+}
+
+#activityselector {
+    color: #59a299;
+    text-align: center;
+}
+
+#activityselector .PromoterHandle_Selection {
+    width: 100%;
+}
+
+#activityselector select, #activityselector input {
+   border: 1px solid #59a299;
+    width: 100%;
+    color:#59a299;
+    height: 50px;
+}
+
+#activityselector .clickable-activity {
+   height: 50px;
+   border: 1px solid #59a299;
+   margin: 15px 15px 15px 15px;
+   cursor: pointer;
+}
+#activityselector .clickable-activity span {
+    margin-top: 7px;
+    display: block;
+}
+
+#activityselector #activity-selector-type {
+    margin: 15px 15px 15px 15px;
+    
+}
+#activityselector #activity-selector-type select {
+    width: 91%;
+    display: block;
+    font-size: 25px;
+    text-indent: 65px;
+}
+
+@media(min-width: 400px) {
+
+    #activityselector #activity-selector-type select {
+    width: 96%;
+    text-indent: 110px;
+    }
+}
+
+@media(min-width: 500px) {
+
+    #activityselector #activity-selector-type select {    
+        text-indent: 155px;
+    }
+}
+
+@media(min-width: 600px) {
+
+    #activityselector #activity-selector-type select {
+        text-indent: 210px;
+    }
+}
+
+@media(min-width: 700px) {
+
+    #activityselector #activity-selector-type select {
+        text-indent: 260px;
+    }
+}
+
+@media(min-width: 768px) {
+    
+#activityselector #activity-selector-type select {
+    width: 90%;
+    text-indent: 35px;
+}
+}
+
+@-moz-document url-prefix() {
+
+    
+#activityselector #activity-selector-type select {
+    text-indent: 32px;
+}
+
+@media(min-width: 400px) {
+
+    #activityselector #activity-selector-type select {
+    text-indent: 55px;
+    }
+}
+
+@media(min-width: 500px) {
+
+    #activityselector #activity-selector-type select {    
+        text-indent: 77px;
+    }
+}
+
+@media(min-width: 600px) {
+
+    #activityselector #activity-selector-type select {
+        text-indent: 105px;
+    }
+}
+
+@media(min-width: 700px) {
+
+    #activityselector #activity-selector-type select {
+        text-indent: 130px;
+    }
+}
+
+
+    @media(min-width: 768px) {
+    
+    #activityselector #activity-selector-type select {
+        text-indent: 18px !important;
+    }
+    }
+
+}
+
+
+.purple-controls input, .purple-controls select, .purple-controls textarea {
+    border: 1px solid #59a299;
+}
+
+
+
+/* ---------------- CREATE ACTIVITY ----------------*/
+
+#signup-activity-1  {
+}
+
+#signup-activity-1 .btn:active, #signup-activity-1 .btn:active.active, #signup-activity-1 .btn:focus, #signup-activity-1 .btn:active.focus  {
+    color: #59a299 !important;
+    background-color: #ffffff;
+}
+
+#signup-activity-1 .btn:hover, #signup-activity-1 .btn-default:hover {
+    background-color: #59a299 !important;
+    color: #ffffff !important;
+}
+
+#signup-activity-1 #venueAddress fieldset:first-child input {
+    margin-top: 0 !important;
+}
+
+#signup-activity-1 .activity-row-normal{
+}
+
+
+#signup-activity-1 .green-text label {
+    font-size: 20px;
+    color: #59a299;
+    font-weight: 300;
+}
+
+
+#signup-activity-1 input, #signup-activity-1 select, #signup-activity-1 textarea {
+    border: 1px solid #59a299;
+    color:#59a299;
+}
+
+#signup-activity-1 .signup-row-title {
+    text-align: center;
+}
+
+#signup-activity-1 .questionMark {
+    background: #59a299;
+    color: white;
+}
+
+#signup-activity-1 .signup-row-normal > div {
+    min-height: 1px;
+}
+
+#signup-activity-1 .singup-input input[type=text], #signup-class-1 .singup-input select {
+    transform: none;
+}
+
+#signup-activity-1 label {
+    display: inline-block;
+}
+
+#signup-activity-1 .venueowned > div {
+    height: 50px;    
+}
+
+#signup-activity-1 .venueownedlabel label {
+    position: relative;
+    display: block; 
+}
+
+#signup-activity-1 .radioselect {
+    text-align: right;
+}
+
+#signup-activity-1 .radioselect input {
+	display: none;
+}
+
+#signup-activity-1 .radioselect label {
+    border-radius: 2px;
+    cursor: pointer;
+    padding: .25em 1em;
+    z-index: 20;
+    border: solid;
+}
+
+#signup-activity-1 .radioselect label:hover {
+	background: #ccc;
+}
+
+#signup-activity-1 .radioselect input:checked + label {
+	background: #59a299;
+	color: white !important;
+	margin-bottom: 0;
+}
+
+#signup-activity-1 .invite-row span {
+    text-align: right;    
+    position: relative;
+    transform: translateY(-50%);
+    display: block;
+}
+
+#signup-activity-1 .invite-row a, #signup-activity-1 .invite-row-teacher a {
+    float: right;
+    display: block;
+   border: 1px solid #59a299;
+}
+
+/*#signup-activity-1 .invite-row label {
+    position: relative;
+    transform: translateY(50%);
+    display: block;
+
+}*/
+
+/*#signup-activity-1 .invite-row-teacher span:last-of-type {
+    text-align: right;    
+    position: relative;
+    transform: translateY(-50%);
+    display: block;
+}*/
+
+/*#signup-activity-1 .invite-row-teacher a:last-of-type {
+    float: right;
+    display: block;
+   border: 1px solid #59a299;
+}*/
+
+#signup-activity-1 .invite-row-teacher label:last-of-type {
+    float: left;
+
+}
+
+#signup-activity-1 textarea {
+    height: 240px;
+}
+
+
+#signup-activity-1 .small-padding > div {
+    padding-left: 5px;
+    padding-right:5px;
+}
+
+
+#signup-activity-1 .dayscheckboxes input {
+	display: none;
+}
+
+
+#signup-activity-1 .activity-repeat-day {
+    display: inline-block;
+    width: 13%;
+}
+
+#signup-activity-1 .dayscheckboxes label:hover {
+	background: #ccc;
+}
+
+#signup-activity-1 .dayscheckboxes input:checked + label {
+	background: #59a299;
+	color: white !important;
+    border: 3px solid #59a299;
+}
+
+#signup-activity-1 .dayscheckboxes label {
+    border-radius: 2px;
+    cursor: pointer;
+    min-width: 45px;
+    min-height: 40px;
+    text-align: center;
+    z-index: 20;
+    border: solid;
+    padding-top: 3px;
+}
+
+@media(min-width: 768px) {
+    
+#signup-activity-1 .dayscheckboxes label {
+    min-width: 55px;
+    min-height: 50px;
+    padding-top: 7px;
+}
+
+}
+
+#signup-activity-1 .suggestions {
+    
+    border: 1px solid #59a299 !important;
+    margin-top: 0;
+    top: -10px;
+}
+
+#signup-activity-1 .emailsuccess {
+    text-align: center;
+}
+
+#signup-activity-1 .emailsuccess p {
+    font-size: 20px;   
+}
+
+#signup-activity-1 .emailfailure {
+    text-align: center;
+}
+
+#signup-activity-1 .emailfailure p {
+    font-size: 20px;   
+}
+
+
+/* Checkboxes */
+
+input[type=checkbox].css-checkbox-green {
+    position: absolute !important;
+    z-index: -1000 !important;
+    left: -1000px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    width: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+input[type=checkbox].css-checkbox-green + label.css-label-green {
+        padding-left: 65px !important;
+        height: 50px !important;
+        display: inline-block !important;
+        /*line-height: 50px !important;*/
+        background-repeat: no-repeat !important;
+        background-position: 0 0;
+        font-size: 20px !important;
+        vertical-align: middle !important;
+        cursor: pointer !important;
+    }
+
+
+    input[type=checkbox].css-checkbox-green:checked + label.css-label-green {
+        background-position: 0 -50px !important;
+    }
+
+label.css-label-green {
+    background-image: url(/Images/signup/csscheckbox-green.png) !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* END Checkboxes */
+
+
+/* Chosen */
+
+
+#signup-activity-1 .chosen-container.chosen-container-multi {
+    border: 1px solid #59a299 !important;
+    font-size: 15px;
+    line-height: 50px;
+}
+
+@media (min-width: 768px) {
+    
+#signup-activity-1 .chosen-container.chosen-container-multi {
+    font-size: 20px;
+}
+}
+
+#signup-activity-1 .chosen-container-multi .chosen-choices li.search-choice {
+    height: 44px;
+}
+
+#signup-activity-1 .chosen-container-multi .chosen-choices li.search-choice span {
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+}
+
+
+#signup-activity-1 .chosen-drop, .chosen-container {
+    min-height: 0 !important;
+}
+
+#signup-activity-1 .chosen-container input[type=text] {
+        transform: none !important;
+}
+
+
+#signup-activity-1 .signup-row-chosen {
+    
+}
+
+#signup-activity-1 .signup-row-chosen p {
+    padding: 20px 0 20px 0;
+    
+}
+
+/* END Chosen*/

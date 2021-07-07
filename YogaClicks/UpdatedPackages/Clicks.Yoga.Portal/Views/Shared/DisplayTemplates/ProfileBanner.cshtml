@@ -1,0 +1,29 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ImageModel
+
+@{
+    Layout = null;
+    var width = ViewBag.BannerWidth ?? 600;
+    var height = ViewBag.BannerHeight ?? 200;
+    var signup = ViewBag.BlankImage ?? false;
+    var purpleImage = (ViewBag.TextColorClass == "purple-text");
+}
+
+@if (signup)
+{
+
+    if (purpleImage)
+    {
+        @Html.Image(Model, "emptybannerimage-purple.png", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { @class = "img-responsive center-block" })
+    }
+    else
+    {
+        @Html.Image(Model, "emptybannerimage.png", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { @class = "img-responsive center-block" })
+    }
+}
+else
+{
+    if (Model != null && Model.Exists)
+    {
+        @Html.Image(Model, i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { @class = "img-responsive" })
+    }
+}

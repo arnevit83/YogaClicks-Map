@@ -1,0 +1,382 @@
+﻿@using ImageResizer.FluentExtensions
+@model Clicks.Yoga.Portal.Models.AccreditationBodies.AccreditationBodyDisplayModel
+
+@{
+    ViewBag.Title = "Accrediting Body";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav {
+    @Html.Partial("left-nav-accreditingbody")
+}
+
+@section Head {
+    <meta property="og:title" content="Find @Model.AccreditationBody.Abbreviation on YogaClicks" />
+    <meta property="og:description" content="@Model.AccreditationBody.Description"/>
+
+    @if (Model.AccreditationBody.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.AccreditationBody.Image)" />
+    }
+}
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/Icon_BadgePurple.svg" data-svgpng="/images/SvgIcons/Icon_BadgePurple.png" /><span style="color: #786EA1; font-weight: normal">Find</span><span> - @Model.AccreditationBody.Name</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="discover-strip "></div>
+
+
+<div class="col-xs-12 nopadding" id="scroll">
+    <div id="page-content">
+        <article id="static">
+
+
+
+
+
+
+
+            @*@if (SecurityContext.CanUpdate(Model.AccreditationBody))
+            {
+                <button class="pull-left btn btn-clear btn-default " onclick="location.href = '@Url.Action("Update")'; return false;">Edit Page</button>
+            }*@
+
+
+
+
+            <div class="hidden-xs">
+
+                @if (Request.UrlReferrer != null)
+                {
+                    <a onclick="history.go(-1); return false;" class="ARlink pull-right" alt="back" href="#">
+
+                        <span class="glyphicon-stack">
+                            <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                            <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                        </span><span style="vertical-align:text-bottom">Back</span>
+                    </a>
+                }
+                <h1 class="purpleHeader accreditationHeader"><img src="~/images/svgicons/Icon_BadgePurple.svg" data-svgpng="/images/SvgIcons/Icon_BadgePurple.png" />@Model.AccreditationBody.Name</h1>
+             <br />
+            </div>
+
+          
+            <div class="shareFindSection hidden-xs">
+             
+                <div class="fr">
+                    <span>Share: </span>
+                    @Html.Action("EntityButtons", "Sharing", new {EntityId = Model.AccreditationBody.Id, Model.AccreditationBody.EntityTypeName})
+                </div>
+
+                <a class="practiveVenues" data-toggle="tooltip" title="Find @Model.AccreditationBody.Name Teachers" href="/search/teachers?accreditationbody=@Model.AccreditationBody.Id"><img src="~/images/svgicons/Icon_TeacherPurple.svg" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" /></a><a class="teachertrainingVenues" data-toggle="tooltip" title="Find @Model.AccreditationBody.Name Training Courses" href="search/teachertrainingcourses?accreditationbody=@Model.AccreditationBody.Id"><img src="~/images/svgicons/Icon_OrgPurple.svg" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" /></a>
+
+
+                
+                <span style="float:left">&nbsp;:Find</span>
+            </div>
+
+
+
+            @if (Model.AccreditationBody.Image != null)
+            {
+
+                @Html.Image(Model.AccreditationBody.Image, i => i.Resize(c => c.Width(715).ScaleBoth()), Model.AccreditationBody.Name, new {@class = "img-responsive"});
+
+                                                                                                                                                                       if (!string.IsNullOrEmpty(Model.AccreditationBody.ImageCourtesyOf))
+                                                                                                                                                                       {
+                                                                                                                                                                        <span class="captionhover">
+                                                                                                                                                                            <span>@Model.AccreditationBody.ImageCourtesyOf</span>
+                                                                                                                                                                        </span>
+                                                                                                                                                                       }
+
+            }
+            else
+            {
+                <div class="profileBanner accreditingBanner">
+                    &nbsp;
+                </div>
+            }
+
+
+            <div class="pull-right">
+                <div class="leftCol">
+                    <br />
+                    @Html.Action("Button", "Fans", new { EntityId = Model.AccreditationBody.Id, Model.AccreditationBody.EntityTypeName })<br /><br />
+                </div>
+            </div>
+
+            <table class="table table-striped pbigger">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="row nopadding">
+                                <br>
+                                <div class="col-xs-6 col-sm-3 nopadding">
+                                    
+                                    @if (Model.AccreditationBody.Country != null)
+                                    {
+                                  
+                                    <h4>Organisation HQ</h4>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.AccreditationBody.Abbreviation))
+                                    {
+                                        <h4>Abbreviation</h4>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.AccreditationBody.Founder))
+                                    {
+                                       <h4>Founded by</h4>
+                                    }
+                                    @if (Model.AccreditationBody.DateFounded.HasValue)
+                                    {
+                                        <h4>Founded in</h4>
+                                    }
+                       
+     
+                                    
+                                    @if (Model.AccreditationBody.MembershipCount.HasValue)
+                                    {
+                                        <h4>Number of members</h4>
+                                    }
+                                </div>
+                                <div class="col-xs-6 col-sm-9 nopadding ">
+
+                                    @if (Model.AccreditationBody.Country != null)
+                                    {
+                                        <p><span>@Model.AccreditationBody.Country.EnglishName</span></p>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.AccreditationBody.Abbreviation))
+                                    {
+                                        <p>
+                                            <span>@Model.AccreditationBody.Abbreviation</span>
+                                        </p>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.AccreditationBody.Founder))
+                                    {
+                                        <p><span>@Model.AccreditationBody.Founder</span></p>
+                                    }
+                                    @if (Model.AccreditationBody.DateFounded.HasValue)
+                                    {
+                                        <p><span>@Model.AccreditationBody.DateFounded.Value.Year</span></p>
+                                    }
+                                    @*@if (!string.IsNullOrEmpty(Model.AccreditationBody.Affiliations))
+            {
+                <p><span>@Html.NewLines(Model.AccreditationBody.Affiliations)</span></p>
+            }*@
+                                    @if (Model.AccreditationBody.MembershipCount.HasValue)
+                                    {
+                                        <p><span>@Model.AccreditationBody.MembershipCount</span></p>
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row nopadding">
+                                <br>
+                                <div class="col-xs-3 nopadding">
+                                    @if (Model.AccreditationBody.Website != null)
+                                    {
+                                        <h4>Web</h4>
+                                    }
+                                    @if (Model.AccreditationBody.Telephone != null)
+                                    {
+                                       <h4>Tel</h4>
+                                    }
+                                    @if (Model.AccreditationBody.EmailAddress != null)
+                                    {
+                                        <h4>Email</h4>
+                                    }
+                                    @*<p>
+                                        <strong>HQ</strong>
+                                    </p>*@
+                                </div>
+                                <div class="  col-xs-9 nopadding">
+                                    @if (Model.AccreditationBody.Website != null)
+                                    {
+                                        <p>
+                                            <span>
+                                                <a href="@Model.AccreditationBody.Website.Url" target="_blank">@Model.AccreditationBody.Website.Url</a>
+                                            </span>
+                                        </p>
+                                    }
+                                    @if (Model.AccreditationBody.Telephone != null)
+                                    {
+                                        <p>
+                                            <span>@Model.AccreditationBody.Telephone</span>
+                                        </p>
+                                    }
+                                    @if (Model.AccreditationBody.EmailAddress != null)
+                                    {
+                                        <p>
+                                            <span><a href="mailto:@Model.AccreditationBody.EmailAddress">@Model.AccreditationBody.EmailAddress</a></span>
+                                        </p>
+                                    }
+                                    @*<p>
+                                        <span>@Model.AccreditationBody.Country.EnglishName</span>
+                                    </p>*@
+                                </div>
+
+                        
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+
+
+
+
+
+
+
+                <tr>
+                    <td>
+
+                        <div class="row nopadding">
+                            <br>
+                            <div class=" col-sm-3 nopadding">
+                                <h4>Mission</h4>
+                            </div>
+                            <div class=" col-sm-9 nopadding">
+                                <p>@Html.NewLines(Model.AccreditationBody.Description)</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                    @if (Model.AccreditationBody.Programmes != null)
+                    {
+                        <tr>
+                            <td>
+
+                                <div class="row nopadding">
+                                    <br>
+                                    <div class=" col-sm-3 nopadding">
+                                        <h4>Accredited programmes</h4>
+                                    </div>
+                                    <div class=" col-sm-9 nopadding">
+                                        <p>@Html.Raw(Model.AccreditationBody.Programmes)</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                @if (Model.AccreditationBody.Accreditations.Count > 0)
+                    {
+                <tr>
+                        <td>
+
+                            <div class="row nopadding">
+                                <br>
+                                <div class=" col-sm-3 nopadding">
+                                    <h4>Qualifications/ designations/ certifications offered</h4>
+                                </div>
+                                <div class=" col-sm-9 nopadding">
+                                    <div class="list-group">
+                                    @foreach (var accredition in Model.AccreditationBody.Accreditations)
+                                    {
+                                        <span class="list-group-item">@accredition.Name</span>
+
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                @if(Model.AccreditationBody.Affiliations != null){
+                    <tr>
+                    <td>
+
+                        <div class="row nopadding">
+                            <br>
+                            <div class=" col-sm-3 nopadding">
+                                <h4>Affiliations &amp; Associations</h4>
+                            </div>
+                            <div class=" col-sm-9 nopadding">
+                                <p>@Html.Raw(Model.AccreditationBody.Affiliations)</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+                    <tr class="TToFind">
+                        <td>
+
+                            <div class="row nopadding">
+                                <br>
+                                <div class=" col-sm-3 nopadding">
+                                    <h4>Find</h4>
+                                </div>
+                                <div class=" col-sm-9 nopadding">
+
+
+
+
+                                    <div class="right discoverButtons">
+
+                                        <p>
+                                            The teachers and schools listed have stated that they are accredited/registered by @Model.AccreditationBody.Name. Please check with @Model.AccreditationBody.Name to verify their current status.<br>
+                                        </p>
+                                        <button class="button discoverPanelThin " onclick="location.href = '/search/teachers?accreditationbody=@Model.AccreditationBody.Id'; return false"><img src="~/images/svgicons/Icon_TeacherPurple.svg" style="float:left" data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" /><span style="margin: 15px 0 5px 0;display: block; ">Find Teachers</span></button>
+                                        <button class="button discoverPanelThin " onclick="location.href = '/search/teachertrainingcourses?accreditationbody=@Model.AccreditationBody.Id'; return false"><img src="~/images/svgicons/Icon_OrgPurple.svg" style="float:left" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" /><span style="margin: 15px 0 5px 0;display: block; ">Find Training Courses</span></button>
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                            <div class="row nopadding">
+                                <div class="col-xs-12 nopadding">
+                                    @Html.Partial("Disclaimer", "Shared")
+
+
+
+
+
+                                    <div class="cb"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </article>
+
+</div>
+</div>
+
+
+@section Scripts{
+    @{
+        var prImage = Model.AccreditationBody.Image != null ? string.Format("http://cdn.yogaclicks.com/images/yogaimages/{0}", Model.AccreditationBody.Image.Uri) : "http://www.yogaclicks.com/images/global/pinterestshare.png";
+    }
+    <script>
+        $('.facebook-link-div').html('&title=' + 'Find @Model.AccreditationBody.Abbreviation on YogaClicks');
+        $('.twitter-link-div').html('&text=Find ' + '@Model.AccreditationBody.Name' + ' on YogaClicks');
+        $('.pintrest-link-div').html('&description=Find ' + '@Model.AccreditationBody.Name' + ' on YogaClicks&media=' + '@prImage');
+</script>
+}

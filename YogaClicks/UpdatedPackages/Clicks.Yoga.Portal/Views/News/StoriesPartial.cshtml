@@ -1,0 +1,6 @@
+﻿@model Clicks.Yoga.Portal.Models.News.NewsStoriesPartialModel
+
+    @foreach (var story in Model.Stories)
+    {
+        @Html.Partial("StoryPartial", story)
+    }

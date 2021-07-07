@@ -1,0 +1,128 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model SearchTeacherTrainingCoursesModel
+
+@{
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+    ViewBag.Title = "Teacher training course search";
+}
+
+@section LeftNav {
+    @Html.Action("TeacherTrainingNavigation", new { organisations = false })
+}
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/svgicons/Icon_OrgPurple.svg" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" /><span style="color: #786EA1; font-weight: normal">Teacher training</span><span> - Courses</span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="discover-strip "></div><br />
+
+
+<div id="content-slider" class="row nopadding">
+    <div class="style-finder content-col search-content-col" id="scroll">
+        <div class="col-xs-12 nopadding">
+            <header class="search-results">
+                @*<p class="fl">
+                    @Model.PageDescription
+                </p>*@
+            </header>
+        </div>
+         
+        <div class="col-xs-12 nopadding">
+
+            <table class="table table-striped ">
+                <div class="row nopadding">
+                    @foreach (var organisation in Model.OrganisationResults)
+                    {
+
+                        <tr>
+                            <td>
+
+                                <div class="row nopadding">
+                                    <div class="col-sm-3 centerAlign">
+                                        <div class="image">
+                                            <a href="@organisation.Uri">@Html.Image(organisation.Image, "Profile.jpg", i => i.Resize(c => c.Width(170).Height(170).ScaleBoth().Crop()))</a>
+                                        </div>
+                                        <p><br />
+                                            <b class="name"><a href="@organisation.Uri">@organisation.Name</a></b><br />
+                                            @organisation.Address
+                                        </p><br /><br />
+                                    </div>
+
+                                    <div class="col-sm-9">
+                                        <div class="list-group clearlinks">
+                                        
+
+                                            @foreach (var course in organisation.CourseResults)
+                                            {
+                                                <a class="list-group-item" href="@course.Uri">@course.Name</a>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                    @if (Model.Response.TotalCount == 0)
+                    {
+                        <div id="search-no-results">
+                            <h2 class="greenHeader"><i class="fa fa-search "></i> Search Results</h2><br /><br />
+                            <h3 class="cb blackSubHeader well WellColour well-lg">
+                                <br />
+                                We are sorry that your search returned no results.
+                                <br /><br /><br />
+                                Please use different search criteria to find more results.
+                                <br /><br /><br />
+                                @if (SecurityContext.Authenticated)
+                                {
+                                    <text> The
+                                        default
+                                        location is the
+                                        one on
+                                        your profile </text>
+                                }
+
+
+
+
+
+
+
+
+                            </h3>
+                        </div>
+                    }
+            </table>
+        </div>
+
+        </div>
+
+
+
+            @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+
+
+        </div>
+ </div>
+      

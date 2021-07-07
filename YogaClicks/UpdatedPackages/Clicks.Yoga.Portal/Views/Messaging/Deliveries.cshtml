@@ -1,0 +1,60 @@
+﻿@model Clicks.Yoga.Portal.Models.Messaging.MessagingDeliveriesModel
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="">
+                @Html.Partial("HeaderPartial")
+               <!-- Not in design @Html.ActionLink("Return to inbox", "Deliveries") -->
+                <br />
+                <div id="@guid">
+                    <div data-role="Actions" class="messageActions">
+
+                        <div class="row nopadding">
+                            <div class="col-sm-5 nopadding">
+                                <input data-role="Search" style="width: 100%" type="text" class="form-control" placeholder="Search Messages">
+                                <br/>
+                            </div>
+                            <div class="col-sm-7 nopadding">
+                                <div class=" pull-right">
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <button data-role="ActionButton" data-url="@Url.Action("HideDeliveries", "Messaging")" class="btn btn-default btn-clear">Delete</button>
+                                        <button data-role="ActionButton" data-url="@Url.Action("ReadDeliveries", "Messaging")" class="btn btn-default btn-clear">Mark read</button>
+                                        <button data-role="ActionButton" data-url="@Url.Action("UnreadDeliveries", "Messaging")" class="btn btn-default btn-clear">Mark unread</button>
+                                    </div><br/><br/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div data-role="Messages">
+                        @Html.Action("DeliveriesPartial")
+                    </div>
+                </div>
+                <div data-role="Empty" style=" display:none">No results found.</div>
+
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaMessageDeliveries();
+    });
+</script>

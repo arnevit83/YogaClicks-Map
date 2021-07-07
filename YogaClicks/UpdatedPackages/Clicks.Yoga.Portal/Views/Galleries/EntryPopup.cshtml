@@ -1,0 +1,199 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Galleries.GalleryEntryPopupModel
+
+
+<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog ">
+
+        <div class="modal-content">
+
+            @{ var owner = SecurityContext.CanUpdate(Model.Entry);}
+
+            @if (owner)
+            {
+
+                
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Editing @Model.Entry.Name</h4>
+                </div>
+           <div class="modal-body">
+        <div class="modalWrapper">
+            <div class="row nopadding">
+                <div class="col-sm-8 nopadding">
+                    <div class="modalImageGalleryImage">
+                        @Html.Image(Model.Entry.Image, null)
+                        <div class="BSpinterest">
+                            <a target="_blank" class="btn btn-block btn-social btn-sm btn-pinterest" href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogaclicks.com&media=@Html.ImageUrl(Model.Entry.Image, true)&description=@Model.Entry.Name" data-pin-do="buttonPin" data-pin-config="above"><i class="fa fa-pinterest-square"></i> Pin it</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4 ">
+
+                    <div class="modalImageGalleryContent ">
+                        <div class="block-section">
+                            @Html.TextBox("Name", Model.Entry.Name, new {maxlength = 100, placeholder = "100 characters maximum", @class = "form-control", id = "Namepic"})
+                            <div class="buttonWrap">
+                                @* DWTIMEHERE *@
+                                <div>Added: @Html.LocalDateTime(@Model.Entry.CreationTime.ToUniversalTime().ToString("u"))</div>
+
+                            </div>
+                            <div class="saveModalMeta">
+                                <div>
+                                    @Html.CheckBox("IsCover", Model.IsCover, Model.IsCover ? new {disabled = "disabled"} : null) Set as gallery cover
+                                </div>
+                                @*<div>
+                                    @Html.CheckBox("IsPromoted", Model.Entry.Promoted, new { id = "IsPromotedPic" }) Display on profile page
+                                </div>*@
+                            </div>
+                        </div>
+
+                        @*<div class="navigation">
+                            @if (Model.PreviousEntryId.HasValue)
+                                    {
+                                <a href="@Url.Action("EntryPopup", new {EntryId = Model.PreviousEntryId.Value})" class="btn btn-default btn-sm btn-clear pull-left">Previous</a>
+                                    }
+                            @if (Model.NextEntryId.HasValue)
+                                    {
+                                <a href="@Url.Action("EntryPopup", new {EntryId = Model.NextEntryId.Value})" class="btn btn-default btn-sm btn-clear pull-right">Next</a>
+                                    }
+                        </div><br /><br />*@
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+    <div class="modal-footer">
+        <button class="pull-right btn btn-sm btn-custom">Save changes</button>
+    </div>
+
+            }
+            else
+            {
+                <a class="ClosePopup" style=" margin-bottom: -28px!important; top: -15px!important;" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+
+
+                <div class="row nopadding">
+
+
+
+                    <div class=" col-xs-12 nopadding">
+
+                        <div id="carousel-example-generic" class="carousel" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+
+
+                                @for (int i = 1; i < Model.GalleryItems.Count; i++) // Loop with for.
+                                {
+                                    <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+
+                                }
+
+
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner carousel-images" role="listbox">
+
+
+                                @foreach (GalleryEntry GalleryItem in Model.GalleryItems)
+                                {
+
+                                    <div class="BSpinterest">
+                                        <a target="_blank" class="btn btn-block btn-social btn-sm btn-pinterest" href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogaclicks.com&media=@Html.ImageUrl(Model.Entry.Image, true)&description=@GalleryItem.Name" data-pin-do="buttonPin" data-pin-config="above"><i class="fa fa-pinterest-square"></i> Pin it</a>
+                                    </div>
+                                    <div class='item @Html.Raw((Model.Entry.Id == GalleryItem.Id) ? "active" : "")'>
+
+
+                                        @Html.Image(GalleryItem.Image, i => i.Resize(c => c.Width(550).ScaleBoth()))
+
+                                        <div class="carousel-caption">
+                                            <h3>@GalleryItem.Gallery.Name</h3>
+                                            <p>
+                                                @GalleryItem.Name
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+        @*<div class="modalWrapper">
+                <div class="left-image-scroll"><a href="@Url.Action("EntryPopup", new { EntryId = Model.PreviousEntryId.Value })"><img src="~/Images/buttons/left-image-arrow.jpg" /></a></div>
+                <div class="right-image-scroll"><a href="@Url.Action("EntryPopup", new { EntryId = Model.NextEntryId.Value })"><img src="~/Images/buttons/right-image-arrow.jpg" /></a></div>
+                <div class="modalImageGalleryImageOnly">
+                    @Html.Image(Model.Entry.Image, i => i.Resize(c => c.Width(700).ScaleBoth()))
+                    <div class="pinterest">
+                        <a href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogaclicks.com&media=@Html.ImageUrl(Model.Entry.Image, true)&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                    </div>
+                </div>
+                <div id="viewGallery">
+                    <a href="javascript:parent.$.fancybox.close();" class="button pink large backBtn image-close-button">Close</a>
+                </div>
+            </div>*@
+        }
+    </div>
+    </div>
+</div>
+<script>
+
+   
+    $(function () {
+        $('.carousel').carousel('pause');
+        var update = function (name, value) {
+            var data = {};
+            data[name] = value;
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateEntry", new { EntryId = Model.Entry.Id })',
+                data: data,
+                success: function () {
+                    location.reload(false);
+                }
+            });
+          
+        };
+
+        $('button').on('click', function () {
+            var $name = $("#Namepic");
+           
+            update('Name', $name.val());
+           
+        });
+
+        $('input[name=IsCover]').change(function () {
+            update('IsCover', $(this).is(':checked'));
+        });
+
+        $("#IsPromotedPic").change(function () {
+            update('IsPromoted', $(this).is(':checked'));
+        });
+    });
+</script>

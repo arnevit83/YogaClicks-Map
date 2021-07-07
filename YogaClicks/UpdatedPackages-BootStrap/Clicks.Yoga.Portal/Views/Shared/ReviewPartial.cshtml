@@ -1,0 +1,123 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@using Clicks.Yoga.Portal.Models.Shared
+@model Clicks.Yoga.Portal.Models.Entities.ReviewModel
+
+@{
+    var showSubject = ViewBag.ShowSubject ?? false;
+    var profileHandle = showSubject ? Model.Subject : Model.Author;
+    var showChild = ViewBag.ShowChild ?? false;
+    var authAndSuper = false;
+
+    if (SecurityContext != null)
+    {
+        if (SecurityContext.IsSuperUser())
+        {
+            authAndSuper = true;
+        }
+    }
+}
+
+<div id="review-@Model.Id" data-role="Review" class="block-section review">
+    <div class="headerRow">
+        <div class="left-col fl">
+            <span class="rating @Html.StarRatingClass(Model.Rating)"></span>
+        </div>
+        <div class="right-col fr">
+            <h3>
+                <!-- This is used for showing the teacher training course name when viewing reviews on the organisation page, add style inside the if -->
+                @if (showChild)
+                {
+                    <strong><a href="@Url.Action("Display", Model.Subject.Controller, new { id = Model.Subject.EntityId })">@Model.Subject.Name</a> - </strong>
+                }
+
+                &ldquo;
+                @Model.Headline
+                &rdquo;
+
+            </h3>
+        </div>
+    </div>
+    <div class="left-col fl">
+
+        <div class="profile-pic-sml">
+            <a href="@Url.Entity(profileHandle)">
+                @Html.Image(profileHandle.Image, "Profile.jpg", i => i.Resize(c => c.Width(50).Height(50).ScaleBoth().Crop()))
+            </a>
+        </div>
+        <div class="fr">
+            <p class="no-mrg">
+                <b>
+                    <a href="@Url.Entity(profileHandle)">
+                        @profileHandle.Name
+                    </a>
+                </b><br />
+
+                @if (!string.IsNullOrEmpty(profileHandle.Location))
+                {
+                    <span>@profileHandle.Location</span><br />
+                }
+                @* DWTIMEHERE *@
+                <span class="date">@Html.LocalDateTime(Model.CreationTime.ToUniversalTime().ToString("u"))</span>
+            </p>
+        </div>
+    </div>
+    <div class="right-col fr text">
+        <div class="more-block">
+            @Html.NewLines(Model.Body)
+        </div>
+
+        <br />
+
+        @if (Model.ReviewedExperiences.Count > 0)
+        {
+            <p>
+                <strong>Experience(s):</strong>@(string.Join(", ", Model.ReviewedExperiences.Select(e => e.Name).ToArray()))
+            </p>
+        }
+    </div>
+
+    @if (SecurityContext.Authenticated)
+    {
+        if (!SecurityContext.IsOwner(Model))
+        {
+            <div class="grey-bg">
+                <div class="left-col fl">
+                    <small>
+                        <span class="reportIconWrap">
+                            <img src="/images/report-icon.gif" alt="Report" title="Report" class="reportIcon" />
+                            <a href="#" class="report-review">Report this review</a>
+                            <div class="review-popup">
+                                <small><input type="radio" name="report-@Model.Id" value="SPAM" data-location="@Url.Action("Report", "Reviews", new { Model.Id, Reason = "SPAM" })" /><span>This review is spam</span></small>
+                                <small><input type="radio" name="report-@Model.Id" value="illegal or unacceptable" data-location="@Url.Action("Report", "Reviews", new { Model.Id, Reason = "illegal or unacceptable" })" /><span>This review is illegal or unacceptable</span></small>
+                                <button class="submit-report button silver" data-group="report-@Model.Id">Report the review</button>
+                            </div>
+                        </span>
+                    </small>
+                </div>
+                <div class="right-col fr">
+                    <small class="reviewHelpful">Did you find this review helpful? <a class="review-helpful" data-review-id="@Model.Id" href="javascript:void(0)">YES</a> <a class="review-unhelpful" data-review-id="@Model.Id" href="javascript:void(0)">NO</a></small>
+                </div>
+            </div>
+        }
+
+        if (SecurityContext.IsOwner(Model) || SecurityContext.IsSuperUser())
+        {
+            <!--
+              <div class="grey-bg">
+                  <div class="right-col fr">
+                      <small class="reviewHelpful">
+                          @if (Model.HelpfulCount > 0)
+                          {
+                              <text>@(Model.HelpfulCount < 0 ? 0 : Model.HelpfulCount) @(Model.HelpfulCount > 1 ? "people" : "person") found this review helpful</text>
+                          }
+                          <a href="javascript:void(0)" data-role="DeleteReviewButton" data-review-id="@Model.Id">Delete</a>
+                      </small>
+                  </div>
+              </div>
+              -->
+            <a href="javascript:void(0)" data-role="DeleteReviewButton" data-review-id="@Model.Id" class="trashCanButton">Delete</a>
+        }
+    }
+
+    @Html.Partial("CommentsPartial", new CommentsPartialModel(Model.Id, "Review", Model.Comments, new CommentPermissions { Create = true, Delete = authAndSuper }))
+</div>

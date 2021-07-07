@@ -1,0 +1,36 @@
+﻿@model Clicks.Yoga.Portal.Models.Walls.WallsAddVideoModalModel
+@{
+    ViewBag.Title = "AddVideoModal";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" data-media-preview-url="@Url.Action("PreviewPartial", "Media")">
+    <h2 class="greenHeader">Share video</h2>
+    <hr class="modalHr" />
+
+    <div data-role="CreateForm" class="block-section addVideoForm">
+        YouTube/Vimeo URL:
+        <input type="text" name="Url">
+        <button data-role="AddButton" class="silver button" style="text-decoration:none" data-url="@Url.Action("CreateVideoAjax", "Galleries")">Add video +</button>
+    </div>
+
+    <h3 class="blackSubHeader" style="font-size: 14px">
+        <br />
+        Just paste the web page address (URL) of the video in the space above, then click 'Next'
+        <br />
+        <br />
+        (We can only accept links to videos. We do not offer video hosting at this time)
+    </h3>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaWallAddVideoModal();
+    });
+</script>
+
+

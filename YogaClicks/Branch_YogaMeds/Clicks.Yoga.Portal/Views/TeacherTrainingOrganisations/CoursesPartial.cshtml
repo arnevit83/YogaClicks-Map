@@ -1,0 +1,221 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationCoursesPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    @foreach (var course in Model.Courses)
+    {
+        if (SecurityContext.CanUpdate(course))
+        {
+            <div class="block-section cb course-section" data-role="Course">
+                <div class="header">
+                    <div class="left">
+                        <h2><a href="@Url.Action("Display", "TeacherTrainingCourses", new { course.Id })">@course.Name</a></h2>
+
+                    </div>
+                    <div class="right">
+                        <a href="@Url.Action("Update", "TeacherTrainingCourses", new { course.Id })" class="button silver editButton">Edit this course <span>&nbsp;</span></a>
+
+                        @if (SecurityContext.CanDelete(course))
+                        {
+                            <a href="javascript:void(0)" data-role="DeleteButton" data-url="@Url.Action("Delete", "TeacherTrainingCourses")" data-course-id="@course.Id" class="button silver deleteButton"><span>&nbsp;</span></a>
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="main">
+                    <div class="row">
+                        @if (!string.IsNullOrEmpty(course.Duration))
+                        {
+                            <div><strong>Teaching hours:</strong> @course.Duration</div>
+                        }
+                        <div>
+                            @if (course.StartDate.HasValue)
+                            {
+                                <strong>Start:</strong>
+                                @course.StartDate.Value.ToString("MMMM yyyy")
+                            }
+                            &nbsp;
+                            @if (course.FinishDate.HasValue)
+                            {
+                                <strong>End:</strong>
+                                @course.FinishDate.Value.ToString("MMMM yyyy")
+                            }
+                            <br />
+                            @if (!string.IsNullOrEmpty(course.Price))
+                            {
+                                <strong>Price</strong> @course.Price
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        @if (course.Teachers.Count > 0)
+                        {
+                            <div>
+                                @if (course.Teachers.Count > 1)
+                                {
+                                    <strong>Teachers:</strong>
+                                }
+
+                                @if (course.Teachers.Count == 1)
+                                {
+                                    <strong>Teacher:</strong>
+                                }
+
+                                @{
+                                var claimedTeachers = course.Teachers.Where(x => x.Teacher.OwnerId != null);
+                                var stubbTeachers = course.Teachers.Where(x => x.Teacher.OwnerId == null);
+                                int noOfClaimedteachers = 0;
+                                }
+
+                                @foreach (var association in claimedTeachers)
+                                {
+                                    if (association.Confirmed ||
+                                        SecurityContext.IsOwner(course) ||
+                                        SecurityContext.IsOwner(association.Teacher) ||
+                                        SecurityContext.IsSuperUser())
+                                    {
+                                        @Html.ActionLink(association.Teacher.Name, "Display", "Teachers", new { association.Teacher.Id }, null)
+
+                                        noOfClaimedteachers++;
+
+                                        if (noOfClaimedteachers != claimedTeachers.Count())
+                                        {
+                                            <text> | </text>
+                                        }
+                                    }
+                                }
+
+                                @if (stubbTeachers.Count() > 0 && claimedTeachers.Count() > 0)
+                                {
+                                    <text> | </text>
+                                }
+
+                                @if (stubbTeachers.Any())
+                                {
+                                    @Html.Raw(string.Join(" | ", stubbTeachers.Select(x => x.Teacher.Name).ToList()));
+                                }
+                            </div>
+                        }
+
+                        @if (course.Venues.Count > 0)
+                        {
+                            <div>
+                                @if (course.Venues.Count > 1)
+                                {
+                                    <strong>Venues:</strong>
+                                }
+                                @if (course.Venues.Count == 1)
+                                {
+                                    <strong>Venue:</strong>
+                                }
+                                @foreach (var association in course.Venues)
+                                {
+                                    if (association.Confirmed || SecurityContext.IsOwner(course) || SecurityContext.IsOwner(association.Venue))
+                                    {
+                                        @Html.ActionLink(association.Venue.Name + " ", "Display", "Venues", new { association.Venue.Id }, null)
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        @if (course.AccreditationBodies.Count > 0)
+                        {
+                            <div>
+                                @if (course.AccreditationBodies.Count > 1)
+                                {
+                                    <strong>Accrediting / registering bodies:</strong>
+                                }
+                                @if (course.AccreditationBodies.Count == 1)
+                                {
+                                    <strong>Accrediting body:</strong>
+                                }
+                                @foreach (var body in course.AccreditationBodies)
+                                {
+                                    @Html.ActionLink(body.Name, "Display", "AccreditationBodys", new { body.Id }, null)<span>,</span>
+                                }
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(course.Accreditation))
+                        {
+                            <div><strong>Qualification:</strong> @course.Accreditation</div>
+                        }
+
+                        @if (course.Style != null)
+                        {
+                            <div><strong>Style:</strong> @Html.ActionLink(course.Style.Name, "Display", "Styles", new { course.Style.Id }, null)</div>
+                        }
+                    </div>
+                    <div class="row">
+                        @if (course.Website != null)
+                        {
+                            <div>
+                                <p>
+                                    <strong>Website: </strong>
+                                    <a href="@course.Website.Url" target="_blank">@course.Website.Url</a>
+                                </p>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(course.Description))
+                {
+
+                    <div class="sectionToggleHeader"><strong>Description:</strong><span class="arrow">&nbsp;</span></div>
+                    <div class="sectionToggle">@Html.NewLines(course.Description)</div>
+                }
+
+                @if (!string.IsNullOrEmpty(course.PreRequisites))
+                {
+
+                    <div class="sectionToggleHeader"><strong>Pre-requisites:</strong><span class="arrow">&nbsp;</span></div>
+                    <div class="sectionToggle">@Html.NewLines(course.PreRequisites)</div>
+                }
+
+                @if (!string.IsNullOrEmpty(course.Notes))
+                {
+                    <div class="sectionToggleHeader"><strong>Notes:</strong><span class="arrow">&nbsp;</span></div>
+                    <div class="sectionToggle">@Html.NewLines(course.Notes)</div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="block-section cb course-section" data-role="Course">
+                <h2><a href="@Url.Action("Display", "TeacherTrainingCourses", new { course.Id })">@course.Name</a></h2>
+                @if (course.Finished)
+                {
+                    <div>
+                        @Html.Action("SummaryPartial", "Reviews", new { SubjectId = course.Id, SubjectType = course.EntityTypeName })
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.on('click', 'a[data-role=DeleteButton]', function () {
+            var $button = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: $button.attr('data-url'),
+                data: { Id: $button.attr('data-course-id') },
+                success: function () {
+                    $button.closest('[data-role=Course]').remove();
+
+                }
+            });
+        });
+    });
+</script>

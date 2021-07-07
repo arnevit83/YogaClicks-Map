@@ -1,0 +1,105 @@
+﻿@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.SignUpIdModel
+
+@{
+    ViewBag.Title = "Congrats";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.BodyClass = "congratspage purple-text purple-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+}
+
+<div class="row purple-text">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-large-text">
+        <p>Congrat’s, you’re done!<br/>Now you can:
+        </p>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+@{
+    var model1 = new SignUpInvite()
+    {
+        Type = "Teachers",
+        Title = "Invite your teachers",
+        Message = "Teachers email",
+        ColorCssBorderClass = "purple-border",
+        ColorCssClass = "purple",
+        ColorImageClass = "purple"
+    };
+}
+
+@Html.Partial("_SignUpInvite", model1)
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row purple-border four-pixel-border borderedRow">
+            <p>
+                @Html.ActionLink("Promote your schedule (free!)", "VenueSchedule", "SignUp", new { step = 6, id = Model.Id }, new { @class = "fakeclass" })
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+@*@{
+    var model2 = new SignUpInvite()
+    {
+        Type = "Students",
+        Title = "Invite your students",
+        Message = "Students email",
+        ColorCssBorderClass = "purple-border",
+        ColorCssClass = "purple",
+        ColorImageClass = "purple"
+    };
+}
+
+@Html.Partial("_SignUpInvite", model2)*@
+
+
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row purple-border four-pixel-border borderedRow">
+            <p>
+                @Html.ActionLink("Share your yoga story with the world", "Index", "YogaMap")
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row purple-border four-pixel-border borderedRow">
+            <p>
+                <a target="_blank" href="https://www.yogaclicks.store/">Shop the community’s creations</a>
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+
+@*<div class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row signup-med-text">
+        <div class="row purple-border four-pixel-border borderedRow">
+            <p>
+                @Html.ActionLink("Add new photos", "VenuePhotos", "SignUp", new { step = 6, id = Model.Id }, new { @class = "fakeclass" })
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>*@
+
+<div class="row">
+    <div class="col-xs-12">
+        <p>
+            @Html.ActionLink("Done", "VenueDone", "SignUp", new { step = 6, id = Model.Id }, new { @class = "fakeclass" })
+        </p>
+    </div>
+</div>

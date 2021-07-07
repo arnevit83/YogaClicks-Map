@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Clicks.Yoga.Data.ObjectStateExtensions" Collapsed="true">
+    <Position X="220.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAEAAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAIAI=</HashCode>
+      <FileName>Context\ObjectStateExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.YogaDataContext" Collapsed="true">
+    <Position X="224" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iBCAFCBAgAgIFAAAgAAEgAAAEEAJEAADTEAQAAAAABA=</HashCode>
+      <FileName>Context\YogaDataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.YogaEntityContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>NImK5OAQJpUgIohEwgjDRTnBgCgwA1Yk5mGlkpTAKEg=</HashCode>
+      <FileName>Context\YogaEntityContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.AbilityLevelMapping" Collapsed="true">
+    <Position X="68.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\AbilityLevelMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.AccreditationBodyMapping" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\AccreditationBodyMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityAttendeeMapping" Collapsed="true">
+    <Position X="102.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityAttendeeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityMapping" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityRepeatFrequencyMapping" Collapsed="true">
+    <Position X="127.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityRepeatFrequencyMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityTeacherMapping" Collapsed="true">
+    <Position X="143" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityTeacherMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityTypeMapping" Collapsed="true">
+    <Position X="158.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ActivityWallMapping" Collapsed="true">
+    <Position X="174.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ActivityWallMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.AddressMapping" Collapsed="true">
+    <Position X="190.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\AddressMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.EntityMapping&lt;TEntity&gt;" Collapsed="true">
+    <Position X="111.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\Base\EntityMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PrincipalEntityMapping&lt;TEntity&gt;" Collapsed="true">
+    <Position X="18.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\Base\PrincipalEntityMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.CommentMapping" Collapsed="true">
+    <Position X="39.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\CommentMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.CountryMapping" Collapsed="true">
+    <Position X="55.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\CountryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.EntityHandleInviteMapping" Collapsed="true">
+    <Position X="71" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\EntityHandleInviteMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.EntityHandleMapping" Collapsed="true">
+    <Position X="86.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\EntityHandleMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.EntityTypeMapping" Collapsed="true">
+    <Position X="104.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\EntityTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.FanMapping" Collapsed="true">
+    <Position X="113.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\FanMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.FederatedLoginMapping" Collapsed="true">
+    <Position X="129.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\FederatedLoginMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.FederatedLoginProviderMapping" Collapsed="true">
+    <Position X="145.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\FederatedLoginProviderMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.FriendshipMapping" Collapsed="true">
+    <Position X="161" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\FriendshipMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GalleryAssociationMapping" Collapsed="true">
+    <Position X="176.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GalleryAssociationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GalleryEntryMapping" Collapsed="true">
+    <Position X="192.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GalleryEntryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GalleryMapping" Collapsed="true">
+    <Position X="23.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GalleryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GenderMapping" Collapsed="true">
+    <Position X="28.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GenderMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GlossaryEntryMapping" Collapsed="true">
+    <Position X="41.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GlossaryEntryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GroupMapping" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GroupMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GroupMemberMapping" Collapsed="true">
+    <Position X="73.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GroupMemberMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.GroupWallMapping" Collapsed="true">
+    <Position X="89" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\GroupWallMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ImageMapping" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ImageMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ImageTypeMapping" Collapsed="true">
+    <Position X="116" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ImageTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.InvitationMapping" Collapsed="true">
+    <Position X="131.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\InvitationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.LocationMapping" Collapsed="true">
+    <Position X="147.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\LocationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.MediaResourceMapping" Collapsed="true">
+    <Position X="163.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\MediaResourceMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.MediaResourceTypeMapping" Collapsed="true">
+    <Position X="179" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\MediaResourceTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NewsStoryMapping" Collapsed="true">
+    <Position X="194.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NewsStoryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NewsStoryTypeMapping" Collapsed="true">
+    <Position X="206" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NewsStoryTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NewsSubscriptionMapping" Collapsed="true">
+    <Position X="30.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NewsSubscriptionMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationCategoryMapping" Collapsed="true">
+    <Position X="44" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationCategoryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationCategoryPreferencesMapping" Collapsed="true">
+    <Position X="57.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationCategoryPreferencesMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationDeliveryMapping" Collapsed="true">
+    <Position X="75.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationDeliveryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationMapping" Collapsed="true">
+    <Position X="91.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationPreferencesMapping" Collapsed="true">
+    <Position X="107" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationPreferencesMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.NotificationTypeMapping" Collapsed="true">
+    <Position X="118.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\NotificationTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PasswordLoginMapping" Collapsed="true">
+    <Position X="134" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PasswordLoginMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PasswordResetActionMapping" Collapsed="true">
+    <Position X="149.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PasswordResetActionMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PasswordResetRequestMapping" Collapsed="true">
+    <Position X="165.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PasswordResetRequestMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ProfileMapping" Collapsed="true">
+    <Position X="181.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PersonMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PoseCategoryMapping" Collapsed="true">
+    <Position X="197" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PoseCategoryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PoseMapping" Collapsed="true">
+    <Position X="208.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PoseMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PrivacyPreferencesMapping" Collapsed="true">
+    <Position X="32.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PrivacyPreferencesMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PrivateConversationMapping" Collapsed="true">
+    <Position X="46.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PrivateConversationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PrivateMessageDeliveryMapping" Collapsed="true">
+    <Position X="59.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PrivateMessageDeliveryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.PrivateMessageMapping" Collapsed="true">
+    <Position X="77.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\PrivateMessageMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ProfileAnswerMapping" Collapsed="true">
+    <Position X="93.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ProfileAnswerMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ProfileQuestionMapping" Collapsed="true">
+    <Position X="109.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ProfileQuestionMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ProfileWallMapping" Collapsed="true">
+    <Position X="120.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ProfileWallMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.QuoteMapping" Collapsed="true">
+    <Position X="136.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\QuoteMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.RequestMapping" Collapsed="true">
+    <Position X="152" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\RequestMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.RequestTypeMapping" Collapsed="true">
+    <Position X="167.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\RequestTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ReviewExperienceMapping" Collapsed="true">
+    <Position X="183.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ReviewExperienceMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ReviewFeedbackResponseMapping" Collapsed="true">
+    <Position X="199.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ReviewFeedbackResponseMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ReviewMapping" Collapsed="true">
+    <Position X="26" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ReviewMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ReviewRatingMapping" Collapsed="true">
+    <Position X="35" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ReviewRatingMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.ReviewRatingSubjectMapping" Collapsed="true">
+    <Position X="48.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ReviewRatingSubjectMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.RoleMapping" Collapsed="true">
+    <Position X="62" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\RoleMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.SearchRecordMapping" Collapsed="true">
+    <Position X="80" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\SearchRecordMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.StyleMapping" Collapsed="true">
+    <Position X="95.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\StyleMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.StyleOrganisationMapping" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\StyleOrganisationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.StyleTraitGroupMapping" Collapsed="true">
+    <Position X="122.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\StyleTraitGroupMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.StyleTraitMapping" Collapsed="true">
+    <Position X="138.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\StyleTraitMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherAccreditationMapping" Collapsed="true">
+    <Position X="154.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherAccreditationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherMapping" Collapsed="true">
+    <Position X="170" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherPlacementMapping" Collapsed="true">
+    <Position X="185.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherPlacementMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherServiceMapping" Collapsed="true">
+    <Position X="201.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherServiceMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherTrainingCourseMapping" Collapsed="true">
+    <Position X="210.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherTrainingCourseMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherTrainingCourseTeacherMapping" Collapsed="true">
+    <Position X="37.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherTrainingCourseTeacherMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherTrainingCourseVenueMapping" Collapsed="true">
+    <Position X="50.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherTrainingCourseVenueMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TeacherTrainingOrganisationMapping" Collapsed="true">
+    <Position X="64.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TeacherTrainingOrganisationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.TimescaleMapping" Collapsed="true">
+    <Position X="82.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\TimescaleMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.UserActivationRequestMapping" Collapsed="true">
+    <Position X="98" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\UserActivationRequestMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.UserEmailAddressChangeActionMapping" Collapsed="true">
+    <Position X="111.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\UserEmailAddressChangeActionMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.UserEmailAddressChangeRequestMapping" Collapsed="true">
+    <Position X="125" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\UserEmailAddressChangeRequestMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.UserMapping" Collapsed="true">
+    <Position X="140.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\UserMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.UserRoleMapping" Collapsed="true">
+    <Position X="156.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\UserRoleMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VenueMapping" Collapsed="true">
+    <Position X="172.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VenueMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VenueServiceMapping" Collapsed="true">
+    <Position X="188" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VenueServiceMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VenueTypeMapping" Collapsed="true">
+    <Position X="203.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VenueTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VideoAssociationMapping" Collapsed="true">
+    <Position X="212.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VideoAssociationMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VideoMapping" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VideoMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.VideoTypeMapping" Collapsed="true">
+    <Position X="53" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\VideoTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.WallMapping" Collapsed="true">
+    <Position X="66.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\WallMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.WallPostMapping" Collapsed="true">
+    <Position X="84.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\WallPostMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Mappings.WebsiteMapping" Collapsed="true">
+    <Position X="100.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\WebsiteMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.InitialCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201309091556488_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EntityHandleLocations" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201309231200120_EntityHandleLocations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ReviewsController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201309301038262_ReviewsController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActivitiesController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201310040806138_ActivitiesController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ProfileEmailAddress" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201310040818060_ProfileEmailAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.TeacherTrainingCourseDurationLength" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201310221004353_TeacherTrainingCourseDurationLength.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.SearchRecordAccreditation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311181307424_SearchRecordAccreditation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.GlossaryEntityTypeName" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311181513534_GlossaryEntityTypeName.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.FannableQuotesAndLingo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311181633528_FannableQuotesAndLingo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EntityHandleNameLength" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311181636358_EntityHandleNameLength.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.StyleOrganisationSearch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311190928579_StyleOrganisationSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.RemoveActivityReviewable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311190952086_RemoveActivityReviewable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.TypeOfPersonTraitGroupText" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311191205595_TypeOfPersonTraitGroupText.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ExtraAbilityLevels" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311191649159_ExtraAbilityLevels.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActivityAttendenceNullable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311232013094_ActivityAttendenceNullable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActivityClassType" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201311282329199_ActivityClassType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.VenueAmenityIsResidential" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312041015276_VenueAmenityIsResidential.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.WallPostCommentKeyNameCorrection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312041130484_WallPostCommentKeyNameCorrection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.LastDigestEmailSentDate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312092052560_LastDigestEmailSentDate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.VenueAmenities" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312152250193_VenueAmenities.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.NotificationTypesCopyAmends" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312152304347_NotificationTypesCopyAmends.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.RenameAccreditingBodies" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201312181317222_RenameAccreditingBodies.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.AdditionalVenueTypes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201401221202528_AdditionalVenueTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.TeacherTrainingOrganisationEmailAddress" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201401291814173_TeacherTrainingOrganisationEmailAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActorEntityTypes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402131604026_ActorEntityTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.PrivateMessageActors" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402171529002_PrivateMessageActors.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.TeacherAddressRemoval" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402201243505_TeacherAddressRemoval.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.SearchRecordLocations" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402201247573_SearchRecordLocations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.GroupPromoters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402241646512_GroupPromoters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActivityAttendeeHandles" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402251245242_ActivityAttendeeHandles.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.OrganisationActors" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402251443265_OrganisationActors.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EntityHandleInvites" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402261447241_EntityHandleInvites.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EntityHandlesActive" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201402271024070_EntityHandlesActive.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ReviewRatingBedrooms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201403111006419_ReviewRatingBedrooms.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EntityTypeActorOrdinals" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201403120921399_EntityTypeActorOrdinals.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.ActivitiesPluralWithClasses" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201403121147023_ActivitiesPluralWithClasses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.UserEmailAddressChangeRequests" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201403131320280_UserEmailAddressChangeRequests.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.InvitationNullableLoginProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201404031548111_InvitationNullableLoginProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.AutoGroups" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201404220839301_AutoGroups.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.GroupFAQs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201405042258180_GroupFAQs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.HiddenProfessionalProfiles" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407041144104_HiddenProfessionalProfiles.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.NotificationCategories" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407071126077_NotificationCategories.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.FriendshipRequestsCategoryBooleans" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407071501101_FriendshipRequestsCategoryBooleans.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.EmailDigestTimes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407081319453_EmailDigestTimes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.WallPostVideosImages1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407171339332_WallPostVideosImages1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.WallPostVideoImages2" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407171552193_WallPostVideoImages2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.NewsStoryComments1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407241434126_NewsStoryComments1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.MediaResources" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201407291255520_MediaResources.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.MediaResourceEntities" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="224" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408011144058_MediaResourceEntities.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.MediaResourceRequiredUri" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408011219267_MediaResourceRequiredUri.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.RemoveUnnecessaryMediaProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408040849208_RemoveUnnecessaryMediaProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.AddNewsStorySharing" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408051143498_AddNewsStorySharing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.AddSharingPrivacyPreferences" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="217" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408051519578_AddSharingPrivacyPreferences.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.AddShareNotification" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="215.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201408060846496_AddShareNotification.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Migrations.Configuration" Collapsed="true">
+    <Position X="220.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.PrincipalRepository&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAABAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Base\PrincipalRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.Repository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="218.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Base\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.Repository&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAgAMBBBAAAAADAAAAAAACAAUAAAABAAAAAA=</HashCode>
+      <FileName>Repositories\Base\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.RepositoryQuery&lt;TEntity&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="220.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAMABAAAAAACAAAAAAAAAAUAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Base\RepositoryQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.EntityTypeRepository" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\EntityTypeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.ProfileRepository" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ProfileRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.StyleRepository" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Repositories\StyleRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Repositories.StyleTraitRepository" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\StyleTraitRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Search.ElasticSearchEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="222.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAGAIAAAAAAAgAAAAAABEAIAAAAQEAAAAgAAA=</HashCode>
+      <FileName>Search\ElasticSearchEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Search.SearchEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="225.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>Search\SearchEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Clicks.Yoga.Data.Search.Sql" Collapsed="true">
+    <Position X="217" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAACAAAABAAAABAIAVUAAIAQABgEYBAIgBAAAEIKg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

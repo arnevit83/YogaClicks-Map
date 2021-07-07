@@ -1,0 +1,112 @@
+﻿@using Clicks.Yoga.Portal.Models.Galleries
+@model Clicks.Yoga.Portal.Models.Galleries.GalleryDisplayPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+<div class="imagesVideoTabs">
+    <ul class="clearfix">
+        <li class="selected">
+            <a href="@Url.Action("Galleries", Model.EntityType.Controller, new { Id = Model.EntityId })" class="text"><span class="name">Photos</span><span class="arrow">&nbsp;</span></a>
+        </li>
+    </ul>
+</div>
+<span class="albums-title">Albums</span>
+@if (SecurityContext != null)
+{
+    if (SecurityContext.CanUpdate(Model.Gallery))
+    {
+        <div class="image-instruction">Click on any image and tick 'Display on profile page' or 'Set as gallery cover'</div>
+    }
+}
+<div id="@guid" class="block-section gallery-section">
+    @if (SecurityContext != null)
+    {
+        if (SecurityContext.CanUpdate(Model.Gallery))
+        {
+            <div data-role="UpdateForm">
+                <div class="header row">
+                    @if (!Model.Gallery.IsNewsfeed)
+                    {
+                        <div class="fl">
+                            <label for="Name">Album title</label>
+                            @Html.TextBox("Name", Model.Gallery.Name)
+                        </div>
+                        <div class="fr">
+                            <button id="guid-@Guid.NewGuid()" data-role="UploadButton" data-url="@Url.Action("UploadEntry")" class="silver button">Add photos +</button>
+                            <button data-role="UpdateButton" data-url="@Url.Action("Update")" data-success="@Url.Action("UpdatedConfirmation")" class="button save">Save changes &nbsp; <img src="/images/icon-save.png"></button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fl">
+                            <h3>Newsfeed Photos</h3>
+                        </div>
+                    }
+                </div>
+
+                <div class="row inputRow">
+                    @Html.RadioButton("Public", true, Model.Gallery.Public, new { data_url = @Url.Action("Update"), data_id = Model.Gallery.Id }) <label>Public</label>
+                    @Html.RadioButton("Public", false, !Model.Gallery.Public, new { data_url = @Url.Action("Update"), data_id = Model.Gallery.Id }) <label>Private</label>
+                    @if (!Model.Gallery.IsNewsfeed)
+                    {
+                        @Html.CheckBox("Open", Model.Gallery.Open) <label>Other users can add pictures to this gallery</label>
+                    }
+                </div>
+
+                @if (Model.AssociateHandles.Options.Count > 0 && !Model.Gallery.IsNewsfeed)
+                {
+                    <div class="row inputRow">
+                        <div class="shareGallery">
+                            <strong>Share this album to...</strong>
+                            @Html.EditorFor(m => m.AssociateHandles)
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div class="galleryTitle">
+            <h3>@Model.Gallery.Name</h3>
+
+            @* DWTIMEHERE *@
+            <p>Added on @Html.LocalDateTime(@Model.Gallery.CreationTime.ToUniversalTime().ToString("u"))</p>
+
+            @if (Model.Gallery.Open)
+            {
+                <button id="@Guid.NewGuid()" data-role="UploadButton" data-url="@Url.Action("UploadEntry", new {isNewsFeed = false})">Add more photos</button>
+            }
+        </div>
+    }
+
+    <div data-role="Entries" class="galleryEntries">
+        @Html.Partial("UploadProgressPartial")
+
+        @for (var i = 0; i < Model.Entries.Count; i++)
+        {
+            if (i == 0)
+            {
+                @Html.Raw("<div>")
+            }
+            else if ((i % 4) == 0)
+            {
+                @Html.Raw("</div><div>")
+            }
+
+            @Html.Partial("EntryThumbnailPartial", new GalleryEntryThumbnailPartialModel(Model.Entries[i]))
+        }
+
+        @Html.Raw("</div>")
+
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        $('#@guid').yogaGallery();
+    });
+</script>

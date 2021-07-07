@@ -1,0 +1,93 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Is Yoga a Religion";
+    ViewBag.Description = "Is yoga a religion? A meditation technique? A way of staying mindful? Or just a way of staying fit? Let us be your guide.  ";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Wisdom";
+}
+
+@section Head {
+    <meta property="og:title" content="Is yoga a religion? We'll lead you from darkness into light" />
+    <meta property="og:description" content="Yoga does have roots in the contemplative practice of Jainism, Buddhism and most especially Hinduism..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/is-yoga-a-religion/cover.jpg" />
+}
+
+
+
+<div class="nopadding wisdomBar">
+    <div class="the-sub-menu clearfix">
+        <header>
+            <h2 class="pageTitle"><i class="wisdomIcon pull-left"></i><span style="color: #ff7e00; font-weight: normal">Wise Up</span><span> - Is yoga a religion?</span></h2>
+        </header>
+    </div>
+</div>
+
+
+
+<div class="row nopadding">
+    <div class="col-xs-12 nopadding">
+
+        <div id="content-slider" style="margin-top: 55px;" class="content-slider">
+
+            <div class="content-col" id="scroll">
+
+                <section class="page-content">
+
+                    <article id="static">
+
+                        <div class="row nopadding">
+                            <div class="col-xs-12 nopadding">
+                                <img src="/images/is-yoga-a-religion/cover.jpg" alt="Image: Courtesy of Stephen Rowson"><br /><br />
+                            </div>
+                        </div>
+
+                        <div class="row nopadding">
+                            <div class="col-sm-7 col-xs-12 nopadding">
+                                <p>Without a formal creed, set of rituals or obligations – unless you count the discipline of a regular practice – yoga has never been a religion in its own right. </p>
+                                <p>However, yoga does have roots in the contemplative practice of Jainism, Buddhism and most especially Hinduism. </p>
+                                <p>It's first described in the Upanishads (800 BCE - 500 BCE) as a meditation technique to strip away the layers separating us from our own true self, or Atman, so that we may perceive ourselves as drops of water in the ocean that is Brahman, the universal spirit.</p>
+
+                            </div>
+                            <div class="col-sm-5 col-xs-12 ">
+                                <img src="/images/is-yoga-a-religion/image1.jpg" alt="Image: Courtesy of Stephen Rowson" />
+                            </div>
+                        </div>
+
+                        <div class="row nopadding">
+                            <div class="col-xs-12 nopadding"><br/>
+                                <p>In modern times, especially the past fifty years, and especially in the West, the focus has been almost entirely on the physical practice and yoga, like many elements of society, has become entirely dissociated from any religious intent.</p><br/>
+                            </div>
+                        </div>
+
+                        <div class="row nopadding">
+                            <div class="col-sm-7 col-xs-12 nopadding">
+                                <p>And yet, significant numbers of those who initially come to yoga for the physical often develop a very different view of themselves, both as an individual and in relation to others, that harks back to those contemplative roots. Many experience an evolution in perceived purpose and values that leads to profound life changes. </p>
+                                <p>In this sense, even though the modern branches of yoga are no longer religious, yoga remains true to its contemplative roots – helping us strip away the layers that separate us from our true nature; revealing a new sense of Self and a new sense of our place in the world. </p>
+                                <p>
+                                    Read more <a href="/Static/history-of-yoga">History of Yoga</a>
+                                </p>
+                            </div>
+                            <div class="col-sm-5 col-xs-12 ">
+                                <img src="/images/is-yoga-a-religion/image2.jpg" alt="Image: Yoga For Hope by Faern" />
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $("article img").each(function () {
+            $(this).wrap("<div class='imgtxtcenter img-responsive' />");
+            $('.imgtxtcenter').attr('style', $(this).attr('style'));
+            $(this).after($("<span />").text($(this).attr("alt")));
+        });
+
+    });
+</script>
+
+

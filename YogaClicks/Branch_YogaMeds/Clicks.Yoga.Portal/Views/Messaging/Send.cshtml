@@ -1,0 +1,83 @@
+﻿@using Clicks.Yoga.Portal.Models.Entities
+@model Clicks.Yoga.Portal.Models.Messaging.MessagingSendModel
+
+@{
+    ViewBag.Title = "Messages";     
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @Html.Partial("HeaderPartial")
+                <div class="returnToInbox">
+                    @Html.ActionLink("Return to inbox", "Deliveries")
+                </div>
+                <hr />
+                <h3><span class="mailIcon">&nbsp;</span><span class="text">New message</span></h3>
+                
+                @if (SecurityContext.HasActor)
+                {
+                    @Html.ValidationSummary()
+
+                    using (Html.BeginForm())
+                    {
+                        <div class="block-section newMessage">
+                            @if (Model.Recipient != null)
+                            {
+                                <div>
+                                    <div style="margin: 5px;">
+                                        @Html.HiddenFor(m => m.Recipient.EntityId)
+                                        @Html.HiddenFor(m => m.Recipient.EntityType.Name)
+                                        @Html.HiddenFor(m => m.Recipient.Name)
+                                        @Html.Hidden("Recipient.Image.Exists", Value(m => m.Recipient.Image.Exists))
+                                        @Html.HiddenFor(m => m.Recipient.Image.Uri)
+                                        @Html.HiddenFor(m => m.Recipient.Image.Name)
+
+                                        @Html.Image(Model.Recipient.Image, "Profile.jpg", i => i.Resize(c => c.Width(20).Height(20).ScaleBoth().Crop()))
+                                        @Model.Recipient.Name
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    @Html.EditorFor(m => m.Friends)
+                                </div>
+                            }
+                            <hr />
+                            <div class="fl">
+                                @Html.TextAreaFor(
+                                    m => m.Content,
+                                    new
+                                    {
+                                        data_placeholder_template = "You are posting as {0}",
+                                        placeholder = string.Format("You are posting as {0}", SecurityContext.CurrentActor.Name),
+                                        @class = "current-actor-placeholder"
+                                    })
+                            </div>
+                            <div class="fr">
+                                @Html.Image(SecurityContext.CurrentActor.Image, "Profile.jpg", i => i.Resize(c => c.Width(70).Height(70).ScaleBoth().Crop()), "", new
+                                {
+                                    @class = "current-actor-image"
+                                })
+                                <button type="submit" class="button fr sendMsgBtn">Send</button>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>You cannot send messages until you create a profile.</p>
+                }
+            </article>
+
+        </div>
+    </div>
+</div>
+

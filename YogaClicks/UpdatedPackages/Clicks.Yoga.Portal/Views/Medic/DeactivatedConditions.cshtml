@@ -1,0 +1,13 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.DeavtivatedConditionsModel
+
+@if (Model.Conditions.Any())
+{
+    <h4>Deactivated conditions</h4>
+    <ul class="deactivated-condition-list">
+        @foreach (var condition in Model.Conditions)
+        {
+            <li data-condition-id="@condition.Id">@condition.Name <a class="button silver reactivate-condition">Reactivate</a></li>
+        }
+
+    </ul>
+}

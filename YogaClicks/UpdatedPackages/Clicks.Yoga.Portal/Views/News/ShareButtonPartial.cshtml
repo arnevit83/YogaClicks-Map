@@ -1,0 +1,7 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.NewsStoryModel
+
+@if (Model.Actor.SharingPermitted && !SecurityContext.IsOwner(Model.Actor) && !SecurityContext.IsOwner(Model.ShareOriginal.Actor))
+{
+    <button data-role="ShareStoryButton" data-url="@Url.Action("Share")" data-story-id="@Model.Id" class="btn btn-default btn-clear btn-sm pull-right shareButton">Share</button>
+}
+ 

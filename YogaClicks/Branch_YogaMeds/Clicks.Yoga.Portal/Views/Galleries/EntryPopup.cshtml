@@ -1,0 +1,97 @@
+﻿@model Clicks.Yoga.Portal.Models.Galleries.GalleryEntryPopupModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+    //ViewBag.ModalWidth = "900";
+}
+
+@{ var owner = SecurityContext.CanUpdate(Model.Entry);}
+
+
+@if (owner)
+{
+    <div class="modalWrapper">
+        <div class="modalImageGalleryImage fl">
+            @Html.Image(Model.Entry.Image, i => i.Resize(c => c.Width(700).ScaleBoth()))
+            <div class="pinterest">
+                <a href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogaclicks.com&media=@Html.ImageUrl(Model.Entry.Image, true)&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+            </div>
+        </div>
+        <div class="modalImageGalleryContent fr">
+            <div class="block-section">
+                @Html.TextBox("Name", Model.Entry.Name, new { maxlength = 100, placeholder = "100 characters maximum" })
+                <div class="buttonWrap">
+                    @* DWTIMEHERE *@
+                    <div>Added: @Html.LocalDateTime(@Model.Entry.CreationTime.ToUniversalTime().ToString("u"))</div>
+                    
+                </div>
+                <div class="saveModalMeta">
+                    <div>
+                        @Html.CheckBox("IsCover", Model.IsCover, Model.IsCover ? new { disabled = "disabled" } : null) Set as gallery cover
+                    </div>
+                    <div>
+                        @Html.CheckBox("IsPromoted", Model.Entry.Promoted) Display on profile page
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                @if (Model.PreviousEntryId.HasValue)
+                {
+                    <a href="@Url.Action("EntryPopup", new { EntryId = Model.PreviousEntryId.Value })" class="button left">Previous</a>
+                }
+                @if (Model.NextEntryId.HasValue)
+                {
+                    <a href="@Url.Action("EntryPopup", new { EntryId = Model.NextEntryId.Value })" class="button right">Next</a>
+                }
+            </div>
+        </div>
+        <button class="pink button fr image-edit-save">Save changes</button>
+    </div>
+
+}
+else
+{
+    <div class="modalWrapper">
+        <div class="left-image-scroll"><a href="@Url.Action("EntryPopup", new { EntryId = Model.PreviousEntryId.Value })"><img src="~/Images/buttons/left-image-arrow.jpg" /></a></div>
+        <div class="right-image-scroll"><a href="@Url.Action("EntryPopup", new { EntryId = Model.NextEntryId.Value })"><img src="~/Images/buttons/right-image-arrow.jpg" /></a></div>
+        <div class="modalImageGalleryImageOnly">
+            @Html.Image(Model.Entry.Image, i => i.Resize(c => c.Width(700).ScaleBoth()))
+            <div class="pinterest">
+                <a href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogaclicks.com&media=@Html.ImageUrl(Model.Entry.Image, true)&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+            </div>
+        </div>
+        <div id="viewGallery">
+            <a href="javascript:parent.$.fancybox.close();" class="button pink large backBtn image-close-button">Close</a>
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        var update = function (name, value) {
+            var data = {};
+            data[name] = value;
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateEntry", new { EntryId = Model.Entry.Id })',
+                data: data
+            });
+        };
+
+        $('button').on('click', function () {
+            var $name = $('input[name=Name]');
+            update('Name', $name.val());
+            closeModal();
+        });
+
+        $('input[name=IsCover]').change(function () {
+            update('IsCover', $(this).is(':checked'));
+        });
+
+        $('input[name=IsPromoted]').change(function () {
+            update('IsPromoted', $(this).is(':checked'));
+        });
+    });
+</script>

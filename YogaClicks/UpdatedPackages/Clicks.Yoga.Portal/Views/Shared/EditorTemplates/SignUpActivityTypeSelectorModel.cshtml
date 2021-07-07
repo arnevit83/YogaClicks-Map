@@ -1,0 +1,43 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.SignUpActivityTypeSelectorModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="row">
+
+    @Html.HiddenFor(m => m.Selection, new {id = "activity-type-id"})
+
+    @foreach (var option in Model.Options.Where(o => !o.IsEvent))
+    {
+        <div class="col-xs-12 col-sm-6">
+            <div class="clickable-activity" data-value="@option.Id"><span>@option.Name</span></div>
+        </div>
+
+    }
+
+    <div id="activity-selector-type" class="col-xs-12 col-sm-6">
+        @Html.DropDownListFor(m => m.Selection, new SelectList(Model.Options.Where(o => o.IsEvent).Select(s => new {Value = s.Id, Text = s.Name}), "Value", "Text"), "Other Activities")
+    </div>
+</div>
+
+    <script>
+    $(function () {
+        var $container = $('#@guid');
+
+        var $hiddenValue = $container.find('#activity-type-id');
+        var $clickableEvents = $container.find('.clickable-activity');
+        var $clickableDropDown = $container.find('select');
+
+        $clickableEvents.on('click', function () {
+            $hiddenValue.val($(this).data("value"));
+            $hiddenValue.closest("form").submit();
+        });
+
+        $clickableDropDown.on('change', function () {
+            $hiddenValue.val($(this).val());
+            $hiddenValue.closest("form").submit();
+        });
+
+    });
+</script>

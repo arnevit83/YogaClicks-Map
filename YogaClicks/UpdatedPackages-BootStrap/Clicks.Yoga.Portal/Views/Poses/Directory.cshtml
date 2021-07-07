@@ -1,0 +1,38 @@
+﻿@using Clicks.Yoga.Portal.Models.Poses
+@model Clicks.Yoga.Portal.Models.Poses.PoseDirectoryModel
+
+@{
+    ViewBag.Title = "90 + Yoga Poses or Asana, Beginners to Advanced";
+    ViewBag.Description = "Everything you need to know about yoga poses, including health benefits, Sanskrit name, difficulty level and how to do them – in one comprehensive library. ";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Practice";
+}
+
+@section Head {    
+    <meta property="og:title" content="Uttanasana or Utkatasana? Never strike out again at YogaClicks" />    
+    <meta property="og:description" content="We've detailed 100+ poses - why we love them, how to do them and more at YogaClicks. Search by name - English or Sanskrit" />
+    <meta property="og:image" content="http://cdn.yogaclicks.com/images/yogaimages/Pose.Image/e3ad2161-fdb5-41cd-b4cf-58563db4c498.png" />
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", new { Type = PoseNavigationType.Directory })
+}
+
+<div id="content-slider" role="content-slider">
+    <div class="content-col practice-strip" id="scroll">
+        <div class="padTop20">
+            <section class="pose-group">
+                @foreach (var pose in Model.Poses)
+                {
+                    <article class="pose">
+                        <a href="@Url.Action("Display", new { pose.Id })" class="image">@Html.Image(pose.Image, null, pose.EnglishName + " - " + pose.SanskritName)</a>
+                        <h3>@pose.EnglishName</h3>
+                        <p>@pose.SanskritName</p>
+                    </article>
+                }
+            </section>
+          
+                <p>Yoga is a form of physical and mental activity that bears risk of injury. Nothing on this site should be considered medical advice. It’s your sole responsibility to judge your capabilities and to consult a doctor before using our content, especially if you have any known conditions or are pregnant.</p>        
+        
+        </div>
+</div>

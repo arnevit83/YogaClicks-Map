@@ -1,0 +1,17 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileUnclaimButtonModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" class="page-content block-section unclaimSection">
+    <h3>You manage this profile.</h3>
+    <p class="uncliamedProfile">
+        Are you no longer responsible for this @Model.EntityType.DisplayName.ToLower()?
+        <button data-role="UnclaimButton" data-url="@Url.Action("Unclaim")" data-entity-id="@Model.EntityId" data-entity-type-name="@Model.EntityType.Name" class="button claimButton"><span>&nbsp;</span>Unclaim it</button>
+    </p>
+</div>
+
+<script>
+    $('#@guid').yogaClaimPanel();
+</script>

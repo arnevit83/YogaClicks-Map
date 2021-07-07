@@ -1,0 +1,11 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.WebsiteCollectionEditorModel
+
+@{
+    Layout = null;
+}
+
+@for (var i = 0; i < Model.Entities.Count; i++)
+{
+    @Html.HiddenFor(m => m.Entities[i].Id)
+    @Html.HiddenFor(m => m.Entities[i].Url)
+}

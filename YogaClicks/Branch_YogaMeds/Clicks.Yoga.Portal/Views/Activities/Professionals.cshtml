@@ -1,0 +1,122 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityProfessionalsModel
+
+@{
+    ViewBag.Title = "Professionals"; 
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Activity))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Activity.Name" />
+    @if (!string.IsNullOrEmpty(Model.Activity.Description))
+    {
+        <meta property="og:description" content="@Model.Activity.Description" />
+    }
+    else
+    {
+        <meta property="og:description" content=" " />
+    }
+    @if (Model.Activity.Image != null)
+    {
+        <meta property="og:image" content="@Html.ImageUrl(Model.Activity.Image)" />
+    }
+}
+
+<div id="content-slider" role="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Activity) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h2 class="greenHeader activitiesHeader"><span>&nbsp;</span>@Model.Activity.Type.Name: @Model.Activity.Name</h2>
+
+                <div class="profileBanner activityBanner">
+                    @Html.DisplayFor(m => m.Activity.ProfileBanner, "ProfileBanner")
+                </div>
+                @Html.Action("Tabs")
+
+                
+                @if (SecurityContext.CanUpdate(Model.Activity))
+                {
+                    <div class="professionalsAddTeacherButtonWrap">
+                        <a href="javascript:openModal('@Url.Action("AddTeacher")')" class="button silver fr">Add Teacher</a>
+                    </div>
+                }
+                <div>
+                    @if (Model.Teachers.Count > 0)
+                    {
+                        <div id="@guid" class="attendingWrap professionalWrap blockedUserWrap">
+                            @foreach (var association in Model.Teachers)
+                            {
+                                if (association.Confirmed || SecurityContext.CanUpdateAny(Model.Activity, association.Teacher))
+                                {
+                                    <div data-role="Teacher" class="attendee member">
+                                         <div class="fl image">
+                                             <a href="@Url.Action("Display", "Teachers", new { id = association.Teacher.Id })">
+                                                <!--@Html.Image(association.Teacher.Image, i => i.Resize(c => c.Width(68).Height(77).ScaleBoth().Crop())) -->
+                                                 
+                                                @Html.DisplayFor(m => association.Teacher.Image, "ProfileImage", new { Width = 100, Height = 100 })
+                                             </a>    
+                                        </div>
+                                        <div class="fl info">
+                                            <a href="@Url.Action("Display", "Teachers", new { id = association.Teacher.Id })">
+                                                <span class="name">
+                                                    <strong>@association.Teacher.Name</strong>
+                                                </span>
+                                            </a>
+                                             @if (SecurityContext.Authenticated)
+                                                {
+                                                    if (SecurityContext.CanUpdateAny(Model.Activity, association.Teacher))
+                                                    {
+                                                        <br />
+                                                        <a href="javascript:void(0)" data-role="RemoveTeacherButton" data-activity-id="@Model.Activity.Id" data-teacher-id="@association.Teacher.Id" class="button silver removeTeacherButton">Remove</a>
+                                                    }
+                                              }
+                                        </div>
+                                       
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }   
+                </div>    
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        $container.on('click', 'a[data-role=RemoveTeacherButton]', function () {
+            var $this = $(this);
+            var activityId = $this.attr('data-activity-id');
+            var teacherId = $this.attr('data-teacher-id');
+
+            if (!window.confirm("Are you sure you wish to remove this teacher?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveTeacher")',
+                data: { id: activityId, teacherId: teacherId },
+                success: function () {
+                    $this.closest('[data-role=Teacher]').remove();
+                }
+            });
+        });
+    });
+</script>

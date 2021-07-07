@@ -1,0 +1,87 @@
+﻿@model Clicks.Yoga.Portal.Models.Medic.UserStoriesModel
+@{
+    var width = ViewBag.Width ?? 100;
+    var height = ViewBag.Height ?? 100;
+}
+
+
+<h4>Your stories</h4>
+
+@if (Model.UserStories.Any())
+{
+    <div class="user-story-container">
+        @foreach (var userStory in Model.UserStories)
+        {
+            <div class="single-story-container">
+                <div class="user-story-title-row"><span>@userStory.Title</span> <i class="arrow"></i></div>
+                <div class="user-story-info">
+                    <hr />
+                    @if (userStory.OwnerHidden == false)
+                    {
+                        <div class="study-section">
+                            <div class="leftCol">Name</div>
+                            <div class="rightCol">
+                                <span>@userStory.Owner.Profile.Name</span>
+                                @* @Html.DisplayFor(m => userStory.Owner.Profile.Image, "ProfileImage")*@
+                                <div class="profile-image">
+                                    @Html.Image(userStory.Owner.Profile.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    }
+                    <div class="study-section">
+                        <div class="leftCol">My story</div>
+                        <div class="rightCol">
+                            <span>@userStory.Content</span>
+                        </div>
+                    </div>
+                    @if (userStory.Teachers.Any())
+                    {
+                        <hr />
+                        <div class="study-section">
+                            <div class="leftCol">Teacher(s)</div>
+                            <div class="rightCol">
+                                @foreach (var teacher in userStory.Teachers)
+                                {
+                                    <div class="pro-entity">
+                                        <span>@teacher.Name</span>
+                                        <div class="profile-image">
+                                            @Html.Image(teacher.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="clear-float"></div>
+                        </div>
+                    }
+                    @if (userStory.Venues.Any())
+                    {
+                        <hr />
+                        <div class="study-section">
+                            <div class="leftCol">Venue(s)</div>
+                            <div class="rightCol">
+                                @foreach (var venue in userStory.Venues)
+                                {
+                                    <div class="pro-entity">
+                                        <span>@venue.Name</span>
+                                        <div class="profile-image">
+                                            @Html.Image(venue.Image, "Profile.jpg", i => i.Resize(c => c.Width(width).Height(height).ScaleBoth().Crop()), "", new { width, height })
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="clear-float"></div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <span class="be-the-first">Be the first to share your story</span>
+}
+<hr />

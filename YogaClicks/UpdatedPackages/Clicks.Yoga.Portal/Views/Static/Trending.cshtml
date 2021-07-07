@@ -1,0 +1,71 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Trending yoga news and stories from the powered by yoga community";
+    ViewBag.Description = "From work to relationships, the YogaClicks community inspires, informs and equips you to transform life’s challenges and create the life you love through yoga.";
+    ViewBag.MenuClass = "how-to-navigation";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Trending";
+}
+
+@section LeftNav{
+
+    @Html.Partial("left-nav-static-footer-ad")
+
+}
+@section Head {
+    <meta property="og:title" content="Trending yoga news and stories from the powered by yoga community" />
+    <meta property="og:description" content="From work to relationships, the YogaClicks community inspires, informs and equips you to transform life’s challenges and create the life you love through yoga." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<div id="content-slider" class="content-slider" style="max-width: 1400px" >
+
+    <div class="community-strip"></div>
+    <div class="single-content landingPage communityPage" id="scroll">
+
+        <section class="page-content">
+            <img style="margin: 0 auto;" class="img-responsive hidden-xs " src="~/images/trending/trending.png" alt=""/>
+            <a href="/register">
+                <img style="margin: 0 auto;" class="img-responsive hidden-md hidden-sm hidden-lg mobiletrending " src="~/images/trending/trending-mini.png" alt="" />
+            </a>
+            <script src="//assets.juicer.io/embed-no-jquery.js" type="text/javascript"></script>
+            <link href="//assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
+            <ul class="juicer-feed" data-feed-id="poweredbyyoga"></ul>
+        </section>
+
+    </div>
+</div>
+
+
+
+<article class="advertResult trendingpopuptitle hidden-sm hidden-xs">
+
+
+
+
+    <img class="img-responsive" style="left: -18px; position: relative" src="/Images/What-you-can-do/trending_popup.png"><span id="mini-close" title="Close" class="close pull-right" style="margin-top: -225px; margin-right: 22px;" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+        <br /> <a href="/register"><strong>Get the full story</strong></a>
+    <br />
+
+
+</article>
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+        
+        $("#mini-close").click(function () {
+            $(".trendingpopuptitle").hide();
+
+        });
+        $(document).ready(function() {
+
+            $("#Innercontent").css('min-width', '99%');
+
+        });
+    </script>
+}

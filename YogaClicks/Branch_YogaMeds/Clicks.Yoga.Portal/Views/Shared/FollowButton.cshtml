@@ -1,0 +1,30 @@
+﻿@model Clicks.Yoga.Portal.Models.Follow.FollowButtonModel
+
+@if (Model.IsCurrentlyFollowing)
+{
+    <a href="#" class="button silver follow-btn" data-add-follow="false">Un-follow</a>
+}
+else
+{
+    <a href="#" class="button silver follow-btn" data-add-follow="true">Follow</a>
+}
+
+<script>
+    $('.follow-btn').click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this),
+            $id = @Model.EntityId,
+            $addFollow = $this.data('add-follow');
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("FollowButton", Model.EntityName)',
+            async: true,
+            data: { id: $id, addFollow: $addFollow },
+            success: function (html) {
+                $('.follow-button-container').html(html);
+            }
+        });
+    });
+</script>

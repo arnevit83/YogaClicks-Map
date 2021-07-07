@@ -1,0 +1,63 @@
+﻿@using Clicks.Yoga.Portal.Models.Profiles
+@model Clicks.Yoga.Portal.Models.Profiles.ProfileCreateManagePageModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+
+@using (Html.BeginForm("CreateProfileManagePage", "Profiles", FormMethod.Post))
+{
+    @Html.Hidden("IsNewUser", true)
+    
+    <h2 class="greenHeader">Now for your personal profile.</h2>
+    <br/><br/>
+    <table>
+        <tr>
+            <td style="width: 30px; vertical-align: middle">
+                @Html.RadioButtonFor(m => m.ManageBy, ProfileCreateManagePageModel.ManagePage.Personal)
+            </td>
+            <td>
+                <h3 class="blackSubHeader" style="margin:0 0 5px 0">
+                    I want to manage this professional page and my personal/admin profile from this email account.
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30px; vertical-align: middle"></td>
+            <td>
+                @if (!SecurityContext.CurrentProfile.Professional)
+                {
+                    <h3 class="blackSubHeader" style="font-size: 14px; font-style: italic;">
+                        (If you're a teacher you can choose whether search results show your
+                        personal profile in Account Settings)
+                    </h3>
+                }
+            </td>
+        </tr>
+        <tr style="height: 40px"></tr>
+        <tr>
+            <td style="width: 30px; vertical-align: middle;">
+                @Html.RadioButtonFor(m => m.ManageBy, ProfileCreateManagePageModel.ManagePage.New)
+            </td>
+            <td><h3 class="blackSubHeader" style="margin:0 0 5px 0">I want to manage my personal profile from a new email account.</h3></td>
+        </tr>
+        <tr>
+            <td style="width: 30px; vertical-align: middle"></td>
+            <td>
+                <h3 class="blackSubHeader" style="font-size: 14px; font-style: italic;">
+                    (Clicking 'next' will log you out and take you back to the registration page)
+                </h3>
+            </td>
+        </tr>
+    </table>
+    
+    <br/><br/><br/>
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+}

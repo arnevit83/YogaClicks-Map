@@ -1,0 +1,19 @@
+﻿@model Clicks.Yoga.Portal.Models.Quotes.QuoteIndexModel
+
+<div id="navwrap">
+    @Html.Partial("left-nav-menu")
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <h1 class="pageTitle">Quotes</h1>
+                <p>Soak up the wisdom of Guruji Seinfeld, Sri Sri W. Allen, Yogacharya Einstein, Sri Devi Oprah & co</p>
+                <nav class="filter">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <a href="#" class="quote-author" data-author="@author">@author (@Model.Quotes[author].Count)</a>
+                    }
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,34 @@
+﻿@using Clicks.Yoga.Portal.Models.Shared
+@model Clicks.Yoga.Portal.Models.Shared.CommentsPartialModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid" data-role="CommentsContainer" class="reply">
+    <div data-role="Comments" class="comments">
+        @foreach (var comment in Model.Comments)
+        {
+            @Html.Partial("CommentPartial", new CommentPartialModel(Model.Subject, comment, Model.Permissions))
+        }
+    </div>
+
+    @if (SecurityContext.Authenticated)
+    {
+        if (Model.Permissions.Create)
+        {
+            <div class="replyContainer">
+                <textarea data-role="CommentContent" class="replyTextarea" placeholder="300 words max"></textarea>
+                <div class="postingAs">You are posting as <span class="current-actor-name">@SecurityContext.CurrentActor.Name</span></div>
+                <button class="btn btn-info btn-sm pull-right commentButton" data-role="CommentButton" data-url="@Url.Action("Create", "Comments")" data-subject-id="@Model.Subject.EntityId" data-subject-type-name="@Model.Subject.EntityTypeName">Reply</button>
+            </div>
+        }
+    }
+    <div class="clear"></div>
+</div>
+
+<script>
+    $(function () {
+        $('#@guid').yogaComments();
+    });
+</script>

@@ -1,0 +1,156 @@
+﻿@model Clicks.Yoga.Portal.Models.Account.AccountSettingsModel
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @Html.Action("Navigation", "Profiles", new { Id = Model.ProfileId })
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="profile-strip content-col" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                <h1 class="pageTitle greenHeader"><span>&nbsp;</span>Account settings</h1>
+
+                <!-- Temporary - will use in later dev when more tabs required
+            <ul id="tabsNav">
+             <li class="active"><a href="#"> The Basics</a></li>
+         </ul>
+            -->
+                @Html.ValidationSummary()
+
+                @using (Html.BeginForm("Settings", "Account"))
+                {
+                    @Html.HiddenFor(m => m.ProfileId)
+
+                    <h3>Fill in the information below to change your account details</h3>
+
+
+                    <div class="block-section twoColBlockSection">
+
+                        @Html.HiddenFor(m => m.UserHasConnectedFacebook)
+
+                        @if (Model.UserHasConnectedFacebook)
+                        {
+                            <div class="col">
+                                <div>
+                                    Your account is connected to Facebook.
+                                    <br />
+                                    To disconnect your Facebook account, set a password.
+                                    <br />
+                                    Save and you will be able to login using your email address and password.
+                                </div>
+                            </div>
+                            <div class="col">
+                                @Html.HiddenFor(m => m.CurrentEmailAddress)
+
+                                <div>
+                                    <label for="CurrentEmailAddress">Email address:</label>
+                                    @Html.TextBoxFor(m => m.CurrentEmailAddress, new { disabled = true })
+                                </div>
+
+                                <div>
+                                    <label for="NewPassword">New password:</label>
+                                    @Html.PasswordFor(m => m.NewPassword)
+                                </div>
+
+                                <div>
+                                    <label for="NewPasswordConfirmation">Confirm new password:</label>
+                                    @Html.PasswordFor(m => m.NewPasswordConfirmation)
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col">
+                                <div>
+                                    <label for="CurrentPassword">Old password:</label>
+                                    @Html.PasswordFor(m => m.CurrentPassword)
+                                </div>
+
+                                <div>
+                                    <label for="NewPassword">New password:</label>
+                                    @Html.PasswordFor(m => m.NewPassword)
+                                </div>
+
+                                <div>
+                                    <label for="NewPasswordConfirmation">Confirm new password:</label>
+                                    @Html.PasswordFor(m => m.NewPasswordConfirmation)
+                                </div>
+                            </div>
+                            <div class="col">
+                                @Html.HiddenFor(m => m.CurrentEmailAddress)
+
+                                <div>
+                                    <label for="CurrentEmailAddress">Current email address:</label>
+                                    @Html.TextBoxFor(m => m.CurrentEmailAddress, new { disabled = true })
+                                </div>
+
+                                <div>
+                                    <label for="NewEmailAddress">New email address:</label>
+                                    @Html.TextBoxFor(m => m.NewEmailAddress)
+                                </div>
+
+                                <div>
+                                    <label for="NewEmailAddressConfirmation">Confirm new email address:</label>
+                                    @Html.TextBoxFor(m => m.NewEmailAddressConfirmation)
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <button type="submit" class="saveBtn button">Save changes <span>&nbsp;</span></button>
+                        </div>
+                    </div>
+
+                    <h3>Marketing</h3>
+
+                    <div class="block-section">
+                        @Html.CheckBoxFor(m => m.ThirdPartyOptOut)
+                        I do not agree to being contacted by selected third parties about products, services,
+                        promotions and special offers which may be of interest to me.
+                    </div>
+                    
+                    if (!SecurityContext.CurrentProfile.Professional)
+                    {
+                        <h3>Privacy</h3>
+
+                        <div class="block-section">
+                            My profile @Html.DropDownListFor(m => m.ProfilePublic, Model.ProfilePublicOptions) visible in public searches
+                        </div>
+                    }
+                    
+                    <div class="block-section">
+                        My posts @Html.DropDownListFor(m => m.SharingPermitted, Model.SharingPermittedOptions) be shared by others
+                    </div>
+
+                    <h3>Email notifications</h3>
+
+                    <div class="block-section">
+                        I would like a summary of my notifications
+
+                        @Html.DropDownListFor(m => m.NotificationDigestTimescale, Model.NotificationDigestTimescaleOptions)
+
+                        @foreach (var category in Model.NotificationCategories.Options)
+                        {
+                            <div>
+                                @Html.CheckBoxFor(m => m.NotificationCategories.Selection[category.Id]) @category.Name
+                            </div>
+                        }
+                    </div>
+
+                    <div class="twoColBlockSection">
+                        <div class="col">
+                            <button type="submit" class="saveBtn button">Save changes <span>&nbsp;</span></button>
+                        </div>
+                        <div class="col">
+                            <a href="@Url.Action("Deactivate")" class="button" style="color: black">Delete my account</a>
+                        </div>
+                    </div>
+                }
+            </article>
+        </div>
+    </div>
+</div>

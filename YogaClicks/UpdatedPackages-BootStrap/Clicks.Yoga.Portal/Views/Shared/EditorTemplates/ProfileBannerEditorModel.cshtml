@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ProfileBannerEditorModel
+
+@{
+    Layout = null;
+}
+
+<div class="block-section image-upload">   
+@if (Model.CurrentImage != null && Model.CurrentImage.Exists)
+{
+    @Html.DisplayFor(m => m.CurrentImage, "ProfileBanner")
+}
+</div>
+<div class="block-section">
+    <h3>Replace banner image</h3>
+    <p>optimal image dimensions are 665 x 224px, recommended file format is PNG or JPEG and 1MB max</p>
+    @Html.EditorFor(m => m.NewImage)
+    <div id="profilebannerSave" class="saverequired">Saving...</div>
+</div>

@@ -1,0 +1,80 @@
+﻿@using Clicks.Yoga.Domain
+@model Clicks.Yoga.Portal.Models.Search.SearchResultModel
+
+    <article class=" col-xs-12 col-sm-3 @(Model.FriendshipStatus == FriendshipStatus.BlockedBySelf ? "blocked" : "") "  style=" padding-left:5px; padding-right:5px;">
+    @{
+        string uri = "";
+        if (Model.Type == "TeacherPlacement")
+        {
+            uri = "/Teachers/" + Model.OwnerId;
+        }
+        else
+        {
+            uri = Model.Uri;
+        }
+    }
+    <a href="@uri" class="thumbnail">
+        <div class="row nopadding">
+
+            <div class="col-xs-4 col-sm-12 col-lg-5 nopadding vcenter">
+              
+                        @Html.Image(Model.Image, "Profile.jpg", i => i.Resize(c => c.Width(240).Height(240).ScaleBoth().Crop()))
+                
+            </div><!--
+            --><div class="caption col-xs-8 col-sm-12  col-lg-7 nopadding vcenter">
+                <div style="height:100px; overflow-wrap: break-word; overflow:hidden ">
+                    <strong class="Teachernamesearch">@Html.Trim(Model.Name, 35)</strong>
+                  
+
+                                            @if (Model.Rating.HasValue)
+                        {
+                                                <p>
+                                                    <span style="text-align: center;" class="rating">@Html.StarRatingClass(Model.Rating.Value) </span>
+                                                </p>
+                                                    }
+
+<p>
+                        @if (Model.City == null)
+                        {
+                            if (Model.Description != null && Model.Description.Length > 50)
+                            {
+                                @Model.Description.Substring(0, 50)
+                                <text>...</text>
+                            }
+                            else
+                            {
+                                @Model.Description
+                            }
+                        }
+                        else
+                        {
+                            if ((Model.City + Model.Country).Length > 50)
+                            {
+                                @Html.Raw((Model.City + Model.Country).Substring(0, 50));
+
+
+                            <text>...</text>
+
+                            }
+                            else
+                            {
+                                @Model.City<br />
+                                @Model.Country
+                            }
+
+                        }
+
+                        @if (Model.Type == "Profile")
+                        {
+                            <div class="search-res-profile-container">
+                                @Html.Action("Button", "Friends", new { ProfileId = Model.Id, ProfileName = Model.Name, Status = Model.FriendshipStatus })
+                            </div>
+                        }
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </a>
+</article>
+

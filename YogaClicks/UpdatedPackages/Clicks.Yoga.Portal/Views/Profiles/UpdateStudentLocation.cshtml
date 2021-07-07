@@ -1,0 +1,61 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileUpdateStudentLocationModel
+@{
+    ViewBag.Title = "UpdateStudentLocation";
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("UpdateStudentLocation", "Profiles"))
+{
+    <h2 class="greenHeader">Create your personal profile</h2>
+    <hr class="modalHr studentHr" />
+    @*<ul class="steps steps2">
+            <li><span>Step 1</span></li>
+            <li class="active"><span>Step 2</span></li>
+        </ul>*@
+    <h3 class="cb studentH3">Your location</h3>
+    <div class="scrollableiFrame studentFrame">
+        @Html.ValidationSummary()
+        <div class="iframeLocation">
+            @Html.Label("Enter your town or zip/postcode and select from the suggested results")
+            <p class="wizard-location-select-info-text">
+                <span class="red-text">
+                    Please select a location from the drop-down list.
+                </span>
+            </p>
+            <div class="location-select-example student-location-example">
+                <img src="@Url.Content("~/images/global/select-location.png")" />
+            </div>
+            @Html.EditorFor(m => m.Location)
+        </div>
+        <div>
+            <p class="wizard-location-select-info-text">
+                Adding a location will help users find you and make your own searches more accurate.
+                <br />
+                Your location can just be your post code or town, you do not need to give us your complete address.
+            </p>
+        </div>
+
+        <hr />
+
+        <div class="form-grey-bg wizard-dob">
+            @Html.LabelFor(m => m.BirthDate, "Date of birth")
+            @Html.EditorFor(model => model.BirthDate)
+            <div style="margin-left: 5px; font-size: 11px;">Don't worry, this is our secret</div>
+        </div>
+        <div class="form-grey-bg wizard-gender">
+            @Html.LabelFor(m => m.Gender, "Gender")
+            <br />
+            <div class="wizard-gender-editor">@Html.EditorFor(e => e.Gender)</div>
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="javascript: history.go(-1)" class="button pink large">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+
+    <div class="cb"></div>
+}

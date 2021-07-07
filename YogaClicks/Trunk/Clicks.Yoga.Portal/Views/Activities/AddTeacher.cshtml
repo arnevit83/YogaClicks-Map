@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Activities.ActivityAddTeacherModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+ <h2 class="greenHeader">Add Teacher</h2>
+   
+@using (Html.BeginForm())
+{
+    <div class="scrollableiFrame add-teacher-input-container">
+        @Html.EditorFor(m => m.Teacher)
+    </div>
+    <div class="adding" style="display:none; margin-top:10px;">
+        Adding teacher...
+    </div>
+    <button class="large pink button fr add-teach-next" type="submit">Next</button>
+}

@@ -1,0 +1,159 @@
+﻿@model Clicks.Yoga.Portal.Models.StyleOrganisations.OrganisationDisplayModel
+
+@{
+    ViewBag.Title = @Model.Organisation.Name;
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Organisation))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation")
+    }
+}
+@section Head {
+    <meta property="og:title" content="@Model.Organisation.Name" />
+    <meta property="og:description" content="@Model.Organisation.Description" />
+    <meta property="og:image" content="@Html.ImageUrl(Model.Organisation.Image)" />
+}
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Organisation.Id, Model.Organisation.EntityTypeName))
+
+<div id="content-slider">
+    <div class="profile-strip content-col @(SecurityContext.IsOwner(Model.Organisation) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+            <article id="static">
+                @if (SecurityContext.CanUpdate(Model.Organisation))
+                {
+                  <button class="button save fr" style="margin: 5px 0 0 10px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Profile</button>
+                }
+
+                <h2 class="greenHeader styleOrganisationHeader @(SecurityContext.IsOwner(Model.Organisation) ? "" : "purple-organisation-icon")" style=" width 500px;"><span>&nbsp;</span>@Model.Organisation.Name</h2>
+                <hr />
+                <div class="shareRecommendSection">
+                    <div class="fr">
+                        <span>Share: </span>
+                        @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                    </div>
+                </div>              
+                <div class="profileBanner styleBanner">
+                    @Html.DisplayFor(m => m.Organisation.ProfileBanner, "ProfileBanner")
+                </div>
+                
+                @Html.Partial("Tabs")
+                
+               
+                
+                <div class="leftCol">
+                    <div class="profile-pic" style="margin:0 0 13px 0; border:1px solid #ccc;">
+                        @Html.DisplayFor(m => m.Organisation.Image, "ProfileImage")
+                    </div>    
+          
+                    <div class="block-section meta-section">
+                        <div class="row">
+                            <h4>Founder:</h4>
+                            @Model.Organisation.Founder
+                        </div>
+                        <div class="row">
+                            <h4>When founded</h4>
+                            @Model.Organisation.FoundedYear
+                        </div>
+                        <div class="row">
+                            <h4>Style</h4>
+                            @Model.Organisation.Style.Name
+                        </div>
+                    </div>
+                    @Html.Action("Button", "Fans", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                    @Html.Action("Button", "Recommendations", new { EntityId = Model.Organisation.Id, Model.Organisation.EntityTypeName })
+                </div>
+                
+                
+                <div class="rightCol">
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <div class="block-section">
+                            <div class="left">
+                                <h4>Details</h4>
+                            </div>
+                            <div class="right websection">
+                                <div class="row">
+                                    <div class="left">
+                                        <strong>Web</strong>
+                                    </div>
+                                    <div class="right">
+                                        @if (Model.Organisation.Website.Exists)
+                                        {
+                                            <a href="@Model.Organisation.Website.Url">@Model.Organisation.Website.Url</a><br/>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="left">
+                                        <strong>Tel</strong>
+                                    </div>
+                                    <div class="right">
+                                        @Model.Organisation.Telephone
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="left">
+                                        <strong>Email</strong>
+                                    </div> 
+                                    @*Epic 736:Protect our email addresses -- Remove Email Addresses*@
+                                    @*<div class="right">
+                                        <a href="mailto:@Model.Organisation.EmailAddress">@Model.Organisation.EmailAddress</a><br/>
+                                    </div>*@
+                                </div>
+                                <div class="row">
+                                    <div class="left">
+                                        <strong>HQ</strong>
+                                    </div>
+                                    <div class="right">
+                                        @Model.Organisation.Location.Name
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+                    <div class="left">
+                        <h4>Description</h4>
+                    </div>
+                    <div class="right">
+                        <div>
+                            <p>@Html.NewLines(Model.Organisation.Description)</p>  
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="left">
+                        <h4>Affiliations &amp; Associations</h4>
+                    </div>
+                    <div class="right">
+                        <div>  
+                            <p>@Html.NewLines(Model.Organisation.Affiliations)</p>
+                        </div>  
+                    </div>
+                    <hr />
+                    <div class="left">
+                        <h4>Find</h4>
+                    </div>
+                    <div class="right discoverButtons">
+                        <button style="display:block; margin:0 0 5px 0" class="button discoverPanel teachersButton" onclick="location.href = '/search/teachers?style=@Model.Organisation.Style.Id'; return false">Find Teachers <span>&nbsp;</span></button>
+                        <button style="display:block; margin:0 0 5px 0" class="button discoverPanel teachersButton" onclick="location.href = '/search/venues?style=@Model.Organisation.Style.Id'; return false">Find Venues <span>&nbsp;</span></button>
+                        <button style="display:block; margin:0 0 5px 0" class="button discoverPanel teacherTrainingButton" onclick="location.href = '/search/teachertrainingorganisations?style=@Model.Organisation.Style.Id'; return false">Find Training Courses <span>&nbsp;</span></button>
+                    </div>
+                    <hr />
+                    @if (SecurityContext.CanUpdate(Model.Organisation))
+                    {
+                        <button class="button save fr" style="margin-bottom: 50px" onclick="location.href = '@Url.Action("Update")'; return false;">Edit Profile</button>
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+

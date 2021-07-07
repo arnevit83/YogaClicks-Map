@@ -1,0 +1,47 @@
+﻿@using System.Globalization
+@model Clicks.Yoga.Portal.Models.Editors.SignUpDateEditorModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+    //var reverse = Model.Minimum <= new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, 0) && Model.Maximum <= DateTime.Now;
+    const bool reverse = true;
+}
+
+<div class="col-xs-12 col-lg-4 singup-input">
+    <select data-role="Month" id="@Html.IdFor(m => m.Month)" name="@Html.NameFor(m => m.Month)" class="signup-bithday-dropdown" data-field-type="notrequired">
+        <option value="" selected>Month</option>
+        @for (int i = 1; i <= 12; i++)
+        {
+            <option value="@i" @(i == Model.Month ? "selected" : string.Empty)>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+        }
+    </select>
+    <span class="hidden-xs hidden-sm hidden-md signup-underinput-text">This info will not be public</span>
+</div>
+
+<div class="col-xs-12 col-lg-2 singup-input">
+    <select data-role="Day" id="@Html.IdFor(m => m.Day)" name="@Html.NameFor(m => m.Day)" class="signup-bithday-dropdown" data-field-type="notrequired">
+        <option value="" selected>Day</option>
+        @for (int i = 1; i <= 31; i++)
+        {
+            <option value="@i" @(i == Model.Day ? "selected" : string.Empty)>@i</option>
+        }
+    </select>
+</div>
+
+<div class="col-xs-12 col-lg-2 singup-input">
+    <select data-role="Year" id="@Html.IdFor(m => m.Year)" name="@Html.NameFor(m => m.Year)" class="signup-bithday-dropdown" data-field-type="notrequired">
+        <option value="" selected>Year</option>
+        @for (int i = reverse ? Model.Maximum.Year : Model.Minimum.Year; i <= Model.Maximum.Year && i >= Model.Minimum.Year; i += (reverse ? -1 : 1))
+        {
+            <option value="@i" @(i == Model.Year ? "selected" : string.Empty)>@i</option>
+        }
+    </select>
+    <span class="hidden-lg signup-underinput-text">This info will not be public</span>
+</div>
+
+@*<script>
+        $(function () {
+            $('#@guid').yogaDatePicker();
+        });
+</script>*@
+

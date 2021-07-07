@@ -1,0 +1,310 @@
+﻿@using Clicks.Yoga.Portal.Models.Groups
+@model Clicks.Yoga.Portal.Models.Groups.GroupMembersModel
+
+@{
+    ViewBag.Title = "Members";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model.Group))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("Navigation", "Community")
+    }
+}
+
+@section Head {
+    <meta property="og:title" content="@Model.Group.Name" />
+    @if (!string.IsNullOrEmpty(Model.Group.Description))
+    {
+        <meta property="og:description" content="@Model.Group.Description" />
+    }
+    @if (Model.Group.ProfileBanner != null)
+    {
+        <meta property="og:image" content="@Model.Group.ProfileBanner.Url" />
+    }
+}
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.Group.Id, Model.Group.EntityTypeName))
+
+
+
+
+
+
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle"><img src="~/images/SvgIcons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" /><span style="color: #13b4ea; font-weight: normal">@Model.Group.Name</span><span></span></h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+
+    </div>
+    <br />
+</section>
+<div class="community-strip-line"></div><br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="content-slider" class="content-slider">
+    <div class="community-strip content-col" >
+        <div id="page-content">
+
+
+            <div class="hidden-xs">
+
+                @if (Request.UrlReferrer != null)
+                {
+                    <a onclick="history.go(-1); return false;" class="ARlink pull-right" alt="back" href="#">
+
+                        <span class="glyphicon-stack">
+                            <i class="glyphicon glyphicon-circle glyphicon-stack-2x Gcircle"></i>
+                            <i class="glyphicon glyphicon-menu-left glyphicon-stack glyphicon-stack-1x Garrow"></i>
+                        </span><span style="vertical-align: text-bottom; color: #1AB5E9;">Back</span>
+                    </a>
+                }
+                <h1 class="greenHeader communityHeader"><img src="~/images/svgicons/Icon_GroupsBlue.svg" data-svgpng="/images/SvgIcons/Icon_GroupsBlue.png" />@Model.Group.Name</h1>
+
+                <br />
+            </div>
+
+            <div class="shareRecommendSection groupshare">
+                <div class="fr">
+                    <span>Share: </span>
+                    @Html.Action("EntityButtons", "Sharing", new { EntityId = Model.Group.Id, Model.Group.EntityTypeName })
+                </div>
+            </div>
+
+            <div class="profileBanner groupBanner hidden-xs">
+                @Html.DisplayFor(m => m.Group.ProfileBanner, "ProfileBanner")
+            </div>
+
+
+
+            <article>
+
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+                        @Html.Partial("Tabs", new GroupTabsModel(Model.Permissions, Model.Group))
+
+                        <div class="panel-body">
+                            <br /><br />
+                            <div class="row nopadding">
+                                <div class="col-sm-12 nopadding">
+                                    <div class="hidden-md hidden-lg hidden-sm">
+                                        <br /><br />
+                                        @Html.Partial("Tabsmini")
+                                    </div>
+                                    <div id="@guid">
+                                        <div class="block-section reducedBottomPadding">
+                                            <div class="fl">
+                                                <h3 class="noMargins">Group members <span class="member-count"></span></h3>
+                                            </div>
+                                            <div class="fr">
+                                                @if (Model.Permissions.Manage)
+                                                {
+                                                    <button data-role="RemoveSelectedButton" class="btn btn-clear btn-default btn-sm">Delete selected</button>
+                                                }
+
+                                                @if (Model.Permissions.ManageAdministrators)
+                                                {
+                                                    <button data-role="PromoteSelectedButton" class="btn btn-clear btn-default btn-sm">Make admin</button>
+                                                }
+
+                                                @if (Model.Permissions.Invite)
+                                                {
+                                                    <button data-role="InviteButton" class="btn btn-clear btn-default btn-sm">Invite friends</button>
+
+                                                }
+                                            </div>
+
+                                        </div>
+                                        <output data-role="InviteChooser"></output>
+                                        <div class="attendingWrap" data-permissions="@Model.Permissions" data-group="@Model.Group">
+                                            @Html.Action("MembersPartial", "Groups",
+                        new
+                        {
+                            id = Model.Group.Id,
+                            groupOwnerId = Model.Group.OwnerId,
+                            permissionsManage = Model.Permissions.Manage,
+                            permissionsmanageAdmin = Model.Permissions.ManageAdministrators
+                        })
+                                        </div>
+                                        <div class="no-more-members" style="display:none;"></div>
+                                        <div class="loading-bar">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-groups active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+</article>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+        var $inputs = $container.find('input');
+
+        $container.on('click', '[data-role=RemoveSelectedButton]', function (e) {
+            e.preventDefault();
+
+            if (!window.confirm("Are you sure you wish to delete the selected members from this group?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveMembers")',
+                data: $inputs.serialize(),
+                success: function () {
+                    window.top.location.reload();
+                }
+            });
+        });
+
+        $container.on('click', '[data-role=PromoteSelectedButton]', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("PromoteMembers")',
+                data: $inputs.serialize(),
+                success: function () {
+                    window.top.location.reload();
+                }
+            });
+        });
+
+        $container.on('click', '[data-role=DemoteButton]', function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr('data-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DemoteMembers")',
+                data: { UserIds: id },
+                success: function () {
+                    window.top.location.reload();
+                }
+            });
+        });
+
+        $container.find('[data-role=InviteButton]').on('click', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InvitePartial")',
+                success: function (html) {
+                    $container.find('output[data-role=InviteChooser]').html(html);
+                }
+            });
+        });
+    });
+</script>
+
+@section Scripts{
+    <script>
+   
+        $(window).scroll(function () {
+          
+        
+           if ($('.no-more-members:hidden').length > 0) {
+     
+               if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+                
+                    if ($('.loading-bar:hidden').length > 0) {
+                        $('.loading-bar').show();
+                        var linkToParse = '/groups/MembersPartial?skip=555';
+                        var link = linkToParse.replace("555", $('.member').length);
+                        var data = {
+                            id: @Model.Group.Id,
+                            groupOwnerId: @Model.Group.OwnerId,
+                            permissionsManage: Boolean('@Model.Permissions.Manage'),
+                            permissionsmanageAdmin: Boolean('@Model.Permissions.ManageAdministrators')};
+                        $.ajax({
+                            url: link,
+                            data: data,
+                            async: true,
+                            success: function (html) {
+                                if (html.length > 10) {
+                                    $(".attendingWrap").append(html);
+                                } else {
+                                    $('.no-more-members').show();
+                                }
+                                $('.loading-bar').hide();
+                            }
+                        });
+                    };
+               };
+
+
+
+
+
+
+
+            };
+        });
+
+       
+
+        $(document).ready(function() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetMemberCount")',
+                async:true,
+                data: { groupId: '@Model.Group.Id' },
+                success: function (response) {
+                    $('.member-count').html('(' + response + ')');
+                }
+            });
+        });
+    </script>
+}

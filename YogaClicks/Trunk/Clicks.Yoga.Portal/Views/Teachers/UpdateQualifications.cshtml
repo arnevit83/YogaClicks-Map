@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.Teachers.TeacherQualificationsUpdateModel
+
+@using (Html.BeginForm("UpdateQualifications", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-qualifications-form" }))
+{
+    <h3 class="fl">Qualifications/registrations/designations</h3>
+    
+    @Html.HiddenFor(m => m.TeacherId)
+
+    @Html.EditorFor(m => m.Qualifications)
+
+    <div>
+        <span class="profile-qualifications-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

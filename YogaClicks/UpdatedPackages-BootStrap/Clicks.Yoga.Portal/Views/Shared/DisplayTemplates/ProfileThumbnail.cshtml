@@ -1,0 +1,3 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.ImageModel
+
+@Html.Image(Model, "Profile.jpg", i => i.Resize(c => c.Width(70).Height(70).ScaleBoth().Crop()))

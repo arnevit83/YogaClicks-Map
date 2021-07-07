@@ -1,0 +1,18 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingOrganisations.OrganisationLocationUpdateModel
+
+@using (Html.BeginForm("UpdateLocation", "TeacherTrainingOrganisations", FormMethod.Post, new { enctype = "multipart/form-data", id = "update-location-form" }))
+{
+    @Html.HiddenFor(m => m.EntityId)
+
+    <input type="hidden" value="true" class="pro-location-bool" />
+    <h3>Organisation HQ</h3>
+    @Html.EditorFor(m => m.Address)
+
+    <div class="venue-location-save-section">
+        <span class="venue-location-saved-text">Changes Saved</span>
+        <button type="submit" class="button save fr">
+            Save changes &nbsp;
+            <img src="/images/icon-save.png">
+        </button>
+    </div>
+}

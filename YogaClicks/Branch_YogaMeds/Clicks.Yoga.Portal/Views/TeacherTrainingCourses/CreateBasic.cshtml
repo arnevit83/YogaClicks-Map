@@ -1,0 +1,72 @@
+﻿@using Clicks.Yoga.Portal.Models.TeacherTrainingCourses
+@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseCreateBasicModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm("CreateBasic", "TeacherTrainingCourses"))
+{
+    @Html.Serialize("CreateModel", ViewBag.CreateModel as CourseCreateModel)
+
+    @Html.HiddenFor(m => m.OrganisationId)
+
+    <h2 class="greenHeader">Create a course</h2>
+    <hr class="modalHr" />
+    <ul class="steps steps5">
+        <li class="active"><span>Step 1</span></li>
+        <li><span>Step 2</span></li>
+        <li><span>Step 3</span></li>
+        <li><span>Step 4</span></li>
+        <li><span>Step 5</span></li>
+    </ul>
+    <div class="scrollableiFrame tto-course-creation-scrollframe">
+        @Html.ValidationSummary()
+        <div class="clearRow">
+            <div class="threeQuarterWidth">
+                @Html.LabelFor(m => m.Name, "Course title")
+                @Html.EditorFor(m => m.Name)
+            </div>
+        </div>
+        <div class="clearRow">
+            <div class="threeQuarterWidth">
+                @Html.LabelFor(m => m.Website, "Web address")
+                @Html.EditorFor(m => m.Website)
+            </div>
+        </div>
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.Duration, "Teaching hours")
+                <small style="margin:-.25em 0 .75em; display:block;">(E.g. 200 hours; 500 hours)</small>
+                @Html.EditorFor(m => m.Duration)
+            </div>
+            <div class="course-price">
+                @Html.LabelFor(m => m.Price)
+                @Html.EditorFor(m => m.Price)
+            </div>
+        </div>
+        <div class="clearRow" style="overflow:hidden;padding:0 0 10px;">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.StartDate, "Start date")
+                @Html.EditorFor(m => m.StartDate)
+            </div>
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.FinishDate, "End date")
+                @Html.EditorFor(m => m.FinishDate)
+            </div>
+        </div>
+        <div class="clearRow">
+            <div class="threeQuarterWidth">
+                @Html.LabelFor(m => m.Description)
+                @Html.TextAreaFor(m => m.Description, new { @class = "course-description-box" })
+            </div>
+        </div>
+    </div>
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+}

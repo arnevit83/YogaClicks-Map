@@ -1,0 +1,20 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherModel
+
+    <div class="connectionWrap">
+        <span class="connection" data-teacherid="@Model.Id">
+            <a href="@Url.Action("Display", "Teachers", new { id = Model.Id })">
+                <div class="image">
+                    @Html.Image(Model.Image, i => i.Resize(c => c.Width(128).Height(128).ScaleBoth().Crop()))
+                </div>
+                <span class="name">
+                    <strong>@Model.Name</strong>
+                </span>
+                <span class="location">
+                    @if (Model.Location != null)
+                    {
+                        @Model.Location.Name
+                    }
+                </span>
+            </a>
+        </span>
+    </div>

@@ -1,0 +1,566 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchResultsModel
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+    List<SearchResultModel> results = new List<SearchResultModel>();
+}
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", ".search-filter", function () {
+                $(this).closest('form').submit();
+            });
+            $(".MainSearchExpand").on("click", function () {
+                $(this).fadeOut();
+            });
+
+
+            $("#Innercontent").css('min-width', '99%');
+        });
+
+    </script>
+}
+
+<div class="discover-strip "></div><br />
+
+<div id="content-slider" class="row nopadding">
+    <div class="style-finder content-col search-content-col" id="scroll">
+        <div>
+            <header class="search-results">
+                <h1>Search results</h1><br />
+                @(Model.Response.ExactMatchSearch ? Html.Raw(" <p>No exact results found </p>") : Html.Raw(""))
+
+                <p>Showing @Model.Results.Count @(Model.Results.Count == 1 ? "result" : "results") based on @(Model.Response.ExactMatchSearch ? "a broad search" : "an exact match") for '@Model.Criteria.Keywords'</p>
+            </header>
+
+
+
+            <div id="resultContainer">
+
+                @if (Model.CategorisedResults.ContainsKey("Teachers") || Model.CategorisedResults.ContainsKey("Teacher Placements"))
+                {
+
+                    results = Model.Results.Where(x => x.Type == "Teacher" || x.Type == "TeacherPlacement").ToList();
+
+                    if (results.Count > 0)
+                    {
+                        <section class="search-group well well-sm ">
+                            <header role="result-type">
+                                <h2 class="purple-icon">
+                                    <img data-svgpng="/images/SvgIcons/Icon_TeacherPurple.png" src="/images/svgicons/Icon_TeacherPurple.svg">
+                                    Teachers
+
+                                    @if (results.Count > 4)
+                                    {
+                                        <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseTeacher" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-plus"></i>&nbsp;&nbsp;
+See all results
+                                        </a>
+                                    }
+                                   
+                                </h2>
+                            </header>
+
+                         @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseTeacher">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+
+
+                        </section>
+                    }
+                }
+
+                @if (Model.CategorisedResults.ContainsKey("Venues"))
+                {
+                    results = Model.CategorisedResults["Venues"];
+
+                    if (results.Count > 0)
+                    {
+                        <section class="search-group well well-sm ">
+                            <header role="result-type">
+                                <h2 class="purple-icon">
+                                    <img data-svgpng="/images/SvgIcons/Icon_VenuePurple.png" src="/images/svgicons/Icon_VenuePurple.svg">
+                                    Venues
+                                    @if (results.Count > 4)
+                                    {
+                                        <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseVenue" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                        </a>
+                                    }
+                                </h2>
+                            </header>
+                            @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseVenue">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                        </section>
+                    }
+                }
+
+
+
+
+
+                @if (Model.CategorisedResults.ContainsKey("Teacher Training Organisations"))
+                {
+                    results = Model.CategorisedResults["Teacher Training Organisations"];
+
+                    if (results.Count > 0)
+                    {
+                        <section class="search-group well well-sm ">
+                            <header role="result-type">
+                                <h2 class="purple-icon">
+                                    <img data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" src="/images/svgicons/Icon_OrgPurple.svg">
+                                    Teacher training organisations
+                                    @if (results.Count > 4)
+                                    {
+                                        <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseTTO" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                        </a>
+                                    }
+                                </h2>
+                            </header>
+                          @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseTTO">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                        </section>
+                    }
+                }
+
+                @if (Model.CategorisedResults.ContainsKey("Teacher Training Courses"))
+                {
+                    results = Model.CategorisedResults["Teacher Training Courses"];
+
+                    if (results.Count > 0)
+                    {
+                        <section class="search-group well well-sm ">
+                            <header role="result-type">
+                                <h2 class="purple-icon">
+                                    <img data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" src="/images/svgicons/Icon_OrgPurple.svg">
+                                    Teacher training courses
+                                    @if (results.Count > 4)
+                                    {
+                                        <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseTTC" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                        </a>
+                                    }
+                                </h2>
+                            </header>
+                        @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseTTC">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                        </section>
+                    }
+                }
+
+                @*@if (Model.CategorisedResults.ContainsKey("Style Organisations"))
+                    {
+                        results = Model.CategorisedResults["Style Organisations"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group">
+                                <header role="result-type">
+                                    <h2>
+                                        Style Organisations
+                                    </h2>
+                                </header>
+                                @foreach (var result in results)
+                                {
+                                    @Html.Partial("SearchResultPartial", result)
+                                }
+                            </section>
+                        }
+                    }*@@if (Model.CategorisedResults.ContainsKey("Profiles"))
+                    {
+                        results = Model.CategorisedResults["Profiles"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="Blue-icon">
+                                        <img data-svgpng="/images/SvgIcons/Icon_ProfileBlue.png" src="/images/svgicons/Icon_ProfileBlue.svg">
+                                        Profiles
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseProfile" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                             @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseProfile">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+                    @if (Model.CategorisedResults.ContainsKey("Groups"))
+                    {
+                        results = Model.CategorisedResults["Groups"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="purple-icon">
+                                        <img data-svgpng="/images/SvgIcons/Icon_GroupsPurple.png" src="/images/SvgIcons/Icon_GroupsPurple.svg">
+                                        Groups
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseGroups" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                               @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseGroups">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+                    @if (Model.CategorisedResults.ContainsKey("Activities and Classes"))
+                    {
+                        results = Model.CategorisedResults["Activities and Classes"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="purple-icon">
+                                        <img data-svgpng="/images/SvgIcons/Icon_CalendarPurple.png" src="/images/svgicons/Icon_CalendarPurple.svg">
+                                        Events
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseEvents" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                               @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseEvents">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+                    @if (Model.CategorisedResults.ContainsKey("Accrediting Bodies"))
+                    {
+                        results = Model.CategorisedResults["Accrediting Bodies"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="purple-icon">
+                                        <img data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" src="/images/svgicons/Icon_OrgPurple.svg">
+                                        Accrediting / registering Bodies
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseAAB" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                                @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseAAB">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+
+
+                    @if (Model.CategorisedResults.ContainsKey("Conditions"))
+                    {
+                        results = Model.CategorisedResults["Conditions"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="red-icon">
+                                        <img data-svgpng="/images/SvgIcons/Icon_YogaMeds.png" src="/images/svgicons/Icon_YogaMeds.svg">
+                                        YogaMeds
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseMeds" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                                  @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseMeds">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+
+
+                    @if (Model.CategorisedResults.ContainsKey("Styles"))
+                    {
+                        results = Model.CategorisedResults["Styles"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="pink-icon">
+                                        <img data-svgpng="/images/SvgIcons/icon_practice.png" src="/images/SvgIcons/icon_practice.svg">
+                                        Styles
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapseStyles" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                              @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapseStyles">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+                    @if (Model.CategorisedResults.ContainsKey("Poses"))
+                    {
+                        results = Model.CategorisedResults["Poses"];
+
+                        if (results.Count > 0)
+                        {
+                            <section class="search-group well well-sm ">
+                                <header role="result-type">
+                                    <h2 class="pink-icon">
+                                        <img data-svgpng="/images/SvgIcons/icon_practice.png" src="/images/SvgIcons/icon_practice.svg">
+                                        Poses
+                                        @if (results.Count > 4)
+                                        {
+                                            <a class="btn btn-custom MainSearchExpand pull-right" role="button" data-toggle="collapse" href="#collapsePoses" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fa fa-plus"></i>&nbsp;&nbsp;See all results
+                                            </a>
+                                        }
+                                    </h2>
+                                </header>
+                              @for (int i = 0; i < results.Count; i++)
+                            {
+                                if (i < 4)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == 4)
+                                {
+                                    @:<div class="collapse" id="collapsePoses">
+                                        @Html.Partial("SearchResultPartial", results[i])
+                                }
+                                else if (i == results.Count - 1)
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                    @:</div>
+                                }
+                                else
+                                {
+                                    @Html.Partial("SearchResultPartial", results[i])
+                                }
+                            }
+                            </section>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>

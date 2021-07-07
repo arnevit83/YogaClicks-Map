@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Site Map";
+    ViewBag.MenuClass = "how-to-navigation";
+    Layout = "~/Views/Layout/layout.cshtml";
+}
+@section LeftNav{
+@Html.Partial("left-nav-static-footer")
+}
+
+@section Head {
+    <meta property="og:title" content="Let us help you transform life’s challenges and create the life you want" />
+    <meta property="og:description" content="We’ll inspire you with real life stories, inform you with proper clinical studies, and equip you with the creations of people on the same journey - clothes, malas, gifts, books..." />
+    <meta property="og:image" content="http://www.yogaclicks.com/images/global/facebookshare-Generic.png" />
+}
+
+
+
+<div style="margin-left: -15px;margin-right:-15px" class="nopadding hidden-sm hidden-md hidden-lg">
+    <section class="filters greyScale" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu addpadding">
+                <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon"></span></a>
+                <h1>SITE MAP</h1>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div id="content-slider" class="content-slider">
+     
+        <div class="content-col single-content landingPage " id="scroll">
+
+
+
+
+
+
+
+            <section class="page-content QLinks " style="min-height: 1100px;">
+                <article id="static">
+
+
+                    <h1 class="hidden-xs">SITE MAP</h1><br />
+
+
+                    <div class="how-community how-map">
+                        <img src="/images/how-to-use/YogaMap.png" alt="" class="img-responsive" />
+
+                        <img data-svgpng="/images/SvgIcons/icon_pingreen.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_pingreen.svg">
+
+                        <h3><span>The Yoga Map Project </span> - Let’s get the world on its mat</h3>
+                        <p><a href="@Url.Action("index", "YogaMap")">Share your story </a> - Share how yoga inspires you and inspire someone else with the power of yoga!</p>
+
+                    </div>
+
+
+
+                    <div class="how-community how-Shop">
+                        <img src="/images/how-to-use/shop.png" alt="" class="img-responsive" />
+
+                        <img data-svgpng="/images/SvgIcons/shopicon.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/shopicon.svg">
+
+                        <h3><span>The powered by yoga boutique </span> - by yogis for yogis</h3>
+                        <p><a target="_blank" href="http://www.yogaclicks.store">Don’t miss our unique, curated collections</a> - Discover the creations of the planet’s finest yoga loving, independent designers</p>
+
+                    </div>
+                    <div class="how-community how-Med">
+                        <img src="/images/how-to-use/yogameds.png" alt="" class="img-responsive" />
+
+                        <img data-svgpng="/images/SvgIcons/icon_YogaMeds.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_YogaMeds.svg">
+
+                        <h3><span>YogaMeds </span> - where science gets powered by yoga</h3>
+                        <p><a target="_blank" href="@Url.Action("index", "medic")">Use yoga, meditation and mindfulness for health conditions</a> - 280+ clinical studies, share your story, find teachers</p>
+                        <p><a target="_blank" href="@Url.Action("OurMission", "medic")">Infographic </a> - We want to spread the word about yoga for 30+ health conditions, backed up by 300 clinical studies</p>
+
+                    </div>
+
+
+
+                    @*<h2 class="pageTitle"><span class="colorTitle">Site Map</span></h2>*@
+                    <div class="how-discover">
+                        <img src="/images/how-to-use/four.jpg" alt="" class="img-responsive" />
+                        <img data-svgpng="/images/SvgIcons/icon_find.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_find.svg">
+                        <h3><span>Find</span> - Seek and ye shall find</h3>
+                        <p><a href="@Url.Action("Teachers", "Search", new { SortOrder = "Newest" })">Discover teachers</a> - Rockin bod or Bodhisattva? You decide</p>
+                        <p><a href="@Url.Action("Venues", "Search", new { SortOrder = "Newest" })">Discover venues</a> - Hall or hut? Gym or spa? What's your shala?</p>
+                        <p><a href="@Url.Action("index", "accreditationbodys")">Accrediting/registering bodies directory</a> - Meet yoga's standard bearers</p>
+                        <p><a href="@Url.Action("teachertrainingorganisations", "search")">Teacher training directory</a> - Ready to preach what you practice? Find your training here</p>
+                        @*<p><a href="@Url.Action("styleorganisations", "search")">Style organisations</a> - Discover your path to Oneness</p>*@
+                        <p><a href="@Url.Action("search", "activities")">Activities & Classes</a> - Class, weekend, workshop, or holiday/retreat? What's your bliss?<p>
+                        <p><a href="@Url.Action("Groups", "Search")">Groups</a> - Nothing beats chilling in the #YogaHood</p>
+                        @*<p><a href="@Url.Action("discover", "search")">Lucky Dip</a> - Lost in yoga? Surrender to the wisdom of the universe</p>*@
+                    </div>
+                    <div class="how-community">
+                        <img src="/images/how-to-use/two.jpg" alt="" class="img-responsive" />
+
+                        <img data-svgpng="/images/SvgIcons/icon_newsfeed.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_newsfeed.svg">
+
+                        <h3><span>Newsfeed</span> - Nothing beats chillin' in the yogahood
+                        </h3>
+                    
+                        <p><a href="@Url.Action("index", "home")">Newsfeed</a> - 'Say what?!' You heard it here first
+                        </p>
+                     
+                        <p><a href="@Url.Action("Groups", "Search")">Groups</a> - Find a gang, write on a wall</p>
+                    </div>
+                    <div class="how-practice">
+                        <img src="/images/how-to-use/one.jpg" alt="" class="img-responsive">
+                        <img data-svgpng="/images/SvgIcons/icon_practice.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_practice.svg">
+
+                        <h3><span>Practice</span> - Discover your yoga style, strike a pose</h3>
+                        <p><a href="@Url.Action("index", "styles")">Style finder</a> - Try yoga's first interactive guide to find the yoga that's right for you</p>
+                        @*<p><a href="@Url.Action("directory", "styles")">Style directory</a> - Ananda through Yin - all you need to know</p>*@
+                        <p><a href="@Url.Action("index", "poses")">Pose finder</a> - Search by name, category or level</p>
+                        @*<p><a href="@Url.Action("directory", "poses")">Pose directory</a> - Filter by English or Sanskrit</p>*@
+                    </div>
+                    <div class="how-wisdom">
+                        <img src="/images/how-to-use/three.jpg" alt="" class="img-responsive" />
+                        <img data-svgpng="/images/SvgIcons/icon_beginner.png" class="Iconsmenu icon" style="margin-left:8px; margin-top:-6px;" src="/images/svgicons/icon_beginner.svg">
+
+                        <h3>
+                            <span>Beginners</span> - From darkness into light
+                        </h3>
+                        <p><a href="@Url.Action("quiz", "static")">StyleMatch Quiz</a> - We know about 80+ yoga styles. Want to find the style for you?</p>
+                        <p><a href="@Url.Action("faqs", "groups")">Site FAQs</a> - From groups to galleries - we tell you how</p>
+                        <p><a href="@Url.Action("beginners-faq", "static")">Beginners FAQs</a> - From what to wear to what to eat  - we've got it covered</p>
+                        <p><a href="@Url.Action("what-is-yoga", "static")">What is yoga?</a> - We break it down</p>
+                        <p><a href="@Url.Action("history-of-yoga", "static")">The history of yoga</a> - 3000 years in 800 words</p>
+                        <p><a href="@Url.Action("is-yoga-a-religion", "static")">Is yoga a religion?</a> - We shine a light</p>
+                        <p><a href="@Url.Action("index", "glossary")">Yoga lingo</a> - Tell  your kleshas from your kriyas</p>
+                        <p><a href="@Url.Action("index", "quotes")">Quotes</a> - From Joan Rivers to Mother Teresa</p>
+                    </div>
+                    @if (SecurityContext.Authenticated)
+                    {
+                        <div class="how-profile">
+                            <img src="/images/how-to-use/six.jpg" alt="" class="img-responsive" />
+                            <i class="icon profile"></i>
+                            <h3><span>Profile</span> - It's all about you</h3>
+                            <p><a href="@Url.Action("update", "profiles", new { SecurityContext.CurrentProfile.Id })">Edit profile</a> - Create your teacher or venue page, activities and classes, groups. Edit your settings.</p>
+                        </div>
+                    }
+                </article>
+
+            </section>
+
+
+
+        </div>
+
+    </div>

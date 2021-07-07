@@ -1,0 +1,51 @@
+﻿@model Clicks.Yoga.Portal.Models.Editors.ActivityTypeSelectorModel
+
+@{
+    var guid = Guid.NewGuid().ToString();
+}
+
+<div id="@guid">
+    @foreach (var option in Model.Options.Where(o => !o.IsEvent))
+    {
+        <div>
+            @Html.RadioButtonFor(m => m.Selection, option.Id, option.IsClass ? new { data_is_class = "true" } : null) @option.Name
+        </div>
+    }
+
+    <div>
+        <input type="radio" data-role="EventRadio" /> Special event
+        @Html.DropDownListFor(m => m.Selection, new SelectList(Model.Options.Where(o => o.IsEvent).Select(s => new { Value = s.Id, Text = s.Name }), "Value", "Text"), "Please select type")
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $container = $('#@guid');
+
+        var $typeRadios = $container.find('input[type=radio]:not([data-role=EventRadio])');
+        var $eventRadio = $container.find('input[data-role=EventRadio]');
+        var $eventSelect = $container.find('select');
+
+        $typeRadios.on('change', function () {
+            if ($(this).is(':checked')) {
+                $eventRadio.prop('checked', false);
+                $eventSelect.prop('disabled', true);
+                $eventSelect.find('option').prop('selected', false);
+            }
+        });
+
+        $eventRadio.on('change', function () {
+            if ($(this).is(':checked')) {
+                $typeRadios.prop('checked', false);
+                $eventSelect.prop('disabled', false);
+            }
+        });
+
+        if ($eventSelect.val()) {
+            $eventRadio.prop('checked', true);
+        }
+        else {
+            $eventSelect.prop('disabled', true);
+        }
+    });
+</script>

@@ -1,0 +1,130 @@
+﻿@using System.Web.Optimization
+@using Clicks.Yoga.Portal.Models.Profiles
+@using Clicks.Yoga.Portal.Models.SignUp
+@model Clicks.Yoga.Portal.Models.SignUp.TtoStep5ViewModel
+
+@{
+    ViewBag.Title = "Tto Step 4";
+    ViewBag.HeaderClass = "purple-border";
+    ViewBag.TextColorClass = "purple-text";
+    ViewBag.BodyClass = "purple-controls";
+    Layout = "~/Views/Layout/SignUpLayout.cshtml";
+    
+    var progressModel = new SignUpProgressBar()
+    {
+        Step = 4,
+        NumberOfSteps = 4,
+        ColorCssClass = "purple-text"
+    };
+
+    if (Model.IsEdit)
+    {
+        progressModel.Step = 3;
+        progressModel.NumberOfSteps = 3;
+        progressModel.IsEdit = true;
+    }
+
+
+    if (Session["newTto"] != "true")
+    {
+        progressModel.Step = 3;
+        progressModel.NumberOfSteps = 3;
+    }
+}
+
+<img src="/images/svgicons/Icon_OrgPurple.svg" class="signup-title signup-icon" data-svgpng="/images/SvgIcons/Icon_OrgPurple.png" alt="namaste teacher training">
+@using (Html.BeginForm("TtoStep5", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = "signup-tto-5", step = 5 }))
+{
+
+    if (Model.IsEdit || Session["newTto"] != "true")
+    {
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>3. Tell us what makes your teaching training unique</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+    else
+    {
+
+        <div class="row purple-text">
+            <div class="col-xs-2 col-md-1"></div>
+            <div class="col-xs-8 col-md-10 signup-row-title">
+                <p>4. Tell us what makes your teaching training unique</p>
+                <p></p>
+            </div>
+            <div class="col-xs-2 col-md-1"></div>
+        </div>
+    }
+
+
+    <div class="row purple-text signup-row-normal margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.TextAreaFor(m => m.Description, new { placeholder = "300 word maximum" })
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2>Styles taught</h2>
+        </div>
+    </div>
+
+    <div class="row purple-text signup-row-chosen">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.EditorFor(m => m.Styles)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+    <div class="row purple-text margintop100">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10"><hr /></div>
+        <div class="hidden-xs col-sm-1"></div>
+    </div>
+
+    <div class="row purple-text signup-row-normal">
+        <div class="col-xs-12">
+            <h2 style="margin: 100px 0 0 0">YogaMeds taught</h2>
+        </div>
+    </div>
+    <div class="row purple-text signup-row-chosen">
+        <div class="hidden-xs col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10 singup-input">
+            @Html.EditorFor(m => m.Conditions)
+        </div>
+        <div class="hidden-xs col-sm-1">
+        </div>
+    </div>
+
+
+    @Html.Partial("_SignUpProgressBar", progressModel);
+    @Html.HiddenFor(m => m.Id)
+}
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    // Debug mode is enabled in Web.config.
+    //These are needed for when the JS isn't bundled (for testing)
+    <script type="text/javascript" src="http://www.google.com/jsapi?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+}
+else
+{
+    @Scripts.Render("~/bundles/mapsapi")
+    @Scripts.Render("~/bundles/maps")
+}

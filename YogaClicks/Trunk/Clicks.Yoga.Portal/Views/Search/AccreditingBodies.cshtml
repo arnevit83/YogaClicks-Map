@@ -1,0 +1,41 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchAccreditingBodiesModel
+
+@{
+    ViewBag.Title = "Teachers";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-accreditingbody-search", Model)
+}
+
+@section Scripts{
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="content-col search-content-col discover-strip" id="scroll">
+        <div class="content-col" id="scroll">
+            <div class="padTop20">
+                <header class="search-results">
+                    <h1>Search results</h1>
+                    <p>Showing @Model.PageDescription based on your search for '@Model.Criteria.Keywords'</p>
+                </header>
+                <div id="resultContainer">
+                    @foreach (var result in Model.Results)
+                    {
+                        @Html.Partial("SearchResultPartial", result)
+                    }
+                </div>
+                @Html.Partial("PagingButtonsPartial", new SearchPagingButtonsPartialModel(Model.Criteria, Model.Response))
+                <div class="meta">
+                    <p>YogaClicks does not warrant that any of the teachers, venues or teacher training organisations found on our site will meet your health or medical requirements.<p>
+                    <p>YogaClicks is not responsible for verifying the accreditation/registration information provided. Please check with the relevant accrediting/registering body for current status.</p>
+                    <p>These listings are for information only - any reference to a third party and/or its services does not indicate our endorsement, recommendation or approval, nor does it indicate any third party's endorsement, recommendation or approval of YogaClicks.</p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

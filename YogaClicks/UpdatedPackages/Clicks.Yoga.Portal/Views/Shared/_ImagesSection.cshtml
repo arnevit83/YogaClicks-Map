@@ -1,0 +1,45 @@
+﻿@model Clicks.Yoga.Portal.Models.Shared.ImagesModel
+@{
+
+}
+
+
+<div class="row @Model.ColorCssClass signup-row-image-row">
+    <div class="hidden-xs col-sm-1"></div>
+   
+    <div class="col-xs-12 ">
+        <div class="row">
+            @Html.HiddenFor(m => m.Image.ImageCrop.XCoord)
+            @Html.HiddenFor(m => m.Image.ImageCrop.YCoord)
+            @Html.HiddenFor(m => m.Image.ImageCrop.Width)
+            @Html.HiddenFor(m => m.Image.ImageCrop.Height)
+            @Html.EditorFor(m => m.Image)
+        </div>
+    </div>
+   
+</div>
+
+<div id="PleaseWait" style="display: none;"><img src="/images/loading.svg" id="pleaseWait-loading" class="pleaseWait-loading Spinner" data-svgpng="/Images/loading.gif">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        if ($('form').length > 0) {
+            $('input:submit').click(function () {
+
+                var invalid = false;
+                $('[data-field-type="general"]').each(function(e) {
+                    if ($(this).val() == 0) {
+                        invalid = true;
+                    }
+                });
+
+                if (!invalid) {
+                    $("#PleaseWait").show();
+                }
+            });
+        }
+    });
+</script>

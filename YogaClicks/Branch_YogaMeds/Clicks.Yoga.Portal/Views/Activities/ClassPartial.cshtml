@@ -1,0 +1,73 @@
+﻿@using Clicks.Yoga.Domain.Entities
+@model Clicks.Yoga.Portal.Models.Activities.ActivityClassPartialModel
+
+<tr class="contentRow">
+    <td class="timeHeader">
+        @Model.Repeat.StartTime.ToString("HH:mm")-@Model.Repeat.FinishTime.ToString("HH:mm")
+    </td>
+    <td>
+        <div data-role="ActivitySummary" class="activitySummaryHeader">
+            <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="textLink">@Model.Repeat.Activity.Name</a>
+            <div class="info"><output></output></div>
+        </div>
+    </td>
+    <td>
+        @if (Model.Repeat.Activity.Venue.Exists)
+        {
+            <div data-role="VenueSummary" class="venueSummaryHeader">
+                <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassVenueSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="textLink">@Model.Repeat.Activity.Venue.Name</a>
+                <output></output>
+            </div>
+        }
+        else
+        {
+            <text>Pending</text>
+        }
+    </td>
+    <td>
+        @if (Model.Editable)
+        {
+            <a href="@Url.Action("UpdateClass", "Activities", new { Model.Repeat.Activity.Id })" class="silver button editButton">Edit this class <span>&nbsp;</span></a>
+            <a data-role="DeleteButton" data-id="@Model.Repeat.Activity.Id" href="javascript:void(0);" class="silver button deleteButton"><span>&nbsp;</span></a>
+        }
+        else if (Model.Repeat.Activity.Teachers.Count > 0)
+        {
+            <div data-role="TeacherSummary" class="teacherSummary">
+                @if (!Model.Repeat.Activity.Teachers[0].Stubbed)
+                {
+                    <a href="javascript:void(0)" data-role="SummaryButton" data-action="@Url.Action("ClassTeacherSummaryPartial", "Activities")" data-id="@Model.Repeat.Activity.Id" class="textLink">@Model.Repeat.Activity.Teachers[0].Name</a>
+                }
+
+                else
+                {
+                    <span>@Model.Repeat.Activity.Teachers[0].Name</span>
+                }
+
+                <output></output>
+            </div>
+        }
+    </td>
+
+    @if (SecurityContext.Authenticated && !Model.Editable)
+    {
+
+        <td>
+            @if (Model.Repeat.Activity.Teachers.Count > 0)
+            {
+                if (!Model.Repeat.Activity.Teachers[0].Stubbed)
+                {
+                    @Html.EnquireOrFriendRequest(Model, SecurityContext.CurrentProfile)
+
+                }
+            }
+        </td>
+
+    }
+</tr>
+<tr class="classesRevealContent">
+    <td></td>
+    <td colspan="4">
+        <div class="activitySummary">
+        </div>
+    </td>
+</tr>

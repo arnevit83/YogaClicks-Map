@@ -1,0 +1,11 @@
+﻿@model Clicks.Yoga.Emails.AdminFeedbackEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = string.Format("Feedback from {0}", Model.SenderName);
+}
+
+<strong>@Model.SenderName</strong><br>
+<a href="mailto:@Model.SenderEmailAddress">@Model.SenderEmailAddress</a><br><br>
+
+@Html.NewLines(Model.Message)

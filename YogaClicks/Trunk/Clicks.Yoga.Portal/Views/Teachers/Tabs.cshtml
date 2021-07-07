@@ -1,0 +1,37 @@
+﻿@if (ViewBag.TeacherId == null)
+{
+    <ul id="tabsNav">
+        <li id="profileNav">@Html.ActionLink("Profile", "Display")</li>
+        <li id="classesNav">@Html.ActionLink("Schedule", "Schedule")</li>
+        <li id="reviewNav">@Html.ActionLink("Reviews", "Reviews")</li>
+        <li id="galleriesNav">@Html.ActionLink("Photos", "Galleries")</li>
+        <li id="galleriesNav">@Html.ActionLink("Videos", "Videos")</li>
+        <li id="venueNav">@Html.ActionLink("Venues", "Placements")</li>
+        <li id="groupsNav">@Html.ActionLink("Groups", "Groups")</li>
+        <li id="fanNav">@Html.ActionLink("Fans", "Fans")</li>
+    </ul>
+}
+else
+{
+
+    <ul id="tabsNav">
+        @{
+            var profileUrl = "/" + ViewBag.TeachTextSearch + "/profile/display";
+            var scheduleUrl = "/" + ViewBag.TeachTextSearch + "/profile/schedule";
+            var reviewsUrl = "/" + ViewBag.TeachTextSearch + "/profile/reviews";
+            var galleriesUrl = "/" + ViewBag.TeachTextSearch + "/profile/galleries";
+            var videosUrl = "/" + ViewBag.TeachTextSearch + "/profile/videos";
+            var placementsUrl = "/" + ViewBag.TeachTextSearch + "/profile/placements";
+            var groupsUrl = "/" + ViewBag.TeachTextSearch + "/profile/groups";
+            var fansUrl = "/" + ViewBag.TeachTextSearch + "/profile/fans";
+        }
+        <li id="profileNav"><a href="@profileUrl">Profile</a></li>
+        <li id="classesNav"><a href="@scheduleUrl">Schedule</a></li>
+        <li id="reviewNav"><a href="@reviewsUrl">Reviews</a></li>
+        <li id="galleriesNav"><a href="@galleriesUrl">Photos</a></li>
+        <li id="galleriesNav"><a href="@videosUrl">Videos</a></li>
+        <li id="venueNav"><a href="@placementsUrl">Venues</a></li>
+        <li id="groupsNav"><a href="@groupsUrl">Groups</a></li>
+        <li id="fanNav"><a href="@fansUrl">Fans</a></li>
+    </ul>
+}

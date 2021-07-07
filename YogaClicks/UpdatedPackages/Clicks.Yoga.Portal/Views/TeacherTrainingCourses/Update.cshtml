@@ -1,0 +1,270 @@
+﻿@model Clicks.Yoga.Portal.Models.TeacherTrainingCourses.CourseUpdateModel
+
+@{
+    ViewBag.Title = "Edit teacher training course";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+@section LeftNav {
+    @if (SecurityContext.IsOwner(Model))
+    {
+        @Html.Action("Navigation", "Profiles", new { SecurityContext.CurrentProfile.Id })
+    }
+    else
+    {
+        @Html.Action("TeacherTrainingNavigation", "Search", new { organisations = false })
+    }
+}
+
+@Html.Partial("ActivateProfileLinkPartial", new Clicks.Yoga.Portal.Models.Shared.ActivateProfileLinkPartialModel(Model.EntityId, Model.EntityTypeName))
+
+<section class="nopadding hidden-sm hidden-md hidden-lg row wisdom-strip-Bottom">
+    <div class="col-xs-10 nopadding">
+        <header>
+            <h2 class="pageTitle">
+                @(!SecurityContext.IsOwner(Model) ? Html.Raw("<img src='/images/svgicons/Icon_OrgPurple.svg' data-svgpng='/images/SvgIcons/Icon_OrgPurple.png'/><span style='color: #786EA1; font-weight: normal'>Teacher training</span><span></span>") : Html.Raw("<img src='/images/svgicons/Icon_OrgTeal.svg' data-svgpng='/images/SvgIcons/Icon_OrgTeal.png' /><span style='color: #459088; font-weight: normal'>Teacher training</span><span></span>"))
+            </h2>
+        </header>
+    </div>
+    <div class="col-xs-2 nopadding">
+        <a href="#" id="right-menu" class="pull-right" title="Filter menu"><span class="glyphicon glyphicon-filter filter-icon nopadding"></span></a>
+    </div>
+</section>
+
+<div class="profile-strip-line @(SecurityContext.IsOwner(Model) ? "" : "purple-strip")"></div><br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="content-slider" class="row nopadding">
+
+    <div class="col-xs-12 nopadding  profile-strip @(SecurityContext.IsOwner(Model) ? "" : "purple-strip")" id="scroll">
+        <div id="page-content">
+
+            <article id="">
+
+                <h2 class="purpleHeader teacherHeader">
+                    @(!SecurityContext.IsOwner(Model) ? Html.Raw("<img src='/images/svgicons/Icon_OrgPurple.svg' data-svgpng='/images/SvgIcons/Icon_OrgPurple.png'/><name style='color: #786EA1; font-weight: normal'> Edit teacher training course</name>") : Html.Raw("<img src='/images/svgicons/Icon_OrgTeal.svg' data-svgpng='/images/SvgIcons/Icon_OrgTeal.png' /><name style='color: #459088; font-weight: normal'> Edit teacher training course</name>"))
+
+
+
+                    <button class="btn btn-clear btn-default pull-right " onclick="location.href = '@Url.Action("Display")'; return false;"><i class="fa fa-chevron-left"></i> Back To Profile</button>
+
+                </h2>
+                <hr style="margin-top: 7px; margin-bottom:7px;">
+
+                <div class="panel with-nav-tabs panel-default">
+                    <div class="panel-heading hidden-xs">
+
+
+                        @Html.Partial("Tabs", Model.OrganisationId)
+
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="row nopadding">
+                            <div class=" col-xs-12 nopadding">
+
+
+
+
+                                @using (Html.BeginForm("Update", "TeacherTrainingCourses", FormMethod.Post, new { enctype = "multipart/form-data", id = "create-course-1", @class = "green-text" }))
+                                {
+                                    <div>
+                                        @Html.ValidationSummary()
+                                    </div>
+                                    <h3 class="fl">Edit this course</h3>
+                                    <button class="button save fr" type="submit">Save changes <img src="/images/icon-save.png"></button>
+                                    <hr />
+                                    <br />
+
+
+                                    <div class="row green-text activity-row-normal">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Name, "Course title")
+                                            @Html.TextBoxFor(m => m.Name, new { data_field_type = "general" })
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Website, "Web address", new { data_field_type = "notrequired" })
+                                            @Html.EditorFor(m => m.Website)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-5 singup-input">
+                                            @Html.LabelFor(m => m.Duration, "Teaching hours")
+                                            @Html.TextBoxFor(m => m.Duration, new { placeholder = "E.g. 200 hours, 500 hours", data_field_type = "general" })
+                                        </div>
+                                        <div class="col-xs-12 col-lg-5 singup-input">
+                                            @Html.LabelFor(m => m.Price)
+                                            @Html.TextBoxFor(m => m.Price, new { data_field_type = "notrequired" })
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.StartDate, "Start date")
+                                            @Html.EditorFor(m => m.StartDate)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+                                    <div class="row green-text">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.FinishDate, "End date")
+                                            @Html.EditorFor(m => m.FinishDate)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Description)
+                                            @Html.TextAreaFor(m => m.Description, new { @class = "course-description-box", data_field_type = "notrequired" })
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            <label>Accrediting body(s)</label>
+                                            @Html.EditorFor(m => m.AccreditationBodies)
+                                            <p>
+                                                <a href="mailto:body@yogaclicks.com">Tell us about an unlisted accrediting body</a>
+                                            </p>
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Accreditation, "Qualification")
+                                            @Html.TextBoxFor(m => m.Accreditation, new { data_field_type = "notrequired" })
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Style.Selection, "Associated style")
+                                            @Html.EditorFor(m => m.Style)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+                                <div class="row green-text margintop100">
+                                    <div class="hidden-xs col-sm-1"></div>
+                                    <div class="col-xs-12 col-lg-10 singup-input">
+                                        <label for="">YogaMeds taught in this class</label>
+                                        <style>.signup-small-text{margin-bottom:20px!important;font-size:16px!important}</style>
+                                        @Html.EditorFor(m => m.Conditions)
+                                    </div>
+                                    <div class="hidden-xs col-sm-1">
+                                    </div>
+                                </div>
+
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.EditorFor(m => m.Teachers, "TeacherChooserModel")
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.EditorFor(m => m.Venues)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.PreRequisites, "Pre-requisites")
+                                            @Html.TextAreaFor(m => m.PreRequisites)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+                                    <div class="row green-text margintop100">
+                                        <div class="hidden-xs col-sm-1"></div>
+                                        <div class="col-xs-12 col-lg-10 singup-input">
+                                            @Html.LabelFor(m => m.Notes, "Course notes")
+                                            @Html.TextAreaFor(m => m.Notes)
+                                        </div>
+                                        <div class="hidden-xs col-sm-1">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <span style="display:none" class="fl profileDelete button blockButton">
+                                            <span>&nbsp;</span>
+                                            @Html.Action("DeleteButton", "Profiles", new { Model.EntityId, EntityTypeName = "TeacherTrainingCourse", Securable = Model })
+                                        </span>
+                                        <button class="button save fr" type="submit">Save changes <img src="/images/icon-save.png"></button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('document').ready(function () {
+        $("input[type=checkbox]").each(function () {
+            var parentContainer = $(this).parent();
+            parentContainer.find("input[type=hidden]").insertAfter(parentContainer);
+        });
+    });
+</script>

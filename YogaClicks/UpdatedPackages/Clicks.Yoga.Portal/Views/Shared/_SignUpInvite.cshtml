@@ -1,0 +1,168 @@
+﻿@model Clicks.Yoga.Portal.Models.SignUp.SignUpInvite
+
+@{
+    var mainId = string.Format("signup-invite{0}inital", Model.Type);
+    var expandedId = string.Format("signup-invite{0}expanded", Model.Type);
+    var expandedTitle = string.Format("signup-invite{0}expandedtitle", Model.Type);
+    var expandedImages = string.Format("signup-invite{0}expandedimg", Model.Type);
+    var expandedEmailIcon = string.Format("signup-invite{0}expandedemailicon", Model.Type);
+    var emailForm = string.Format("signup-invite{0}emailform", Model.Type);
+    var emailFormIcon = string.Format("signup-invite{0}emailformicon", Model.Type);
+
+    var facebookLogo = string.Format("/Images/default/Facebook_Logo_Button_512_{0}.png", Model.ColorImageClass);
+    var twitterLogo = string.Format("/Images/default/Twitter_logo_512_{0}.png", Model.ColorImageClass);
+    var googleLogo = string.Format("/Images/default/Googleplus_Logo_512_{0}.png", Model.ColorImageClass);
+    var emailLogo = string.Format("/Images/default/Closed_Envelope_Circle_512_{0}.png", Model.ColorImageClass);
+}
+
+<div id="@mainId" class="row">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row">
+        <div class="row @Model.ColorCssBorderClass four-pixel-border signup-med-text borderedRow">
+            <p>@Model.Title <i class="fa fa-chevron-down"></i></p>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+<div id="@expandedId" class="row" style="display: none">
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-md-8 col-lg-6 congrats-row @Model.ColorCssBorderClass ">
+        <div id="@expandedTitle" class="row signup-med-text four-pixel-border-top row-no-margin">
+            <p>@Model.Title <i class="fa fa-chevron-down"></i></p>
+        </div>
+        <div class="row four-pixel-border-bottom row-no-margin">
+            <div id="@expandedImages" class="row">
+                <div class="col-lg-1"></div>
+                <div class=" col-xs-12 col-lg-10">
+                    <div class="hidden-xs col-sm-2"></div>
+                    <div class="col-xs-12 col-sm-2">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.yogaclicks.com%2Fregister&amp%3Btitle=I+just+joined+YogaClicks!+If+you+love+yoga+you+should+check+out+my+profile,+create+your+own+and+add+me+as+a+friend!+#YogaHood">
+                            <img src="@facebookLogo" alt="connect_with_facebook" />
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <a target="_blank" href="http://www.twitter.com/share?url=http://www.yogaclicks.com/register&amp;text=I%20just%20joined%20YogaClicks!%20If%20you%20love%20yoga%20you%20should%20check%20out%20my%20profile,%20create%20your%20own%20and%20add%20me%20as%20a%20friend!%20#YogaHood">
+                            <img src="@twitterLogo" alt="connect_with_twitter" />
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <a target="_blank " href="https://plus.google.com/share?url=http://www.yogaclicks.com">
+                            <img src="@googleLogo" alt="connect_with_google_plus" />
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <img id="@expandedEmailIcon" src="@emailLogo" alt="connect_with_email" />
+                    </div>
+                    <div class="hidden-xs col-sm-2"></div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div id="@emailForm" class="row" style="display: none">
+                <div class="col-lg-1"></div>
+                <div class="col-xs-12 col-lg-10">
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <img id="@emailFormIcon" src="@emailLogo" alt="connect_with_email" />
+                        </div>
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-10">
+                            @using (Html.BeginForm("Invite", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data", id = string.Format("signup-invite{0}", Model.Type), @class= "congrats-email-form" }))
+                            {
+                                <input class="signupiniteform" name="ToEmail" type="text" placeholder="@Model.Message" data-field-type="email" />
+                                <input class="signupiniteform"  name="SenderEmail" type="text" placeholder="Your email" data-field-type="email" />
+                                <textarea rows="5" name="Message" type="text" placeholder="Type your message here" data-field-type="general"></textarea>
+                                <input type="button" value="Send" class="btn btn-default btn-lg @Model.ColorCssBorderClass @string.Format("{0}-text", @Model.ColorCssClass) @string.Format("{0}-inverse-text-hover", @Model.ColorCssClass)" />
+                            }
+                            <div class="emailsuccess" style="display:none">
+
+                                <p style="padding: 0">
+                                    <i class="fa fa-check" style="position: relative; right: 0; padding: 0"></i>
+                                </p>
+                                <p style="padding: 0 0 10px 0">
+                                    Invite sent! Now you can share the yoga love on social media or send another email.
+                                </p>
+                            </div>
+                            <div class="emailfailure" style="display:none">
+                                <p style="padding: 0 0 10px 0; color:red">
+                                    There was a problem sending the email, please check the email addresses and try again.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1 col-md-2 col-lg-3"></div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#@mainId").click(function () {
+            $("#@mainId").slideUp();
+            $("#@expandedId").slideDown();
+            $("#@emailForm").find(".emailsuccess").hide();
+            $("#@emailForm").find(".emailfailure").hide();
+        });
+
+        $("#@expandedTitle").click(function () {
+            $("#@expandedId").slideUp();
+            $("#@mainId").slideDown();
+            $("#@emailForm").find(".emailsuccess").hide();
+            $("#@emailForm").find(".emailfailure").hide();
+        });
+
+        $("#@expandedEmailIcon").click(function () {
+            $("#@expandedImages").slideUp();
+            $("#@emailForm").slideDown();
+            $("#@emailForm").find(".emailsuccess").hide();
+            $("#@emailForm").find(".emailfailure").hide();
+        });
+
+        $("#@emailFormIcon").click(function () {
+            $("#@emailForm").slideUp();
+            $("#@expandedImages").slideDown();
+            $("#@emailForm").find(".emailsuccess").hide();
+            $("#@emailForm").find(".emailfailure").hide();
+        });
+
+
+        $("#@string.Format("signup-invite{0}", Model.Type)").find(".btn").click(function () {
+            $("#PleaseWait").show();
+            var form = $(this).closest("form");
+            var formDiv = form.parent();
+            formDiv.find(".emailsuccess").hide();
+            formDiv.find(".emailfailure").hide();
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    if (data == "true") {
+                        formDiv.find(".emailsuccess").show();
+                        form.find(".signupiniteform").val("");
+                        form.find("textarea").val("");
+                    } else {
+                        formDiv.find(".emailfailure").show();
+                    }
+                    $("#PleaseWait").hide();
+                },
+                error: function () {
+                    formDiv.find(".emailfailure").show();
+                    $("#PleaseWait").hide();
+                }
+            });
+        });
+    }
+    );
+
+</script>

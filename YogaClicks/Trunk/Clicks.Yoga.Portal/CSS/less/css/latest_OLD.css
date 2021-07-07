@@ -1,0 +1,64 @@
+section[role="registerbox"] #welcome{
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 367px;
+	padding: 15px 20px 20px 20px;
+	margin: 20px 30px 10px 0;
+	-webkit-box-shadow: 0px 0px 8px 1px #373737;
+	-moz-box-shadow: 0px 0px 8px 1px #373737;
+	box-shadow: 0px 0px 8px 1px #373737;
+    float:right;
+}
+section[role="registerbox"] #welcome h2{
+	padding-left:0;
+	color:#444;
+	display:block;
+	float:none;
+	padding:0;
+	margin:0;
+}
+body.manual-register-page {
+	margin: 100px 0px 0px 0px;
+	background: url(/images/backgrounds/landing-page.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+form fieldset label{
+	font-size: 14px;
+}
+
+
+
+
+
+section.filters h4{
+  padding: 20px 0px 20px 20px;
+  margin: 0px;
+}
+section.filters span{
+  padding: 0 0px 20px 20px;
+  margin: 0px;
+  display:block;
+}
+#content-slider section.page-content article{
+	padding: 20px 20px 60px 20px;	
+	width: 725px;
+	-webkit-box-shadow: 0px 0px 8px 1px #9b9b9b;
+	-moz-box-shadow: 0px 0px 8px 1px #9b9b9b;
+	box-shadow: 0px 0px 8px 1px #9b9b9b;
+}
+
+
+
+
+
+
+
+
+
+
+

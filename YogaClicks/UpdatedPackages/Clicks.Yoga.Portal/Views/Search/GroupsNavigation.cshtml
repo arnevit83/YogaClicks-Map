@@ -1,0 +1,42 @@
+﻿@model Clicks.Yoga.Portal.Models.Community.CommunityNavigationModel
+
+
+<div id="navwrap">
+
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle"><span style="float: left">Find groups</span></h1><br /><br/>
+
+
+                @using (Html.BeginForm("Groups", "Search", FormMethod.Get, new { style = "padding-bottom: 0;" }))
+                {
+                    <label>Keywords</label>
+                    @Html.TextBox("Keywords", Model.Keywords,new{@class="form-control"})
+                    <div aria-label="..." role="group" class="btn-group btn-group-justified hidden-xs hidden-sm">
+                        <div role="group" class="btn-group">
+                            <a href="@Url.Action("Groups", "Search")" class="btn btn-clear btn-default"> Show all</a>
+                        </div>
+                        <div role="group" class="btn-group">
+                            <button type="submit" class="btn btn-custom">Search</button>
+                        </div>
+
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#right-menu-close").click(function () {
+            $("#right-nav").fadeToggle("fast");
+            $(".dark-overlay").fadeToggle("slow");
+        });
+    });
+</script>
+

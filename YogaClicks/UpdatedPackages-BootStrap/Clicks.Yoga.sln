@@ -1,0 +1,237 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga", "Clicks.Yoga\Clicks.Yoga.csproj", "{F6A75331-8DD9-498B-9B40-DE48FA815DE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Data", "Clicks.Yoga.Data\Clicks.Yoga.Data.csproj", "{F5F55549-9D78-4D59-909A-EBD36DA7904F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Data.Creator", "Clicks.Yoga.Data.Creator\Clicks.Yoga.Data.Creator.csproj", "{79747209-E1AB-446D-A260-1D078E7FE30F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7D4D63E0-7540-42F2-BC4B-089BC58177BF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Portal.ImageStore", "Clicks.Yoga.Portal.ImageStore\Clicks.Yoga.Portal.ImageStore.csproj", "{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Web", "Clicks.Yoga.Web\Clicks.Yoga.Web.csproj", "{7BA79AD5-548F-4A3B-A58E-61C8A376BB66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sites", "Sites", "{D4ADCC7F-AA70-46FD-ADDB-8F82A742CCD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{AD1E364D-F750-4D75-9192-D407B4A394AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B46292BA-1B57-496E-84CE-1FF4500785B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Ninject", "Clicks.Yoga.Ninject\Clicks.Yoga.Ninject.csproj", "{78BD8283-51A8-4598-B9C4-C0B2F219BFD4}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WindowsAzureYoga", "WindowsAzureYoga\WindowsAzureYoga.ccproj", "{A8371114-F1BA-45C2-BFD1-08FA378E267F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Data.IndexElasticSearch", "Clicks.Yoga.Data.IndexElasticSearch\Clicks.Yoga.Data.IndexElasticSearch.csproj", "{F071ECFD-1C1B-44BE-AF67-584483B2DFDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{3B7C30DF-EEA1-4112-A25C-CABCC08C88C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Tasks.NotificationDigestTask", "Clicks.Yoga.Tasks.NotificationDigestTask\Clicks.Yoga.Tasks.NotificationDigestTask.csproj", "{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Data.ReindexElasticSearch", "Clicks.Yoga.Data.ReindexElasticSearch\Clicks.Yoga.Data.ReindexElasticSearch.csproj", "{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Import.StyleImporter", "Clicks.Yoga.Import.StyleImporter\Clicks.Yoga.Import.StyleImporter.csproj", "{8E605668-95B0-49F8-B1A7-98350A8B54C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Import.PoseImporter", "Clicks.Yoga.Import.PoseImporter\Clicks.Yoga.Import.PoseImporter.csproj", "{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Import.TeacherTrainingImport", "Clicks.Yoga.Import.TeacherTrainingImport\Clicks.Yoga.Import.TeacherTrainingImport.csproj", "{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Import.VenueImporter", "Clicks.Yoga.Import.VenueImporter\Clicks.Yoga.Import.VenueImporter.csproj", "{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Import.AccreditingBodiesImporter", "Clicks.Yoga.Import.AccreditingBodiesImporter\Clicks.Yoga.Import.AccreditingBodiesImporter.csproj", "{18DEC282-8D77-452C-AE24-E36D1BEB58B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateDatabase", "UpdateDatabase\UpdateDatabase.csproj", "{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicks.Yoga.Portal", "Clicks.Yoga.Portal\Clicks.Yoga.Portal.csproj", "{D8D23CFB-BA51-43A7-A32A-56A264C8F42A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 19
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://yogaclicks.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Clicks.Yoga.Data.Creator\\Clicks.Yoga.Data.Creator.csproj
+		SccProjectTopLevelParentUniqueName1 = Clicks.Yoga.sln
+		SccProjectName1 = Clicks.Yoga.Data.Creator
+		SccLocalPath1 = Clicks.Yoga.Data.Creator
+		SccProjectUniqueName2 = Clicks.Yoga.Data\\Clicks.Yoga.Data.csproj
+		SccProjectTopLevelParentUniqueName2 = Clicks.Yoga.sln
+		SccProjectName2 = Clicks.Yoga.Data
+		SccLocalPath2 = Clicks.Yoga.Data
+		SccProjectUniqueName3 = Clicks.Yoga\\Clicks.Yoga.csproj
+		SccProjectTopLevelParentUniqueName3 = Clicks.Yoga.sln
+		SccProjectName3 = Clicks.Yoga
+		SccLocalPath3 = Clicks.Yoga
+		SccProjectUniqueName4 = Clicks.Yoga.Portal.ImageStore\\Clicks.Yoga.Portal.ImageStore.csproj
+		SccProjectTopLevelParentUniqueName4 = Clicks.Yoga.sln
+		SccProjectName4 = Clicks.Yoga.Portal.ImageStore
+		SccLocalPath4 = Clicks.Yoga.Portal.ImageStore
+		SccProjectUniqueName5 = Clicks.Yoga.Web\\Clicks.Yoga.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = Clicks.Yoga.sln
+		SccProjectName5 = Clicks.Yoga.Web
+		SccLocalPath5 = Clicks.Yoga.Web
+		SccProjectUniqueName6 = Common\\Common.csproj
+		SccProjectTopLevelParentUniqueName6 = Clicks.Yoga.sln
+		SccProjectName6 = Common
+		SccLocalPath6 = Common
+		SccProjectUniqueName7 = Clicks.Yoga.Ninject\\Clicks.Yoga.Ninject.csproj
+		SccProjectTopLevelParentUniqueName7 = Clicks.Yoga.sln
+		SccProjectName7 = Clicks.Yoga.Ninject
+		SccLocalPath7 = Clicks.Yoga.Ninject
+		SccProjectUniqueName8 = WindowsAzureYoga\\WindowsAzureYoga.ccproj
+		SccProjectTopLevelParentUniqueName8 = Clicks.Yoga.sln
+		SccProjectName8 = WindowsAzureYoga
+		SccLocalPath8 = WindowsAzureYoga
+		SccProjectUniqueName9 = Clicks.Yoga.Data.IndexElasticSearch\\Clicks.Yoga.Data.IndexElasticSearch.csproj
+		SccProjectTopLevelParentUniqueName9 = Clicks.Yoga.sln
+		SccProjectName9 = Clicks.Yoga.Data.IndexElasticSearch
+		SccLocalPath9 = Clicks.Yoga.Data.IndexElasticSearch
+		SccProjectUniqueName10 = Clicks.Yoga.Tasks.NotificationDigestTask\\Clicks.Yoga.Tasks.NotificationDigestTask.csproj
+		SccProjectTopLevelParentUniqueName10 = Clicks.Yoga.sln
+		SccProjectName10 = Clicks.Yoga.Tasks.NotificationDigestTask
+		SccLocalPath10 = Clicks.Yoga.Tasks.NotificationDigestTask
+		SccProjectUniqueName11 = Clicks.Yoga.Data.ReindexElasticSearch\\Clicks.Yoga.Data.ReindexElasticSearch.csproj
+		SccProjectTopLevelParentUniqueName11 = Clicks.Yoga.sln
+		SccProjectName11 = Clicks.Yoga.Data.ReindexElasticSearch
+		SccLocalPath11 = Clicks.Yoga.Data.ReindexElasticSearch
+		SccProjectUniqueName12 = Clicks.Yoga.Import.StyleImporter\\Clicks.Yoga.Import.StyleImporter.csproj
+		SccProjectTopLevelParentUniqueName12 = Clicks.Yoga.sln
+		SccProjectName12 = Clicks.Yoga.Import.StyleImporter
+		SccLocalPath12 = Clicks.Yoga.Import.StyleImporter
+		SccProjectUniqueName13 = Clicks.Yoga.Import.PoseImporter\\Clicks.Yoga.Import.PoseImporter.csproj
+		SccProjectTopLevelParentUniqueName13 = Clicks.Yoga.sln
+		SccProjectName13 = Clicks.Yoga.Import.PoseImporter
+		SccLocalPath13 = Clicks.Yoga.Import.PoseImporter
+		SccProjectUniqueName14 = Clicks.Yoga.Import.TeacherTrainingImport\\Clicks.Yoga.Import.TeacherTrainingImport.csproj
+		SccProjectTopLevelParentUniqueName14 = Clicks.Yoga.sln
+		SccProjectName14 = Clicks.Yoga.Import.TeacherTrainingImport
+		SccLocalPath14 = Clicks.Yoga.Import.TeacherTrainingImport
+		SccProjectUniqueName15 = Clicks.Yoga.Import.VenueImporter\\Clicks.Yoga.Import.VenueImporter.csproj
+		SccProjectTopLevelParentUniqueName15 = Clicks.Yoga.sln
+		SccProjectName15 = Clicks.Yoga.Import.VenueImporter
+		SccLocalPath15 = Clicks.Yoga.Import.VenueImporter
+		SccProjectUniqueName16 = Clicks.Yoga.Import.AccreditingBodiesImporter\\Clicks.Yoga.Import.AccreditingBodiesImporter.csproj
+		SccProjectTopLevelParentUniqueName16 = Clicks.Yoga.sln
+		SccProjectName16 = Clicks.Yoga.Import.AccreditingBodiesImporter
+		SccLocalPath16 = Clicks.Yoga.Import.AccreditingBodiesImporter
+		SccProjectUniqueName17 = UpdateDatabase\\UpdateDatabase.csproj
+		SccProjectTopLevelParentUniqueName17 = Clicks.Yoga.sln
+		SccProjectName17 = UpdateDatabase
+		SccLocalPath17 = UpdateDatabase
+		SccProjectUniqueName18 = Clicks.Yoga.Portal\\Clicks.Yoga.Portal.csproj
+		SccProjectTopLevelParentUniqueName18 = Clicks.Yoga.sln
+		SccProjectName18 = Clicks.Yoga.Portal
+		SccLocalPath18 = Clicks.Yoga.Portal
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6A75331-8DD9-498B-9B40-DE48FA815DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A75331-8DD9-498B-9B40-DE48FA815DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A75331-8DD9-498B-9B40-DE48FA815DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A75331-8DD9-498B-9B40-DE48FA815DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F55549-9D78-4D59-909A-EBD36DA7904F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F55549-9D78-4D59-909A-EBD36DA7904F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F55549-9D78-4D59-909A-EBD36DA7904F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F55549-9D78-4D59-909A-EBD36DA7904F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79747209-E1AB-446D-A260-1D078E7FE30F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79747209-E1AB-446D-A260-1D078E7FE30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79747209-E1AB-446D-A260-1D078E7FE30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79747209-E1AB-446D-A260-1D078E7FE30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA79AD5-548F-4A3B-A58E-61C8A376BB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA79AD5-548F-4A3B-A58E-61C8A376BB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA79AD5-548F-4A3B-A58E-61C8A376BB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA79AD5-548F-4A3B-A58E-61C8A376BB66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46292BA-1B57-496E-84CE-1FF4500785B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46292BA-1B57-496E-84CE-1FF4500785B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46292BA-1B57-496E-84CE-1FF4500785B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46292BA-1B57-496E-84CE-1FF4500785B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BD8283-51A8-4598-B9C4-C0B2F219BFD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BD8283-51A8-4598-B9C4-C0B2F219BFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BD8283-51A8-4598-B9C4-C0B2F219BFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BD8283-51A8-4598-B9C4-C0B2F219BFD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8371114-F1BA-45C2-BFD1-08FA378E267F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8371114-F1BA-45C2-BFD1-08FA378E267F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8371114-F1BA-45C2-BFD1-08FA378E267F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8371114-F1BA-45C2-BFD1-08FA378E267F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F071ECFD-1C1B-44BE-AF67-584483B2DFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F071ECFD-1C1B-44BE-AF67-584483B2DFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F071ECFD-1C1B-44BE-AF67-584483B2DFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F071ECFD-1C1B-44BE-AF67-584483B2DFDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E605668-95B0-49F8-B1A7-98350A8B54C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E605668-95B0-49F8-B1A7-98350A8B54C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E605668-95B0-49F8-B1A7-98350A8B54C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E605668-95B0-49F8-B1A7-98350A8B54C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DEC282-8D77-452C-AE24-E36D1BEB58B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DEC282-8D77-452C-AE24-E36D1BEB58B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DEC282-8D77-452C-AE24-E36D1BEB58B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DEC282-8D77-452C-AE24-E36D1BEB58B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D23CFB-BA51-43A7-A32A-56A264C8F42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D23CFB-BA51-43A7-A32A-56A264C8F42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D23CFB-BA51-43A7-A32A-56A264C8F42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D23CFB-BA51-43A7-A32A-56A264C8F42A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6A75331-8DD9-498B-9B40-DE48FA815DE3} = {5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}
+		{F5F55549-9D78-4D59-909A-EBD36DA7904F} = {5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}
+		{79747209-E1AB-446D-A260-1D078E7FE30F} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{0AF0598E-C0A3-45A1-9D90-2ACE3B2976C0} = {D4ADCC7F-AA70-46FD-ADDB-8F82A742CCD9}
+		{7BA79AD5-548F-4A3B-A58E-61C8A376BB66} = {5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}
+		{B46292BA-1B57-496E-84CE-1FF4500785B0} = {5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}
+		{78BD8283-51A8-4598-B9C4-C0B2F219BFD4} = {5A6CD953-BEDF-4E1B-8BFF-9B20C60BC154}
+		{A8371114-F1BA-45C2-BFD1-08FA378E267F} = {D4ADCC7F-AA70-46FD-ADDB-8F82A742CCD9}
+		{F071ECFD-1C1B-44BE-AF67-584483B2DFDA} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{90AD2E0F-6238-498F-8DD9-E0AC24D01FBD} = {3B7C30DF-EEA1-4112-A25C-CABCC08C88C8}
+		{5C8E5BA1-9254-42DC-8B6F-6ED0A723337E} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{8E605668-95B0-49F8-B1A7-98350A8B54C3} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{DF798AB1-3C0A-4581-83D8-20D2FEA23AFE} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{87A2D3B5-6F8C-4838-BDF3-8299ACCF2EE7} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{84C78D7D-9715-4C5B-B05E-E5DB99BEAE30} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{18DEC282-8D77-452C-AE24-E36D1BEB58B7} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{6D0C7F5F-C5E6-46F2-874D-59EE0AE643DC} = {AD1E364D-F750-4D75-9192-D407B4A394AA}
+		{D8D23CFB-BA51-43A7-A32A-56A264C8F42A} = {D4ADCC7F-AA70-46FD-ADDB-8F82A742CCD9}
+	EndGlobalSection
+EndGlobal

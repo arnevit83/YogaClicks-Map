@@ -1,0 +1,39 @@
+﻿@using Newtonsoft.Json
+@model Clicks.Yoga.Portal.Models.Shared.CloseModalModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@{
+    var destination = Model != null ? Model.Destination : null;
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            if (parent.$.fancybox == null || parent.$.fancybox.current == null)
+                return;
+            parent.$.fancybox.current.height = 400;
+            parent.$.fancybox.update();
+        }, 0);
+    })
+</script>
+
+<h2 class="greenHeader">Congratulations</h2>
+<hr class="modalHr" />
+@if (Model != null && !string.IsNullOrEmpty(Model.ViewPath))
+{
+    @Html.Partial(Model.ViewPath)
+}
+else
+{
+    // This is the default fall back message in the case that no specific template is available
+    
+    <h3 class="cb blackSubHeader">Thank you, that's all the information we need for now.</h3>
+}
+
+<br /><br /><br /><br /><br /><br />
+<div class="fr">
+    <input class="button pink fr large" type="button" value="Close" onclick="top.closeModal('@(destination)'); return false;" />
+</div>

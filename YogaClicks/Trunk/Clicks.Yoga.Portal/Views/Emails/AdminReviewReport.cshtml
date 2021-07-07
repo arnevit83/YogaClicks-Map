@@ -1,0 +1,12 @@
+﻿@model Clicks.Yoga.Emails.AdminReviewReportEmail
+
+@{
+    Layout = "~/Views/Emails/_Layout.cshtml";
+    Model.Subject = "Review Reported";
+}
+
+Review @Model.Review.Id has been reported as @Model.Reason.<br><br>
+
+The user provided the following explanation:<br><br>
+
+@Model.Explanation

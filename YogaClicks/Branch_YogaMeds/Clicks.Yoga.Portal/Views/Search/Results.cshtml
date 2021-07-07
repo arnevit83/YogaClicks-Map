@@ -1,0 +1,275 @@
+﻿@using Clicks.Yoga.Portal.Models.Search
+@model Clicks.Yoga.Portal.Models.Search.SearchResultsModel
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Layout/Layout.cshtml";
+    ViewBag.MenuSection = "Discover";
+    List<SearchResultModel> results = null;
+}
+
+@section LeftNav{
+    @Html.Partial("left-nav-search-results", Model)
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", ".search-filter", function () {
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+}
+
+<div id="content-slider" class="content-slider">
+    <div class="discover-strip content-col search-content-col" id="scroll">
+        <header class="search-results">
+            <h1>Search results</h1>
+            <p>Showing @Model.Results.Count @(Model.Results.Count == 1 ? "result" : "results") based on your search for '@Model.Criteria.Keywords'</p>
+        </header>
+        <div id="resultContainer">
+
+            @if (Model.CategorisedResults.ContainsKey("Teachers"))
+            {
+                results = Model.CategorisedResults["Teachers"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Teachers
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @if (Model.CategorisedResults.ContainsKey("Venues"))
+            {
+                results = Model.CategorisedResults["Venues"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Venues
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @if (Model.CategorisedResults.ContainsKey("Teacher Training Organisations"))
+            {
+                results = Model.CategorisedResults["Teacher Training Organisations"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Teacher Training Organisations
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @if (Model.CategorisedResults.ContainsKey("Teacher Training Courses"))
+            {
+                results = Model.CategorisedResults["Teacher Training Courses"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Teacher Training Courses
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @*@if (Model.CategorisedResults.ContainsKey("Style Organisations"))
+            {
+                results = Model.CategorisedResults["Style Organisations"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Style Organisations
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }*@
+            
+            @if (Model.CategorisedResults.ContainsKey("Profiles"))
+            {
+                results = Model.CategorisedResults["Profiles"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Profiles
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @if (Model.CategorisedResults.ContainsKey("Groups"))
+            {
+                results = Model.CategorisedResults["Groups"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Groups
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+            
+            @if (Model.CategorisedResults.ContainsKey("Activities and Classes"))
+            {
+                results = Model.CategorisedResults["Activities and Classes"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Events
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+            
+            @if (Model.CategorisedResults.ContainsKey("Accrediting Bodies"))
+            {
+                results = Model.CategorisedResults["Accrediting Bodies"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Accrediting / registering Bodies
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+            
+            @if (Model.CategorisedResults.ContainsKey("Conditions"))
+            {
+                results = Model.CategorisedResults["Conditions"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                YogaMeds
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Action("SearchResultPartial", "Search", result)
+                        }
+                    </section>
+                }
+            }
+            
+            @if (Model.CategorisedResults.ContainsKey("Styles"))
+            {
+                results = Model.CategorisedResults["Styles"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Styles
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+
+            @if (Model.CategorisedResults.ContainsKey("Poses"))
+            {
+                results = Model.CategorisedResults["Poses"];
+
+                if (results.Count > 0)
+                {
+                    <section class="search-group">
+                        <header role="result-type">
+                            <h2>
+                                Poses
+                            </h2>
+                        </header>
+                        @foreach (var result in results)
+                        {
+                            @Html.Partial("SearchResultPartial", result)
+                        }
+                    </section>
+                }
+            }
+            
+        </div>
+    </div>
+</div>

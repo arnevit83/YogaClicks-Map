@@ -1,0 +1,104 @@
+﻿  INSERT INTO EntityType
+  (Name, SystemName, DisplayName, DisplayPlural, Controller, IsProfessional,IsFanable, IsReviewable, IsSearchable, 
+  IsGalleryAssociate, CreationTime, ModificationTime, IsActor, IsHuman)
+  VALUES
+  ('YmStory', 'Clicks.Yoga.Domain.Entities.YmStory', 'Story', 'My favourite #PowerByYoga stories', 'YogaMap', 0, 1, 0, 0, 0, GETDATE(), GETDATE(), 0, 0)
+
+
+  
+GO
+
+INSERT INTO [dbo].[YmStory]
+           ([Name]
+           ,[Location]
+           ,[PoweredFrom]
+           ,[ProfileType]
+           ,[Story]
+           ,[Video]
+           ,[Lat]
+           ,[Lng]
+           ,[Active]
+           ,[CreationTime]
+           ,[ModificationTime]
+           ,[ImageId]
+           ,[OwnerId])
+     VALUES
+           ('Ingrid Gottschalk'
+           ,null
+           ,'1983-01-01 00:00:00.000'
+           ,'Teacher'
+           ,'Ingrid grew up on the Swiss-German border but found her home in London in the late seventies...'
+           ,null
+           ,'52.63009353836732'
+           ,'1.3031673431396484'
+           ,1
+           ,GETDATE()
+           ,GETDATE()
+           ,null
+           ,2097)
+GO
+
+
+
+GO
+
+INSERT INTO [dbo].[YmStory]
+           ([Name]
+           ,[Location]
+           ,[PoweredFrom]
+           ,[ProfileType]
+           ,[Story]
+           ,[Video]
+           ,[Lat]
+           ,[Lng]
+           ,[Active]
+           ,[CreationTime]
+           ,[ModificationTime]
+           ,[ImageId]
+           ,[OwnerId])
+     VALUES
+           ('Dawn Wright'
+           ,null
+           ,'1980-01-01 00:00:00.000'
+           ,'Teacher'
+           ,null
+           ,null
+           ,'52.623945817938704'
+           ,'1.2992191314697266'
+           ,1
+           ,GETDATE()
+           ,GETDATE()
+           ,null
+           ,2092)
+GO
+
+
+INSERT INTO [dbo].[YmStory]
+           ([Name]
+           ,[Location]
+           ,[PoweredFrom]
+           ,[ProfileType]
+           ,[Story]
+           ,[Video]
+           ,[Lat]
+           ,[Lng]
+           ,[Active]
+           ,[CreationTime]
+           ,[ModificationTime]
+           ,[ImageId]
+           ,[OwnerId])
+     VALUES
+           ('Duncan'
+           ,null
+           ,'1980-01-01 00:00:00.000'
+           ,'Student'
+           ,null
+           ,'/Video/YogaMap/4.mp4'
+           ,'52.623945817938704'
+           ,'1.2992191314697266'
+           ,1
+           ,GETDATE()
+           ,GETDATE()
+           ,null
+           ,10920)
+GO

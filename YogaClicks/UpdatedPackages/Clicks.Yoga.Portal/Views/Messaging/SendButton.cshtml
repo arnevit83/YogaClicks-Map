@@ -1,0 +1,7 @@
+﻿@using Clicks.Yoga.Domain
+@model Clicks.Yoga.Portal.Models.Messaging.MessagingSendButtonModel
+
+@if (Model.Permitted)
+{
+    <a onclick="location.href = '@Url.Action("Send", "Messaging", new { Model.Recipient.EntityId, Model.Recipient.EntityTypeName })'" class="btn btn-default btn-clear btn-sm ">@(Model.Text ?? "Send message")&nbsp;&nbsp;<i class="fa fa-comment"></i></a>
+}

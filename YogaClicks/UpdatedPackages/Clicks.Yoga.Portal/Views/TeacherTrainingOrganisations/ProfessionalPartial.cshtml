@@ -1,0 +1,56 @@
+﻿@model Clicks.Yoga.Portal.Models.Entities.TeacherModel
+
+
+    <a href="@Url.Action("Display", "Teachers", new {id = Model.Id})" class="thumbnail">
+        <div class="row nopadding">
+
+            <div class="col-xs-4 col-sm-12  nopadding vcenter">
+
+                @if (Model.Image == null)
+                {
+                    @Html.Image(Model.Image, "Profile.jpg", i => i.Resize(c => c.Width(140).Height(140).ScaleBoth().Crop()))
+                }
+                else
+                {
+                    @Html.Image(Model.Image, i => i.Resize(c => c.Width(140).Height(140).ScaleBoth().Crop()))
+                }
+
+
+              
+            </div>
+         
+            <div class="caption col-xs-7 col-sm-12  nopadding vcenter">
+                <div style="height:100px; overflow-wrap: break-word; overflow:hidden ">
+                    <strong class="Teachernamesearch">@Html.Trim(Model.Name, 35)</strong>
+
+               
+                    <p>
+
+                        @if (Model.Location != null)
+                        {
+
+
+                            if (Model.Location.Name.Length > 50)
+                            {
+
+                                @Html.Raw(Model.Location.Name.Substring(0, 50));
+                                
+
+                                <text>...</text>
+
+                            }
+                            else
+                            {
+                                @Html.Raw(Model.Location.Name);
+                                
+
+                            }
+
+
+                        }
+
+                        </p>
+                </div>
+    </div>
+ </div>   </a>
+

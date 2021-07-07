@@ -1,0 +1,62 @@
+﻿@model Clicks.Yoga.Portal.Models.Profiles.ProfileCreateTeacherModel
+
+@{
+    Layout = "~/Views/Layout/Modal.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    
+    
+    <h2 class="greenHeader">Create your teacher page</h2>
+    <hr class="modalHrSteps" />
+    <ul class="steps steps2">
+        <li class="active"><span>Step 1</span></li>
+        <li><span>Step 2</span></li>
+    </ul>
+    <div class="scrollableiFrame">
+        @Html.ValidationSummary()
+        <h3 class="cb">Your teaching contact details</h3>
+        @if (SecurityContext.CurrentProfile.Professional)
+        {
+            <div class="clearRow">
+                <div class="halfWidth">
+                    @Html.LabelFor(m => m.Name, "Name")
+                    @Html.EditorFor(m => m.Name)
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.HiddenFor(m => m.Name)
+        }
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.EmailAddress, "Email address")
+                @Html.EditorFor(m => m.EmailAddress)
+            </div>
+        </div>
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.LabelFor(m => m.Telephone)
+                @Html.EditorFor(m => m.Telephone)
+            </div>
+        </div>
+        <div class="clearRow">
+            <div class="halfWidth">
+                @Html.Label("Websites / social media (copy & paste full URL)")
+                @Html.EditorFor(m => m.Websites)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wizard-footer-buttons-container">
+        <a href="javascript:parent.$.fancybox.close();" class="textLink fl">Cancel</a>
+        <div class="wizard-footer-nav-container">
+            <a href="@Url.Action("Create")" class="button pink large backBtn">Back</a>
+            <input class="button pink large" type="submit" value="Next" />
+        </div>
+    </div>
+    <div class="cb"></div>
+}

@@ -1,0 +1,85 @@
+﻿@model Clicks.Yoga.Portal.Models.Poses.PoseIndexModel
+
+<div id="navwrap">
+    
+    <section class="filters" id="filter-results">
+        <div id="filter-wrap">
+            <div class="the-sub-menu">
+                <span id="right-menu-close" title="Close" class="close filter-icon pull-right hidden-sm hidden-md hidden-lg" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+
+                <h1 class="pageTitle ">
+                    <span style="float: left">Pose finder</span>
+                </h1>
+                 
+                 
+                 <br /><br />
+                Need a pose?<br /> You're in the right place.<br />
+                    Search by name, category or level
+               
+                
+                @using (Html.BeginForm("Index", "Poses", FormMethod.Get, new { @class = "clearfix", id = "posesearch" }))
+                {
+                    <fieldset class="fancylabels search searchByName">
+                        <label>Search by pose name</label>
+                        @Html.TextBox("search", string.Empty, new { @class = "search-term form-control" })
+                    </fieldset>
+      
+                    <fieldset class="fancylabels search searchLevel">
+                      <a class="" tabindex="0" role="button" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Level" data-content="<strong>Everyone has their own definition but here's a rough guide:</strong><br/><br /><strong>Level 1</strong> - Builds familiarity<br /><strong>Level 2</strong> - Intermediate, develops understanding<br /><strong>Level 3</strong> - Advanced, develops mastery">
+                          <label style="float: left">Level</label>   <i class="fa fa-question-circle  questionMarkBS"></i><br />
+                      </a>
+
+                        @Html.DropDownList("abilityLevelId", Model.AbilityLevelOptions, "All")
+                     
+                    </fieldset>
+                    <fieldset>
+
+                        <br />
+
+                        <button type="submit" class="btn btn-default btn-clear">Search</button>
+                    </fieldset>
+                }
+
+                <nav class="filter">
+                    <h3>Categories</h3>
+
+                    <div class="list-group">
+                  
+                     
+
+                        <a class="list-group-item" href="/poses/Directory/">All (@Model.TotalCount)</a>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <a class="list-group-item" href="/poses/categories/@cat.Id">@cat.Name (@cat.Count)</a>
+                        }
+
+                    </div>
+
+                
+
+
+
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(function() {
+        $('#abilityLevelId').change(function() {
+            $(this).closest('form').submit();
+        });
+
+        $('h3').click(function() {
+            $(this).toggleClass('open');
+            $('.toggleWrap').slideToggle('slow');
+        });
+
+    });
+    $("#right-menu-close").click(function () {
+        $("#right-nav").fadeToggle("fast");
+        $(".dark-overlay").fadeToggle("slow");
+    });
+</script>
+
